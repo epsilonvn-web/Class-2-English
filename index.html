@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smart English Grade 2 - 18 Topics, Reading Stories & Grammar Practice</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Quicksand & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #FF6584;
+      --secondary: #10B981;
+      --accent: #F59E0B;
+      --blue: #3B82F6;
+      --purple: #8B5CF6;
+      --dark: #1E293B;
+    }
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      font-family: 'Nunito', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #FFE4E6 0%, #E0F2FE 50%, #EDE9FE 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      color: var(--dark);
+    }
+    .font-cute {
+      font-family: 'Quicksand', cursive, sans-serif;
+    }
+    #app-container {
+      background: rgba(255, 255, 255, 0.98);
+      width: 100%;
+      max-width: 1200px;
+      min-height: 700px;
+      max-height: 96vh;
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(244, 114, 182, 0.2);
+      border: 4px solid #FFF;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-hover {
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-3px) scale(1.015);
+    }
+    .btn-bounce:active {
+      transform: scale(0.96);
+    }
+    .choice-ipa {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-style: normal !important;
+      font-weight: 700 !important;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+    }
+    .letter-btn {
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      transition: all 0.2s;
+    }
+    .slot-word-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border-radius: 14px;
+      min-width: 70px;
+      transition: all 0.2s;
+    }
+    .vocab-pill-red {
+      background-color: #FFE4E6;
+      color: #E11D48;
+      font-weight: 900;
+      padding: 1px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 0 2px;
+      border: 1px solid #FECDD3;
+    }
+    .pos-badge {
+      font-size: 11px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pos-noun { background-color: #E0E7FF; color: #4338CA; border: 1.5px solid #C7D2FE; }
+    .pos-verb { background-color: #DCFCE7; color: #15803D; border: 1.5px solid #BBF7D0; }
+    .pos-adj  { background-color: #FEF3C7; color: #B45309; border: 1.5px solid #FDE68A; }
+    .pos-adv  { background-color: #FCE7F3; color: #BE185D; border: 1.5px solid #FBCFE8; }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #FBCFE8;
+      border-radius: 9999px;
+    }
+    .reading-q-card {
+      background: #FFFFFF;
+      border: 2px solid #F1F5F9;
+      border-radius: 14px;
+      padding: 8px 10px;
+      transition: all 0.2s;
+    }
+    .missing-char-blank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 48px;
+      border-bottom: 4px solid #F43F5E;
+      margin: 0 3px;
+      font-size: 32px;
+      font-weight: 900;
+      color: #E11D48;
+    }
+    .missing-char-filled {
+      border-bottom: 4px solid #10B981;
+      color: #059669;
+      animation: bounce-in 0.4s ease;
+    }
+    @keyframes bounce-in {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+
+    <!-- 0. WELCOME OVERLAY SCREEN -->
+    <div id="start-overlay" class="absolute inset-0 bg-gradient-to-br from-pink-500/95 via-rose-400/95 to-purple-600/95 z-50 flex flex-col items-center justify-center p-6 text-center text-white">
+      <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-5xl shadow-2xl mb-3 transform -rotate-6 animate-bounce">
+        🐰
+      </div>
+      
+      <div id="greeting-badge" class="bg-white/20 backdrop-blur-md px-5 py-1.5 rounded-full text-base md:text-lg font-black tracking-wide border border-white/40 mb-2.5 shadow-sm">
+        🌅 Good morning, little princess!
+      </div>
+
+      <h1 class="text-2xl md:text-3xl font-black font-cute mb-2">🌸 ENGLISH GRADE 2 LEARNING PARK 🌸</h1>
+      <p class="text-sm md:text-base font-bold max-w-lg mb-5 leading-relaxed text-pink-100">
+        Explore 18 Vocabulary Topics (316 words), Odd One Out, Missing Letters, Phonics & 20 Reading Stories! ✨
+      </p>
+      
+      <button onclick="initAppAudio()" class="btn-bounce bg-amber-300 hover:bg-amber-200 text-amber-900 text-lg md:text-xl font-black px-8 py-3.5 rounded-full shadow-2xl border-4 border-white transition flex items-center space-x-2.5 cursor-pointer">
+        <span>🔊 START LEARNING NOW</span>
+      </button>
+    </div>
+
+    <!-- HEADER: INTERACTIVE BREADCRUMB TABS + MAIN TITLE + STARS -->
+    <header class="bg-white/95 backdrop-blur-md px-3 py-2 flex justify-between items-center border-b-2 border-pink-100 z-10 gap-2">
+      <div id="nav-breadcrumb-container" class="flex items-center space-x-1.5 flex-shrink-0 flex-wrap">
+      </div>
+
+      <div class="flex items-center justify-center flex-1">
+        <h1 class="text-xs sm:text-base md:text-lg font-black font-cute text-pink-600 tracking-wide drop-shadow-sm flex items-center gap-1.5 cursor-pointer line-clamp-1" onclick="openEngMenu()">
+          <span>🌍</span>
+          <span class="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">ENGLISH GRADE 2</span>
+          <span>🌍</span>
+        </h1>
+      </div>
+
+      <div class="flex items-center space-x-2 flex-shrink-0">
+        <div class="flex items-center space-x-1.5 bg-amber-50 border-2 border-amber-300 px-3 py-0.5 rounded-xl shadow-inner">
+          <span class="text-lg animate-spin" style="animation-duration: 4s;">⭐</span>
+          <span id="stars-count" class="text-xl font-black text-amber-600">0</span>
+          <span class="text-[11px] font-black text-amber-500 hidden sm:inline">Stars</span>
+        </div>
+        <button onclick="speakMascotCheer()" class="btn-bounce bg-pink-100 hover:bg-pink-200 text-pink-600 border border-pink-300 px-2.5 py-1 rounded-xl text-xs font-black flex items-center space-x-1 shadow-sm cursor-pointer">
+          <span>🐰 Cheer</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT VIEWPORT -->
+    <main id="main-content" class="flex-1 p-3 md:p-4 flex flex-col items-center justify-center text-center overflow-y-auto custom-scrollbar">
+      <!-- Dynamic View Rendering -->
+    </main>
+
+  </div>
+
+  <script>
+    let stars = parseInt(localStorage.getItem('stars_eng_lop2') || '0');
+    let currentMode = null;
+    let currentAnswer = null;
+    let currentFullSentence = null;
+    let currentVocabTarget = null;
+    let currentTopicId = null;
+    let audioCtx = null;
+    const onlineAudioPlayer = new Audio();
+
+    document.getElementById('stars-count').innerText = stars;
+
+    /* =========================================================================
+       1. AUDIO ENGINE & TTS SYSTEM
+       ========================================================================= */
+    function getTimeBasedGreeting() {
+      const hour = new Date().getHours();
+      if (hour >= 5 && hour < 12) {
+        return { en: "Good morning! How are you today?", vi: "Chào buổi sáng bé yêu!", badge: "🌅 Good morning, little princess!" };
+      } else if (hour >= 12 && hour < 18) {
+        return { en: "Good afternoon! Ready to learn English?", vi: "Chào buổi chiều bé yêu!", badge: "☀️ Good afternoon, little princess!" };
+      } else {
+        return { en: "Good evening! Let's have fun with English!", vi: "Chào buổi tối bé yêu!", badge: "🌙 Good evening, little princess!" };
+      }
+    }
+
+    const currentGreeting = getTimeBasedGreeting();
+    document.getElementById('greeting-badge').innerText = currentGreeting.badge;
+
+    function initAppAudio() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) {
+        audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+      }
+      playTone('correct');
+      const greeting = getTimeBasedGreeting();
+      speakClear(`${greeting.en} Welcome to English Grade 2!`, "en");
+      document.getElementById('start-overlay').style.display = 'none';
+      openEngMenu();
+    }
+
+    function playTone(type) {
+      try {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        if (!audioCtx) return;
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+
+        if (type === 'correct') {
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15);
+          gain.gain.setValueAtTime(0.3, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else {
+          osc.frequency.setValueAtTime(260, now);
+          osc.frequency.linearRampToValueAtTime(180, now + 0.22);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        }
+      } catch (e) {}
+    }
+
+    function speakClear(text, lang = 'en', onEndCallback = null) {
+      try {
+        onlineAudioPlayer.pause();
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+        const targetLang = (lang === 'vi' || lang === 'vi-VN') ? 'vi' : 'en';
+        let cleanText = String(text || '').trim();
+        const encoded = encodeURIComponent(cleanText);
+        const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${targetLang}&client=tw-ob&q=${encoded}`;
+
+        onlineAudioPlayer.src = ttsUrl;
+        onlineAudioPlayer.playbackRate = 0.92;
+        
+        onlineAudioPlayer.onended = () => {
+          if (typeof onEndCallback === 'function') onEndCallback();
+        };
+
+        const playPromise = onlineAudioPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            fallbackWebSpeech(cleanText, targetLang, onEndCallback);
+          });
+        }
+      } catch (err) {
+        fallbackWebSpeech(text, lang, onEndCallback);
+      }
+    }
+
+    function fallbackWebSpeech(text, lang, onEndCallback = null) {
+      if (!('speechSynthesis' in window)) {
+        if (typeof onEndCallback === 'function') onEndCallback();
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.88;
+      utterance.pitch = 1.15;
+      utterance.lang = (lang === 'vi') ? 'vi-VN' : 'en-US';
+      utterance.onend = () => {
+        if (typeof onEndCallback === 'function') onEndCallback();
+      };
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakMascotCheer() {
+      const cheers = [
+        "Wonderful! You are doing an amazing job!",
+        "Keep it up! Every correct answer gives you a shining star!",
+        "Great job learning English Grade 2 today!",
+        "Excellent! You are so smart and hardworking!"
+      ];
+      speakClear(cheers[Math.floor(Math.random() * cheers.length)], "en");
+    }
+
+    function addStars(num, showConfetti = true) {
+      if (num <= 0) return;
+      stars += num;
+      localStorage.setItem('stars_eng_lop2', stars);
+      document.getElementById('stars-count').innerText = stars;
+      if (showConfetti && typeof confetti === 'function') {
+        confetti({ particleCount: 50, spread: 70, origin: { y: 0.75 } });
+      }
+    }
+
+    const HISTORY_SYSTEM = {};
+    function getHistoryState(modeKey) {
+      if (!HISTORY_SYSTEM[modeKey]) {
+        HISTORY_SYSTEM[modeKey] = { items: [], index: -1 };
+      }
+      return HISTORY_SYSTEM[modeKey];
+    }
+
+    const QUEUE_SYSTEM = {};
+    function getNextItemFromPool(poolKey, rawDataArray) {
+      if (!QUEUE_SYSTEM[poolKey] || QUEUE_SYSTEM[poolKey].length === 0) {
+        const shuffled = [...rawDataArray];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        QUEUE_SYSTEM[poolKey] = shuffled;
+      }
+      return QUEUE_SYSTEM[poolKey].pop();
+    }
+
+    /* =========================================================================
+       BREADCRUMB / TAB HIERARCHY NAVIGATION SYSTEM
+       ========================================================================= */
+    function updateBreadcrumbs(crumbs = []) {
+      const container = document.getElementById('nav-breadcrumb-container');
+      if (!container) return;
+      if (!crumbs || crumbs.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const html = crumbs.map((crumb, idx) => {
+        const isLast = idx === crumbs.length - 1;
+        if (isLast) {
+          return `
+            <div class="flex items-center space-x-1">
+              ${idx > 0 ? '<span class="text-pink-300 font-black text-xs">/</span>' : ''}
+              <span class="text-xs font-black bg-pink-500 text-white border-2 border-pink-600 px-3 py-1 rounded-xl shadow-sm">
+                ${crumb.label}
+              </span>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="flex items-center space-x-1">
+              ${idx > 0 ? '<span class="text-pink-300 font-black text-xs">/</span>' : ''}
+              <button onclick="${crumb.action}" class="btn-bounce bg-pink-50 hover:bg-pink-100 text-pink-700 border-2 border-pink-200 font-black px-2.5 py-1 rounded-xl text-xs flex items-center space-x-1 shadow-sm transition cursor-pointer">
+                <span>${crumb.label}</span>
+              </button>
+            </div>
+          `;
+        }
+      }).join('');
+
+      container.innerHTML = html;
+    }
+
+    /* =========================================================================
+       2. ALPHABET & PHONICS (A-Z)
+       ========================================================================= */
+    const ALPHABET_PHONICS = [
+      { letter: 'A', name: 'A a', ipaName: '/eɪ/', sound: '/æ/', word1: { en: 'Apple', ipa: '/ˈæp.əl/', vi: 'Quả táo', emoji: '🍎', pos: 'Noun', ex: 'An apple a day.' }, word2: { en: 'Ant', ipa: '/ænt/', vi: 'Con kiến', emoji: '🐜', pos: 'Noun', ex: 'A tiny ant.' }, word3: { en: 'Alligator', ipa: '/ˈæl.ɪ.ɡeɪ.tər/', vi: 'Cá sấu', emoji: '🐊', pos: 'Noun', ex: 'Green alligator.' } },
+      { letter: 'B', name: 'B b', ipaName: '/biː/', sound: '/b/', word1: { en: 'Ball', ipa: '/bɔːl/', vi: 'Quả bóng', emoji: '⚽', pos: 'Noun', ex: 'Play with a ball.' }, word2: { en: 'Bear', ipa: '/beər/', vi: 'Con gấu', emoji: '🐻', pos: 'Noun', ex: 'A brown bear.' }, word3: { en: 'Book', ipa: '/bʊk/', vi: 'Quyển sách', emoji: '📖', pos: 'Noun', ex: 'Open your book.' } },
+      { letter: 'C', name: 'C c', ipaName: '/siː/', sound: '/k/', word1: { en: 'Cat', ipa: '/kæt/', vi: 'Con mèo', emoji: '🐱', pos: 'Noun', ex: 'The cat sleeps.' }, word2: { en: 'Car', ipa: '/kɑːr/', vi: 'Xe ô tô', emoji: '🚗', pos: 'Noun', ex: 'A red fast car.' }, word3: { en: 'Cup', ipa: '/kʌp/', vi: 'Cái chén/cốc', emoji: '☕', pos: 'Noun', ex: 'A tea cup.' } },
+      { letter: 'D', name: 'D d', ipaName: '/diː/', sound: '/d/', word1: { en: 'Dog', ipa: '/dɒɡ/', vi: 'Con chó', emoji: '🐶', pos: 'Noun', ex: 'The dog barks.' }, word2: { en: 'Duck', ipa: '/dʌk/', vi: 'Con vịt', emoji: '🦆', pos: 'Noun', ex: 'Yellow duck.' }, word3: { en: 'Door', ipa: '/dɔːr/', vi: 'Cửa ra vào', emoji: '🚪', pos: 'Noun', ex: 'Close the door.' } },
+      { letter: 'E', name: 'E e', ipaName: '/iː/', sound: '/e/', word1: { en: 'Elephant', ipa: '/ˈel.ɪ.fənt/', vi: 'Con voi', emoji: '🐘', pos: 'Noun', ex: 'Big gray elephant.' }, word2: { en: 'Egg', ipa: '/eɡ/', vi: 'Quả trứng', emoji: '🥚', pos: 'Noun', ex: 'Eat an egg.' }, word3: { en: 'Eraser', ipa: '/ɪˈreɪ.zər/', vi: 'Cục tẩy', emoji: '🧼', pos: 'Noun', ex: 'Pick up your eraser.' } },
+      { letter: 'F', name: 'F f', ipaName: '/ef/', sound: '/f/', word1: { en: 'Fish', ipa: '/fɪʃ/', vi: 'Con cá', emoji: '🐟', pos: 'Noun', ex: 'Fish swims fast.' }, word2: { en: 'Fox', ipa: '/fɒks/', vi: 'Con cáo', emoji: '🦊', pos: 'Noun', ex: 'An orange fox.' }, word3: { en: 'Frog', ipa: '/frɒɡ/', vi: 'Con ếch', emoji: '🐸', pos: 'Noun', ex: 'Green frog hops.' } },
+      { letter: 'G', name: 'G g', ipaName: '/dʒiː/', sound: '/ɡ/', word1: { en: 'Giraffe', ipa: '/dʒɪˈrɑːf/', vi: 'Hươu cao cổ', emoji: '🦒', pos: 'Noun', ex: 'Giraffe has long neck.' }, word2: { en: 'Goat', ipa: '/ɡəʊt/', vi: 'Con dê', emoji: '🐐', pos: 'Noun', ex: 'A lovely goat.' }, word3: { en: 'Grape', ipa: '/ɡreɪp/', vi: 'Quả nho', emoji: '🍇', pos: 'Noun', ex: 'Sweet purple grape.' } },
+      { letter: 'H', name: 'H h', ipaName: '/eɪtʃ/', sound: '/h/', word1: { en: 'Hat', ipa: '/hæt/', vi: 'Cái mũ', emoji: '👒', pos: 'Noun', ex: 'Wear yellow hat.' }, word2: { en: 'Horse', ipa: '/hɔːs/', vi: 'Con ngựa', emoji: '🐴', pos: 'Noun', ex: 'The horse runs.' }, word3: { en: 'Hand', ipa: '/hænd/', vi: 'Bàn tay', emoji: '✋', pos: 'Noun', ex: 'Hands up!' } },
+      { letter: 'I', name: 'I i', ipaName: '/aɪ/', sound: '/ɪ/', word1: { en: 'Igloo', ipa: '/ˈɪɡ.luː/', vi: 'Lều tuyết', emoji: '🏔️', pos: 'Noun', ex: 'Cold ice igloo.' }, word2: { en: 'Ink', ipa: '/ɪŋk/', vi: 'Mực viết', emoji: '🖋️', pos: 'Noun', ex: 'Blue pen ink.' }, word3: { en: 'Insect', ipa: '/ˈɪn.sekt/', vi: 'Côn trùng', emoji: '🐞', pos: 'Noun', ex: 'Tiny insect.' } },
+      { letter: 'J', name: 'J j', ipaName: '/dʒeɪ/', sound: '/dʒ/', word1: { en: 'Jacket', ipa: '/ˈdʒæk.ɪt/', vi: 'Áo khoác', emoji: '🧥', pos: 'Noun', ex: 'Zip your jacket.' }, word2: { en: 'Juice', ipa: '/dʒuːs/', vi: 'Nước ép', emoji: '🧃', pos: 'Noun', ex: 'Drink orange juice.' }, word3: { en: 'Jellyfish', ipa: '/ˈdʒel.i.fɪʃ/', vi: 'Con sứa', emoji: '🪼', pos: 'Noun', ex: 'Colorful jellyfish.' } },
+      { letter: 'K', name: 'K k', ipaName: '/keɪ/', sound: '/k/', word1: { en: 'Kangaroo', ipa: '/ˌkæŋ.ɡərˈuː/', vi: 'Chuột túi', emoji: '🦘', pos: 'Noun', ex: 'Kangaroo jumps high.' }, word2: { en: 'Kite', ipa: '/kaɪt/', vi: 'Cái diều', emoji: '🪁', pos: 'Noun', ex: 'Fly a kite.' }, word3: { en: 'Kiwi', ipa: '/ˈkiː.wiː/', vi: 'Quả kiwi', emoji: '🥝', pos: 'Noun', ex: 'Sweet green kiwi.' } },
+      { letter: 'L', name: 'L l', ipaName: '/el/', sound: '/l/', word1: { en: 'Lion', ipa: '/ˈlaɪ.ən/', vi: 'Sư tử', emoji: '🦁', pos: 'Noun', ex: 'Lion is strong.' }, word2: { en: 'Lemon', ipa: '/ˈlem.ən/', vi: 'Quả chanh vàng', emoji: '🍋', pos: 'Noun', ex: 'Sour yellow lemon.' }, word3: { en: 'Leg', ipa: '/leɡ/', vi: 'Cái chân', emoji: '🦵', pos: 'Noun', ex: 'Two strong legs.' } },
+      { letter: 'M', name: 'M m', ipaName: '/em/', sound: '/m/', word1: { en: 'Monkey', ipa: '/ˈmʌŋ.ki/', vi: 'Con khỉ', emoji: '🐒', pos: 'Noun', ex: 'Monkey climbs trees.' }, word2: { en: 'Mother', ipa: '/ˈmʌð.ər/', vi: 'Mẹ', emoji: '👩', pos: 'Noun', ex: 'I love my mother.' }, word3: { en: 'Map', ipa: '/mæp/', vi: 'Bản đồ', emoji: '🗺️', pos: 'Noun', ex: 'Look at the map.' } },
+      { letter: 'N', name: 'N n', ipaName: '/en/', sound: '/n/', word1: { en: 'Nose', ipa: '/nəʊz/', vi: 'Cái mũi', emoji: '👃', pos: 'Noun', ex: 'Touch your nose.' }, word2: { en: 'Notebook', ipa: '/ˈnəʊt.bʊk/', vi: 'Quyển vở', emoji: '📓', pos: 'Noun', ex: 'Write in notebook.' }, word3: { en: 'Noodles', ipa: '/ˈnuː.dəl/', vi: 'Mì sợi', emoji: '🍜', pos: 'Noun', ex: 'Yummy hot noodles.' } },
+      { letter: 'O', name: 'O o', ipaName: '/əʊ/', sound: '/ɒ/', word1: { en: 'Octopus', ipa: '/ˈɒk.tə.pəs/', vi: 'Bạch tuộc', emoji: '🐙', pos: 'Noun', ex: 'This is an octopus.' }, word2: { en: 'Orange', ipa: '/ˈɒr.ɪndʒ/', vi: 'Quả cam', emoji: '🍊', pos: 'Noun', ex: 'An orange is round.' }, word3: { en: 'Owl', ipa: '/aʊl/', vi: 'Con cú', emoji: '🦉', pos: 'Noun', ex: 'Wise night owl.' } },
+      { letter: 'P', name: 'P p', ipaName: '/piː/', sound: '/p/', word1: { en: 'Pencil', ipa: '/ˈpen.səl/', vi: 'Bút chì', emoji: '✏️', pos: 'Noun', ex: 'Write with pencil.' }, word2: { en: 'Panda', ipa: '/ˈpæn.də/', vi: 'Gấu trúc', emoji: '🐼', pos: 'Noun', ex: 'Panda eats bamboo.' }, word3: { en: 'Pig', ipa: '/pɪɡ/', vi: 'Con lợn', emoji: '🐷', pos: 'Noun', ex: 'Pink little pig.' } },
+      { letter: 'Q', name: 'Q q', ipaName: '/kjuː/', sound: '/kw/', word1: { en: 'Queen', ipa: '/kwiːn/', vi: 'Nữ hoàng', emoji: '👸', pos: 'Noun', ex: 'Beautiful queen.' }, word2: { en: 'Quiet', ipa: '/ˈkwaɪ.ət/', vi: 'Yên lặng', emoji: '🤫', pos: 'Adj', ex: 'Be quiet in class.' }, word3: { en: 'Quilt', ipa: '/kwɪlt/', vi: 'Cái chăn bông', emoji: '🛏️', pos: 'Noun', ex: 'Warm soft quilt.' } },
+      { letter: 'R', name: 'R r', ipaName: '/ɑːr/', sound: '/r/', word1: { en: 'Rabbit', ipa: '/ˈræb.ɪt/', vi: 'Con thỏ', emoji: '🐰', pos: 'Noun', ex: 'The rabbit hops.' }, word2: { en: 'Ruler', ipa: '/ˈruː.lər/', vi: 'Thước kẻ', emoji: '📏', pos: 'Noun', ex: 'A straight ruler.' }, word3: { en: 'Red', ipa: '/red/', vi: 'Màu đỏ', emoji: '🔴', pos: 'Adj', ex: 'Red juicy apple.' } },
+      { letter: 'S', name: 'S s', ipaName: '/es/', sound: '/s/', word1: { en: 'Sun', ipa: '/sʌn/', vi: 'Mặt trời', emoji: '☀️', pos: 'Noun', ex: 'The sun shines.' }, word2: { en: 'School', ipa: '/skuːl/', vi: 'Trường học', emoji: '🏫', pos: 'Noun', ex: 'I go to school.' }, word3: { en: 'Shoes', ipa: '/ʃuːz/', vi: 'Đôi giày', emoji: '👟', pos: 'Noun', ex: 'Wear new shoes.' } },
+      { letter: 'T', name: 'T t', ipaName: '/tiː/', sound: '/t/', word1: { en: 'Tiger', ipa: '/ˈtaɪ.ɡər/', vi: 'Con hổ', emoji: '🐯', pos: 'Noun', ex: 'Tiger is strong.' }, word2: { en: 'Teacher', ipa: '/ˈtiː.tʃər/', vi: 'Giáo viên', emoji: '👩‍🏫', pos: 'Noun', ex: 'Good morning teacher.' }, word3: { en: 'Tree', ipa: '/triː/', vi: 'Cái cây', emoji: '🌳', pos: 'Noun', ex: 'Tall green tree.' } },
+      { letter: 'U', name: 'U u', ipaName: '/juː/', sound: '/ʌ/', word1: { en: 'Umbrella', ipa: '/ʌmˈbrel.ə/', vi: 'Cây dù / ô', emoji: '☂️', pos: 'Noun', ex: 'Open the umbrella.' }, word2: { en: 'Uncle', ipa: '/ˈʌŋ.kəl/', vi: 'Chú / Bác', emoji: '👨', pos: 'Noun', ex: 'My kind uncle.' }, word3: { en: 'Under', ipa: '/ˈʌn.dər/', vi: 'Ở dưới', emoji: '⬇️', pos: 'Prep', ex: 'Under the table.' } },
+      { letter: 'V', name: 'V v', ipaName: '/viː/', sound: '/v/', word1: { en: 'Violin', ipa: '/ˌvaɪəˈlɪn/', vi: 'Đàn vĩ cầm', emoji: '🎻', pos: 'Noun', ex: 'Play the violin.' }, word2: { en: 'Vest', ipa: '/vest/', vi: 'Áo ghi-lê', emoji: '🦺', pos: 'Noun', ex: 'A smart vest.' }, word3: { en: 'Van', ipa: '/væn/', vi: 'Xe tải nhỏ', emoji: '🚐', pos: 'Noun', ex: 'A yellow van.' } },
+      { letter: 'W', name: 'W w', ipaName: '/ˈdʌb.əl.juː/', sound: '/w/', word1: { en: 'Water', ipa: '/ˈwɔː.tər/', vi: 'Nước uống', emoji: '💧', pos: 'Noun', ex: 'Drink fresh water.' }, word2: { en: 'Watch', ipa: '/wɒtʃ/', vi: 'Đồng hồ đeo tay', emoji: '⌚', pos: 'Noun', ex: 'Look at my watch.' }, word3: { en: 'Window', ipa: '/ˈwɪn.dəʊ/', vi: 'Cửa sổ', emoji: '🪟', pos: 'Noun', ex: 'Open the window.' } },
+      { letter: 'X', name: 'X x', ipaName: '/eks/', sound: '/ks/', word1: { en: 'Box', ipa: '/bɒks/', vi: 'Cái hộp', emoji: '📦', pos: 'Noun', ex: 'A yellow toy box.' }, word2: { en: 'Fox', ipa: '/fɒks/', vi: 'Con cáo', emoji: '🦊', pos: 'Noun', ex: 'Fox in the woods.' }, word3: { en: 'Xylophone', ipa: '/ˈzaɪ.lə.fəʊn/', vi: 'Đàn mộc cầm', emoji: '🎹', pos: 'Noun', ex: 'Play xylophone.' } },
+      { letter: 'Y', name: 'Y y', ipaName: '/waɪ/', sound: '/j/', word1: { en: 'Yellow', ipa: '/ˈjel.əʊ/', vi: 'Màu vàng', emoji: '🟡', pos: 'Adj', ex: 'Bright yellow sun.' }, word2: { en: 'Yo-yo', ipa: '/ˈjəʊ.jəʊ/', vi: 'Đồ chơi Yo-yo', emoji: '🪀', pos: 'Noun', ex: 'Play with yo-yo.' }, word3: { en: 'Yogurt', ipa: '/ˈjɒɡ.ət/', vi: 'Sữa chua', emoji: '🍧', pos: 'Noun', ex: 'Eat sweet yogurt.' } },
+      { letter: 'Z', name: 'Z z', ipaName: '/zed/', sound: '/z/', word1: { en: 'Zebra', ipa: '/ˈzeb.rə/', vi: 'Con ngựa vằn', emoji: '🦓', pos: 'Noun', ex: 'Zebra in the zoo.' }, word2: { en: 'Zoo', ipa: '/zuː/', vi: 'Sở thú', emoji: '🦁', pos: 'Noun', ex: 'Visit the zoo.' }, word3: { en: 'Zipper', ipa: '/ˈzɪp.ər/', vi: 'Khóa kéo', emoji: '🤐', pos: 'Noun', ex: 'Zip the jacket.' } }
+    ];
+
+    /* =========================================================================
+       3. 18 TOPIC DEFINITIONS
+       ========================================================================= */
+    const ENG_TOPICS = [
+      { id: 'animals_land', title: '1. Land Animals', viTitle: 'Động vật trên cạn', icon: '🦁' },
+      { id: 'animals_water', title: '2. Water Animals', viTitle: 'Động vật dưới nước', icon: '🐬' },
+      { id: 'insects', title: '3. Insects', viTitle: 'Côn trùng', icon: '🐝' },
+      { id: 'colors', title: '4. Colors', viTitle: 'Màu sắc', icon: '🎨' },
+      { id: 'school_objects', title: '5. School Objects', viTitle: 'Đồ vật lớp học', icon: '🎒' },
+      { id: 'body_parts', title: '6. Body Parts', viTitle: 'Bộ phận cơ thể', icon: '👀' },
+      { id: 'fruits', title: '7. Fruits', viTitle: 'Trái cây', icon: '🍎' },
+      { id: 'vegetables', title: '8. Vegetables', viTitle: 'Rau củ', icon: '🥕' },
+      { id: 'family', title: '9. Family', viTitle: 'Gia đình', icon: '👨‍👩‍👧‍👦' },
+      { id: 'occupations', title: '10. Occupations', viTitle: 'Nghề nghiệp', icon: '👩‍🏫' },
+      { id: 'transportation', title: '11. Transportation', viTitle: 'Phương tiện giao thông', icon: '🚌' },
+      { id: 'emotions', title: '12. Emotions', viTitle: 'Cảm xúc', icon: '😊' },
+      { id: 'daily_actions', title: '13. Daily Actions', viTitle: 'Hành động thường ngày', icon: '🏃' },
+      { id: 'weather', title: '14. Weather', viTitle: 'Thời tiết', icon: '☀️' },
+      { id: 'school_places', title: '15. School & Stationery', viTitle: 'Nhà trường & Đồ dùng', icon: '🏫' },
+      { id: 'time', title: '16. Time & Calendar', viTitle: 'Thời gian & Lịch', icon: '📅' },
+      { id: 'clothes_accessories', title: '17. Clothes & Accessories', viTitle: 'Quần áo & Phụ kiện', icon: '👗' },
+      { id: 'numbers_measure', title: '18. Numbers & Measurement', viTitle: 'Số đếm & Đo lường', icon: '🔢' }
+    ];
+
+    function createVocabItem(topicId, word, pos, ipa, vi, emoji, ex_en, ex_vi) {
+      let posClass = 'pos-noun';
+      let posShort = 'Noun';
+      if (pos.toLowerCase().includes('verb')) { posClass = 'pos-verb'; posShort = 'Verb'; }
+      else if (pos.toLowerCase().includes('adj')) { posClass = 'pos-adj'; posShort = 'Adj'; }
+      else if (pos.toLowerCase().includes('adv')) { posClass = 'pos-adv'; posShort = 'Adv'; }
+
+      return {
+        topicId, word, pos: posShort, posClass, ipa, vi, emoji,
+        examples: [
+          { en: ex_en, vi: ex_vi },
+          { en: `I see a ${word.toLowerCase()}.`, vi: `Tôi nhìn thấy ${vi.toLowerCase()}.` },
+          { en: `This is a ${word.toLowerCase()}.`, vi: `Đây là một ${vi.toLowerCase()}.` }
+        ]
+      };
+    }
+
+    /* =========================================================================
+       4. FULL VOCABULARY MASTER (316 WORDS COMPLETE)
+       ========================================================================= */
+    const ENG_VOCAB_MASTER = [
+      // 1. Land Animals (20 words)
+      createVocabItem('animals_land', 'Cat', 'Noun', '/kæt/', 'Con mèo', '🐱', 'The cat is sleeping.', 'Con mèo đang ngủ.'),
+      createVocabItem('animals_land', 'Dog', 'Noun', '/dɒɡ/', 'Con chó', '🐶', 'The dog runs fast.', 'Con chó chạy nhanh.'),
+      createVocabItem('animals_land', 'Lion', 'Noun', '/ˈlaɪ.ən/', 'Con sư tử', '🦁', 'Look! I am a lion.', 'Nhìn kìa! Tôi là sư tử.'),
+      createVocabItem('animals_land', 'Elephant', 'Noun', '/ˈel.ɪ.fənt/', 'Con voi', '🐘', 'An elephant is big.', 'Con voi rất to lớn.'),
+      createVocabItem('animals_land', 'Monkey', 'Noun', '/ˈmʌŋ.ki/', 'Con khỉ', '🐒', 'Monkey climbs trees.', 'Khỉ trèo cây.'),
+      createVocabItem('animals_land', 'Bear', 'Noun', '/beər/', 'Con gấu', '🐻', 'A big brown bear.', 'Một con gấu nâu to lớn.'),
+      createVocabItem('animals_land', 'Tiger', 'Noun', '/ˈtaɪ.ɡər/', 'Con hổ', '🐯', 'The tiger is strong.', 'Con hổ rất khỏe mạnh.'),
+      createVocabItem('animals_land', 'Cow', 'Noun', '/kaʊ/', 'Con bò', '🐮', "What's that? It's a cow.", 'Đó là con gì? Là con bò.'),
+      createVocabItem('animals_land', 'Pig', 'Noun', '/pɪɡ/', 'Con lợn', '🐷', "What's that? It's a pig.", 'Đó là con gì? Là con lợn.'),
+      createVocabItem('animals_land', 'Chicken', 'Noun', '/ˈtʃɪk.ɪn/', 'Con gà', '🐔', 'The chicken is in yard.', 'Con gà ở trong sân.'),
+      createVocabItem('animals_land', 'Duck', 'Noun', '/dʌk/', 'Con vịt', '🦆', 'The yellow duck swims.', 'Con vịt vàng đang bơi.'),
+      createVocabItem('animals_land', 'Horse', 'Noun', '/hɔːs/', 'Con ngựa', '🐴', 'The horse runs on grass.', 'Con ngựa chạy trên cỏ.'),
+      createVocabItem('animals_land', 'Sheep', 'Noun', '/ʃiːp/', 'Con cừu', '🐑', 'White sheep on farm.', 'Con cừu trắng ở nông trại.'),
+      createVocabItem('animals_land', 'Rabbit', 'Noun', '/ˈræb.ɪt/', 'Con thỏ', '🐰', 'The rabbit hops fast.', 'Con thỏ nhảy nhanh.'),
+      createVocabItem('animals_land', 'Fox', 'Noun', '/fɒks/', 'Con cáo', '🦊', 'I can see an orange fox.', 'Tôi nhìn thấy con cáo màu cam.'),
+      createVocabItem('animals_land', 'Wolf', 'Noun', '/wʊlf/', 'Con sói', '🐺', 'A wild wolf in wood.', 'Con sói hoang trong rừng.'),
+      createVocabItem('animals_land', 'Giraffe', 'Noun', '/dʒɪˈrɑːf/', 'Con hươu cao cổ', '🦒', 'Giraffe has a long neck.', 'Hươu cao cổ có cổ dài.'),
+      createVocabItem('animals_land', 'Zebra', 'Noun', '/ˈzeb.rə/', 'Ngựa vằn', '🦓', 'Zebra at the zoo.', 'Ngựa vằn ở sở thú.'),
+      createVocabItem('animals_land', 'Kangaroo', 'Noun', '/ˌkæŋ.ɡərˈuː/', 'Chuột túi', '🦘', 'Kangaroo jumps high.', 'Chuột túi nhảy cao.'),
+      createVocabItem('animals_land', 'Panda', 'Noun', '/ˈpæn.də/', 'Gấu trúc', '🐼', 'Cute panda eats bamboo.', 'Gấu trúc dễ thương ăn tre.'),
+
+      // 2. Water Animals (10 words)
+      createVocabItem('animals_water', 'Fish', 'Noun', '/fɪʃ/', 'Con cá', '🐟', 'Fish swims in water.', 'Cá bơi dưới nước.'),
+      createVocabItem('animals_water', 'Dolphin', 'Noun', '/ˈdɒl.fɪn/', 'Cá heo', '🐬', 'Friendly dolphin jumps.', 'Cá heo thân thiện nhảy múa.'),
+      createVocabItem('animals_water', 'Whale', 'Noun', '/weɪl/', 'Cá voi', '🐋', 'A big blue whale.', 'Một con cá voi xanh lớn.'),
+      createVocabItem('animals_water', 'Shark', 'Noun', '/ʃɑːk/', 'Cá mập', '🦈', 'Shark has sharp teeth.', 'Cá mập có răng sắc nhọn.'),
+      createVocabItem('animals_water', 'Octopus', 'Noun', '/ˈɒk.tə.pəs/', 'Bạch tuộc', '🐙', 'This is an octopus.', 'Đây là con bạch tuộc.'),
+      createVocabItem('animals_water', 'Crab', 'Noun', '/kræb/', 'Con cua', '🦀', 'Crab walks on beach.', 'Con cua bò trên bãi biển.'),
+      createVocabItem('animals_water', 'Shrimp', 'Noun', '/ʃrɪmp/', 'Con tôm', '🦐', 'Fresh shrimp in sea.', 'Tôm tươi dưới biển.'),
+      createVocabItem('animals_water', 'Jellyfish', 'Noun', '/ˈdʒel.i.fɪʃ/', 'Con sứa', '🪼', 'Colorful jellyfish.', 'Con sứa nhiều màu sắc.'),
+      createVocabItem('animals_water', 'Sea turtle', 'Noun', '/siː ˈtɜː.təl/', 'Rùa biển', '🐢', 'Sea turtle swims slow.', 'Rùa biển bơi chậm chạp.'),
+      createVocabItem('animals_water', 'Seahorse', 'Noun', '/ˈsiː.hɔːs/', 'Cá ngựa', '🐡', 'Tiny seahorse in ocean.', 'Cá ngựa nhỏ dưới đại dương.'),
+
+      // 3. Insects (10 words)
+      createVocabItem('insects', 'Spider', 'Noun', '/ˈspaɪ.dər/', 'Con nhện', '🕷️', 'Spider has eight legs.', 'Con nhện có tám chân.'),
+      createVocabItem('insects', 'Ant', 'Noun', '/ænt/', 'Con kiến', '🐜', 'Look at the tiny ant.', 'Hãy nhìn con kiến nhỏ.'),
+      createVocabItem('insects', 'Bee', 'Noun', '/biː/', 'Con ong', '🐝', 'Bee makes sweet honey.', 'Con ong làm mật ngọt.'),
+      createVocabItem('insects', 'Butterfly', 'Noun', '/ˈbʌt.ə.flaɪ/', 'Con bướm', '🦋', 'A pretty butterfly.', 'Một con bướm xinh đẹp.'),
+      createVocabItem('insects', 'Ladybug', 'Noun', '/ˈleɪ.di.bɜːɡ/', 'Bọ rùa', '🐞', 'Red ladybug with spots.', 'Bọ rùa đỏ có chấm đen.'),
+      createVocabItem('insects', 'Mosquito', 'Noun', '/məˈskiː.təʊ/', 'Con muỗi', '🦟', 'Mosquito flies around.', 'Con muỗi bay xung quanh.'),
+      createVocabItem('insects', 'Fly', 'Noun', '/flaɪ/', 'Con ruồi', '🪰', 'A small black fly.', 'Một con ruồi đen nhỏ.'),
+      createVocabItem('insects', 'Grasshopper', 'Noun', '/ˈɡrɑːsˌhɒp.ər/', 'Con châu chấu', '🦗', 'Green grasshopper hops.', 'Châu chấu xanh nhảy trên cỏ.'),
+      createVocabItem('insects', 'Worm', 'Noun', '/wɜːm/', 'Con giun', '🪱', 'Worm in the soil.', 'Con giun trong lòng đất.'),
+      createVocabItem('insects', 'Snail', 'Noun', '/sneɪl/', 'Con ốc sên', '🐌', 'Snail moves slowly.', 'Ốc sên bò chậm chạp.'),
+
+      // 4. Colors (15 words)
+      createVocabItem('colors', 'Red', 'Adj', '/red/', 'Đỏ', '🔴', 'The apple is red.', 'Quả táo màu đỏ.'),
+      createVocabItem('colors', 'Blue', 'Adj', '/bluː/', 'Xanh dương', '🔵', 'The sky is blue.', 'Bầu trời màu xanh dương.'),
+      createVocabItem('colors', 'Yellow', 'Adj', '/ˈjel.əʊ/', 'Vàng', '🟡', 'The sun is yellow.', 'Mặt trời màu vàng.'),
+      createVocabItem('colors', 'Green', 'Adj', '/ɡriːn/', 'Xanh lá', '🟢', 'The frog is green.', 'Con ếch màu xanh lá.'),
+      createVocabItem('colors', 'Black', 'Adj', '/blæk/', 'Đen', '⚫', 'A black cat.', 'Một con mèo đen.'),
+      createVocabItem('colors', 'White', 'Adj', '/waɪt/', 'Trắng', '⚪', 'White milk.', 'Sữa tươi màu trắng.'),
+      createVocabItem('colors', 'Orange', 'Adj', '/ˈɒr.ɪndʒ/', 'Cam', '🟠', 'An orange hat.', 'Một chiếc mũ màu cam.'),
+      createVocabItem('colors', 'Purple', 'Adj', '/ˈpɜː.pəl/', 'Tím', '🟣', 'Purple grapes.', 'Chùm nho màu tím.'),
+      createVocabItem('colors', 'Pink', 'Adj', '/pɪŋk/', 'Hồng', '🌸', 'A pink dress.', 'Chiếc váy màu hồng.'),
+      createVocabItem('colors', 'Brown', 'Adj', '/braʊn/', 'Nâu', '🟤', 'A brown bear.', 'Con gấu màu nâu.'),
+      createVocabItem('colors', 'Gray', 'Adj', '/ɡreɪ/', 'Xám', '🐘', 'Gray elephant.', 'Con voi màu xám.'),
+      createVocabItem('colors', 'Gold', 'Adj', '/ɡəʊld/', 'Vàng kim', '🪙', 'A gold crown.', 'Vương miện vàng kim.'),
+      createVocabItem('colors', 'Silver', 'Adj', '/ˈsɪl.vər/', 'Bạc', '🥈', 'Silver prince wants.', 'Hoàng tử muốn bạc.'),
+      createVocabItem('colors', 'Light blue', 'Adj', '/laɪt bluː/', 'Xanh da trời nhạt', '🩵', 'Light blue sky.', 'Bầu trời xanh nhạt.'),
+      createVocabItem('colors', 'Dark green', 'Adj', '/dɑːk ɡriːn/', 'Xanh lá đậm', '🌲', 'Dark green tree.', 'Cây xanh lá đậm.'),
+
+      // 5. School Objects (20 words)
+      createVocabItem('school_objects', 'Book', 'Noun', '/bʊk/', 'Sách', '📖', 'Open your book.', 'Mở sách của bạn ra.'),
+      createVocabItem('school_objects', 'Pencil', 'Noun', '/ˈpen.səl/', 'Bút chì', '✏️', 'Write with a pencil.', 'Viết bằng bút chì.'),
+      createVocabItem('school_objects', 'Pen', 'Noun', '/pen/', 'Bút mực', '🖊️', 'I have a pen.', 'Tôi có một cây bút mực.'),
+      createVocabItem('school_objects', 'Eraser', 'Noun', '/ɪˈreɪ.zər/', 'Cục tẩy', '🧼', 'Pick up your eraser.', 'Nhặt cục tẩy lên.'),
+      createVocabItem('school_objects', 'Ruler', 'Noun', '/ˈruː.lər/', 'Thước kẻ', '📏', 'A straight ruler.', 'Cây thước kẻ thẳng.'),
+      createVocabItem('school_objects', 'Bag', 'Noun', '/bæɡ/', 'Cặp sách / Túi', '🎒', 'Put books in bag.', 'Cất sách vào cặp.'),
+      createVocabItem('school_objects', 'Desk', 'Noun', '/desk/', 'Bàn học', '🪵', 'Sit at your desk.', 'Ngồi ở bàn học.'),
+      createVocabItem('school_objects', 'Chair', 'Noun', '/tʃeər/', 'Ghế', '🪑', 'Sit on the chair.', 'Ngồi lên ghế.'),
+      createVocabItem('school_objects', 'Board', 'Noun', '/bɔːd/', 'Bảng', '📋', 'Look at the board.', 'Nhìn lên bảng.'),
+      createVocabItem('school_objects', 'Chalk', 'Noun', '/tʃɔːk/', 'Phấn', '🖍️', 'Write with chalk.', 'Viết bằng phấn.'),
+      createVocabItem('school_objects', 'Crayon', 'Noun', '/ˈkreɪ.ɒn/', 'Bút màu sáp', '🖍️', 'Color with crayon.', 'Tô bằng bút sáp.'),
+      createVocabItem('school_objects', 'Scissors', 'Noun', '/ˈsɪz.əz/', 'Kéo', '✂️', 'Cut with scissors.', 'Cắt bằng kéo.'),
+      createVocabItem('school_objects', 'Glue', 'Noun', '/ɡluː/', 'Hồ dán', '🧴', 'Stick with glue.', 'Dán bằng keo hồ.'),
+      createVocabItem('school_objects', 'Notebook', 'Noun', '/ˈnəʊt.bʊk/', 'Vở', '📓', 'A clean notebook.', 'Cuốn vở sạch đẹp.'),
+      createVocabItem('school_objects', 'Backpack', 'Noun', '/ˈbæk.pæk/', 'Balo', '🎒', 'My heavy backpack.', 'Balo nặng của tôi.'),
+      createVocabItem('school_objects', 'Globe', 'Noun', '/ɡləʊb/', 'Quả địa cầu', '🌐', 'Round world globe.', 'Quả địa cầu tròn.'),
+      createVocabItem('school_objects', 'Map', 'Noun', '/mæp/', 'Bản đồ', '🗺️', 'Map on the wall.', 'Bản đồ trên tường.'),
+      createVocabItem('school_objects', 'Computer', 'Noun', '/kəmˈpjuː.tər/', 'Máy tính', '💻', 'Learn on computer.', 'Học trên máy tính.'),
+      createVocabItem('school_objects', 'Marker', 'Noun', '/ˈmɑː.kər/', 'Bút dạ', '🖊️', 'Draw with marker.', 'Vẽ bằng bút dạ.'),
+      createVocabItem('school_objects', 'Sharpener', 'Noun', '/ˈʃɑː.pən.ər/', 'Gọt bút chì', '✏️', 'Sharpen with sharpener.', 'Gọt bằng đồ gọt bút.'),
+
+      // 6. Body Parts (20 words)
+      createVocabItem('body_parts', 'Head', 'Noun', '/hed/', 'Đầu', '🗣️', 'Touch your head.', 'Chạm vào đầu.'),
+      createVocabItem('body_parts', 'Hair', 'Noun', '/heər/', 'Tóc', '💇', 'Black short hair.', 'Mái tóc đen ngắn.'),
+      createVocabItem('body_parts', 'Face', 'Noun', '/feɪs/', 'Mặt', '👦', 'A happy smiling face.', 'Khuôn mặt tươi cười.'),
+      createVocabItem('body_parts', 'Eye', 'Noun', '/aɪ/', 'Mắt', '👁️', 'I see with two eyes.', 'Tôi nhìn bằng hai mắt.'),
+      createVocabItem('body_parts', 'Ear', 'Noun', '/ɪər/', 'Tai', '👂', 'Listen with ears.', 'Lắng nghe bằng tai.'),
+      createVocabItem('body_parts', 'Nose', 'Noun', '/nəʊz/', 'Mũi', '👃', 'Touch your nose.', 'Chạm vào mũi.'),
+      createVocabItem('body_parts', 'Mouth', 'Noun', '/maʊθ/', 'Miệng', '👄', 'Open your mouth.', 'Mở miệng ra.'),
+      createVocabItem('body_parts', 'Tooth', 'Noun', '/tuːθ/', 'Răng', '🦷', 'Clean white tooth.', 'Chiếc răng trắng sạch.'),
+      createVocabItem('body_parts', 'Tongue', 'Noun', '/tʌŋ/', 'Lưỡi', '👅', 'Show your tongue.', 'Thè lưỡi ra.'),
+      createVocabItem('body_parts', 'Neck', 'Noun', '/nek/', 'Cổ', '🦒', 'Giraffe has long neck.', 'Hươu có cổ dài.'),
+      createVocabItem('body_parts', 'Shoulder', 'Noun', '/ˈʃəʊl.dər/', 'Vai', '💪', 'Touch your shoulder.', 'Chạm vào vai.'),
+      createVocabItem('body_parts', 'Arm', 'Noun', '/ɑːm/', 'Cánh tay', '💪', 'Raise your arm.', 'Giơ cánh tay lên.'),
+      createVocabItem('body_parts', 'Hand', 'Noun', '/hænd/', 'Bàn tay', '✋', 'Hands up! Hands down!', 'Giơ tay lên! Hạ tay xuống!'),
+      createVocabItem('body_parts', 'Finger', 'Noun', '/ˈfɪŋ.ɡər/', 'Ngón tay', '☝️', 'Ten little fingers.', 'Mười ngón tay nhỏ.'),
+      createVocabItem('body_parts', 'Leg', 'Noun', '/leɡ/', 'Chân', '🦵', 'Two strong legs.', 'Hai chân khỏe.'),
+      createVocabItem('body_parts', 'Foot', 'Noun', '/fʊt/', 'Bàn chân', '🦶', 'Hop on one foot.', 'Nhảy bằng một chân.'),
+      createVocabItem('body_parts', 'Toe', 'Noun', '/təʊ/', 'Ngón chân', '🦶', 'Touch your toes.', 'Chạm vào ngón chân.'),
+      createVocabItem('body_parts', 'Knee', 'Noun', '/niː/', 'Đầu gối', '🦵', 'Bend your knees.', 'Gập đầu gối lại.'),
+      createVocabItem('body_parts', 'Elbow', 'Noun', '/ˈel.bəʊ/', 'Khuỷu tay', '💪', 'Touch your elbow.', 'Chạm vào khuỷu tay.'),
+      createVocabItem('body_parts', 'Stomach', 'Noun', '/ˈstʌm.ək/', 'Bụng', '🫄', 'My stomach is full.', 'Bụng tôi no rồi.'),
+
+      // 7. Fruits (20 words)
+      createVocabItem('fruits', 'Apple', 'Noun', '/ˈæp.əl/', 'Quả táo', '🍎', 'An apple a day.', 'Một quả táo mỗi ngày.'),
+      createVocabItem('fruits', 'Banana', 'Noun', '/bəˈnæn.ə/', 'Quả chuối', '🍌', 'Yellow sweet banana.', 'Quả chuối vàng ngọt.'),
+      createVocabItem('fruits', 'Orange', 'Noun', '/ˈɒr.ɪndʒ/', 'Quả cam', '🍊', 'I eat an orange.', 'Tôi ăn quả cam.'),
+      createVocabItem('fruits', 'Grape', 'Noun', '/ɡreɪp/', 'Quả nho', '🍇', 'Sweet purple grape.', 'Nho tím ngọt lịm.'),
+      createVocabItem('fruits', 'Strawberry', 'Noun', '/ˈstrɔː.bər.i/', 'Quả dâu tây', '🍓', 'Red fresh strawberry.', 'Dâu tây đỏ tươi.'),
+      createVocabItem('fruits', 'Watermelon', 'Noun', '/ˈwɔː.təˌmel.ən/', 'Quả dưa hấu', '🍉', 'Juicy watermelon.', 'Dưa hấu mọng nước.'),
+      createVocabItem('fruits', 'Pineapple', 'Noun', '/ˈpaɪnˌæp.əl/', 'Quả dứa', '🍍', 'Sweet yellow pineapple.', 'Quả dứa vàng thơm.'),
+      createVocabItem('fruits', 'Mango', 'Noun', '/ˈmæŋ.ɡəʊ/', 'Quả xoài', '🥭', 'Delicious ripe mango.', 'Quả xoài chín ngon.'),
+      createVocabItem('fruits', 'Pear', 'Noun', '/peər/', 'Quả lê', '🍐', 'A juicy sweet pear.', 'Quả lê ngọt mát.'),
+      createVocabItem('fruits', 'Cherry', 'Noun', '/ˈtʃer.i/', 'Quả anh đào', '🍒', 'Two red cherries.', 'Hai quả anh đào đỏ.'),
+      createVocabItem('fruits', 'Peach', 'Noun', '/piːtʃ/', 'Quả đào', '🍑', 'A soft sweet peach.', 'Quả đào mềm ngọt.'),
+      createVocabItem('fruits', 'Kiwi', 'Noun', '/ˈkiː.wiː/', 'Quả kiwi', '🥝', 'Green fresh kiwi.', 'Quả kiwi xanh tươi.'),
+      createVocabItem('fruits', 'Lemon', 'Noun', '/ˈlem.ən/', 'Quả chanh', '🍋', 'Sour yellow lemon.', 'Quả chanh vàng chua.'),
+      createVocabItem('fruits', 'Coconut', 'Noun', '/ˈkəʊ.kə.nʌt/', 'Quả dừa', '🥥', 'Drink coconut water.', 'Uống nước dừa.'),
+      createVocabItem('fruits', 'Avocado', 'Noun', '/ˌæv.əˈkɑː.dəʊ/', 'Quả bơ', '🥑', 'Healthy green avocado.', 'Quả bơ xanh bổ dưỡng.'),
+      createVocabItem('fruits', 'Plum', 'Noun', '/plʌm/', 'Quả mận', '🫐', 'A sweet purple plum.', 'Quả mận tím ngọt.'),
+      createVocabItem('fruits', 'Pomegranate', 'Noun', '/ˈpɒm.ɪˌɡræn.ɪt/', 'Quả lựu', '🍎', 'Red juicy pomegranate.', 'Quả lựu đỏ mọng.'),
+      createVocabItem('fruits', 'Raspberry', 'Noun', '/ˈrɑːz.bər.i/', 'Quả mâm xôi', '🍓', 'Fresh wild raspberry.', 'Quả mâm xôi tươi.'),
+      createVocabItem('fruits', 'Blueberry', 'Noun', '/ˈbluːˌbər.i/', 'Quả việt quất', '🫐', 'Sweet blueberry muffin.', 'Bánh việt quất ngọt.'),
+      createVocabItem('fruits', 'Lime', 'Noun', '/laɪm/', 'Quả chanh xanh', '🍋‍🟩', 'Green fresh lime.', 'Quả chanh xanh tươi.'),
+
+      // 8. Vegetables (20 words)
+      createVocabItem('vegetables', 'Carrot', 'Noun', '/ˈkær.ət/', 'Cà rốt', '🥕', 'Rabbits love carrots.', 'Thỏ thích ăn cà rốt.'),
+      createVocabItem('vegetables', 'Potato', 'Noun', '/pəˈteɪ.təʊ/', 'Khoai tây', '🥔', 'Fried hot potato.', 'Khoai tây chiên nóng.'),
+      createVocabItem('vegetables', 'Tomato', 'Noun', '/təˈmɑː.təʊ/', 'Cà chua', '🍅', 'A red round tomato.', 'Quả cà chua đỏ tròn.'),
+      createVocabItem('vegetables', 'Onion', 'Noun', '/ˈʌn.jən/', 'Hành tây', '🧅', 'Cook with white onion.', 'Nấu với hành tây.'),
+      createVocabItem('vegetables', 'Garlic', 'Noun', '/ˈɡɑː.lɪk/', 'Tỏi', '🧄', 'A clove of garlic.', 'Một tép tỏi.'),
+      createVocabItem('vegetables', 'Broccoli', 'Noun', '/ˈbrɒk.əl.i/', 'Bông cải xanh', '🥦', 'Green broccoli soup.', 'Súp bông cải xanh.'),
+      createVocabItem('vegetables', 'Cabbage', 'Noun', '/ˈkæb.ɪdʒ/', 'Bắp cải', '🥬', 'Fresh round cabbage.', 'Bắp cải tròn tươi.'),
+      createVocabItem('vegetables', 'Cucumber', 'Noun', '/ˈkjuː.kʌm.bər/', 'Dưa chuột', '🥒', 'Cool green cucumber.', 'Dưa chuột xanh mát.'),
+      createVocabItem('vegetables', 'Lettuce', 'Noun', '/ˈlet.ɪs/', 'Xà lách', '🥗', 'Crisp fresh lettuce.', 'Xà lách tươi giòn.'),
+      createVocabItem('vegetables', 'Spinach', 'Noun', '/ˈspɪn.ɪtʃ/', 'Rau bina / Cải bó xôi', '🥬', 'Spinach makes strong.', 'Cải bó xôi bổ dưỡng.'),
+      createVocabItem('vegetables', 'Corn', 'Noun', '/kɔːn/', 'Ngô / Bắp', '🌽', 'Sweet yellow corn.', 'Bắp ngô vàng ngọt.'),
+      createVocabItem('vegetables', 'Mushroom', 'Noun', '/ˈmʌʃ.ruːm/', 'Nấm', '🍄', 'Mushroom in the forest.', 'Nấm trong rừng.'),
+      createVocabItem('vegetables', 'Pepper', 'Noun', '/ˈpep.ər/', 'Ớt chuông', '🫑', 'Red and green pepper.', 'Ớt chuông đỏ và xanh.'),
+      createVocabItem('vegetables', 'Pumpkin', 'Noun', '/ˈpʌmp.kɪn/', 'Bí đỏ', '🎃', 'A big orange pumpkin.', 'Quả bí đỏ to màu cam.'),
+      createVocabItem('vegetables', 'Eggplant', 'Noun', '/ˈeɡ.plɑːnt/', 'Cà tím', '🍆', 'Purple fresh eggplant.', 'Quả cà tím tươi.'),
+      createVocabItem('vegetables', 'Zucchini', 'Noun', '/zuːˈkiː.ni/', 'Bí ngòi', '🥒', 'Cook green zucchini.', 'Nấu món bí ngòi xanh.'),
+      createVocabItem('vegetables', 'Green bean', 'Noun', '/ɡriːn biːn/', 'Đậu que', '🫛', 'Long green bean.', 'Quả đậu que dài.'),
+      createVocabItem('vegetables', 'Radish', 'Noun', '/ˈræd.ɪʃ/', 'Củ cải đỏ', '🥕', 'Crunchy red radish.', 'Củ cải đỏ giòn.'),
+      createVocabItem('vegetables', 'Cauliflower', 'Noun', '/ˈkɒl.ɪˌflaʊ.ər/', 'Súp lơ trắng', '🥦', 'White fresh cauliflower.', 'Súp lơ trắng tươi.'),
+      createVocabItem('vegetables', 'Sweet potato', 'Noun', '/swiːt pəˈteɪ.təʊ/', 'Khoai lang', '🍠', 'Baked sweet potato.', 'Khoai lang nướng thơm.'),
+
+      // 9. Family (15 words)
+      createVocabItem('family', 'Mother', 'Noun', '/ˈmʌð.ər/', 'Mẹ', '👩', 'My mother is kind.', 'Mẹ tôi rất dịu hiền.'),
+      createVocabItem('family', 'Father', 'Noun', '/ˈfɑː.ðər/', 'Bố', '👨', 'My father is tall.', 'Bố tôi rất cao lớn.'),
+      createVocabItem('family', 'Sister', 'Noun', '/ˈsɪs.tər/', 'Chị / Em gái', '👧', 'She is my sister.', 'Cô ấy là chị/em gái tôi.'),
+      createVocabItem('family', 'Brother', 'Noun', '/ˈbrʌð.ər/', 'Anh / Em trai', '👦', 'He is my brother.', 'Cậu ấy là anh/em trai tôi.'),
+      createVocabItem('family', 'Grandmother', 'Noun', '/ˈɡrænˌmʌð.ər/', 'Bà', '👵', 'Where is grandmother?', 'Bà đang ở đâu?'),
+      createVocabItem('family', 'Grandfather', 'Noun', '/ˈɡrænˌfɑː.ðər/', 'Ông', '👴', 'This is my grandfather.', 'Đây là ông của tôi.'),
+      createVocabItem('family', 'Parents', 'Noun', '/ˈpeə.rənts/', 'Bố mẹ', '👨‍👩‍👧', 'I love my parents.', 'Tôi yêu bố mẹ.'),
+      createVocabItem('family', 'Grandparents', 'Noun', '/ˈɡrænˌpeə.rənts/', 'Ông bà', '👴👵', 'Visit grandparents.', 'Thăm ông bà.'),
+      createVocabItem('family', 'Uncle', 'Noun', '/ˈʌŋ.kəl/', 'Chú / Bác trai', '👨', 'Uncle under the tree.', 'Chú ở dưới bóng cây.'),
+      createVocabItem('family', 'Aunt', 'Noun', '/ɑːnt/', 'Cô / Dì / Bác gái', '👩', 'My aunt visits home.', 'Dì tôi đến thăm nhà.'),
+      createVocabItem('family', 'Cousin', 'Noun', '/ˈkʌz.ən/', 'Anh / Chị / Em họ', '🧒', 'Play with my cousin.', 'Chơi cùng em họ.'),
+      createVocabItem('family', 'Son', 'Noun', '/sʌn/', 'Con trai', '👦', 'He is their son.', 'Cậu ấy là con trai họ.'),
+      createVocabItem('family', 'Daughter', 'Noun', '/ˈdɔː.tər/', 'Con gái', '👧', 'She is their daughter.', 'Bé là con gái họ.'),
+      createVocabItem('family', 'Baby', 'Noun', '/ˈbeɪ.bi/', 'Em bé', '👶', 'A cute smiling baby.', 'Em bé cười đáng yêu.'),
+      createVocabItem('family', 'Family', 'Noun', '/ˈfæm.əl.i/', 'Gia đình', '👨‍👩‍👧‍👦', 'I love my family.', 'Tôi yêu gia đình tôi.'),
+
+      // 10. Occupations (20 words)
+      createVocabItem('occupations', 'Teacher', 'Noun', '/ˈtiː.tʃər/', 'Giáo viên', '👩‍🏫', 'Good morning, teacher.', 'Chào buổi sáng cô giáo.'),
+      createVocabItem('occupations', 'Doctor', 'Noun', '/ˈdɒk.tər/', 'Bác sĩ', '👨‍⚕️', 'Doctor in hospital.', 'Bác sĩ ở bệnh viện.'),
+      createVocabItem('occupations', 'Nurse', 'Noun', '/nɜːs/', 'Y tá', '👩‍⚕️', 'Gentle kind nurse.', 'Cô y tá ân cần.'),
+      createVocabItem('occupations', 'Police officer', 'Noun', '/pəˈliːs ˈɒf.ɪ.sər/', 'Cảnh sát', '👮', 'Brave police officer.', 'Chú cảnh sát dũng cảm.'),
+      createVocabItem('occupations', 'Firefighter', 'Noun', '/ˈfaɪəˌfaɪ.tər/', 'Lính cứu hỏa', '🧑‍🚒', 'Firefighter puts out fire.', 'Lính cứu hỏa dập lửa.'),
+      createVocabItem('occupations', 'Chef', 'Noun', '/ʃef/', 'Đầu bếp', '👨‍🍳', 'Chef cooks yummy food.', 'Đầu bếp nấu món ăn ngon.'),
+      createVocabItem('occupations', 'Pilot', 'Noun', '/ˈpaɪ.lət/', 'Phi công', '👨‍✈️', 'Pilot flies airplane.', 'Phi công lái máy bay.'),
+      createVocabItem('occupations', 'Driver', 'Noun', '/ˈdraɪ.vər/', 'Lái xe', '🚗', 'A careful bus driver.', 'Bác tài xế xe buýt cẩn thận.'),
+      createVocabItem('occupations', 'Farmer', 'Noun', '/ˈfɑː.mər/', 'Nông dân', '🧑‍🌾', 'Farmer works on farm.', 'Bác nông dân trên đồng.'),
+      createVocabItem('occupations', 'Singer', 'Noun', '/ˈsɪŋ.ər/', 'Ca sĩ', '🎤', 'Singer sings nicely.', 'Ca sĩ hát rất hay.'),
+      createVocabItem('occupations', 'Dancer', 'Noun', '/ˈdɑːn.sər/', 'Vũ công', '💃', 'Graceful dancer.', 'Vũ công duyên dáng.'),
+      createVocabItem('occupations', 'Artist', 'Noun', '/ˈɑː.tɪst/', 'Họa sĩ', '🎨', 'Artist draws pictures.', 'Họa sĩ vẽ tranh.'),
+      createVocabItem('occupations', 'Engineer', 'Noun', '/ˌen.dʒɪˈnɪər/', 'Kỹ sư', '👷', 'Smart engineer builds.', 'Kỹ sư thiết kế công trình.'),
+      createVocabItem('occupations', 'Scientist', 'Noun', '/ˈsaɪən.tɪst/', 'Nhà khoa học', '🔬', 'Scientist explores.', 'Nhà khoa học nghiên cứu.'),
+      createVocabItem('occupations', 'Student', 'Noun', '/ˈstjuː.dənt/', 'Học sinh', '🧑‍🎓', 'I am a grade 2 student.', 'Tôi là học sinh lớp 2.'),
+      createVocabItem('occupations', 'Baker', 'Noun', '/ˈbeɪ.kər/', 'Thợ làm bánh', '🥖', 'Baker bakes fresh bread.', 'Thợ làm bánh mì thơm.'),
+      createVocabItem('occupations', 'Dentist', 'Noun', '/ˈden.tɪst/', 'Nha sĩ', '🦷', 'Dentist checks teeth.', 'Nha sĩ khám răng.'),
+      createVocabItem('occupations', 'Vet', 'Noun', '/vet/', 'Bác sĩ thú y', '🩺', 'Vet helps sick pets.', 'Bác sĩ chữa cho thú cưng.'),
+      createVocabItem('occupations', 'Hairdresser', 'Noun', '/ˈheəˌdres.ər/', 'Thợ làm tóc', '💇', 'Hairdresser cuts hair.', 'Thợ cắt tóc gọn gàng.'),
+      createVocabItem('occupations', 'Builder', 'Noun', '/ˈbɪl.dər/', 'Thợ xây', '🧱', 'Builder builds houses.', 'Thợ xây nhà cửa.'),
+
+      // 11. Transportation (15 words)
+      createVocabItem('transportation', 'Car', 'Noun', '/kɑːr/', 'Xe ô tô', '🚗', 'A red fast car.', 'Xe ô tô màu đỏ chạy nhanh.'),
+      createVocabItem('transportation', 'Bus', 'Noun', '/bʌs/', 'Xe buýt', '🚌', 'I go by school bus.', 'Tôi đi bằng xe buýt trường.'),
+      createVocabItem('transportation', 'Bicycle', 'Noun', '/ˈbaɪ.sɪ.kəl/', 'Xe đạp', '🚲', 'Ride a bicycle.', 'Đạp xe đạp.'),
+      createVocabItem('transportation', 'Motorcycle', 'Noun', '/ˈməʊ.təˌsaɪ.kəl/', 'Xe máy', '🏍️', 'Dad rides motorcycle.', 'Bố lái xe máy.'),
+      createVocabItem('transportation', 'Train', 'Noun', '/treɪn/', 'Tàu hỏa', '🚆', 'Train runs on tracks.', 'Tàu hỏa chạy trên đường ray.'),
+      createVocabItem('transportation', 'Airplane', 'Noun', '/ˈeə.pleɪn/', 'Máy bay', '✈️', 'Airplane flies high.', 'Máy bay bay trên cao.'),
+      createVocabItem('transportation', 'Boat', 'Noun', '/bəʊt/', 'Thuyền', '⛵', 'A wooden boat.', 'Một chiếc thuyền gỗ.'),
+      createVocabItem('transportation', 'Ship', 'Noun', '/ʃɪp/', 'Tàu thủy', '🚢', 'A large sea ship.', 'Tàu thủy lớn vượt biển.'),
+      createVocabItem('transportation', 'Truck', 'Noun', '/trʌk/', 'Xe tải', '🚛', 'A heavy green truck.', 'Xe tải chở hàng nặng.'),
+      createVocabItem('transportation', 'Taxi', 'Noun', '/ˈtæk.si/', 'Xe taxi', '🚕', 'Take a yellow taxi.', 'Bắt một chiếc taxi vàng.'),
+      createVocabItem('transportation', 'Subway', 'Noun', '/ˈsʌb.weɪ/', 'Tàu điện ngầm', '🚇', 'Fast city subway.', 'Tàu điện ngầm thành phố.'),
+      createVocabItem('transportation', 'Helicopter', 'Noun', '/ˈhel.ɪˌkɒp.tər/', 'Máy bay trực thăng', '🚁', 'Helicopter in sky.', 'Trực thăng trên bầu trời.'),
+      createVocabItem('transportation', 'Ambulance', 'Noun', '/ˈæm.bjə.ləns/', 'Xe cứu thương', '🚑', 'Ambulance to hospital.', 'Xe cứu thương đến bệnh viện.'),
+      createVocabItem('transportation', 'Fire truck', 'Noun', '/ˈfaɪə trʌk/', 'Xe cứu hỏa', '🚒', 'Red siren fire truck.', 'Xe cứu hỏa còi đỏ vang.'),
+      createVocabItem('transportation', 'Police car', 'Noun', '/pəˈliːs kɑːr/', 'Xe cảnh sát', '🚓', 'Police car patrol.', 'Xe cảnh sát đi tuần.'),
+
+      // 12. Emotions (15 words)
+      createVocabItem('emotions', 'Happy', 'Adj', '/ˈhæp.i/', 'Hạnh phúc / Vui vẻ', '😊', "How are you? I'm happy.", 'Bạn thế nào? Tôi vui.'),
+      createVocabItem('emotions', 'Sad', 'Adj', '/sæd/', 'Buồn', '😢', "Don't be sad.", 'Đừng buồn nhé.'),
+      createVocabItem('emotions', 'Angry', 'Adj', '/ˈæŋ.ɡri/', 'Tức giận', '😠', 'Calm down when angry.', 'Bình tĩnh khi tức giận.'),
+      createVocabItem('emotions', 'Surprised', 'Adj', '/səˈpraɪzd/', 'Ngạc nhiên', '😲', 'I am surprised!', 'Tôi rất ngạc nhiên!'),
+      createVocabItem('emotions', 'Scared', 'Adj', '/skeəd/', 'Sợ hãi', '😨', 'Vy is scared of dark.', 'Vy sợ bóng tối.'),
+      createVocabItem('emotions', 'Excited', 'Adj', '/ɪkˈsaɪ.tɪd/', 'Hào hứng', '🤩', 'Excited for party.', 'Hào hứng đón bữa tiệc.'),
+      createVocabItem('emotions', 'Tired', 'Adj', '/ˈtaɪəd/', 'Mệt mỏi', '😫', 'Rest when tired.', 'Nghỉ ngơi khi mệt.'),
+      createVocabItem('emotions', 'Hungry', 'Adj', '/ˈhʌŋ.ɡri/', 'Đói', '🍔', 'Trang is hungry.', 'Trang đang đói bụng.'),
+      createVocabItem('emotions', 'Thirsty', 'Adj', '/ˈθɜː.sti/', 'Khát', '🥤', 'Minh is thirsty.', 'Minh đang khát nước.'),
+      createVocabItem('emotions', 'Bored', 'Adj', '/bɔːd/', 'Chán nản', '🥱', 'Long is bored.', 'Long cảm thấy chán.'),
+      createVocabItem('emotions', 'Confused', 'Adj', '/kənˈfjuːzd/', 'Bối rối', '😕', 'I am confused.', 'Tôi thấy bối rối.'),
+      createVocabItem('emotions', 'Shy', 'Adj', '/ʃaɪ/', 'Ngại ngùng / Mắc cỡ', '😳', 'A shy little girl.', 'Cô bé hay mắc cỡ.'),
+      createVocabItem('emotions', 'Proud', 'Adj', '/praʊd/', 'Tự hào', '😌', 'Proud of good score.', 'Tự hào về điểm tốt.'),
+      createVocabItem('emotions', 'Worried', 'Adj', '/ˈwʌr.id/', 'Lo lắng', '😟', "Don't be worried.", 'Đừng lo lắng nhé.'),
+      createVocabItem('emotions', 'Grateful', 'Adj', '/ˈɡreɪt.fəl/', 'Biết ơn', '🙏', 'Grateful to teachers.', 'Biết ơn thầy cô giáo.'),
+
+      // 13. Daily Actions (20 words)
+      createVocabItem('daily_actions', 'Eat', 'Verb', '/iːt/', 'Ăn', '🍽️', 'Eat breakfast.', 'Ăn bữa sáng.'),
+      createVocabItem('daily_actions', 'Drink', 'Verb', '/drɪŋk/', 'Uống', '🥤', 'Drink clean water.', 'Uống nước lọc sạch.'),
+      createVocabItem('daily_actions', 'Sleep', 'Verb', '/sliːp/', 'Ngủ', '😴', 'Sleep in bed.', 'Ngủ trên giường.'),
+      createVocabItem('daily_actions', 'Wake up', 'Verb', '/weɪk ʌp/', 'Thức dậy', '⏰', 'Wake up early.', 'Thức dậy sớm.'),
+      createVocabItem('daily_actions', 'Go to bed', 'Verb', '/ɡəʊ tuː bed/', 'Đi ngủ', '🛏️', 'Go to bed at 9 PM.', 'Đi ngủ lúc 9 giờ tối.'),
+      createVocabItem('daily_actions', 'Play', 'Verb', '/pleɪ/', 'Chơi', '⚽', "Let's play soccer.", 'Cùng chơi đá bóng nào.'),
+      createVocabItem('daily_actions', 'Read', 'Verb', '/riːd/', 'Đọc', '📖', 'Read story books.', 'Đọc sách truyện.'),
+      createVocabItem('daily_actions', 'Write', 'Verb', '/raɪt/', 'Viết', '✍️', 'Write words in notebook.', 'Viết từ vào vở.'),
+      createVocabItem('daily_actions', 'Draw', 'Verb', '/drɔː/', 'Vẽ', '🎨', 'Draw a picture.', 'Vẽ một bức tranh.'),
+      createVocabItem('daily_actions', 'Sing', 'Verb', '/sɪŋ/', 'Hát', '🎵', 'Sing English songs.', 'Hát bài hát tiếng Anh.'),
+      createVocabItem('daily_actions', 'Dance', 'Verb', '/dɑːns/', 'Nhảy', '💃', 'Dance to music.', 'Nhảy theo điệu nhạc.'),
+      createVocabItem('daily_actions', 'Run', 'Verb', '/rʌn/', 'Chạy', '🏃', 'Run in the park.', 'Chạy trong công viên.'),
+      createVocabItem('daily_actions', 'Walk', 'Verb', '/wɔːk/', 'Đi bộ', '🚶', 'Walk to school.', 'Đi bộ đến trường.'),
+      createVocabItem('daily_actions', 'Jump', 'Verb', '/dʒʌmp/', 'Nhảy / Nhún nhảy', '🦘', 'Jump in hopscotch.', 'Nhảy lò cò.'),
+      createVocabItem('daily_actions', 'Talk', 'Verb', '/tɔːk/', 'Nói chuyện', '🗣️', 'Talk with friends.', 'Nói chuyện với bạn.'),
+      createVocabItem('daily_actions', 'Listen', 'Verb', '/ˈlɪs.ən/', 'Nghe', '👂', 'Listen to teacher.', 'Lắng nghe cô giáo.'),
+      createVocabItem('daily_actions', 'Watch', 'Verb', '/wɒtʃ/', 'Xem', '📺', 'Watch cartoon TV.', 'Xem phim hoạt hình.'),
+      createVocabItem('daily_actions', 'Cook', 'Verb', '/kʊk/', 'Nấu ăn', '🍳', 'Cook yummy dinner.', 'Nấu bữa tối ngon.'),
+      createVocabItem('daily_actions', 'Clean', 'Verb', '/kliːn/', 'Dọn dẹp', '🧹', 'Clean classroom.', 'Dọn phòng học sạch.'),
+      createVocabItem('daily_actions', 'Brush', 'Verb', '/brʌʃ/', 'Đánh răng / Chải tóc', '🪥', 'Brush teeth twice a day.', 'Đánh răng ngày 2 lần.'),
+
+      // 14. Weather (15 words)
+      createVocabItem('weather', 'Sunny', 'Adj', '/ˈsʌn.i/', 'Trời nắng', '☀️', 'It is sunny today.', 'Hôm nay trời nắng.'),
+      createVocabItem('weather', 'Rainy', 'Adj', '/ˈreɪ.ni/', 'Trời mưa', '🌧️', 'Take umbrella when rainy.', 'Mang ô khi trời mưa.'),
+      createVocabItem('weather', 'Cloudy', 'Adj', '/ˈklaʊ.di/', 'Nhiều mây', '☁️', 'Cloudy cool sky.', 'Trời nhiều mây mát mẻ.'),
+      createVocabItem('weather', 'Windy', 'Adj', '/ˈwɪn.di/', 'Trời gió', '💨', 'Windy day flies kite.', 'Ngày lộng gió thả diều.'),
+      createVocabItem('weather', 'Snowy', 'Adj', '/ˈsnəʊ.i/', 'Trời tuyết', '❄️', 'Cold snowy winter.', 'Mùa đông tuyết rơi lạnh.'),
+      createVocabItem('weather', 'Hot', 'Adj', '/hɒt/', 'Nóng', '🥵', 'Summer is hot.', 'Mùa hè trời nóng.'),
+      createVocabItem('weather', 'Cold', 'Adj', '/kəʊld/', 'Lạnh', '🥶', 'Winter is cold.', 'Mùa đông trời lạnh.'),
+      createVocabItem('weather', 'Warm', 'Adj', '/wɔːm/', 'Ấm áp', '🌤️', 'Spring is warm.', 'Mùa xuân ấm áp.'),
+      createVocabItem('weather', 'Cool', 'Adj', '/kuːl/', 'Mát mẻ', '🍃', 'Autumn is cool.', 'Mùa thu mát mẻ.'),
+      createVocabItem('weather', 'Stormy', 'Adj', '/ˈstɔː.mi/', 'Có bão', '⛈️', 'Stormy dark weather.', 'Thời tiết bão bùng.'),
+      createVocabItem('weather', 'Foggy', 'Adj', '/ˈfɒɡ.i/', 'Có sương mù', '🌫️', 'Morning is foggy.', 'Buổi sáng có sương mù.'),
+      createVocabItem('weather', 'Thunder', 'Noun', '/ˈθʌn.dər/', 'Sấm', '🌩️', 'Loud thunder sound.', 'Tiếng sấm vang rền.'),
+      createVocabItem('weather', 'Lightning', 'Noun', '/ˈlaɪt.nɪŋ/', 'Chớp / Sét', '⚡', 'Bright lightning flash.', 'Tia chớp lóe sáng.'),
+      createVocabItem('weather', 'Rainbow', 'Noun', '/ˈreɪn.bəʊ/', 'Cầu vồng', '🌈', 'Seven colors rainbow.', 'Cầu vồng bảy sắc.'),
+      createVocabItem('weather', 'Breeze', 'Noun', '/briːz/', 'Gió nhẹ', '🌬️', 'A gentle cool breeze.', 'Một làn gió nhẹ mát.'),
+
+      // 15. School Places & Stationery (20 words)
+      createVocabItem('school_places', 'School', 'Noun', '/skuːl/', 'Trường học', '🏫', 'I go to school.', 'Tôi đi đến trường.'),
+      createVocabItem('school_places', 'Classroom', 'Noun', '/ˈklæsruːm/', 'Lớp học', '🏫', 'In the classroom.', 'Ở trong lớp học.'),
+      createVocabItem('school_places', 'Teacher', 'Noun', '/ˈtiːtʃər/', 'Giáo viên', '👩‍🏫', 'Good morning, teacher.', 'Chào buổi sáng cô giáo.'),
+      createVocabItem('school_places', 'Student', 'Noun', '/ˈstuːdənt/', 'Học sinh', '🧑‍🎓', 'I am a student.', 'Tôi là học sinh.'),
+      createVocabItem('school_places', 'Desk', 'Noun', '/dɛsk/', 'Bàn học', '🪵', 'Sit at your desk.', 'Ngồi ở bàn học.'),
+      createVocabItem('school_places', 'Chair', 'Noun', '/tʃɛr/', 'Ghế', '🪑', 'Sit on the chair.', 'Ngồi lên ghế.'),
+      createVocabItem('school_places', 'Blackboard', 'Noun', '/ˈblækˌbɔːrd/', 'Bảng đen', '📋', 'Write on blackboard.', 'Viết lên bảng đen.'),
+      createVocabItem('school_places', 'Chalk', 'Noun', '/tʃɔːk/', 'Phấn', '🖍️', 'Write with white chalk.', 'Viết bằng phấn trắng.'),
+      createVocabItem('school_places', 'Notebook', 'Noun', '/ˈnoʊtˌbʊk/', 'Vở', '📓', 'A clean notebook.', 'Cuốn vở sạch đẹp.'),
+      createVocabItem('school_places', 'Pencil', 'Noun', '/ˈpɛnsəl/', 'Bút chì', '✏️', 'Draw with a pencil.', 'Vẽ bằng bút chì.'),
+      createVocabItem('school_places', 'Eraser', 'Noun', '/ɪˈreɪsər/', 'Tẩy', '🧼', 'Pick up your eraser.', 'Nhặt cục tẩy lên.'),
+      createVocabItem('school_places', 'Ruler', 'Noun', '/ˈruːlər/', 'Thước kẻ', '📏', 'A straight ruler.', 'Thước kẻ thẳng.'),
+      createVocabItem('school_places', 'Pen', 'Noun', '/pɛn/', 'Bút mực', '🖊️', 'I write with a pen.', 'Tôi viết bằng bút mực.'),
+      createVocabItem('school_places', 'Crayon', 'Noun', '/ˈkreɪˌɑːn/', 'Bút sáp màu', '🖍️', 'Color with crayon.', 'Tô bằng bút sáp màu.'),
+      createVocabItem('school_places', 'Book', 'Noun', '/bʊk/', 'Sách', '📖', 'Open your book.', 'Mở sách của bạn ra.'),
+      createVocabItem('school_places', 'Backpack', 'Noun', '/ˈbækˌpæk/', 'Ba lô', '🎒', 'Put books in backpack.', 'Cất sách vào ba lô.'),
+      createVocabItem('school_places', 'Calculator', 'Noun', '/ˈkælkjəˌleɪtər/', 'Máy tính', '🧮', 'Use a calculator.', 'Dùng máy tính.'),
+      createVocabItem('school_places', 'Glue', 'Noun', '/ɡluː/', 'Keo dán', '🧴', 'Stick with glue.', 'Dán bằng keo.'),
+      createVocabItem('school_places', 'Scissors', 'Noun', '/ˈsɪzərz/', 'Kéo', '✂️', 'Cut with scissors.', 'Cắt bằng kéo.'),
+      createVocabItem('school_places', 'Map', 'Noun', '/mæp/', 'Bản đồ', '🗺️', 'Look at the map.', 'Nhìn vào bản đồ.'),
+
+      // 16. Time & Calendar (22 words)
+      createVocabItem('time', 'Today', 'Adv', '/təˈdeɪ/', 'Hôm nay', '📅', 'Today is Monday.', 'Hôm nay là thứ Hai.'),
+      createVocabItem('time', 'Tomorrow', 'Adv', '/təˈmɒr.əʊ/', 'Ngày mai', '🌅', 'See you tomorrow.', 'Hẹn gặp bạn ngày mai.'),
+      createVocabItem('time', 'Yesterday', 'Adv', '/ˈjes.tə.deɪ/', 'Hôm qua', '⏪', 'Yesterday was Sunday.', 'Hôm qua là Chủ Nhật.'),
+      createVocabItem('time', 'Monday', 'Noun', '/ˈmʌn.deɪ/', 'Thứ hai', '📅', "It's Monday today.", 'Hôm nay là thứ Hai.'),
+      createVocabItem('time', 'Tuesday', 'Noun', '/ˈtjuːz.deɪ/', 'Thứ ba', '📅', 'Draw on Tuesday.', 'Vẽ tranh vào thứ Ba.'),
+      createVocabItem('time', 'Wednesday', 'Noun', '/ˈwenz.deɪ/', 'Thứ tư', '📅', 'Sing on Wednesday.', 'Hát vào thứ Tư.'),
+      createVocabItem('time', 'Thursday', 'Noun', '/ˈθɜːz.deɪ/', 'Thứ năm', '📅', 'Thursday class.', 'Lớp học thứ Năm.'),
+      createVocabItem('time', 'Friday', 'Noun', '/ˈfraɪ.deɪ/', 'Thứ sáu', '📅', 'Spell on Friday.', 'Đánh vần vào thứ Sáu.'),
+      createVocabItem('time', 'Saturday', 'Noun', '/ˈsæt.ə.deɪ/', 'Thứ bảy', '📅', 'Play on Saturday.', 'Chơi vào thứ Bảy.'),
+      createVocabItem('time', 'Sunday', 'Noun', '/ˈsʌn.deɪ/', 'Chủ nhật', '☀️', 'Visit on Sunday.', 'Đi chơi vào Chủ Nhật.'),
+      createVocabItem('time', 'January', 'Noun', '/ˈdʒæn.ju.ə.ri/', 'Tháng một', '❄️', 'January is cold.', 'Tháng một trời lạnh.'),
+      createVocabItem('time', 'February', 'Noun', '/ˈfeb.ru.ər.i/', 'Tháng hai', '🧧', 'Tet in February.', 'Tết vào tháng Hai.'),
+      createVocabItem('time', 'March', 'Noun', '/mɑːtʃ/', 'Tháng ba', '🌸', 'Spring in March.', 'Mùa xuân tháng Ba.'),
+      createVocabItem('time', 'April', 'Noun', '/ˈeɪ.prəl/', 'Tháng tư', '🌧️', 'Rain in April.', 'Mưa tháng Tư.'),
+      createVocabItem('time', 'May', 'Noun', '/meɪ/', 'Tháng năm', '🌻', 'Flowers in May.', 'Hoa nở tháng Năm.'),
+      createVocabItem('time', 'June', 'Noun', '/dʒuːn/', 'Tháng sáu', '☀️', 'Summer in June.', 'Mùa hè tháng Sáu.'),
+      createVocabItem('time', 'July', 'Noun', '/dʒuˈlaɪ/', 'Tháng bảy', '🏖️', 'Beach in July.', 'Đi biển tháng Bảy.'),
+      createVocabItem('time', 'August', 'Noun', '/ɔːˈɡʌst/', 'Tháng tám', '🎒', 'School in August.', 'Tựu trường tháng Tám.'),
+      createVocabItem('time', 'September', 'Noun', '/sepˈtem.bər/', 'Tháng chín', '🍂', 'Autumn in September.', 'Mùa thu tháng Chín.'),
+      createVocabItem('time', 'October', 'Noun', '/ɒkˈtəʊ.bər/', 'Tháng mười', '🎃', 'Cool in October.', 'Mát mẻ tháng Mười.'),
+      createVocabItem('time', 'November', 'Noun', '/nəʊˈvem.bər/', 'Tháng mười một', '🍁', 'Wind in November.', 'Gió lạnh tháng Mười một.'),
+      createVocabItem('time', 'December', 'Noun', '/dɪˈsem.bər/', 'Tháng mười hai', '🎄', 'Christmas in December.', 'Giáng sinh tháng Mười hai.'),
+
+      // 17. Clothes & Accessories (20 words)
+      createVocabItem('clothes_accessories', 'Shirt', 'Noun', '/ʃɜːt/', 'Áo sơ mi', '👔', 'A white school shirt.', 'Áo sơ mi trắng đi học.'),
+      createVocabItem('clothes_accessories', 'Pants', 'Noun', '/pænts/', 'Quần', '👖', 'These are my pants.', 'Đây là quần của tôi.'),
+      createVocabItem('clothes_accessories', 'Dress', 'Noun', '/dres/', 'Đầm, váy', '👗', 'A pretty pink dress.', 'Chiếc đầm hồng xinh.'),
+      createVocabItem('clothes_accessories', 'Skirt', 'Noun', '/skɜːt/', 'Váy', '👗', 'A blue school skirt.', 'Chân váy đồng phục.'),
+      createVocabItem('clothes_accessories', 'Jacket', 'Noun', '/ˈdʒæk.ɪt/', 'Áo khoác', '🧥', 'Zip your jacket.', 'Kéo khóa áo khoác.'),
+      createVocabItem('clothes_accessories', 'Coat', 'Noun', '/kəʊt/', 'Áo choàng', '🧥', 'Warm winter coat.', 'Áo choàng mùa đông.'),
+      createVocabItem('clothes_accessories', 'Sweater', 'Noun', '/ˈswet.ər/', 'Áo len', '🧶', 'A warm wool sweater.', 'Áo len ấm áp.'),
+      createVocabItem('clothes_accessories', 'T-shirt', 'Noun', '/ˈtiː.ʃɜːt/', 'Áo thun', '👕', 'Is this your T-shirt?', 'Đây là áo thun của bạn à?'),
+      createVocabItem('clothes_accessories', 'Shorts', 'Noun', '/ʃɔːts/', 'Quần sooc', '🩳', 'Wear red shorts.', 'Mặc quần sooc đỏ.'),
+      createVocabItem('clothes_accessories', 'Shoes', 'Noun', '/ʃuːz/', 'Giày', '👟', 'Tie your shoes.', 'Buộc dây giày.'),
+      createVocabItem('clothes_accessories', 'Socks', 'Noun', '/sɒks/', 'Tất', '🧦', 'Put on socks.', 'Xỏ tất vào chân.'),
+      createVocabItem('clothes_accessories', 'Hat', 'Noun', '/hæt/', 'Mũ', '👒', 'Wear yellow hat.', 'Đội mũ màu vàng.'),
+      createVocabItem('clothes_accessories', 'Scarf', 'Noun', '/skɑːf/', 'Khăn quàng cổ', '🧣', 'Warm red scarf.', 'Khăn quàng đỏ ấm.'),
+      createVocabItem('clothes_accessories', 'Gloves', 'Noun', '/ɡlʌvz/', 'Găng tay', '🧤', 'Warm winter gloves.', 'Găng tay mùa đông.'),
+      createVocabItem('clothes_accessories', 'Belt', 'Noun', '/belt/', 'Thắt lưng', '🪢', 'Wear a black belt.', 'Thắt dây lưng đen.'),
+      createVocabItem('clothes_accessories', 'Tie', 'Noun', '/taɪ/', 'Cà vạt', '👔', 'A red neck tie.', 'Cà vạt màu đỏ.'),
+      createVocabItem('clothes_accessories', 'Sunglasses', 'Noun', '/ˈsʌnˌɡlɑː.sɪz/', 'Kính râm', '🕶️', 'Cool sunglasses.', 'Kính râm sành điệu.'),
+      createVocabItem('clothes_accessories', 'Watch', 'Noun', '/wɒtʃ/', 'Đồng hồ', '⌚', 'Look at my watch.', 'Xem đồng hồ của tôi.'),
+      createVocabItem('clothes_accessories', 'Bag', 'Noun', '/bæɡ/', 'Túi', '👜', 'A leather bag.', 'Một chiếc túi da.'),
+      createVocabItem('clothes_accessories', 'Jewelry', 'Noun', '/ˈdʒuː.əl.ri/', 'Trang sức', '💍', 'Shining jewelry.', 'Trang sức lấp lánh.'),
+
+      // 18. Numbers & Measurement (19 words)
+      createVocabItem('numbers_measure', 'One', 'Noun', '/wʌn/', 'Một', '1️⃣', 'One nose.', 'Một chiếc mũi.'),
+      createVocabItem('numbers_measure', 'Two', 'Noun', '/tuː/', 'Hai', '2️⃣', 'Two bright eyes.', 'Hai mắt sáng.'),
+      createVocabItem('numbers_measure', 'Three', 'Noun', '/θriː/', 'Ba', '3️⃣', 'Three ducks.', 'Ba con vịt.'),
+      createVocabItem('numbers_measure', 'Four', 'Noun', '/fɔːr/', 'Bốn', '4️⃣', 'Four legs.', 'Bốn cái chân.'),
+      createVocabItem('numbers_measure', 'Five', 'Noun', '/faɪv/', 'Năm', '5️⃣', 'Five fingers.', 'Năm ngón tay.'),
+      createVocabItem('numbers_measure', 'Six', 'Noun', '/sɪks/', 'Sáu', '6️⃣', 'Six stars.', 'Sáu ngôi sao.'),
+      createVocabItem('numbers_measure', 'Seven', 'Noun', '/ˈsev.ən/', 'Bảy', '7️⃣', 'Seven days.', 'Bảy ngày.'),
+      createVocabItem('numbers_measure', 'Eight', 'Noun', '/eɪt/', 'Tám', '8️⃣', 'Eight legs.', 'Tám cái chân.'),
+      createVocabItem('numbers_measure', 'Nine', 'Noun', '/naɪn/', 'Chín', '9️⃣', 'Nine crayons.', 'Chín bút sáp.'),
+      createVocabItem('numbers_measure', 'Ten', 'Noun', '/ten/', 'Mười', '🔟', 'Ten toes.', 'Mười ngón chân.'),
+      createVocabItem('numbers_measure', 'Dozen', 'Noun', '/ˈdʌz.ən/', 'Chục (12)', '🥚', 'A dozen eggs.', 'Một tá 12 quả trứng.'),
+      createVocabItem('numbers_measure', 'Hundred', 'Noun', '/ˈhʌn.drəd/', 'Trăm', '💯', 'One hundred stars.', 'Một trăm ngôi sao.'),
+      createVocabItem('numbers_measure', 'Thousand', 'Noun', '/ˈθaʊ.zənd/', 'Nghìn', '💰', 'One thousand.', 'Một nghìn.'),
+      createVocabItem('numbers_measure', 'Meter', 'Noun', '/ˈmiː.tər/', 'Mét', '📏', 'One meter long.', 'Dài một mét.'),
+      createVocabItem('numbers_measure', 'Centimeter', 'Noun', '/ˈsen.tɪˌmiː.tər/', 'Centimet', '📏', 'Ten centimeters.', 'Mười cen-ti-mét.'),
+      createVocabItem('numbers_measure', 'Kilometer', 'Noun', '/kɪˈlɒm.ɪ.tər/', 'Ki-lô-mét', '🛣️', 'One kilometer.', 'Một ki-lô-mét.'),
+      createVocabItem('numbers_measure', 'Gram', 'Noun', '/ɡræm/', 'Gram', '⚖️', 'Hundred grams.', 'Một trăm gam.'),
+      createVocabItem('numbers_measure', 'Kilogram', 'Noun', '/ˈkɪl.ə.ɡræm/', 'Ki-lô-gram', '⚖️', 'One kilogram of rice.', 'Một ki-lô-gam gạo.'),
+      createVocabItem('numbers_measure', 'Liter', 'Noun', '/ˈliː.tər/', 'Lít', '🥛', 'One liter of water.', 'Một lít nước sạch.')
+    ];
+
+    /* =========================================================================
+       5. 20 READING STORIES MASTER
+       ========================================================================= */
+    const READING_PASSAGES = [
+      {
+        id: 1, title: "My Brother!", type: "Unit 1 - Family", emoji: "👦",
+        lines: [
+          "Welcome to my home!",
+          "This is my grandpa at the computer.",
+          "This is my mom in the hallway.",
+          "Look at the boy in a red hat and scarf.",
+          "Is this your grandma? No, it isn't.",
+          "This is my funny brother!"
+        ],
+        viText: "Chào mừng đến với nhà của tớ! Đây là ông của tớ bên máy tính. Đây là mẹ tớ ở hành lang. Hãy nhìn cậu bé đội mũ đỏ và quàng khăn. Đó có phải bà bạn không? Không phải đâu. Đó là em trai tinh nghịch của tớ!",
+        questions: [
+          { q: "Who is sitting at the computer?", choices: ["Grandpa", "Brother", "Mom", "Sister"], ans: 0 },
+          { q: "Where is mom standing?", choices: ["In the hallway", "In the car", "In the park", "At school"], ans: 0 },
+          { q: "What is the boy wearing?", choices: ["A red hat and scarf", "Green shoes", "A yellow dress", "Black gloves"], ans: 0 },
+          { q: "Who is the boy in the red hat?", choices: ["Brother", "Grandma", "Dad", "Teacher"], ans: 0 }
+        ]
+      },
+      {
+        id: 2, title: "Where's Grandma?", type: "Unit 6 - House", emoji: "👵",
+        lines: [
+          "Rosy comes home with a certificate.",
+          "She says: Look! I have a certificate!",
+          "Mom says: Very good, Rosy! Go and show your family.",
+          "Where is Grandma? Is she in the kitchen? No, she isn't.",
+          "Is Dad in the living room? No, he isn't.",
+          "Everyone is in the dining room with a big cake: Surprise!"
+        ],
+        viText: "Rosy về nhà với một giấy khen. Bé nói: Nhìn này! Con có giấy khen! Mẹ bảo: Giỏi lắm Rosy! Mau đi khoe gia đình nhé. Bà ở đâu? Bà có ở trong bếp không? Không có. Bố có ở phòng khách không? Không có. Mọi người đang ở trong phòng ăn với bánh kem: Bất ngờ chưa!",
+        questions: [
+          { q: "What does Rosy have from school?", choices: ["A certificate", "A new toy", "A cat", "A book"], ans: 0 },
+          { q: "Is Grandma in the kitchen?", choices: ["No, she isn't", "Yes, she is", "She is sleeping", "She is in yard"], ans: 0 },
+          { q: "Is Dad in the living room?", choices: ["No, he isn't", "Yes, he is", "He is cooking", "He is outside"], ans: 0 },
+          { q: "What does the family prepare for Rosy?", choices: ["A cake and surprise party", "A bicycle", "A puppy", "A pencil"], ans: 0 }
+        ]
+      },
+      {
+        id: 3, title: "In the Backyard", type: "Unit 2 - Backyard", emoji: "🪁",
+        lines: [
+          "Today the weather is warm and bright.",
+          "The children are playing in the backyard.",
+          "Tony is flying a colorful kite in the sky.",
+          "Lisa is riding her new bicycle.",
+          "A cute little kitten is playing on the grass.",
+          "They are very happy together."
+        ],
+        viText: "Hôm nay thời tiết ấm áp và rực rỡ. Các bạn nhỏ đang chơi trong sân sau. Tony đang thả một cánh diều rực rỡ trên trời. Lisa đang đạp chiếc xe đạp mới của mình. Một chú mèo con đáng yêu đang chơi trên thảm cỏ. Các bạn rất vui vẻ cùng nhau.",
+        questions: [
+          { q: "Where are the children playing?", choices: ["In the backyard", "In the classroom", "In the kitchen", "In the bus"], ans: 0 },
+          { q: "What is Tony doing?", choices: ["Flying a kite", "Sleeping", "Cooking", "Reading a book"], ans: 0 },
+          { q: "What is Lisa riding?", choices: ["A bicycle", "A horse", "A motorbike", "A bus"], ans: 0 },
+          { q: "What animal is on the grass?", choices: ["A kitten", "A duck", "An elephant", "A tiger"], ans: 0 }
+        ]
+      },
+      {
+        id: 4, title: "A Day on the Farm", type: "Unit 6 - Farm Animals", emoji: "🐮",
+        lines: [
+          "Welcome to our green farm!",
+          "Look! There is a brown ox standing by the big tree.",
+          "An orange fox is walking near the wooden house.",
+          "There is a big box next to the barn.",
+          "The sun is shining and birds are singing.",
+          "Farm animals love the fresh green grass."
+        ],
+        viText: "Chào mừng đến với trang trại xanh tươi! Nhìn kìa! Có một chú bò đực màu nâu đứng bên cạnh cái cây lớn. Một chú cáo màu cam đang đi dạo gần ngôi nhà gỗ. Có một chiếc hộp lớn cạnh nhà kho. Mặt trời đang tỏa sáng và chim hót líu lo. Các con vật trang trại rất yêu cỏ tươi.",
+        questions: [
+          { q: "What color is the ox?", choices: ["Brown", "Blue", "Pink", "Purple"], ans: 0 },
+          { q: "Where is the fox walking?", choices: ["Near the wooden house", "In the river", "On the roof", "Inside the tent"], ans: 0 },
+          { q: "What is next to the barn?", choices: ["A big box", "A computer", "A car", "A clock"], ans: 0 },
+          { q: "What do farm animals love?", choices: ["Fresh grass", "Candy", "Pizza", "Soda"], ans: 0 }
+        ]
+      },
+      {
+        id: 5, title: "Breakfast in the Kitchen", type: "Unit 7 - Kitchen", emoji: "🧃",
+        lines: [
+          "It is seven o'clock in the morning.",
+          "Ben and Lucy are having breakfast at the table.",
+          "Ben says: Pass me the jelly, please.",
+          "Lucy says: Here you are.",
+          "They also have sweet strawberry jam and fresh orange juice.",
+          "They enjoy their yummy morning meal."
+        ],
+        viText: "Bây giờ là 7 giờ sáng. Ben và Lucy đang ăn sáng tại bàn. Ben nói: Làm ơn đưa cho tớ thạch với. Lucy nói: Của bạn đây. Các bạn còn có mứt dâu tây ngọt ngào và nước cam tươi. Các bạn rất thích bữa sáng ngon lành.",
+        questions: [
+          { q: "What time is it?", choices: ["7 o'clock", "9 o'clock", "12 o'clock", "5 o'clock"], ans: 0 },
+          { q: "What does Ben ask for?", choices: ["The jelly", "The pizza", "The rice", "The burger"], ans: 0 },
+          { q: "What kind of juice do they have?", choices: ["Orange juice", "Grape juice", "Apple juice", "Tea"], ans: 0 },
+          { q: "Where are they having breakfast?", choices: ["At the table", "In the garden", "On the bus", "In bed"], ans: 0 }
+        ]
+      },
+      {
+        id: 6, title: "In the Classroom", type: "Unit 5 - Classroom", emoji: "🏫",
+        lines: [
+          "The students are in the classroom.",
+          "Miss White is their English teacher.",
+          "Linh is doing a fun quiz in her notebook.",
+          "Nam is colouring an orange square.",
+          "Mai is raising her hand and answering a question.",
+          "Everyone is studying hard and listening quietly."
+        ],
+        viText: "Các bạn học sinh đang ở trong lớp học. Cô White là giáo viên tiếng Anh. Linh đang làm bài đố vui vào vở. Nam đang tô màu một hình vuông màu cam. Mai đang giơ tay và trả lời câu hỏi. Mọi người đều chăm chỉ học tập và trật tự lắng nghe.",
+        questions: [
+          { q: "Who is the English teacher?", choices: ["Miss White", "Mr. Green", "Rosy", "Tim"], ans: 0 },
+          { q: "What is Linh doing?", choices: ["Doing a quiz", "Sleeping", "Singing", "Jumping"], ans: 0 },
+          { q: "What shape is Nam colouring?", choices: ["A square", "A circle", "A star", "A triangle"], ans: 0 },
+          { q: "What is Mai doing?", choices: ["Answering a question", "Drawing a bus", "Eating snacks", "Running"], ans: 0 }
+        ]
+      },
+      {
+        id: 7, title: "Fun at the Campsite", type: "Unit 16 - Campsite", emoji: "⛺",
+        lines: [
+          "The family is at the green campsite in the forest.",
+          "Dad sets up an orange tent on the grass.",
+          "Mom puts a warm soft blanket on the table.",
+          "There is a cute teapot on the picnic table.",
+          "The children drink warm tea and look at nature.",
+          "Camping with family is so wonderful!"
+        ],
+        viText: "Gia đình đang ở khu cắm trại xanh tươi trong rừng. Bố dựng một chiếc lều màu cam trên cỏ. Mẹ đặt một chiếc chăn bông ấm áp lên bàn. Có một chiếc ấm trà xinh xắn trên bàn dã ngoại. Trẻ em uống trà ấm và ngắm nhìn thiên nhiên. Cắm trại cùng gia đình thật tuyệt vời!",
+        questions: [
+          { q: "Where is the family?", choices: ["At the campsite", "At the supermarket", "At school", "At the cinema"], ans: 0 },
+          { q: "What color is the tent?", choices: ["Orange", "Black", "Pink", "Gray"], ans: 0 },
+          { q: "What is on the picnic table?", choices: ["A teapot and blanket", "A laptop", "A soccer ball", "A bag"], ans: 0 },
+          { q: "How do the children feel?", choices: ["Happy and excited", "Scared", "Angry", "Tired"], ans: 0 }
+        ]
+      },
+      {
+        id: 8, title: "At the Clothes Shop", type: "Unit 15 - Clothes", emoji: "👗",
+        lines: [
+          "Anna and her mom are in the clothes shop.",
+          "Anna asks: Where are the new shoes?",
+          "The clerk says: They are over there on the shelf.",
+          "Anna looks at pretty shirts, blue shorts, and a dress.",
+          "Mom buys Anna a warm yellow shirt.",
+          "Anna says thank you to her mom."
+        ],
+        viText: "Anna và mẹ đang ở cửa hàng quần áo. Anna hỏi: Những đôi giày mới ở đâu ạ? Nhân viên bảo: Chúng ở đằng kia trên kệ. Anna ngắm những chiếc áo sơ mi đẹp, quần đùi xanh và một chiếc đầm. Mẹ mua cho Anna một chiếc áo sơ mi vàng ấm áp. Anna cảm ơn mẹ.",
+        questions: [
+          { q: "Where are Anna and mom?", choices: ["In the clothes shop", "At the zoo", "In the park", "At the hospital"], ans: 0 },
+          { q: "What does Anna look for first?", choices: ["Shoes", "Hat", "Umbrella", "Watch"], ans: 0 },
+          { q: "What does Mom buy for Anna?", choices: ["A yellow shirt", "A robot", "A bike", "A guitar"], ans: 0 },
+          { q: "What does Anna say to her mom?", choices: ["Thank you", "Goodbye", "Sorry", "Good night"], ans: 0 }
+        ]
+      },
+      {
+        id: 9, title: "In the Living Room", type: "Living Room", emoji: "🛋️",
+        lines: [
+          "Look into our cozy living room.",
+          "Two cute kittens are sitting at the open window.",
+          "A colorful picture of goldfish is hanging on the wall.",
+          "There is a round clock above the sofa.",
+          "The tea cups are placed neatly on the table.",
+          "The house is clean and beautiful."
+        ],
+        viText: "Hãy nhìn vào phòng khách ấm cúng của chúng tớ. Hai chú mèo con dễ thương đang ngồi bên cửa sổ mở. Một bức tranh cá vàng nhiều màu sắc đang treo trên tường. Có một chiếc đồng hồ tròn phía trên ghế sô pha. Những chiếc tách trà được xếp ngay ngắn trên bàn. Ng ngôi nhà thật sạch sẽ và xinh đẹp.",
+        questions: [
+          { q: "Where are the two kittens sitting?", choices: ["At the window", "On the TV", "Under the rug", "In the car"], ans: 0 },
+          { q: "What is on the wall?", choices: ["A picture and a clock", "A kite", "A bicycle", "A map"], ans: 0 },
+          { q: "What is drawn in the picture?", choices: ["Goldfish", "Elephants", "Lions", "Cars"], ans: 0 },
+          { q: "Where are the tea cups placed?", choices: ["On the table", "On the bed", "In the bag", "On the floor"], ans: 0 }
+        ]
+      },
+      {
+        id: 10, title: "Playing in the Playground", type: "Unit 11 - Playground", emoji: "🛝",
+        lines: [
+          "The bell rings and it is playtime!",
+          "The playground is full of cheerful laughter.",
+          "Peter and John are riding their bikes along the path.",
+          "Sarah is happily sliding down the red slide.",
+          "Two little boys are driving toy electric cars.",
+          "All the children have so much fun together."
+        ],
+        viText: "Chuông reo và đã đến giờ ra chơi! Sân chơi ngập tràn tiếng cười vui vẻ. Peter và John đang đạp xe đạp dọc theo lối đi. Sarah đang vui vẻ trượt xuống cầu trượt màu đỏ. Hai cậu bé đang lái những chiếc ô tô điện đồ chơi. Tất cả các bạn nhỏ đều có rất nhiều niềm vui bên nhau.",
+        questions: [
+          { q: "What are Peter and John riding?", choices: ["Their bikes", "Horses", "Scooters", "Trains"], ans: 0 },
+          { q: "What is Sarah doing?", choices: ["Sliding down the slide", "Reading", "Sleeping", "Eating"], ans: 0 },
+          { q: "What are the two boys driving?", choices: ["Toy electric cars", "A bus", "An airplane", "A boat"], ans: 0 },
+          { q: "How is the playground atmosphere?", choices: ["Cheerful and fun", "Quiet and sad", "Dark and scary", "Cold"], ans: 0 }
+        ]
+      },
+      {
+        id: 11, title: "At the Birthday Café", type: "Unit 12 - Café", emoji: "🎂",
+        lines: [
+          "Today is Tommy's seventh birthday.",
+          "His family is sitting at a large table in the café.",
+          "A delicious chocolate cake with candles is on the table.",
+          "There is a big plate of sweet purple grapes.",
+          "The waiter brings a glass of cool lemonade.",
+          "Everyone sings Happy Birthday to Tommy."
+        ],
+        viText: "Hôm nay là sinh nhật lần thứ 7 của Tommy. Gia đình cậu đang ngồi ở chiếc bàn lớn trong quán cà phê. Một chiếc bánh sô-cô-la thơm ngon có nến ở trên bàn. Có một đĩa nho tím ngọt lịm. Người phục vụ mang ra một ly nước chanh mát lạnh. Mọi người cùng hát Chúc mừng sinh nhật Tommy.",
+        questions: [
+          { q: "Whose birthday is today?", choices: ["Tommy's", "Rosy's", "Anna's", "Ben's"], ans: 0 },
+          { q: "How old is Tommy?", choices: ["Seven", "Four", "Ten", "Fifteen"], ans: 0 },
+          { q: "What fruit is on the table?", choices: ["Grapes", "Apples", "Watermelons", "Coconuts"], ans: 0 },
+          { q: "What drink does the waiter bring?", choices: ["Lemonade", "Milk", "Tea", "Coffee"], ans: 0 }
+        ]
+      },
+      {
+        id: 12, title: "Trip to the City Zoo", type: "Unit 13 - Zoo", emoji: "🦓",
+        lines: [
+          "On Sunday morning, Kevin goes to the zoo with his dad.",
+          "Kevin loves animals very much.",
+          "He says: Look! I like watching black and white zebras.",
+          "They also see tall giraffes eating green leaves.",
+          "A big lion is resting under the shadow.",
+          "Kevin takes many nice photos with his camera."
+        ],
+        viText: "Vào sáng Chủ Nhật, Kevin cùng bố đi sở thú. Kevin rất yêu động vật. Cậu nói: Nhìn kìa! Con thích ngắm những chú ngựa vằn trắng đen. Họ cũng nhìn thấy những chú hươu cao cổ đang ăn lá xanh. Một chú sư tử to lớn đang nghỉ ngơi dưới bóng râm. Kevin chụp rất nhiều bức ảnh đẹp bằng máy ảnh của mình.",
+        questions: [
+          { q: "Where does Kevin go on Sunday?", choices: ["To the zoo", "To the beach", "To school", "To the supermarket"], ans: 0 },
+          { q: "Which animal has black and white stripes?", choices: ["Zebra", "Lion", "Fox", "Duck"], ans: 0 },
+          { q: "What are the giraffes eating?", choices: ["Green leaves", "Meat", "Pizza", "Bread"], ans: 0 },
+          { q: "What tool does Kevin use to take photos?", choices: ["Camera", "Book", "Phone", "Telescope"], ans: 0 }
+        ]
+      },
+      {
+        id: 13, title: "At the Grocery Store", type: "Unit 9 - Grocery", emoji: "🍧",
+        lines: [
+          "Mary goes to the grocery store with her mother.",
+          "Mary says: I want some fresh yogurt.",
+          "Mother wants some yams and sweet potatoes for dinner.",
+          "Near the toy counter, Mary sees bright colorful yo-yos.",
+          "They put all the food into the shopping cart.",
+          "They walk home happily with healthy food."
+        ],
+        viText: "Mary cùng mẹ đi siêu thị bách hóa. Mary nói: Con muốn một ít sữa chua tươi. Mẹ muốn mua củ từ và khoai lang cho bữa tối. Gần quầy đồ chơi, Mary nhìn thấy những chiếc yo-yo nhiều màu sắc rực rỡ. Họ đặt tất cả thức ăn vào xe đẩy hàng. Họ vui vẻ đi bộ về nhà với thực phẩm lành mạnh.",
+        questions: [
+          { q: "What food does Mary want?", choices: ["Fresh yogurt", "Popcorn", "Pizza", "Hot dogs"], ans: 0 },
+          { q: "What does mother want for dinner?", choices: ["Yams and sweet potatoes", "Chicken", "Fish", "Noodles"], ans: 0 },
+          { q: "What toy does Mary see?", choices: ["Yo-yos", "Robots", "Kites", "Dolls"], ans: 0 },
+          { q: "Where do they put the items?", choices: ["In the shopping cart", "In a box", "In a backpack", "On the floor"], ans: 0 }
+        ]
+      },
+      {
+        id: 14, title: "My Teddy Bear & Shapes", type: "Shapes & Toys", emoji: "🧸",
+        lines: [
+          "Emma has two favorite teddy bears in her bedroom.",
+          "One is a little brown teddy bear on her bed.",
+          "The other is a big fluffy teddy bear on the chair.",
+          "Emma also plays with shape cards.",
+          "She finds a round circle clock and a square window.",
+          "Learning shapes with toys is so easy!"
+        ],
+        viText: "Emma có hai chú gấu bông yêu thích trong phòng ngủ. Một chú gấu bông nhỏ màu nâu ở trên giường. Chú còn lại là gấu bông to xù xì ở trên ghế. Emma cũng chơi thẻ hình khối. Bé tìm thấy đồng hồ hình tròn và cửa sổ hình vuông. Học hình khối cùng đồ chơi thật dễ dàng!",
+        questions: [
+          { q: "How many teddy bears does Emma have?", choices: ["Two", "Three", "Four", "One"], ans: 0 },
+          { q: "Where is the big teddy bear?", choices: ["On the chair", "On the roof", "Under the bed", "In the bag"], ans: 0 },
+          { q: "What shape is the clock?", choices: ["Circle", "Square", "Rectangle", "Triangle"], ans: 0 },
+          { q: "What shape is the window?", choices: ["Square", "Circle", "Star", "Oval"], ans: 0 }
+        ]
+      },
+      {
+        id: 15, title: "Sunny Afternoon in the Park", type: "Unit 8 - Uncle", emoji: "🌳",
+        lines: [
+          "Today it is warm and sunny in the city park.",
+          "Look over there! This is my kind uncle David.",
+          "My uncle is sitting under the big shady green tree.",
+          "He is drinking cool fresh water and reading.",
+          "Some boys are playing soccer on the field.",
+          "The park is a great place to relax on sunny days."
+        ],
+        viText: "Hôm nay trời ấm áp và nắng rực rỡ ở công viên thành phố. Nhìn đằng kia kìa! Đây là người chú tốt bụng của tớ, chú David. Chú tớ đang ngồi dưới bóng cây xanh râm mát. Chú đang uống nước lọc mát và đọc sách. Một vài cậu bé đang đá bóng trên sân cỏ. Công viên là nơi tuyệt vời để thư giãn.",
+        questions: [
+          { q: "How is the weather today?", choices: ["Warm and sunny", "Rainy and cold", "Snowy", "Foggy"], ans: 0 },
+          { q: "Who is sitting under the tree?", choices: ["Uncle David", "Grandpa", "Teacher", "Brother"], ans: 0 },
+          { q: "What is uncle David drinking?", choices: ["Cool fresh water", "Hot soup", "Tea", "Milk"], ans: 0 },
+          { q: "What are the boys playing on the field?", choices: ["Soccer", "Basketball", "Badminton", "Chess"], ans: 0 }
+        ]
+      },
+      {
+        id: 16, title: "Exploring the Countryside", type: "Unit 4 - Countryside", emoji: "🌈",
+        lines: [
+          "Leo is visiting the quiet countryside.",
+          "He makes a pair of paper binoculars to see far away.",
+          "Leo looks through the paper binoculars and smiles.",
+          "He says: I can see a winding road through the fields.",
+          "I can see a clean sparkling river.",
+          "And look up high, I can see a seven-color rainbow in the sky!"
+        ],
+        viText: "Leo đang đi thăm vùng nông thôn yên bình. Cậu làm một chiếc ống nhòm bằng giấy để nhìn ra xa. Leo nhìn qua ống nhòm giấy và mỉm cười. Cậu nói: Tớ có thể thấy một con đường uốn lượn qua những cánh đồng. Tớ thấy một dòng sông sạch lấp lánh. Và nhìn lên cao kìa, tớ thấy một chiếc cầu vồng bảy sắc trên bầu trời!",
+        questions: [
+          { q: "What did Leo make?", choices: ["Paper binoculars", "A paper airplane", "A kite", "A boat"], ans: 0 },
+          { q: "What does Leo see through the fields?", choices: ["A winding road", "A train track", "A skyscraper", "A mall"], ans: 0 },
+          { q: "What is sparkling in the countryside?", choices: ["A clean river", "A lamp", "A computer", "A car"], ans: 0 },
+          { q: "What is in the sky?", choices: ["A seven-color rainbow", "A helicopter", "An owl", "A dark cloud"], ans: 0 }
+        ]
+      },
+      {
+        id: 17, title: "Playing with Toys", type: "Unit 12 - Toys", emoji: "⛵",
+        lines: [
+          "Lucas and Chloe are in the study room.",
+          "Lucas holds up a white sailboat: I have got a yacht!",
+          "Chloe takes out her crayons: Let's draw together!",
+          "Lucas smiles and takes out a spinning toy: I have got a yo-yo.",
+          "Chloe says: OK! Let's play!",
+          "They share their toys and have a wonderful time."
+        ],
+        viText: "Lucas và Chloe đang ở trong phòng học. Lucas giơ một chiếc thuyền buồm nhỏ màu trắng: Tớ có một chiếc du thuyền! Chloe lấy bút màu ra: Chúng mình cùng vẽ tranh nhé! Lucas mỉm cười và lấy một món đồ chơi: Tớ có một con yo-yo. Chloe bảo: Được rồi! Cùng chơi nào! Các bạn chia sẻ đồ chơi rất vui.",
+        questions: [
+          { q: "What toy boat does Lucas have?", choices: ["A yacht", "A submarine", "A big ship", "A speed boat"], ans: 0 },
+          { q: "What does Chloe want to do with crayons?", choices: ["Draw together", "Eat", "Sleep", "Jump"], ans: 0 },
+          { q: "What spinning toy does Lucas show?", choices: ["A yo-yo", "A top", "A ball", "A wheel"], ans: 0 },
+          { q: "Where are Lucas and Chloe?", choices: ["In the study room", "In the park", "At the market", "On a bus"], ans: 0 }
+        ]
+      },
+      {
+        id: 18, title: "Shopping for New Clothes", type: "Clothes Chant", emoji: "👔",
+        lines: [
+          "Grandma takes Tim and Lily to the mall.",
+          "Tim points at a collared shirt: I want a shirt.",
+          "Lily looks at a pretty pink dress: My friend wants a dress.",
+          "They hold Grandma's hand: Please buy us new clothes!",
+          "Grandma smiles warmly and says: Yes, of course!",
+          "They find colorful clothes that fit them perfectly."
+        ],
+        viText: "Bà dẫn Tim và Lily đến trung tâm mua sắm. Tim chỉ vào chiếc áo sơ mi: Cháu muốn một chiếc áo sơ mi. Lily nhìn chiếc đầm hồng: Bạn cháu muốn một chiếc đầm. Các bé nắm tay bà: Bà ơi mua quần áo mới cho chúng cháu nhé! Bà mỉm cười: Được chứ các cháu! Họ tìm được những bộ quần áo vừa vặn.",
+        questions: [
+          { q: "Who takes Tim and Lily shopping?", choices: ["Grandma", "Dad", "Teacher", "Uncle"], ans: 0 },
+          { q: "What does Tim want?", choices: ["A shirt", "A hat", "A pair of socks", "A jacket"], ans: 0 },
+          { q: "What does Lily's friend want?", choices: ["A dress", "A scarf", "Gloves", "Shoes"], ans: 0 },
+          { q: "What does Grandma say?", choices: ["Yes, of course", "No, tomorrow", "I don't know", "Later"], ans: 0 }
+        ]
+      },
+      {
+        id: 19, title: "Days of the Week at School", type: "Timetable", emoji: "📅",
+        lines: [
+          "Here is David's weekly school timetable.",
+          "On Monday, David has an English and Phonics lesson.",
+          "On Tuesday, he draws trees in Art class.",
+          "On Wednesday, he sings happy songs in Music class.",
+          "On Friday, he plays soccer with his classmates.",
+          "David loves every school day!"
+        ],
+        viText: "Đây là thời khóa biểu hàng tuần của David ở trường. Vào thứ Hai, David học Tiếng Anh và Ngữ âm. Vào thứ Ba, cậu vẽ cây trong giờ Mỹ thuật. Vào thứ Tư, cậu hát trong giờ Âm nhạc. Vào thứ Sáu, cậu đá bóng cùng các bạn. David yêu thích mỗi ngày đi học!",
+        questions: [
+          { q: "What lesson does David have on Monday?", choices: ["English and Phonics", "Math", "History", "Swimming"], ans: 0 },
+          { q: "What does David do on Tuesday?", choices: ["Draws trees", "Cooks", "Swims", "Sleeps"], ans: 0 },
+          { q: "When does David have Music class?", choices: ["Wednesday", "Monday", "Friday", "Sunday"], ans: 0 },
+          { q: "What sport does David play on Friday?", choices: ["Soccer", "Basketball", "Tennis", "Volleyball"], ans: 0 }
+        ]
+      },
+      {
+        id: 20, title: "The Birthday Party Feast", type: "Party Feast", emoji: "🍕",
+        lines: [
+          "All the friends gather for an afternoon birthday feast.",
+          "On the long table, there is delicious pizza and popcorn.",
+          "There is also a bowl of warm tasty pasta.",
+          "The kids count the candles on the cake: One, two, three... up to eight!",
+          "They eat yummy food, drink juice, and play hide-and-seek.",
+          "It is the best birthday party ever!"
+        ],
+        viText: "Tất cả bạn bè tụ họp cho một bữa tiệc sinh nhật buổi chiều. Trên chiếc bàn dài có pizza và bỏng ngô thơm ngon. Còn có một bát mì Ý nóng hổi ngon lành. Các bạn nhỏ đếm nến trên bánh: 1, 2, 3... đến 8! Các bạn ăn ngon, uống nước ép và chơi trốn tìm. Đó là bữa tiệc sinh nhật tuyệt nhất!",
+        questions: [
+          { q: "What snacks are on the long table?", choices: ["Pizza and popcorn", "Fish and rice", "Hamburgers", "Apples only"], ans: 0 },
+          { q: "What pasta dish is on the table?", choices: ["Warm tasty pasta", "Ice cream", "Salad", "Bread"], ans: 0 },
+          { q: "How many candles are on the cake?", choices: ["Eight", "Ten", "Four", "Twelve"], ans: 0 },
+          { q: "What game do the kids play after eating?", choices: ["Hide-and-seek", "Tag", "Hopscotch", "Board game"], ans: 0 }
+        ]
+      }
+    ];
+
+    const EXTRA_IPA = {
+      "I": "/aɪ/", "have": "/hæv/", "a": "/ə/", "an": "/æn/", "is": "/ɪz/", "are": "/ɑːr/",
+      "this": "/ðɪs/", "that": "/ðæt/", "the": "/ðə/", "my": "/maɪ/", "your": "/jɔːr/",
+      "like": "/laɪk/", "likes": "/laɪks/", "love": "/lʌv/", "open": "/ˈəʊ.pən/", "close": "/kləʊz/",
+      "see": "/siː/", "big": "/bɪɡ/", "small": "/smɔːl/", "sky": "/skaɪ/", "in": "/ɪn/", "on": "/ɒn/", "at": "/æt/",
+      "these": "/ðiːz/", "can": "/kæn/", "you": "/juː/", "what": "/wɒt/", "where": "/weər/", "it": "/ɪt/"
+    };
+
+    function getIPA(word) {
+      if (!word) return '';
+      const found = ENG_VOCAB_MASTER.find(v => v.word.toLowerCase() === word.toLowerCase());
+      if (found) return found.ipa;
+      if (EXTRA_IPA[word] || EXTRA_IPA[word.toLowerCase()]) return EXTRA_IPA[word] || EXTRA_IPA[word.toLowerCase()];
+      const clean = word.replace(/[^a-zA-Z]/g, '').toLowerCase();
+      const fallback = ENG_VOCAB_MASTER.find(v => v.word.toLowerCase() === clean);
+      return fallback ? fallback.ipa : (EXTRA_IPA[clean] || '');
+    }
+
+    function highlightWordInSentence(sentence, targetWord) {
+      if (!sentence || !targetWord) return sentence;
+      const regex = new RegExp(`\\b(${targetWord}[a-z]*)\\b`, 'gi');
+      return sentence.replace(regex, `<span class="vocab-pill-red">$1</span>`);
+    }
+
+    const container = document.getElementById('main-content');
+
+    /* =========================================================================
+       6. MAIN DASHBOARD MENU (10 CATEGORIES)
+       ========================================================================= */
+    function openEngMenu() {
+      currentMode = null;
+      currentTopicId = null;
+      updateBreadcrumbs([]);
+
+      container.innerHTML = `
+        <div class="mb-3">
+          <h2 class="text-xl md:text-2xl font-black text-pink-600 font-cute">🌍 ENGLISH GRADE 2 - 18 TOPICS & GRAMMAR FUN</h2>
+          <p class="text-xs md:text-sm font-bold text-gray-500">Choose a learning category below to start practicing!</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 w-full max-w-5xl">
+          <div onclick="openAlphabetMenu(0)" class="card-hover bg-white border-2 border-purple-300 hover:border-purple-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-purple-600 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">Phonics</span>
+            <div class="text-3xl mb-1">🔤</div>
+            <h3 class="text-xs md:text-sm font-black text-purple-700">1. Alphabet & Phonics</h3>
+          </div>
+          <div onclick="openEngTopicsMenu()" class="card-hover bg-white border-2 border-pink-300 hover:border-pink-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-pink-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">316 Words</span>
+            <div class="text-3xl mb-1">📚</div>
+            <h3 class="text-xs md:text-sm font-black text-pink-600">2. 18 Vocab Topics</h3>
+          </div>
+          <div onclick="startEngSpellingFixerGame()" class="card-hover bg-white border-2 border-rose-300 hover:border-rose-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">Practice</span>
+            <div class="text-3xl mb-1">🧹</div>
+            <h3 class="text-xs md:text-sm font-black text-rose-700">3. Remove Extra Letter</h3>
+          </div>
+          <div onclick="startEngMissingLetterGame()" class="card-hover bg-white border-2 border-amber-300 hover:border-amber-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-amber-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">Write & Say</span>
+            <div class="text-3xl mb-1">✍️</div>
+            <h3 class="text-xs md:text-sm font-black text-amber-700">4. Fill Missing Letter</h3>
+          </div>
+          <div onclick="startEngOddOneOutGame()" class="card-hover bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-fuchsia-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">New Game</span>
+            <div class="text-3xl mb-1">🎯</div>
+            <h3 class="text-xs md:text-sm font-black text-fuchsia-700">5. Choose Odd One Out</h3>
+          </div>
+          <div onclick="openReadingPassage(0)" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-emerald-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">20 Stories</span>
+            <div class="text-3xl mb-1">📖</div>
+            <h3 class="text-xs md:text-sm font-black text-emerald-700">6. Reading Stories</h3>
+          </div>
+          <div onclick="startEngSentenceBuilderGame()" class="card-hover bg-white border-2 border-indigo-200 hover:border-indigo-400 rounded-2xl p-3 text-center cursor-pointer shadow-sm">
+            <div class="text-3xl mb-1">🧩</div>
+            <h3 class="text-xs md:text-sm font-black text-indigo-700">7. Sentence Builder</h3>
+          </div>
+          <div onclick="startEngFillBlankGame()" class="card-hover bg-white border-2 border-teal-200 hover:border-teal-400 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-teal-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">Grammar</span>
+            <div class="text-3xl mb-1">📝</div>
+            <h3 class="text-xs md:text-sm font-black text-teal-700">8. Fill Sentence Blank</h3>
+          </div>
+          <div onclick="startEngQAQuizGame()" class="card-hover bg-white border-2 border-cyan-200 hover:border-cyan-400 rounded-2xl p-3 text-center cursor-pointer shadow-sm">
+            <div class="text-3xl mb-1">💡</div>
+            <h3 class="text-xs md:text-sm font-black text-cyan-700">9. Question & Answer</h3>
+          </div>
+          <div onclick="startEngGrammarGame()" class="card-hover bg-white border-2 border-blue-200 hover:border-blue-400 rounded-2xl p-3 text-center cursor-pointer shadow-sm relative">
+            <span class="absolute top-1.5 right-1.5 bg-blue-600 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">A/An & In/On</span>
+            <div class="text-3xl mb-1">🅰️</div>
+            <h3 class="text-xs md:text-sm font-black text-blue-700">10. Grammar & Prepositions</h3>
+          </div>
+        </div>
+      `;
+    }
+
+    /* =========================================================================
+       7. SECTION 1: ALPHABET & PHONICS (A-Z)
+       ========================================================================= */
+    let currentAlphabetIndex = 0;
+    function openAlphabetMenu(index = 0) {
+      currentMode = 'engAlphabet';
+      if (index < 0) index = 0;
+      if (index >= ALPHABET_PHONICS.length) index = ALPHABET_PHONICS.length - 1;
+      currentAlphabetIndex = index;
+      
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🔤 1. Alphabet & Phonics', action: 'openAlphabetMenu(0)' }
+      ]);
+
+      const item = ALPHABET_PHONICS[index];
+
+      const keyboardHtml = ALPHABET_PHONICS.map((alpha, idx) => {
+        const isActive = idx === currentAlphabetIndex;
+        return `
+          <button onclick="openAlphabetMenu(${idx})" class="btn-bounce flex flex-col items-center justify-center rounded-xl p-1.5 transition shadow-sm cursor-pointer ${isActive ? 'bg-pink-500 text-white border-2 border-pink-600 scale-105 ring-2 ring-pink-200' : 'bg-white text-gray-700 border border-gray-200 hover:bg-pink-50 hover:border-pink-300'} min-w-[52px] min-h-[52px]">
+            <span class="text-base font-black">${alpha.letter}</span>
+            <span class="choice-ipa font-bold ${isActive ? 'text-white' : 'text-pink-600'} text-xs md:text-sm">${alpha.ipaName}</span>
+          </button>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="w-full max-w-4xl flex flex-col items-center">
+          <div class="mb-2 text-center">
+            <h2 class="text-lg md:text-xl font-black text-pink-600 font-cute mb-0.5">🔤 ENGLISH ALPHABET & PHONICS (A-Z)</h2>
+            <p class="text-xs font-bold text-gray-500">Click any letter or sample word to listen to its pronunciation:</p>
+            <button onclick="speakAlphabetLetter(${index})" class="btn-bounce mt-1.5 bg-pink-100 hover:bg-pink-200 text-pink-700 border border-pink-300 font-extrabold px-3.5 py-1 rounded-xl text-xs flex items-center justify-center gap-1 mx-auto shadow-sm cursor-pointer">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>Listen to Letter ${item.letter}</span>
+            </button>
+          </div>
+
+          <div class="bg-pink-50/60 border-2 border-dashed border-pink-300 rounded-2xl p-3 md:p-3.5 w-full mb-3 shadow-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 items-stretch">
+              <div onclick="speakAlphabetLetter(${index})" class="card-hover bg-white border-2 border-pink-400 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer shadow-sm bg-gradient-to-b from-white to-pink-50">
+                <div class="text-5xl md:text-6xl font-black text-pink-600 font-cute mb-1">${item.name}</div>
+                <div class="text-xs font-extrabold text-gray-600 mb-2">Cách đọc: <b class="choice-ipa text-purple-600 text-lg">${item.ipaName}</b></div>
+                <span class="bg-pink-100 text-pink-700 text-[10px] font-black px-2.5 py-0.5 rounded-full border border-pink-200">👆 Tap to Listen</span>
+              </div>
+
+              <div onclick="speakAlphaWord(${index}, 1)" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm">
+                <div class="text-3xl mb-1">${item.word1.emoji}</div>
+                <div class="flex items-center gap-1">
+                  <span class="text-sm font-black text-emerald-800">${item.word1.en}</span>
+                  <span class="pos-badge pos-noun text-[9px] px-1.5 py-0.2">${item.word1.pos}</span>
+                </div>
+                <div class="choice-ipa text-emerald-600 text-base mt-0.5">${item.word1.ipa}</div>
+                <div class="text-xs font-extrabold text-gray-600 my-0.5">${item.word1.vi}</div>
+                <div class="text-[10px] font-bold text-gray-400 mb-1.5">"${item.word1.ex}"</div>
+                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2 py-0.5 rounded-lg">🔊 Listen</span>
+              </div>
+
+              <div onclick="speakAlphaWord(${index}, 2)" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm">
+                <div class="text-3xl mb-1">${item.word2.emoji}</div>
+                <div class="flex items-center gap-1">
+                  <span class="text-sm font-black text-emerald-800">${item.word2.en}</span>
+                  <span class="pos-badge pos-noun text-[9px] px-1.5 py-0.2">${item.word2.pos}</span>
+                </div>
+                <div class="choice-ipa text-emerald-600 text-base mt-0.5">${item.word2.ipa}</div>
+                <div class="text-xs font-extrabold text-gray-600 my-0.5">${item.word2.vi}</div>
+                <div class="text-[10px] font-bold text-gray-400 mb-1.5">"${item.word2.ex}"</div>
+                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2 py-0.5 rounded-lg">🔊 Listen</span>
+              </div>
+
+              <div onclick="speakAlphaWord(${index}, 3)" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm">
+                <div class="text-3xl mb-1">${item.word3.emoji}</div>
+                <div class="flex items-center gap-1">
+                  <span class="text-sm font-black text-emerald-800">${item.word3.en}</span>
+                  <span class="pos-badge pos-noun text-[9px] px-1.5 py-0.2">${item.word3.pos}</span>
+                </div>
+                <div class="choice-ipa text-emerald-600 text-base mt-0.5">${item.word3.ipa}</div>
+                <div class="text-xs font-extrabold text-gray-600 my-0.5">${item.word3.vi}</div>
+                <div class="text-[10px] font-bold text-gray-400 mb-1.5">"${item.word3.ex}"</div>
+                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2 py-0.5 rounded-lg">🔊 Listen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-2xl p-2.5 w-full shadow-inner mb-2.5">
+            <div class="flex flex-wrap items-center justify-center gap-1">
+              ${keyboardHtml}
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-center space-x-3 mt-1">
+            <button onclick="openAlphabetMenu(${index - 1})" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-xs md:text-sm px-4 py-2 rounded-xl shadow-sm flex items-center space-x-1 cursor-pointer ${index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${index <= 0 ? 'disabled' : ''}>
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Previous</span>
+            </button>
+            <button onclick="startAlphaQuizGame()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer">
+              <span>🎯 Phonics Quiz</span>
+            </button>
+            <button onclick="openAlphabetMenu(${index + 1})" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1 cursor-pointer ${index >= ALPHABET_PHONICS.length - 1 ? 'opacity-40 cursor-not-allowed' : ''}" ${index >= ALPHABET_PHONICS.length - 1 ? 'disabled' : ''}>
+              <span>Next</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      speakAlphabetLetter(index);
+    }
+
+    function speakAlphabetLetter(index) {
+      const item = ALPHABET_PHONICS[index];
+      speakClear(`Letter ${item.letter}. ${item.word1.en}`, "en");
+    }
+
+    function speakAlphaWord(index, wordNum) {
+      const item = ALPHABET_PHONICS[index];
+      const wObj = wordNum === 1 ? item.word1 : (wordNum === 2 ? item.word2 : item.word3);
+      speakClear(`${wObj.en}. ${wObj.ex}`, "en");
+    }
+
+    function startAlphaQuizGame() {
+      currentMode = 'engAlphaQuiz';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🔤 Alphabet', action: 'openAlphabetMenu(0)' },
+        { label: '🎯 Phonics Quiz', action: 'startAlphaQuizGame()' }
+      ]);
+      const randomAlpha = ALPHABET_PHONICS[Math.floor(Math.random() * ALPHABET_PHONICS.length)];
+      currentAnswer = randomAlpha.letter;
+
+      let choices = [randomAlpha.letter];
+      while (choices.length < 4) {
+        let fake = ALPHABET_PHONICS[Math.floor(Math.random() * ALPHABET_PHONICS.length)].letter;
+        if (!choices.includes(fake)) choices.push(fake);
+      }
+      choices.sort(() => Math.random() - 0.5);
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2.5 flex items-center justify-center gap-2">
+          <span>Listen to the Word and pick the starting Letter:</span>
+          <button class="btn-bounce bg-amber-100 hover:bg-amber-200 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${randomAlpha.word1.en}', 'en')">🔊 Listen Word</button>
+        </div>
+        <div class="bg-amber-50/50 border-2 border-dashed border-amber-200 rounded-2xl p-4 w-full max-w-lg mb-4 flex flex-col items-center">
+          <div class="text-6xl mb-1.5">${randomAlpha.word1.emoji}</div>
+          <div class="text-base font-bold text-gray-600 mb-1">Vocabulary: <b class="text-pink-600">${randomAlpha.word1.en}</b> (${randomAlpha.word1.vi})</div>
+          <div class="choice-ipa text-base text-amber-700 bg-amber-100 border border-amber-200 px-3 py-1 rounded-lg">IPA: ${randomAlpha.word1.ipa}</div>
+          <div id="quiz-feedback" class="text-sm font-black min-h-[22px] mt-2"></div>
+        </div>
+        <div id="alpha-choices-grid" class="grid grid-cols-2 gap-3 w-full max-w-md mb-3">
+          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-amber-400 hover:bg-amber-50 text-amber-900 font-black text-xl py-2.5 rounded-xl shadow-sm transition cursor-pointer" onclick="checkChoiceAnswer(this, '${c}')">${c}</button>`).join('')}
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="openAlphabetMenu(currentAlphabetIndex)" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border border-sky-300 font-black text-xs px-4 py-2 rounded-xl cursor-pointer">
+            ⬅️ Back to Alphabet
+          </button>
+          <button onclick="startAlphaQuizGame()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border border-amber-500 font-black text-xs px-5 py-2 rounded-xl cursor-pointer">
+            Next ➡️
+          </button>
+        </div>
+      `;
+      speakClear(`Word ${randomAlpha.word1.en}`, "en");
+    }
+
+    /* =========================================================================
+       8. SECTION 2: 18 VOCABULARY TOPICS (316 WORDS)
+       ========================================================================= */
+    function openEngTopicsMenu() {
+      currentMode = 'engTopicsMenu';
+      currentTopicId = null;
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '📚 2. 18 Vocab Topics', action: 'openEngTopicsMenu()' }
+      ]);
+      
+      const topicsHtml = ENG_TOPICS.map(t => {
+        const count = ENG_VOCAB_MASTER.filter(v => v.topicId === t.id).length;
+        return `
+          <div onclick="selectVocabTopic('${t.id}')" class="card-hover bg-white border-2 border-pink-200 hover:border-pink-400 rounded-2xl p-2.5 text-center cursor-pointer shadow-sm flex flex-col items-center justify-between min-h-[125px]">
+            <div class="text-2xl mb-0.5">${t.icon}</div>
+            <div>
+              <h3 class="text-xs font-black text-pink-700 mb-0.5 leading-tight">${t.title}</h3>
+              <p class="text-[10px] font-bold text-gray-500 line-clamp-1">${t.viTitle}</p>
+            </div>
+            <span class="mt-1 text-[9px] font-black bg-pink-50 text-pink-600 px-2 py-0.2 rounded-full border border-pink-200 shadow-inner">${count} words</span>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="mb-2.5">
+          <h2 class="text-lg md:text-xl font-black text-pink-600 font-cute">🌈 18 VOCABULARY TOPICS (316 WORDS)</h2>
+          <p class="text-xs font-bold text-gray-500 mt-0.5">Select a topic below to explore words and example sentences:</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 w-full max-w-6xl">
+          ${topicsHtml}
+        </div>
+      `;
+    }
+
+    function selectVocabTopic(topicId) {
+      currentTopicId = topicId;
+      const historyState = getHistoryState('engVocabMaster_' + topicId);
+      historyState.items = [];
+      historyState.index = -1;
+      startEngVocabMasterGame(null, false);
+    }
+
+    function startEngVocabMasterGame(targetWordObj = null, isNav = false) {
+      currentMode = 'engVocabMaster';
+
+      const topicPool = currentTopicId 
+        ? ENG_VOCAB_MASTER.filter(v => v.topicId === currentTopicId)
+        : ENG_VOCAB_MASTER;
+
+      const historyKey = 'engVocabMaster_' + (currentTopicId || 'all');
+      const historyState = getHistoryState(historyKey);
+
+      let target;
+      if (targetWordObj) {
+        target = targetWordObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        target = historyState.items[historyState.index];
+      } else {
+        const poolKey = 'pool_engVocab_' + (currentTopicId || 'all');
+        target = getNextItemFromPool(poolKey, topicPool);
+        historyState.items.push(target);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentVocabTarget = target;
+      currentAnswer = target.word;
+
+      const curTopicObj = ENG_TOPICS.find(t => t.id === target.topicId);
+      const topicNameDisplay = curTopicObj ? `${curTopicObj.icon} ${curTopicObj.title}` : target.topicId;
+
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '📚 2. 18 Vocab Topics', action: 'openEngTopicsMenu()' },
+        { label: topicNameDisplay, action: `selectVocabTopic('${target.topicId}')` }
+      ]);
+
+      let choices = [target.word];
+      const sameTopicOthers = topicPool.filter(v => v.word !== target.word);
+      const shuffledSameTopic = [...sameTopicOthers].sort(() => Math.random() - 0.5);
+
+      for (let item of shuffledSameTopic) {
+        if (choices.length < 4 && !choices.includes(item.word)) {
+          choices.push(item.word);
+        }
+      }
+
+      if (choices.length < 4) {
+        const otherAll = ENG_VOCAB_MASTER.filter(v => !choices.includes(v.word));
+        const shuffledAll = [...otherAll].sort(() => Math.random() - 0.5);
+        for (let item of shuffledAll) {
+          if (choices.length < 4) choices.push(item.word);
+        }
+      }
+
+      choices.sort(() => Math.random() - 0.5);
+
+      container.innerHTML = `
+        <div class="text-sm md:text-base font-black text-gray-800 mb-1.5 flex flex-wrap items-center justify-center gap-2">
+          <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-xl text-xs md:text-sm font-black shadow-sm">${topicNameDisplay}</span>
+          <span class="text-sm md:text-base">Choose the correct English word:</span>
+          <button id="btn-speak-meaning" class="btn-bounce bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs md:text-sm font-black px-3 py-1 rounded-xl flex items-center gap-1 shadow-sm cursor-pointer">
+            <span>🔊 Meaning: ${target.vi}</span>
+          </button>
+        </div>
+
+        <div class="bg-pink-50/50 border-2 border-dashed border-pink-200 rounded-2xl p-3 w-full max-w-4xl mb-2.5">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            
+            <div class="md:col-span-5 flex flex-col items-center justify-center bg-white/95 rounded-xl p-3.5 border border-pink-100 shadow-sm min-h-[175px]">
+              <div class="text-6xl md:text-7xl mb-1">${target.emoji}</div>
+              <div class="flex items-center justify-center gap-1.5 mb-1.5">
+                <span class="text-xl md:text-2xl font-black text-gray-800">${target.vi}</span>
+                <span class="pos-badge ${target.posClass} text-[10px] md:text-xs px-2 py-0.5">${target.pos}</span>
+              </div>
+
+              <div id="secret-word-box" class="bg-slate-50 border-2 border-dashed border-slate-200 px-4 py-1 rounded-xl mb-1.5 text-center">
+                <span class="text-slate-400 font-bold text-xs md:text-sm tracking-wider">❓ Select your answer below</span>
+              </div>
+
+              <div class="text-[11px] md:text-xs font-black text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
+                Topic: ${curTopicObj ? curTopicObj.title : ''}
+              </div>
+            </div>
+
+            <div id="vocab-examples-container" class="md:col-span-7 flex flex-col justify-center min-h-[175px]">
+              <div class="border-2 border-dashed border-pink-200 bg-white/60 rounded-xl p-4 text-center text-gray-400 font-bold italic flex flex-col items-center justify-center h-full">
+                <span class="text-3xl mb-1">💡</span>
+                <span class="text-sm md:text-base">Select the correct English word below to unlock 3 example sentences!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="vocab-choices-grid" class="grid grid-cols-2 md:grid-cols-4 gap-2.5 w-full max-w-4xl mb-2">
+          ${renderEngChoiceButtons(choices)}
+        </div>
+
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevVocabWord()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextVocabWord()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+
+      document.getElementById('btn-speak-meaning').onclick = () => speakClear("Nghĩa là: " + target.vi, 'vi');
+      speakClear(target.vi, 'vi');
+    }
+
+    function renderVocabExamples(target) {
+      const exContainer = document.getElementById('vocab-examples-container');
+      if (!exContainer || !target || !target.examples) return;
+
+      const examplesHtml = target.examples.map((ex, idx) => {
+        const highlightedEn = highlightWordInSentence(ex.en, target.word);
+        return `
+          <div class="bg-white border border-slate-100 rounded-xl p-2 mb-1.5 shadow-sm flex items-center justify-between text-left">
+            <div class="pr-1.5">
+              <div class="text-sm md:text-base font-black text-slate-800 leading-snug">${highlightedEn}</div>
+              <div class="text-xs md:text-sm font-extrabold text-slate-500 mt-0.5">${ex.vi}</div>
+            </div>
+            <button onclick="speakExample(${idx})" class="btn-bounce flex-shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-500 w-8 h-8 rounded-lg flex items-center justify-center shadow-sm border border-blue-200 ml-1.5 cursor-pointer">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      exContainer.innerHTML = `
+        <div class="bg-amber-50/60 border border-amber-200/90 rounded-xl p-2.5 shadow-inner text-left">
+          <div class="text-xs font-black text-amber-700 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+            <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+            <span>3 EXAMPLE SENTENCES:</span>
+            <span class="pos-badge ${target.posClass} ml-auto text-[10px]">${target.pos}</span>
+          </div>
+          ${examplesHtml}
+        </div>
+      `;
+    }
+
+    function speakExample(index) {
+      if (currentVocabTarget && currentVocabTarget.examples && currentVocabTarget.examples[index]) {
+        speakClear(currentVocabTarget.examples[index].en, 'en');
+      }
+    }
+
+    function prevVocabWord() {
+      const historyKey = 'engVocabMaster_' + (currentTopicId || 'all');
+      const historyState = getHistoryState(historyKey);
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngVocabMasterGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextVocabWord() {
+      const historyKey = 'engVocabMaster_' + (currentTopicId || 'all');
+      const historyState = getHistoryState(historyKey);
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngVocabMasterGame(historyState.items[historyState.index], true);
+      } else {
+        startEngVocabMasterGame(null, false);
+      }
+    }
+
+    function renderEngChoiceButtons(choices) {
+      return choices.map(c => {
+        const found = ENG_VOCAB_MASTER.find(v => v.word === c);
+        const ipa = found ? found.ipa : getIPA(c);
+        const posTag = found ? `<span class="pos-badge ${found.posClass} text-[9px] px-1.5 py-0.2">${found.pos}</span>` : '';
+
+        return `
+          <button class="btn-bounce bg-white border-3 border-emerald-400 hover:bg-emerald-50 text-emerald-800 font-black py-2 px-2.5 rounded-xl shadow-sm transition flex flex-col items-center justify-center min-h-[70px] cursor-pointer" onclick="checkChoiceAnswer(this, '${c}')">
+            <div class="flex items-center gap-1">
+              <span class="text-base md:text-lg font-black">${c}</span>
+              ${posTag}
+            </div>
+            ${ipa ? `<span class="choice-ipa text-emerald-600 mt-0.5 text-base md:text-lg">${ipa}</span>` : ''}
+          </button>
+        `;
+      }).join('');
+    }
+
+    /* =========================================================================
+       9. SECTION 3: REMOVE EXTRA LETTER
+       ========================================================================= */
+    let currentFixLetters = [];
+    let currentExtraIndex = -1;
+
+    function startEngSpellingFixerGame(targetWordObj = null, isNav = false) {
+      currentMode = 'engSpellingFixer';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🧹 3. Remove Extra Letter', action: 'startEngSpellingFixerGame()' }
+      ]);
+
+      const historyState = getHistoryState('spellingFixer');
+      let targetObj;
+      if (targetWordObj) {
+        targetObj = targetWordObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        targetObj = historyState.items[historyState.index];
+      } else {
+        targetObj = getNextItemFromPool('pool_spelling_master', ENG_VOCAB_MASTER);
+        historyState.items.push(targetObj);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      const cleanUpper = targetObj.word.toUpperCase().replace(/[^A-Z]/g, '');
+      currentAnswer = cleanUpper;
+
+      const alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const poolChoices = alphabetChars.split('').filter(c => !cleanUpper.includes(c));
+      const extraChar = poolChoices.length > 0 
+        ? poolChoices[Math.floor(Math.random() * poolChoices.length)]
+        : alphabetChars[Math.floor(Math.random() * alphabetChars.length)];
+
+      currentFixLetters = cleanUpper.split('');
+      const insertPos = Math.floor(Math.random() * (currentFixLetters.length + 1));
+      currentFixLetters.splice(insertPos, 0, extraChar);
+      currentExtraIndex = insertPos;
+
+      const lettersHtml = currentFixLetters.map((l, idx) => `
+        <button onclick="removeExtraLetter(${idx})" class="letter-btn btn-bounce bg-white border-2 border-rose-400 hover:bg-rose-50 text-rose-700 shadow-sm m-1 cursor-pointer">
+          ${l}
+        </button>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Click to remove the EXTRA letter:</span>
+          <button class="btn-bounce bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${targetObj.word}', 'en')">🔊 Listen</button>
+        </div>
+        <div class="bg-rose-50/50 border-2 border-dashed border-rose-200 rounded-2xl p-4 w-full max-w-lg mb-3 flex flex-col items-center">
+          <div class="text-6xl mb-1.5">${targetObj.emoji}</div>
+          <div class="text-base md:text-lg font-black text-gray-700 mb-0.5">Meaning: <b class="text-rose-600">${targetObj.vi}</b></div>
+          <div class="choice-ipa text-lg md:text-xl text-rose-600 bg-rose-100/70 border border-rose-200 px-4 py-1 rounded-lg mb-2.5">${targetObj.ipa}</div>
+          <div id="letters-box" class="flex flex-wrap justify-center gap-1 my-1.5">${lettersHtml}</div>
+          <div id="fixer-feedback" class="text-sm font-black min-h-[22px] mt-1.5"></div>
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevSpellingFixer()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextSpellingFixer()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+      speakClear(targetObj.word, "en");
+    }
+
+    function removeExtraLetter(index) {
+      const feedback = document.getElementById('fixer-feedback');
+      if (index === currentExtraIndex) {
+        currentFixLetters.splice(index, 1);
+        playTone('correct');
+        addStars(2, true);
+        feedback.innerHTML = `<span class="text-green-600 text-base">🎉 Correct! Complete word: <b>${currentAnswer}</b> (+2 ⭐). Press Next when ready!</span>`;
+        const lettersBox = document.getElementById('letters-box');
+        if (lettersBox) {
+          lettersBox.innerHTML = currentFixLetters.map(l => `
+            <div class="letter-btn bg-green-500 text-white border-2 border-green-600 shadow-md m-1">${l}</div>
+          `).join('');
+        }
+        speakClear(currentAnswer, "en");
+      } else {
+        playTone('wrong');
+        feedback.innerHTML = `<span class="text-rose-600 text-sm">💡 This letter belongs to the word. Try another!</span>`;
+      }
+    }
+
+    function prevSpellingFixer() {
+      const historyState = getHistoryState('spellingFixer');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngSpellingFixerGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextSpellingFixer() {
+      const historyState = getHistoryState('spellingFixer');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngSpellingFixerGame(historyState.items[historyState.index], true);
+      } else {
+        startEngSpellingFixerGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       10. SECTION 4: FILL MISSING LETTER
+       ========================================================================= */
+    let currentMissingWordObj = null;
+    let currentMissingCharIndex = -1;
+    let currentMissingChar = '';
+
+    function startEngMissingLetterGame(targetWordObj = null, isNav = false) {
+      currentMode = 'engMissingLetter';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '✍️ 4. Fill Missing Letter', action: 'startEngMissingLetterGame()' }
+      ]);
+
+      const historyState = getHistoryState('missingLetter');
+      let targetObj;
+      if (targetWordObj) {
+        targetObj = targetWordObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        targetObj = historyState.items[historyState.index];
+      } else {
+        targetObj = getNextItemFromPool('pool_missing_letter', ENG_VOCAB_MASTER);
+        historyState.items.push(targetObj);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentMissingWordObj = targetObj;
+      const cleanUpper = targetObj.word.toUpperCase().replace(/[^A-Z]/g, '');
+      currentAnswer = cleanUpper;
+
+      const hideIdx = Math.floor(Math.random() * cleanUpper.length);
+      currentMissingCharIndex = hideIdx;
+      currentMissingChar = cleanUpper[hideIdx];
+
+      const alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let letterChoices = [currentMissingChar];
+      while (letterChoices.length < 4) {
+        const randLetter = alphabetChars[Math.floor(Math.random() * alphabetChars.length)];
+        if (!letterChoices.includes(randLetter)) {
+          letterChoices.push(randLetter);
+        }
+      }
+      letterChoices.sort(() => Math.random() - 0.5);
+
+      const wordChars = cleanUpper.split('');
+      const slotsHtml = wordChars.map((ch, idx) => {
+        if (idx === hideIdx) {
+          return `<span id="missing-slot" class="missing-char-blank">_</span>`;
+        }
+        return `<span class="inline-flex items-center justify-center min-w-[32px] h-12 text-3xl font-black text-gray-800">${ch}</span>`;
+      }).join(' ');
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Choose 1 correct letter to fill the blank:</span>
+          <button class="btn-bounce bg-amber-100 hover:bg-amber-200 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${targetObj.word}', 'en')">🔊 Listen</button>
+        </div>
+
+        <div class="bg-amber-50/50 border-2 border-dashed border-amber-300 rounded-2xl p-4 w-full max-w-lg mb-3.5 flex flex-col items-center">
+          <div class="text-6xl mb-1 cursor-pointer transform hover:scale-110 transition" onclick="speakClear('${targetObj.word}', 'en')">${targetObj.emoji}</div>
+          <div class="text-base md:text-lg font-black text-gray-700 mb-0.5">Meaning: <b class="text-amber-700">${targetObj.vi}</b></div>
+          <div class="choice-ipa text-lg md:text-xl text-amber-700 bg-amber-100 border border-amber-200 px-4 py-1 rounded-lg mb-3">${targetObj.ipa}</div>
+
+          <div id="missing-word-container" onclick="speakClear('${targetObj.word}', 'en')" class="card-hover bg-white border-2 border-amber-400 rounded-2xl px-6 py-2.5 shadow-md flex items-center justify-center tracking-widest cursor-pointer mb-2">
+            ${slotsHtml}
+          </div>
+
+          <p class="text-[11px] font-bold text-gray-400">💡 Tap the card anytime to listen to the word sound!</p>
+          <div id="missing-feedback" class="text-sm font-black min-h-[22px] mt-1"></div>
+        </div>
+
+        <div id="letter-choices-grid" class="grid grid-cols-4 gap-3 w-full max-w-md mb-3.5">
+          ${letterChoices.map(letter => `
+            <button onclick="checkMissingLetterChoice(this, '${letter}')" class="btn-bounce bg-white border-3 border-amber-400 hover:bg-amber-100 text-amber-900 font-black text-2xl py-3 rounded-2xl shadow-sm transition flex items-center justify-center cursor-pointer">
+              ${letter}
+            </button>
+          `).join('')}
+        </div>
+
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevMissingLetter()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextMissingLetter()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+      speakClear(targetObj.word, "en");
+    }
+
+    function checkMissingLetterChoice(btnElement, selectedChar) {
+      const feedback = document.getElementById('missing-feedback');
+      const missingSlot = document.getElementById('missing-slot');
+
+      speakClear(selectedChar, "en");
+
+      if (selectedChar === currentMissingChar) {
+        btnElement.classList.add('!bg-emerald-500', '!text-white', '!border-emerald-600');
+        playTone('correct');
+        addStars(2, true);
+
+        if (missingSlot) {
+          missingSlot.innerText = selectedChar;
+          missingSlot.className = "missing-char-blank missing-char-filled";
+        }
+
+        const allButtons = document.querySelectorAll('#letter-choices-grid button');
+        allButtons.forEach(btn => btn.disabled = true);
+
+        feedback.innerHTML = `<span class="text-green-600 text-base font-black">🎉 Wonderful! Complete word: <b>${currentAnswer}</b> (+2 ⭐). Press Next when ready!</span>`;
+        speakClear(currentMissingWordObj.word, "en");
+      } else {
+        btnElement.classList.add('!bg-rose-500', '!text-white', '!border-rose-600');
+        playTone('wrong');
+        feedback.innerHTML = `<span class="text-rose-600 text-sm font-bold">💡 Try again! "${selectedChar}" is not the missing letter.</span>`;
+        setTimeout(() => {
+          btnElement.classList.remove('!bg-rose-500', '!text-white', '!border-rose-600');
+        }, 1000);
+      }
+    }
+
+    function prevMissingLetter() {
+      const historyState = getHistoryState('missingLetter');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngMissingLetterGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextMissingLetter() {
+      const historyState = getHistoryState('missingLetter');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngMissingLetterGame(historyState.items[historyState.index], true);
+      } else {
+        startEngMissingLetterGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       11. SECTION 5: CHOOSE THE ODD ONE OUT
+       ========================================================================= */
+    let currentOddItemData = null;
+
+    function generateOddOneOutQuestion() {
+      const shuffledTopics = [...ENG_TOPICS].sort(() => Math.random() - 0.5);
+      const mainTopic = shuffledTopics[0];
+      const otherTopic = shuffledTopics[1];
+
+      const mainWords = ENG_VOCAB_MASTER.filter(v => v.topicId === mainTopic.id);
+      const otherWords = ENG_VOCAB_MASTER.filter(v => v.topicId === otherTopic.id);
+
+      const shuffledMainWords = [...mainWords].sort(() => Math.random() - 0.5);
+      const chosenThree = shuffledMainWords.slice(0, 3);
+
+      const shuffledOtherWords = [...otherWords].sort(() => Math.random() - 0.5);
+      const chosenOdd = shuffledOtherWords[0];
+
+      const allFour = [...chosenThree, chosenOdd].sort(() => Math.random() - 0.5);
+
+      return {
+        mainTopic,
+        otherTopic,
+        chosenThree,
+        oddWord: chosenOdd,
+        options: allFour
+      };
+    }
+
+    function startEngOddOneOutGame(targetData = null, isNav = false) {
+      currentMode = 'engOddOneOut';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🎯 5. Choose Odd One Out', action: 'startEngOddOneOutGame()' }
+      ]);
+
+      const historyState = getHistoryState('oddOneOut');
+      let qData;
+      if (targetData) {
+        qData = targetData;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        qData = historyState.items[historyState.index];
+      } else {
+        qData = generateOddOneOutQuestion();
+        historyState.items.push(qData);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentOddItemData = qData;
+      currentAnswer = qData.oddWord.word;
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Find and choose the <b>ODD ONE OUT</b>:</span>
+          <button class="btn-bounce bg-fuchsia-100 hover:bg-fuchsia-200 text-fuchsia-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('Choose the odd one out', 'en')">🔊 Help</button>
+        </div>
+
+        <div class="bg-fuchsia-50/50 border-2 border-dashed border-fuchsia-300 rounded-2xl p-4 w-full max-w-xl mb-3.5 flex flex-col items-center shadow-sm">
+          <div class="text-5xl mb-2">🎯</div>
+          <div class="text-xs md:text-sm font-black text-fuchsia-800 bg-fuchsia-100 border border-fuchsia-200 px-3.5 py-1 rounded-full mb-1">
+            Hint: 3 words belong to the SAME group, 1 word is DIFFERENT!
+          </div>
+          <p class="text-[11px] font-bold text-gray-400 mt-1">Tap any option below to check and listen to its pronunciation.</p>
+          <div id="odd-feedback" class="text-xs md:text-sm font-black min-h-[22px] mt-1.5"></div>
+        </div>
+
+        <div id="odd-choices-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-4xl mb-3.5">
+          ${qData.options.map((item, idx) => `
+            <button id="odd-btn-${idx}" onclick="checkOddOneOutChoice(this, '${item.word}', '${item.topicId}')" class="btn-bounce card-hover bg-white border-3 border-fuchsia-300 hover:border-fuchsia-500 text-fuchsia-950 font-black p-3.5 rounded-2xl shadow-sm transition flex flex-col items-center justify-center min-h-[120px] cursor-pointer">
+              <div class="text-4xl mb-1">${item.emoji}</div>
+              <div class="text-lg md:text-xl font-black leading-tight">${item.word}</div>
+              <div class="choice-ipa text-fuchsia-600 text-base md:text-lg mt-0.5">${item.ipa}</div>
+              <div class="text-xs font-extrabold text-gray-500 mt-0.5">${item.vi}</div>
+            </button>
+          `).join('')}
+        </div>
+
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevOddOneOut()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextOddOneOut()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+
+      speakClear("Which word is different?", "en");
+    }
+
+    function checkOddOneOutChoice(btnElement, selectedWord, topicId) {
+      const feedback = document.getElementById('odd-feedback');
+      const qData = currentOddItemData;
+
+      speakClear(selectedWord, "en");
+
+      if (selectedWord === qData.oddWord.word) {
+        btnElement.classList.add('!bg-emerald-500', '!text-white', '!border-emerald-600');
+        const ipaText = btnElement.querySelector('.choice-ipa');
+        const viText = btnElement.querySelector('.text-gray-500');
+        if (ipaText) ipaText.classList.add('!text-white');
+        if (viText) viText.classList.add('!text-emerald-100');
+
+        playTone('correct');
+        addStars(2, true);
+
+        const allButtons = document.querySelectorAll('#odd-choices-grid button');
+        allButtons.forEach(btn => btn.disabled = true);
+
+        feedback.innerHTML = `
+          <span class="text-green-600 font-black">
+            🎉 EXACT MATCH! <b>${selectedWord}</b> belongs to [${qData.otherTopic.title}], while the other 3 are [${qData.mainTopic.title}]! (+2 ⭐). Press Next when ready!
+          </span>
+        `;
+        speakClear(`Correct! ${selectedWord} is the odd one out.`, "en");
+      } else {
+        btnElement.classList.add('!bg-rose-500', '!text-white', '!border-rose-600');
+        const ipaText = btnElement.querySelector('.choice-ipa');
+        const viText = btnElement.querySelector('.text-gray-500');
+        if (ipaText) ipaText.classList.add('!text-white');
+        if (viText) viText.classList.add('!text-rose-100');
+
+        playTone('wrong');
+        feedback.innerHTML = `
+          <span class="text-rose-600 font-bold">
+            💡 Not this one! <b>${selectedWord}</b> belongs to the group [${qData.mainTopic.title}]. Look for the different one!
+          </span>
+        `;
+
+        setTimeout(() => {
+          btnElement.classList.remove('!bg-rose-500', '!text-white', '!border-rose-600');
+          if (ipaText) ipaText.classList.remove('!text-white');
+          if (viText) viText.classList.remove('!text-rose-100');
+        }, 1100);
+      }
+    }
+
+    function prevOddOneOut() {
+      const historyState = getHistoryState('oddOneOut');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngOddOneOutGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextOddOneOut() {
+      const historyState = getHistoryState('oddOneOut');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngOddOneOutGame(historyState.items[historyState.index], true);
+      } else {
+        startEngOddOneOutGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       12. SECTION 6: 20 READING STORIES (4 MCQS EACH)
+       ========================================================================= */
+    let currentReadingIndex = 0;
+    let currentReadingUserAnswers = [-1, -1, -1, -1];
+
+    function openReadingPassage(index = 0) {
+      currentMode = 'engReading';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '📖 6. Reading Stories', action: 'openReadingPassage(0)' }
+      ]);
+
+      if (index < 0) index = 0;
+      if (index >= READING_PASSAGES.length) index = READING_PASSAGES.length - 1;
+      currentReadingIndex = index;
+      currentReadingUserAnswers = [-1, -1, -1, -1];
+
+      const passage = READING_PASSAGES[currentReadingIndex];
+
+      const linesHtml = passage.lines.map(line => `
+        <div class="flex items-start gap-2">
+          <span class="text-pink-500 mt-0.5">•</span>
+          <span class="text-gray-800">${line}</span>
+        </div>
+      `).join('');
+
+      const questionsHtml = passage.questions.map((qObj, qIdx) => {
+        const choicesHtml = qObj.choices.map((cText, cIdx) => `
+          <button id="rq-btn-${qIdx}-${cIdx}" onclick="selectReadingChoice(${qIdx}, ${cIdx})" class="btn-bounce w-full text-left bg-white border-2 border-pink-200 hover:border-pink-400 hover:bg-pink-50 text-gray-700 font-black py-1.5 px-2.5 rounded-xl text-xs md:text-sm flex items-center justify-between shadow-sm transition mb-1 cursor-pointer">
+            <span><b class="text-pink-600 mr-1.5">${String.fromCharCode(65 + cIdx)}.</b> ${cText}</span>
+            <span id="rq-status-${qIdx}-${cIdx}" class="text-xs"></span>
+          </button>
+        `).join('');
+
+        return `
+          <div class="reading-q-card text-left" id="q-card-${qIdx}">
+            <div class="text-xs md:text-sm font-black text-gray-800 mb-1.5 flex items-center gap-1.5">
+              <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black">${qIdx + 1}</span>
+              <span>${qObj.q}</span>
+            </div>
+            <div class="flex flex-col">
+              ${choicesHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="w-full max-w-5xl flex flex-col items-center">
+          
+          <div class="flex items-center justify-between w-full mb-2 px-1">
+            <span class="text-xs font-black bg-pink-100 text-pink-700 px-3 py-1 rounded-xl shadow-sm">
+              Passage ${currentReadingIndex + 1} / ${READING_PASSAGES.length}
+            </span>
+            <h2 class="text-base md:text-lg font-black text-pink-600 font-cute flex items-center gap-1">
+              <span>📖</span>
+              <span>READING COMPREHENSION & QUIZ</span>
+            </h2>
+            <button onclick="speakReadingFull()" class="btn-bounce bg-purple-100 hover:bg-purple-200 text-purple-700 border border-purple-300 px-3 py-1 rounded-xl text-xs font-black flex items-center gap-1 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>Listen Passage</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 w-full items-start">
+            
+            <div class="md:col-span-5 bg-pink-50/70 border-2 border-dashed border-pink-300 rounded-2xl p-3 text-left flex flex-col shadow-sm">
+              <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-pink-200">
+                <span class="text-3xl">${passage.emoji}</span>
+                <div>
+                  <h3 class="font-black text-pink-700 text-sm md:text-base leading-tight">${passage.title}</h3>
+                  <span class="text-[10px] font-black bg-pink-200 text-pink-800 px-2 py-0.2 rounded-full uppercase">${passage.type}</span>
+                </div>
+              </div>
+
+              <div class="text-xs md:text-sm font-bold leading-relaxed space-y-2 mb-2.5 bg-white/95 p-3 rounded-xl border border-pink-100 shadow-sm max-h-[300px] overflow-y-auto custom-scrollbar">
+                ${linesHtml}
+              </div>
+
+              <button onclick="toggleReadingTranslation()" class="btn-bounce bg-white hover:bg-pink-100 text-pink-700 border border-pink-300 rounded-xl py-1 px-2.5 text-xs font-black flex items-center justify-center gap-1 shadow-sm mt-auto cursor-pointer">
+                <i class="fa-solid fa-language text-sm"></i>
+                <span>Vietnamese Translation</span>
+              </button>
+
+              <div id="reading-vi-box" class="hidden mt-2 p-2 bg-amber-50 rounded-xl text-xs font-bold text-amber-800 border border-amber-200 leading-relaxed">
+                ${passage.viText}
+              </div>
+            </div>
+
+            <div class="md:col-span-7 flex flex-col gap-2">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                ${questionsHtml}
+              </div>
+
+              <div class="flex items-center justify-between mt-1 p-2 bg-white rounded-xl border border-pink-100 shadow-sm">
+                <button onclick="prevReadingPassage()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border border-sky-200 font-black text-xs px-3.5 py-1.5 rounded-xl cursor-pointer ${currentReadingIndex <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${currentReadingIndex <= 0 ? 'disabled' : ''}>
+                  ⬅️ Previous
+                </button>
+                <button id="btn-submit-reading" onclick="checkAllReadingAnswers()" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm px-6 py-2 rounded-xl shadow-md flex items-center gap-1.5 cursor-pointer">
+                  <i class="fa-solid fa-check"></i>
+                  <span>CHECK ANSWERS (4 Qs)</span>
+                </button>
+                <button onclick="nextReadingPassage()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border border-amber-500 font-black text-xs px-3.5 py-1.5 rounded-xl cursor-pointer">
+                  Next ➡️
+                </button>
+              </div>
+
+              <div id="reading-feedback" class="text-center font-black text-xs md:text-sm min-h-[20px]"></div>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+      speakReadingFull();
+    }
+
+    function toggleReadingTranslation() {
+      const viBox = document.getElementById('reading-vi-box');
+      if (viBox) {
+        viBox.classList.toggle('hidden');
+      }
+    }
+
+    function speakReadingFull() {
+      const passage = READING_PASSAGES[currentReadingIndex];
+      const fullText = passage.lines.join('. ');
+      speakClear(fullText, "en");
+    }
+
+    function selectReadingChoice(qIdx, cIdx) {
+      currentReadingUserAnswers[qIdx] = cIdx;
+      const passage = READING_PASSAGES[currentReadingIndex];
+      const qObj = passage.questions[qIdx];
+
+      qObj.choices.forEach((_, idx) => {
+        const btn = document.getElementById(`rq-btn-${qIdx}-${idx}`);
+        if (!btn) return;
+        if (idx === cIdx) {
+          btn.className = "btn-bounce w-full text-left bg-pink-500 text-white font-black py-1.5 px-2.5 rounded-xl text-xs md:text-sm flex items-center justify-between shadow-sm transition mb-1 border-2 border-pink-600 cursor-pointer";
+        } else {
+          btn.className = "btn-bounce w-full text-left bg-white border-2 border-pink-200 hover:border-pink-400 hover:bg-pink-50 text-gray-700 font-black py-1.5 px-2.5 rounded-xl text-xs md:text-sm flex items-center justify-between shadow-sm transition mb-1 cursor-pointer";
+        }
+      });
+
+      speakClear(qObj.choices[cIdx], "en");
+    }
+
+    function checkAllReadingAnswers() {
+      const passage = READING_PASSAGES[currentReadingIndex];
+      const feedback = document.getElementById('reading-feedback');
+      let unanswered = 0;
+      let correctCount = 0;
+
+      currentReadingUserAnswers.forEach((ans) => {
+        if (ans === -1) unanswered++;
+      });
+
+      if (unanswered > 0) {
+        feedback.innerHTML = `<span class="text-rose-600 font-black">⚠️ Please answer all 4 questions! (${unanswered} remaining)</span>`;
+        playTone('wrong');
+        return;
+      }
+
+      passage.questions.forEach((qObj, qIdx) => {
+        const userChoice = currentReadingUserAnswers[qIdx];
+        const correctChoice = qObj.ans;
+
+        qObj.choices.forEach((_, cIdx) => {
+          const btn = document.getElementById(`rq-btn-${qIdx}-${cIdx}`);
+          const status = document.getElementById(`rq-status-${qIdx}-${cIdx}`);
+          if (!btn) return;
+          btn.disabled = true;
+
+          if (cIdx === correctChoice) {
+            btn.className = "w-full text-left bg-emerald-500 text-white font-black py-1.5 px-2.5 rounded-xl text-xs md:text-sm flex items-center justify-between shadow-sm transition mb-1 border-2 border-emerald-600";
+            if (status) status.innerHTML = "✅";
+          } else if (cIdx === userChoice && userChoice !== correctChoice) {
+            btn.className = "w-full text-left bg-rose-500 text-white font-black py-1.5 px-2.5 rounded-xl text-xs md:text-sm flex items-center justify-between shadow-sm transition mb-1 border-2 border-rose-600";
+            if (status) status.innerHTML = "❌";
+          }
+        });
+
+        if (userChoice === correctChoice) correctCount++;
+      });
+
+      // ONLY TRIGGER CONFETTI IF PERFECT SCORE (4/4)
+      if (correctCount === 4) {
+        playTone('correct');
+        addStars(4, true); // True = Confetti fires on perfect score!
+        feedback.innerHTML = `<span class="text-green-600 text-sm md:text-base font-black">🎉 EXCELLENT! You answered 4/4 questions correctly! (+4 ⭐). Click Next to read the next story!</span>`;
+        speakClear("Awesome! You answered all four questions correctly!", "en");
+      } else {
+        playTone('wrong');
+        if (correctCount > 0) {
+          addStars(correctCount, false); // False = NO confetti on partial/wrong score!
+        }
+        feedback.innerHTML = `<span class="text-amber-700 text-xs md:text-sm font-black">You got ${correctCount}/4 correct (+${correctCount} ⭐). Check the green answers carefully and press Next when ready!</span>`;
+        speakClear(`Good try! You got ${correctCount} correct answers.`, "en");
+      }
+    }
+
+    function prevReadingPassage() {
+      if (currentReadingIndex > 0) {
+        openReadingPassage(currentReadingIndex - 1);
+      }
+    }
+
+    function nextReadingPassage() {
+      if (currentReadingIndex < READING_PASSAGES.length - 1) {
+        openReadingPassage(currentReadingIndex + 1);
+      } else {
+        openReadingPassage(0);
+      }
+    }
+
+    /* =========================================================================
+       13. SECTION 7: SENTENCE BUILDER
+       ========================================================================= */
+    const ENG_SENTENCE_BUILDER = [
+      { targetSentence: "Open your book", meaning: "Hãy mở sách ra", emoji: "📖" },
+      { targetSentence: "I want a crown", meaning: "Tôi muốn một chiếc vương miện", emoji: "👑" },
+      { targetSentence: "Do you like noodles", meaning: "Bạn có thích ăn mì không?", emoji: "🍜" },
+      { targetSentence: "What shape is it", meaning: "Nó là hình khối gì?", emoji: "🔺" },
+      { targetSentence: "It is a square", meaning: "Nó là một hình vuông", emoji: "🟧" },
+      { targetSentence: "Is this your dress", meaning: "Đây có phải là váy của bạn không?", emoji: "👗" },
+      { targetSentence: "These are my pants", meaning: "Đây là quần dài của tôi", emoji: "👖" },
+      { targetSentence: "Let us play soccer", meaning: "Chúng mình cùng chơi đá bóng nào", emoji: "⚽" },
+      { targetSentence: "Can you see the bus", meaning: "Bạn có thấy chiếc xe buýt không?", emoji: "🚌" },
+      { targetSentence: "This is an octopus", meaning: "Đây là một chú bạch tuộc", emoji: "🐙" }
+    ];
+
+    let currentBuiltWords = [];
+    let currentTargetWords = [];
+
+    function startEngSentenceBuilderGame(targetObj = null, isNav = false) {
+      currentMode = 'engSentenceBuilder';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🧩 7. Sentence Builder', action: 'startEngSentenceBuilderGame()' }
+      ]);
+
+      const historyState = getHistoryState('sentenceBuilder');
+      let q;
+      if (targetObj) {
+        q = targetObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        q = historyState.items[historyState.index];
+      } else {
+        q = getNextItemFromPool('pool_engSentence', ENG_SENTENCE_BUILDER);
+        historyState.items.push(q);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentFullSentence = q.targetSentence;
+      currentTargetWords = q.targetSentence.split(' ');
+      currentBuiltWords = [];
+      let shuffledWords = [...currentTargetWords].sort(() => Math.random() - 0.5);
+      renderSentenceBuilderUI(q, shuffledWords);
+    }
+
+    function renderSentenceBuilderUI(q, poolWords) {
+      const historyState = getHistoryState('sentenceBuilder');
+      const selectedHtml = currentBuiltWords.length === 0 
+        ? `<div class="text-gray-400 font-bold italic py-3 text-sm md:text-base">Tap the words below to build the sentence...</div>`
+        : currentBuiltWords.map((w, idx) => `
+            <button onclick="removeWordFromBuilt(${idx})" class="slot-word-btn bg-pink-500 hover:bg-pink-600 text-white font-black shadow-sm m-1 cursor-pointer">
+              <span class="text-lg">${w}</span>
+              <span class="choice-ipa text-base text-pink-100">${getIPA(w)}</span>
+            </button>
+          `).join('');
+
+      const poolHtml = poolWords.map((w) => `
+        <button onclick="addWordToBuilt('${w}')" class="slot-word-btn bg-white border-2 border-pink-400 hover:bg-pink-50 text-pink-800 font-black shadow-sm m-1 cursor-pointer">
+          <span class="text-lg">${w}</span>
+          <span class="choice-ipa text-base text-pink-600">${getIPA(w)}</span>
+        </button>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Tap words in correct order to make a sentence:</span>
+          <button class="btn-bounce bg-purple-100 hover:bg-purple-200 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${q.targetSentence}', 'en')">🔊 Listen</button>
+        </div>
+        <div class="bg-pink-50/50 border-2 border-dashed border-pink-200 rounded-2xl p-4 w-full max-w-xl mb-3 flex flex-col items-center">
+          <div class="text-4xl mb-1.5">${q.emoji}</div>
+          <div class="text-sm md:text-base font-black text-gray-600 mb-2">Meaning: <b class="text-pink-600">${q.meaning}</b></div>
+          <div class="bg-white border border-pink-300 rounded-xl p-2.5 w-full min-h-[70px] flex flex-wrap items-center justify-center shadow-inner">
+            ${selectedHtml}
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center max-w-lg mb-3">
+          ${poolHtml}
+        </div>
+        <div id="builder-feedback" class="text-sm font-black min-h-[22px] mb-2"></div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevSentenceBuilder()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextSentenceBuilder()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function addWordToBuilt(word) {
+      speakClear(word, "en");
+      currentBuiltWords.push(word);
+      const q = ENG_SENTENCE_BUILDER.find(item => item.targetSentence === currentFullSentence);
+      let pool = [...currentTargetWords];
+      for (let bw of currentBuiltWords) {
+        const found = pool.indexOf(bw);
+        if (found > -1) pool.splice(found, 1);
+      }
+      renderSentenceBuilderUI(q, pool);
+
+      if (currentBuiltWords.length === currentTargetWords.length) {
+        const builtStr = currentBuiltWords.join(' ');
+        const feedback = document.getElementById('builder-feedback');
+        if (builtStr === currentFullSentence) {
+          playTone('correct');
+          addStars(2, true);
+          feedback.innerHTML = `<span class="text-green-600 text-base">🎉 Great job! Correct sentence! (+2 ⭐). Press Next when you are ready!</span>`;
+          speakClear(currentFullSentence, "en");
+        } else {
+          playTone('wrong');
+          feedback.innerHTML = `<span class="text-rose-600 text-base">💡 Order is not correct yet. Try again!</span>`;
+        }
+      }
+    }
+
+    function removeWordFromBuilt(index) {
+      currentBuiltWords.splice(index, 1);
+      const q = ENG_SENTENCE_BUILDER.find(item => item.targetSentence === currentFullSentence);
+      let pool = [...currentTargetWords];
+      for (let bw of currentBuiltWords) {
+        const found = pool.indexOf(bw);
+        if (found > -1) pool.splice(found, 1);
+      }
+      renderSentenceBuilderUI(q, pool);
+    }
+
+    function prevSentenceBuilder() {
+      const historyState = getHistoryState('sentenceBuilder');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngSentenceBuilderGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextSentenceBuilder() {
+      const historyState = getHistoryState('sentenceBuilder');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngSentenceBuilderGame(historyState.items[historyState.index], true);
+      } else {
+        startEngSentenceBuilderGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       14. SECTION 8: FILL SENTENCE BLANK
+       ========================================================================= */
+    const ENG_GRAMMAR_FILL_BLANKS = [
+      { displaySentence: "A: Is she flying a kite? - B: Yes, she ______.", missingWord: "is", fullSentence: "Is she flying a kite? Yes, she is.", meaning: "Cô ấy có đang thả diều không? Vâng, đúng rồi.", choices: ["is", "are", "can", "do"] },
+      { displaySentence: "A: Is it a box? - B: ______, it isn't.", missingWord: "No", fullSentence: "Is it a box? No, it isn't.", meaning: "Đó có phải cái hộp không? Không phải.", choices: ["No", "Yes", "Not", "It"] },
+      { displaySentence: "A: What can you see? - B: I ______ see a rainbow.", missingWord: "can", fullSentence: "What can you see? I can see a rainbow.", meaning: "Bạn có thể nhìn thấy gì? Tôi có thể thấy cầu vồng.", choices: ["can", "am", "do", "are"] },
+      { displaySentence: "A: Can you draw a cat? - B: Yes, I ______.", missingWord: "can", fullSentence: "Can you draw a cat? Yes, I can.", meaning: "Bạn có thể vẽ con mèo không? Vâng, tôi có thể.", choices: ["can", "am", "is", "do"] },
+      { displaySentence: "A: How ______ is your sister? - B: She is fourteen.", missingWord: "old", fullSentence: "How old is your sister? She is fourteen.", meaning: "Chị gái bạn bao nhiêu tuổi? Chị ấy 14 tuổi.", choices: ["old", "many", "much", "are"] },
+      { displaySentence: "A: Where is your grandmother? - B: ______ is over there.", missingWord: "She", fullSentence: "Where is your grandmother? She is over there.", meaning: "Bà của bạn ở đâu? Bà ở đằng kia.", choices: ["She", "He", "It", "They"] },
+      { displaySentence: "A: ______ the box near the table? - B: No, it isn't.", missingWord: "Is", fullSentence: "Is the box near the table? No, it isn't.", meaning: "Cái hộp ở gần bàn phải không? Không phải.", choices: ["Is", "Are", "Do", "Can"] },
+      { displaySentence: "A: What are they doing? - B: They ______ flying kites.", missingWord: "are", fullSentence: "What are they doing? They are flying kites.", meaning: "Họ đang làm gì thế? Họ đang thả diều.", choices: ["are", "is", "am", "do"] },
+      { displaySentence: "A: What are you doing? - B: I ______ doing a quiz.", missingWord: "am", fullSentence: "What are you doing? I am doing a quiz.", meaning: "Bạn đang làm gì? Tôi đang làm bài đố vui.", choices: ["am", "is", "are", "can"] },
+      { displaySentence: "A: Where are you from? - B: I'm ______ Hanoi.", missingWord: "from", fullSentence: "Where are you from? I'm from Hanoi.", meaning: "Bạn đến từ đâu? Tôi đến từ Hà Nội.", choices: ["from", "to", "at", "in"] },
+      { displaySentence: "A: What day is it today? - B: ______ Monday.", missingWord: "It's", fullSentence: "What day is it today? It's Monday.", meaning: "Hôm nay là thứ mấy? Hôm nay là thứ Hai.", choices: ["It's", "He's", "She's", "They're"] },
+      { displaySentence: "A: Are you hungry? - B: Yes, I ______.", missingWord: "am", fullSentence: "Are you hungry? Yes, I am.", meaning: "Bạn có đói không? Vâng, tôi có đói.", choices: ["am", "is", "are", "do"] },
+      { displaySentence: "A: Can you see the bus? - B: No, I ______.", missingWord: "can't", fullSentence: "Can you see the bus? No, I can't.", meaning: "Bạn có thấy xe buýt không? Không, tôi không thấy.", choices: ["can't", "don't", "isn't", "aren't"] },
+      { displaySentence: "A: Is this your dress? - B: Yes, ______ is.", missingWord: "it", fullSentence: "Is this your dress? Yes, it is.", meaning: "Đây có phải váy của bạn không? Đúng vậy.", choices: ["it", "this", "they", "she"] },
+      { displaySentence: "A: How many books are there? - B: There ______ twelve books.", missingWord: "are", fullSentence: "How many books are there? There are twelve books.", meaning: "Có bao nhiêu cuốn sách? Có 12 cuốn sách.", choices: ["are", "is", "am", "have"] }
+    ];
+
+    function startEngFillBlankGame(targetObj = null, isNav = false) {
+      currentMode = 'engFillBlank';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '📝 8. Fill Sentence Blank', action: 'startEngFillBlankGame()' }
+      ]);
+
+      const historyState = getHistoryState('fillBlank');
+      let q;
+      if (targetObj) {
+        q = targetObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        q = historyState.items[historyState.index];
+      } else {
+        q = getNextItemFromPool('pool_engFillBlank', ENG_GRAMMAR_FILL_BLANKS);
+        historyState.items.push(q);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentAnswer = q.missingWord;
+      currentFullSentence = q.fullSentence;
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Choose the missing grammar word for the blank:</span>
+          <button class="btn-bounce bg-teal-100 hover:bg-teal-200 text-teal-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${q.displaySentence.replace('______', 'blank')}', 'en')">🔊 Listen</button>
+        </div>
+        <div class="bg-teal-50/60 border-2 border-dashed border-teal-300 rounded-2xl p-4 w-full max-w-xl mb-3 flex flex-col items-center shadow-sm">
+          <div class="text-xs font-black uppercase tracking-wider text-teal-800 bg-teal-100 px-3 py-0.5 rounded-full mb-2">Grammar & Sentence Pattern</div>
+          <div id="sentence-display" class="text-lg md:text-xl font-black text-teal-900 font-cute mb-1.5 leading-relaxed text-center px-3">${q.displaySentence}</div>
+          <div class="text-xs md:text-sm font-bold text-gray-600 mt-1">Meaning: <b class="text-teal-700">${q.meaning}</b></div>
+          <div id="fill-feedback" class="text-sm font-black min-h-[22px] mt-1.5"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 w-full max-w-md mb-3">
+          ${q.choices.map(c => `
+            <button class="btn-bounce bg-white border-3 border-teal-400 hover:bg-teal-50 text-teal-900 font-black py-2.5 px-3 rounded-xl shadow-sm transition flex flex-col items-center justify-center text-lg md:text-xl cursor-pointer" onclick="checkChoiceAnswer(this, '${c}')">
+              ${c}
+            </button>
+          `).join('')}
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevFillBlank()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextFillBlank()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function prevFillBlank() {
+      const historyState = getHistoryState('fillBlank');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngFillBlankGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextFillBlank() {
+      const historyState = getHistoryState('fillBlank');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngFillBlankGame(historyState.items[historyState.index], true);
+      } else {
+        startEngFillBlankGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       15. SECTION 9: QUESTION & ANSWER (Q&A QUIZ - FULLY FIXED & ENHANCED)
+       ========================================================================= */
+    const ENG_QA_QUIZ = [
+      { 
+        question: "What shape is it?", 
+        meaning: "Nó là hình khối gì?", 
+        correctIndex: 0, 
+        choices: [
+          { text: "It's a square.", ipa: "/ɪts ə skweər/" },
+          { text: "It's a circle.", ipa: "/ɪts ə ˈsɜː.kəl/" },
+          { text: "It's a triangle.", ipa: "/ɪts ə ˈtraɪ.æŋ.ɡəl/" },
+          { text: "It's a rectangle.", ipa: "/ɪts ə ˈrek.tæŋ.ɡəl/" }
+        ], 
+        fullDialogue: "What shape is it? It's a square.", 
+        emoji: "🟧" 
+      },
+      { 
+        question: "Is this your dress?", 
+        meaning: "Đây có phải váy của bạn không?", 
+        correctIndex: 0, 
+        choices: [
+          { text: "Yes, it is.", ipa: "/jes ɪt ɪz/" },
+          { text: "No, it isn't.", ipa: "/nəʊ ɪt ˈɪz.ənt/" },
+          { text: "Yes, they are.", ipa: "/jes ðeɪ ɑːr/" },
+          { text: "No, they aren't.", ipa: "/nəʊ ðeɪ ˈɑːr.ənt/" }
+        ], 
+        fullDialogue: "Is this your dress? Yes, it is.", 
+        emoji: "👗" 
+      },
+      { 
+        question: "Can you see the bus?", 
+        meaning: "Bạn có thấy chiếc xe buýt không?", 
+        correctIndex: 0, 
+        choices: [
+          { text: "Yes, I can.", ipa: "/jes aɪ kæn/" },
+          { text: "No, I can't.", ipa: "/nəʊ aɪ kɑːnt/" },
+          { text: "Yes, it is.", ipa: "/jes ɪt ɪz/" },
+          { text: "No, it isn't.", ipa: "/nəʊ ɪt ˈɪz.ənt/" }
+        ], 
+        fullDialogue: "Can you see the bus? Yes, I can.", 
+        emoji: "🚌" 
+      },
+      { 
+        question: "What day is it today?", 
+        meaning: "Hôm nay là thứ mấy?", 
+        correctIndex: 0, 
+        choices: [
+          { text: "It's Monday.", ipa: "/ɪts ˈmʌn.deɪ/" },
+          { text: "It's Tuesday.", ipa: "/ɪts ˈtjuːz.deɪ/" },
+          { text: "It's Wednesday.", ipa: "/ɪts ˈwenz.deɪ/" },
+          { text: "It's Thursday.", ipa: "/ɪts ˈθɜːz.deɪ/" }
+        ], 
+        fullDialogue: "What day is it today? It's Monday.", 
+        emoji: "📅" 
+      },
+      { 
+        question: "What's that?", 
+        meaning: "Đó là con gì / cái gì thế?", 
+        correctIndex: 0, 
+        choices: [
+          { text: "It's a duck.", ipa: "/ɪts ə dʌk/" },
+          { text: "It's a dog.", ipa: "/ɪts ə dɒɡ/" },
+          { text: "It's a cat.", ipa: "/ɪts ə kæt/" },
+          { text: "It's a pig.", ipa: "/ɪts ə pɪɡ/" }
+        ], 
+        fullDialogue: "What's that? It's a duck.", 
+        emoji: "🦆" 
+      }
+    ];
+
+    let currentQAQuestion = null;
+
+    function startEngQAQuizGame(targetObj = null, isNav = false) {
+      currentMode = 'engQAQuiz';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '💡 9. Question & Answer', action: 'startEngQAQuizGame()' }
+      ]);
+
+      const historyState = getHistoryState('qaQuiz');
+      let q;
+      if (targetObj) {
+        q = targetObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        q = historyState.items[historyState.index];
+      } else {
+        q = getNextItemFromPool('pool_engQAQuiz', ENG_QA_QUIZ);
+        historyState.items.push(q);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentQAQuestion = q;
+      currentAnswer = q.choices[q.correctIndex].text;
+      currentFullSentence = q.fullDialogue;
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>Choose the correct answer for the question:</span>
+          <button class="btn-bounce bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${q.question}', 'en')">🔊 Listen</button>
+        </div>
+        <div class="bg-indigo-50/50 border-2 border-dashed border-indigo-200 rounded-2xl p-4 w-full max-w-lg mb-3 flex flex-col items-center">
+          <div class="text-5xl mb-1.5">${q.emoji}</div>
+          <div class="text-xl md:text-2xl font-black text-indigo-700 font-cute mb-1">❓ ${q.question}</div>
+          <div class="text-sm md:text-base font-black text-gray-600">Meaning: ${q.meaning}</div>
+          <div id="qa-feedback" class="text-sm font-black min-h-[22px] mt-1.5"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 w-full max-w-xl mb-3">
+          ${q.choices.map((c, cIdx) => `
+            <button id="qa-btn-${cIdx}" class="btn-bounce bg-white border-3 border-indigo-400 hover:bg-indigo-50 text-indigo-800 font-black py-2.5 px-3 rounded-xl shadow-sm transition flex flex-col items-center justify-center min-h-[75px] cursor-pointer" onclick="checkQAChoice(${cIdx})">
+              <span class="text-base md:text-lg font-black">${c.text}</span>
+              <span class="choice-ipa text-indigo-600 text-sm md:text-base mt-0.5">${c.ipa}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevQAQuiz()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextQAQuiz()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function checkQAChoice(selectedIdx) {
+      const q = currentQAQuestion;
+      const btnElement = document.getElementById(`qa-btn-${selectedIdx}`);
+      const selectedChoice = q.choices[selectedIdx];
+
+      speakClear(selectedChoice.text, "en");
+
+      if (selectedIdx === q.correctIndex) {
+        if (btnElement) {
+          btnElement.classList.add('!bg-emerald-500', '!text-white', '!border-emerald-600');
+          const ipaSpan = btnElement.querySelector('.choice-ipa');
+          if (ipaSpan) ipaSpan.classList.add('!text-white');
+        }
+        playTone('correct');
+        addStars(1, true); // true = fires confetti!
+
+        const allBtns = document.querySelectorAll('#main-content button');
+        allBtns.forEach(b => {
+          if (!b.innerText.includes('Previous') && !b.innerText.includes('Next') && !b.innerText.includes('Listen')) {
+            b.disabled = true;
+          }
+        });
+
+        const feedback = document.getElementById('qa-feedback');
+        if (feedback) feedback.innerHTML = `<span class="text-green-600 font-black">🎉 Exact answer! (+1 ⭐). Press Next when ready!</span>`;
+        speakClear(q.fullDialogue, "en");
+      } else {
+        if (btnElement) {
+          btnElement.classList.add('!bg-rose-500', '!text-white', '!border-rose-600');
+          const ipaSpan = btnElement.querySelector('.choice-ipa');
+          if (ipaSpan) ipaSpan.classList.remove('!text-white');
+        }
+        playTone('wrong');
+
+        setTimeout(() => {
+          if (btnElement) {
+            btnElement.classList.remove('!bg-rose-500', '!text-white', '!border-rose-600');
+            const ipaSpan = btnElement.querySelector('.choice-ipa');
+            if (ipaSpan) ipaSpan.classList.remove('!text-white');
+          }
+        }, 1100);
+      }
+    }
+
+    function prevQAQuiz() {
+      const historyState = getHistoryState('qaQuiz');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngQAQuizGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextQAQuiz() {
+      const historyState = getHistoryState('qaQuiz');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngQAQuizGame(historyState.items[historyState.index], true);
+      } else {
+        startEngQAQuizGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       16. SECTION 10: GRAMMAR & PREPOSITIONS
+       ========================================================================= */
+    const ENG_GRAMMAR_POOL = [
+      // Articles (A / An)
+      { type: "article", visual: "🐙", question: "Choose the correct article: 'This is ... octopus.'", choices: ["an", "a"], answer: "an", full: "This is an octopus.", hint: "Rule: Use 'an' before vowel sounds (a, e, i, o, u)" },
+      { type: "article", visual: "🍊", question: "Choose the correct article: 'I am eating ... orange.'", choices: ["an", "a"], answer: "an", full: "I am eating an orange.", hint: "Rule: Use 'an' before vowel sounds (a, e, i, o, u)" },
+      { type: "article", visual: "🍎", question: "Choose the correct article: 'I have ... apple.'", choices: ["an", "a"], answer: "an", full: "I have an apple.", hint: "Rule: Use 'an' before vowel sounds (a, e, i, o, u)" },
+      { type: "article", visual: "🖊️", question: "Choose the correct article: 'I have ... pen.'", choices: ["a", "an"], answer: "a", full: "I have a pen.", hint: "Rule: Use 'a' before consonant sounds" },
+      { type: "article", visual: "🐘", question: "Choose the correct article: 'I see ... elephant.'", choices: ["an", "a"], answer: "an", full: "I see an elephant.", hint: "Rule: Use 'an' before vowel sounds (a, e, i, o, u)" },
+      // Prepositions (In / On / At)
+      { type: "preposition", visual: "👵", question: "Grandma is ... the kitchen. (Bà ở trong bếp)", choices: ["in", "on", "at"], answer: "in", full: "Grandma is in the kitchen.", hint: "Rule: 'in' is used for inside an enclosed space or room" },
+      { type: "preposition", visual: "🪵", question: "The book is ... the table. (Sách ở trên bàn)", choices: ["on", "in", "at"], answer: "on", full: "The book is on the table.", hint: "Rule: 'on' is used for on the surface of a table/desk" },
+      { type: "preposition", visual: "🎒", question: "The pencil is ... the bag. (Bút ở trong cặp)", choices: ["in", "on", "at"], answer: "in", full: "The pencil is in the bag.", hint: "Rule: 'in' is used for inside a bag or container" }
+    ];
+
+    function startEngGrammarGame(targetObj = null, isNav = false) {
+      currentMode = 'engGrammar';
+      updateBreadcrumbs([
+        { label: '⬅️ Main Menu', action: 'openEngMenu()' },
+        { label: '🅰️ 10. Grammar & Prepositions', action: 'startEngGrammarGame()' }
+      ]);
+
+      const historyState = getHistoryState('grammar');
+      let q;
+      if (targetObj) {
+        q = targetObj;
+      } else if (historyState.index >= 0 && historyState.index < historyState.items.length - 1 && isNav) {
+        historyState.index++;
+        q = historyState.items[historyState.index];
+      } else {
+        q = getNextItemFromPool('pool_engGrammar', ENG_GRAMMAR_POOL);
+        historyState.items.push(q);
+        historyState.index = historyState.items.length - 1;
+      }
+
+      currentAnswer = q.answer;
+      currentFullSentence = q.full;
+
+      const badgeType = q.type === 'article' ? '🅰️ Article: A / An' : '📍 Preposition: In / On / At';
+
+      container.innerHTML = `
+        <div class="text-base md:text-lg font-black text-gray-800 mb-2 flex items-center justify-center gap-2">
+          <span>${q.question}</span>
+          <button class="btn-bounce bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm cursor-pointer" onclick="speakClear('${q.full}', 'en')">🔊 Listen</button>
+        </div>
+        <div class="bg-blue-50/50 border-2 border-dashed border-blue-200 rounded-2xl p-4 w-full max-w-lg mb-3 flex flex-col items-center">
+          <div class="text-6xl mb-1.5">${q.visual}</div>
+          <span class="text-xs font-black bg-blue-100 text-blue-800 border border-blue-200 px-3 py-0.5 rounded-full mb-1">${badgeType}</span>
+          <div class="text-xs md:text-sm font-black text-blue-700 bg-white border border-blue-200 px-3.5 py-1 rounded-xl mt-1">${q.hint}</div>
+          <div id="grammar-feedback" class="text-sm font-black min-h-[22px] mt-1.5"></div>
+        </div>
+        <div class="grid grid-cols-${q.choices.length} gap-3 w-full max-w-md mb-3">
+          ${q.choices.map(c => `<button class="btn-bounce bg-white border-3 border-blue-400 hover:bg-blue-50 text-blue-800 font-black text-2xl py-2.5 rounded-xl shadow-sm transition cursor-pointer" onclick="checkChoiceAnswer(this, '${c}')">${c}</button>`).join('')}
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <button onclick="prevGrammar()" class="btn-bounce bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${historyState.index <= 0 ? 'opacity-40 cursor-not-allowed' : ''}" ${historyState.index <= 0 ? 'disabled' : ''}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="nextGrammar()" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function prevGrammar() {
+      const historyState = getHistoryState('grammar');
+      if (historyState.index > 0) {
+        historyState.index--;
+        startEngGrammarGame(historyState.items[historyState.index], true);
+      }
+    }
+
+    function nextGrammar() {
+      const historyState = getHistoryState('grammar');
+      if (historyState.index < historyState.items.length - 1) {
+        historyState.index++;
+        startEngGrammarGame(historyState.items[historyState.index], true);
+      } else {
+        startEngGrammarGame(null, false);
+      }
+    }
+
+    /* =========================================================================
+       17. GENERAL ANSWER CHECKER
+       ========================================================================= */
+    function checkChoiceAnswer(btnElement, selected) {
+      speakClear(selected, "en");
+
+      if (selected === currentAnswer) {
+        btnElement.classList.add('!bg-emerald-500', '!text-white', '!border-emerald-600');
+        const ipaSpan = btnElement.querySelector('.choice-ipa');
+        if (ipaSpan) ipaSpan.classList.add('!text-white');
+        
+        playTone('correct');
+        addStars(1, true);
+
+        if (currentMode === 'engVocabMaster') {
+          const allBtns = document.querySelectorAll('#vocab-choices-grid button');
+          allBtns.forEach(b => b.disabled = true);
+          const curObj = currentVocabTarget || ENG_VOCAB_MASTER.find(v => v.word === currentAnswer);
+          if (curObj) {
+            const secretBox = document.getElementById('secret-word-box');
+            if (secretBox) {
+              secretBox.className = 'bg-blue-50 border-2 border-blue-200 px-3.5 py-1 rounded-xl mb-1.5 text-center shadow-inner';
+              secretBox.innerHTML = `
+                <span class="text-blue-700 font-black text-base md:text-lg">${curObj.word}</span>
+                <span class="choice-ipa text-blue-600 text-lg md:text-xl ml-1.5">${curObj.ipa}</span>
+              `;
+            }
+            renderVocabExamples(curObj);
+            speakClear(curObj.word, "en");
+          }
+          return;
+        }
+
+        const allBtns = container.querySelectorAll('button');
+        allBtns.forEach(b => {
+          if (!b.innerText.includes('Previous') && !b.innerText.includes('Next') && !b.innerText.includes('Listen')) {
+            b.disabled = true;
+          }
+        });
+
+        if (currentMode === 'engFillBlank' && currentFullSentence) {
+          const sDisp = document.getElementById('sentence-display');
+          if (sDisp) sDisp.innerHTML = `<span class="text-green-600">${currentFullSentence}</span>`;
+          const feedback = document.getElementById('fill-feedback');
+          if (feedback) feedback.innerHTML = `<span class="text-green-600 font-black">🎉 Correct! (+1 ⭐). Press Next when ready!</span>`;
+          speakClear(currentFullSentence, "en");
+          return;
+        }
+
+        if (currentMode === 'engGrammar' && currentFullSentence) {
+          const feedback = document.getElementById('grammar-feedback');
+          if (feedback) feedback.innerHTML = `<span class="text-green-600 font-black">🎉 Exactly right! (+1 ⭐). Press Next when ready!</span>`;
+          speakClear(currentFullSentence, "en");
+          return;
+        }
+
+        if (currentMode === 'engAlphaQuiz') {
+          const feedback = document.getElementById('quiz-feedback');
+          if (feedback) feedback.innerHTML = `<span class="text-green-600 font-black">🎉 Great job! Letter ${currentAnswer} (+1 ⭐). Press Next when ready!</span>`;
+          speakClear(`Letter ${currentAnswer}`, "en");
+          return;
+        }
+
+        speakClear(currentFullSentence || currentAnswer, "en");
+
+      } else {
+        btnElement.classList.add('!bg-rose-500', '!text-white', '!border-rose-600');
+        const ipaSpan = btnElement.querySelector('.choice-ipa');
+        if (ipaSpan) ipaSpan.classList.remove('!text-white');
+        
+        playTone('wrong');
+
+        setTimeout(() => {
+          btnElement.classList.remove('!bg-rose-500', '!text-white', '!border-rose-600');
+          if (ipaSpan) ipaSpan.classList.remove('!text-white');
+        }, 1100);
+      }
+    }
+  </script>
+</body>
+</html>
