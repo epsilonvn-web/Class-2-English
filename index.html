@@ -218,7 +218,26 @@
     let currentVocabTarget = null;
     let currentTopicId = null;
     let audioCtx = null;
-    const onlineAudioPlayer = new Audio();
+    let cachedVoices = [];
+
+    function refreshVoiceList() {
+      if ('speechSynthesis' in window) {
+        cachedVoices = window.speechSynthesis.getVoices() || [];
+      }
+    }
+    if ('speechSynthesis' in window) {
+      refreshVoiceList();
+      window.speechSynthesis.onvoiceschanged = refreshVoiceList;
+    }
+
+    function pickBestVoice(langPrefix) {
+      if (!cachedVoices || cachedVoices.length === 0) refreshVoiceList();
+      const candidates = cachedVoices.filter(v => v.lang && v.lang.toLowerCase().startsWith(langPrefix));
+      if (candidates.length === 0) return null;
+      const femaleHints = ['female', 'nữ', 'woman', 'hoaimy', 'linh', 'mai', 'an', 'zira', 'susan', 'samantha', 'google'];
+      const preferred = candidates.find(v => femaleHints.some(hint => v.name.toLowerCase().includes(hint)));
+      return preferred || candidates[0];
+    }
 
     document.getElementById('stars-count').innerText = stars;
 
@@ -291,45 +310,47 @@
 
     function speakClear(text, lang = 'en', onEndCallback = null) {
       try {
-        onlineAudioPlayer.pause();
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        if (!('speechSynthesis' in window)) {
+          if (typeof onEndCallback === 'function') onEndCallback();
+          return;
+        }
+        window.speechSynthesis.cancel();
 
-        const targetLang = (lang === 'vi' || lang === 'vi-VN') ? 'vi' : 'en';
-        let cleanText = String(text || '').trim();
-        const encoded = encodeURIComponent(cleanText);
-        const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${targetLang}&client=tw-ob&q=${encoded}`;
+        const cleanText = String(text || '').trim();
+        if (!cleanText) {
+          if (typeof onEndCallback === 'function') onEndCallback();
+          return;
+        }
 
-        onlineAudioPlayer.src = ttsUrl;
-        onlineAudioPlayer.playbackRate = 0.92;
-        
-        onlineAudioPlayer.onended = () => {
+        const targetLangPrefix = (lang === 'vi' || lang === 'vi-VN') ? 'vi' : 'en';
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = targetLangPrefix === 'vi' ? 'vi-VN' : 'en-US';
+
+        const voice = pickBestVoice(targetLangPrefix);
+        if (voice) utterance.voice = voice;
+
+        utterance.rate = 0.88;
+        utterance.pitch = 1.12;
+        utterance.onend = () => {
+          if (typeof onEndCallback === 'function') onEndCallback();
+        };
+        utterance.onerror = () => {
           if (typeof onEndCallback === 'function') onEndCallback();
         };
 
-        const playPromise = onlineAudioPlayer.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            fallbackWebSpeech(cleanText, targetLang, onEndCallback);
-          });
+        // Some browsers need voices loaded asynchronously before first speak.
+        if (!voice && cachedVoices.length === 0) {
+          setTimeout(() => {
+            const retryVoice = pickBestVoice(targetLangPrefix);
+            if (retryVoice) utterance.voice = retryVoice;
+            window.speechSynthesis.speak(utterance);
+          }, 150);
+        } else {
+          window.speechSynthesis.speak(utterance);
         }
       } catch (err) {
-        fallbackWebSpeech(text, lang, onEndCallback);
-      }
-    }
-
-    function fallbackWebSpeech(text, lang, onEndCallback = null) {
-      if (!('speechSynthesis' in window)) {
         if (typeof onEndCallback === 'function') onEndCallback();
-        return;
       }
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.88;
-      utterance.pitch = 1.15;
-      utterance.lang = (lang === 'vi') ? 'vi-VN' : 'en-US';
-      utterance.onend = () => {
-        if (typeof onEndCallback === 'function') onEndCallback();
-      };
-      window.speechSynthesis.speak(utterance);
     }
 
     function speakMascotCheer() {
@@ -1988,7 +2009,7 @@
                 <span class="text-base md:text-lg">${c.word}</span>
                 <span class="pos-badge ${c.posClass}">${c.pos}</span>
               </div>
-              <div class="choice-ipa text-emerald-600 text-sm">${c.ipa}</div>
+              <div class="choice-ipa text-emerald-600 text-base">${c.ipa}</div>
             </button>
           `).join('')}
         </div>
@@ -3440,7 +3461,7 @@
         </div>
 
         <div id="fillblank-choices-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mb-3.5">
-          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-teal-400 hover:bg-teal-50 text-teal-900 font-black py-2.5 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkFillBlankChoice(this, '${c}')"><span class="text-lg">${c}</span><span class="choice-ipa text-emerald-600 text-xs mt-0.5">${getIPA(c)}</span></button>`).join('')}
+          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-teal-400 hover:bg-teal-50 text-teal-900 font-black py-2.5 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkFillBlankChoice(this, '${c}')"><span class="text-lg">${c}</span><span class="choice-ipa text-emerald-600 text-sm mt-1">${getIPA(c)}</span></button>`).join('')}
         </div>
 
         <div class="flex items-center justify-center space-x-3">
@@ -3672,7 +3693,7 @@
         </div>
 
         <div id="prep-choices-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mb-3.5">
-          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-blue-400 hover:bg-blue-50 text-blue-900 font-black py-2.5 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkPrepChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-xs mt-0.5">${getIPA(c)}</span></button>`).join('')}
+          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-blue-400 hover:bg-blue-50 text-blue-900 font-black py-2.5 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkPrepChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-sm mt-1">${getIPA(c)}</span></button>`).join('')}
         </div>
 
         <div class="flex items-center justify-center space-x-3">
@@ -3785,7 +3806,7 @@
         </div>
 
         <div id="verb-choices-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mb-3.5">
-          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-emerald-400 hover:bg-emerald-50 text-emerald-900 font-black py-2.5 px-2 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkVerbChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-xs mt-0.5">${getIPA(c)}</span></button>`).join('')}
+          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-emerald-400 hover:bg-emerald-50 text-emerald-900 font-black py-2.5 px-2 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkVerbChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-sm mt-1">${getIPA(c)}</span></button>`).join('')}
         </div>
 
         <div class="flex items-center justify-center space-x-3">
@@ -3898,7 +3919,7 @@
         </div>
 
         <div id="adj-choices-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mb-3.5">
-          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-orange-400 hover:bg-orange-50 text-orange-900 font-black py-2.5 px-2 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkAdjChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-xs mt-0.5">${getIPA(c)}</span></button>`).join('')}
+          ${choices.map(c => `<button class="btn-bounce bg-white border-3 border-orange-400 hover:bg-orange-50 text-orange-900 font-black py-2.5 px-2 rounded-xl shadow-sm transition cursor-pointer flex flex-col items-center justify-center" onclick="checkAdjChoice(this, '${c}')"><span class="text-sm md:text-base">${c}</span><span class="choice-ipa text-emerald-600 text-sm mt-1">${getIPA(c)}</span></button>`).join('')}
         </div>
 
         <div class="flex items-center justify-center space-x-3">
