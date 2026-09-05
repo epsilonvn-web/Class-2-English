@@ -184,6 +184,7 @@ function normalizeQuestion(q) {
         sub_topic: String(q.sub_code ?? q.sub ?? q.sub_topic ?? 'Câu hỏi chung').trim(),
         sub_topic_label: String(q.sub ?? q.sub_code ?? q.sub_topic ?? 'Câu hỏi chung').trim(),
         week: q.week ?? q.w ?? null,
+        paired_group: q.pg ?? q.paired_group ?? '',
         question_text: q.q ?? q.question_text ?? '',
         options: Array.isArray(q.o) ? q.o : (Array.isArray(q.options) ? q.options : []),
         answer: q.a ?? q.answer ?? '',
@@ -351,7 +352,7 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     // file dữ liệu, app tự động đổi theo, không cần sửa code. Chỉ dùng bảng SECTION_LABELS tự map
     // làm dự phòng cho những câu CHƯA kịp có field này.
     const label = sectionLabel || it.section_name || SECTION_LABELS[sk] || sk;
-    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', aud: it.audio_text || '' };
+    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', aud: it.audio_text || '', pg: it._paired_group || '' };
 
     if ('faulty_word' in it) {
         const letter = it.answer;
@@ -381,7 +382,11 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
 function extractItemsFromSection(sectionValue) {
     if (Array.isArray(sectionValue)) return sectionValue;
     if (sectionValue && Array.isArray(sectionValue.topics)) {
-        return sectionValue.topics.flatMap(t => Array.isArray(t.questions) ? t.questions : []);
+        // Gắn thêm "_paired_group" (tên 1 trong 6 Nhóm Kép) vào từng câu — cần để dựng
+        // thêm 1 cấp menu chọn nhóm trước khi vào bài (VD Flashcards Library có 6 Nhóm Kép con).
+        return sectionValue.topics.flatMap(t =>
+            (Array.isArray(t.questions) ? t.questions : []).map(q => ({ ...q, _paired_group: t.topic_name || '' }))
+        );
     }
     if (sectionValue && Array.isArray(sectionValue.questions)) return sectionValue.questions;
     return [];
@@ -956,8 +961,8 @@ function returnToTopicLecture() {
     } else if (activeRoadmapContext) {
         openRoadmap();
     } else if (pendingTopicQuiz) {
-        updateNavTabs(pendingTopicQuiz.topicName, TOPICS_CONFIG.find(t => t.id === pendingTopicQuiz.topicNum)?.icon, null);
-        switchAppView('view-lecture');
+        // Render lại đúng danh sách mục nhỏ CẤP 1 (không phải màn chọn Nhóm Kép cấp 3 vừa hiện trước đó)
+        showLectureAndSubtopics(pendingTopicQuiz.topicNum, pendingTopicQuiz.topicName, { questions: pendingTopicQuiz.questions });
     } else if (inAlphaIpaFlow) {
         // Đang duyệt Alphabet A-Z hoặc Bảng IPA (không phải quiz) -> quay về đúng menu 3 lựa chọn
         openAlphabetIPA();
@@ -1248,6 +1253,7 @@ function setSubtopicGridColumns(count) {
 
 function showLectureAndSubtopics(topicNum, topicName, topicObj) {
     document.getElementById('wrap-mix-all-subtopics').classList.remove('hidden');
+    document.getElementById('btn-mix-all-subtopics').setAttribute('onclick', 'selectSubtopic(null)');
     pendingTopicQuiz = { topicNum, topicName, questions: topicObj.questions };
     
     document.getElementById('lecture-title').textContent = topicObj.lecture_title || topicName;
@@ -1287,15 +1293,70 @@ function speakLecture() {
     speakVietnamese(document.getElementById('view-lecture').dataset.audioText || '', 0.96);
 }
 
+let pendingPairedGroupContext = null;
+
 function selectSubtopic(idx) {
     stopSpeaking();
     if (!pendingTopicQuiz) return;
     const { topicNum, topicName, questions, groups, groupMap, groupLabels } = pendingTopicQuiz;
-    const subLabel = idx !== null ? groups[idx] : null;
-    const pool = idx !== null ? groupMap[subLabel] : questions;
-    const displayLabel = subLabel ? beautifySubtopicName(groupLabels[subLabel]) : null;
-    const finalTitle = displayLabel ? `${topicName} - ${displayLabel}` : topicName;
 
+    if (idx === null) {
+        return launchSubtopicQuiz(topicNum, topicName, questions, null, null);
+    }
+
+    const subLabel = groups[idx];
+    const pool = groupMap[subLabel];
+    const displayLabel = beautifySubtopicName(groupLabels[subLabel]);
+
+    // Dữ liệu 3 cấp (VD Vocabulary: Flashcards Library lại chia tiếp thành 6 Nhóm Kép) —
+    // phải hiện thêm màn chọn Nhóm Kép trước khi vào bài, KHÔNG được gộp thẳng thành 1 pool lớn.
+    const pairedGroups = [...new Set(pool.map(q => q.paired_group).filter(Boolean))];
+    if (pairedGroups.length > 1) {
+        return showPairedGroupMenu(topicNum, topicName, subLabel, displayLabel, pool, pairedGroups);
+    }
+    launchSubtopicQuiz(topicNum, topicName, pool, subLabel, displayLabel);
+}
+
+function showPairedGroupMenu(topicNum, topicName, subLabel, displayLabel, pool, pairedGroups) {
+    pendingPairedGroupContext = { topicNum, topicName, subLabel, displayLabel, pool, pairedGroups };
+
+    document.getElementById('lecture-title').textContent = displayLabel;
+    const introText = `Chọn 1 trong ${pairedGroups.length} Nhóm Kép để bắt đầu luyện "${displayLabel}" nhé!`;
+    document.getElementById('lecture-content').textContent = introText;
+    document.getElementById('view-lecture').dataset.audioText = introText;
+
+    let html = '';
+    pairedGroups.forEach((pg, i) => {
+        const style = SUBTOPIC_PALETTES[i % SUBTOPIC_PALETTES.length];
+        const count = pool.filter(q => q.paired_group === pg).length;
+        html += `
+            <button onclick="selectPairedGroup(${i})" class="p-3 ${style.card} border-2 rounded-xl font-bold text-left transition-all flex items-center justify-between shadow-sm pastel-btn">
+                <span class="text-sm md:text-base leading-snug"><strong class="${style.num} mr-1.5">${i + 1}.</strong> ${escapeHtml(pg)}</span>
+                <span class="text-xs font-extrabold ${style.badge} px-2.5 py-0.5 rounded-full border shrink-0 ml-1.5 shadow-inner">${count} câu</span>
+            </button>`;
+    });
+    document.getElementById('lecture-subtopics-list').innerHTML = html;
+    setSubtopicGridColumns(pairedGroups.length);
+
+    // Nút "Học trộn tất cả" ở đây nghĩa là trộn tất cả 6 Nhóm Kép của RIÊNG mục nhỏ này
+    document.getElementById('wrap-mix-all-subtopics').classList.remove('hidden');
+    document.getElementById('btn-mix-all-subtopics').setAttribute('onclick', 'selectPairedGroup(null)');
+
+    updateNavTabs(topicName, TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢', displayLabel);
+    switchAppView('view-lecture');
+}
+
+function selectPairedGroup(i) {
+    stopSpeaking();
+    if (!pendingPairedGroupContext) return;
+    const { topicNum, topicName, subLabel, displayLabel, pool, pairedGroups } = pendingPairedGroupContext;
+    const chosenPool = (i === null) ? pool : pool.filter(q => q.paired_group === pairedGroups[i]);
+    const finalLabel = (i === null) ? displayLabel : `${displayLabel} - ${pairedGroups[i]}`;
+    launchSubtopicQuiz(topicNum, topicName, chosenPool, subLabel, finalLabel);
+}
+
+function launchSubtopicQuiz(topicNum, topicName, pool, subLabel, displayLabel) {
+    const finalTitle = displayLabel ? `${topicName} - ${displayLabel}` : topicName;
     practiceCycleRawPool = [...pool];
     const firstCycleQuestions = shuffleArray([...pool]);
 
