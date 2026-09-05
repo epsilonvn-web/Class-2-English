@@ -62,8 +62,8 @@ const TOTAL_ROADMAP_WEEKS = 24;
 // Toạ độ 35 mốc tuần dạng zigzag rắn bò (serpentine), 7 cột x 5 hàng, tự tính không cần khai báo tay từng điểm
 function getRoadmapCoord(weekNum) {
     const cols = 6;
-    const colWidth = 92, rowHeight = 92;
-    const startX = 62, startY = 58;
+    const colWidth = 105, rowHeight = 95;
+    const startX = 70, startY = 58;
     const idx = weekNum - 1;
     const row = Math.floor(idx / cols);
     const posInRow = idx % cols;
@@ -83,7 +83,7 @@ function buildRoadmapPathD(totalWeeks) {
         const nx = -dy / len, ny = dx / len;
         // Sóng uốn lượn xuống-lên LIÊN TỤC xuyên suốt toàn bộ đường đi (kể cả đoạn chuyển hàng),
         // không để đoạn nào thẳng đơ xen giữa — giống hệt kiểu bản đồ lộ trình game (Duolingo-style).
-        const bend = (i % 2 === 0 ? 1 : -1) * 34;
+        const bend = (i % 2 === 0 ? 1 : -1) * 32;
         const cx = midX + nx * bend, cy = midY + ny * bend;
         d += ` Q ${cx},${cy} ${p1.x},${p1.y}`;
     }
@@ -325,19 +325,19 @@ function pickDistractorWords(correct, pool, n = 3) {
  * về đúng schema q/o/a/h mà normalizeQuestion() hiểu, đồng thời gắn sub_code "topic_id.part" để
  * bốc đề theo tuần (Mục 5) và gom nhóm trang chủ (fetchAllTopicsData) hoạt động chính xác. */
 const SECTION_LABELS = {
-    "1.3": "1.3 Phonics Matcher", "2.1": "2.1 Flashcards Library", "2.2": "2.2 Listening Master", "2.3": "2.3 Word-Picture Puzzle",
-    "3.1": "3.1 Remove Letter (Warm-up)", "3.2": "3.2 Remove Letter (Runner)", "3.3": "3.3 Remove Letter (Master)",
-    "4.1": "4.1 Fill Missing (Starting Sound)", "4.2": "4.2 Fill Missing (Vowel Fill)", "4.3": "4.3 Fill Missing (Word Finisher)",
-    "5.1": "5.1 Odd One Out (Semantic)", "5.2": "5.2 Odd One Out (Grammar)", "5.3": "5.3 Odd One Out (Sound)",
-    "6.1": "6.1 Reading Stories (Level 1)", "6.2": "6.2 Reading Stories (Level 2)", "6.3": "6.3 Reading Stories (Level 3)",
-    "7.1": "7.1 Sentence Builder (Simple)", "7.2": "7.2 Sentence Builder (Q&A Mixer)", "7.3": "7.3 Sentence Builder (Classroom Command)",
-    "8.1": "8.1 Fill Sentence (Picture)", "8.2": "8.2 Fill Sentence (Grammar Choice)", "8.3": "8.3 Fill Sentence (Conversation)",
-    "9.1": "9.1 Q&A Dialogues (Welcome Chat)", "9.2": "9.2 Q&A Dialogues (Wardrobe & Dining)", "9.3": "9.3 Q&A Dialogues (Spatial Query)",
-    "10.1": "10.1 Grammar Point (Articles)", "10.2": "10.2 Grammar Point (Prepositions)", "10.3": "10.3 Grammar Point (Verbs)", "10.4": "10.4 Grammar Point (Adjectives)",
-    "11.1": "11.1 Practice & Play (Semester 1 Review)", "11.2": "11.2 Practice & Play (Semester 2 Review)"
+    "1.3": "Phonics Matcher", "2.1": "Flashcards Library", "2.2": "Listening Master", "2.3": "Word-Picture Puzzle",
+    "3.1": "Spelling Warm-up", "3.2": "Spelling Runner", "3.3": "Spelling Master",
+    "4.1": "Starting Sound Fill", "4.2": "Vowel Fill", "4.3": "Word Finisher",
+    "5.1": "Semantic Category", "5.2": "Grammar Category", "5.3": "Sound Odd",
+    "6.1": "Sentence Reader", "6.2": "Fun Tales", "6.3": "Comprehensive Reading",
+    "7.1": "Sentence Builder (Simple)", "7.2": "Sentence Builder (Q&A Mixer)", "7.3": "Sentence Builder (Classroom Command)",
+    "8.1": "Fill Sentence (Picture)", "8.2": "Fill Sentence (Grammar Choice)", "8.3": "Fill Sentence (Conversation)",
+    "9.1": "Q&A Dialogues (Welcome Chat)", "9.2": "Q&A Dialogues (Wardrobe & Dining)", "9.3": "Q&A Dialogues (Spatial Query)",
+    "10.1": "Grammar Point (Articles)", "10.2": "Grammar Point (Prepositions)", "10.3": "Grammar Point (Verbs)", "10.4": "Grammar Point (Adjectives)",
+    "11.1": "Practice & Play (Semester 1 Review)", "11.2": "Practice & Play (Semester 2 Review)"
 };
 
-function rawItemToFlatQuestion(sk, it, allWordsPool) {
+function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     const skill = it.skill_tag;
     const part = PART1_SKILLS.includes(skill) ? 1 : 2;
     const topicId = Number(it.topic_id) || 1;
@@ -345,7 +345,12 @@ function rawItemToFlatQuestion(sk, it, allWordsPool) {
     // TRANG CHỦ "Học tự do" (Mục I khung V6). weekCode ("topicId.part") = Chủ Đề nội dung + Part —
     // dùng RIÊNG để lọc câu hỏi theo Lộ trình 24 tuần (Mục III khung V6). Hai trục KHÔNG được gộp chung.
     const weekCode = `${topicId}.${part}`;
-    const label = SECTION_LABELS[sk] || sk;
+    // Ưu tiên đọc tên hiển thị THẲNG TỪ JSON: bảng "section_names" cấp cao nhất của file trước,
+    // sau đó field "section_name" gắn trong từng câu, cuối cùng mới dùng bảng dự phòng tự map.
+    // KHÔNG tự thêm số "2.1 " vào trước tên — dữ liệu thật của anh không có tiền tố này.
+    // file dữ liệu, app tự động đổi theo, không cần sửa code. Chỉ dùng bảng SECTION_LABELS tự map
+    // làm dự phòng cho những câu CHƯA kịp có field này.
+    const label = sectionLabel || it.section_name || SECTION_LABELS[sk] || sk;
     const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', aud: it.audio_text || '' };
 
     if ('faulty_word' in it) {
@@ -368,6 +373,20 @@ function rawItemToFlatQuestion(sk, it, allWordsPool) {
 
 // Kho học liệu Tiếng Anh 2 tổ chức theo Chuyên Mục hoạt động (section_X.Y), mỗi câu tự mang "topic_id" (1-12)
 // và "skill_tag" (ENG_xxx) — cần chuẩn hoá về mảng phẳng rồi tự suy ra sub_code "X.1"/"X.2" theo Part.
+/** Kho học liệu có 2 dạng section khác nhau tùy Chuyên Mục:
+ *  1) Mảng phẳng: "section_3.1": [ {...câu hỏi...}, ... ]  (đa số các mục)
+ *  2) Mảng lồng theo 6 Nhóm Kép: "section_2.1": { section_id, section_name, topics: [ { topic_id, topic_name, questions: [...] } ] }
+ *     (riêng mục Vocabulary 2.1/2.2/2.3) — cần bóc tách "topics[].questions" thành 1 mảng phẳng duy nhất.
+ * Không được giả định cứng 1 trong 2 dạng, phải tự nhận diện để không vỡ khi cấu trúc đổi. */
+function extractItemsFromSection(sectionValue) {
+    if (Array.isArray(sectionValue)) return sectionValue;
+    if (sectionValue && Array.isArray(sectionValue.topics)) {
+        return sectionValue.topics.flatMap(t => Array.isArray(t.questions) ? t.questions : []);
+    }
+    if (sectionValue && Array.isArray(sectionValue.questions)) return sectionValue.questions;
+    return [];
+}
+
 async function fetchAllQuestionsFlat() {
     if (allQuestionsFlatCache) return allQuestionsFlatCache;
 
@@ -379,16 +398,22 @@ async function fetchAllQuestionsFlat() {
 
     if (!allWordsPoolCache) {
         allWordsPoolCache = [];
-        results.forEach(d => Object.values(d.sections || {}).forEach(items => items.forEach(it => {
-            if ('word' in it && !('question_text' in it)) allWordsPoolCache.push(it.word);
-        })));
+        results.forEach(d => Object.values(d.sections || {}).forEach(sectionValue => {
+            extractItemsFromSection(sectionValue).forEach(it => {
+                if ('word' in it && !('question_text' in it)) allWordsPoolCache.push(it.word);
+            });
+        }));
     }
 
     const rawQuestions = [];
     results.forEach(data => {
-        Object.entries(data.sections || {}).forEach(([rawKey, items]) => {
+        Object.entries(data.sections || {}).forEach(([rawKey, sectionValue]) => {
             const sk = rawKey.replace(/^section_/, '');
-            items.forEach(it => rawQuestions.push(rawItemToFlatQuestion(sk, it, allWordsPoolCache)));
+            // Ưu tiên tên từ bảng "section_names" cấp cao nhất của file (không có tiền tố số,
+            // đúng như dữ liệu thật NotebookLM xuất ra) — không tự thêm số 2.1/3.1 vào tên nữa.
+            const sectionLabel = (data.section_names && data.section_names[rawKey]) || null;
+            const items = extractItemsFromSection(sectionValue);
+            items.forEach(it => rawQuestions.push(rawItemToFlatQuestion(sk, it, allWordsPoolCache, sectionLabel)));
         });
     });
 
@@ -677,52 +702,54 @@ async function openAlphabetIPA() {
     showLoadingOverlay("Đang tải bảng chữ cái & ngữ âm...");
     try {
         await loadAlphabetIPAData();
+        let phonicsCount = 0;
+        try {
+            const flat = await fetchAllQuestionsFlat();
+            phonicsCount = flat.filter(q => Math.floor(Number(q.sub_topic)) === 1).length;
+        } catch (e) {}
         hideLoadingOverlay();
-        renderAlphaIPAMenu();
-        switchAppView('view-alphabet');
+        renderAlphaIPAMenu(phonicsCount);
     } catch (err) {
         hideLoadingOverlay();
         alert('Không tải được dữ liệu Alphabet & IPA: ' + err.message);
     }
 }
 
-// Màn hình chọn 1 trong 3 mục nhỏ: Alphabet, IPA, Phonics Matcher
-function renderAlphaIPAMenu() {
+// Màn hình chọn 1 trong 3 mục nhỏ — dùng ĐÚNG khung "view-lecture" chuẩn (đồng bộ với mọi chuyên mục khác),
+// chỉ khác ở chỗ 3 nút bấm dẫn sang 3 màn hình riêng (Alphabet, IPA, Phonics Matcher) thay vì bốc câu hỏi.
+function renderAlphaIPAMenu(phonicsCount = 0) {
+    document.getElementById('lecture-title').textContent = '1. Alphabet & IPA';
+    document.getElementById('lecture-content').textContent = 'Chào con, đây là góc làm quen với bảng chữ cái và ngữ âm tiếng Anh! Con hãy chọn 1 mục nhỏ bên dưới để bắt đầu nhé.';
+    document.getElementById('view-lecture').dataset.audioText = 'Chào con, đây là góc làm quen với bảng chữ cái và ngữ âm tiếng Anh! Con hãy chọn 1 mục nhỏ bên dưới để bắt đầu nhé.';
+
+    const items = [
+        { label: 'Alphabet (A-Z)', count: '26 chữ', action: "openAlphabetMenu(0)", style: SUBTOPIC_PALETTES[0] },
+        { label: 'Bảng ngữ âm IPA', count: '44 âm', action: "openIPAMenu(0)", style: SUBTOPIC_PALETTES[1] },
+        { label: 'Phonics Matcher', count: `${phonicsCount} câu`, action: "openPhonicsMatcher()", style: SUBTOPIC_PALETTES[2] }
+    ];
+    document.getElementById('lecture-subtopics-list').innerHTML = items.map((it, idx) => `
+        <button onclick="${it.action}" class="p-3 ${it.style.card} border-2 rounded-xl font-bold text-left transition-all flex items-center justify-between shadow-sm pastel-btn">
+            <span class="text-sm md:text-base leading-snug"><strong class="${it.style.num} mr-1.5">${idx + 1}.</strong> ${escapeHtml(it.label)}</span>
+            <span class="text-xs font-extrabold ${it.style.badge} px-2.5 py-0.5 rounded-full border shrink-0 ml-1.5 shadow-inner">${it.count}</span>
+        </button>`).join('');
+    setSubtopicGridColumns(items.length);
+
+    // Không có khái niệm "học trộn tất cả" ở đây vì 1.1/1.2 là bảng tra cứu tĩnh, 1.3 mới là luyện tập thật
+    document.getElementById('wrap-mix-all-subtopics').classList.add('hidden');
+
     updateNavTabs("1. Alphabet & IPA", "🔤", null);
-    document.getElementById('alphaipa-content').innerHTML = `
-        <div class="mb-3 text-center">
-            <h2 class="text-lg md:text-xl font-black text-purple-600">🔤 ALPHABET & IPA PHONICS</h2>
-            <p class="text-xs md:text-sm font-bold text-gray-500">Chọn 1 mục nhỏ để bắt đầu nhé!</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
-            <div onclick="openAlphabetMenu(0)" class="card-hover bg-white border-2 border-purple-300 hover:border-purple-500 rounded-2xl p-5 text-center cursor-pointer shadow-sm relative">
-                <span class="absolute top-2 right-2 bg-purple-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full">26 Letters</span>
-                <div class="text-5xl mb-2">🔤</div>
-                <h3 class="text-base font-black text-purple-700">1.1 Alphabet (A-Z)</h3>
-                <p class="text-[11px] font-bold text-gray-400 mt-0.5">Học bảng chữ cái & phát âm</p>
-            </div>
-            <div onclick="openIPAMenu(0)" class="card-hover bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 border-2 border-pink-400 hover:border-pink-600 rounded-2xl p-5 text-center cursor-pointer shadow-md relative">
-                <span class="absolute top-2 right-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-sm">44 Sounds ✨</span>
-                <div class="text-5xl mb-2">🗣️</div>
-                <h3 class="text-base font-black text-pink-700">1.2 Bảng ngữ âm IPA</h3>
-                <p class="text-[11px] font-bold text-gray-400 mt-0.5">Hướng dẫn phát âm + 3 ví dụ từ vựng</p>
-            </div>
-            <div onclick="openPhonicsMatcher()" class="card-hover bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-300 hover:border-emerald-500 rounded-2xl p-5 text-center cursor-pointer shadow-sm relative">
-                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full">Luyện tập</span>
-                <div class="text-5xl mb-2">🎯</div>
-                <h3 class="text-base font-black text-emerald-700">1.3 Phonics Matcher</h3>
-                <p class="text-[11px] font-bold text-gray-400 mt-0.5">Nghe âm đầu, chọn đúng từ minh hoạ</p>
-            </div>
-        </div>`;
+    switchAppView('view-lecture');
 }
 
 // ---------- 1.1 ALPHABET A-Z ----------
 function openAlphabetMenu(index = 0) {
     stopSpeaking();
+    inAlphaIpaFlow = true;
     if (index < 0) index = 0;
     if (index >= ALPHABET_DATA.length) index = ALPHABET_DATA.length - 1;
     currentAlphabetIndex = index;
     updateNavTabs("1. Alphabet & IPA", "🔤", "Alphabet A-Z");
+    switchAppView('view-alphabet');
 
     const item = ALPHABET_DATA[index];
     const keyboardHtml = ALPHABET_DATA.map((alpha, idx) => {
@@ -779,10 +806,12 @@ function speakAlphaWord(index, wordNum) { const item = ALPHABET_DATA[index]; con
 // ---------- 1.2 IPA 44 SOUNDS ----------
 function openIPAMenu(index = 0) {
     stopSpeaking();
+    inAlphaIpaFlow = true;
     if (index < 0) index = 0;
     if (index >= IPA_DATA.length) index = IPA_DATA.length - 1;
     currentIPAIndex = index;
     updateNavTabs("1. Alphabet & IPA", "🔤", "Bảng ngữ âm IPA (44 âm)");
+    switchAppView('view-alphabet');
 
     const item = IPA_DATA[currentIPAIndex];
     const soundButtonsHtml = IPA_DATA.map((snd, idx) => {
@@ -849,7 +878,7 @@ function openIPAMenu(index = 0) {
                     </div>
                 </div>
             </div>
-            <div class="bg-white border border-gray-200 rounded-2xl p-2.5 w-full shadow-inner mb-2.5 max-h-[160px] overflow-y-auto custom-scrollbar">
+            <div class="bg-white border border-gray-200 rounded-2xl p-2.5 w-full shadow-inner mb-2.5">
                 <div class="flex flex-wrap items-center justify-center gap-1">${soundButtonsHtml}</div>
             </div>
             <div class="flex items-center justify-center space-x-3">
@@ -866,16 +895,16 @@ function speakIPAExampleWord(index, wordIdx) { const item = IPA_DATA[index]; con
 // ---------- 1.3 PHONICS MATCHER (dùng đúng ngân hàng câu hỏi thật, chuyên mục 1) ----------
 function openPhonicsMatcher() {
     stopSpeaking();
-    inAlphaIpaFlow = false;
     showLoadingOverlay("Đang tải Phonics Matcher...");
     fetchAllQuestionsFlat().then(flat => {
         hideLoadingOverlay();
-        const questions = flat.filter(q => Math.floor(Number(q.sub_topic)) === 1);
+        const questions = shuffleArray(flat.filter(q => Math.floor(Number(q.sub_topic)) === 1));
         if (!questions.length) return alert('Đang cập nhật thêm câu hỏi cho Phonics Matcher, bé quay lại sau nhé!');
-        const topicObj = { topic_id: 1, topic_name: '1.3 Phonics Matcher', description: 'Nghe âm đầu và chọn đúng từ minh hoạ.', questions };
         activeTopicId = 1;
-        showLectureAndSubtopics(1, '1.3 Phonics Matcher', topicObj);
-        switchAppView('view-lecture');
+        pendingTopicQuiz = null; activeExamContext = null; activeRoadmapContext = null;
+        practiceCycleRawPool = [...questions];
+        updateNavTabs("1. Alphabet & IPA", "🔤", "1.3 Phonics Matcher");
+        startTopicQuiz(1, '1.3 Phonics Matcher', questions, '1.3 Phonics Matcher');
     }).catch(err => { hideLoadingOverlay(); alert('Lỗi tải Phonics Matcher: ' + err.message); });
 }
 
@@ -931,8 +960,7 @@ function returnToTopicLecture() {
         switchAppView('view-lecture');
     } else if (inAlphaIpaFlow) {
         // Đang duyệt Alphabet A-Z hoặc Bảng IPA (không phải quiz) -> quay về đúng menu 3 lựa chọn
-        renderAlphaIPAMenu();
-        switchAppView('view-alphabet');
+        openAlphabetIPA();
     }
 }
 
@@ -1219,6 +1247,7 @@ function setSubtopicGridColumns(count) {
 }
 
 function showLectureAndSubtopics(topicNum, topicName, topicObj) {
+    document.getElementById('wrap-mix-all-subtopics').classList.remove('hidden');
     pendingTopicQuiz = { topicNum, topicName, questions: topicObj.questions };
     
     document.getElementById('lecture-title').textContent = topicObj.lecture_title || topicName;
@@ -1349,8 +1378,8 @@ function renderRoadmapSVG() {
 
         nodesHtml += `
             <g class="${cursorCls} ${animCls}" onclick="selectRoadmapWeek(${w})" id="svg-node-week-${w}">
-                <circle cx="${coord.x}" cy="${coord.y}" r="30" fill="#ffffff" stroke="${strokeColor}" stroke-width="3" filter="drop-shadow(0 3px 4px rgba(0,0,0,0.08))"/>
-                <circle cx="${coord.x}" cy="${coord.y}" r="25" fill="${nodeColor}" opacity="${isLocked ? '0.25' : '0.15'}"/>
+                <circle cx="${coord.x}" cy="${coord.y}" r="32" fill="#ffffff" stroke="${strokeColor}" stroke-width="3" filter="drop-shadow(0 3px 4px rgba(0,0,0,0.08))"/>
+                <circle cx="${coord.x}" cy="${coord.y}" r="26" fill="${nodeColor}" opacity="${isLocked ? '0.25' : '0.15'}"/>
                 <text x="${coord.x}" y="${coord.y - 3}" text-anchor="middle" font-size="18">${item.icon || '🔢'}</text>
                 <text x="${coord.x}" y="${coord.y + 13}" text-anchor="middle" font-size="10" font-weight="800" fill="${isLocked ? '#64748b' : '#1e293b'}">Tuần ${w}</text>
                 ${badgeHtml}
@@ -1360,7 +1389,7 @@ function renderRoadmapSVG() {
 
     const pathD = buildRoadmapPathD(TOTAL_ROADMAP_WEEKS);
     const svgHtml = `
-        <svg viewBox="0 0 560 400" class="w-full max-h-[74vh] select-none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 650 400" preserveAspectRatio="xMidYMid meet" class="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
             <path d="${pathD}" fill="none" stroke="#fbcfe8" stroke-width="9" stroke-dasharray="11,11" stroke-linecap="round"/>
             <path d="${pathD}" fill="none" stroke="#f472b6" stroke-width="3" stroke-dasharray="11,11" stroke-linecap="round"/>
             ${nodesHtml}
