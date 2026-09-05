@@ -62,8 +62,8 @@ const TOTAL_ROADMAP_WEEKS = 24;
 // Toạ độ 35 mốc tuần dạng zigzag rắn bò (serpentine), 7 cột x 5 hàng, tự tính không cần khai báo tay từng điểm
 function getRoadmapCoord(weekNum) {
     const cols = 6;
-    const colWidth = 115, rowHeight = 115;
-    const startX = 90, startY = 75;
+    const colWidth = 92, rowHeight = 92;
+    const startX = 62, startY = 58;
     const idx = weekNum - 1;
     const row = Math.floor(idx / cols);
     const posInRow = idx % cols;
@@ -83,7 +83,7 @@ function buildRoadmapPathD(totalWeeks) {
         const nx = -dy / len, ny = dx / len;
         // Sóng uốn lượn xuống-lên LIÊN TỤC xuyên suốt toàn bộ đường đi (kể cả đoạn chuyển hàng),
         // không để đoạn nào thẳng đơ xen giữa — giống hệt kiểu bản đồ lộ trình game (Duolingo-style).
-        const bend = (i % 2 === 0 ? 1 : -1) * 45;
+        const bend = (i % 2 === 0 ? 1 : -1) * 34;
         const cx = midX + nx * bend, cy = midY + ny * bend;
         d += ` Q ${cx},${cy} ${p1.x},${p1.y}`;
     }
@@ -449,7 +449,29 @@ async function renderDashboardGrid() {
     let topicsData = [];
     try { topicsData = await fetchAllTopicsData(); } catch (e) {}
 
-    let html = '';
+    let totalExamsCount = 3;
+    try {
+        const examData = await loadExamDataFile('de_thi_english_2.json');
+        if (examData) {
+            totalExamsCount = ['semester_1_exams', 'semester_2_exams', 'hsg_exams']
+                .reduce((sum, k) => sum + (Array.isArray(examData[k]) ? examData[k].length : 0), 0);
+        }
+    } catch (e) {}
+
+    // Thẻ "1. Alphabet & IPA" luôn đứng ĐẦU TIÊN (đúng đúng thứ tự Chuyên Mục 1 trong khung V6)
+    let html = `
+        <div onclick="openAlphabetIPA()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-violet-400 transition-all group bg-gradient-to-br from-white to-violet-50/50 min-h-[92px]">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-violet-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🔤</div>
+                <h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">1. Alphabet & IPA</h3>
+            </div>
+            <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">
+                <span>Bảng chữ cái & ngữ âm</span>
+                <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">26 chữ + 44 âm</span>
+            </div>
+        </div>
+    `;
+
     TOPICS_CONFIG.forEach(t => {
         const topicObj = topicsData.find(item => Number(item.topic_id) === Number(t.id));
         const totalCount = topicObj && topicObj.questions ? topicObj.questions.length : 0;
@@ -473,27 +495,6 @@ async function renderDashboardGrid() {
         `;
     });
 
-    let totalExamsCount = 3;
-    try {
-        const examData = await loadExamDataFile('de_thi_english_2.json');
-        if (examData) {
-            totalExamsCount = ['semester_1_exams', 'semester_2_exams', 'hsg_exams']
-                .reduce((sum, k) => sum + (Array.isArray(examData[k]) ? examData[k].length : 0), 0);
-        }
-    } catch (e) {}
-
-    html += `
-        <div onclick="openAlphabetIPA()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-violet-400 transition-all group bg-gradient-to-br from-white to-violet-50/50 min-h-[92px]">
-            <div class="flex items-center space-x-2.5">
-                <div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-violet-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🔤</div>
-                <h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">Alphabet & IPA</h3>
-            </div>
-            <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">
-                <span>Bảng chữ cái & ngữ âm</span>
-                <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">26 chữ + 44 âm</span>
-            </div>
-        </div>
-    `;
     html += `
         <div onclick="openExamHub()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-amber-400 transition-all group bg-gradient-to-br from-white to-amber-50/50 min-h-[92px]">
             <div class="flex items-center space-x-2.5">
@@ -566,6 +567,7 @@ function updateExamTimerDisplay() {
 
 function openExamHub() {
     stopSpeaking();
+    inAlphaIpaFlow = false;
     activeExamContext = null;
     activeRoadmapContext = null;
     activeTopicId = null;
@@ -654,6 +656,7 @@ async function renderExamHubGrid() {
 let alphabetIpaLoaded = false;
 let currentAlphabetIndex = 0;
 let currentIPAIndex = 0;
+let inAlphaIpaFlow = false;
 
 async function loadAlphabetIPAData() {
     if (alphabetIpaLoaded) return;
@@ -669,6 +672,7 @@ async function loadAlphabetIPAData() {
 async function openAlphabetIPA() {
     stopSpeaking();
     activeTopicId = null; activeExamContext = null; activeRoadmapContext = null; pendingTopicQuiz = null;
+    inAlphaIpaFlow = true;
     updateNavTabs("1. Alphabet & IPA", "🔤", null);
     showLoadingOverlay("Đang tải bảng chữ cái & ngữ âm...");
     try {
@@ -862,6 +866,7 @@ function speakIPAExampleWord(index, wordIdx) { const item = IPA_DATA[index]; con
 // ---------- 1.3 PHONICS MATCHER (dùng đúng ngân hàng câu hỏi thật, chuyên mục 1) ----------
 function openPhonicsMatcher() {
     stopSpeaking();
+    inAlphaIpaFlow = false;
     showLoadingOverlay("Đang tải Phonics Matcher...");
     fetchAllQuestionsFlat().then(flat => {
         hideLoadingOverlay();
@@ -924,6 +929,10 @@ function returnToTopicLecture() {
     } else if (pendingTopicQuiz) {
         updateNavTabs(pendingTopicQuiz.topicName, TOPICS_CONFIG.find(t => t.id === pendingTopicQuiz.topicNum)?.icon, null);
         switchAppView('view-lecture');
+    } else if (inAlphaIpaFlow) {
+        // Đang duyệt Alphabet A-Z hoặc Bảng IPA (không phải quiz) -> quay về đúng menu 3 lựa chọn
+        renderAlphaIPAMenu();
+        switchAppView('view-alphabet');
     }
 }
 
@@ -940,6 +949,7 @@ function switchAppView(viewId) {
 function goHome() {
     stopSpeaking();
     clearInterval(quizTimerInterval);
+    inAlphaIpaFlow = false;
     updateNavTabs(null, null, null);
     switchAppView('view-dashboard-grid');
 }
@@ -1179,6 +1189,7 @@ function clickProgressOrExam(type) {
 // ==========================================
 function openTopic(topicNum, topicName, icon) {
     stopSpeaking();
+    inAlphaIpaFlow = false;
     activeTopicId = topicNum; activeExamContext = null; activeRoadmapContext = null;
     updateNavTabs(topicName, icon || '🐰', null);
 
@@ -1281,6 +1292,7 @@ function handleNextExamFromReport() {
 
 function openRoadmap() {
     stopSpeaking();
+    inAlphaIpaFlow = false;
     updateNavTabs("Bản đồ tiến trình tuần", "🗺️", null);
     renderRoadmapSVG();
     switchAppView('view-roadmap');
@@ -1325,11 +1337,11 @@ function renderRoadmapSVG() {
         let badgeHtml = '';
 
         if (isDone) {
-            badgeHtml = `<text x="${coord.x}" y="${coord.y + 40}" text-anchor="middle" font-size="16" fill="#f59e0b">⭐⭐⭐</text>`;
+            badgeHtml = `<text x="${coord.x}" y="${coord.y + 32}" text-anchor="middle" font-size="12" fill="#f59e0b">⭐⭐⭐</text>`;
         } else if (isCurrent) {
-            badgeHtml = `<text x="${coord.x}" y="${coord.y + 40}" text-anchor="middle" font-size="12" font-weight="900" fill="#ec4899">Đang học</text>`;
+            badgeHtml = `<text x="${coord.x}" y="${coord.y + 32}" text-anchor="middle" font-size="10" font-weight="900" fill="#ec4899">Đang học</text>`;
         } else {
-            badgeHtml = `<text x="${coord.x}" y="${coord.y + 38}" text-anchor="middle" font-size="14" fill="#94a3b8">🔒 Khóa</text>`;
+            badgeHtml = `<text x="${coord.x}" y="${coord.y + 30}" text-anchor="middle" font-size="11" fill="#94a3b8">🔒 Khóa</text>`;
         }
 
         const cursorCls = isLocked ? "cursor-not-allowed opacity-60" : "cursor-pointer hover:scale-105 transition-transform";
@@ -1337,10 +1349,10 @@ function renderRoadmapSVG() {
 
         nodesHtml += `
             <g class="${cursorCls} ${animCls}" onclick="selectRoadmapWeek(${w})" id="svg-node-week-${w}">
-                <circle cx="${coord.x}" cy="${coord.y}" r="40" fill="#ffffff" stroke="${strokeColor}" stroke-width="4" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.08))"/>
-                <circle cx="${coord.x}" cy="${coord.y}" r="34" fill="${nodeColor}" opacity="${isLocked ? '0.25' : '0.15'}"/>
-                <text x="${coord.x}" y="${coord.y - 4}" text-anchor="middle" font-size="24">${item.icon || '🔢'}</text>
-                <text x="${coord.x}" y="${coord.y + 18}" text-anchor="middle" font-size="13" font-weight="800" fill="${isLocked ? '#64748b' : '#1e293b'}">Tuần ${w}</text>
+                <circle cx="${coord.x}" cy="${coord.y}" r="30" fill="#ffffff" stroke="${strokeColor}" stroke-width="3" filter="drop-shadow(0 3px 4px rgba(0,0,0,0.08))"/>
+                <circle cx="${coord.x}" cy="${coord.y}" r="25" fill="${nodeColor}" opacity="${isLocked ? '0.25' : '0.15'}"/>
+                <text x="${coord.x}" y="${coord.y - 3}" text-anchor="middle" font-size="18">${item.icon || '🔢'}</text>
+                <text x="${coord.x}" y="${coord.y + 13}" text-anchor="middle" font-size="10" font-weight="800" fill="${isLocked ? '#64748b' : '#1e293b'}">Tuần ${w}</text>
                 ${badgeHtml}
             </g>
         `;
@@ -1348,9 +1360,9 @@ function renderRoadmapSVG() {
 
     const pathD = buildRoadmapPathD(TOTAL_ROADMAP_WEEKS);
     const svgHtml = `
-        <svg viewBox="0 0 780 500" class="w-full max-h-[74vh] select-none" xmlns="http://www.w3.org/2000/svg">
-            <path d="${pathD}" fill="none" stroke="#fbcfe8" stroke-width="12" stroke-dasharray="14,14" stroke-linecap="round"/>
-            <path d="${pathD}" fill="none" stroke="#f472b6" stroke-width="4" stroke-dasharray="14,14" stroke-linecap="round"/>
+        <svg viewBox="0 0 560 400" class="w-full max-h-[74vh] select-none" xmlns="http://www.w3.org/2000/svg">
+            <path d="${pathD}" fill="none" stroke="#fbcfe8" stroke-width="9" stroke-dasharray="11,11" stroke-linecap="round"/>
+            <path d="${pathD}" fill="none" stroke="#f472b6" stroke-width="3" stroke-dasharray="11,11" stroke-linecap="round"/>
             ${nodesHtml}
         </svg>
     `;
