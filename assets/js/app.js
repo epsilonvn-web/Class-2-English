@@ -190,6 +190,7 @@ function normalizeQuestion(q) {
         answer: q.a ?? q.answer ?? '',
         hint: q.h ?? q.hint ?? '',
         image_url: q.img ?? q.image_url ?? '',
+        emoji: q.emo ?? q.emoji ?? '',
         audio_text: q.aud ?? q.audio_text ?? '',
         reading_title: q.r_title ?? q.reading_title ?? '',
         reading_passage: q.r_passage ?? q.reading_passage ?? q.passage_text ?? '',
@@ -352,7 +353,7 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     // file dữ liệu, app tự động đổi theo, không cần sửa code. Chỉ dùng bảng SECTION_LABELS tự map
     // làm dự phòng cho những câu CHƯA kịp có field này.
     const label = sectionLabel || it.section_name || SECTION_LABELS[sk] || sk;
-    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', aud: it.audio_text || '', pg: it._paired_group || '' };
+    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', emo: it.emoji || '', aud: it.audio_text || '', pg: it._paired_group || '' };
 
     if ('faulty_word' in it) {
         const letter = it.answer;
@@ -1581,8 +1582,12 @@ function loadQuestion() {
     }
 
     let mediaHtml = '';
-    if (q.image_url && !activeExamContext) {
-        mediaHtml = `<img src="${q.image_url}" alt="minh họa" class="w-14 h-14 md:w-16 md:h-16 object-contain mb-1 floating" onerror="this.remove()">`;
+    if (q.emoji && !activeExamContext) {
+        // Chỉ dùng Emoji có sẵn trong dữ liệu, không tải ảnh thật (assets/images/) nữa —
+        // vừa nhanh hơn (không mất thời gian chờ ảnh lỗi), vừa không bao giờ bị vỡ layout.
+        mediaHtml = `<div class="w-14 h-14 md:w-16 md:h-16 mb-1 flex items-center justify-center">
+            <div class="text-4xl md:text-5xl floating">${q.emoji}</div>
+        </div>`;
     }
 
     const pText = q.reading_passage;
