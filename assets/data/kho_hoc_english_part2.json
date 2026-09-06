@@ -152,9 +152,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'are / circles / There / twelve / .'",
         "options": [
           "circles are twelve There.",
-          "There are twelve circles. (wrong)",
+          "There circles are twelve.",
           "There are twelve circles.",
-          "There are twelve circles. (wrong)"
+          "Twelve circles there are."
         ],
         "answer": "There are twelve circles.",
         "hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'There are twelve circles.'.",
@@ -1242,9 +1242,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'his / Are / pants / these / ?'",
         "options": [
           "these pants Are his?",
-          "Are these his pants? (wrong?)",
+          "Are his pants these?",
           "Are these his pants?",
-          "Are these his pants? (wrong?)"
+          "These are his pants?"
         ],
         "answer": "Are these his pants?",
         "hint": "Gợi ý: Đây là câu hỏi nghi vấn, hãy ghép đúng cấu trúc câu hỏi tiếng Anh: 'Are these his pants?'.",
@@ -1627,10 +1627,10 @@
         "question_id": "s7.3_2",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / book / your / .'",
         "options": [
+          "Close book your.",
+          "Your close book.",
           "Close your book.",
-          "Please close your book.",
-          "Please close your book.",
-          "Please close your book."
+          "Your book close."
         ],
         "answer": "Close your book.",
         "hint": "Gợi ý: Hãy ghép thành câu mệnh lệnh hành động đúng trong lớp học: 'Close your book.'.",
@@ -1660,9 +1660,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'carefully / Listen / .'",
         "options": [
           "Carefully listen.",
-          "Please listen carefully.",
           "Listen carefully.",
-          "Please listen carefully."
+          "Listen your carefully.",
+          "Carefully your listen."
         ],
         "answer": "Listen carefully.",
         "hint": "Gợi ý: Hãy ghép thành câu mệnh lệnh hành động đúng trong lớp học: 'Listen carefully.'.",
@@ -1709,8 +1709,6 @@
         "options": [
           "Sit down, please.",
           "Sit please down.",
-          "Sit please down.",
-          "Sit down please.",
           "Please down sit.",
           "Please you sit down."
         ],
@@ -1837,10 +1835,10 @@
         "question_id": "s7.3_15",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / notebook / your / .'",
         "options": [
-          "Please open your notebook.",
+          "Open notebook your.",
           "Your open notebook.",
-          "Please open your notebook.",
-          "Open your notebook."
+          "Open your notebook.",
+          "Your notebook open."
         ],
         "answer": "Open your notebook.",
         "hint": "Gợi ý: Hãy ghép thành câu mệnh lệnh hành động đúng trong lớp học: 'Open your notebook.'.",
@@ -2333,10 +2331,10 @@
         "question_id": "s7.3_46",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'up / Pick / your backpack / .'",
         "options": [
-          "Please pick up your backpack.",
+          "Pick up backpack your.",
           "Your up pick backpack.",
-          "Please pick up your backpack.",
-          "Pick up your backpack."
+          "Pick up your backpack.",
+          "Your backpack pick up."
         ],
         "answer": "Pick up your backpack.",
         "hint": "Gợi ý: Hãy ghép thành câu mệnh lệnh hành động đúng trong lớp học: 'Pick up your backpack.'.",
