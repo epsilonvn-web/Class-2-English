@@ -1582,12 +1582,15 @@ function loadQuestion() {
     }
 
     let mediaHtml = '';
-    if (q.emoji && !activeExamContext) {
-        // Chỉ dùng Emoji có sẵn trong dữ liệu, không tải ảnh thật (assets/images/) nữa —
-        // vừa nhanh hơn (không mất thời gian chờ ảnh lỗi), vừa không bao giờ bị vỡ layout.
-        mediaHtml = `<div class="w-14 h-14 md:w-16 md:h-16 mb-1 flex items-center justify-center">
-            <div class="text-4xl md:text-5xl floating">${q.emoji}</div>
-        </div>`;
+    if ((q.image_url || q.emoji) && !activeExamContext) {
+        // Khung cố định kích thước bọc NGOÀI ảnh — dù ảnh tải lỗi hay thành công, chiều cao
+        // khu vực này không đổi (tránh đáp án bên dưới bị đẩy giật lên như lỗi trước đây).
+        // Ưu tiên hiển thị ảnh thật nếu có; lỗi tải thì tự động ẩn ảnh và hiện Emoji dự phòng.
+        mediaHtml = `
+            <div class="w-14 h-14 md:w-16 md:h-16 mb-1 flex items-center justify-center relative">
+                ${q.image_url ? `<img src="${q.image_url}" alt="minh họa" class="w-full h-full object-contain floating absolute inset-0" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.classList.remove('hidden');">` : ''}
+                <div class="text-4xl md:text-5xl floating ${q.image_url ? 'hidden' : ''}">${q.emoji || '📘'}</div>
+            </div>`;
     }
 
     const pText = q.reading_passage;
