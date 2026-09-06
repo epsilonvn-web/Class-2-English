@@ -185,6 +185,7 @@ function normalizeQuestion(q) {
         sub_topic_label: String(q.sub ?? q.sub_code ?? q.sub_topic ?? 'Câu hỏi chung').trim(),
         week: q.week ?? q.w ?? null,
         paired_group: q.pg ?? q.paired_group ?? '',
+        options_ipa: q.oipa ?? q.options_ipa ?? null,
         question_text: q.q ?? q.question_text ?? '',
         options: Array.isArray(q.o) ? q.o : (Array.isArray(q.options) ? q.options : []),
         answer: q.a ?? q.answer ?? '',
@@ -316,6 +317,7 @@ const TOPICS_DATA_FILES = [
 const PART1_SKILLS = ['ENG_VOC', 'ENG_LIS', 'ENG_PHO'];
 
 let allWordsPoolCache = null;
+let wordIpaMapCache = null;
 function pickDistractorWords(correct, pool, n = 3) {
     const cand = shuffleArray(pool.filter(w => w !== correct));
     const out = []; const seen = new Set([correct]);
@@ -353,7 +355,7 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     // file dữ liệu, app tự động đổi theo, không cần sửa code. Chỉ dùng bảng SECTION_LABELS tự map
     // làm dự phòng cho những câu CHƯA kịp có field này.
     const label = sectionLabel || it.section_name || SECTION_LABELS[sk] || sk;
-    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', emo: it.emoji || '', aud: it.audio_text || '', pg: it._paired_group || '' };
+    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', emo: it.emoji || '', aud: it.audio_text || '', pg: it._paired_group || '', oipa: it.options_ipa || null };
 
     if ('faulty_word' in it) {
         const letter = it.answer;
@@ -366,7 +368,13 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
         const opts = shuffleArray([word, ...pickDistractorWords(word, allWordsPool, 3)]);
         const qtext = `Từ nào có nghĩa là '${vi}'?`;
         const fullHint = (it.hint || '') + (it.sentence ? ' | Ví dụ: ' + it.sentence : '');
-        return { ...base, q: qtext, o: opts, a: word, h: fullHint };
+        // Câu Flashcards Library vốn không có sẵn mảng "options" nên NotebookLM không gắn được
+        // options_ipa trực tiếp — tự tra cứu phiên âm từng từ (kể cả 3 từ nhiễu) qua kho từ vựng chung.
+        const wordIpaMap = wordIpaMapCache || {};
+        const oipa = opts.map(w => wordIpaMap[w.toLowerCase()] || null);
+        const out = { ...base, q: qtext, o: opts, a: word, h: fullHint };
+        if (oipa.some(Boolean)) out.oipa = oipa;
+        return out;
     }
     const out = { ...base, q: it.question_text, o: it.options || [], a: it.answer, h: it.hint || '' };
     if ('passage_text' in it) { out.r_title = it.passage_title || ''; out.r_passage = it.passage_text || ''; }
@@ -404,9 +412,21 @@ async function fetchAllQuestionsFlat() {
 
     if (!allWordsPoolCache) {
         allWordsPoolCache = [];
+        wordIpaMapCache = {};
         results.forEach(d => Object.values(d.sections || {}).forEach(sectionValue => {
             extractItemsFromSection(sectionValue).forEach(it => {
-                if ('word' in it && !('question_text' in it)) allWordsPoolCache.push(it.word);
+                if ('word' in it && !('question_text' in it)) {
+                    allWordsPoolCache.push(it.word);
+                }
+                // Kho tra cứu phiên âm chung: gom mọi cặp (từ, IPA) từ TẤT CẢ câu trắc nghiệm
+                // NotebookLM đã gắn sẵn "options_ipa" — dùng để tự suy ra phiên âm cho câu Flashcards
+                // Library (dạng thẻ lật vốn không có mảng "options" nên NotebookLM không gắn được trực tiếp).
+                if (Array.isArray(it.options) && Array.isArray(it.options_ipa)) {
+                    it.options.forEach((w, i) => {
+                        const ipa = it.options_ipa[i];
+                        if (w && ipa && !wordIpaMapCache[w.toLowerCase()]) wordIpaMapCache[w.toLowerCase()] = ipa;
+                    });
+                }
             });
         }));
     }
@@ -1661,20 +1681,24 @@ function loadQuestion() {
     q.options.forEach((opt, idx) => {
         const formattedOpt = capitalizeFirstLetter(opt);
         const letter = String.fromCharCode(65 + idx);
+        // Chỉ hiện phiên âm khi JSON thật sự có field "options_ipa" (mảng cùng thứ tự với "options") —
+        // không tự bịa phiên âm để tránh sai, chờ NotebookLM bổ sung dữ liệu.
+        const ipaText = q.options_ipa && q.options_ipa[idx] ? q.options_ipa[idx] : '';
+        const ipaHtml = ipaText ? `<span class="text-sm md:text-base text-gray-500 font-semibold ml-1.5 whitespace-nowrap">/${escapeHtml(ipaText.replace(/^\/|\/$/g, ''))}/</span>` : '';
 
         if (activeExamContext) {
             html += `
                 <button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="option-btn w-full p-2.5 md:p-3 bg-white hover:bg-pink-50/50 border border-pink-200 rounded-2xl font-extrabold text-gray-800 text-left transition-all flex items-center justify-between text-sm md:text-base shadow-xs">
                     <div class="flex items-center space-x-2.5">
                         <span class="opt-badge w-7 h-7 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center font-black text-sm shrink-0">${letter}</span>
-                        <span class="opt-text">${escapeHtml(formattedOpt)}</span>
+                        <span class="opt-text">${escapeHtml(formattedOpt)}${ipaHtml}</span>
                     </div>
                     <span class="option-icon text-pink-500 text-base md:text-lg"></span>
                 </button>`;
         } else {
             html += `
                 <button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="option-btn w-full p-3 md:p-3.5 bg-pink-50/40 hover:bg-pink-100/70 border-2 border-pink-200 rounded-2xl font-extrabold text-gray-800 text-left transition-all flex items-center justify-between text-sm md:text-base shadow-xs pastel-btn">
-                    <span><strong class="text-pink-600 mr-2 text-base md:text-lg">${letter}.</strong> ${escapeHtml(formattedOpt)}</span>
+                    <span><strong class="text-pink-600 mr-2 text-base md:text-lg">${letter}.</strong> ${escapeHtml(formattedOpt)}${ipaHtml}</span>
                     <span class="option-icon text-pink-500 text-base md:text-lg"></span>
                 </button>`;
         }
