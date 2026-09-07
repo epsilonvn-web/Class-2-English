@@ -2245,7 +2245,7 @@ async function openHistoryModal(sheetName = 'LichSuTienTrinhTuan') {
     document.getElementById('hist-info-name').textContent = currentUser.hoTen || '--';
     document.getElementById('hist-info-class').textContent = currentUser.lop || '--';
     document.getElementById('hist-info-code').textContent = currentUser.maHS || '--';
-    document.getElementById('hist-info-dob').textContent = currentUser.ngaySinh || '03/09/2019';
+    document.getElementById('hist-info-dob').textContent = formatDobOnly(currentUser.ngaySinh) || '03/09/2019';
     document.getElementById('hist-report-date').textContent = new Date().toLocaleDateString('vi-VN');
 
     const titleMap = {
@@ -2298,10 +2298,27 @@ function formatDateShort(value) {
     return `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
+/** Chuẩn hoá Ngày sinh về đúng DD/MM/YYYY, bất kể GAS trả về dạng gì —
+ * Google Sheets hay tự nhận diện chuỗi "05-09-19" là kiểu Date và trả nguyên
+ * 1 mốc thời gian ISO ("2019-09-05T17:00:00.000Z") kèm giờ/phút/giây không cần thiết. */
+function formatDobOnly(value) {
+    if (!value) return '--';
+    const raw = String(value).trim();
+    // Chuỗi đã đúng sẵn dạng d-m-yy hoặc dd-mm-yyyy do FE tự gửi lên (không có ký tự "T")
+    if (!raw.includes('T') && /^\d{1,2}-\d{1,2}-\d{2,4}$/.test(raw)) {
+        const [d, m, y] = raw.split('-');
+        const fullYear = y.length === 2 ? `20${y}` : y;
+        return `${d.padStart(2, '0')}/${m.padStart(2, '0')}/${fullYear}`;
+    }
+    const d = new Date(raw);
+    if (isNaN(d.getTime())) return raw;
+    return `${String(d.getUTCDate()).padStart(2, '0')}/${String(d.getUTCMonth() + 1).padStart(2, '0')}/${d.getUTCFullYear()}`;
+}
+
 function renderHistoryReport(rows, sheetName) {
     const isWeekly = sheetName === 'LichSuTienTrinhTuan';
     const labels = rows.map((r, i) => {
-        const dm = formatDateShort(r.Timestamp || r.ngayLam);
+        const dm = formatDateShort(r.ThoiGianGhi || r.Timestamp || r.ngayLam);
         const label = isWeekly ? `Tuần ${r.tuan || i + 1}` : (r.deSo ? `Đề ${r.deSo}` : `Tuần ${r.tuan || i + 1}`);
         return dm ? `${dm} ${label}` : label;
     });
@@ -2559,7 +2576,7 @@ function renderHistoryTable(rows, sheetName) {
 
         rows.forEach((r, idx) => {
             const itemDiem = r.tongDiem || r.score || '--';
-            const dateStr = formatDateOnly(r.Timestamp || r.ngayLam);
+            const dateStr = formatDateOnly(r.ThoiGianGhi || r.Timestamp || r.ngayLam);
             const durationStr = r.thoiGianLamBai || '--';
 
             let skillCells = '';
@@ -2589,7 +2606,7 @@ function renderHistoryTable(rows, sheetName) {
 
         rows.forEach((r, idx) => {
             const itemDiem = r.tongDiem || r.score || '--';
-            const dateStr = formatDateOnly(r.Timestamp || r.ngayLam);
+            const dateStr = formatDateOnly(r.ThoiGianGhi || r.Timestamp || r.ngayLam);
             const durationStr = r.thoiGianLamBai || '--';
 
             let examSkillCells = '';
