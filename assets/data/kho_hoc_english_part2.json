@@ -1,5 +1,5 @@
 {
-  "title": "CƠ SỞ DỮ LIỆU TỰ LUYỆN LỚP 2 - PHẦN 2 (VERSION 10)",
+  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 2 (VERSION 13)",
   "description": "Hệ thống học liệu tự luyện cấp độ nâng cao và bối cảnh giao tiếp.",
   "sections": {
     "section_7.1": [
@@ -10601,7 +10601,7 @@
       },
       {
         "question_id": "s10.1_25",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ sad ruler'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ sad puppy'",
         "options": [
           "a",
           "an",
@@ -10616,14 +10616,14 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'sad ruler' bắt đầu bằng âm 's'.",
-        "emoji": "📝",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
       },
       {
         "question_id": "s10.1_26",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored pencil'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored boy'",
         "options": [
           "a",
           "an",
@@ -10638,14 +10638,14 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'bored pencil' bắt đầu bằng âm 'b'.",
-        "emoji": "📝",
+        "emoji": "👦",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
       },
       {
         "question_id": "s10.1_27",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored eraser'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored girl'",
         "options": [
           "a",
           "an",
@@ -10660,14 +10660,14 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'bored eraser' bắt đầu bằng âm 'b'.",
-        "emoji": "📝",
+        "emoji": "👧",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
       },
       {
         "question_id": "s10.1_28",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored pen'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored puppy'",
         "options": [
           "a",
           "an",
@@ -10682,14 +10682,14 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'bored pen' bắt đầu bằng âm 'b'.",
-        "emoji": "📝",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
       },
       {
         "question_id": "s10.1_29",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored book'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored kitten'",
         "options": [
           "a",
           "an",
@@ -10704,14 +10704,14 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'bored book' bắt đầu bằng âm 'b'.",
-        "emoji": "📝",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
       },
       {
         "question_id": "s10.1_30",
-        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored notebook'",
+        "question_text": "Chọn mạo từ đúng (a/an) đứng trước cụm từ: '______ bored child'",
         "options": [
           "a",
           "an",
@@ -10726,7 +10726,7 @@
         ],
         "answer": "a",
         "hint": "Gợi ý: Cụm từ bắt đầu bằng âm nguyên âm hay phụ âm? 'bored notebook' bắt đầu bằng âm 'b'.",
-        "emoji": "📝",
+        "emoji": "👶",
         "skill_tag": "ENG_GRA",
         "topic_id": 10,
         "section_name": "Articles Grammar Point"
@@ -11177,49 +11177,49 @@
         "question_id": "s10.2_1",
         "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The cat is ______ the box.'",
         "options": [
-          "behind",
-          "next to",
           "under",
-          "in"
+          "behind",
+          "in",
+          "on"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
-          "nekst tuː",
           "ˈʌndə",
-          "ɪn"
+          "bɪˈhaɪnd",
+          "ɪn",
+          "ɒn"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_2",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The dog is ______ the chair.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The pencil is ______ the pencil case.'",
         "options": [
+          "under",
           "in",
           "on",
-          "next to",
-          "under"
+          "behind"
         ],
         "options_ipa": [
+          "ˈʌndə",
           "ɪn",
           "ɒn",
-          "nekst tuː",
-          "ˈʌndə"
+          "bɪˈhaɪnd"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "✏️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_3",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The book is ______ the bed.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The book is ______ the backpack.'",
         "options": [
           "next to",
           "in",
@@ -11234,36 +11234,36 @@
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "📚",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_4",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The ball is ______ the desk.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The apple is ______ the basket.'",
         "options": [
-          "next to",
           "behind",
+          "next to",
           "in",
-          "on"
+          "under"
         ],
         "options_ipa": [
-          "nekst tuː",
           "bɪˈhaɪnd",
+          "nekst tuː",
           "ɪn",
-          "ɒn"
+          "ˈʌndə"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🍎",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_5",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The pencil is ______ the table.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The ball is ______ the net.'",
         "options": [
           "behind",
           "in",
@@ -11278,938 +11278,982 @@
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "⚽",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_6",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The doll is ______ the shelf.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The fish is ______ the water.'",
         "options": [
-          "next to",
-          "behind",
           "in",
+          "next to",
+          "on",
           "under"
         ],
         "options_ipa": [
-          "nekst tuː",
-          "bɪˈhaɪnd",
           "ɪn",
+          "nekst tuː",
+          "ɒn",
           "ˈʌndə"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🐟",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_7",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The robot is ______ the backpack.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The milk is ______ the refrigerator.'",
         "options": [
-          "next to",
-          "under",
           "in",
-          "on"
+          "under",
+          "on",
+          "next to"
         ],
         "options_ipa": [
-          "nekst tuː",
-          "ˈʌndə",
           "ɪn",
-          "ɒn"
+          "ˈʌndə",
+          "ɒn",
+          "nekst tuː"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_8",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The apple is ______ the room.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The toy is ______ the box.'",
         "options": [
-          "in",
-          "behind",
+          "under",
           "next to",
-          "under"
+          "on",
+          "in"
         ],
         "options_ipa": [
-          "ɪn",
-          "bɪˈhaɪnd",
+          "ˈʌndə",
           "nekst tuː",
-          "ˈʌndə"
+          "ɒn",
+          "ɪn"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🧸",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_9",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The bag is ______ the floor.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The bird is ______ the tree.'",
         "options": [
           "in",
-          "on",
-          "behind",
-          "under"
+          "next to",
+          "under",
+          "behind"
         ],
         "options_ipa": [
           "ɪn",
-          "ɒn",
-          "bɪˈhaɪnd",
-          "ˈʌndə"
+          "nekst tuː",
+          "ˈʌndə",
+          "bɪˈhaɪnd"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🐦",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_10",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The hat is ______ the grass.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trong': 'The cat is ______ the bedroom.'",
         "options": [
-          "under",
-          "in",
+          "next to",
           "on",
-          "next to"
+          "in",
+          "under"
         ],
         "options_ipa": [
-          "ˈʌndə",
-          "ɪn",
+          "nekst tuː",
           "ɒn",
-          "nekst tuː"
+          "ɪn",
+          "ˈʌndə"
         ],
         "answer": "in",
         "hint": "Gợi ý: Trạng thái 'ở trong' trong tiếng Anh viết là 'in'.",
-        "emoji": "📍",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_11",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The crayon is ______ the case.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The book is ______ the desk.'",
         "options": [
+          "under",
           "on",
           "next to",
-          "under",
-          "behind"
+          "in"
         ],
         "options_ipa": [
+          "ˈʌndə",
           "ɒn",
           "nekst tuː",
-          "ˈʌndə",
-          "bɪˈhaɪnd"
+          "ɪn"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "📚",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_12",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The ruler is ______ the garden.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The cat is ______ the sofa.'",
         "options": [
-          "behind",
           "on",
+          "under",
           "next to",
-          "in"
+          "behind"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
           "ɒn",
+          "ˈʌndə",
           "nekst tuː",
-          "ɪn"
+          "bɪˈhaɪnd"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_13",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The bird is ______ the tree.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The hat is ______ the table.'",
         "options": [
-          "under",
-          "next to",
+          "on",
           "behind",
-          "on"
+          "under",
+          "next to"
         ],
         "options_ipa": [
-          "ˈʌndə",
-          "nekst tuː",
+          "ɒn",
           "bɪˈhaɪnd",
-          "ɒn"
+          "ˈʌndə",
+          "nekst tuː"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🎩",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_14",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The frog is ______ the river.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The apple is ______ the plate.'",
         "options": [
+          "in",
           "next to",
           "on",
-          "behind",
-          "in"
+          "behind"
         ],
         "options_ipa": [
+          "ɪn",
           "nekst tuː",
           "ɒn",
-          "bɪˈhaɪnd",
-          "ɪn"
+          "bɪˈhaɪnd"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🍎",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_15",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The cup is ______ the beach.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The cup is ______ the table.'",
         "options": [
-          "next to",
           "in",
-          "behind",
-          "on"
+          "on",
+          "under",
+          "next to"
         ],
         "options_ipa": [
-          "nekst tuː",
           "ɪn",
-          "bɪˈhaɪnd",
-          "ɒn"
+          "ɒn",
+          "ˈʌndə",
+          "nekst tuː"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_16",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The kite is ______ the park.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The pencil is ______ the notebook.'",
         "options": [
-          "in",
           "on",
           "behind",
-          "under"
+          "under",
+          "in"
         ],
         "options_ipa": [
-          "ɪn",
           "ɒn",
           "bɪˈhaɪnd",
-          "ˈʌndə"
+          "ˈʌndə",
+          "ɪn"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "✏️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_17",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The orange is ______ the car.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The doll is ______ the bed.'",
         "options": [
-          "next to",
+          "in",
           "under",
-          "on",
-          "in"
+          "next to",
+          "on"
         ],
         "options_ipa": [
-          "nekst tuː",
+          "ɪn",
           "ˈʌndə",
-          "ɒn",
-          "ɪn"
+          "nekst tuː",
+          "ɒn"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🧸",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_18",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The pen is ______ the plate.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The dog is ______ the grass.'",
         "options": [
-          "on",
-          "next to",
+          "in",
           "under",
-          "in"
+          "behind",
+          "on"
         ],
         "options_ipa": [
-          "ɒn",
-          "nekst tuː",
+          "ɪn",
           "ˈʌndə",
-          "ɪn"
+          "bɪˈhaɪnd",
+          "ɒn"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_19",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The watch is ______ the bowl.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The picture is ______ the wall.'",
         "options": [
-          "on",
+          "in",
           "next to",
-          "behind",
-          "in"
+          "on",
+          "under"
         ],
         "options_ipa": [
-          "ɒn",
+          "ɪn",
           "nekst tuː",
-          "bɪˈhaɪnd",
-          "ɪn"
+          "ɒn",
+          "ˈʌndə"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🖼️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_20",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The toy is ______ the cup.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở trên': 'The toy car is ______ the floor.'",
         "options": [
-          "behind",
-          "in",
           "on",
-          "under"
+          "next to",
+          "behind",
+          "in"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
-          "ɪn",
           "ɒn",
-          "ˈʌndə"
+          "nekst tuː",
+          "bɪˈhaɪnd",
+          "ɪn"
         ],
         "answer": "on",
         "hint": "Gợi ý: Trạng thái 'ở trên' trong tiếng Anh viết là 'on'.",
-        "emoji": "📍",
+        "emoji": "🚗",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_21",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'My key is ______ the cupboard.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The ball is ______ the table.'",
         "options": [
-          "behind",
-          "in",
           "under",
+          "in",
+          "on",
           "next to"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
-          "ɪn",
           "ˈʌndə",
+          "ɪn",
+          "ɒn",
           "nekst tuː"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "⚽",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_22",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'My paper is ______ the sofa.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The cat is ______ the chair.'",
         "options": [
-          "under",
           "next to",
-          "in",
+          "under",
+          "behind",
           "on"
         ],
         "options_ipa": [
-          "ˈʌndə",
           "nekst tuː",
-          "ɪn",
+          "ˈʌndə",
+          "bɪˈhaɪnd",
           "ɒn"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_23",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'Your card is ______ the basket.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The dog is ______ the tree.'",
         "options": [
-          "on",
           "in",
-          "under",
-          "behind"
+          "behind",
+          "on",
+          "under"
         ],
         "options_ipa": [
-          "ɒn",
           "ɪn",
-          "ˈʌndə",
-          "bɪˈhaɪnd"
+          "bɪˈhaɪnd",
+          "ɒn",
+          "ˈʌndə"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_24",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'His glove is ______ the playground.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The shoes are ______ the bed.'",
         "options": [
-          "in",
-          "behind",
           "under",
-          "on"
+          "on",
+          "next to",
+          "behind"
         ],
         "options_ipa": [
-          "ɪn",
-          "bɪˈhaɪnd",
           "ˈʌndə",
-          "ɒn"
+          "ɒn",
+          "nekst tuː",
+          "bɪˈhaɪnd"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "👟",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_25",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'Her ring is ______ the classroom.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The book is ______ the notebook.'",
         "options": [
           "under",
-          "behind",
+          "on",
           "next to",
-          "on"
+          "in"
         ],
         "options_ipa": [
           "ˈʌndə",
-          "bɪˈhaɪnd",
+          "ɒn",
           "nekst tuː",
-          "ɒn"
+          "ɪn"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "📚",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_26",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'Their box is ______ the cabinet.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The pencil is ______ the paper.'",
         "options": [
-          "on",
           "under",
+          "behind",
           "in",
-          "next to"
+          "on"
         ],
         "options_ipa": [
-          "ɒn",
           "ˈʌndə",
+          "bɪˈhaɪnd",
           "ɪn",
-          "nekst tuː"
+          "ɒn"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "✏️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_27",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'A monkey is ______ the drawer.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The toy train is ______ the sofa.'",
         "options": [
-          "on",
-          "next to",
           "under",
-          "in"
+          "next to",
+          "in",
+          "behind"
         ],
         "options_ipa": [
-          "ɒn",
-          "nekst tuː",
           "ˈʌndə",
-          "ɪn"
+          "nekst tuː",
+          "ɪn",
+          "bɪˈhaɪnd"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "🚂",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_28",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'A mouse is ______ the window.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The backpack is ______ the desk.'",
         "options": [
-          "in",
-          "on",
           "next to",
+          "in",
+          "behind",
           "under"
         ],
         "options_ipa": [
-          "ɪn",
-          "ɒn",
           "nekst tuː",
+          "ɪn",
+          "bɪˈhaɪnd",
           "ˈʌndə"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "🎒",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_29",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'A rabbit is ______ the door.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The key is ______ the mat.'",
         "options": [
-          "under",
+          "on",
           "in",
-          "behind",
+          "under",
           "next to"
         ],
         "options_ipa": [
-          "ˈʌndə",
+          "ɒn",
           "ɪn",
-          "bɪˈhaɪnd",
+          "ˈʌndə",
           "nekst tuː"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "🔑",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_30",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'A kitten is ______ the wall.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'ở dưới': 'The box is ______ the bed.'",
         "options": [
-          "in",
-          "behind",
           "next to",
-          "under"
+          "in",
+          "under",
+          "behind"
         ],
         "options_ipa": [
-          "ɪn",
-          "bɪˈhaɪnd",
           "nekst tuː",
-          "ˈʌndə"
+          "ɪn",
+          "ˈʌndə",
+          "bɪˈhaɪnd"
         ],
         "answer": "under",
         "hint": "Gợi ý: Trạng thái 'ở dưới' trong tiếng Anh viết là 'under'.",
-        "emoji": "📍",
+        "emoji": "📦",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_31",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The cat is ______ the box.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The school bag is ______ the chair.'",
         "options": [
-          "on",
-          "under",
+          "next to",
           "in",
-          "next to"
+          "behind",
+          "under"
         ],
         "options_ipa": [
-          "ɒn",
-          "ˈʌndə",
+          "nekst tuː",
           "ɪn",
-          "nekst tuː"
+          "bɪˈhaɪnd",
+          "ˈʌndə"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🎒",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_32",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The dog is ______ the chair.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The dog is ______ the cat.'",
         "options": [
+          "next to",
           "in",
           "on",
-          "under",
-          "next to"
+          "under"
         ],
         "options_ipa": [
+          "nekst tuː",
           "ɪn",
           "ɒn",
-          "ˈʌndə",
-          "nekst tuː"
+          "ˈʌndə"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_33",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The book is ______ the bed.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The pencil case is ______ the book.'",
         "options": [
-          "next to",
-          "under",
+          "in",
           "behind",
+          "next to",
           "on"
         ],
         "options_ipa": [
-          "nekst tuː",
-          "ˈʌndə",
+          "ɪn",
           "bɪˈhaɪnd",
+          "nekst tuː",
           "ɒn"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "✏️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_34",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The ball is ______ the desk.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The ruler is ______ the pencil.'",
         "options": [
-          "next to",
-          "in",
+          "under",
           "behind",
+          "next to",
           "on"
         ],
         "options_ipa": [
-          "nekst tuː",
-          "ɪn",
+          "ˈʌndə",
           "bɪˈhaɪnd",
+          "nekst tuː",
           "ɒn"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "📏",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_35",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The pencil is ______ the table.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The table is ______ the bed.'",
         "options": [
-          "under",
-          "in",
+          "on",
           "next to",
-          "behind"
+          "behind",
+          "under"
         ],
         "options_ipa": [
-          "ˈʌndə",
-          "ɪn",
+          "ɒn",
           "nekst tuː",
-          "bɪˈhaɪnd"
+          "bɪˈhaɪnd",
+          "ˈʌndə"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🛏️",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_36",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The doll is ______ the shelf.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The tree is ______ the house.'",
         "options": [
           "in",
           "on",
           "next to",
-          "behind"
+          "under"
         ],
         "options_ipa": [
           "ɪn",
           "ɒn",
           "nekst tuː",
-          "bɪˈhaɪnd"
+          "ˈʌndə"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🌳",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_37",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The robot is ______ the backpack.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The car is ______ the bus.'",
         "options": [
+          "next to",
           "on",
-          "under",
           "behind",
-          "next to"
+          "in"
         ],
         "options_ipa": [
+          "nekst tuː",
           "ɒn",
-          "ˈʌndə",
           "bɪˈhaɪnd",
-          "nekst tuː"
+          "ɪn"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🚗",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_38",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The apple is ______ the room.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The ball is ______ the box.'",
         "options": [
-          "on",
-          "in",
+          "under",
           "behind",
-          "next to"
+          "next to",
+          "on"
         ],
         "options_ipa": [
-          "ɒn",
-          "ɪn",
+          "ˈʌndə",
           "bɪˈhaɪnd",
-          "nekst tuː"
+          "nekst tuː",
+          "ɒn"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "⚽",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_39",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The bag is ______ the floor.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The doll is ______ the teddy bear.'",
         "options": [
-          "behind",
           "next to",
-          "on",
-          "under"
+          "behind",
+          "under",
+          "on"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
           "nekst tuː",
-          "ɒn",
-          "ˈʌndə"
+          "bɪˈhaɪnd",
+          "ˈʌndə",
+          "ɒn"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🧸",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_40",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The hat is ______ the grass.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'bên cạnh': 'The cup is ______ the plate.'",
         "options": [
-          "under",
+          "behind",
           "on",
           "next to",
-          "behind"
+          "under"
         ],
         "options_ipa": [
-          "ˈʌndə",
+          "bɪˈhaɪnd",
           "ɒn",
           "nekst tuː",
-          "bɪˈhaɪnd"
+          "ˈʌndə"
         ],
         "answer": "next to",
         "hint": "Gợi ý: Trạng thái 'bên cạnh' trong tiếng Anh viết là 'next to'.",
-        "emoji": "📍",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_41",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The crayon is ______ the case.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The cat is ______ the door.'",
         "options": [
-          "in",
-          "behind",
+          "next to",
           "under",
-          "next to"
+          "behind",
+          "on"
         ],
         "options_ipa": [
-          "ɪn",
-          "bɪˈhaɪnd",
+          "nekst tuː",
           "ˈʌndə",
-          "nekst tuː"
+          "bɪˈhaɪnd",
+          "ɒn"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "🐱",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_42",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The ruler is ______ the garden.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The dog is ______ the sofa.'",
         "options": [
-          "next to",
-          "in",
           "on",
-          "behind"
+          "behind",
+          "in",
+          "next to"
         ],
         "options_ipa": [
-          "nekst tuː",
-          "ɪn",
           "ɒn",
-          "bɪˈhaɪnd"
+          "bɪˈhaɪnd",
+          "ɪn",
+          "nekst tuː"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "🐶",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_43",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The bird is ______ the tree.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The ball is ______ the chair.'",
         "options": [
-          "under",
           "on",
+          "under",
           "in",
           "behind"
         ],
         "options_ipa": [
-          "ˈʌndə",
           "ɒn",
+          "ˈʌndə",
           "ɪn",
           "bɪˈhaɪnd"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "⚽",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_44",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The frog is ______ the river.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The boy is ______ the tree.'",
         "options": [
-          "next to",
+          "on",
           "in",
           "behind",
-          "on"
+          "under"
         ],
         "options_ipa": [
-          "nekst tuː",
+          "ɒn",
           "ɪn",
           "bɪˈhaɪnd",
-          "ɒn"
+          "ˈʌndə"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "👦",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_45",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The cup is ______ the beach.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The car is ______ the house.'",
         "options": [
+          "under",
           "in",
-          "behind",
           "on",
-          "under"
+          "behind"
         ],
         "options_ipa": [
+          "ˈʌndə",
           "ɪn",
-          "bɪˈhaɪnd",
           "ɒn",
-          "ˈʌndə"
+          "bɪˈhaɪnd"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "🚗",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_46",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The kite is ______ the park.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The backpack is ______ the desk.'",
         "options": [
-          "behind",
-          "on",
           "in",
-          "next to"
+          "under",
+          "on",
+          "behind"
         ],
         "options_ipa": [
-          "bɪˈhaɪnd",
-          "ɒn",
           "ɪn",
-          "nekst tuː"
+          "ˈʌndə",
+          "ɒn",
+          "bɪˈhaɪnd"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "🎒",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_47",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The orange is ______ the car.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The toy is ______ the box.'",
         "options": [
           "on",
+          "behind",
           "in",
-          "under",
-          "behind"
+          "next to"
         ],
         "options_ipa": [
           "ɒn",
+          "bɪˈhaɪnd",
           "ɪn",
-          "ˈʌndə",
-          "bɪˈhaɪnd"
+          "nekst tuː"
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "🧸",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
       },
       {
         "question_id": "s10.2_48",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The pen is ______ the plate.'",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The book is ______ the computer.'",
+        "options": [
+          "under",
+          "behind",
+          "on",
+          "in"
+        ],
+        "options_ipa": [
+          "ˈʌndə",
+          "bɪˈhaɪnd",
+          "ɒn",
+          "ɪn"
+        ],
+        "answer": "behind",
+        "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
+        "emoji": "📚",
+        "skill_tag": "ENG_GRA",
+        "topic_id": 4,
+        "section_name": "Prepositions Grammar Point"
+      },
+      {
+        "question_id": "s10.2_49",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The rabbit is ______ the tree.'",
+        "options": [
+          "behind",
+          "on",
+          "under",
+          "in"
+        ],
+        "options_ipa": [
+          "bɪˈhaɪnd",
+          "ɒn",
+          "ˈʌndə",
+          "ɪn"
+        ],
+        "answer": "behind",
+        "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
+        "emoji": "🐰",
+        "skill_tag": "ENG_GRA",
+        "topic_id": 4,
+        "section_name": "Prepositions Grammar Point"
+      },
+      {
+        "question_id": "s10.2_50",
+        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'My brother is ______ the door.'",
         "options": [
           "behind",
           "under",
@@ -12224,51 +12268,7 @@
         ],
         "answer": "behind",
         "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
-        "skill_tag": "ENG_GRA",
-        "topic_id": 4,
-        "section_name": "Prepositions Grammar Point"
-      },
-      {
-        "question_id": "s10.2_49",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The watch is ______ the bowl.'",
-        "options": [
-          "behind",
-          "next to",
-          "in",
-          "on"
-        ],
-        "options_ipa": [
-          "bɪˈhaɪnd",
-          "nekst tuː",
-          "ɪn",
-          "ɒn"
-        ],
-        "answer": "behind",
-        "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
-        "skill_tag": "ENG_GRA",
-        "topic_id": 4,
-        "section_name": "Prepositions Grammar Point"
-      },
-      {
-        "question_id": "s10.2_50",
-        "question_text": "Chọn giới từ chỉ vị trí mô tả đúng trạng thái 'phía sau': 'The toy is ______ the cup.'",
-        "options": [
-          "in",
-          "next to",
-          "behind",
-          "on"
-        ],
-        "options_ipa": [
-          "ɪn",
-          "nekst tuː",
-          "bɪˈhaɪnd",
-          "ɒn"
-        ],
-        "answer": "behind",
-        "hint": "Gợi ý: Trạng thái 'phía sau' trong tiếng Anh viết là 'behind'.",
-        "emoji": "📍",
+        "emoji": "👦",
         "skill_tag": "ENG_GRA",
         "topic_id": 4,
         "section_name": "Prepositions Grammar Point"
@@ -13379,18 +13379,18 @@
     "section_10.4": [
       {
         "question_id": "s10.4_1",
-        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The cat is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The boy is ______.'",
         "options": [
-          "fine",
-          "hungry",
-          "tired",
-          "happy"
+          "happy",
+          "bored",
+          "hot",
+          "fine"
         ],
         "options_ipa": [
-          "faɪn",
-          "ˈhæŋɡri",
-          "ˈtaɪəd",
-          "ˈhæpi"
+          "ˈhæpi",
+          "bɔːd",
+          "hɒt",
+          "faɪn"
         ],
         "answer": "happy",
         "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -13401,238 +13401,238 @@
       },
       {
         "question_id": "s10.4_2",
-        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The dog is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The little girl is ______.'",
         "options": [
+          "cold",
+          "happy",
           "sad",
-          "hot",
-          "scared",
-          "happy"
+          "fine"
         ],
         "options_ipa": [
+          "kəʊld",
+          "ˈhæpi",
           "sæd",
-          "hɒt",
-          "skeəd",
-          "ˈhæpi"
+          "faɪn"
         ],
         "answer": "sad",
         "hint": "Gợi ý: Trạng thái 'buồn bã' trong tiếng Anh viết là 'sad'.",
-        "emoji": "😊",
+        "emoji": "😢",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_3",
-        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'The book is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'My teacher is ______.'",
         "options": [
-          "fine",
+          "bored",
+          "hot",
           "happy",
-          "cold",
           "great"
         ],
         "options_ipa": [
-          "faɪn",
+          "bɔːd",
+          "hɒt",
           "ˈhæpi",
-          "kəʊld",
           "ɡreɪt"
         ],
         "answer": "great",
         "hint": "Gợi ý: Trạng thái 'tuyệt vời' trong tiếng Anh viết là 'great'.",
-        "emoji": "😊",
+        "emoji": "🤩",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_4",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The ball is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'Vinh is ______.'",
         "options": [
-          "great",
           "cold",
+          "tired",
           "fine",
-          "tired"
+          "happy"
         ],
         "options_ipa": [
-          "ɡreɪt",
           "kəʊld",
+          "ˈtaɪəd",
           "faɪn",
-          "ˈtaɪəd"
+          "ˈhæpi"
         ],
         "answer": "fine",
         "hint": "Gợi ý: Trạng thái 'khỏe khoắn' trong tiếng Anh viết là 'fine'.",
-        "emoji": "😊",
+        "emoji": "🙂",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_5",
-        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The pencil is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The puppy is ______.'",
         "options": [
-          "hungry",
-          "happy",
-          "tired",
-          "fine"
+          "hot",
+          "great",
+          "scared",
+          "hungry"
         ],
         "options_ipa": [
-          "ˈhæŋɡri",
-          "ˈhæpi",
-          "ˈtaɪəd",
-          "faɪn"
+          "hɒt",
+          "ɡreɪt",
+          "skeəd",
+          "ˈhʌŋɡri"
         ],
         "answer": "hungry",
         "hint": "Gợi ý: Trạng thái 'đói bụng' trong tiếng Anh viết là 'hungry'.",
-        "emoji": "😊",
+        "emoji": "😋",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_6",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The doll is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The kitten is ______.'",
         "options": [
-          "tired",
-          "bored",
-          "hungry",
-          "thirsty"
+          "thirsty",
+          "hot",
+          "great",
+          "tired"
         ],
         "options_ipa": [
-          "ˈtaɪəd",
-          "bɔːd",
-          "ˈhæŋɡri",
-          "ˈθɜːsti"
+          "ˈθɜːsti",
+          "hɒt",
+          "ɡreɪt",
+          "ˈtaɪəd"
         ],
         "answer": "thirsty",
         "hint": "Gợi ý: Trạng thái 'khát nước' trong tiếng Anh viết là 'thirsty'.",
-        "emoji": "😊",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_7",
-        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The robot is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The mouse is ______.'",
         "options": [
-          "hungry",
-          "sad",
-          "cold",
-          "scared"
+          "scared",
+          "hot",
+          "tired",
+          "happy"
         ],
         "options_ipa": [
-          "ˈhæŋɡri",
-          "sæd",
-          "kəʊld",
-          "skeəd"
+          "skeəd",
+          "hɒt",
+          "ˈtaɪəd",
+          "ˈhæpi"
         ],
         "answer": "scared",
         "hint": "Gợi ý: Trạng thái 'sợ hãi' trong tiếng Anh viết là 'scared'.",
-        "emoji": "😊",
+        "emoji": "😨",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_8",
-        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'The apple is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'My dad is ______.'",
         "options": [
-          "fine",
-          "bored",
+          "sad",
+          "hot",
           "tired",
-          "hot"
+          "hungry"
         ],
         "options_ipa": [
-          "faɪn",
-          "bɔːd",
+          "sæd",
+          "hɒt",
           "ˈtaɪəd",
-          "hɒt"
+          "ˈhʌŋɡri"
         ],
         "answer": "tired",
         "hint": "Gợi ý: Trạng thái 'mệt mỏi' trong tiếng Anh viết là 'tired'.",
-        "emoji": "😊",
+        "emoji": "😫",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_9",
-        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The bag is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'My brother is ______.'",
         "options": [
-          "hungry",
           "bored",
           "scared",
-          "cold"
+          "fine",
+          "thirsty"
         ],
         "options_ipa": [
-          "ˈhæŋɡri",
           "bɔːd",
           "skeəd",
-          "kəʊld"
+          "faɪn",
+          "ˈθɜːsti"
         ],
         "answer": "bored",
         "hint": "Gợi ý: Trạng thái 'chán nản' trong tiếng Anh viết là 'bored'.",
-        "emoji": "😊",
+        "emoji": "😑",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_10",
-        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The hat is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The baby is ______.'",
         "options": [
-          "tired",
           "thirsty",
-          "hungry",
-          "cold"
+          "cold",
+          "scared",
+          "fine"
         ],
         "options_ipa": [
-          "ˈtaɪəd",
           "ˈθɜːsti",
-          "ˈhæŋɡri",
-          "kəʊld"
+          "kəʊld",
+          "skeəd",
+          "faɪn"
         ],
         "answer": "cold",
         "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
-        "emoji": "😊",
+        "emoji": "🥶",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_11",
-        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'The crayon is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'The runner is ______.'",
         "options": [
-          "thirsty",
-          "happy",
+          "cold",
+          "great",
           "hot",
-          "sad"
+          "scared"
         ],
         "options_ipa": [
-          "ˈθɜːsti",
-          "ˈhæpi",
+          "kəʊld",
+          "ɡreɪt",
           "hɒt",
-          "sæd"
+          "skeəd"
         ],
         "answer": "hot",
         "hint": "Gợi ý: Trạng thái 'nóng nực' trong tiếng Anh viết là 'hot'.",
-        "emoji": "😊",
+        "emoji": "🥵",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_12",
-        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The ruler is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'My sister is ______.'",
         "options": [
-          "thirsty",
-          "bored",
           "happy",
-          "fine"
+          "bored",
+          "sad",
+          "great"
         ],
         "options_ipa": [
-          "ˈθɜːsti",
-          "bɔːd",
           "ˈhæpi",
-          "faɪn"
+          "bɔːd",
+          "sæd",
+          "ɡreɪt"
         ],
         "answer": "happy",
         "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -13643,238 +13643,238 @@
       },
       {
         "question_id": "s10.4_13",
-        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The bird is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The cute dog is ______.'",
         "options": [
-          "thirsty",
-          "scared",
+          "tired",
           "sad",
-          "bored"
+          "bored",
+          "hungry"
         ],
         "options_ipa": [
-          "ˈθɜːsti",
-          "skeəd",
+          "ˈtaɪəd",
           "sæd",
-          "bɔːd"
+          "bɔːd",
+          "ˈhʌŋɡri"
         ],
         "answer": "sad",
         "hint": "Gợi ý: Trạng thái 'buồn bã' trong tiếng Anh viết là 'sad'.",
-        "emoji": "😊",
+        "emoji": "😢",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_14",
-        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'The frog is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'Your family is ______.'",
         "options": [
-          "tired",
-          "thirsty",
           "great",
-          "bored"
+          "hot",
+          "cold",
+          "thirsty"
         ],
         "options_ipa": [
-          "ˈtaɪəd",
-          "ˈθɜːsti",
           "ɡreɪt",
-          "bɔːd"
+          "hɒt",
+          "kəʊld",
+          "ˈθɜːsti"
         ],
         "answer": "great",
         "hint": "Gợi ý: Trạng thái 'tuyệt vời' trong tiếng Anh viết là 'great'.",
-        "emoji": "😊",
+        "emoji": "🤩",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_15",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The cup is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'My dad is ______.'",
         "options": [
-          "happy",
           "bored",
-          "hot",
-          "fine"
+          "hungry",
+          "fine",
+          "tired"
         ],
         "options_ipa": [
-          "ˈhæpi",
           "bɔːd",
-          "hɒt",
-          "faɪn"
+          "ˈhʌŋɡri",
+          "faɪn",
+          "ˈtaɪəd"
         ],
         "answer": "fine",
         "hint": "Gợi ý: Trạng thái 'khỏe khoắn' trong tiếng Anh viết là 'fine'.",
-        "emoji": "😊",
+        "emoji": "🙂",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_16",
-        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The kite is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The little cat is ______.'",
         "options": [
-          "hungry",
-          "scared",
+          "fine",
           "bored",
-          "thirsty"
+          "hungry",
+          "hot"
         ],
         "options_ipa": [
-          "ˈhæŋɡri",
-          "skeəd",
+          "faɪn",
           "bɔːd",
-          "ˈθɜːsti"
+          "ˈhʌŋɡri",
+          "hɒt"
         ],
         "answer": "hungry",
         "hint": "Gợi ý: Trạng thái 'đói bụng' trong tiếng Anh viết là 'hungry'.",
-        "emoji": "😊",
+        "emoji": "😋",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_17",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The orange is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The bird is ______.'",
         "options": [
           "thirsty",
-          "cold",
-          "great",
-          "sad"
+          "fine",
+          "sad",
+          "happy"
         ],
         "options_ipa": [
           "ˈθɜːsti",
-          "kəʊld",
-          "ɡreɪt",
-          "sæd"
+          "faɪn",
+          "sæd",
+          "ˈhæpi"
         ],
         "answer": "thirsty",
         "hint": "Gợi ý: Trạng thái 'khát nước' trong tiếng Anh viết là 'thirsty'.",
-        "emoji": "😊",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_18",
-        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The pen is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The baby is ______.'",
         "options": [
+          "bored",
           "scared",
-          "fine",
-          "tired",
-          "hot"
+          "great",
+          "tired"
         ],
         "options_ipa": [
+          "bɔːd",
           "skeəd",
-          "faɪn",
-          "ˈtaɪəd",
-          "hɒt"
+          "ɡreɪt",
+          "ˈtaɪəd"
         ],
         "answer": "scared",
         "hint": "Gợi ý: Trạng thái 'sợ hãi' trong tiếng Anh viết là 'scared'.",
-        "emoji": "😊",
+        "emoji": "😨",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_19",
-        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'The watch is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'The teacher is ______.'",
         "options": [
-          "fine",
+          "cold",
+          "sad",
           "tired",
-          "scared",
-          "sad"
+          "thirsty"
         ],
         "options_ipa": [
-          "faɪn",
+          "kəʊld",
+          "sæd",
           "ˈtaɪəd",
-          "skeəd",
-          "sæd"
+          "ˈθɜːsti"
         ],
         "answer": "tired",
         "hint": "Gợi ý: Trạng thái 'mệt mỏi' trong tiếng Anh viết là 'tired'.",
-        "emoji": "😊",
+        "emoji": "😫",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_20",
-        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The toy is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The boy is ______.'",
         "options": [
           "bored",
-          "hot",
-          "hungry",
-          "thirsty"
+          "great",
+          "fine",
+          "cold"
         ],
         "options_ipa": [
           "bɔːd",
-          "hɒt",
-          "ˈhæŋɡri",
-          "ˈθɜːsti"
+          "ɡreɪt",
+          "faɪn",
+          "kəʊld"
         ],
         "answer": "bored",
         "hint": "Gợi ý: Trạng thái 'chán nản' trong tiếng Anh viết là 'bored'.",
-        "emoji": "😊",
+        "emoji": "😑",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_21",
-        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'My key is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'Vinh is ______.'",
         "options": [
-          "happy",
           "cold",
-          "bored",
-          "hungry"
+          "fine",
+          "happy",
+          "bored"
         ],
         "options_ipa": [
-          "ˈhæpi",
           "kəʊld",
-          "bɔːd",
-          "ˈhæŋɡri"
+          "faɪn",
+          "ˈhæpi",
+          "bɔːd"
         ],
         "answer": "cold",
         "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
-        "emoji": "😊",
+        "emoji": "🥶",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_22",
-        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'My paper is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'I am ______.'",
         "options": [
-          "great",
+          "tired",
           "hot",
           "bored",
-          "hungry"
+          "great"
         ],
         "options_ipa": [
-          "ɡreɪt",
+          "ˈtaɪəd",
           "hɒt",
           "bɔːd",
-          "ˈhæŋɡri"
+          "ɡreɪt"
         ],
         "answer": "hot",
         "hint": "Gợi ý: Trạng thái 'nóng nực' trong tiếng Anh viết là 'hot'.",
-        "emoji": "😊",
+        "emoji": "🥵",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_23",
-        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'Your card is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The teacher is ______.'",
         "options": [
-          "bored",
-          "great",
           "happy",
-          "sad"
+          "thirsty",
+          "great",
+          "cold"
         ],
         "options_ipa": [
-          "bɔːd",
-          "ɡreɪt",
           "ˈhæpi",
-          "sæd"
+          "ˈθɜːsti",
+          "ɡreɪt",
+          "kəʊld"
         ],
         "answer": "happy",
         "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -13885,238 +13885,238 @@
       },
       {
         "question_id": "s10.4_24",
-        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'His glove is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'My brother is ______.'",
         "options": [
-          "sad",
-          "cold",
-          "thirsty",
-          "scared"
+          "hot",
+          "tired",
+          "happy",
+          "sad"
         ],
         "options_ipa": [
-          "sæd",
-          "kəʊld",
-          "ˈθɜːsti",
-          "skeəd"
+          "hɒt",
+          "ˈtaɪəd",
+          "ˈhæpi",
+          "sæd"
         ],
         "answer": "sad",
         "hint": "Gợi ý: Trạng thái 'buồn bã' trong tiếng Anh viết là 'sad'.",
-        "emoji": "😊",
+        "emoji": "😢",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_25",
-        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'Her ring is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'This park is ______.'",
         "options": [
+          "tired",
           "cold",
-          "great",
-          "hungry",
-          "happy"
+          "fine",
+          "great"
         ],
         "options_ipa": [
+          "ˈtaɪəd",
           "kəʊld",
-          "ɡreɪt",
-          "ˈhæŋɡri",
-          "ˈhæpi"
+          "faɪn",
+          "ɡreɪt"
         ],
         "answer": "great",
         "hint": "Gợi ý: Trạng thái 'tuyệt vời' trong tiếng Anh viết là 'great'.",
-        "emoji": "😊",
+        "emoji": "🤩",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_26",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'Their box is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The puppy is ______.'",
         "options": [
+          "sad",
           "fine",
-          "bored",
-          "tired",
-          "cold"
+          "hungry",
+          "scared"
         ],
         "options_ipa": [
+          "sæd",
           "faɪn",
-          "bɔːd",
-          "ˈtaɪəd",
-          "kəʊld"
+          "ˈhʌŋɡri",
+          "skeəd"
         ],
         "answer": "fine",
         "hint": "Gợi ý: Trạng thái 'khỏe khoắn' trong tiếng Anh viết là 'fine'.",
-        "emoji": "😊",
+        "emoji": "🙂",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_27",
-        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'A monkey is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The monkey is ______.'",
         "options": [
-          "scared",
+          "sad",
+          "cold",
           "hungry",
-          "hot",
-          "great"
+          "scared"
         ],
         "options_ipa": [
-          "skeəd",
-          "ˈhæŋɡri",
-          "hɒt",
-          "ɡreɪt"
+          "sæd",
+          "kəʊld",
+          "ˈhʌŋɡri",
+          "skeəd"
         ],
         "answer": "hungry",
         "hint": "Gợi ý: Trạng thái 'đói bụng' trong tiếng Anh viết là 'hungry'.",
-        "emoji": "😊",
+        "emoji": "😋",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_28",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'A mouse is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The dog is ______.'",
         "options": [
-          "hot",
-          "fine",
-          "scared",
+          "great",
+          "hungry",
+          "cold",
           "thirsty"
         ],
         "options_ipa": [
-          "hɒt",
-          "faɪn",
-          "skeəd",
+          "ɡreɪt",
+          "ˈhʌŋɡri",
+          "kəʊld",
           "ˈθɜːsti"
         ],
         "answer": "thirsty",
         "hint": "Gợi ý: Trạng thái 'khát nước' trong tiếng Anh viết là 'thirsty'.",
-        "emoji": "😊",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_29",
-        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'A rabbit is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The rabbit is ______.'",
         "options": [
-          "scared",
-          "bored",
-          "hungry",
-          "sad"
+          "hot",
+          "thirsty",
+          "cold",
+          "scared"
         ],
         "options_ipa": [
-          "skeəd",
-          "bɔːd",
-          "ˈhæŋɡri",
-          "sæd"
+          "hɒt",
+          "ˈθɜːsti",
+          "kəʊld",
+          "skeəd"
         ],
         "answer": "scared",
         "hint": "Gợi ý: Trạng thái 'sợ hãi' trong tiếng Anh viết là 'scared'.",
-        "emoji": "😊",
+        "emoji": "😨",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_30",
-        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'A kitten is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'My mom is ______.'",
         "options": [
-          "great",
-          "fine",
-          "tired",
-          "hungry"
+          "hot",
+          "cold",
+          "scared",
+          "tired"
         ],
         "options_ipa": [
-          "ɡreɪt",
-          "faɪn",
-          "ˈtaɪəd",
-          "ˈhæŋɡri"
+          "hɒt",
+          "kəʊld",
+          "skeəd",
+          "ˈtaɪəd"
         ],
         "answer": "tired",
         "hint": "Gợi ý: Trạng thái 'mệt mỏi' trong tiếng Anh viết là 'tired'.",
-        "emoji": "😊",
+        "emoji": "😫",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_31",
-        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The cat is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'My friend is ______.'",
         "options": [
-          "sad",
-          "bored",
           "cold",
-          "hot"
+          "bored",
+          "thirsty",
+          "fine"
         ],
         "options_ipa": [
-          "sæd",
-          "bɔːd",
           "kəʊld",
-          "hɒt"
+          "bɔːd",
+          "ˈθɜːsti",
+          "faɪn"
         ],
         "answer": "bored",
         "hint": "Gợi ý: Trạng thái 'chán nản' trong tiếng Anh viết là 'bored'.",
-        "emoji": "😊",
+        "emoji": "😑",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_32",
-        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The dog is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'My sister is ______.'",
         "options": [
-          "sad",
+          "tired",
           "cold",
-          "scared",
-          "hungry"
+          "hot",
+          "thirsty"
         ],
         "options_ipa": [
-          "sæd",
+          "ˈtaɪəd",
           "kəʊld",
-          "skeəd",
-          "ˈhæŋɡri"
+          "hɒt",
+          "ˈθɜːsti"
         ],
         "answer": "cold",
         "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
-        "emoji": "😊",
+        "emoji": "🥶",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_33",
-        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'The book is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'My brother is ______.'",
         "options": [
-          "great",
-          "fine",
+          "tired",
           "hot",
-          "tired"
+          "happy",
+          "cold"
         ],
         "options_ipa": [
-          "ɡreɪt",
-          "faɪn",
+          "ˈtaɪəd",
           "hɒt",
-          "ˈtaɪəd"
+          "ˈhæpi",
+          "kəʊld"
         ],
         "answer": "hot",
         "hint": "Gợi ý: Trạng thái 'nóng nực' trong tiếng Anh viết là 'hot'.",
-        "emoji": "😊",
+        "emoji": "🥵",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_34",
-        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The ball is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The girl is ______.'",
         "options": [
-          "scared",
+          "hungry",
           "happy",
-          "thirsty",
-          "fine"
+          "sad",
+          "bored"
         ],
         "options_ipa": [
-          "skeəd",
+          "ˈhʌŋɡri",
           "ˈhæpi",
-          "ˈθɜːsti",
-          "faɪn"
+          "sæd",
+          "bɔːd"
         ],
         "answer": "happy",
         "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -14127,238 +14127,238 @@
       },
       {
         "question_id": "s10.4_35",
-        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The pencil is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The puppy is ______.'",
         "options": [
+          "hungry",
+          "hot",
           "happy",
-          "thirsty",
-          "fine",
           "sad"
         ],
         "options_ipa": [
+          "ˈhʌŋɡri",
+          "hɒt",
           "ˈhæpi",
-          "ˈθɜːsti",
-          "faɪn",
           "sæd"
         ],
         "answer": "sad",
         "hint": "Gợi ý: Trạng thái 'buồn bã' trong tiếng Anh viết là 'sad'.",
-        "emoji": "😊",
+        "emoji": "😢",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_36",
-        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'The doll is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'My school is ______.'",
         "options": [
           "great",
-          "sad",
-          "hungry",
-          "happy"
+          "tired",
+          "bored",
+          "hungry"
         ],
         "options_ipa": [
           "ɡreɪt",
-          "sæd",
-          "ˈhæŋɡri",
-          "ˈhæpi"
+          "ˈtaɪəd",
+          "bɔːd",
+          "ˈhʌŋɡri"
         ],
         "answer": "great",
         "hint": "Gợi ý: Trạng thái 'tuyệt vời' trong tiếng Anh viết là 'great'.",
-        "emoji": "😊",
+        "emoji": "🤩",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_37",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The robot is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The kitten is ______.'",
         "options": [
-          "bored",
           "fine",
-          "great",
-          "scared"
+          "cold",
+          "bored",
+          "sad"
         ],
         "options_ipa": [
-          "bɔːd",
           "faɪn",
-          "ɡreɪt",
-          "skeəd"
+          "kəʊld",
+          "bɔːd",
+          "sæd"
         ],
         "answer": "fine",
         "hint": "Gợi ý: Trạng thái 'khỏe khoắn' trong tiếng Anh viết là 'fine'.",
-        "emoji": "😊",
+        "emoji": "🙂",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_38",
-        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The apple is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'Vinh is ______.'",
         "options": [
-          "happy",
+          "cold",
           "fine",
           "sad",
           "hungry"
         ],
         "options_ipa": [
-          "ˈhæpi",
+          "kəʊld",
           "faɪn",
           "sæd",
-          "ˈhæŋɡri"
+          "ˈhʌŋɡri"
         ],
         "answer": "hungry",
         "hint": "Gợi ý: Trạng thái 'đói bụng' trong tiếng Anh viết là 'hungry'.",
-        "emoji": "😊",
+        "emoji": "😋",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_39",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The bag is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The baby is ______.'",
         "options": [
-          "tired",
           "happy",
-          "hot",
-          "thirsty"
+          "great",
+          "thirsty",
+          "sad"
         ],
         "options_ipa": [
-          "ˈtaɪəd",
           "ˈhæpi",
-          "hɒt",
-          "ˈθɜːsti"
+          "ɡreɪt",
+          "ˈθɜːsti",
+          "sæd"
         ],
         "answer": "thirsty",
         "hint": "Gợi ý: Trạng thái 'khát nước' trong tiếng Anh viết là 'thirsty'.",
-        "emoji": "😊",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_40",
-        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The hat is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'sợ hãi': 'The bird is ______.'",
         "options": [
+          "happy",
+          "scared",
           "hot",
-          "thirsty",
-          "fine",
-          "scared"
+          "sad"
         ],
         "options_ipa": [
+          "ˈhæpi",
+          "skeəd",
           "hɒt",
-          "ˈθɜːsti",
-          "faɪn",
-          "skeəd"
+          "sæd"
         ],
         "answer": "scared",
         "hint": "Gợi ý: Trạng thái 'sợ hãi' trong tiếng Anh viết là 'scared'.",
-        "emoji": "😊",
+        "emoji": "😨",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_41",
-        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'The crayon is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'mệt mỏi': 'My grandfather is ______.'",
         "options": [
-          "bored",
-          "hot",
-          "scared",
-          "tired"
+          "tired",
+          "thirsty",
+          "fine",
+          "bored"
         ],
         "options_ipa": [
-          "bɔːd",
-          "hɒt",
-          "skeəd",
-          "ˈtaɪəd"
+          "ˈtaɪəd",
+          "ˈθɜːsti",
+          "faɪn",
+          "bɔːd"
         ],
         "answer": "tired",
         "hint": "Gợi ý: Trạng thái 'mệt mỏi' trong tiếng Anh viết là 'tired'.",
-        "emoji": "😊",
+        "emoji": "😫",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_42",
-        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The ruler is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'chán nản': 'The child is ______.'",
         "options": [
-          "fine",
-          "hot",
+          "happy",
           "bored",
-          "thirsty"
+          "sad",
+          "hot"
         ],
         "options_ipa": [
-          "faɪn",
-          "hɒt",
+          "ˈhæpi",
           "bɔːd",
-          "ˈθɜːsti"
+          "sæd",
+          "hɒt"
         ],
         "answer": "bored",
         "hint": "Gợi ý: Trạng thái 'chán nản' trong tiếng Anh viết là 'bored'.",
-        "emoji": "😊",
+        "emoji": "😑",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_43",
-        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The bird is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The cat is ______.'",
         "options": [
-          "great",
           "cold",
-          "scared",
-          "bored"
+          "fine",
+          "hungry",
+          "happy"
         ],
         "options_ipa": [
-          "ɡreɪt",
           "kəʊld",
-          "skeəd",
-          "bɔːd"
+          "faɪn",
+          "ˈhʌŋɡri",
+          "ˈhæpi"
         ],
         "answer": "cold",
         "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
-        "emoji": "😊",
+        "emoji": "🥶",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_44",
-        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'The frog is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'nóng nực': 'The dog is ______.'",
         "options": [
           "hot",
-          "happy",
-          "cold",
-          "thirsty"
+          "sad",
+          "bored",
+          "great"
         ],
         "options_ipa": [
           "hɒt",
-          "ˈhæpi",
-          "kəʊld",
-          "ˈθɜːsti"
+          "sæd",
+          "bɔːd",
+          "ɡreɪt"
         ],
         "answer": "hot",
         "hint": "Gợi ý: Trạng thái 'nóng nực' trong tiếng Anh viết là 'hot'.",
-        "emoji": "😊",
+        "emoji": "🥵",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_45",
-        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'The cup is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'vui vẻ': 'Vinh is ______.'",
         "options": [
-          "happy",
           "tired",
-          "thirsty",
-          "bored"
+          "bored",
+          "scared",
+          "happy"
         ],
         "options_ipa": [
-          "ˈhæpi",
           "ˈtaɪəd",
-          "ˈθɜːsti",
-          "bɔːd"
+          "bɔːd",
+          "skeəd",
+          "ˈhæpi"
         ],
         "answer": "happy",
         "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -14369,110 +14369,110 @@
       },
       {
         "question_id": "s10.4_46",
-        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'The kite is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'buồn bã': 'My brother is ______.'",
         "options": [
           "scared",
-          "sad",
-          "happy",
-          "bored"
+          "fine",
+          "bored",
+          "sad"
         ],
         "options_ipa": [
           "skeəd",
-          "sæd",
-          "ˈhæpi",
-          "bɔːd"
+          "faɪn",
+          "bɔːd",
+          "sæd"
         ],
         "answer": "sad",
         "hint": "Gợi ý: Trạng thái 'buồn bã' trong tiếng Anh viết là 'sad'.",
-        "emoji": "😊",
+        "emoji": "😢",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_47",
-        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'The orange is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'tuyệt vời': 'Our class is ______.'",
         "options": [
-          "great",
+          "thirsty",
           "happy",
-          "cold",
-          "thirsty"
+          "great",
+          "hungry"
         ],
         "options_ipa": [
-          "ɡreɪt",
+          "ˈθɜːsti",
           "ˈhæpi",
-          "kəʊld",
-          "ˈθɜːsti"
+          "ɡreɪt",
+          "ˈhʌŋɡri"
         ],
         "answer": "great",
         "hint": "Gợi ý: Trạng thái 'tuyệt vời' trong tiếng Anh viết là 'great'.",
-        "emoji": "😊",
+        "emoji": "🤩",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_48",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'The pen is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khỏe khoắn': 'I am ______.'",
         "options": [
-          "fine",
-          "sad",
-          "hot",
-          "bored"
+          "thirsty",
+          "great",
+          "bored",
+          "fine"
         ],
         "options_ipa": [
-          "faɪn",
-          "sæd",
-          "hɒt",
-          "bɔːd"
+          "ˈθɜːsti",
+          "ɡreɪt",
+          "bɔːd",
+          "faɪn"
         ],
         "answer": "fine",
         "hint": "Gợi ý: Trạng thái 'khỏe khoắn' trong tiếng Anh viết là 'fine'.",
-        "emoji": "😊",
+        "emoji": "🙂",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_49",
-        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The watch is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'đói bụng': 'The baby is ______.'",
         "options": [
-          "bored",
-          "happy",
-          "tired",
-          "hungry"
+          "sad",
+          "scared",
+          "hungry",
+          "great"
         ],
         "options_ipa": [
-          "bɔːd",
-          "ˈhæpi",
-          "ˈtaɪəd",
-          "ˈhæŋɡri"
+          "sæd",
+          "skeəd",
+          "ˈhʌŋɡri",
+          "ɡreɪt"
         ],
         "answer": "hungry",
         "hint": "Gợi ý: Trạng thái 'đói bụng' trong tiếng Anh viết là 'hungry'.",
-        "emoji": "😊",
+        "emoji": "😋",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
       },
       {
         "question_id": "s10.4_50",
-        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The toy is ______.'",
+        "question_text": "Chọn tính từ chỉ trạng thái 'khát nước': 'The horse is ______.'",
         "options": [
-          "hot",
-          "cold",
           "thirsty",
-          "fine"
+          "cold",
+          "hot",
+          "great"
         ],
         "options_ipa": [
-          "hɒt",
-          "kəʊld",
           "ˈθɜːsti",
-          "faɪn"
+          "kəʊld",
+          "hɒt",
+          "ɡreɪt"
         ],
         "answer": "thirsty",
         "hint": "Gợi ý: Trạng thái 'khát nước' trong tiếng Anh viết là 'thirsty'.",
-        "emoji": "😊",
+        "emoji": "🥛",
         "skill_tag": "ENG_GRA",
         "topic_id": 1,
         "section_name": "Adjectives Grammar Point"
