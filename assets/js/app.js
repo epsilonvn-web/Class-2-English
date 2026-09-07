@@ -2657,6 +2657,16 @@ function stopSpeaking() {
     } catch (e) {}
 }
 
+/** Đọc to toàn bộ nội dung khối "Nhận xét sư phạm" trong báo cáo lịch sử — lấy đúng text
+ * đang hiển thị trong DOM (đã chuẩn hoá từ pedagogical evaluation), không đọc lại dữ liệu thô. */
+function speakPedagogicalEvaluation() {
+    const box = document.getElementById('pedagogical-evaluation-box');
+    if (!box) return;
+    const text = box.innerText || box.textContent || '';
+    if (!text.trim()) return;
+    speakVietnamese(text, 0.96);
+}
+
 function speakVietnamese(text, rate = 0.96) {
     if (!text) return;
     speakGoogleTTS(text, 'vi', rate);
