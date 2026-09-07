@@ -341,6 +341,14 @@ const SECTION_LABELS = {
     "11.1": "Practice & Play (Semester 1 Review)", "11.2": "Practice & Play (Semester 2 Review)"
 };
 
+/** Câu dạng "Remove Letter" (xoá chữ cái thừa) chỉ có "faulty_word" + "answer" (1 chữ cái),
+ * KHÔNG có sẵn mảng "options" — phải tự sinh 4 lựa chọn (đáp án đúng + 3 chữ cái nhiễu).
+ * Dùng chung cho cả kho học liệu (rawItemToFlatQuestion) lẫn đề thi (loadExamDataFile). */
+function buildFaultyWordOptions(letter) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(c => c !== String(letter).toLowerCase());
+    return shuffleArray([letter, ...shuffleArray(alphabet).slice(0, 3)]);
+}
+
 function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     const skill = it.skill_tag;
     const part = PART1_SKILLS.includes(skill) ? 1 : 2;
@@ -359,8 +367,7 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
 
     if ('faulty_word' in it) {
         const letter = it.answer;
-        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(c => c !== String(letter).toLowerCase());
-        const opts = shuffleArray([letter, ...shuffleArray(alphabet).slice(0, 3)]);
+        const opts = buildFaultyWordOptions(letter);
         return { ...base, q: it.question_text, o: opts, a: letter, h: it.hint || '' };
     }
     if ('word' in it && !('question_text' in it)) {
@@ -482,7 +489,15 @@ async function loadExamDataFile(file) {
             data[key] = data[key].map(ex => ({
                 ...ex,
                 exam_title: ex.exam_name,
-                questions: (ex.questions || []).map(q => normalizeQuestion({ ...q, diem: q.points })).filter(Boolean)
+                questions: (ex.questions || []).map(q => {
+                    // Câu "Remove Letter" trong đề thi chỉ có faulty_word+answer, không có sẵn "options" —
+                    // phải tự sinh 4 lựa chọn giống hệt cách xử lý ở kho học liệu, nếu không câu này
+                    // sẽ hiện ra KHÔNG CÓ đáp án nào để chọn (đúng lỗi đã phát hiện khi rà soát dữ liệu).
+                    if ('faulty_word' in q && !q.options) {
+                        return normalizeQuestion({ ...q, diem: q.points, options: buildFaultyWordOptions(q.answer) });
+                    }
+                    return normalizeQuestion({ ...q, diem: q.points });
+                }).filter(Boolean)
             }));
         }
     });
@@ -1840,7 +1855,12 @@ function checkAnswer(selectedOpt) {
 
     // RIÊNG TIẾN TRÌNH TUẦN: CHỈ ĐƯỢC CHỌN 1 LẦN DUY NHẤT ĐỂ GHI NHẬN ĐÚNG/SAI CHÍNH XÁC
     if (isRoadmap) {
-        if (userAnswers[currentQIndex] !== undefined) return;
+        if (userAnswers[currentQIndex] !== undefined) {
+            // Đã khoá đáp án rồi -> bấm lại bất kỳ đáp án nào (đúng hoặc sai) chỉ để NGHE LẠI
+            // phát âm của từ đó, không tính điểm lại (bé cần nghe hết cả 4 từ, không chỉ từ đúng).
+            speakEnglish(selectedOpt);
+            return;
+        }
 
         const isCorrect = selectedOpt === q.answer;
         userAnswers[currentQIndex] = selectedOpt;
@@ -1855,7 +1875,6 @@ function checkAnswer(selectedOpt) {
         }
 
         document.querySelectorAll('.option-btn').forEach(b => {
-            b.disabled = true;
             const bOpt = b.getAttribute('data-opt');
             if (bOpt === q.answer) {
                 b.classList.remove('bg-pink-50/40', 'border-pink-200');
@@ -1880,7 +1899,12 @@ function checkAnswer(selectedOpt) {
 
     // CHẾ ĐỘ LUYỆN TẬP TỰ DO
     const isCorrect = selectedOpt === q.answer;
-    if (userAnswers[currentQIndex] !== undefined) return;
+    if (userAnswers[currentQIndex] !== undefined) {
+        // Đã tìm ra đáp án đúng rồi -> bấm lại bất kỳ đáp án nào (đúng hoặc sai) chỉ để NGHE LẠI
+        // phát âm, không tính điểm lại (bé cần nghe hết cả 4 từ, không chỉ từ đúng).
+        speakEnglish(selectedOpt);
+        return;
+    }
 
     if (isCorrect) {
         userAnswers[currentQIndex] = selectedOpt;
@@ -1889,7 +1913,6 @@ function checkAnswer(selectedOpt) {
         document.getElementById('star-green-count').textContent = starGreenCount;
 
         document.querySelectorAll('.option-btn').forEach(b => {
-            b.disabled = true;
             if (b.getAttribute('data-opt') === q.answer) {
                 b.classList.remove('bg-pink-50/40', 'border-pink-200');
                 b.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
@@ -1911,11 +1934,11 @@ function checkAnswer(selectedOpt) {
             if (b.getAttribute('data-opt') === selectedOpt) {
                 b.classList.remove('bg-pink-50/40', 'border-pink-200');
                 b.classList.add('bg-red-200', 'border-red-500', 'text-red-900');
-                b.disabled = true;
             }
         });
 
         playAudio('wrong');
+        setTimeout(() => speakEnglish(selectedOpt), 180);
     }
 
     updateQuizPalletUI();
