@@ -318,6 +318,7 @@ const PART1_SKILLS = ['ENG_VOC', 'ENG_LIS', 'ENG_PHO'];
 
 let allWordsPoolCache = null;
 let wordIpaMapCache = null;
+let wordMeaningMapCache = null;
 function pickDistractorWords(correct, pool, n = 3) {
     const cand = shuffleArray(pool.filter(w => w !== correct));
     const out = []; const seen = new Set([correct]);
@@ -420,10 +421,16 @@ async function fetchAllQuestionsFlat() {
     if (!allWordsPoolCache) {
         allWordsPoolCache = [];
         wordIpaMapCache = {};
+        wordMeaningMapCache = {};
         results.forEach(d => Object.values(d.sections || {}).forEach(sectionValue => {
             extractItemsFromSection(sectionValue).forEach(it => {
                 if ('word' in it && !('question_text' in it)) {
                     allWordsPoolCache.push(it.word);
+                    // Kho tra cứu nghĩa tiếng Việt: lấy ĐÚNG cặp word/vietnamese có sẵn trong thẻ
+                    // Flashcards Library (mục 2.1) — không tự suy diễn/bịa nghĩa cho từ nào cả.
+                    if (it.vietnamese && !wordMeaningMapCache[it.word.toLowerCase()]) {
+                        wordMeaningMapCache[it.word.toLowerCase()] = it.vietnamese;
+                    }
                 }
                 // Kho tra cứu phiên âm chung: gom mọi cặp (từ, IPA) từ TẤT CẢ câu trắc nghiệm
                 // NotebookLM đã gắn sẵn "options_ipa" — dùng để tự suy ra phiên âm cho câu Flashcards
@@ -1713,7 +1720,7 @@ function loadQuestion() {
         } else {
             html += `
                 <button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="option-btn w-full p-3 md:p-3.5 bg-pink-50/40 hover:bg-pink-100/70 border-2 border-pink-200 rounded-2xl font-extrabold text-gray-800 text-left transition-all flex items-center justify-between text-sm md:text-base shadow-xs pastel-btn">
-                    <span><strong class="text-pink-600 mr-2 text-base md:text-lg">${letter}.</strong> ${escapeHtml(formattedOpt)}${ipaHtml}</span>
+                    <span class="opt-text"><strong class="text-pink-600 mr-2 text-base md:text-lg">${letter}.</strong> ${escapeHtml(formattedOpt)}${ipaHtml}</span>
                     <span class="option-icon text-pink-500 text-base md:text-lg"></span>
                 </button>`;
         }
@@ -1824,6 +1831,32 @@ function updateNavButtons() {
     }
 }
 
+/** Bấm vào 1 đáp án để nghe lại: LUÔN đọc to từ đó (áp dụng cho mọi mục, trừ Đề thi).
+ * Riêng phần HIỆN NGHĨA TIẾNG VIỆT bên cạnh thì thu hẹp lại — chỉ hiện khi câu hỏi đang xem
+ * thật sự thuộc đúng mục "2.1 Flashcards Library" (dù đang ở Học tự do hay Tiến trình tuần),
+ * vì đây là nơi duy nhất có ngữ cảnh phù hợp để chèn nghĩa; các mục khác dù đáp án trùng từ
+ * vựng cũng KHÔNG hiện, tránh gây rối vì ngữ cảnh câu hỏi không phải để học nghĩa của từ đó. */
+function speakOptionWithMeaning(optText) {
+    speakEnglish(optText);
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.sub_topic !== '2.1') return;
+    const meaning = wordMeaningMapCache ? wordMeaningMapCache[String(optText).toLowerCase()] : null;
+    if (!meaning) return;
+    document.querySelectorAll('.option-btn').forEach(b => {
+        if (b.getAttribute('data-opt') === optText) {
+            const textSpan = b.querySelector('.opt-text');
+            if (!textSpan) return;
+            let meaningSpan = textSpan.querySelector('.opt-meaning');
+            if (!meaningSpan) {
+                meaningSpan = document.createElement('span');
+                meaningSpan.className = 'opt-meaning text-xs md:text-sm font-bold text-purple-500 ml-1.5 italic';
+                textSpan.appendChild(meaningSpan);
+            }
+            meaningSpan.textContent = `(${meaning})`;
+        }
+    });
+}
+
 function checkAnswer(selectedOpt) {
     const q = activeQuestionsList[currentQIndex];
     const isExam = !!activeExamContext;
@@ -1858,7 +1891,7 @@ function checkAnswer(selectedOpt) {
         if (userAnswers[currentQIndex] !== undefined) {
             // Đã khoá đáp án rồi -> bấm lại bất kỳ đáp án nào (đúng hoặc sai) chỉ để NGHE LẠI
             // phát âm của từ đó, không tính điểm lại (bé cần nghe hết cả 4 từ, không chỉ từ đúng).
-            speakEnglish(selectedOpt);
+            speakOptionWithMeaning(selectedOpt);
             return;
         }
 
@@ -1888,7 +1921,7 @@ function checkAnswer(selectedOpt) {
         if (isCorrect) {
             playAudio('correct');
             confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
-            setTimeout(() => speakEnglish(`${q.answer}`), 180);
+            setTimeout(() => speakOptionWithMeaning(q.answer), 180);
         } else {
             playAudio('wrong');
         }
@@ -1902,7 +1935,7 @@ function checkAnswer(selectedOpt) {
     if (userAnswers[currentQIndex] !== undefined) {
         // Đã tìm ra đáp án đúng rồi -> bấm lại bất kỳ đáp án nào (đúng hoặc sai) chỉ để NGHE LẠI
         // phát âm, không tính điểm lại (bé cần nghe hết cả 4 từ, không chỉ từ đúng).
-        speakEnglish(selectedOpt);
+        speakOptionWithMeaning(selectedOpt);
         return;
     }
 
@@ -1921,7 +1954,7 @@ function checkAnswer(selectedOpt) {
 
         playAudio('correct');
         confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
-        setTimeout(() => speakEnglish(`${q.answer}`), 180);
+        setTimeout(() => speakOptionWithMeaning(q.answer), 180);
     } else {
         if (!wrongAttemptsByQ[currentQIndex]) wrongAttemptsByQ[currentQIndex] = [];
         if (!wrongAttemptsByQ[currentQIndex].includes(selectedOpt)) {
@@ -1938,7 +1971,6 @@ function checkAnswer(selectedOpt) {
         });
 
         playAudio('wrong');
-        setTimeout(() => speakEnglish(selectedOpt), 180);
     }
 
     updateQuizPalletUI();
