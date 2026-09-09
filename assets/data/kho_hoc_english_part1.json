@@ -1,6 +1,6 @@
 {
-  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 1 (VERSION 13)",
-  "description": "Hệ thống học liệu tự luyện cấp độ cơ bản và trung bình.",
+  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 1 (VERSION 15)",
+  "description": "Hệ thống học liệu tự luyện cấp độ cơ bản và trung bình bám sát sách giáo khoa Global Success (V15).",
   "sections": {
     "section_1.3": [
       {
@@ -1811,6 +1811,42 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 1,
               "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t1_51",
+              "word": "shirts",
+              "vietnamese": "áo sơ mi",
+              "emoji": "👔",
+              "image_url": "assets/images/shirts.png",
+              "sentence": "I have two shirts.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'shirts' nghĩa là 'áo sơ mi' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t1_52",
+              "word": "shoes",
+              "vietnamese": "đôi giày",
+              "emoji": "👟",
+              "image_url": "assets/images/shoes.png",
+              "sentence": "These are my shoes.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'shoes' nghĩa là 'đôi giày' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t1_53",
+              "word": "shorts",
+              "vietnamese": "quần đùi / quần soóc",
+              "emoji": "🩳",
+              "image_url": "assets/images/shorts.png",
+              "sentence": "I wear blue shorts.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'shorts' nghĩa là 'quần đùi / quần soóc' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Flashcards Library"
             }
           ]
         },
@@ -2414,6 +2450,66 @@
               "image_url": "assets/images/bell.png",
               "sentence": "The school bell is ringing.",
               "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'bell' nghĩa là 'chuông báo' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t2_51",
+              "word": "question",
+              "vietnamese": "câu hỏi",
+              "emoji": "❓",
+              "image_url": "assets/images/question.png",
+              "sentence": "This is a question.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'question' nghĩa là 'câu hỏi' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t2_52",
+              "word": "quiz",
+              "vietnamese": "trò chơi câu đố",
+              "emoji": "📝",
+              "image_url": "assets/images/quiz.png",
+              "sentence": "I like this quiz.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'quiz' nghĩa là 'trò chơi câu đố' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t2_53",
+              "word": "yo-yos",
+              "vietnamese": "những chiếc yo-yo",
+              "emoji": "🪀",
+              "image_url": "assets/images/yo-yos.png",
+              "sentence": "I have two yo-yos.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'yo-yos' nghĩa là 'những chiếc yo-yo' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t2_54",
+              "word": "sliding",
+              "vietnamese": "đang trượt",
+              "emoji": "🛝",
+              "image_url": "assets/images/sliding.png",
+              "sentence": "He is sliding.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'sliding' nghĩa là 'đang trượt' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t2_55",
+              "word": "riding",
+              "vietnamese": "đang đạp xe",
+              "emoji": "🚴",
+              "image_url": "assets/images/riding.png",
+              "sentence": "She is riding a bike.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'riding' nghĩa là 'đang đạp xe' nhé con!",
               "skill_tag": "ENG_VOC",
               "topic_id": 2,
               "section_name": "Flashcards Library"
@@ -3023,6 +3119,30 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 3,
               "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t3_51",
+              "word": "ox",
+              "vietnamese": "con bò đực",
+              "emoji": "🐂",
+              "image_url": "assets/images/ox.png",
+              "sentence": "I see an ox.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'ox' nghĩa là 'con bò đực' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 3,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t3_52",
+              "word": "zebu",
+              "vietnamese": "con bò u Zebu",
+              "emoji": "🐂",
+              "image_url": "assets/images/zebu.png",
+              "sentence": "Look at the zebu.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'zebu' nghĩa là 'con bò u Zebu' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 3,
+              "section_name": "Flashcards Library"
             }
           ]
         },
@@ -3626,6 +3746,30 @@
               "image_url": "assets/images/tea.png",
               "sentence": "Grandpa drinks hot tea.",
               "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'tea' nghĩa là 'trà' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 4,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t4_51",
+              "word": "yogurt",
+              "vietnamese": "sữa chua",
+              "emoji": "🥛",
+              "image_url": "assets/images/yogurt.png",
+              "sentence": "I like eating yogurt.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'yogurt' nghĩa là 'sữa chua' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 4,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t4_52",
+              "word": "yams",
+              "vietnamese": "khoai mỡ / khoai lang",
+              "emoji": "🥔",
+              "image_url": "assets/images/yams.png",
+              "sentence": "These are yams.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'yams' nghĩa là 'khoai mỡ / khoai lang' nhé con!",
               "skill_tag": "ENG_VOC",
               "topic_id": 4,
               "section_name": "Flashcards Library"
@@ -4235,6 +4379,30 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 5,
               "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t5_51",
+              "word": "volleyball",
+              "vietnamese": "môn bóng chuyền",
+              "emoji": "🏐",
+              "image_url": "assets/images/volleyball.png",
+              "sentence": "We play volleyball.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'volleyball' nghĩa là 'môn bóng chuyền' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 5,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t5_52",
+              "word": "driving",
+              "vietnamese": "đang lái xe",
+              "emoji": "🚗",
+              "image_url": "assets/images/driving.png",
+              "sentence": "My dad is driving a car.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'driving' nghĩa là 'đang lái xe' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 5,
+              "section_name": "Flashcards Library"
             }
           ]
         },
@@ -4838,6 +5006,18 @@
               "image_url": "assets/images/ten.png",
               "sentence": "I have ten pencils.",
               "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'ten' nghĩa là 'số 10' nhé con!",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 6,
+              "section_name": "Flashcards Library"
+            },
+            {
+              "question_id": "s2.1_t6_51",
+              "word": "sail",
+              "vietnamese": "cánh buồm",
+              "emoji": "⛵",
+              "image_url": "assets/images/sail.png",
+              "sentence": "I can see a sail.",
+              "hint": "Hãy cùng Mascot lật thẻ và học từ vựng 'sail' nghĩa là 'cánh buồm' nhé con!",
               "skill_tag": "ENG_VOC",
               "topic_id": 6,
               "section_name": "Flashcards Library"
@@ -6053,6 +6233,78 @@
               "skill_tag": "ENG_LIS",
               "topic_id": 1,
               "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t1_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "shirts",
+              "options": [
+                "garden",
+                "thirsty",
+                "tent",
+                "shirts"
+              ],
+              "options_ipa": [
+                "ˈɡɑːdn",
+                "ˈθɜːsti",
+                "tent",
+                "shirts"
+              ],
+              "answer": "shirts",
+              "hint": "Từ phát âm từ loa là 'shirts' nghĩa là 'áo sơ mi' đó con.",
+              "image_url": "assets/images/shirts.png",
+              "emoji": "👔",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 1,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t1_52",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "shoes",
+              "options": [
+                "cold",
+                "shoes",
+                "aunt",
+                "picture"
+              ],
+              "options_ipa": [
+                "kəʊld",
+                "ʃuːz",
+                "ɑːnt",
+                "ˈpɪktʃə"
+              ],
+              "answer": "shoes",
+              "hint": "Từ phát âm từ loa là 'shoes' nghĩa là 'đôi giày' đó con.",
+              "image_url": "assets/images/shoes.png",
+              "emoji": "👟",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 1,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t1_53",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "shorts",
+              "options": [
+                "tired",
+                "sad",
+                "shorts",
+                "bathroom"
+              ],
+              "options_ipa": [
+                "ˈtaɪəd",
+                "sæd",
+                "ʃɔːts",
+                "ˈbɑːθruːm"
+              ],
+              "answer": "shorts",
+              "hint": "Từ phát âm từ loa là 'shorts' nghĩa là 'quần đùi / quần soóc' đó con.",
+              "image_url": "assets/images/shorts.png",
+              "emoji": "🩳",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 1,
+              "section_name": "Listening Master"
             }
           ]
         },
@@ -7256,6 +7508,126 @@
               "hint": "Từ phát âm từ loa là 'bell' nghĩa là 'chuông báo' đó con.",
               "image_url": "assets/images/bell.png",
               "emoji": "🔔",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 2,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t2_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "question",
+              "options": [
+                "train",
+                "question",
+                "sliding",
+                "blocks"
+              ],
+              "options_ipa": [
+                "treɪn",
+                "question",
+                "sliding",
+                "blɒks"
+              ],
+              "answer": "question",
+              "hint": "Từ phát âm từ loa là 'question' nghĩa là 'câu hỏi' đó con.",
+              "image_url": "assets/images/question.png",
+              "emoji": "❓",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 2,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t2_52",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "quiz",
+              "options": [
+                "sliding",
+                "quiz",
+                "blocks",
+                "whiteboard"
+              ],
+              "options_ipa": [
+                "sliding",
+                "quiz",
+                "blɒks",
+                "ˈwaɪtbɔːd"
+              ],
+              "answer": "quiz",
+              "hint": "Từ phát âm từ loa là 'quiz' nghĩa là 'trò chơi câu đố' đó con.",
+              "image_url": "assets/images/quiz.png",
+              "emoji": "📝",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 2,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t2_53",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "yo-yos",
+              "options": [
+                "train",
+                "camera",
+                "yo-yos",
+                "ruler"
+              ],
+              "options_ipa": [
+                "treɪn",
+                "ˈkæmərə",
+                "yo-yos",
+                "ˈruːlə"
+              ],
+              "answer": "yo-yos",
+              "hint": "Từ phát âm từ loa là 'yo-yos' nghĩa là 'những chiếc yo-yo' đó con.",
+              "image_url": "assets/images/yo-yos.png",
+              "emoji": "🪀",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 2,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t2_54",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "sliding",
+              "options": [
+                "sharpener",
+                "book",
+                "yo-yo",
+                "sliding"
+              ],
+              "options_ipa": [
+                "ˈʃɑːpənə",
+                "bʊk",
+                "yo-yo",
+                "sliding"
+              ],
+              "answer": "sliding",
+              "hint": "Từ phát âm từ loa là 'sliding' nghĩa là 'đang trượt' đó con.",
+              "image_url": "assets/images/sliding.png",
+              "emoji": "🛝",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 2,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t2_55",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "riding",
+              "options": [
+                "classroom",
+                "map",
+                "riding",
+                "globe"
+              ],
+              "options_ipa": [
+                "ˈklɑːsruːm",
+                "mæp",
+                "riding",
+                "ɡləʊb"
+              ],
+              "answer": "riding",
+              "hint": "Từ phát âm từ loa là 'riding' nghĩa là 'đang đạp xe' đó con.",
+              "image_url": "assets/images/riding.png",
+              "emoji": "🚴",
               "skill_tag": "ENG_LIS",
               "topic_id": 2,
               "section_name": "Listening Master"
@@ -8465,6 +8837,54 @@
               "skill_tag": "ENG_LIS",
               "topic_id": 3,
               "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t3_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "ox",
+              "options": [
+                "horse",
+                "penguin",
+                "ox",
+                "snail"
+              ],
+              "options_ipa": [
+                "hɔːs",
+                "ˈpeŋɡwɪn",
+                "ox",
+                "sneɪl"
+              ],
+              "answer": "ox",
+              "hint": "Từ phát âm từ loa là 'ox' nghĩa là 'con bò đực' đó con.",
+              "image_url": "assets/images/ox.png",
+              "emoji": "🐂",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 3,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t3_52",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "zebu",
+              "options": [
+                "zebu",
+                "mouse",
+                "zebra",
+                "crocodile"
+              ],
+              "options_ipa": [
+                "zebu",
+                "maʊs",
+                "ˈzeɪbrə",
+                "ˈkrɒkədaɪl"
+              ],
+              "answer": "zebu",
+              "hint": "Từ phát âm từ loa là 'zebu' nghĩa là 'con bò u Zebu' đó con.",
+              "image_url": "assets/images/zebu.png",
+              "emoji": "🐂",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 3,
+              "section_name": "Listening Master"
             }
           ]
         },
@@ -9668,6 +10088,54 @@
               "hint": "Từ phát âm từ loa là 'tea' nghĩa là 'trà' đó con.",
               "image_url": "assets/images/tea.png",
               "emoji": "🍵",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 4,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t4_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "yogurt",
+              "options": [
+                "yogurt",
+                "sugar",
+                "peach",
+                "rice"
+              ],
+              "options_ipa": [
+                "yogurt",
+                "ˈʃʊɡə",
+                "piːtʃ",
+                "raɪs"
+              ],
+              "answer": "yogurt",
+              "hint": "Từ phát âm từ loa là 'yogurt' nghĩa là 'sữa chua' đó con.",
+              "image_url": "assets/images/yogurt.png",
+              "emoji": "🥛",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 4,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t4_52",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "yams",
+              "options": [
+                "peach",
+                "honey",
+                "mango",
+                "yams"
+              ],
+              "options_ipa": [
+                "piːtʃ",
+                "ˈhʌni",
+                "ˈmæŋɡəʊ",
+                "yams"
+              ],
+              "answer": "yams",
+              "hint": "Từ phát âm từ loa là 'yams' nghĩa là 'khoai mỡ / khoai lang' đó con.",
+              "image_url": "assets/images/yams.png",
+              "emoji": "🥔",
               "skill_tag": "ENG_LIS",
               "topic_id": 4,
               "section_name": "Listening Master"
@@ -10877,6 +11345,54 @@
               "skill_tag": "ENG_LIS",
               "topic_id": 5,
               "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t5_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "volleyball",
+              "options": [
+                "zoo",
+                "truck",
+                "playground",
+                "volleyball"
+              ],
+              "options_ipa": [
+                "zuː",
+                "trʌk",
+                "ˈpleɪɡraʊnd",
+                "ˈvɒlibɔːl"
+              ],
+              "answer": "volleyball",
+              "hint": "Từ phát âm từ loa là 'volleyball' nghĩa là 'môn bóng chuyền' đó con.",
+              "image_url": "assets/images/volleyball.png",
+              "emoji": "🏐",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 5,
+              "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t5_52",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "driving",
+              "options": [
+                "ship",
+                "driving",
+                "singer",
+                "astronaut"
+              ],
+              "options_ipa": [
+                "ʃɪp",
+                "driving",
+                "ˈsɪŋə",
+                "ˈæstrənɔːt"
+              ],
+              "answer": "driving",
+              "hint": "Từ phát âm từ loa là 'driving' nghĩa là 'đang lái xe' đó con.",
+              "image_url": "assets/images/driving.png",
+              "emoji": "🚗",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 5,
+              "section_name": "Listening Master"
             }
           ]
         },
@@ -12083,6 +12599,30 @@
               "skill_tag": "ENG_LIS",
               "topic_id": 6,
               "section_name": "Listening Master"
+            },
+            {
+              "question_id": "s2.2_t6_51",
+              "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
+              "audio_text": "sail",
+              "options": [
+                "sixteen",
+                "seventeen",
+                "sail",
+                "four"
+              ],
+              "options_ipa": [
+                "ˌsɪksˈtiːn",
+                "ˌsevnˈtiːn",
+                "sail",
+                "fɔː"
+              ],
+              "answer": "sail",
+              "hint": "Từ phát âm từ loa là 'sail' nghĩa là 'cánh buồm' đó con.",
+              "image_url": "assets/images/sail.png",
+              "emoji": "⛵",
+              "skill_tag": "ENG_LIS",
+              "topic_id": 6,
+              "section_name": "Listening Master"
             }
           ]
         }
@@ -13245,6 +13785,75 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 1,
               "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t1_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'áo sơ mi':",
+              "options": [
+                "garden",
+                "thirsty",
+                "tent",
+                "shirts"
+              ],
+              "options_ipa": [
+                "ˈɡɑːdn",
+                "ˈθɜːsti",
+                "tent",
+                "shirts"
+              ],
+              "answer": "shirts",
+              "hint": "Từ vựng tương ứng với hình vẽ áo sơ mi là 'shirts' con nhé.",
+              "image_url": "assets/images/shirts.png",
+              "emoji": "👔",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t1_52",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'đôi giày':",
+              "options": [
+                "cold",
+                "shoes",
+                "aunt",
+                "picture"
+              ],
+              "options_ipa": [
+                "kəʊld",
+                "ʃuːz",
+                "ɑːnt",
+                "ˈpɪktʃə"
+              ],
+              "answer": "shoes",
+              "hint": "Từ vựng tương ứng với hình vẽ đôi giày là 'shoes' con nhé.",
+              "image_url": "assets/images/shoes.png",
+              "emoji": "👟",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t1_53",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'quần đùi / quần soóc':",
+              "options": [
+                "tired",
+                "sad",
+                "shorts",
+                "bathroom"
+              ],
+              "options_ipa": [
+                "ˈtaɪəd",
+                "sæd",
+                "ʃɔːts",
+                "ˈbɑːθruːm"
+              ],
+              "answer": "shorts",
+              "hint": "Từ vựng tương ứng với hình vẽ quần đùi / quần soóc là 'shorts' con nhé.",
+              "image_url": "assets/images/shorts.png",
+              "emoji": "🩳",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 1,
+              "section_name": "Word-Picture Puzzle"
             }
           ]
         },
@@ -14398,6 +15007,121 @@
               "hint": "Từ vựng tương ứng với hình vẽ chuông báo là 'bell' con nhé.",
               "image_url": "assets/images/bell.png",
               "emoji": "🔔",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t2_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'câu hỏi':",
+              "options": [
+                "train",
+                "question",
+                "sliding",
+                "blocks"
+              ],
+              "options_ipa": [
+                "treɪn",
+                "question",
+                "sliding",
+                "blɒks"
+              ],
+              "answer": "question",
+              "hint": "Từ vựng tương ứng với hình vẽ câu hỏi là 'question' con nhé.",
+              "image_url": "assets/images/question.png",
+              "emoji": "❓",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t2_52",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'trò chơi câu đố':",
+              "options": [
+                "sliding",
+                "quiz",
+                "blocks",
+                "whiteboard"
+              ],
+              "options_ipa": [
+                "sliding",
+                "quiz",
+                "blɒks",
+                "ˈwaɪtbɔːd"
+              ],
+              "answer": "quiz",
+              "hint": "Từ vựng tương ứng với hình vẽ trò chơi câu đố là 'quiz' con nhé.",
+              "image_url": "assets/images/quiz.png",
+              "emoji": "📝",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t2_53",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'những chiếc yo-yo':",
+              "options": [
+                "train",
+                "camera",
+                "yo-yos",
+                "ruler"
+              ],
+              "options_ipa": [
+                "treɪn",
+                "ˈkæmərə",
+                "yo-yos",
+                "ˈruːlə"
+              ],
+              "answer": "yo-yos",
+              "hint": "Từ vựng tương ứng với hình vẽ những chiếc yo-yo là 'yo-yos' con nhé.",
+              "image_url": "assets/images/yo-yos.png",
+              "emoji": "🪀",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t2_54",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'đang trượt':",
+              "options": [
+                "sharpener",
+                "book",
+                "yo-yo",
+                "sliding"
+              ],
+              "options_ipa": [
+                "ˈʃɑːpənə",
+                "bʊk",
+                "yo-yo",
+                "sliding"
+              ],
+              "answer": "sliding",
+              "hint": "Từ vựng tương ứng với hình vẽ đang trượt là 'sliding' con nhé.",
+              "image_url": "assets/images/sliding.png",
+              "emoji": "🛝",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 2,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t2_55",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'đang đạp xe':",
+              "options": [
+                "classroom",
+                "map",
+                "riding",
+                "globe"
+              ],
+              "options_ipa": [
+                "ˈklɑːsruːm",
+                "mæp",
+                "riding",
+                "ɡləʊb"
+              ],
+              "answer": "riding",
+              "hint": "Từ vựng tương ứng với hình vẽ đang đạp xe là 'riding' con nhé.",
+              "image_url": "assets/images/riding.png",
+              "emoji": "🚴",
               "skill_tag": "ENG_VOC",
               "topic_id": 2,
               "section_name": "Word-Picture Puzzle"
@@ -15557,6 +16281,52 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 3,
               "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t3_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'con bò đực':",
+              "options": [
+                "horse",
+                "penguin",
+                "ox",
+                "snail"
+              ],
+              "options_ipa": [
+                "hɔːs",
+                "ˈpeŋɡwɪn",
+                "ox",
+                "sneɪl"
+              ],
+              "answer": "ox",
+              "hint": "Từ vựng tương ứng với hình vẽ con bò đực là 'ox' con nhé.",
+              "image_url": "assets/images/ox.png",
+              "emoji": "🐂",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 3,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t3_52",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'con bò u Zebu':",
+              "options": [
+                "zebu",
+                "mouse",
+                "zebra",
+                "crocodile"
+              ],
+              "options_ipa": [
+                "zebu",
+                "maʊs",
+                "ˈzeɪbrə",
+                "ˈkrɒkədaɪl"
+              ],
+              "answer": "zebu",
+              "hint": "Từ vựng tương ứng với hình vẽ con bò u Zebu là 'zebu' con nhé.",
+              "image_url": "assets/images/zebu.png",
+              "emoji": "🐂",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 3,
+              "section_name": "Word-Picture Puzzle"
             }
           ]
         },
@@ -16710,6 +17480,52 @@
               "hint": "Từ vựng tương ứng với hình vẽ trà là 'tea' con nhé.",
               "image_url": "assets/images/tea.png",
               "emoji": "🍵",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 4,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t4_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'sữa chua':",
+              "options": [
+                "yogurt",
+                "sugar",
+                "peach",
+                "rice"
+              ],
+              "options_ipa": [
+                "yogurt",
+                "ˈʃʊɡə",
+                "piːtʃ",
+                "raɪs"
+              ],
+              "answer": "yogurt",
+              "hint": "Từ vựng tương ứng với hình vẽ sữa chua là 'yogurt' con nhé.",
+              "image_url": "assets/images/yogurt.png",
+              "emoji": "🥛",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 4,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t4_52",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'khoai mỡ / khoai lang':",
+              "options": [
+                "peach",
+                "honey",
+                "mango",
+                "yams"
+              ],
+              "options_ipa": [
+                "piːtʃ",
+                "ˈhʌni",
+                "ˈmæŋɡəʊ",
+                "yams"
+              ],
+              "answer": "yams",
+              "hint": "Từ vựng tương ứng với hình vẽ khoai mỡ / khoai lang là 'yams' con nhé.",
+              "image_url": "assets/images/yams.png",
+              "emoji": "🥔",
               "skill_tag": "ENG_VOC",
               "topic_id": 4,
               "section_name": "Word-Picture Puzzle"
@@ -17869,6 +18685,52 @@
               "skill_tag": "ENG_VOC",
               "topic_id": 5,
               "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t5_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'môn bóng chuyền':",
+              "options": [
+                "zoo",
+                "truck",
+                "playground",
+                "volleyball"
+              ],
+              "options_ipa": [
+                "zuː",
+                "trʌk",
+                "ˈpleɪɡraʊnd",
+                "ˈvɒlibɔːl"
+              ],
+              "answer": "volleyball",
+              "hint": "Từ vựng tương ứng với hình vẽ môn bóng chuyền là 'volleyball' con nhé.",
+              "image_url": "assets/images/volleyball.png",
+              "emoji": "🏐",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 5,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t5_52",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'đang lái xe':",
+              "options": [
+                "ship",
+                "driving",
+                "singer",
+                "astronaut"
+              ],
+              "options_ipa": [
+                "ʃɪp",
+                "driving",
+                "ˈsɪŋə",
+                "ˈæstrənɔːt"
+              ],
+              "answer": "driving",
+              "hint": "Từ vựng tương ứng với hình vẽ đang lái xe là 'driving' con nhé.",
+              "image_url": "assets/images/driving.png",
+              "emoji": "🚗",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 5,
+              "section_name": "Word-Picture Puzzle"
             }
           ]
         },
@@ -19022,6 +19884,29 @@
               "hint": "Từ vựng tương ứng với hình vẽ số 10 là 'ten' con nhé.",
               "image_url": "assets/images/ten.png",
               "emoji": "1️⃣0️⃣",
+              "skill_tag": "ENG_VOC",
+              "topic_id": 6,
+              "section_name": "Word-Picture Puzzle"
+            },
+            {
+              "question_id": "s2.3_t6_51",
+              "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'cánh buồm':",
+              "options": [
+                "sixteen",
+                "seventeen",
+                "sail",
+                "four"
+              ],
+              "options_ipa": [
+                "ˌsɪksˈtiːn",
+                "ˌsevnˈtiːn",
+                "sail",
+                "fɔː"
+              ],
+              "answer": "sail",
+              "hint": "Từ vựng tương ứng với hình vẽ cánh buồm là 'sail' con nhé.",
+              "image_url": "assets/images/sail.png",
+              "emoji": "⛵",
               "skill_tag": "ENG_VOC",
               "topic_id": 6,
               "section_name": "Word-Picture Puzzle"

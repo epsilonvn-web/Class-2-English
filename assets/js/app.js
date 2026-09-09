@@ -1265,6 +1265,12 @@ function clickProgressOrExam(type) {
 // ==========================================
 function openTopic(topicNum, topicName, icon) {
     stopSpeaking();
+    // Riêng mục 11 (Practice & Play - Ôn tập theo học kỳ) bắt buộc phải đăng nhập mới vào được,
+    // vì đây là ôn tập tổng hợp gắn với tiến trình học tập thật của học sinh, không dành cho khách.
+    if (Number(topicNum) === 11 && (!currentUser || currentUser.isGuest)) {
+        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được mục "Practice & Play" này nhé!');
+        return;
+    }
     inAlphaIpaFlow = false;
     activeTopicId = topicNum; activeExamContext = null; activeRoadmapContext = null;
     updateNavTabs(topicName, icon || '🐰', null);
