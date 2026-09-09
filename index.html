@@ -50,6 +50,10 @@
             50% { transform: translateY(-6px); }
         }
         .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
         @keyframes sway {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-5px) rotate(-7deg); }
@@ -588,6 +592,17 @@
     <footer class="w-full mt-2 md:mt-3 pb-2 text-center text-sm font-bold text-pink-500 tracking-wider">
         epsilon.vn@gmail.com
     </footer>
+
+    <!-- KHUNG THÔNG BÁO ĐẸP (thay cho alert() mặc định xấu của trình duyệt) -->
+    <div id="modal-friendly-alert" class="hidden fixed inset-0 bg-black/40 z-[100] flex items-center justify-center p-4">
+        <div class="pastel-card bg-white max-w-sm w-full p-5 md:p-6 flex flex-col items-center text-center shadow-2xl animate-[fadeInUp_0.2s_ease-out]">
+            <div id="friendly-alert-icon" class="text-5xl mb-2">🐰</div>
+            <p id="friendly-alert-message" class="text-sm md:text-base font-bold text-gray-700 leading-relaxed mb-4"></p>
+            <button onclick="closeFriendlyAlert()" class="w-full max-w-[160px] py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-2xl text-sm pastel-btn shadow-md">
+                Con hiểu rồi!
+            </button>
+        </div>
+    </div>
 
     <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
     <script src="assets/js/app.js?v=6.6"></script>
