@@ -1156,8 +1156,8 @@ async function doRegister() {
         alert(msg);
         return;
     }
-    if (!/^\d{4}$/.test(maPin)) {
-        const msg = 'Mã PIN phải gồm đúng 4 chữ số!';
+    if (!/^\d{6}$/.test(maPin)) {
+        const msg = 'Mã PIN phải gồm đúng 6 chữ số!';
         showAuthError(msg);
         alert(msg);
         return;
@@ -2766,6 +2766,7 @@ function stopSpeaking() {
             banMaiAudio.pause();
             banMaiAudio.currentTime = 0;
             banMaiAudio.onended = null;
+            banMaiAudio.onerror = null;
         }
     } catch (e) {}
 }
@@ -2790,9 +2791,9 @@ function speakEnglish(text, rate = 0.92) {
     speakGoogleTTS(text, 'en', rate);
 }
 
-function speakGoogleTTS(text, lang, rate) {
+function speakGoogleTTS(text, lang, rate, isRetry = false) {
     try {
-        stopSpeaking();
+        if (!isRetry) stopSpeaking();
 
         let cleanText = String(text)
             .replace(/<[^>]*>/g, '')
@@ -2807,11 +2808,21 @@ function speakGoogleTTS(text, lang, rate) {
 
         if (cleanText.length <= 180) {
             const encoded = encodeURIComponent(cleanText);
+            // Google Translate TTS là API KHÔNG CHÍNH THỨC (miễn phí, không cần key) — sau khi gọi
+            // liên tục nhiều lần trong 1 phiên học, đôi khi bị nghẽn/từ chối tạm thời (giống hiện tượng
+            // "mất âm thanh từ câu 36 trở đi"). Trước đây lỗi này bị NUỐT ÂM THẦM (catch rỗng), giờ
+            // tự động THỬ LẠI 1 LẦN sau 500ms nếu tải lỗi, để tự phục hồi khi Google chỉ nghẽn tạm thời.
+            banMaiAudio.onerror = () => {
+                banMaiAudio.onerror = null;
+                if (!isRetry) setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
+            };
             banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             const playPromise = banMaiAudio.play();
             if (playPromise !== undefined) {
-                playPromise.catch(() => {});
+                playPromise.catch(() => {
+                    if (!isRetry) setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
+                });
             }
             return;
         }
@@ -2823,6 +2834,7 @@ function speakGoogleTTS(text, lang, rate) {
             const s = sentences[sIdx++].trim();
             if (!s) { playSentence(); return; }
             const encoded = encodeURIComponent(s);
+            banMaiAudio.onerror = null;
             banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             banMaiAudio.onended = playSentence;
