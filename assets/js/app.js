@@ -640,6 +640,13 @@ function updateExamTimerDisplay() {
 
 function openExamHub() {
     stopSpeaking();
+    // Bắt buộc đăng nhập mới vào được Đấu trường đề thi (giống mục 11 Practice & Play) —
+    // vì kết quả thi cần gắn với đúng tài khoản học sinh để lưu lịch sử/báo cáo, khách vãng lai
+    // làm bài xong không lưu được gì cũng không có ý nghĩa đánh giá thực chất.
+    if (!currentUser || currentUser.isGuest) {
+        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Đấu trường đề thi nhé!');
+        return;
+    }
     inAlphaIpaFlow = false;
     activeExamContext = null;
     activeRoadmapContext = null;
