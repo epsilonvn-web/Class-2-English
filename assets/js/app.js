@@ -1,4 +1,25 @@
 // ==========================================
+// KHUNG THÔNG BÁO ĐẸP — GHI ĐÈ alert() GỐC CỦA TRÌNH DUYỆT
+// Toàn bộ 27+ chỗ đang gọi alert(...) trong file này tự động dùng khung đẹp này luôn,
+// không cần sửa từng chỗ gọi — chỉ cần định nghĩa lại đúng tên hàm "alert" 1 lần duy nhất.
+// ==========================================
+function alert(message) {
+    const box = document.getElementById('modal-friendly-alert');
+    if (!box) { window.confirm(message); return; } // dự phòng nếu HTML chưa kịp tải xong
+    const isWarning = /lỗi|sai|khoá|không tìm thấy|không tải|thiếu|chưa|không thể/i.test(String(message));
+    document.getElementById('friendly-alert-icon').textContent = isWarning ? '😿' : '🐰';
+    document.getElementById('friendly-alert-message').textContent = message;
+    box.classList.remove('hidden');
+    box.classList.add('flex');
+    speakVietnamese(message, 1.0);
+}
+function closeFriendlyAlert() {
+    stopSpeaking();
+    const box = document.getElementById('modal-friendly-alert');
+    if (box) { box.classList.add('hidden'); box.classList.remove('flex'); }
+}
+
+// ==========================================
 // CẤU HÌNH 12 CHỦ ĐỀ KHO HỌC LIỆU & MA TRẬN 6 NHÓM NĂNG LỰC ENG_PHO-READ (TIẾNG ANH LỚP 2)
 // ==========================================
 // Trang chủ "Học tự do" tổ chức theo đúng 12 CHUYÊN MỤC hoạt động (Mục I khung V6) —
@@ -1438,6 +1459,13 @@ function handleNextExamFromReport() {
 
 function openRoadmap() {
     stopSpeaking();
+    // Bắt buộc đăng nhập mới vào được Tiến trình tuần (giống mục 11 Practice & Play và
+    // Đấu trường đề thi) — vì tiến trình 24 tuần cần gắn với đúng tài khoản để lưu lại tuần
+    // đang mở khoá (TuanHienTai), khách vãng lai làm xong không lưu được gì cả.
+    if (!currentUser || currentUser.isGuest) {
+        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Bản đồ tiến trình tuần nhé!');
+        return;
+    }
     inAlphaIpaFlow = false;
     updateNavTabs("Bản đồ tiến trình tuần", "🗺️", null);
     renderRoadmapSVG();
