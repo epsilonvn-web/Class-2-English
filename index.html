@@ -232,6 +232,9 @@
                     <button onclick="clickProgressOrExam('progress')" class="h-10 px-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-purple-600 hover:to-indigo-600 flex items-center space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
                         <i class="fa-solid fa-map-location-dot"></i><span>Bản đồ tuần</span>
                     </button>
+                    <button onclick="openMiniGameHub()" class="h-10 px-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-teal-600 hover:to-emerald-600 flex items-center space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(20,184,166,0.65)]">
+                        <i class="fa-solid fa-gamepad"></i><span>Mini Game</span>
+                    </button>
                 </div>
             </header>
 
@@ -374,6 +377,32 @@
                         </div>
 
                         <div id="roadmap-svg-container" class="w-full max-w-3xl mx-auto flex justify-center items-center overflow-hidden bg-gradient-to-b from-pink-50/30 to-purple-50/30 rounded-2xl border-2 border-pink-100 p-1" style="aspect-ratio: 650 / 400;"></div>
+                    </div>
+                </div>
+
+                <!-- VIEW: TRUNG TÂM MINI GAME (12 GAME, LƯỚI 3x4) -->
+                <div id="view-minigame-hub" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
+                    <div class="w-full max-w-5xl">
+                        <div class="text-center mb-4">
+                            <h2 class="text-base md:text-lg font-extrabold text-teal-600 flex items-center justify-center space-x-2">
+                                <span>🎮</span><span>Trung tâm Mini Game</span>
+                            </h2>
+                            <p class="text-[11px] md:text-xs text-gray-500 font-bold">Chọn 1 trò chơi để vừa học vừa chơi cùng từ vựng Tiếng Anh nhé!</p>
+                        </div>
+                        <div id="minigame-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+                    </div>
+                </div>
+
+                <!-- VIEW: MÀN CHƠI GAME (dùng chung khung cho mọi mini game) -->
+                <div id="view-game-play" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
+                    <div class="w-full max-w-2xl">
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 id="game-play-title" class="text-base md:text-lg font-extrabold text-teal-600 flex items-center gap-2"></h2>
+                            <button onclick="openMiniGameHub()" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-600 font-extrabold rounded-xl text-xs pastel-btn shrink-0">
+                                <i class="fa-solid fa-arrow-left"></i> Chọn game khác
+                            </button>
+                        </div>
+                        <div id="game-play-container" class="w-full"></div>
                     </div>
                 </div>
 
