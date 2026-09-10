@@ -7,7 +7,7 @@
 // tránh học sinh bị kẹt ở bản cache cũ (câu hỏi/đáp án cũ không được cập nhật).
 // ==========================================================================
 
-const CACHE_NAME = 'ta-lop2-tho-ngoc-v1';
+const CACHE_NAME = 'ta-lop2-tho-ngoc-v2';
 
 // Các file "khung" của app - cần có để app mở lên được dù đang mất mạng.
 // QUAN TRỌNG: service-worker.js và manifest.json nằm ở GỐC thư mục (cùng cấp
