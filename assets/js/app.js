@@ -989,11 +989,27 @@ function openPhonicsMatcher() {
 // ==========================================
 // ĐIỀU HƯỚNG VIEW & BREADCRUMB
 // ==========================================
-function updateNavTabs(level2Title, level2Icon, level3Title, level4Title) {
+let headerLevel3ClickHandler = null;
+
+/** Bấm vào tab cấp 3 trên breadcrumb — chỉ có tác dụng khi màn hình hiện tại có gắn sẵn
+ * hành động cụ thể (VD trong Word Search, bấm vào để quay lại màn chọn độ khó). Các màn
+ * khác nếu chưa gắn hành động thì bấm vào không có gì xảy ra, giữ đúng hành vi cũ. */
+function onHeaderLevel3Click() {
+    if (typeof headerLevel3ClickHandler === 'function') headerLevel3ClickHandler();
+}
+
+function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3ClickHandler) {
     const tab2 = document.getElementById('header-level2-tab');
     const tab3 = document.getElementById('header-level3-tab');
     const tab4 = document.getElementById('header-level4-tab');
     const homeBtn = document.getElementById('btn-header-home');
+    headerLevel3ClickHandler = level3ClickHandler || null;
+    const level3Btn = document.getElementById('header-level3-btn');
+    if (level3Btn) {
+        level3Btn.classList.toggle('cursor-pointer', !!headerLevel3ClickHandler);
+        level3Btn.classList.toggle('hover:bg-purple-100', !!headerLevel3ClickHandler);
+        level3Btn.classList.toggle('cursor-default', !headerLevel3ClickHandler);
+    }
 
     if (level2Title) {
         document.getElementById('header-level2-title').textContent = level2Title;
