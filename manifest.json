@@ -1,7 +1,7 @@
 {
-  "name": "Tiếng Anh Lớp 2 - Cô giáo Thỏ Ngọc",
-  "short_name": "TA Lớp 2",
-  "description": "Ứng dụng học Tiếng Anh lớp 2 cùng Cô giáo Thỏ Ngọc - 12 chuyên mục, lộ trình 24 tuần, đấu trường đề thi.",
+  "name": "Tiếng Anh 2 - Cô giáo Thỏ Ngọc",
+  "short_name": "TA 2",
+  "description": "Ứng dụng học Tiếng Anh 2 cùng Cô giáo Thỏ Ngọc - 12 chuyên mục, lộ trình 24 tuần, đấu trường đề thi.",
   "start_url": "index.html",
   "scope": "./",
   "display": "standalone",
