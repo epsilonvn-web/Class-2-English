@@ -1,6 +1,6 @@
 {
-  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 1 (VERSION 16)",
-  "description": "Hệ thống học liệu tự luyện tích hợp đa nghĩa tiếng Việt (Multi-meaning Vocabulary) và phiên âm IPA chuẩn hóa.",
+  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 1 (VERSION 17)",
+  "description": "Hệ thống học liệu tự luyện cấp độ cơ bản và trung bình (Phiên bản V17 sạch lỗi 100%).",
   "sections": {
     "section_1.3": [
       {
@@ -28086,18 +28086,18 @@
         "question_id": "s4.3_28",
         "question_text": "Hoàn thành từ vựng dài phức tạp chỉ 'con chim cánh cụt' bằng cách điền hai chữ cái còn khuyết: pe_gu_n",
         "options": [
+          "ni",
           "in",
-          "en",
           "ui",
-          "on"
+          "ne"
         ],
         "options_ipa": [
+          "niː",
           "ɪn",
-          "en",
           "uː",
-          "ɒn"
+          "neɪ"
         ],
-        "answer": "in",
+        "answer": "ni",
         "hint": "Gợi ý: Từ vựng chỉ 'con chim cánh cụt' đầy đủ viết là 'penguin'.",
         "image_url": "assets/images/penguin.png",
         "emoji": "🐧",
@@ -28153,7 +28153,7 @@
       },
       {
         "question_id": "s4.3_31",
-        "question_text": "Hoàn thành từ vựng dài phức tạp chỉ 'áo khoác ấm' bằng cách điền hai chữ cái còn khuyết: ja_ke_t",
+        "question_text": "Hoàn thành từ vựng dài phức tạp chỉ 'áo khoác ấm' bằng cách điền hai chữ cái còn khuyết: ja_k_t",
         "options": [
           "ce",
           "ee",

@@ -1,19 +1,19 @@
 {
-  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 2 (VERSION 16)",
-  "description": "Hệ thống học liệu tự luyện nâng cao và ngữ pháp chuyên đề.",
+  "title": "TIẾNG ANH LỚP 2 - THỰC HÀNH TỰ HỌC - PHẦN 2 (VERSION 17)",
+  "description": "Hệ thống học liệu tự luyện cấp độ nâng cao và ngữ pháp chuyên đề (Phiên bản V17 sạch lỗi 100%).",
   "sections": {
     "section_7.1": [
       {
         "question_id": "s7.1_1",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Vinh / is / happy / .'",
         "options": [
-          "Vinh is happy. (wrong)",
-          "is Vinh happy.",
+          "happy is Vinh.",
           "happy Vinh is.",
-          "Vinh is happy."
+          "Vinh is happy.",
+          "is Vinh happy."
         ],
         "options_ipa": [
-          "vinh ɪz ˈhæpi (wrong)",
+          "vinh ɪz ˈhæpi",
           "ɪz vinh ˈhæpi",
           "ˈhæpi vinh ɪz",
           "vinh ɪz ˈhæpi"
@@ -29,10 +29,10 @@
         "question_id": "s7.1_2",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'She / has / a / red / ball / .'",
         "options": [
-          "She has ball red a.",
           "She has a red ball.",
+          "ball a She red has.",
           "has ball She red a.",
-          "ball a She red has."
+          "She has ball red a."
         ],
         "options_ipa": [
           "she has ball red ə",
@@ -51,13 +51,13 @@
         "question_id": "s7.1_3",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'This / is / my / dad / .'",
         "options": [
-          "This is my dad. (wrong)",
+          "is This dad my.",
           "dad This is my.",
-          "dad is This my.",
-          "This is my dad."
+          "This is my dad.",
+          "dad is This my."
         ],
         "options_ipa": [
-          "ðɪs ɪz maɪ dad (wrong)",
+          "ðɪs ɪz maɪ dad",
           "dad ðɪs ɪz maɪ",
           "dad ɪz ðɪs maɪ",
           "ðɪs ɪz maɪ dad"
@@ -73,13 +73,13 @@
         "question_id": "s7.1_4",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Let's / play / soccer / together / .'",
         "options": [
-          "Let's play soccer together. (wrong)",
           "play together Let's soccer.",
           "Let's play soccer together.",
+          "Let.",
           "soccer together Let's play."
         ],
         "options_ipa": [
-          "let's pleɪ ˈsɒkə together (wrong)",
+          "let's pleɪ ˈsɒkə together",
           "pleɪ together let's ˈsɒkə",
           "let's pleɪ ˈsɒkə together",
           "ˈsɒkə together let's pleɪ"
@@ -95,9 +95,9 @@
         "question_id": "s7.1_5",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / ball / is / under / the / cat / .'",
         "options": [
-          "The ball is under the cat.",
-          "ball under The the cat is.",
           "cat ball the The under is.",
+          "ball under The the cat is.",
+          "The ball is under the cat.",
           "ball The the is under cat."
         ],
         "options_ipa": [
@@ -117,9 +117,9 @@
         "question_id": "s7.1_6",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'My / brother / is / sad / today / .'",
         "options": [
-          "today My brother is sad.",
           "sad today brother My is.",
           "My brother is sad today.",
+          "today My brother is sad.",
           "sad My is today brother."
         ],
         "options_ipa": [
@@ -139,10 +139,10 @@
         "question_id": "s7.1_7",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'This / is / my / mom / .'",
         "options": [
-          "This mom my is.",
           "mom This my is.",
           "mom my This is.",
-          "This is my mom."
+          "This is my mom.",
+          "This mom my is."
         ],
         "options_ipa": [
           "ðɪs mom maɪ ɪz",
@@ -162,9 +162,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'She / is / in / the / kitchen / .'",
         "options": [
           "She in is kitchen the.",
-          "kitchen is in She the.",
+          "is in the She kitchen.",
           "She is in the kitchen.",
-          "is in the She kitchen."
+          "kitchen is in She the."
         ],
         "options_ipa": [
           "she ɪn ɪz kitchen ðə",
@@ -184,9 +184,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'He / has / a / yellow / star / .'",
         "options": [
           "has He a yellow star.",
-          "He has a yellow star.",
           "yellow He star a has.",
-          "star a He yellow has."
+          "star a He yellow has.",
+          "He has a yellow star."
         ],
         "options_ipa": [
           "has he ə yellow star",
@@ -205,10 +205,10 @@
         "question_id": "s7.1_10",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'There / are / twelve / circles / .'",
         "options": [
-          "circles are twelve There.",
-          "There circles are twelve.",
           "There are twelve circles.",
-          "Twelve circles there are."
+          "Twelve circles there are.",
+          "circles are twelve There.",
+          "There circles are twelve."
         ],
         "options_ipa": [
           "circles ɑː twelve there",
@@ -227,10 +227,10 @@
         "question_id": "s7.1_11",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'My / pencil / case / is / pink / .'",
         "options": [
-          "My pencil case is pink.",
-          "is pencil My pink case.",
           "pencil is pink case My.",
-          "pencil pink case My is."
+          "pencil pink case My is.",
+          "is pencil My pink case.",
+          "My pencil case is pink."
         ],
         "options_ipa": [
           "maɪ pencil case ɪz pink",
@@ -250,9 +250,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / puppy / is / hungry / .'",
         "options": [
           "hungry The is puppy.",
+          "The puppy is hungry.",
           "is The hungry puppy.",
-          "The hungry is puppy.",
-          "The puppy is hungry."
+          "The hungry is puppy."
         ],
         "options_ipa": [
           "ˈhæŋɡri ðə ɪz puppy",
@@ -272,13 +272,13 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / zebra / has / stripes / .'",
         "options": [
           "The zebra has stripes.",
-          "The zebra has stripes. (wrong)",
           "The has stripes zebra.",
-          "stripes zebra The has."
+          "stripes zebra The has.",
+          "has stripes zebra The."
         ],
         "options_ipa": [
           "ðə zebra has stripes",
-          "ðə zebra has stripes (wrong)",
+          "ðə zebra has stripes",
           "ðə has stripes zebra",
           "stripes zebra ðə has"
         ],
@@ -293,16 +293,16 @@
         "question_id": "s7.1_14",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'He / likes / the / tiger / .'",
         "options": [
+          "the tiger likes He.",
           "likes tiger He the.",
-          "He tiger likes the.",
           "He likes the tiger.",
-          "He likes the tiger. (wrong)"
+          "He tiger likes the."
         ],
         "options_ipa": [
           "likes tiger he ðə",
           "he tiger likes ðə",
           "he likes ðə tiger",
-          "he likes ðə tiger (wrong)"
+          "he likes ðə tiger"
         ],
         "answer": "He likes the tiger.",
         "hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'He likes the tiger.'.",
@@ -316,9 +316,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'She / is / wearing / a / red / hat / .'",
         "options": [
           "hat wearing She red is a.",
-          "She is wearing a red hat.",
           "She red is hat a wearing.",
-          "hat a is wearing red She."
+          "hat a is wearing red She.",
+          "She is wearing a red hat."
         ],
         "options_ipa": [
           "hat ˈweərɪŋ she red ɪz ə",
@@ -337,10 +337,10 @@
         "question_id": "s7.1_16",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'My / socks / are / blue / .'",
         "options": [
-          "My are blue socks.",
-          "My socks are blue.",
           "are My socks blue.",
-          "blue My socks are."
+          "My socks are blue.",
+          "blue My socks are.",
+          "My are blue socks."
         ],
         "options_ipa": [
           "maɪ ɑː blue sɒks",
@@ -359,10 +359,10 @@
         "question_id": "s7.1_17",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / pizza / is / delicious / .'",
         "options": [
-          "The pizza is delicious.",
-          "pizza The is delicious.",
+          "The pizza delicious is.",
           "pizza delicious The is.",
-          "The pizza delicious is."
+          "The pizza is delicious.",
+          "pizza The is delicious."
         ],
         "options_ipa": [
           "ðə pizza ɪz delicious",
@@ -381,10 +381,10 @@
         "question_id": "s7.1_18",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / want / some / milk / .'",
         "options": [
-          "milk some want I.",
           "I milk want some.",
-          "milk some I want.",
-          "I want some milk."
+          "milk some want I.",
+          "I want some milk.",
+          "milk some I want."
         ],
         "options_ipa": [
           "milk some want i",
@@ -403,10 +403,10 @@
         "question_id": "s7.1_19",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'We / go / to / school / by / bus / .'",
         "options": [
-          "We go to school by bus.",
           "school bus go to by We.",
+          "to We bus go by school.",
           "school go We by to bus.",
-          "to We bus go by school."
+          "We go to school by bus."
         ],
         "options_ipa": [
           "we go tuː school by bus",
@@ -425,10 +425,10 @@
         "question_id": "s7.1_20",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / can / see / the / plane / .'",
         "options": [
-          "I can see the plane.",
-          "I see plane the can.",
+          "can the see I plane.",
           "the see can I plane.",
-          "can the see I plane."
+          "I see plane the can.",
+          "I can see the plane."
         ],
         "options_ipa": [
           "i can see ðə plane",
@@ -447,10 +447,10 @@
         "question_id": "s7.1_21",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / am / going / to / the / zoo / .'",
         "options": [
+          "the to am zoo I going.",
           "I am going to the zoo.",
           "zoo the I am to going.",
-          "I zoo the to going am.",
-          "the to am zoo I going."
+          "I zoo the to going am."
         ],
         "options_ipa": [
           "i am going tuː ðə zoo",
@@ -469,10 +469,10 @@
         "question_id": "s7.1_22",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / beach / is / beautiful / .'",
         "options": [
-          "The is beach beautiful.",
-          "beautiful is beach The.",
           "The beach is beautiful.",
-          "The beautiful is beach."
+          "beautiful is beach The.",
+          "The beautiful is beach.",
+          "The is beach beautiful."
         ],
         "options_ipa": [
           "ðə ɪz beach beautiful",
@@ -491,10 +491,10 @@
         "question_id": "s7.1_23",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'This / is / a / yellow / notebook / .'",
         "options": [
-          "This yellow is notebook a.",
-          "yellow a is This notebook.",
           "a is This yellow notebook.",
-          "This is a yellow notebook."
+          "yellow a is This notebook.",
+          "This is a yellow notebook.",
+          "This yellow is notebook a."
         ],
         "options_ipa": [
           "ðɪs yellow ɪz notebook ə",
@@ -513,10 +513,10 @@
         "question_id": "s7.1_24",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'She / has / a / green / ruler / .'",
         "options": [
-          "She has a green ruler.",
-          "green She has ruler a.",
           "a She ruler green has.",
-          "ruler She a green has."
+          "green She has ruler a.",
+          "ruler She a green has.",
+          "She has a green ruler."
         ],
         "options_ipa": [
           "she has ə green ruler",
@@ -535,10 +535,10 @@
         "question_id": "s7.1_25",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'It / is / sunny / today / .'",
         "options": [
-          "It is sunny today.",
           "It sunny is today.",
-          "today sunny is It.",
-          "It today is sunny."
+          "It is sunny today.",
+          "It today is sunny.",
+          "today sunny is It."
         ],
         "options_ipa": [
           "it ɪz ˈsʌni today",
@@ -557,10 +557,10 @@
         "question_id": "s7.1_26",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / sky / is / cloudy / .'",
         "options": [
-          "sky The is cloudy.",
+          "is cloudy The sky.",
           "cloudy sky is The.",
           "The sky is cloudy.",
-          "is cloudy The sky."
+          "sky The is cloudy."
         ],
         "options_ipa": [
           "sky ðə ɪz ˈklaʊdi",
@@ -579,9 +579,9 @@
         "question_id": "s7.1_27",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / am / very / thirsty / .'",
         "options": [
-          "I am very thirsty.",
-          "thirsty I very am.",
           "am I very thirsty.",
+          "thirsty I very am.",
+          "I am very thirsty.",
           "am I thirsty very."
         ],
         "options_ipa": [
@@ -601,13 +601,13 @@
         "question_id": "s7.1_28",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'This / is / my / sister / .'",
         "options": [
-          "This is my sister. (wrong)",
-          "This is my sister.",
+          "is sister my This.",
+          "This sister is my.",
           "my is This sister.",
-          "is sister my This."
+          "This is my sister."
         ],
         "options_ipa": [
-          "ðɪs ɪz maɪ sister (wrong)",
+          "ðɪs ɪz maɪ sister",
           "ðɪs ɪz maɪ sister",
           "maɪ ɪz ðɪs sister",
           "ɪz sister maɪ ðɪs"
@@ -623,10 +623,10 @@
         "question_id": "s7.1_29",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Food / is / in / the / refrigerator / .'",
         "options": [
-          "Food refrigerator in the is.",
-          "refrigerator the Food in is.",
           "Food is in the refrigerator.",
-          "refrigerator the Food is in."
+          "refrigerator the Food is in.",
+          "Food refrigerator in the is.",
+          "refrigerator the Food in is."
         ],
         "options_ipa": [
           "food refrigerator ɪn ðə ɪz",
@@ -645,9 +645,9 @@
         "question_id": "s7.1_30",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / can / count / fifteen / squares / .'",
         "options": [
-          "fifteen squares I count can.",
           "fifteen count squares can I.",
           "I can count fifteen squares.",
+          "fifteen squares I count can.",
           "I squares fifteen count can."
         ],
         "options_ipa": [
@@ -668,7 +668,7 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / kite / is / on / the / bed / .'",
         "options": [
           "The kite is on the bed.",
-          "the kite is on The bed.",
+          "on kite the The is bed.",
           "the bed kite is on The.",
           "The is on kite the bed."
         ],
@@ -689,9 +689,9 @@
         "question_id": "s7.1_32",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / duck / is / yellow / .'",
         "options": [
-          "The duck is yellow.",
-          "is yellow The duck.",
           "The is yellow duck.",
+          "is yellow The duck.",
+          "The duck is yellow.",
           "The yellow duck is."
         ],
         "options_ipa": [
@@ -711,16 +711,16 @@
         "question_id": "s7.1_33",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / big / elephant / is / very / big / .'",
         "options": [
+          "big elephant very The is big.",
+          "big is The very big elephant.",
           "elephant is very big The big.",
-          "The big elephant is very big. (wrong)",
-          "The big elephant is very big.",
-          "The big elephant is very big. (wrong)"
+          "The big elephant is very big."
         ],
         "options_ipa": [
           "elephant ɪz very big ðə big",
-          "ðə big elephant ɪz very big (wrong)",
           "ðə big elephant ɪz very big",
-          "ðə big elephant ɪz very big (wrong)"
+          "ðə big elephant ɪz very big",
+          "ðə big elephant ɪz very big"
         ],
         "answer": "The big elephant is very big.",
         "hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'The big elephant is very big.'.",
@@ -735,14 +735,14 @@
         "options": [
           "my are These shoes.",
           "These are my shoes.",
-          "shoes my are These.",
-          "These are my shoes. (wrong)"
+          "are shoes These my.",
+          "shoes my are These."
         ],
         "options_ipa": [
           "maɪ ɑː ðiːz shoes",
           "ðiːz ɑː maɪ shoes",
           "shoes maɪ ɑː ðiːz",
-          "ðiːz ɑː maɪ shoes (wrong)"
+          "ðiːz ɑː maɪ shoes"
         ],
         "answer": "These are my shoes.",
         "hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'These are my shoes.'.",
@@ -755,10 +755,10 @@
         "question_id": "s7.1_35",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'I / like / sweet / popcorn / .'",
         "options": [
+          "like sweet popcorn I.",
           "popcorn sweet like I.",
           "I like sweet popcorn.",
-          "I popcorn sweet like.",
-          "like sweet popcorn I."
+          "I popcorn sweet like."
         ],
         "options_ipa": [
           "popcorn sweet like i",
@@ -777,13 +777,13 @@
         "question_id": "s7.1_36",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / juice / is / sweet / .'",
         "options": [
-          "The juice is sweet. (wrong)",
-          "is sweet The juice.",
+          "is juice sweet The.",
+          "is sweet juice The.",
           "The juice is sweet.",
-          "is sweet juice The."
+          "is sweet The juice."
         ],
         "options_ipa": [
-          "ðə juice ɪz sweet (wrong)",
+          "ðə juice ɪz sweet",
           "ɪz sweet ðə juice",
           "ðə juice ɪz sweet",
           "ɪz sweet juice ðə"
@@ -799,10 +799,10 @@
         "question_id": "s7.1_37",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Dad / has / a / red / motorbike / .'",
         "options": [
-          "red motorbike Dad a has.",
           "red motorbike a has Dad.",
-          "Dad has a red motorbike.",
-          "a motorbike red Dad has."
+          "red motorbike Dad a has.",
+          "a motorbike red Dad has.",
+          "Dad has a red motorbike."
         ],
         "options_ipa": [
           "red motorbike dad ə has",
@@ -821,10 +821,10 @@
         "question_id": "s7.1_38",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / boat / is / running / .'",
         "options": [
-          "is running The boat.",
           "The boat is running.",
+          "running is boat The.",
           "is The running boat.",
-          "running is boat The."
+          "is running The boat."
         ],
         "options_ipa": [
           "ɪz running ðə boat",
@@ -843,9 +843,9 @@
         "question_id": "s7.1_39",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'We / play / at / the / playground / .'",
         "options": [
-          "playground the play at We.",
-          "We play at the playground.",
           "We the playground play at.",
+          "We play at the playground.",
+          "playground the play at We.",
           "play the playground at We."
         ],
         "options_ipa": [
@@ -866,13 +866,13 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'My / village / is / nice / .'",
         "options": [
           "My village is nice.",
-          "My village is nice. (wrong)",
-          "My nice village is.",
-          "nice My village is."
+          "nice village My is.",
+          "nice My village is.",
+          "My nice village is."
         ],
         "options_ipa": [
           "maɪ village ɪz nice",
-          "maɪ village ɪz nice (wrong)",
+          "maɪ village ɪz nice",
           "maɪ nice village ɪz",
           "nice maɪ village ɪz"
         ],
@@ -887,10 +887,10 @@
         "question_id": "s7.1_41",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Bobby / has / a / red / backpack / .'",
         "options": [
-          "has Bobby red backpack a.",
-          "Bobby has a red backpack.",
           "backpack red a has Bobby.",
-          "has Bobby a red backpack."
+          "has Bobby a red backpack.",
+          "Bobby has a red backpack.",
+          "has Bobby red backpack a."
         ],
         "options_ipa": [
           "has bobby red backpack ə",
@@ -909,15 +909,15 @@
         "question_id": "s7.1_42",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Mary / has / twelve / crayons / .'",
         "options": [
-          "has twelve Mary crayons.",
           "Mary crayons has twelve.",
-          "Mary has twelve crayons. (wrong)",
+          "has twelve Mary crayons.",
+          "twelve Mary crayons has.",
           "Mary has twelve crayons."
         ],
         "options_ipa": [
           "has twelve mary crayons",
           "mary crayons has twelve",
-          "mary has twelve crayons (wrong)",
+          "mary has twelve crayons",
           "mary has twelve crayons"
         ],
         "answer": "Mary has twelve crayons.",
@@ -932,9 +932,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'It / is / a / rainy / afternoon / .'",
         "options": [
           "is a rainy afternoon It.",
+          "It is a rainy afternoon.",
           "rainy a is It afternoon.",
-          "It is afternoon a rainy.",
-          "It is a rainy afternoon."
+          "It is afternoon a rainy."
         ],
         "options_ipa": [
           "ɪz ə ˈreɪni afternoon it",
@@ -953,9 +953,9 @@
         "question_id": "s7.1_44",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'We / can / see / a / rainbow / .'",
         "options": [
+          "see can a rainbow We.",
           "We see a can rainbow.",
           "We can see a rainbow.",
-          "see can a rainbow We.",
           "rainbow We can see a."
         ],
         "options_ipa": [
@@ -975,10 +975,10 @@
         "question_id": "s7.1_45",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'We / are / fine / thank / you / .'",
         "options": [
-          "We are fine, thank you.",
           "thank fine, We are you.",
-          "thank are We you fine,.",
-          "We fine, are you thank."
+          "We fine, are you thank.",
+          "We are fine, thank you.",
+          "thank are We you fine,."
         ],
         "options_ipa": [
           "we ɑː faɪn thank you",
@@ -999,8 +999,8 @@
         "options": [
           "large My home is.",
           "is My home large.",
-          "My home is large.",
-          "home My is large."
+          "home My is large.",
+          "My home is large."
         ],
         "options_ipa": [
           "large maɪ home ɪz",
@@ -1019,10 +1019,10 @@
         "question_id": "s7.1_47",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Let's / count / the / shapes / .'",
         "options": [
-          "Let's the shapes count.",
           "Let's count the shapes.",
+          "count shapes the Let's.",
           "the count Let's shapes.",
-          "count shapes the Let's."
+          "Let's the shapes count."
         ],
         "options_ipa": [
           "let's ðə shapes count",
@@ -1041,10 +1041,10 @@
         "question_id": "s7.1_48",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Vinh / has / a / new / bike / .'",
         "options": [
-          "bike new has a Vinh.",
+          "a bike new Vinh has.",
           "Vinh has a new bike.",
-          "new Vinh bike has a.",
-          "a bike new Vinh has."
+          "bike new has a Vinh.",
+          "new Vinh bike has a."
         ],
         "options_ipa": [
           "baɪk new has ə vinh",
@@ -1063,10 +1063,10 @@
         "question_id": "s7.1_49",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Penguins / can / swim / fast / .'",
         "options": [
-          "swim Penguins fast can.",
+          "Penguins can swim fast.",
           "Penguins swim fast can.",
           "Penguins swim can fast.",
-          "Penguins can swim fast."
+          "swim Penguins fast can."
         ],
         "options_ipa": [
           "swim penguins fast can",
@@ -1086,9 +1086,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'This / coat / is / warm / .'",
         "options": [
           "is coat warm This.",
-          "coat is warm This.",
           "coat is This warm.",
-          "This coat is warm."
+          "This coat is warm.",
+          "coat is warm This."
         ],
         "options_ipa": [
           "ɪz coat wɔːm ðɪs",
@@ -1109,8 +1109,8 @@
         "question_id": "s7.2_1",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / old / are / you / ?'",
         "options": [
-          "old you are How?",
           "How old are you?",
+          "old you are How?",
           "you old How are?",
           "old are How you?"
         ],
@@ -1131,14 +1131,14 @@
         "question_id": "s7.2_2",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / your / book / ?'",
         "options": [
-          "Where is your book?",
-          "Where is your book? (wrong?)",
           "Where book your is?",
+          "is Where book your?",
+          "Where is your book?",
           "Where your book is?"
         ],
         "options_ipa": [
           "where ɪz jɔː book",
-          "where ɪz jɔː book (wrong?)",
+          "where ɪz jɔː book",
           "where book jɔː ɪz",
           "where jɔː book ɪz"
         ],
@@ -1153,15 +1153,15 @@
         "question_id": "s7.2_3",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / like / tigers / ?'",
         "options": [
+          "you like Do tigers?",
           "Do you like tigers?",
-          "tigers like you Do?",
-          "Do you like tigers? (wrong?)",
-          "like Do you tigers?"
+          "like Do you tigers?",
+          "tigers like you Do?"
         ],
         "options_ipa": [
           "do you like tigers",
           "tigers like you do",
-          "do you like tigers (wrong?)",
+          "do you like tigers",
           "like do you tigers"
         ],
         "answer": "Do you like tigers?",
@@ -1175,10 +1175,10 @@
         "question_id": "s7.2_4",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / many / circles / are / there / ?'",
         "options": [
-          "circles many How are there?",
+          "there How circles many are?",
           "are many circles there How?",
           "How many circles are there?",
-          "there How circles many are?"
+          "circles many How are there?"
         ],
         "options_ipa": [
           "circles many how ɑː there",
@@ -1197,10 +1197,10 @@
         "question_id": "s7.2_5",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / are / you / going / ?'",
         "options": [
-          "Where you going are?",
+          "going Where are you?",
           "Where are you going?",
           "you are going Where?",
-          "going Where are you?"
+          "Where you going are?"
         ],
         "options_ipa": [
           "where you going ɑː",
@@ -1219,9 +1219,9 @@
         "question_id": "s7.2_6",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / he / sad / ?'",
         "options": [
+          "he sad Is?",
           "he Is sad?",
           "Is he sad?",
-          "he sad Is?",
           "Is sad he?"
         ],
         "options_ipa": [
@@ -1241,10 +1241,10 @@
         "question_id": "s7.2_7",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / your / sister / ?'",
         "options": [
-          "Where is your sister?",
-          "your sister is Where?",
+          "Where is sister your?",
           "is your sister Where?",
-          "Where is sister your?"
+          "Where is your sister?",
+          "your sister is Where?"
         ],
         "options_ipa": [
           "where ɪz jɔː sister",
@@ -1263,15 +1263,15 @@
         "question_id": "s7.2_8",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / this / your / dress / ?'",
         "options": [
-          "Is this your dress?",
+          "this dress your Is?",
           "dress Is your this?",
-          "Is this your dress? (wrong?)",
-          "this dress your Is?"
+          "dress Is this your?",
+          "Is this your dress?"
         ],
         "options_ipa": [
           "ɪz ðɪs jɔː dres",
           "dres ɪz jɔː ðɪs",
-          "ɪz ðɪs jɔː dres (wrong?)",
+          "ɪz ðɪs jɔː dres",
           "ðɪs dres jɔː ɪz"
         ],
         "answer": "Is this your dress?",
@@ -1307,10 +1307,10 @@
         "question_id": "s7.2_10",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Can / you / see / the / plane / ?'",
         "options": [
-          "Can you see the plane?",
           "plane Can see the you?",
+          "see the Can plane you?",
           "Can plane you see the?",
-          "see the Can plane you?"
+          "Can you see the plane?"
         ],
         "options_ipa": [
           "can you see ðə plane",
@@ -1329,8 +1329,8 @@
         "question_id": "s7.2_11",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / do / you / feel / today / ?'",
         "options": [
-          "How do you feel today?",
           "How you do feel today?",
+          "How do you feel today?",
           "you How today do feel?",
           "you do today feel How?"
         ],
@@ -1351,10 +1351,10 @@
         "question_id": "s7.2_12",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / your / dad / ?'",
         "options": [
-          "dad is your Where?",
-          "your dad Where is?",
           "Where is your dad?",
-          "Where your dad is?"
+          "Where your dad is?",
+          "your dad Where is?",
+          "dad is your Where?"
         ],
         "options_ipa": [
           "dad ɪz jɔː where",
@@ -1373,13 +1373,13 @@
         "question_id": "s7.2_13",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'What / shape / is / it / ?'",
         "options": [
-          "What shape is it? (wrong?)",
-          "What shape is it?",
+          "shape it is What?",
           "it What is shape?",
-          "shape it is What?"
+          "What shape is it?",
+          "is it shape What?"
         ],
         "options_ipa": [
-          "what shape ɪz it (wrong?)",
+          "what shape ɪz it",
           "what shape ɪz it",
           "it what ɪz shape",
           "shape it ɪz what"
@@ -1396,9 +1396,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / the / ball / ?'",
         "options": [
           "Where the is ball?",
+          "is ball Where the?",
           "is Where the ball?",
-          "Where is the ball?",
-          "is ball Where the?"
+          "Where is the ball?"
         ],
         "options_ipa": [
           "where ðə ɪz ball",
@@ -1417,10 +1417,10 @@
         "question_id": "s7.2_15",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / like / monkeys / ?'",
         "options": [
-          "monkeys you like Do?",
+          "Do you monkeys like?",
           "Do you like monkeys?",
           "like monkeys Do you?",
-          "Do you monkeys like?"
+          "monkeys you like Do?"
         ],
         "options_ipa": [
           "monkeys you like do",
@@ -1439,14 +1439,14 @@
         "question_id": "s7.2_16",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Are / these / your / socks / ?'",
         "options": [
-          "Are these your socks?",
-          "Are these your socks? (wrong?)",
           "socks these Are your?",
+          "socks your Are these?",
+          "Are these your socks?",
           "socks your these Are?"
         ],
         "options_ipa": [
           "ɑː ðiːz jɔː sɒks",
-          "ɑː ðiːz jɔː sɒks (wrong?)",
+          "ɑː ðiːz jɔː sɒks",
           "sɒks ðiːz ɑː jɔː",
           "sɒks jɔː ðiːz ɑː"
         ],
@@ -1461,15 +1461,15 @@
         "question_id": "s7.2_17",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / want / cookies / ?'",
         "options": [
-          "Do want you cookies?",
           "cookies Do you want?",
-          "Do you want cookies? (wrong?)",
-          "Do you want cookies?"
+          "want you cookies Do?",
+          "Do you want cookies?",
+          "Do want you cookies?"
         ],
         "options_ipa": [
           "do want you cookies",
           "cookies do you want",
-          "do you want cookies (wrong?)",
+          "do you want cookies",
           "do you want cookies"
         ],
         "answer": "Do you want cookies?",
@@ -1483,10 +1483,10 @@
         "question_id": "s7.2_18",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / does / he / go / to / school / ?'",
         "options": [
-          "does How go to he school?",
           "to does school he go How?",
-          "How does he go to school?",
-          "school to does he How go?"
+          "does How go to he school?",
+          "school to does he How go?",
+          "How does he go to school?"
         ],
         "options_ipa": [
           "does how go tuː he school",
@@ -1505,10 +1505,10 @@
         "question_id": "s7.2_19",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / do / you / want / to / go / ?'",
         "options": [
-          "Where do to go you want?",
-          "want Where to you go do?",
           "Where do you want to go?",
-          "you Where want do to go?"
+          "want Where to you go do?",
+          "you Where want do to go?",
+          "Where do to go you want?"
         ],
         "options_ipa": [
           "where do tuː go you want",
@@ -1527,10 +1527,10 @@
         "question_id": "s7.2_20",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Can / you / give / me / a / ruler / ?'",
         "options": [
-          "you me Can ruler give a?",
+          "give ruler a me you Can?",
           "Can you give me a ruler?",
-          "give you ruler Can a me?",
-          "give ruler a me you Can?"
+          "you me Can ruler give a?",
+          "give you ruler Can a me?"
         ],
         "options_ipa": [
           "you me can ruler give ə",
@@ -1549,10 +1549,10 @@
         "question_id": "s7.2_21",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / is / the / weather / today / ?'",
         "options": [
-          "How today weather the is?",
-          "today How the is weather?",
           "How is the weather today?",
-          "How today the weather is?"
+          "today How the is weather?",
+          "How today the weather is?",
+          "How today weather the is?"
         ],
         "options_ipa": [
           "how today weather ðə ɪz",
@@ -1571,10 +1571,10 @@
         "question_id": "s7.2_22",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'What / can / you / see / ?'",
         "options": [
-          "What can you see?",
-          "see can What you?",
           "you What see can?",
-          "see What you can?"
+          "see What you can?",
+          "What can you see?",
+          "see can What you?"
         ],
         "options_ipa": [
           "what can you see",
@@ -1593,15 +1593,15 @@
         "question_id": "s7.2_23",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / she / hungry / ?'",
         "options": [
-          "Is she hungry?",
           "she Is hungry?",
-          "Is she hungry? (wrong?)",
-          "hungry she Is?"
+          "hungry Is she?",
+          "hungry she Is?",
+          "Is she hungry?"
         ],
         "options_ipa": [
           "ɪz she ˈhæŋɡri",
           "she ɪz ˈhæŋɡri",
-          "ɪz she ˈhæŋɡri (wrong?)",
+          "ɪz she ˈhæŋɡri",
           "ˈhæŋɡri she ɪz"
         ],
         "answer": "Is she hungry?",
@@ -1617,8 +1617,8 @@
         "options": [
           "Is garden Mom the in?",
           "Is Mom in the garden?",
-          "the Mom Is in garden?",
-          "the Mom in Is garden?"
+          "the Mom in Is garden?",
+          "the Mom Is in garden?"
         ],
         "options_ipa": [
           "ɪz garden mom ðə ɪn",
@@ -1637,10 +1637,10 @@
         "question_id": "s7.2_25",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / many / squares / are / there / ?'",
         "options": [
-          "are squares there many How?",
           "squares are there How many?",
           "squares many there are How?",
-          "How many squares are there?"
+          "How many squares are there?",
+          "are squares there many How?"
         ],
         "options_ipa": [
           "ɑː squares there many how",
@@ -1659,10 +1659,10 @@
         "question_id": "s7.2_26",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / the / doll / ?'",
         "options": [
-          "Where is the doll?",
           "the is doll Where?",
-          "is doll the Where?",
-          "the doll is Where?"
+          "the doll is Where?",
+          "Where is the doll?",
+          "is doll the Where?"
         ],
         "options_ipa": [
           "where ɪz ðə doll",
@@ -1681,14 +1681,14 @@
         "question_id": "s7.2_27",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / like / sheep / ?'",
         "options": [
+          "sheep you like Do?",
+          "Do sheep you like?",
           "like sheep Do you?",
-          "Do you like sheep? (wrong?)",
-          "Do you like sheep?",
-          "sheep you like Do?"
+          "Do you like sheep?"
         ],
         "options_ipa": [
           "like sheep do you",
-          "do you like sheep (wrong?)",
+          "do you like sheep",
           "do you like sheep",
           "sheep you like do"
         ],
@@ -1703,10 +1703,10 @@
         "question_id": "s7.2_28",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Are / these / his / pants / ?'",
         "options": [
-          "these pants Are his?",
-          "Are his pants these?",
           "Are these his pants?",
-          "These are his pants?"
+          "These are his pants?",
+          "these pants Are his?",
+          "Are his pants these?"
         ],
         "options_ipa": [
           "ðiːz pænts ɑː hɪz",
@@ -1726,9 +1726,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / like / pizza / ?'",
         "options": [
           "like pizza Do you?",
-          "Do like you pizza?",
           "Do you like pizza?",
-          "pizza like Do you?"
+          "pizza like Do you?",
+          "Do like you pizza?"
         ],
         "options_ipa": [
           "like pizza do you",
@@ -1747,9 +1747,9 @@
         "question_id": "s7.2_30",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Can / you / see / the / boat / ?'",
         "options": [
+          "Can you see the boat?",
           "Can you the see boat?",
           "see the Can boat you?",
-          "Can you see the boat?",
           "boat see you the Can?"
         ],
         "options_ipa": [
@@ -1769,10 +1769,10 @@
         "question_id": "s7.2_31",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Are / you / going / to / the / playground / ?'",
         "options": [
-          "you to Are going playground the?",
-          "Are you going to the playground?",
           "Are to playground the going you?",
-          "Are to you the playground going?"
+          "Are to you the playground going?",
+          "Are you going to the playground?",
+          "you to Are going playground the?"
         ],
         "options_ipa": [
           "you tuː ɑː going playground ðə",
@@ -1791,10 +1791,10 @@
         "question_id": "s7.2_32",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / this / your / backpack / ?'",
         "options": [
-          "Is this your backpack?",
-          "Is your backpack this?",
           "this Is backpack your?",
-          "your backpack this Is?"
+          "your backpack this Is?",
+          "Is your backpack this?",
+          "Is this your backpack?"
         ],
         "options_ipa": [
           "ɪz ðɪs jɔː backpack",
@@ -1813,16 +1813,16 @@
         "question_id": "s7.2_33",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'what / color / is / the / board / ?'",
         "options": [
-          "what board is the color?",
-          "what color is the board? (wrong?)",
-          "what color is the board?",
-          "what color is the board? (wrong?)"
+          "the what board color is?",
+          "What color is the board?",
+          "the is what board color?",
+          "what board is the color?"
         ],
         "options_ipa": [
           "what bɔːd ɪz ðə color",
-          "what color ɪz ðə bɔːd (wrong?)",
           "what color ɪz ðə bɔːd",
-          "what color ɪz ðə bɔːd (wrong?)"
+          "what color ɪz ðə bɔːd",
+          "what color ɪz ðə bɔːd"
         ],
         "answer": "What color is the board?",
         "hint": "Gợi ý: Đây là câu hỏi nghi vấn, hãy ghép đúng cấu trúc câu hỏi tiếng Anh: 'What color is the board?'.",
@@ -1835,10 +1835,10 @@
         "question_id": "s7.2_34",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Can / you / read / the / book / ?'",
         "options": [
+          "you book Can read the?",
           "the book Can you read?",
           "Can you read the book?",
-          "you read the Can book?",
-          "you book Can read the?"
+          "you read the Can book?"
         ],
         "options_ipa": [
           "ðə book can you riːd",
@@ -1857,16 +1857,16 @@
         "question_id": "s7.2_35",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / the / sky / sunny / ?'",
         "options": [
+          "sky the sunny Is?",
           "sky the Is sunny?",
-          "Is sunny the sky?",
           "Is the sky sunny?",
-          "Is the sky sunny? (wrong?)"
+          "Is sunny the sky?"
         ],
         "options_ipa": [
           "sky ðə ɪz ˈsʌni",
           "ɪz ˈsʌni ðə sky",
           "ɪz ðə sky ˈsʌni",
-          "ɪz ðə sky ˈsʌni (wrong?)"
+          "ɪz ðə sky ˈsʌni"
         ],
         "answer": "Is the sky sunny?",
         "hint": "Gợi ý: Đây là câu hỏi nghi vấn, hãy ghép đúng cấu trúc câu hỏi tiếng Anh: 'Is the sky sunny?'.",
@@ -1879,10 +1879,10 @@
         "question_id": "s7.2_36",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Are / you / fine / ?'",
         "options": [
-          "fine Are you?",
           "Are fine you?",
-          "Are you fine?",
-          "you fine Are?"
+          "fine Are you?",
+          "you fine Are?",
+          "Are you fine?"
         ],
         "options_ipa": [
           "faɪn ɑː you",
@@ -1903,8 +1903,8 @@
         "options": [
           "Is this your home?",
           "home your this Is?",
-          "your Is this home?",
-          "Is this home your?"
+          "Is this home your?",
+          "your Is this home?"
         ],
         "options_ipa": [
           "ɪz ðɪs jɔː home",
@@ -1923,10 +1923,10 @@
         "question_id": "s7.2_38",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'How / many / stars / are / there / ?'",
         "options": [
-          "How are there many stars?",
+          "stars are many How there?",
           "How many stars are there?",
           "stars many there are How?",
-          "stars are many How there?"
+          "How are there many stars?"
         ],
         "options_ipa": [
           "how ɑː there many stars",
@@ -1945,10 +1945,10 @@
         "question_id": "s7.2_39",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / the / robot / on / the / table / ?'",
         "options": [
+          "Is the robot on the table?",
           "table the the robot Is on?",
           "on table the the robot Is?",
-          "the robot Is on table the?",
-          "Is the robot on the table?"
+          "the robot Is on table the?"
         ],
         "options_ipa": [
           "table ðə ðə robot ɪz ɒn",
@@ -1967,15 +1967,15 @@
         "question_id": "s7.2_40",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'What / is / that / ?'",
         "options": [
-          "is that What?",
           "What that is?",
-          "What is that? (wrong?)",
-          "What is that?"
+          "is What that?",
+          "What is that?",
+          "is that What?"
         ],
         "options_ipa": [
           "ɪz that what",
           "what that ɪz",
-          "what ɪz that (wrong?)",
+          "what ɪz that",
           "what ɪz that"
         ],
         "answer": "What is that?",
@@ -1990,9 +1990,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'What / is / she / wearing / ?'",
         "options": [
           "she is What wearing?",
-          "What is she wearing?",
           "wearing What is she?",
-          "she What is wearing?"
+          "she What is wearing?",
+          "What is she wearing?"
         ],
         "options_ipa": [
           "she ɪz what ˈweərɪŋ",
@@ -2012,9 +2012,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / want / some / water / ?'",
         "options": [
           "want Do water some you?",
+          "Do you want some water?",
           "some you want Do water?",
-          "water some Do want you?",
-          "Do you want some water?"
+          "water some Do want you?"
         ],
         "options_ipa": [
           "want do water some you",
@@ -2033,10 +2033,10 @@
         "question_id": "s7.2_43",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / go / by / car / ?'",
         "options": [
+          "go by car you Do?",
           "you car by go Do?",
-          "by you Do go car?",
           "Do you go by car?",
-          "go by car you Do?"
+          "by you Do go car?"
         ],
         "options_ipa": [
           "you car by go do",
@@ -2055,10 +2055,10 @@
         "question_id": "s7.2_44",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / is / your / school / ?'",
         "options": [
-          "Where is your school?",
+          "your is school Where?",
           "school Where your is?",
-          "your is Where school?",
-          "your is school Where?"
+          "Where is your school?",
+          "your is Where school?"
         ],
         "options_ipa": [
           "where ɪz jɔː school",
@@ -2077,10 +2077,10 @@
         "question_id": "s7.2_45",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Do / you / have / crayons / ?'",
         "options": [
-          "you have Do crayons?",
+          "have Do you crayons?",
           "crayons have you Do?",
-          "Do you have crayons?",
-          "have Do you crayons?"
+          "you have Do crayons?",
+          "Do you have crayons?"
         ],
         "options_ipa": [
           "you have do crayons",
@@ -2100,9 +2100,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Can / you / see / a / rainbow / ?'",
         "options": [
           "Can you see a rainbow?",
-          "Can see you a rainbow?",
           "Can rainbow you see a?",
-          "a rainbow see Can you?"
+          "a rainbow see Can you?",
+          "Can see you a rainbow?"
         ],
         "options_ipa": [
           "can you see ə rainbow",
@@ -2122,15 +2122,15 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / Bobby / excited / ?'",
         "options": [
           "excited Is Bobby?",
-          "excited Bobby Is?",
           "Is Bobby excited?",
-          "Is Bobby excited? (wrong?)"
+          "Is excited Bobby?",
+          "excited Bobby Is?"
         ],
         "options_ipa": [
           "excited ɪz bobby",
           "excited bobby ɪz",
           "ɪz bobby excited",
-          "ɪz bobby excited (wrong?)"
+          "ɪz bobby excited"
         ],
         "answer": "Is Bobby excited?",
         "hint": "Gợi ý: Đây là câu hỏi nghi vấn, hãy ghép đúng cấu trúc câu hỏi tiếng Anh: 'Is Bobby excited?'.",
@@ -2143,14 +2143,14 @@
         "question_id": "s7.2_48",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Is / grandfather / in / the / kitchen / ?'",
         "options": [
-          "the Is grandfather kitchen in?",
-          "Is grandfather in the kitchen? (wrong?)",
+          "Is grandfather in the kitchen?",
           "Is kitchen in the grandfather?",
-          "Is grandfather in the kitchen?"
+          "grandfather the kitchen in Is?",
+          "the Is grandfather kitchen in?"
         ],
         "options_ipa": [
           "ðə ɪz ˈɡrændfɑːðə kitchen ɪn",
-          "ɪz ˈɡrændfɑːðə ɪn ðə kitchen (wrong?)",
+          "ɪz ˈɡrændfɑːðə ɪn ðə kitchen",
           "ɪz kitchen ɪn ðə ˈɡrændfɑːðə",
           "ɪz ˈɡrændfɑːðə ɪn ðə kitchen"
         ],
@@ -2167,8 +2167,8 @@
         "options": [
           "are How rectangles many there?",
           "many are rectangles there How?",
-          "How many rectangles are there?",
-          "many rectangles are How there?"
+          "many rectangles are How there?",
+          "How many rectangles are there?"
         ],
         "options_ipa": [
           "ɑː how rectangles many there",
@@ -2188,9 +2188,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu hỏi tương tác đúng: 'Where / are / the / toys / ?'",
         "options": [
           "are the Where toys?",
+          "the are Where toys?",
           "the toys Where are?",
-          "Where are the toys?",
-          "the are Where toys?"
+          "Where are the toys?"
         ],
         "options_ipa": [
           "ɑː ðə where toys",
@@ -2212,9 +2212,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / your / book / .'",
         "options": [
           "Book open your.",
-          "Please open your book.",
+          "Open book your.",
           "Open your book.",
-          "Open book your."
+          "Please open your book."
         ],
         "options_ipa": [
           "book open jɔː",
@@ -2233,10 +2233,10 @@
         "question_id": "s7.3_2",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / your / book / .'",
         "options": [
-          "Close book your.",
-          "Your close book.",
+          "Your book close.",
           "Close your book.",
-          "Your book close."
+          "Close book your.",
+          "Your close book."
         ],
         "options_ipa": [
           "close book jɔː",
@@ -2255,10 +2255,10 @@
         "question_id": "s7.3_3",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Pick / up / your / pencil / .'",
         "options": [
-          "Your up pencil pick.",
-          "Pencil up your pick.",
           "Up your pick pencil.",
-          "Pick up your pencil."
+          "Your up pencil pick.",
+          "Pick up your pencil.",
+          "Pencil up your pick."
         ],
         "options_ipa": [
           "jɔː up pencil pick",
@@ -2277,9 +2277,9 @@
         "question_id": "s7.3_4",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Listen / carefully / .'",
         "options": [
-          "Carefully listen.",
-          "Listen carefully.",
           "Listen your carefully.",
+          "Listen carefully.",
+          "Carefully listen.",
           "Carefully your listen."
         ],
         "options_ipa": [
@@ -2300,9 +2300,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Give / me / a / ruler / please / .'",
         "options": [
           "Please give me a ruler.",
-          "Your a ruler give please.",
-          "Please give me a ruler.",
-          "Give me a ruler, please."
+          "ruler me please Give a.",
+          "Give me a ruler, please.",
+          "Your a ruler give please."
         ],
         "options_ipa": [
           "please give me ə ruler",
@@ -2321,10 +2321,10 @@
         "question_id": "s7.3_6",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Look / at / the / board / .'",
         "options": [
-          "Look at the board.",
+          "Please look at the board.",
           "Board at look the.",
-          "The look board at.",
-          "Please look at the board."
+          "Look at the board.",
+          "The look board at."
         ],
         "options_ipa": [
           "lʊk æt ðiː bɔːd",
@@ -2343,10 +2343,10 @@
         "question_id": "s7.3_7",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Sit / down / please / .'",
         "options": [
-          "Sit down, please.",
           "Sit please down.",
           "Please down sit.",
-          "Please you sit down."
+          "Please you sit down.",
+          "Sit down, please."
         ],
         "options_ipa": [
           "sit down please",
@@ -2365,10 +2365,10 @@
         "question_id": "s7.3_8",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Stand / up / please / .'",
         "options": [
+          "Up please stand.",
           "Stand up, please.",
           "Up stand please.",
-          "Stand up please.",
-          "Up please stand."
+          "Stand up please."
         ],
         "options_ipa": [
           "stand up please",
@@ -2387,10 +2387,10 @@
         "question_id": "s7.3_9",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Put / away / your / backpack / .'",
         "options": [
-          "Put backpack away your.",
-          "Put away your backpack.",
           "Backpack your away put.",
-          "Your away backpack put."
+          "Your away backpack put.",
+          "Put away your backpack.",
+          "Put backpack away your."
         ],
         "options_ipa": [
           "put backpack away jɔː",
@@ -2409,10 +2409,10 @@
         "question_id": "s7.3_10",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Show / me / your / eraser / .'",
         "options": [
-          "Please show me your eraser.",
-          "Show eraser your me.",
+          "Me eraser show your.",
           "Show me your eraser.",
-          "Me eraser show your."
+          "Show eraser your me.",
+          "Please show me your eraser."
         ],
         "options_ipa": [
           "please show me jɔː eraser",
@@ -2431,8 +2431,8 @@
         "question_id": "s7.3_11",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / your / notebook / please / .'",
         "options": [
-          "Your notebook please close.",
           "Close your notebook, please.",
+          "Your notebook please close.",
           "Your please close notebook.",
           "Close your please notebook."
         ],
@@ -2453,10 +2453,10 @@
         "question_id": "s7.3_12",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Pick / up / your / crayons / .'",
         "options": [
-          "Your crayons up pick.",
-          "Your up crayons pick.",
           "Crayons up your pick.",
-          "Pick up your crayons."
+          "Your crayons up pick.",
+          "Pick up your crayons.",
+          "Your up crayons pick."
         ],
         "options_ipa": [
           "jɔː crayons up pick",
@@ -2475,9 +2475,9 @@
         "question_id": "s7.3_13",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Give / me / a / pen / please / .'",
         "options": [
-          "A please pen give me.",
           "A give me please pen.",
           "A pen me give please.",
+          "A please pen give me.",
           "Give me a pen, please."
         ],
         "options_ipa": [
@@ -2497,10 +2497,10 @@
         "question_id": "s7.3_14",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Listen / carefully / to / the / teacher / .'",
         "options": [
-          "Carefully listen teacher to the.",
           "Listen to carefully teacher the.",
           "Listen carefully to the teacher.",
-          "Listen teacher the to carefully."
+          "Listen teacher the to carefully.",
+          "Carefully listen teacher to the."
         ],
         "options_ipa": [
           "carefully listen teacher tuː ðə",
@@ -2519,10 +2519,10 @@
         "question_id": "s7.3_15",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / your / notebook / .'",
         "options": [
+          "Your notebook open.",
           "Open notebook your.",
-          "Your open notebook.",
           "Open your notebook.",
-          "Your notebook open."
+          "Your open notebook."
         ],
         "options_ipa": [
           "open notebook jɔː",
@@ -2541,10 +2541,10 @@
         "question_id": "s7.3_16",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Put / away / your / book / .'",
         "options": [
-          "Away book your put.",
-          "Book your put away.",
           "Book your away put.",
-          "Put away your book."
+          "Away book your put.",
+          "Put away your book.",
+          "Book your put away."
         ],
         "options_ipa": [
           "away book jɔː put",
@@ -2563,10 +2563,10 @@
         "question_id": "s7.3_17",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Look / at / the / board / please / .'",
         "options": [
-          "Board at please the look.",
+          "At please the board look.",
           "Look the at please board.",
-          "Look at the board, please.",
-          "At please the board look."
+          "Board at please the look.",
+          "Look at the board, please."
         ],
         "options_ipa": [
           "bɔːd at please ðə look",
@@ -2585,10 +2585,10 @@
         "question_id": "s7.3_18",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Show / me / your / pencil / case / .'",
         "options": [
-          "Pencil case show me your.",
-          "Pencil your case show me.",
+          "Show me your pencil case.",
           "Show your pencil me case.",
-          "Show me your pencil case."
+          "Pencil your case show me.",
+          "Pencil case show me your."
         ],
         "options_ipa": [
           "pencil case show me jɔː",
@@ -2607,9 +2607,9 @@
         "question_id": "s7.3_19",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Stand / up / now / .'",
         "options": [
+          "Please stand up now.",
           "Stand up now.",
           "Up now stand.",
-          "Please stand up now.",
           "Stand now up."
         ],
         "options_ipa": [
@@ -2629,10 +2629,10 @@
         "question_id": "s7.3_20",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Sit / down / on / your / chair / .'",
         "options": [
-          "Down sit your chair on.",
+          "Sit down on your chair.",
           "On chair down your sit.",
-          "Your sit down on chair.",
-          "Sit down on your chair."
+          "Down sit your chair on.",
+          "Your sit down on chair."
         ],
         "options_ipa": [
           "down sit jɔː chair ɒn",
@@ -2673,10 +2673,10 @@
         "question_id": "s7.3_22",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / the / door / .'",
         "options": [
-          "Close the door.",
-          "The close door.",
           "Door the close.",
-          "Close door the."
+          "The close door.",
+          "Close door the.",
+          "Close the door."
         ],
         "options_ipa": [
           "close ðə door",
@@ -2695,10 +2695,10 @@
         "question_id": "s7.3_23",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Write / the / word / please / .'",
         "options": [
-          "The write word please.",
-          "Write the please word.",
+          "Write word the please.",
           "Write the word, please.",
-          "Write word the please."
+          "Write the please word.",
+          "The write word please."
         ],
         "options_ipa": [
           "ðə write word please",
@@ -2717,10 +2717,10 @@
         "question_id": "s7.3_24",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Draw / a / picture / please / .'",
         "options": [
-          "A picture please draw.",
-          "A please picture draw.",
           "Please a draw picture.",
-          "Draw a picture, please."
+          "A picture please draw.",
+          "Draw a picture, please.",
+          "A please picture draw."
         ],
         "options_ipa": [
           "ə picture please drɔː",
@@ -2740,9 +2740,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Sing / an / English / song / .'",
         "options": [
           "Song an english sing.",
-          "Sing song english an.",
+          "Sing english an song.",
           "Sing an English song.",
-          "Sing english an song."
+          "Sing song english an."
         ],
         "options_ipa": [
           "song æn english sɪŋ",
@@ -2761,10 +2761,10 @@
         "question_id": "s7.3_26",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Pick / up / your / eraser / .'",
         "options": [
-          "Pick up your eraser.",
-          "Your pick eraser up.",
           "Eraser pick your up.",
-          "Eraser your up pick."
+          "Your pick eraser up.",
+          "Eraser your up pick.",
+          "Pick up your eraser."
         ],
         "options_ipa": [
           "pick up jɔː eraser",
@@ -2805,10 +2805,10 @@
         "question_id": "s7.3_28",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / your / English / book / .'",
         "options": [
-          "Your english close book.",
+          "Your book close english.",
           "Close your English book.",
           "English book close your.",
-          "Your book close english."
+          "Your english close book."
         ],
         "options_ipa": [
           "jɔː english close book",
@@ -2828,9 +2828,9 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / your / backpack / .'",
         "options": [
           "Open your backpack.",
+          "Your backpack open.",
           "Backpack open your.",
-          "Your open backpack.",
-          "Your backpack open."
+          "Your open backpack."
         ],
         "options_ipa": [
           "open jɔː backpack",
@@ -2850,8 +2850,8 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Show / me / your / ruler / .'",
         "options": [
           "Me ruler show your.",
-          "Show me your ruler.",
           "Me show ruler your.",
+          "Show me your ruler.",
           "Show your me ruler."
         ],
         "options_ipa": [
@@ -2871,10 +2871,10 @@
         "question_id": "s7.3_31",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Look / at / the / teacher / .'",
         "options": [
-          "Teacher at look the.",
-          "Look at the teacher.",
+          "At the look teacher.",
           "Teacher look the at.",
-          "At the look teacher."
+          "Teacher at look the.",
+          "Look at the teacher."
         ],
         "options_ipa": [
           "teacher at look ðə",
@@ -2893,9 +2893,9 @@
         "question_id": "s7.3_32",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Listen / carefully / to / the / song / .'",
         "options": [
-          "The carefully to listen song.",
-          "Listen carefully to the song.",
           "Carefully the to song listen.",
+          "Listen carefully to the song.",
+          "The carefully to listen song.",
           "Carefully to listen song the."
         ],
         "options_ipa": [
@@ -2917,8 +2917,8 @@
         "options": [
           "Up stand please!",
           "Please up stand!",
-          "Up please stand!",
-          "Stand up, please!"
+          "Stand up, please!",
+          "Up please stand!"
         ],
         "options_ipa": [
           "up stand please",
@@ -2937,10 +2937,10 @@
         "question_id": "s7.3_34",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Sit / down / please / .'",
         "options": [
+          "Sit down please!",
           "Down please sit!",
-          "Please sit down, please!",
           "Sit down, please!",
-          "Sit down please!"
+          "Please sit down, please!"
         ],
         "options_ipa": [
           "down please sit",
@@ -2959,10 +2959,10 @@
         "question_id": "s7.3_35",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Put / away / your / crayons / .'",
         "options": [
-          "Crayons your put away.",
           "Away crayons put your.",
-          "Put away your crayons.",
-          "Away put crayons your."
+          "Away put crayons your.",
+          "Crayons your put away.",
+          "Put away your crayons."
         ],
         "options_ipa": [
           "crayons jɔː put away",
@@ -2981,10 +2981,10 @@
         "question_id": "s7.3_36",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Pick / up / your / pen / .'",
         "options": [
-          "Pick your pen up.",
+          "Pick up your pen.",
           "Pick your up pen.",
           "Pen up pick your.",
-          "Pick up your pen."
+          "Pick your pen up."
         ],
         "options_ipa": [
           "pick jɔː pen up",
@@ -3003,10 +3003,10 @@
         "question_id": "s7.3_37",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Give / me / a / crayon / .'",
         "options": [
-          "Crayon give a me.",
           "Give a me crayon.",
+          "Give me a crayon.",
           "Me a give crayon.",
-          "Give me a crayon."
+          "Crayon give a me."
         ],
         "options_ipa": [
           "crayon give ə me",
@@ -3047,10 +3047,10 @@
         "question_id": "s7.3_39",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / the / door / please / .'",
         "options": [
-          "Door the open please.",
-          "Open the door, please.",
           "Door open please the.",
-          "Door please the open."
+          "Door the open please.",
+          "Door please the open.",
+          "Open the door, please."
         ],
         "options_ipa": [
           "door ðə open please",
@@ -3069,10 +3069,10 @@
         "question_id": "s7.3_40",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Show / me / your / notebook / .'",
         "options": [
-          "Show me your notebook.",
           "Your show notebook me.",
+          "Show your me notebook.",
           "Me show your notebook.",
-          "Show your me notebook."
+          "Show me your notebook."
         ],
         "options_ipa": [
           "show me jɔː notebook",
@@ -3091,10 +3091,10 @@
         "question_id": "s7.3_41",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Go / to / the / board / please / .'",
         "options": [
-          "Go board please to the.",
-          "To board the please go.",
           "The board to go please.",
-          "Go to the board, please."
+          "Go to the board, please.",
+          "To board the please go.",
+          "Go board please to the."
         ],
         "options_ipa": [
           "go bɔːd please tuː ðə",
@@ -3113,10 +3113,10 @@
         "question_id": "s7.3_42",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Listen / carefully / to / me / .'",
         "options": [
-          "Listen carefully to me.",
+          "Listen to me carefully.",
           "Carefully listen to me.",
-          "To listen carefully me.",
-          "Listen to me carefully."
+          "Listen carefully to me.",
+          "To listen carefully me."
         ],
         "options_ipa": [
           "listen carefully tuː me",
@@ -3135,10 +3135,10 @@
         "question_id": "s7.3_43",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Write / your / name / here / .'",
         "options": [
-          "Write your name here.",
           "Here name your write.",
-          "Write name your here.",
-          "Write your here name."
+          "Write your here name.",
+          "Write your name here.",
+          "Write name your here."
         ],
         "options_ipa": [
           "write jɔː name here",
@@ -3157,10 +3157,10 @@
         "question_id": "s7.3_44",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Draw / a / circle / on / the / board / .'",
         "options": [
-          "Draw a circle on the board.",
-          "A board circle draw on the.",
           "On a draw board circle the.",
-          "Board on a the circle draw."
+          "A board circle draw on the.",
+          "Board on a the circle draw.",
+          "Draw a circle on the board."
         ],
         "options_ipa": [
           "drɔː ə circle ɒn ðə bɔːd",
@@ -3180,8 +3180,8 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Speak / English / please / .'",
         "options": [
           "Speak English, please.",
-          "Please english speak.",
           "Please speak english.",
+          "Please english speak.",
           "Speak english please."
         ],
         "options_ipa": [
@@ -3202,8 +3202,8 @@
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Pick / up / your / backpack / .'",
         "options": [
           "Pick up backpack your.",
-          "Your up pick backpack.",
           "Pick up your backpack.",
+          "Your up pick backpack.",
           "Your backpack pick up."
         ],
         "options_ipa": [
@@ -3223,10 +3223,10 @@
         "question_id": "s7.3_47",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Give / me / your / ruler / .'",
         "options": [
-          "Ruler give your me.",
-          "Your give ruler me.",
           "Give me your ruler.",
-          "Me give ruler your."
+          "Your give ruler me.",
+          "Me give ruler your.",
+          "Ruler give your me."
         ],
         "options_ipa": [
           "ruler give jɔː me",
@@ -3245,10 +3245,10 @@
         "question_id": "s7.3_48",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Close / the / window / .'",
         "options": [
+          "Window close the.",
           "The window close.",
-          "Close the window.",
           "Please close the window.",
-          "Window close the."
+          "Close the window."
         ],
         "options_ipa": [
           "ðə window close",
@@ -3267,10 +3267,10 @@
         "question_id": "s7.3_49",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Open / your / book / now / .'",
         "options": [
-          "Open your book now.",
           "Your open book now.",
           "Open book your now.",
-          "Book your open now."
+          "Book your open now.",
+          "Open your book now."
         ],
         "options_ipa": [
           "open jɔː book now",
@@ -3289,8 +3289,8 @@
         "question_id": "s7.3_50",
         "question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu mệnh lệnh trong lớp học đúng: 'Show / me / your / crayons / .'",
         "options": [
-          "Show me your crayons.",
           "Show me crayons your.",
+          "Show me your crayons.",
           "Crayons your me show.",
           "Your show me crayons."
         ],
