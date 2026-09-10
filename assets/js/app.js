@@ -663,6 +663,7 @@ function updateExamTimerDisplay() {
 
 function openExamHub() {
     stopSpeaking();
+    inMiniGameFlow = false;
     // Bắt buộc đăng nhập mới vào được Đấu trường đề thi (giống mục 11 Practice & Play) —
     // vì kết quả thi cần gắn với đúng tài khoản học sinh để lưu lịch sử/báo cáo, khách vãng lai
     // làm bài xong không lưu được gì cũng không có ý nghĩa đánh giá thực chất.
@@ -760,6 +761,7 @@ let alphabetIpaLoaded = false;
 let currentAlphabetIndex = 0;
 let currentIPAIndex = 0;
 let inAlphaIpaFlow = false;
+let inMiniGameFlow = false;
 
 async function loadAlphabetIPAData() {
     if (alphabetIpaLoaded) return;
@@ -776,6 +778,7 @@ async function openAlphabetIPA() {
     stopSpeaking();
     activeTopicId = null; activeExamContext = null; activeRoadmapContext = null; pendingTopicQuiz = null;
     inAlphaIpaFlow = true;
+    inMiniGameFlow = false;
     updateNavTabs("1. Alphabet & IPA", "🔤", null);
     showLoadingOverlay("Đang tải bảng chữ cái & ngữ âm...");
     try {
@@ -1055,6 +1058,9 @@ function returnToTopicLecture() {
     } else if (inAlphaIpaFlow) {
         // Đang duyệt Alphabet A-Z hoặc Bảng IPA (không phải quiz) -> quay về đúng menu 3 lựa chọn
         openAlphabetIPA();
+    } else if (inMiniGameFlow) {
+        // Đang ở Trung tâm Mini Game hoặc đang chơi 1 game cụ thể -> quay về lưới 12 game
+        openMiniGameHub();
     }
 }
 
@@ -1072,6 +1078,7 @@ function goHome() {
     stopSpeaking();
     clearInterval(quizTimerInterval);
     inAlphaIpaFlow = false;
+    inMiniGameFlow = false;
     updateNavTabs(null, null, null);
     switchAppView('view-dashboard-grid');
 }
@@ -1311,6 +1318,7 @@ function clickProgressOrExam(type) {
 // ==========================================
 function openTopic(topicNum, topicName, icon) {
     stopSpeaking();
+    inMiniGameFlow = false;
     // Riêng mục 11 (Practice & Play - Ôn tập theo học kỳ) bắt buộc phải đăng nhập mới vào được,
     // vì đây là ôn tập tổng hợp gắn với tiến trình học tập thật của học sinh, không dành cho khách.
     if (Number(topicNum) === 11 && (!currentUser || currentUser.isGuest)) {
@@ -1477,6 +1485,7 @@ function handleNextExamFromReport() {
 
 function openRoadmap() {
     stopSpeaking();
+    inMiniGameFlow = false;
     // Bắt buộc đăng nhập mới vào được Tiến trình tuần (giống mục 11 Practice & Play và
     // Đấu trường đề thi) — vì tiến trình 24 tuần cần gắn với đúng tài khoản để lưu lại tuần
     // đang mở khoá (TuanHienTai), khách vãng lai làm xong không lưu được gì cả.
@@ -3073,6 +3082,7 @@ function openMiniGameHub() {
         return;
     }
     inAlphaIpaFlow = false;
+    inMiniGameFlow = true;
     activeExamContext = null; activeRoadmapContext = null; activeTopicId = null; pendingTopicQuiz = null;
     updateNavTabs("Mini Game", "🎮", null);
 
@@ -3108,6 +3118,7 @@ function loadGameScript(src) {
 
 async function openGamePlay(gameId) {
     stopSpeaking();
+    inMiniGameFlow = true;
     const game = MINIGAME_LIST.find(g => g.id === gameId);
     if (!game) return;
 
