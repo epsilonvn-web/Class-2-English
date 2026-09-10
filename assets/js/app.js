@@ -3155,19 +3155,10 @@ function wsStartWithDifficulty(diffKey) {
 }
 
 function wsGenerateAndRender() {
-    const pool = shuffleArray(getWordSearchVocabPool());
-    const chosen = [];
+    const pool = shuffleArray(getWordSearchVocabPool()).filter(item => item.w.length <= wsSize);
+    let poolIdx = 0;
     const usedWords = new Set();
-    for (const item of pool) {
-        if (chosen.length >= wsWordCount) break;
-        if (usedWords.has(item.w) || item.w.length > wsSize) continue;
-        usedWords.add(item.w);
-        chosen.push(item);
-    }
-    if (chosen.length < 4) {
-        document.getElementById('game-play-container').innerHTML = `<p class="text-center text-gray-500 font-bold py-8">Chưa đủ từ vựng phù hợp để chơi Word Search, bé quay lại sau nhé!</p>`;
-        return;
-    }
+    const chosen = [];
 
     wsFoundWords = new Set();
     wsPlacedCells = {};
@@ -3175,7 +3166,24 @@ function wsGenerateAndRender() {
     wsHintsUsed = 0;
     wsGrid = Array.from({ length: wsSize }, () => Array(wsSize).fill(null));
     wsSolutions = {};
-    chosen.forEach(item => { wsSolutions[item.w] = wsTryPlaceWord(item.w); });
+
+    // Thử đặt từng từ vào lưới THẬT SỰ trước khi cho vào danh sách hiển thị — nếu 1 từ đặt thất bại
+    // (thường do từ quá dài, hết chỗ trống phù hợp), TỰ ĐỘNG thay bằng từ khác trong kho, không bao giờ
+    // để lọt 1 từ vào danh sách "cần tìm" mà thực chất không tồn tại trong ô chữ (lỗi đã xảy ra trước đây).
+    while (chosen.length < wsWordCount && poolIdx < pool.length) {
+        const item = pool[poolIdx++];
+        if (usedWords.has(item.w)) continue;
+        const cells = wsTryPlaceWord(item.w);
+        if (!cells) continue; // đặt thất bại -> bỏ qua, thử từ tiếp theo trong kho, KHÔNG thêm vào danh sách
+        usedWords.add(item.w);
+        wsSolutions[item.w] = cells;
+        chosen.push(item);
+    }
+
+    if (chosen.length < 4) {
+        document.getElementById('game-play-container').innerHTML = `<p class="text-center text-gray-500 font-bold py-8">Chưa đủ từ vựng phù hợp để chơi Word Search, bé quay lại sau nhé!</p>`;
+        return;
+    }
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     for (let r = 0; r < wsSize; r++) {
