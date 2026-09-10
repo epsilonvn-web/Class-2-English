@@ -5,13 +5,15 @@
 let wsGrid = [], wsSolutions = {}, wsFoundWords = new Set(), wsPlacedCells = {};
 let wsSelecting = false, wsStartCell = null, wsCurrentPath = [];
 let wsSize = 9, wsWordCount = 6;
+let wsCurrentDirs = null;
 let wsCurrentDifficulty = 'medium';
 let wsStartTime = 0, wsTimerInterval = null, wsHintsLeft = 3, wsHintsUsed = 0;
-const WS_DIRS = [[0,1],[1,0],[1,1],[0,-1],[-1,0],[-1,-1],[1,-1],[-1,1]];
+const WS_DIRS_STRAIGHT = [[0,1],[1,0]];                                        // Dễ: chỉ ngang + dọc
+const WS_DIRS_FULL = [[0,1],[1,0],[1,1],[0,-1],[-1,0],[-1,-1],[1,-1],[-1,1]];   // Vừa/Khó: đủ 8 hướng kể cả chéo
 const WS_DIFFICULTIES = {
-    easy:   { label: 'Dễ',   words: 5, size: 8,  color: 'emerald' },
-    medium: { label: 'Vừa',  words: 6, size: 9,  color: 'amber' },
-    hard:   { label: 'Khó',  words: 8, size: 11, color: 'rose' }
+    easy:   { label: 'Dễ',   words: 5, size: 8,  color: 'emerald', dirs: WS_DIRS_STRAIGHT, dirsLabel: 'ngang, dọc' },
+    medium: { label: 'Vừa',  words: 6, size: 9,  color: 'amber',   dirs: WS_DIRS_FULL,     dirsLabel: 'ngang, dọc, chéo' },
+    hard:   { label: 'Khó',  words: 8, size: 11, color: 'rose',    dirs: WS_DIRS_FULL,     dirsLabel: 'ngang, dọc, chéo' }
 };
 
 async function startWordSearchGame() {
@@ -29,22 +31,37 @@ async function startWordSearchGame() {
 
 function renderWordSearchDifficultyScreen() {
     clearInterval(wsTimerInterval);
+    headerLevel3ClickHandler = null;
+    const level3El = document.getElementById('header-level3-btn');
+    if (level3El) { level3El.classList.remove('cursor-pointer', 'hover:bg-purple-100'); level3El.classList.add('cursor-default'); }
     const container = document.getElementById('game-play-container');
     container.innerHTML = `
         <div class="pastel-card bg-white p-5 flex flex-col items-center text-center">
             <div class="text-5xl mb-2">🔍</div>
             <h3 class="font-extrabold text-teal-700 text-base mb-1">Word Search</h3>
-            <p class="text-xs text-gray-500 font-bold mb-4">Chọn độ khó để bắt đầu nhé!</p>
-            <div class="grid grid-cols-3 gap-2.5 w-full max-w-sm">
+            <p class="text-xs text-gray-500 font-bold mb-3">Chọn độ khó để bắt đầu nhé!</p>
+            <div class="grid grid-cols-3 gap-2.5 w-full max-w-sm mb-3">
                 ${Object.entries(WS_DIFFICULTIES).map(([key, d]) => `
                     <button onclick="wsStartWithDifficulty('${key}')" class="pastel-btn flex flex-col items-center gap-1 p-3 rounded-2xl border-2 border-${d.color}-200 bg-${d.color}-50 hover:bg-${d.color}-100 text-${d.color}-700 shadow-sm">
                         <span class="font-black text-sm">${d.label}</span>
                         <span class="text-[10px] font-bold opacity-80">${d.words} từ</span>
                         <span class="text-[10px] font-bold opacity-70">lưới ${d.size}x${d.size}</span>
+                        <span class="text-[9px] font-bold opacity-60">(${d.dirsLabel})</span>
                     </button>
                 `).join('')}
             </div>
+            <button onclick="wsToggleRules()" class="text-xs font-black text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-200 pastel-btn">📖 Xem luật chơi</button>
+            <div id="ws-rules-panel" class="hidden mt-3 w-full max-w-sm text-left bg-indigo-50/60 border border-indigo-200 rounded-2xl p-3.5 text-xs text-gray-600 font-bold leading-relaxed">
+                <p class="mb-1.5">🔤 Từ tiếng Anh được giấu trong lưới theo <b>hàng ngang</b> hoặc <b>hàng dọc</b> — riêng độ <b>Vừa/Khó</b> còn giấu thêm theo <b>đường chéo</b> nữa nhé!</p>
+                <p class="mb-1.5">↔️ Mỗi từ có thể đọc <b>xuôi</b> (trái→phải, trên→dưới) hoặc <b>ngược</b> (phải→trái, dưới→trên) — cứ thử cả 2 chiều nếu chưa thấy.</p>
+                <p>👆 Chạm vào chữ cái đầu tiên, rồi <b>kéo thẳng một đường</b> tới chữ cái cuối cùng của từ đó để chọn.</p>
+            </div>
         </div>`;
+}
+
+function wsToggleRules() {
+    const panel = document.getElementById('ws-rules-panel');
+    if (panel) panel.classList.toggle('hidden');
 }
 
 function wsStartWithDifficulty(diffKey) {
@@ -52,6 +69,7 @@ function wsStartWithDifficulty(diffKey) {
     wsSize = diff.size;
     wsWordCount = diff.words;
     wsCurrentDifficulty = diffKey;
+    wsCurrentDirs = diff.dirs;
     wsGenerateAndRender();
 }
 
@@ -63,7 +81,7 @@ function wsGenerateAndRender() {
 
     wsFoundWords = new Set();
     wsPlacedCells = {};
-    wsHintsLeft = 3;
+    wsHintsLeft = wsWordCount;
     wsHintsUsed = 0;
     wsGrid = Array.from({ length: wsSize }, () => Array(wsSize).fill(null));
     wsSolutions = {};
@@ -101,7 +119,8 @@ function wsGenerateAndRender() {
 
 function wsTryPlaceWord(word) {
     for (let attempt = 0; attempt < 100; attempt++) {
-        const dir = WS_DIRS[Math.floor(Math.random() * WS_DIRS.length)];
+        const dirs = wsCurrentDirs || WS_DIRS_FULL;
+        const dir = dirs[Math.floor(Math.random() * dirs.length)];
         const row = Math.floor(Math.random() * wsSize);
         const col = Math.floor(Math.random() * wsSize);
         const endRow = row + dir[0] * (word.length - 1);
@@ -132,6 +151,12 @@ function wsUpdateTimerDisplay() {
 }
 
 function renderWordSearchUI(chosen) {
+    // Trong lúc đang chơi (đã có lưới), bấm vào tên game trên breadcrumb -> quay lại màn chọn độ khó.
+    headerLevel3ClickHandler = renderWordSearchDifficultyScreen;
+    if (typeof updateNavTabs === 'function') {
+        const level3El = document.getElementById('header-level3-btn');
+        if (level3El) { level3El.classList.add('cursor-pointer', 'hover:bg-purple-100'); level3El.classList.remove('cursor-default'); }
+    }
     const container = document.getElementById('game-play-container');
     container.innerHTML = `
         <div class="pastel-card bg-white p-3 md:p-4 flex flex-col items-center">
@@ -140,7 +165,8 @@ function renderWordSearchUI(chosen) {
                 <button id="ws-hint-btn" onclick="wsUseHint()" class="text-xs font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 pastel-btn">💡 Gợi ý (${wsHintsLeft})</button>
                 <button onclick="renderWordSearchDifficultyScreen()" class="text-xs font-black text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full border border-gray-200 pastel-btn">🔄 Chơi lại</button>
             </div>
-            <p class="text-xs md:text-sm font-bold text-gray-500 mb-2">Kéo qua các ô để nối thành 1 từ tiếng Anh nhé!</p>
+            <p class="text-xs md:text-sm font-bold text-gray-500 mb-1">Kéo qua các ô để nối thành 1 từ tiếng Anh nhé!</p>
+            <p class="text-[10px] text-indigo-400 font-bold mb-2">💡 Từ giấu theo ${(WS_DIFFICULTIES[wsCurrentDifficulty] || {}).dirsLabel || 'ngang, dọc'}, có thể đọc xuôi hoặc ngược</p>
             <div id="ws-grid" class="grid gap-1 mb-3" style="grid-template-columns: repeat(${wsSize}, 1fr); max-width: 400px; width: 100%; touch-action: none; user-select: none;"></div>
             <div id="ws-wordlist" class="flex flex-wrap gap-2 justify-center mb-2"></div>
             <p id="ws-status" class="text-xs font-bold text-pink-500 text-center min-h-[18px]"></p>
@@ -279,7 +305,7 @@ function wsShowCompletionScreen(secs, total) {
                     </div>
                     <div class="bg-amber-50 rounded-xl p-2.5 border border-amber-200">
                         <div class="text-[10px] font-bold text-amber-500">Gợi ý dùng</div>
-                        <div class="text-base font-black text-amber-700">${wsHintsUsed}/3</div>
+                        <div class="text-base font-black text-amber-700">${wsHintsUsed}/${total}</div>
                     </div>
                     <div class="bg-${diff.color}-50 rounded-xl p-2.5 border border-${diff.color}-200">
                         <div class="text-[10px] font-bold text-${diff.color}-500">Độ khó</div>
