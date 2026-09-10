@@ -576,7 +576,8 @@ async function renderDashboardGrid() {
             : `<div class="w-8 h-8 bg-${t.color}-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-${t.color}-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">${t.icon}</div>`;
 
         html += `
-            <div onclick="openTopic(${t.id}, '${t.title}', '${t.icon}')" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-${t.color}-400 transition-all group min-h-[92px]">
+            <div onclick="openTopic(${t.id}, '${t.title}', '${t.icon}')" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-${t.color}-400 transition-all group min-h-[92px] relative">
+                ${Number(t.id) === 11 ? `<span class="absolute top-2 right-2 bg-slate-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i>Cần đăng nhập</span>` : ''}
                 <div class="flex items-center space-x-2.5">
                     ${iconHtml}
                     <h3 class="font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
@@ -590,7 +591,8 @@ async function renderDashboardGrid() {
     });
 
     html += `
-        <div onclick="openExamHub()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-amber-400 transition-all group bg-gradient-to-br from-white to-amber-50/50 min-h-[92px]">
+        <div onclick="openExamHub()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-amber-400 transition-all group bg-gradient-to-br from-white to-amber-50/50 min-h-[92px] relative">
+            <span class="absolute top-2 right-2 bg-slate-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i>Cần đăng nhập</span>
             <div class="flex items-center space-x-2.5">
                 <div class="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-amber-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🏆</div>
                 <h3 class="font-extrabold text-amber-700 text-sm md:text-base leading-tight">13. Đấu trường đề thi</h3>
@@ -3049,6 +3051,11 @@ const MINIGAME_LIST = [
 
 function openMiniGameHub() {
     stopSpeaking();
+    // Bắt buộc đăng nhập mới vào được Mini Game (giống mục 11, Đấu trường đề thi, Tiến trình tuần)
+    if (!currentUser || currentUser.isGuest) {
+        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Mini Game nhé!');
+        return;
+    }
     inAlphaIpaFlow = false;
     activeExamContext = null; activeRoadmapContext = null; activeTopicId = null; pendingTopicQuiz = null;
     updateNavTabs("Mini Game", "🎮", null);
