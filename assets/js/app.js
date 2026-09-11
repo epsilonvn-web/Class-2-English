@@ -595,7 +595,7 @@ async function renderDashboardGrid() {
             <span class="absolute top-2 right-2 bg-slate-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i>Cần đăng nhập</span>
             <div class="flex items-center space-x-2.5">
                 <div class="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-amber-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🏆</div>
-                <h3 class="font-extrabold text-amber-700 text-sm md:text-base leading-tight">12. Đấu trường đề thi</h3>
+                <h3 class="font-extrabold text-amber-700 text-sm md:text-base leading-tight">13. Đấu trường đề thi</h3>
             </div>
             <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-amber-100 text-[11px] font-bold text-gray-500">
                 <span>HK1, HK2, HSG</span>
@@ -630,7 +630,7 @@ async function startRandomExam(categoryKey) {
         const questions = Array.isArray(exam.questions) && exam.questions.length ? exam.questions : [];
         if (!questions.length) return alert('Đề thi này chưa có câu hỏi, bé chọn đề khác nhé!');
 
-        updateNavTabs("12. Đấu trường đề thi", "🏆", examTitle);
+        updateNavTabs("13. Đấu trường đề thi", "🏆", examTitle);
         startTopicQuiz(0, examTitle, shuffleArray(questions), null);
     } catch (err) {
         hideLoadingOverlay();
@@ -676,7 +676,7 @@ function openExamHub() {
     activeRoadmapContext = null;
     activeTopicId = null;
     pendingTopicQuiz = null;
-    updateNavTabs("12. Đấu trường đề thi", "🏆", null);
+    updateNavTabs("13. Đấu trường đề thi", "🏆", null);
     switchAppView('view-exam-hub');
     showLoadingOverlay("Đang tải kho đề thi...");
     renderExamHubGrid().finally(() => hideLoadingOverlay());
@@ -3093,7 +3093,7 @@ function openMiniGameHub() {
             <div class="text-4xl group-hover:scale-110 transition-transform mt-1">${g.icon}</div>
             <div>
                 <h3 class="font-extrabold text-teal-700 text-sm leading-tight">${g.title}</h3>
-                <p class="text-[10px] text-gray-400 font-bold mt-0.5">${g.desc}</p>
+                <p class="text-xs text-gray-800 font-bold mt-0.5 w-full whitespace-nowrap overflow-hidden text-ellipsis">${g.desc}</p>
             </div>
         </div>`).join('');
 
