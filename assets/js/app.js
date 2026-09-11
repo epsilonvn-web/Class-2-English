@@ -3066,12 +3066,12 @@ const MINIGAME_LIST = [
     { id: 'balloon-pop', title: 'Balloon Pop', desc: 'Bấm bóng bay đúng nghĩa', icon: '🎈', ready: false },
     { id: 'catch-or-skip', title: 'Catch or Skip', desc: 'Bắt đúng, bỏ qua sai', icon: '🎯', ready: false },
     { id: 'bingo', title: 'Bingo', desc: 'Lô tô từ vựng nghe-chọn', icon: '🎲', ready: false },
-    { id: 'fishing-game', title: 'Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: false },
-    { id: 'spin-wheel', title: 'Spin Wheel', desc: 'Quay vòng may mắn trả lời', icon: '🎡', ready: false },
+    { id: 'fishing-game', title: 'Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: true },
+    { id: 'spin-wheel', title: 'Spin Wheel', desc: 'Quay vòng may mắn trả lời', icon: '🎡', ready: true },
     { id: 'tower-builder', title: 'Tower Builder', desc: 'Trả lời đúng xây tháp cao', icon: '🏗️', ready: false },
-    { id: 'flappy-gate', title: 'Flappy Gate', desc: 'Bay qua đúng cổng đáp án', icon: '🐤', ready: false },
+    { id: 'flappy-gate', title: 'Flappy Gate', desc: 'Bay qua đúng cổng đáp án', icon: '🐤', ready: true },
     { id: 'domino-match', title: 'Domino Match', desc: 'Nối domino từ vựng', icon: '🁢', ready: false },
-    { id: 'bunny-rescue', title: 'Bunny Rescue', desc: 'Đoán chữ cứu chú thỏ', icon: '🐰', ready: false }
+    { id: 'bunny-rescue', title: 'Bunny Rescue', desc: 'Đoán chữ cứu chú thỏ', icon: '🐰', ready: true }
 ];
 
 function openMiniGameHub() {
@@ -3102,7 +3102,7 @@ function openMiniGameHub() {
 
 // Đường dẫn file JS riêng của từng game — chỉ tải về máy khi bé THẬT SỰ bấm vào game đó,
 // không bắt tải sẵn hết 12 game ngay từ đầu (giữ app.js gọn nhẹ dù sau này thêm bao nhiêu game).
-const GAME_SCRIPT_MAP = { 'word-search': 'assets/js/games/word-search.js' };
+const GAME_SCRIPT_MAP = { 'word-search': 'assets/js/games/word-search.js', 'fishing-game': 'assets/js/games/fishing-game.js', 'flappy-gate': 'assets/js/games/flappy-gate.js', 'bunny-rescue': 'assets/js/games/bunny-rescue.js', 'spin-wheel': 'assets/js/games/spin-wheel.js' };
 const loadedGameScripts = {};
 
 function loadGameScript(src) {
@@ -3143,6 +3143,10 @@ async function openGamePlay(gameId) {
     }
 
     if (gameId === 'word-search') startWordSearchGame();
+    if (gameId === 'fishing-game') startFishingGame();
+    if (gameId === 'flappy-gate') startFlappyGateGame();
+    if (gameId === 'bunny-rescue') startBunnyRescueGame();
+    if (gameId === 'spin-wheel') startSpinWheelGame();
 }
 
 /** Lấy nguồn từ vựng thật của chương trình (kho tra nghĩa xây từ Flashcards Library) —
