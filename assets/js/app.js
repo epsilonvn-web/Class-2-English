@@ -340,10 +340,6 @@ const PART1_SKILLS = ['ENG_VOC', 'ENG_LIS', 'ENG_PHO'];
 let allWordsPoolCache = null;
 let wordIpaMapCache = null;
 let wordMeaningMapCache = null;
-// Nguồn dữ liệu chuẩn cho toàn bộ Mini Game: CHỈ lấy từ Chuyên mục 2.1 - Flashcards Library.
-// Giữ nguyên object giàu dữ liệu (word, vietnamese, emoji, image_url, sentence, topic_id, topic_name)
-// để các game dùng chung mà không phải tự đọc/biến đổi JSON theo cách riêng.
-let miniGameVocabCache = null;
 function pickDistractorWords(correct, pool, n = 3) {
     const cand = shuffleArray(pool.filter(w => w !== correct));
     const out = []; const seen = new Set([correct]);
@@ -443,51 +439,6 @@ async function fetchAllQuestionsFlat() {
         return res.json();
     }));
 
-    // Adapter dữ liệu Mini Game: đọc ĐÚNG Chuyên mục 2.1 (Flashcards Library), không quét
-    // các chuyên mục khác. Hiện kho 2.1 chia theo các topic con; mỗi từ vẫn giữ topic_name
-    // để game có thể cho học sinh chọn nhóm trước khi chơi.
-    if (!miniGameVocabCache) {
-        miniGameVocabCache = [];
-        results.forEach(data => {
-            const section = data?.sections?.['section_2.1'];
-            if (!section) return;
-
-            if (Array.isArray(section.topics)) {
-                section.topics.forEach(topic => {
-                    (Array.isArray(topic.questions) ? topic.questions : []).forEach(it => {
-                        if (!it || !it.word) return;
-                        miniGameVocabCache.push({
-                            id: it.question_id || '',
-                            word: String(it.word).trim(),
-                            vietnamese: String(it.vietnamese || '').trim(),
-                            emoji: it.emoji || '✨',
-                            image_url: it.image_url || '',
-                            sentence: it.sentence || '',
-                            hint: it.hint || '',
-                            topic_id: Number(topic.topic_id ?? it.topic_id ?? 0),
-                            topic_name: topic.topic_name || ''
-                        });
-                    });
-                });
-            } else {
-                extractItemsFromSection(section).forEach(it => {
-                    if (!it || !it.word) return;
-                    miniGameVocabCache.push({
-                        id: it.question_id || '',
-                        word: String(it.word).trim(),
-                        vietnamese: String(it.vietnamese || '').trim(),
-                        emoji: it.emoji || '✨',
-                        image_url: it.image_url || '',
-                        sentence: it.sentence || '',
-                        hint: it.hint || '',
-                        topic_id: Number(it.topic_id || 0),
-                        topic_name: it._paired_group || ''
-                    });
-                });
-            }
-        });
-    }
-
     if (!allWordsPoolCache) {
         allWordsPoolCache = [];
         wordIpaMapCache = {};
@@ -529,67 +480,6 @@ async function fetchAllQuestionsFlat() {
 
     allQuestionsFlatCache = rawQuestions.map(normalizeQuestion).filter(Boolean);
     return allQuestionsFlatCache;
-}
-
-/**
- * Nguồn từ vựng dùng chung cho Mini Game.
- * - Chỉ trả dữ liệu từ Chuyên mục 2.1.
- * - Có thể lọc theo topic_id, từ đơn, độ dài... tùy từng game.
- * - Trả bản sao để game shuffle/filter không làm bẩn cache gốc.
- */
-function getMiniGameVocabPool(options = {}) {
-    const { topicId = null, singleWordOnly = false, maxLength = null, minLength = null } = options;
-    let pool = Array.isArray(miniGameVocabCache) ? miniGameVocabCache : [];
-    if (topicId !== null && topicId !== undefined && topicId !== 'all') {
-        pool = pool.filter(item => Number(item.topic_id) === Number(topicId));
-    }
-    if (singleWordOnly) pool = pool.filter(item => /^[A-Za-z]+$/.test(item.word));
-    if (Number.isFinite(minLength)) pool = pool.filter(item => item.word.replace(/[^A-Za-z]/g, '').length >= minLength);
-    if (Number.isFinite(maxLength)) pool = pool.filter(item => item.word.replace(/[^A-Za-z]/g, '').length <= maxLength);
-    return pool.map(item => ({ ...item }));
-}
-
-function getMiniGameTopicGroups() {
-    const map = new Map();
-    (miniGameVocabCache || []).forEach(item => {
-        const id = Number(item.topic_id || 0);
-        if (!id || map.has(id)) return;
-        map.set(id, { id, name: item.topic_name || `Nhóm ${id}` });
-    });
-    return [...map.values()].sort((a, b) => a.id - b.id);
-}
-
-async function ensureMiniGameVocabReady() {
-    await fetchAllQuestionsFlat();
-    if (!miniGameVocabCache || !miniGameVocabCache.length) {
-        throw new Error('Không tìm thấy dữ liệu từ Chuyên mục 2.1 - Flashcards Library.');
-    }
-    return miniGameVocabCache;
-}
-
-/**
- * Nguồn học liệu dùng chung cho Mini Game ngữ pháp / câu / hội thoại.
- * Game chỉ đọc dữ liệu đã chuẩn hoá từ fetchAllQuestionsFlat(), không tự fetch JSON riêng.
- */
-function getMiniGameSectionPool(sectionCodes = []) {
-    const codes = new Set((Array.isArray(sectionCodes) ? sectionCodes : [sectionCodes]).map(String));
-    const pool = Array.isArray(allQuestionsFlatCache) ? allQuestionsFlatCache : [];
-    return pool
-        .filter(q => codes.has(String(q.sub_topic || '')))
-        .map(q => ({
-            ...q,
-            options: Array.isArray(q.options) ? q.options.slice() : [],
-            options_ipa: Array.isArray(q.options_ipa) ? q.options_ipa.slice() : q.options_ipa
-        }));
-}
-
-async function ensureMiniGameLearningReady(sectionCodes = []) {
-    await fetchAllQuestionsFlat();
-    const pool = getMiniGameSectionPool(sectionCodes);
-    if (!pool.length) {
-        throw new Error(`Không tìm thấy học liệu cho Chuyên mục ${[].concat(sectionCodes).join(', ')}.`);
-    }
-    return pool;
 }
 
 async function fetchAllTopicsData() {
@@ -687,7 +577,7 @@ async function renderDashboardGrid() {
 
         html += `
             <div onclick="openTopic(${t.id}, '${t.title}', '${t.icon}')" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-${t.color}-400 transition-all group min-h-[92px] relative">
-                ${Number(t.id) === 11 ? `<span class="absolute top-2 right-2 text-slate-400 text-[9px]" title="Cần đăng nhập"><i class="fa-solid fa-lock"></i></span>` : ''}
+                ${Number(t.id) === 11 ? `<span class="absolute top-2 right-2 bg-slate-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i>Cần đăng nhập</span>` : ''}
                 <div class="flex items-center space-x-2.5">
                     ${iconHtml}
                     <h3 class="font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
@@ -702,7 +592,7 @@ async function renderDashboardGrid() {
 
     html += `
         <div onclick="openExamHub()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-amber-400 transition-all group bg-gradient-to-br from-white to-amber-50/50 min-h-[92px] relative">
-            <span class="absolute top-2 right-2 text-slate-400 text-[9px]" title="Cần đăng nhập"><i class="fa-solid fa-lock"></i></span>
+            <span class="absolute top-2 right-2 bg-slate-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-lock text-[8px]"></i>Cần đăng nhập</span>
             <div class="flex items-center space-x-2.5">
                 <div class="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-amber-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🏆</div>
                 <h3 class="font-extrabold text-amber-700 text-sm md:text-base leading-tight">12. Đấu trường đề thi</h3>
@@ -2907,7 +2797,8 @@ function stopSpeaking() {
     } catch (e) {}
 }
 
-/** Đọc to toàn bộ nội dung khối "Nhận xét sư phạm" trong báo cáo lịch sử. */
+/** Đọc to toàn bộ nội dung khối "Nhận xét sư phạm" trong báo cáo lịch sử — lấy đúng text
+ * đang hiển thị trong DOM (đã chuẩn hoá từ pedagogical evaluation), không đọc lại dữ liệu thô. */
 function speakPedagogicalEvaluation() {
     const box = document.getElementById('pedagogical-evaluation-box');
     if (!box) return;
@@ -2916,10 +2807,17 @@ function speakPedagogicalEvaluation() {
     speakVietnamese(text, 0.96);
 }
 
-// Giữ đúng cơ chế bản cũ đang chạy ổn: gọi trực tiếp Google Translate TTS,
-// KHÔNG dùng Web Speech / SpeechSynthesis làm fallback.
 function speakVietnamese(text, rate = 0.96) {
     if (!text) return;
+    speakGoogleTTS(text, 'vi', rate);
+}
+
+function speakEnglish(text, rate = 0.92) {
+    if (!text) return;
+    speakGoogleTTS(text, 'en', rate);
+}
+
+function speakGoogleTTS(text, lang, rate) {
     try {
         stopSpeaking();
 
@@ -2932,13 +2830,16 @@ function speakVietnamese(text, rate = 0.96) {
             .trim();
 
         if (!cleanText) return;
+        const tl = lang === 'en' ? 'en' : 'vi';
 
         if (cleanText.length <= 180) {
             const encoded = encodeURIComponent(cleanText);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`;
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(() => {});
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
             return;
         }
 
@@ -2946,53 +2847,16 @@ function speakVietnamese(text, rate = 0.96) {
         let sIdx = 0;
         function playSentence() {
             if (sIdx >= sentences.length) return;
-            const sentence = sentences[sIdx++].trim();
-            if (!sentence) { playSentence(); return; }
-            const encoded = encodeURIComponent(sentence);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`;
+            const s = sentences[sIdx++].trim();
+            if (!s) { playSentence(); return; }
+            const encoded = encodeURIComponent(s);
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             banMaiAudio.onended = playSentence;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(() => {});
-        }
-        playSentence();
-    } catch (err) {}
-}
-
-// Tiếng Anh vẫn dùng chính Google Translate TTS, chỉ đổi tl=en.
-// Không bao giờ rơi xuống giọng máy của trình duyệt.
-function speakEnglish(text, rate = 0.92) {
-    if (!text) return;
-    try {
-        stopSpeaking();
-
-        const cleanText = String(text)
-            .replace(/<[^>]*>/g, '')
-            .trim();
-
-        if (!cleanText) return;
-
-        if (cleanText.length <= 180) {
-            const encoded = encodeURIComponent(cleanText);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
-            banMaiAudio.playbackRate = rate;
-            const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(() => {});
-            return;
-        }
-
-        const sentences = cleanText.match(/[^.!?\n]+[.!?\n]*/g) || [cleanText];
-        let sIdx = 0;
-        function playSentence() {
-            if (sIdx >= sentences.length) return;
-            const sentence = sentences[sIdx++].trim();
-            if (!sentence) { playSentence(); return; }
-            const encoded = encodeURIComponent(sentence);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
-            banMaiAudio.playbackRate = rate;
-            banMaiAudio.onended = playSentence;
-            const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(() => {});
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
         }
         playSentence();
     } catch (err) {}
@@ -3001,11 +2865,10 @@ function speakEnglish(text, rate = 0.92) {
 function speakCurrentQuestion() {
     const q = activeQuestionsList[currentQIndex];
     if (!q) return;
-
-    // Câu nghe / đoạn tiếng Anh -> Google TTS tiếng Anh.
-    // Phần hướng dẫn bằng tiếng Việt -> Google TTS chị Ban Mai.
-    if (q.audio_text) return speakEnglish(q.audio_text, 0.92);
-    if (q.reading_passage) return speakEnglish(q.reading_passage, 0.92);
+    // Nội dung tiếng Anh thật (câu nghe, đoạn văn đọc hiểu) đọc bằng giọng Anh;
+    // phần hướng dẫn/câu hỏi tiếng Việt đọc bằng giọng Việt.
+    if (q.audio_text) return speakEnglish(q.audio_text);
+    if (q.reading_passage) return speakEnglish(q.reading_passage);
     speakVietnamese(q.question_text, 0.96);
 }
 
@@ -3184,109 +3047,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 // TRUNG TÂM MINI GAME (12 game, lưới 3x4)
 // ==========================================
-// ==========================================
-// THEME DÙNG CHUNG CHO TOÀN BỘ MINI GAME
-// Giữ ngôn ngữ thiết kế của phần Học: card pastel, 2 cột, badge số lượng,
-// màu sắc luân phiên theo từng game để vui mắt nhưng vẫn đồng bộ toàn app.
-// ==========================================
-const MINIGAME_TOPIC_PALETTES = SUBTOPIC_PALETTES;
-
-function miniGameHash(text = '') {
-    return [...String(text)].reduce((acc, ch) => ((acc * 31) + ch.charCodeAt(0)) >>> 0, 7);
-}
-
-function getMiniGamePaletteOrder(seed = 'minigame') {
-    const order = MINIGAME_TOPIC_PALETTES.map((_, i) => i);
-    let state = miniGameHash(seed) || 1;
-    for (let i = order.length - 1; i > 0; i--) {
-        state = (state * 1664525 + 1013904223) >>> 0;
-        const j = state % (i + 1);
-        [order[i], order[j]] = [order[j], order[i]];
-    }
-    return order.map(i => MINIGAME_TOPIC_PALETTES[i]);
-}
-
-function getMiniGameTopicName(topicId) {
-    if (topicId === null || topicId === undefined || topicId === 'all') return 'Trộn tất cả các nhóm';
-    const g = getMiniGameTopicGroups().find(x => Number(x.id) === Number(topicId));
-    return g ? `${g.id}. ${g.name}` : `Nhóm ${topicId}`;
-}
-
-function renderMiniGameTopicMenu({
-    gameKey,
-    onChoose,
-    subtitle = 'Chọn 1 trong 6 Nhóm từ vựng để bắt đầu chơi nhé!',
-    countFilter = null,
-    mixLabel = 'Trộn tất cả các nhóm'
-}) {
-    const groups = getMiniGameTopicGroups();
-    const palettes = getMiniGamePaletteOrder(gameKey || 'minigame');
-    const countFor = (topicId) => {
-        let pool = getMiniGameVocabPool({ topicId });
-        if (typeof countFilter === 'function') pool = pool.filter(countFilter);
-        return pool.length;
-    };
-    const total = countFor('all');
-    return `
-        <div class="mg-topic-menu w-full max-w-4xl mx-auto">
-            <div class="w-full bg-pink-50/35 border-2 border-pink-100 rounded-2xl px-4 py-4 md:py-5 text-center mb-3">
-                <p class="text-base md:text-lg text-gray-700 font-bold leading-relaxed">${escapeHtml(subtitle)}</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full">
-                ${groups.map((g, idx) => {
-                    const style = palettes[idx % palettes.length];
-                    return `
-                        <button onclick="${onChoose}(${g.id})" class="mg-topic-card p-3.5 md:p-4 ${style.card} border-2 rounded-xl font-bold text-left transition-all flex items-center justify-between shadow-sm pastel-btn min-h-[76px]">
-                            <span class="text-base md:text-[17px] leading-snug pr-2"><strong class="${style.num} mr-1.5">${g.id}.</strong>${escapeHtml(g.name)}</span>
-                            <span class="text-sm font-extrabold ${style.badge} px-2.5 py-0.5 rounded-full border shrink-0 ml-1.5 shadow-inner">${countFor(g.id)} từ</span>
-                        </button>`;
-                }).join('')}
-            </div>
-            <div class="mt-3 flex justify-center">
-                <button onclick="${onChoose}('all')" class="mg-mix-btn pastel-btn inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm md:text-base shadow-md border border-purple-300">
-                    <span>🌟 ${escapeHtml(mixLabel)}</span>
-                    <span class="text-xs md:text-sm font-black bg-white/20 px-2 py-0.5 rounded-full">${total} từ</span>
-                </button>
-            </div>
-        </div>`;
-}
-
-function ensureMiniGameThemeStyles() {
-    if (document.getElementById('minigame-theme-v3')) return;
-    const style = document.createElement('style');
-    style.id = 'minigame-theme-v3';
-    style.textContent = `
-        #view-game-play > div { max-width: 56rem !important; }
-        #game-play-title { font-size: 1.2rem !important; }
-        #game-play-container { font-size: 16px; }
-        #game-play-container .text-\\[10px\\] { font-size: 12px !important; }
-        #game-play-container .text-\\[11px\\] { font-size: 13px !important; }
-        #game-play-container .text-xs { font-size: 14px !important; }
-        #game-play-container .mg-topic-card { min-height: 78px; }
-        #game-play-container .mg-topic-card:hover { transform: translateY(-2px); }
-        #game-play-container .mg-mix-btn { min-width: 250px; }
-        @media (max-width: 640px) {
-            #view-game-play > div { max-width: 100% !important; }
-            #game-play-title { font-size: 1.05rem !important; }
-            #game-play-container .mg-mix-btn { min-width: 0; width: auto; }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
 const MINIGAME_LIST = [
-    { id: 'word-search', title: '1. Word Search', desc: 'Tìm từ giấu trong ô chữ', icon: '🔍', ready: true },
-    { id: 'word-scramble', title: '2. Word Scramble', desc: 'Sắp xếp chữ cái thành từ', icon: '🔤', ready: true },
-    { id: 'bingo', title: '3. Bingo', desc: 'Nghe và tìm đúng từ trên bảng', icon: '🎲', ready: true },
-    { id: 'fishing-game', title: '4. Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: true },
-    { id: 'sentence-train', title: '5. Sentence Train', desc: 'Xếp toa từ thành câu đúng', icon: '🚂', ready: true },
-    { id: 'grammar-river', title: '6. Grammar River', desc: 'Nhảy qua đúng giới từ', icon: '🐸', ready: true },
-    { id: 'qa-bridge', title: '7. Q&A Bridge', desc: 'Ghép đúng câu hỏi - trả lời', icon: '🌉', ready: true },
-    { id: 'sentence-doctor', title: '8. Sentence Doctor', desc: 'Tìm và chữa lỗi ngữ pháp', icon: '🩺', ready: true },
-    { id: 'action-race', title: '9. Action Race', desc: 'Đua xe cùng động từ hành động', icon: '🏎️', ready: true },
-    { id: 'feeling-detective', title: '10. Feeling Detective', desc: 'Truy tìm tính từ và trạng thái', icon: '🕵️', ready: true },
-    { id: 'a-or-an-factory', title: '11. A or An Factory', desc: 'Phân loại mạo từ a / an', icon: '🏭', ready: true },
-    { id: 'teacher-says', title: '12. Teacher Says', desc: 'Phản xạ với câu mệnh lệnh', icon: '🤖', ready: true }
+    { id: 'word-search', title: 'Word Search', desc: 'Tìm từ giấu trong ô chữ', icon: '🔍', ready: true },
+    { id: 'memory-match', title: 'Memory Match', desc: 'Lật thẻ ghép cặp', icon: '🧠', ready: false },
+    { id: 'word-scramble', title: 'Word Scramble', desc: 'Sắp xếp chữ cái thành từ', icon: '🔤', ready: false },
+    { id: 'balloon-pop', title: 'Balloon Pop', desc: 'Bấm bóng bay đúng nghĩa', icon: '🎈', ready: false },
+    { id: 'catch-or-skip', title: 'Catch or Skip', desc: 'Bắt đúng, bỏ qua sai', icon: '🎯', ready: false },
+    { id: 'bingo', title: 'Bingo', desc: 'Lô tô từ vựng nghe-chọn', icon: '🎲', ready: false },
+    { id: 'fishing-game', title: 'Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: true },
+    { id: 'spin-wheel', title: 'Spin Wheel', desc: 'Quay vòng may mắn trả lời', icon: '🎡', ready: true },
+    { id: 'tower-builder', title: 'Tower Builder', desc: 'Trả lời đúng xây tháp cao', icon: '🏗️', ready: false },
+    { id: 'flappy-gate', title: 'Flappy Gate', desc: 'Bay qua đúng cổng đáp án', icon: '🐤', ready: true },
+    { id: 'domino-match', title: 'Domino Match', desc: 'Nối domino từ vựng', icon: '🁢', ready: false },
+    { id: 'bunny-rescue', title: 'Bunny Rescue', desc: 'Đoán chữ cứu chú thỏ', icon: '🐰', ready: true }
 ];
 
 function openMiniGameHub() {
@@ -3301,40 +3074,23 @@ function openMiniGameHub() {
     activeExamContext = null; activeRoadmapContext = null; activeTopicId = null; pendingTopicQuiz = null;
     updateNavTabs("Mini Game", "🎮", null);
 
-    ensureMiniGameThemeStyles();
     const grid = document.getElementById('minigame-grid');
-    grid.innerHTML = MINIGAME_LIST.map((g, idx) => {
-        const style = getMiniGamePaletteOrder('hub')[idx % MINIGAME_TOPIC_PALETTES.length];
-        return `
-        <div onclick="openGamePlay('${g.id}')" class="p-3.5 md:p-4 flex flex-col items-center text-center cursor-pointer transition-all group ${style.card} border-2 rounded-[26px] min-h-[132px] justify-between relative shadow-sm pastel-btn">
-            ${!g.ready ? `<span class="absolute top-2 right-2 bg-amber-100 text-amber-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-200">Sắp ra mắt</span>` : ''}
+    grid.innerHTML = MINIGAME_LIST.map(g => `
+        <div onclick="openGamePlay('${g.id}')" class="pastel-card p-3.5 flex flex-col items-center text-center cursor-pointer hover:border-teal-400 transition-all group bg-gradient-to-br from-white to-teal-50/40 min-h-[128px] justify-between relative">
+            ${!g.ready ? `<span class="absolute top-2 right-2 bg-amber-100 text-amber-700 text-[9px] font-black px-2 py-0.5 rounded-full border border-amber-200">Sắp ra mắt</span>` : ''}
             <div class="text-4xl group-hover:scale-110 transition-transform mt-1">${g.icon}</div>
-            <div class="w-full">
-                <h3 class="font-extrabold ${style.num} text-base leading-tight">${g.title}</h3>
-                <p class="text-sm text-gray-700 font-bold mt-1 w-full leading-snug">${g.desc}</p>
+            <div>
+                <h3 class="font-extrabold text-teal-700 text-sm leading-tight">${g.title}</h3>
+                <p class="text-xs text-gray-800 font-bold mt-0.5 w-full whitespace-nowrap overflow-hidden text-ellipsis">${g.desc}</p>
             </div>
-        </div>`;
-    }).join('');
+        </div>`).join('');
 
     switchAppView('view-minigame-hub');
 }
 
 // Đường dẫn file JS riêng của từng game — chỉ tải về máy khi bé THẬT SỰ bấm vào game đó,
 // không bắt tải sẵn hết 12 game ngay từ đầu (giữ app.js gọn nhẹ dù sau này thêm bao nhiêu game).
-const GAME_SCRIPT_MAP = {
-    'word-search': 'assets/js/games/word-search.js?v=mg4',
-    'word-scramble': 'assets/js/games/word-scramble.js?v=mg4',
-    'bingo': 'assets/js/games/bingo.js?v=mg4',
-    'fishing-game': 'assets/js/games/fishing-game.js?v=mg4',
-    'sentence-train': 'assets/js/games/sentence-train.js?v=mg5',
-    'grammar-river': 'assets/js/games/grammar-river.js?v=mg6',
-    'qa-bridge': 'assets/js/games/qa-bridge.js?v=mg7',
-    'sentence-doctor': 'assets/js/games/sentence-doctor.js?v=mg8',
-    'action-race': 'assets/js/games/action-race.js?v=mg9',
-    'feeling-detective': 'assets/js/games/feeling-detective.js?v=mg10',
-    'a-or-an-factory': 'assets/js/games/a-or-an-factory.js?v=mg11',
-    'teacher-says': 'assets/js/games/teacher-says.js?v=mg12'
-};
+const GAME_SCRIPT_MAP = { 'word-search': 'assets/js/games/word-search.js', 'fishing-game': 'assets/js/games/fishing-game.js', 'flappy-gate': 'assets/js/games/flappy-gate.js', 'bunny-rescue': 'assets/js/games/bunny-rescue.js', 'spin-wheel': 'assets/js/games/spin-wheel.js' };
 const loadedGameScripts = {};
 
 function loadGameScript(src) {
@@ -3350,7 +3106,6 @@ function loadGameScript(src) {
 
 async function openGamePlay(gameId) {
     stopSpeaking();
-    ensureMiniGameThemeStyles();
     inMiniGameFlow = true;
     const game = MINIGAME_LIST.find(g => g.id === gameId);
     if (!game) return;
@@ -3376,24 +3131,19 @@ async function openGamePlay(gameId) {
     }
 
     if (gameId === 'word-search') startWordSearchGame();
-    if (gameId === 'word-scramble') startWordScrambleGame();
-    if (gameId === 'bingo') startBingoGame();
     if (gameId === 'fishing-game') startFishingGame();
-    if (gameId === 'sentence-train') startSentenceTrainGame();
-    if (gameId === 'grammar-river') startGrammarRiverGame();
-    if (gameId === 'qa-bridge') startQABridgeGame();
-    if (gameId === 'sentence-doctor') startSentenceDoctorGame();
-    if (gameId === 'action-race') startActionRaceGame();
-    if (gameId === 'feeling-detective') startFeelingDetectiveGame();
-    if (gameId === 'a-or-an-factory') startAOrAnFactoryGame();
-    if (gameId === 'teacher-says') startTeacherSaysGame();
+    if (gameId === 'flappy-gate') startFlappyGateGame();
+    if (gameId === 'bunny-rescue') startBunnyRescueGame();
+    if (gameId === 'spin-wheel') startSpinWheelGame();
 }
 
 /** Lấy nguồn từ vựng thật của chương trình (kho tra nghĩa xây từ Flashcards Library) —
  * chỉ lấy từ ĐƠN (không dấu cách/gạch nối), độ dài 3-7 ký tự để vừa vặn lưới ô chữ. */
-function getWordSearchVocabPool(topicId = 'all') {
-    return getMiniGameVocabPool({ topicId, singleWordOnly: true, minLength: 3, maxLength: 7 })
-        .map(item => ({ w: item.word.toUpperCase(), vi: item.vietnamese }));
+function getWordSearchVocabPool() {
+    const map = wordMeaningMapCache || {};
+    return Object.entries(map)
+        .filter(([w]) => /^[a-z]{3,7}$/.test(w))
+        .map(([w, vi]) => ({ w: w.toUpperCase(), vi }));
 }
 
 tryAutoLogin();
