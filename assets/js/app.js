@@ -567,6 +567,31 @@ async function ensureMiniGameVocabReady() {
     return miniGameVocabCache;
 }
 
+/**
+ * Nguồn học liệu dùng chung cho Mini Game ngữ pháp / câu / hội thoại.
+ * Game chỉ đọc dữ liệu đã chuẩn hoá từ fetchAllQuestionsFlat(), không tự fetch JSON riêng.
+ */
+function getMiniGameSectionPool(sectionCodes = []) {
+    const codes = new Set((Array.isArray(sectionCodes) ? sectionCodes : [sectionCodes]).map(String));
+    const pool = Array.isArray(allQuestionsFlatCache) ? allQuestionsFlatCache : [];
+    return pool
+        .filter(q => codes.has(String(q.sub_topic || '')))
+        .map(q => ({
+            ...q,
+            options: Array.isArray(q.options) ? q.options.slice() : [],
+            options_ipa: Array.isArray(q.options_ipa) ? q.options_ipa.slice() : q.options_ipa
+        }));
+}
+
+async function ensureMiniGameLearningReady(sectionCodes = []) {
+    await fetchAllQuestionsFlat();
+    const pool = getMiniGameSectionPool(sectionCodes);
+    if (!pool.length) {
+        throw new Error(`Không tìm thấy học liệu cho Chuyên mục ${[].concat(sectionCodes).join(', ')}.`);
+    }
+    return pool;
+}
+
 async function fetchAllTopicsData() {
     if (allTopicsDataCache) return allTopicsDataCache;
 
@@ -3235,18 +3260,18 @@ function ensureMiniGameThemeStyles() {
 }
 
 const MINIGAME_LIST = [
-    { id: 'word-search', title: 'Word Search', desc: 'Tìm từ giấu trong ô chữ', icon: '🔍', ready: true },
-    { id: 'memory-match', title: 'Memory Match', desc: 'Lật thẻ ghép từ với nghĩa', icon: '🧠', ready: true },
-    { id: 'word-scramble', title: 'Word Scramble', desc: 'Sắp xếp chữ cái thành từ', icon: '🔤', ready: true },
-    { id: 'balloon-pop', title: 'Balloon Pop', desc: 'Bấm bóng mang từ đúng', icon: '🎈', ready: true },
-    { id: 'catch-or-skip', title: 'Catch or Skip', desc: 'Bắt đúng, bỏ qua sai', icon: '🎯', ready: true },
-    { id: 'bingo', title: 'Bingo', desc: 'Lô tô từ vựng nghe-chọn', icon: '🎲', ready: true },
-    { id: 'fishing-game', title: 'Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: true },
-    { id: 'spin-wheel', title: 'Spin Wheel', desc: 'Quay vòng may mắn trả lời', icon: '🎡', ready: true },
-    { id: 'tower-builder', title: 'Tower Builder', desc: 'Trả lời đúng xây tháp cao', icon: '🏗️', ready: true },
-    { id: 'flappy-gate', title: 'Flappy Gate', desc: 'Bay qua đúng cổng đáp án', icon: '🐤', ready: true },
-    { id: 'domino-match', title: 'Domino Match', desc: 'Nối domino từ vựng', icon: '🁢', ready: true },
-    { id: 'bunny-rescue', title: 'Bunny Rescue', desc: 'Đoán chữ cứu chú thỏ', icon: '🐰', ready: true }
+    { id: 'word-search', title: '1. Word Search', desc: 'Tìm từ giấu trong ô chữ', icon: '🔍', ready: true },
+    { id: 'word-scramble', title: '2. Word Scramble', desc: 'Sắp xếp chữ cái thành từ', icon: '🔤', ready: true },
+    { id: 'bingo', title: '3. Bingo', desc: 'Nghe và tìm đúng từ trên bảng', icon: '🎲', ready: true },
+    { id: 'fishing-game', title: '4. Fishing Game', desc: 'Câu đúng con cá mang từ', icon: '🎣', ready: true },
+    { id: 'sentence-train', title: '5. Sentence Train', desc: 'Xếp toa từ thành câu đúng', icon: '🚂', ready: true },
+    { id: 'grammar-river', title: '6. Grammar River', desc: 'Nhảy qua đúng giới từ', icon: '🐸', ready: true },
+    { id: 'qa-bridge', title: '7. Q&A Bridge', desc: 'Ghép đúng câu hỏi - trả lời', icon: '🌉', ready: true },
+    { id: 'sentence-doctor', title: '8. Sentence Doctor', desc: 'Tìm và chữa lỗi ngữ pháp', icon: '🩺', ready: false },
+    { id: 'action-race', title: '9. Action Race', desc: 'Đua xe cùng động từ hành động', icon: '🏎️', ready: false },
+    { id: 'feeling-detective', title: '10. Feeling Detective', desc: 'Truy tìm tính từ và trạng thái', icon: '🕵️', ready: false },
+    { id: 'a-or-an-factory', title: '11. A or An Factory', desc: 'Phân loại mạo từ a / an', icon: '🏭', ready: false },
+    { id: 'teacher-says', title: '12. Teacher Says', desc: 'Phản xạ với câu mệnh lệnh', icon: '🤖', ready: false }
 ];
 
 function openMiniGameHub() {
@@ -3282,18 +3307,13 @@ function openMiniGameHub() {
 // Đường dẫn file JS riêng của từng game — chỉ tải về máy khi bé THẬT SỰ bấm vào game đó,
 // không bắt tải sẵn hết 12 game ngay từ đầu (giữ app.js gọn nhẹ dù sau này thêm bao nhiêu game).
 const GAME_SCRIPT_MAP = {
-    'word-search': 'assets/js/games/word-search.js?v=mg3',
-    'memory-match': 'assets/js/games/memory-match.js?v=mg3',
-    'word-scramble': 'assets/js/games/word-scramble.js?v=mg3',
-    'balloon-pop': 'assets/js/games/balloon-pop.js?v=mg3',
-    'catch-or-skip': 'assets/js/games/catch-or-skip.js?v=mg3',
-    'bingo': 'assets/js/games/bingo.js?v=mg3',
-    'fishing-game': 'assets/js/games/fishing-game.js?v=mg3',
-    'flappy-gate': 'assets/js/games/flappy-gate.js?v=mg3',
-    'bunny-rescue': 'assets/js/games/bunny-rescue.js?v=mg3',
-    'spin-wheel': 'assets/js/games/spin-wheel.js?v=mg3',
-    'tower-builder': 'assets/js/games/tower-builder.js?v=mg3',
-    'domino-match': 'assets/js/games/domino-match.js?v=mg3'
+    'word-search': 'assets/js/games/word-search.js?v=mg4',
+    'word-scramble': 'assets/js/games/word-scramble.js?v=mg4',
+    'bingo': 'assets/js/games/bingo.js?v=mg4',
+    'fishing-game': 'assets/js/games/fishing-game.js?v=mg4',
+    'sentence-train': 'assets/js/games/sentence-train.js?v=mg5',
+    'grammar-river': 'assets/js/games/grammar-river.js?v=mg6',
+    'qa-bridge': 'assets/js/games/qa-bridge.js?v=mg7'
 };
 const loadedGameScripts = {};
 
@@ -3336,17 +3356,12 @@ async function openGamePlay(gameId) {
     }
 
     if (gameId === 'word-search') startWordSearchGame();
-    if (gameId === 'memory-match') startMemoryMatchGame();
     if (gameId === 'word-scramble') startWordScrambleGame();
-    if (gameId === 'balloon-pop') startBalloonPopGame();
-    if (gameId === 'catch-or-skip') startCatchOrSkipGame();
     if (gameId === 'bingo') startBingoGame();
     if (gameId === 'fishing-game') startFishingGame();
-    if (gameId === 'flappy-gate') startFlappyGateGame();
-    if (gameId === 'bunny-rescue') startBunnyRescueGame();
-    if (gameId === 'spin-wheel') startSpinWheelGame();
-    if (gameId === 'tower-builder') startTowerBuilderGame();
-    if (gameId === 'domino-match') startDominoMatchGame();
+    if (gameId === 'sentence-train') startSentenceTrainGame();
+    if (gameId === 'grammar-river') startGrammarRiverGame();
+    if (gameId === 'qa-bridge') startQABridgeGame();
 }
 
 /** Lấy nguồn từ vựng thật của chương trình (kho tra nghĩa xây từ Flashcards Library) —
