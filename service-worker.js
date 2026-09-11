@@ -49,8 +49,11 @@ self.addEventListener('activate', event => {
 });
 
 // Chặn mọi request GET (bao gồm cả gọi Google Apps Script lấy điểm/lịch sử):
-// - Có mạng: gọi bình thường, lấy được thì lưu đè vào cache để lần sau mất mạng vẫn có bản gần nhất
-// - Mất mạng: dùng lại bản đã cache trước đó (nếu có), thay vì báo lỗi trắng trang
+// - Có mạng: LUÔN ưu tiên gọi thẳng lên server (bỏ qua cache HTTP của trình duyệt bằng
+//   { cache: 'no-store' }, để không bị trình duyệt "lừa" trả về bản cũ nó tự lưu), lấy
+//   được bản mới nhất thì lưu đè vào cache của Service Worker để phòng khi mất mạng.
+// - Mất mạng (fetch lỗi/timeout): lúc này mới dùng lại bản đã cache trước đó, thay vì
+//   báo lỗi trắng trang.
 self.addEventListener('fetch', event => {
     const request = event.request;
 
@@ -58,8 +61,12 @@ self.addEventListener('fetch', event => {
     // vì request ghi dữ liệu không nên bị cache hay "giả lập thành công" khi mất mạng.
     if (request.method !== 'GET') return;
 
+    // Tạo lại request với cache: 'no-store' để ép trình duyệt bỏ qua cache HTTP nội bộ
+    // của chính nó, luôn thật sự hỏi server khi đang có mạng.
+    const networkRequest = new Request(request, { cache: 'no-store' });
+
     event.respondWith(
-        fetch(request)
+        fetch(networkRequest)
             .then(response => {
                 const responseClone = response.clone();
                 caches.open(CACHE_NAME).then(cache => cache.put(request, responseClone));
