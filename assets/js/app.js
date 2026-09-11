@@ -3267,11 +3267,11 @@ const MINIGAME_LIST = [
     { id: 'sentence-train', title: '5. Sentence Train', desc: 'Xếp toa từ thành câu đúng', icon: '🚂', ready: true },
     { id: 'grammar-river', title: '6. Grammar River', desc: 'Nhảy qua đúng giới từ', icon: '🐸', ready: true },
     { id: 'qa-bridge', title: '7. Q&A Bridge', desc: 'Ghép đúng câu hỏi - trả lời', icon: '🌉', ready: true },
-    { id: 'sentence-doctor', title: '8. Sentence Doctor', desc: 'Tìm và chữa lỗi ngữ pháp', icon: '🩺', ready: false },
-    { id: 'action-race', title: '9. Action Race', desc: 'Đua xe cùng động từ hành động', icon: '🏎️', ready: false },
-    { id: 'feeling-detective', title: '10. Feeling Detective', desc: 'Truy tìm tính từ và trạng thái', icon: '🕵️', ready: false },
-    { id: 'a-or-an-factory', title: '11. A or An Factory', desc: 'Phân loại mạo từ a / an', icon: '🏭', ready: false },
-    { id: 'teacher-says', title: '12. Teacher Says', desc: 'Phản xạ với câu mệnh lệnh', icon: '🤖', ready: false }
+    { id: 'sentence-doctor', title: '8. Sentence Doctor', desc: 'Tìm và chữa lỗi ngữ pháp', icon: '🩺', ready: true },
+    { id: 'action-race', title: '9. Action Race', desc: 'Đua xe cùng động từ hành động', icon: '🏎️', ready: true },
+    { id: 'feeling-detective', title: '10. Feeling Detective', desc: 'Truy tìm tính từ và trạng thái', icon: '🕵️', ready: true },
+    { id: 'a-or-an-factory', title: '11. A or An Factory', desc: 'Phân loại mạo từ a / an', icon: '🏭', ready: true },
+    { id: 'teacher-says', title: '12. Teacher Says', desc: 'Phản xạ với câu mệnh lệnh', icon: '🤖', ready: true }
 ];
 
 function openMiniGameHub() {
@@ -3313,7 +3313,12 @@ const GAME_SCRIPT_MAP = {
     'fishing-game': 'assets/js/games/fishing-game.js?v=mg4',
     'sentence-train': 'assets/js/games/sentence-train.js?v=mg5',
     'grammar-river': 'assets/js/games/grammar-river.js?v=mg6',
-    'qa-bridge': 'assets/js/games/qa-bridge.js?v=mg7'
+    'qa-bridge': 'assets/js/games/qa-bridge.js?v=mg7',
+    'sentence-doctor': 'assets/js/games/sentence-doctor.js?v=mg8',
+    'action-race': 'assets/js/games/action-race.js?v=mg9',
+    'feeling-detective': 'assets/js/games/feeling-detective.js?v=mg10',
+    'a-or-an-factory': 'assets/js/games/a-or-an-factory.js?v=mg11',
+    'teacher-says': 'assets/js/games/teacher-says.js?v=mg12'
 };
 const loadedGameScripts = {};
 
@@ -3362,6 +3367,11 @@ async function openGamePlay(gameId) {
     if (gameId === 'sentence-train') startSentenceTrainGame();
     if (gameId === 'grammar-river') startGrammarRiverGame();
     if (gameId === 'qa-bridge') startQABridgeGame();
+    if (gameId === 'sentence-doctor') startSentenceDoctorGame();
+    if (gameId === 'action-race') startActionRaceGame();
+    if (gameId === 'feeling-detective') startFeelingDetectiveGame();
+    if (gameId === 'a-or-an-factory') startAOrAnFactoryGame();
+    if (gameId === 'teacher-says') startTeacherSaysGame();
 }
 
 /** Lấy nguồn từ vựng thật của chương trình (kho tra nghĩa xây từ Flashcards Library) —
