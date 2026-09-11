@@ -38,20 +38,20 @@ function renderWordSearchDifficultyScreen() {
     container.innerHTML = `
         <div class="pastel-card bg-white p-5 flex flex-col items-center text-center">
             <div class="text-5xl mb-2">🔍</div>
-            <h3 class="font-extrabold text-teal-700 text-base mb-1">Word Search</h3>
-            <p class="text-xs text-gray-500 font-bold mb-3">Chọn độ khó để bắt đầu nhé!</p>
+            <h3 class="font-extrabold text-teal-700 text-lg mb-1">Word Search</h3>
+            <p class="text-sm text-gray-500 font-bold mb-3">Chọn độ khó để bắt đầu nhé!</p>
             <div class="grid grid-cols-3 gap-2.5 w-full max-w-sm mb-3">
                 ${Object.entries(WS_DIFFICULTIES).map(([key, d]) => `
                     <button onclick="wsStartWithDifficulty('${key}')" class="pastel-btn flex flex-col items-center gap-1 p-3 rounded-2xl border-2 border-${d.color}-200 bg-${d.color}-50 hover:bg-${d.color}-100 text-${d.color}-700 shadow-sm">
-                        <span class="font-black text-sm">${d.label}</span>
-                        <span class="text-[10px] font-bold opacity-80">${d.words} từ</span>
-                        <span class="text-[10px] font-bold opacity-70">lưới ${d.size}x${d.size}</span>
-                        <span class="text-[9px] font-bold opacity-60">(${d.dirsLabel})</span>
+                        <span class="font-black text-base">${d.label}</span>
+                        <span class="text-xs font-bold opacity-80">${d.words} từ</span>
+                        <span class="text-xs font-bold opacity-70">lưới ${d.size}x${d.size}</span>
+                        <span class="text-[10px] font-bold opacity-60">(${d.dirsLabel})</span>
                     </button>
                 `).join('')}
             </div>
-            <button onclick="wsToggleRules()" class="text-xs font-black text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-200 pastel-btn">📖 Xem luật chơi</button>
-            <div id="ws-rules-panel" class="hidden mt-3 w-full max-w-sm text-left bg-indigo-50/60 border border-indigo-200 rounded-2xl p-3.5 text-xs text-gray-600 font-bold leading-relaxed">
+            <button onclick="wsToggleRules()" class="text-sm font-black text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-200 pastel-btn">📖 Xem luật chơi</button>
+            <div id="ws-rules-panel" class="hidden mt-3 w-full max-w-sm text-left bg-indigo-50/60 border border-indigo-200 rounded-2xl p-3.5 text-sm text-gray-600 font-bold leading-relaxed">
                 <p class="mb-1.5">🔤 Từ tiếng Anh được giấu trong lưới theo <b>hàng ngang</b> hoặc <b>hàng dọc</b> — riêng độ <b>Vừa/Khó</b> còn giấu thêm theo <b>đường chéo</b> nữa nhé!</p>
                 <p class="mb-1.5">↔️ Mỗi từ có thể đọc <b>xuôi</b> (trái→phải, trên→dưới) hoặc <b>ngược</b> (phải→trái, dưới→trên) — cứ thử cả 2 chiều nếu chưa thấy.</p>
                 <p>👆 Chạm vào chữ cái đầu tiên, rồi <b>kéo thẳng một đường</b> tới chữ cái cuối cùng của từ đó để chọn.</p>
@@ -160,16 +160,16 @@ function renderWordSearchUI(chosen) {
     const container = document.getElementById('game-play-container');
     container.innerHTML = `
         <div class="pastel-card bg-white p-3 md:p-4 flex flex-col items-center">
-            <div class="flex items-center justify-between w-full max-w-[380px] mb-2">
-                <span id="ws-timer" class="text-xs font-black text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">⏱️ 00:00</span>
-                <button id="ws-hint-btn" onclick="wsUseHint()" class="text-xs font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 pastel-btn">💡 Gợi ý (${wsHintsLeft})</button>
-                <button onclick="renderWordSearchDifficultyScreen()" class="text-xs font-black text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full border border-gray-200 pastel-btn">🔄 Chơi lại</button>
+            <div class="flex items-center justify-between w-full max-w-[380px] mb-2 gap-1.5">
+                <span id="ws-timer" class="text-xs md:text-sm font-black text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">⏱️ 00:00</span>
+                <button id="ws-hint-btn" onclick="wsUseHint()" class="text-xs md:text-sm font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 pastel-btn">💡 Gợi ý (${wsHintsLeft})</button>
+                <button onclick="wsGenerateAndRender()" class="text-xs md:text-sm font-black text-white bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-2.5 py-1 rounded-full shadow-sm pastel-btn">🔄 Chơi lại</button>
             </div>
-            <p class="text-xs md:text-sm font-bold text-gray-500 mb-1">Kéo qua các ô để nối thành 1 từ tiếng Anh nhé!</p>
-            <p class="text-[10px] text-indigo-400 font-bold mb-2">💡 Từ giấu theo ${(WS_DIFFICULTIES[wsCurrentDifficulty] || {}).dirsLabel || 'ngang, dọc'}, có thể đọc xuôi hoặc ngược</p>
+            <p class="text-sm md:text-base font-bold text-gray-500 mb-1">Kéo qua các ô để nối thành 1 từ tiếng Anh nhé!</p>
+            <p class="text-xs text-indigo-400 font-bold mb-2">💡 Từ giấu theo ${(WS_DIFFICULTIES[wsCurrentDifficulty] || {}).dirsLabel || 'ngang, dọc'}, có thể đọc xuôi hoặc ngược</p>
             <div id="ws-grid" class="grid gap-1 mb-3" style="grid-template-columns: repeat(${wsSize}, 1fr); max-width: 400px; width: 100%; touch-action: none; user-select: none;"></div>
             <div id="ws-wordlist" class="flex flex-wrap gap-2 justify-center mb-2"></div>
-            <p id="ws-status" class="text-xs font-bold text-pink-500 text-center min-h-[18px]"></p>
+            <p id="ws-status" class="text-sm font-bold text-pink-500 text-center min-h-[18px]"></p>
         </div>`;
 
     const gridEl = document.getElementById('ws-grid');
@@ -178,14 +178,14 @@ function renderWordSearchUI(chosen) {
             const cell = document.createElement('div');
             cell.textContent = wsGrid[r][c];
             cell.dataset.r = r; cell.dataset.c = c;
-            cell.className = 'ws-cell aspect-square flex items-center justify-center text-xs md:text-sm font-black rounded-lg bg-white text-gray-700 cursor-pointer border-2 border-pink-100 transition-transform duration-150';
+            cell.className = 'ws-cell aspect-square flex items-center justify-center text-sm md:text-lg font-black rounded-lg bg-white text-gray-700 cursor-pointer border-2 border-pink-100 transition-transform duration-150';
             gridEl.appendChild(cell);
         }
     }
 
     const wordlistEl = document.getElementById('ws-wordlist');
     wordlistEl.innerHTML = chosen.map(item => `
-        <span id="ws-pill-${item.w}" class="text-xs font-bold px-3 py-1 rounded-full bg-white border-2 border-pink-200 text-gray-600 transition-all duration-300">${escapeHtml(item.vi)}</span>
+        <span id="ws-pill-${item.w}" class="text-sm md:text-base font-bold px-3 py-1 rounded-full bg-white border-2 border-pink-200 text-gray-600 transition-all duration-300">${escapeHtml(item.vi)}</span>
     `).join('');
 
     wsBindEvents(gridEl);
@@ -279,45 +279,28 @@ function wsMarkFound(word, cells) {
     const statusEl = document.getElementById('ws-status');
     const total = Object.keys(wsSolutions).length;
     if (wsFoundWords.size >= total) {
-        clearInterval(wsTimerInterval);
-        const secs = Math.floor((Date.now() - wsStartTime) / 1000);
-        confetti({ particleCount: 80, spread: 75, origin: { y: 0.6 } });
-        wsShowCompletionScreen(secs, total);
+        wsFinishGame(total, gridEl, statusEl);
     } else {
         statusEl.textContent = `Đúng rồi! Tìm được "${word}" (${wsFoundWords.size}/${total})`;
     }
 }
 
-function wsShowCompletionScreen(secs, total) {
+// Bé đã tìm đủ hết từ: CHỦ Ý GIỮ NGUYÊN màn hình (lưới đã tô xanh + danh sách từ đã gạch) để
+// bé nhìn lại thành quả của mình, KHÔNG tự động chuyển sang màn hình khác. Chỉ dừng đồng hồ,
+// bắn confetti ăn mừng và báo kết quả ngay trên dòng trạng thái. Bé chỉ rời màn này khi tự
+// bấm nút "Chơi lại" (ra ván mới cùng độ khó) hoặc "Chọn game khác" / chạm vào tên game trên
+// breadcrumb (quay về màn chọn độ khó).
+function wsFinishGame(total, gridEl, statusEl) {
+    clearInterval(wsTimerInterval);
+    const secs = Math.floor((Date.now() - wsStartTime) / 1000);
     const mm = String(Math.floor(secs / 60)).padStart(2, '0');
     const ss = String(secs % 60).padStart(2, '0');
-    setTimeout(() => {
-        const container = document.getElementById('game-play-container');
-        const diff = WS_DIFFICULTIES[wsCurrentDifficulty] || WS_DIFFICULTIES.medium;
-        container.innerHTML = `
-            <div class="pastel-card bg-white p-6 flex flex-col items-center text-center">
-                <div class="text-5xl mb-2">🎉</div>
-                <h3 class="font-extrabold text-emerald-600 text-lg mb-3">Xuất sắc! Bé đã tìm hết ${total} từ!</h3>
-                <div class="grid grid-cols-3 gap-2.5 w-full max-w-sm mb-4">
-                    <div class="bg-indigo-50 rounded-xl p-2.5 border border-indigo-200">
-                        <div class="text-[10px] font-bold text-indigo-500">Thời gian</div>
-                        <div class="text-base font-black text-indigo-700">${mm}:${ss}</div>
-                    </div>
-                    <div class="bg-amber-50 rounded-xl p-2.5 border border-amber-200">
-                        <div class="text-[10px] font-bold text-amber-500">Gợi ý dùng</div>
-                        <div class="text-base font-black text-amber-700">${wsHintsUsed}/${total}</div>
-                    </div>
-                    <div class="bg-${diff.color}-50 rounded-xl p-2.5 border border-${diff.color}-200">
-                        <div class="text-[10px] font-bold text-${diff.color}-500">Độ khó</div>
-                        <div class="text-base font-black text-${diff.color}-700">${diff.label}</div>
-                    </div>
-                </div>
-                <div class="flex gap-2.5 w-full max-w-sm">
-                    <button onclick="wsGenerateAndRender()" class="flex-1 py-2.5 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-black rounded-2xl text-sm pastel-btn shadow-md">🔄 Chơi lại (${diff.label})</button>
-                    <button onclick="renderWordSearchDifficultyScreen()" class="flex-1 py-2.5 bg-gray-100 text-gray-600 font-black rounded-2xl text-sm pastel-btn">Đổi độ khó</button>
-                </div>
-            </div>`;
-    }, 600);
+    confetti({ particleCount: 80, spread: 75, origin: { y: 0.6 } });
+    gridEl.classList.add('pointer-events-none'); // đã xong hết -> khoá không cho kéo chọn thêm nữa
+    const hintBtn = document.getElementById('ws-hint-btn');
+    if (hintBtn) hintBtn.classList.add('opacity-40', 'pointer-events-none');
+    statusEl.className = 'text-sm md:text-base font-black text-emerald-600 text-center mt-1';
+    statusEl.textContent = `🎉 Xuất sắc! Bé đã tìm hết ${total} từ trong ${mm}:${ss} (dùng ${wsHintsUsed} gợi ý)! Bấm "Chơi lại" để thử ván mới nhé.`;
 }
 
 function wsBindEvents(gridEl) {
