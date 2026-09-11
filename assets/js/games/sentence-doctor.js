@@ -226,14 +226,14 @@ function sdocDiagnose(index) {
     if (token && token.wrong) {
         sdocStage = 'cure';
         sdocScore += 10;
-        playCorrectSound?.();
+        playAudio('correct');
         sdocRenderCase();
         const status = document.getElementById('sdoc-status');
         if (status) { status.className = 'min-h-[30px] text-center text-sm md:text-base font-black mt-2 text-cyan-700'; status.textContent = `✅ Chẩn đoán đúng: “${sdocWrongOption}” đang làm câu bị sai.`; }
     } else {
         sdocWrong++;
         sdocStreak = 0;
-        playWrongSound?.();
+        playAudio('wrong');
         if (btn) {
             btn.classList.add('sdoc-shake', 'border-rose-400', 'bg-rose-50');
             setTimeout(() => btn.classList.remove('sdoc-shake', 'border-rose-400', 'bg-rose-50'), 450);
@@ -254,7 +254,7 @@ function sdocCure(index) {
         sdocScore += 20 + Math.min(sdocStreak, 5) * 2;
         sdocStreak++;
         sdocBestStreak = Math.max(sdocBestStreak, sdocStreak);
-        playCorrectSound?.();
+        playAudio('correct');
         if (btn) btn.className = 'sdoc-heal min-h-[56px] rounded-2xl border-2 bg-emerald-100 border-emerald-400 text-emerald-700 px-4 py-3 text-base md:text-lg font-black shadow-sm';
         sdocShowHealEffect();
         const correctSentence = sdocExtractSentence(sdocCurrent.question_text).replace('______', answer);
@@ -265,7 +265,7 @@ function sdocCure(index) {
     } else {
         sdocWrong++;
         sdocStreak = 0;
-        playWrongSound?.();
+        playAudio('wrong');
         if (btn) {
             btn.classList.add('sdoc-shake');
             btn.classList.remove('bg-pink-50','bg-indigo-50','bg-amber-50','bg-emerald-50');
