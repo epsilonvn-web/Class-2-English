@@ -1,17 +1,12 @@
 // ==========================================================================
-// SERVICE WORKER - cho phép cài app "Tiếng Anh Lớp 2" ra màn hình chính (PWA)
-// và mở được tạm thời khi mất mạng, dùng lại dữ liệu tải lần gần nhất.
-//
-// LƯU Ý QUAN TRỌNG: mỗi khi cập nhật index.html/app.js/dữ liệu JSON, nên đổi
-// số CACHE_NAME bên dưới (VD: v1 -> v2) để trình duyệt biết cần tải bản mới,
-// tránh học sinh bị kẹt ở bản cache cũ (câu hỏi/đáp án cũ không được cập nhật).
+// SERVICE WORKER - Tiếng Anh Lớp 2 - Cô giáo Thỏ Ngọc
+// NETWORK-FIRST cho file cùng domain.
+// QUAN TRỌNG: mọi request cross-origin (đặc biệt Google TTS) để trình duyệt
+// xử lý trực tiếp, Service Worker KHÔNG can thiệp.
 // ==========================================================================
 
-const CACHE_NAME = 'ta-lop2-tho-ngoc-v2';
+const CACHE_NAME = 'ta-lop2-tho-ngoc-v3';
 
-// Các file "khung" của app - cần có để app mở lên được dù đang mất mạng.
-// QUAN TRỌNG: service-worker.js và manifest.json nằm ở GỐC thư mục (cùng cấp
-// với index.html), nên mọi đường dẫn ở đây đều tính từ gốc.
 const APP_SHELL = [
     './',
     './index.html',
@@ -19,61 +14,66 @@ const APP_SHELL = [
     './favicon.svg',
     './assets/js/app.js',
     './assets/images/icon-192.png',
-    './assets/images/icon-512.png',
-    './assets/data/kho_hoc_english_part1.json',
-    './assets/data/kho_hoc_english_part2.json',
-    './assets/data/de_thi_english_2.json',
-    './assets/data/alphabet_english_2.json',
-    './assets/data/ipa_english_2.json'
+    './assets/images/icon-512.png'
 ];
 
-// Cài đặt lần đầu: tải sẵn các file khung + toàn bộ kho câu hỏi vào cache,
-// để học sinh có thể ôn bài ngay cả khi đang ở nơi sóng yếu/mất mạng.
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(APP_SHELL))
-            .catch(err => console.error('Service Worker: lỗi khi cache app shell', err))
+            .then((cache) =>
+                cache.addAll(
+                    APP_SHELL.map((url) => new Request(url, { cache: 'reload' }))
+                )
+            )
+            .catch(() => {})
+            .then(() => self.skipWaiting())
     );
-    self.skipWaiting(); // áp dụng bản Service Worker mới ngay, không cần đợi tab cũ đóng hết
 });
 
-// Kích hoạt: dọn các cache phiên bản cũ, tránh chiếm dung lượng và dùng nhầm dữ liệu cũ
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then(keys =>
-            Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
-        )
+        caches.keys()
+            .then((keys) =>
+                Promise.all(
+                    keys
+                        .filter((key) => key !== CACHE_NAME)
+                        .map((key) => caches.delete(key))
+                )
+            )
+            .then(() => self.clients.claim())
     );
-    self.clients.claim();
 });
 
-// Chặn mọi request GET (bao gồm cả gọi Google Apps Script lấy điểm/lịch sử):
-// - Có mạng: LUÔN ưu tiên gọi thẳng lên server (bỏ qua cache HTTP của trình duyệt bằng
-//   { cache: 'no-store' }, để không bị trình duyệt "lừa" trả về bản cũ nó tự lưu), lấy
-//   được bản mới nhất thì lưu đè vào cache của Service Worker để phòng khi mất mạng.
-// - Mất mạng (fetch lỗi/timeout): lúc này mới dùng lại bản đã cache trước đó, thay vì
-//   báo lỗi trắng trang.
-self.addEventListener('fetch', event => {
-    const request = event.request;
+self.addEventListener('message', (event) => {
+    if (event.data === 'SKIP_WAITING') self.skipWaiting();
+});
 
-    // Chỉ can thiệp GET - bỏ qua POST (nộp bài, lưu điểm, đăng ký/đăng nhập lên Google Sheet),
-    // vì request ghi dữ liệu không nên bị cache hay "giả lập thành công" khi mất mạng.
-    if (request.method !== 'GET') return;
+self.addEventListener('fetch', (event) => {
+    const req = event.request;
 
-    // Tạo lại request với cache: 'no-store' để ép trình duyệt bỏ qua cache HTTP nội bộ
-    // của chính nó, luôn thật sự hỏi server khi đang có mạng.
-    const networkRequest = new Request(request, { cache: 'no-store' });
+    if (req.method !== 'GET') return;
+
+    const url = new URL(req.url);
+
+    // Không can thiệp dữ liệu động và MỌI request ngoài domain.
+    // Google Translate TTS thuộc cross-origin, nên browser sẽ gọi trực tiếp.
+    const isDynamicData = url.pathname.includes('/assets/data/');
+    const isCrossOrigin = url.origin !== self.location.origin;
+
+    if (isDynamicData || isCrossOrigin) return;
 
     event.respondWith(
-        fetch(networkRequest)
-            .then(response => {
-                const responseClone = response.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(request, responseClone));
-                return response;
+        fetch(new Request(req.url, { cache: 'no-store' }))
+            .then((res) => {
+                const clone = res.clone();
+                caches.open(CACHE_NAME)
+                    .then((cache) => cache.put(req, clone))
+                    .catch(() => {});
+                return res;
             })
             .catch(() =>
-                caches.match(request).then(cached => cached || caches.match('./index.html'))
+                caches.match(req)
+                    .then((cached) => cached || caches.match('./index.html'))
             )
     );
 });
