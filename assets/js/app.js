@@ -2905,6 +2905,26 @@ function stopSpeaking() {
             banMaiAudio.onended = null;
             banMaiAudio.onerror = null;
         }
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    } catch (e) {}
+}
+
+// Google TTS vẫn là nguồn phát chính. Chỉ dùng Web Speech của trình duyệt
+// làm phương án dự phòng khi Google Translate TTS bị nghẽn/chặn tạm thời.
+function speakBrowserTTSFallback(text, lang, rate) {
+    try {
+        if (!('speechSynthesis' in window) || !text) return;
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(String(text));
+        const isEnglish = lang === 'en';
+        utter.lang = isEnglish ? 'en-US' : 'vi-VN';
+        utter.rate = Math.max(0.5, Math.min(1.5, Number(rate) || 1));
+
+        const voices = window.speechSynthesis.getVoices() || [];
+        const prefix = isEnglish ? 'en' : 'vi';
+        const candidates = voices.filter(v => String(v.lang || '').toLowerCase().startsWith(prefix));
+        utter.voice = candidates.find(v => /google/i.test(v.name || '')) || candidates[0] || null;
+        window.speechSynthesis.speak(utter);
     } catch (e) {}
 }
 
@@ -2945,43 +2965,54 @@ function speakGoogleTTS(text, lang, rate, isRetry = false) {
 
         if (cleanText.length <= 180) {
             const encoded = encodeURIComponent(cleanText);
-            // Google Translate TTS là API KHÔNG CHÍNH THỨC (miễn phí, không cần key) — sau khi gọi
-            // liên tục nhiều lần trong 1 phiên học, đôi khi bị nghẽn/từ chối tạm thời (giống hiện tượng
-            // "mất âm thanh từ câu 36 trở đi"). Trước đây lỗi này bị NUỐT ÂM THẦM (catch rỗng), giờ
-            // tự động THỬ LẠI 1 LẦN sau 500ms nếu tải lỗi, để tự phục hồi khi Google chỉ nghẽn tạm thời.
-            banMaiAudio.onerror = () => {
+            let failureHandled = false;
+            const handleFailure = () => {
+                if (failureHandled) return;
+                failureHandled = true;
                 banMaiAudio.onerror = null;
-                if (!isRetry) setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
+                if (!isRetry) {
+                    setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
+                } else {
+                    speakBrowserTTSFallback(cleanText, lang, rate);
+                }
             };
+
+            banMaiAudio.onerror = handleFailure;
+            banMaiAudio.onended = null;
             banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    if (!isRetry) setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
-                });
-            }
+            if (playPromise !== undefined) playPromise.catch(handleFailure);
             return;
         }
 
         const sentences = cleanText.match(/[^.!?\n]+[.!?\n]*/g) || [cleanText];
         let sIdx = 0;
-        function playSentence() {
-            if (sIdx >= sentences.length) return;
-            const s = sentences[sIdx++].trim();
-            if (!s) { playSentence(); return; }
-            const encoded = encodeURIComponent(s);
+        let fallbackUsed = false;
+        const fallbackAll = () => {
+            if (fallbackUsed) return;
+            fallbackUsed = true;
             banMaiAudio.onerror = null;
+            banMaiAudio.onended = null;
+            speakBrowserTTSFallback(cleanText, lang, rate);
+        };
+
+        function playSentence() {
+            if (sIdx >= sentences.length || fallbackUsed) return;
+            const sentence = sentences[sIdx++].trim();
+            if (!sentence) { playSentence(); return; }
+            const encoded = encodeURIComponent(sentence);
+            banMaiAudio.onerror = fallbackAll;
             banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             banMaiAudio.onended = playSentence;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {});
-            }
+            if (playPromise !== undefined) playPromise.catch(fallbackAll);
         }
         playSentence();
-    } catch (err) {}
+    } catch (err) {
+        speakBrowserTTSFallback(text, lang, rate);
+    }
 }
 
 function speakCurrentQuestion() {
