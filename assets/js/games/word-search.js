@@ -3,6 +3,7 @@
 // ==========================================
 // ---------- WORD SEARCH (đã nâng cấp: chọn độ khó, đồng hồ, gợi ý, chơi lại) ----------
 let wsGrid = [], wsSolutions = {}, wsFoundWords = new Set(), wsPlacedCells = {};
+let wsTopicId = 'all';
 let wsSelecting = false, wsStartCell = null, wsCurrentPath = [];
 let wsSize = 9, wsWordCount = 6;
 let wsCurrentDirs = null;
@@ -26,6 +27,22 @@ async function startWordSearchGame() {
         alert('Không tải được từ vựng cho Word Search: ' + e.message);
         return;
     }
+    wsRenderTopicScreen();
+}
+
+function wsRenderTopicScreen() {
+    clearInterval(wsTimerInterval);
+    headerLevel3ClickHandler = null;
+    document.getElementById('game-play-container').innerHTML = renderMiniGameTopicMenu({
+        gameKey: 'word-search',
+        onChoose: 'wsChooseTopic',
+        subtitle: 'Chọn 1 trong 6 Nhóm từ vựng để bắt đầu tìm từ nhé!',
+        countFilter: item => /^[A-Za-z]+$/.test(item.word || '') && item.word.length >= 3 && item.word.length <= 7
+    });
+}
+
+function wsChooseTopic(topicId) {
+    wsTopicId = topicId;
     renderWordSearchDifficultyScreen();
 }
 
@@ -56,6 +73,7 @@ function renderWordSearchDifficultyScreen() {
                 <p class="mb-1.5">↔️ Mỗi từ có thể đọc <b>xuôi</b> (trái→phải, trên→dưới) hoặc <b>ngược</b> (phải→trái, dưới→trên) — cứ thử cả 2 chiều nếu chưa thấy.</p>
                 <p>👆 Chạm vào chữ cái đầu tiên, rồi <b>kéo thẳng một đường</b> tới chữ cái cuối cùng của từ đó để chọn.</p>
             </div>
+            <button onclick="wsRenderTopicScreen()" class="mt-3 text-sm font-black text-pink-600 bg-pink-50 border border-pink-200 px-4 py-2 rounded-xl pastel-btn">← Chọn lại nhóm từ</button>
         </div>`;
 }
 
@@ -74,7 +92,7 @@ function wsStartWithDifficulty(diffKey) {
 }
 
 function wsGenerateAndRender() {
-    const pool = shuffleArray(getWordSearchVocabPool()).filter(item => item.w.length <= wsSize);
+    const pool = shuffleArray(getWordSearchVocabPool(wsTopicId)).filter(item => item.w.length <= wsSize);
     let poolIdx = 0;
     const usedWords = new Set();
     const chosen = [];

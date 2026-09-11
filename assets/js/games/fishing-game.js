@@ -5,6 +5,7 @@
 // bé chạm/click đúng con cá mang từ khớp với nghĩa đó để "câu" được cá. Cá sai chạm vào sẽ
 // lặn xuống rồi nổi lại, bé được thử lại tới khi câu đúng (không bị mất lượt/qua vòng khi sai).
 let fgPool = [];
+let fgTopicId = 'all';
 let fgCurrentDifficulty = 'medium';
 let fgRoundIndex = 0, fgScore = 0, fgWrongCount = 0;
 let fgUsedWords = new Set();
@@ -32,15 +33,30 @@ async function startFishingGame() {
         alert('Không tải được từ vựng cho Fishing Game: ' + e.message);
         return;
     }
-    renderFishingDifficultyScreen();
+    fgRenderTopicScreen();
 }
 
 /** Lấy nguồn từ vựng thật của chương trình (kho tra nghĩa xây từ Flashcards Library, mục 2
  * Vocabulary) — giống hệt nguồn Word Search đang dùng, chỉ khác là KHÔNG giới hạn độ dài từ
  * (Word Search giới hạn 3-7 ký tự để vừa lưới ô chữ, Fishing Game không cần vừa lưới nào cả). */
-function getFishingVocabPool() {
-    const map = wordMeaningMapCache || {};
-    return Object.entries(map).map(([w, vi]) => ({ w: w.toUpperCase(), vi }));
+function getFishingVocabPool(topicId = fgTopicId) {
+    return getMiniGameVocabPool({ topicId }).map(item => ({ w: item.word.toUpperCase(), vi: item.vietnamese }));
+}
+
+function fgRenderTopicScreen() {
+    clearInterval(fgTimerInterval);
+    headerLevel3ClickHandler = null;
+    document.getElementById('game-play-container').innerHTML = renderMiniGameTopicMenu({
+        gameKey: 'fishing-game',
+        onChoose: 'fgChooseTopic',
+        subtitle: 'Chọn 1 trong 6 Nhóm từ vựng để thả câu nhé!',
+        countFilter: item => item.word && item.vietnamese
+    });
+}
+
+function fgChooseTopic(topicId) {
+    fgTopicId = topicId;
+    renderFishingDifficultyScreen();
 }
 
 function renderFishingDifficultyScreen() {
@@ -69,6 +85,7 @@ function renderFishingDifficultyScreen() {
                 <p class="mb-1.5">🎯 Con chạm/click đúng con cá mang từ tiếng Anh <b>khớp với nghĩa đó</b> để câu được cá!</p>
                 <p>❌ Câu nhầm cá khác thì con cá đó lặn xuống một chút rồi nổi lại — con cứ thử tiếp tới khi câu trúng cá đúng nhé!</p>
             </div>
+            <button onclick="fgRenderTopicScreen()" class="mt-3 text-sm font-black text-pink-600 bg-pink-50 border border-pink-200 px-4 py-2 rounded-xl pastel-btn">← Chọn lại nhóm từ</button>
         </div>`;
 }
 
@@ -84,7 +101,7 @@ function fgStartWithDifficulty(diffKey) {
     fgScore = 0;
     fgWrongCount = 0;
     fgUsedWords = new Set();
-    fgPool = shuffleArray(getFishingVocabPool());
+    fgPool = shuffleArray(getFishingVocabPool(fgTopicId));
 
     if (fgPool.length < diff.rounds + diff.fishCount) {
         document.getElementById('game-play-container').innerHTML = `<p class="text-center text-gray-500 font-bold py-8">Chưa đủ từ vựng phù hợp để chơi Fishing Game, bé quay lại sau nhé!</p>`;
