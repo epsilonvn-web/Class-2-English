@@ -640,19 +640,34 @@
             </button>
         </div>
     </div>
+    <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
+    <script src="assets/js/app.js?v=6.9"></script>
 
-    <!-- ĐĂNG KÝ SERVICE WORKER (PWA) - chỉ đăng ký khi trình duyệt hỗ trợ, không chặn tải trang -->
+    <!-- ĐĂNG KÝ SERVICE WORKER (PWA) — đồng bộ cách cập nhật với bản Tiếng Anh 1 đang chạy ổn trên GitHub. -->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js').catch(err => {
-                    console.warn('Không đăng ký được Service Worker:', err);
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+                    reg.update().catch(function () {});
+                    reg.addEventListener('updatefound', function () {
+                        var sw = reg.installing;
+                        if (!sw) return;
+                        sw.addEventListener('statechange', function () {
+                            if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                                sw.postMessage('SKIP_WAITING');
+                            }
+                        });
+                    });
+                }).catch(function (err) { console.warn('Service Worker chưa đăng ký được:', err); });
+
+                var refreshed = false;
+                navigator.serviceWorker.addEventListener('controllerchange', function () {
+                    if (refreshed) return;
+                    refreshed = true;
+                    window.location.reload();
                 });
             });
         }
     </script>
-
-    <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
-    <script src="assets/js/app.js?v=6.7"></script>
 </body>
 </html>
