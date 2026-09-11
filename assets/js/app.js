@@ -2903,33 +2903,11 @@ function stopSpeaking() {
             banMaiAudio.pause();
             banMaiAudio.currentTime = 0;
             banMaiAudio.onended = null;
-            banMaiAudio.onerror = null;
         }
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     } catch (e) {}
 }
 
-// Google TTS vẫn là nguồn phát chính. Chỉ dùng Web Speech của trình duyệt
-// làm phương án dự phòng khi Google Translate TTS bị nghẽn/chặn tạm thời.
-function speakBrowserTTSFallback(text, lang, rate) {
-    try {
-        if (!('speechSynthesis' in window) || !text) return;
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(String(text));
-        const isEnglish = lang === 'en';
-        utter.lang = isEnglish ? 'en-US' : 'vi-VN';
-        utter.rate = Math.max(0.5, Math.min(1.5, Number(rate) || 1));
-
-        const voices = window.speechSynthesis.getVoices() || [];
-        const prefix = isEnglish ? 'en' : 'vi';
-        const candidates = voices.filter(v => String(v.lang || '').toLowerCase().startsWith(prefix));
-        utter.voice = candidates.find(v => /google/i.test(v.name || '')) || candidates[0] || null;
-        window.speechSynthesis.speak(utter);
-    } catch (e) {}
-}
-
-/** Đọc to toàn bộ nội dung khối "Nhận xét sư phạm" trong báo cáo lịch sử — lấy đúng text
- * đang hiển thị trong DOM (đã chuẩn hoá từ pedagogical evaluation), không đọc lại dữ liệu thô. */
+/** Đọc to toàn bộ nội dung khối "Nhận xét sư phạm" trong báo cáo lịch sử. */
 function speakPedagogicalEvaluation() {
     const box = document.getElementById('pedagogical-evaluation-box');
     if (!box) return;
@@ -2938,19 +2916,12 @@ function speakPedagogicalEvaluation() {
     speakVietnamese(text, 0.96);
 }
 
+// Giữ đúng cơ chế bản cũ đang chạy ổn: gọi trực tiếp Google Translate TTS,
+// KHÔNG dùng Web Speech / SpeechSynthesis làm fallback.
 function speakVietnamese(text, rate = 0.96) {
     if (!text) return;
-    speakGoogleTTS(text, 'vi', rate);
-}
-
-function speakEnglish(text, rate = 0.92) {
-    if (!text) return;
-    speakGoogleTTS(text, 'en', rate);
-}
-
-function speakGoogleTTS(text, lang, rate, isRetry = false) {
     try {
-        if (!isRetry) stopSpeaking();
+        stopSpeaking();
 
         let cleanText = String(text)
             .replace(/<[^>]*>/g, '')
@@ -2961,67 +2932,80 @@ function speakGoogleTTS(text, lang, rate, isRetry = false) {
             .trim();
 
         if (!cleanText) return;
-        const tl = lang === 'en' ? 'en' : 'vi';
 
         if (cleanText.length <= 180) {
             const encoded = encodeURIComponent(cleanText);
-            let failureHandled = false;
-            const handleFailure = () => {
-                if (failureHandled) return;
-                failureHandled = true;
-                banMaiAudio.onerror = null;
-                if (!isRetry) {
-                    setTimeout(() => speakGoogleTTS(text, lang, rate, true), 500);
-                } else {
-                    speakBrowserTTSFallback(cleanText, lang, rate);
-                }
-            };
-
-            banMaiAudio.onerror = handleFailure;
-            banMaiAudio.onended = null;
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(handleFailure);
+            if (playPromise !== undefined) playPromise.catch(() => {});
             return;
         }
 
         const sentences = cleanText.match(/[^.!?\n]+[.!?\n]*/g) || [cleanText];
         let sIdx = 0;
-        let fallbackUsed = false;
-        const fallbackAll = () => {
-            if (fallbackUsed) return;
-            fallbackUsed = true;
-            banMaiAudio.onerror = null;
-            banMaiAudio.onended = null;
-            speakBrowserTTSFallback(cleanText, lang, rate);
-        };
-
         function playSentence() {
-            if (sIdx >= sentences.length || fallbackUsed) return;
+            if (sIdx >= sentences.length) return;
             const sentence = sentences[sIdx++].trim();
             if (!sentence) { playSentence(); return; }
             const encoded = encodeURIComponent(sentence);
-            banMaiAudio.onerror = fallbackAll;
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             banMaiAudio.onended = playSentence;
             const playPromise = banMaiAudio.play();
-            if (playPromise !== undefined) playPromise.catch(fallbackAll);
+            if (playPromise !== undefined) playPromise.catch(() => {});
         }
         playSentence();
-    } catch (err) {
-        speakBrowserTTSFallback(text, lang, rate);
-    }
+    } catch (err) {}
+}
+
+// Tiếng Anh vẫn dùng chính Google Translate TTS, chỉ đổi tl=en.
+// Không bao giờ rơi xuống giọng máy của trình duyệt.
+function speakEnglish(text, rate = 0.92) {
+    if (!text) return;
+    try {
+        stopSpeaking();
+
+        const cleanText = String(text)
+            .replace(/<[^>]*>/g, '')
+            .trim();
+
+        if (!cleanText) return;
+
+        if (cleanText.length <= 180) {
+            const encoded = encodeURIComponent(cleanText);
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
+            banMaiAudio.playbackRate = rate;
+            const playPromise = banMaiAudio.play();
+            if (playPromise !== undefined) playPromise.catch(() => {});
+            return;
+        }
+
+        const sentences = cleanText.match(/[^.!?\n]+[.!?\n]*/g) || [cleanText];
+        let sIdx = 0;
+        function playSentence() {
+            if (sIdx >= sentences.length) return;
+            const sentence = sentences[sIdx++].trim();
+            if (!sentence) { playSentence(); return; }
+            const encoded = encodeURIComponent(sentence);
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
+            banMaiAudio.playbackRate = rate;
+            banMaiAudio.onended = playSentence;
+            const playPromise = banMaiAudio.play();
+            if (playPromise !== undefined) playPromise.catch(() => {});
+        }
+        playSentence();
+    } catch (err) {}
 }
 
 function speakCurrentQuestion() {
     const q = activeQuestionsList[currentQIndex];
     if (!q) return;
-    // Nội dung tiếng Anh thật (câu nghe, đoạn văn đọc hiểu) đọc bằng giọng Anh;
-    // phần hướng dẫn/câu hỏi tiếng Việt đọc bằng giọng Việt.
-    if (q.audio_text) return speakEnglish(q.audio_text);
-    if (q.reading_passage) return speakEnglish(q.reading_passage);
+
+    // Câu nghe / đoạn tiếng Anh -> Google TTS tiếng Anh.
+    // Phần hướng dẫn bằng tiếng Việt -> Google TTS chị Ban Mai.
+    if (q.audio_text) return speakEnglish(q.audio_text, 0.92);
+    if (q.reading_passage) return speakEnglish(q.reading_passage, 0.92);
     speakVietnamese(q.question_text, 0.96);
 }
 
