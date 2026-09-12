@@ -1311,9 +1311,8 @@ async function doRegister() {
             alert(result.error);
             return;
         }
-        alert(`Đã gửi đăng ký thành công, vui lòng chờ Admin duyệt! Mã ID của bé là: ${result.student.maHS}`);
         document.getElementById('login-mahs').value = result.student.maHS;
-        switchAuthTab('login');
+        showRegistrationSuccessModal(result.student.maHS);
     } catch (err) {
         const connErr = 'Lỗi kết nối: ' + err.message;
         showAuthError(connErr);
@@ -1322,6 +1321,70 @@ async function doRegister() {
         btn.disabled = false;
         btn.innerHTML = '<i class="fa-solid fa-user-plus mr-1"></i> Đăng ký ngay';
     }
+}
+
+function showRegistrationSuccessModal(maHS) {
+    const existing = document.getElementById('modal-register-success');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'modal-register-success';
+    modal.className = 'fixed inset-0 z-[120] bg-slate-900/55 backdrop-blur-sm flex items-center justify-center p-4';
+    modal.innerHTML = `
+        <div class="w-full max-w-sm bg-white rounded-[28px] border-2 border-pink-200 shadow-2xl p-5 md:p-6 text-center animate-[fadeInUp_0.2s_ease-out]">
+            <div class="text-5xl mb-2">🎉</div>
+            <h3 class="text-xl font-black text-pink-600 mb-1">Đăng ký thành công!</h3>
+            <p class="text-xs md:text-sm font-bold text-gray-500 mb-4">
+                Tài khoản đang chờ Admin duyệt. Hãy lưu lại mã ID này để đăng nhập lần sau nhé!
+            </p>
+
+            <div class="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-2xl px-4 py-4 mb-4">
+                <div class="text-[11px] font-extrabold text-gray-500 uppercase tracking-wide mb-1">Mã ID của bé</div>
+                <div id="register-success-id" class="text-2xl md:text-3xl font-black text-purple-700 tracking-wider select-text">${maHS}</div>
+            </div>
+
+            <button id="btn-copy-register-id" type="button"
+                class="w-full py-3 mb-2.5 bg-white text-purple-700 border-2 border-purple-200 font-extrabold rounded-2xl text-sm pastel-btn">
+                <i class="fa-solid fa-copy mr-1"></i> Sao chép mã ID
+            </button>
+
+            <button id="btn-register-go-login" type="button"
+                class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black rounded-2xl text-sm pastel-btn shadow-md">
+                <i class="fa-solid fa-right-to-bracket mr-1"></i> Đi tới đăng nhập
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const copyBtn = modal.querySelector('#btn-copy-register-id');
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(maHS);
+            copyBtn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Đã sao chép!';
+            copyBtn.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+        } catch (err) {
+            const temp = document.createElement('textarea');
+            temp.value = maHS;
+            temp.style.position = 'fixed';
+            temp.style.opacity = '0';
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            temp.remove();
+            copyBtn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Đã sao chép!';
+        }
+    });
+
+    modal.querySelector('#btn-register-go-login').addEventListener('click', () => {
+        modal.remove();
+        switchAuthTab('login');
+        const loginInput = document.getElementById('login-mahs');
+        if (loginInput) {
+            loginInput.value = maHS;
+            loginInput.focus();
+        }
+    });
 }
 
 async function tryAutoLogin() {
