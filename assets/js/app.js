@@ -1534,8 +1534,10 @@ function updateUserInfoBox() {
                     </div>
                     <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS || '')}${currentUser.lop ? ` | Lớp ${escapeHtml(currentUser.lop)}` : ''}</div>
                 </div>
+                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-[11px] font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý tài khoản</span><span id="admin-pending-badge" class="hidden absolute -top-2 -right-2 min-w-[20px] h-5 px-1 items-center justify-center rounded-full bg-rose-500 text-white text-[10px] font-black border-2 border-white">0</span></button>` : ''}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
+        if (role === 'admin') setTimeout(refreshAdminPendingBadge, 100);
     } else {
         box.innerHTML = `
             <div class="flex items-center gap-1.5">
@@ -1543,6 +1545,189 @@ function updateUserInfoBox() {
                 <button onclick="openAuthScreen('login')" class="h-9 px-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[11px] font-black shadow-sm pastel-btn">Sign in</button>
                 <button onclick="openAuthScreen('register')" class="h-9 px-3 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 text-[11px] font-black shadow-sm pastel-btn">Sign up</button>
             </div>`;
+    }
+}
+
+
+// ==========================================
+// QUẢN LÝ TÀI KHOẢN — chỉ Admin
+// ==========================================
+function getAdminAuthPayload(extra = {}) {
+    return {
+        adminMaHS: String(currentUser?.maHS || '').trim().toUpperCase(),
+        adminPin: localStorage.getItem('tv1_mapin') || '',
+        ...extra
+    };
+}
+
+function ensureAccountManagerModal() {
+    let modal = document.getElementById('modal-account-manager');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'modal-account-manager';
+    modal.className = 'hidden fixed inset-0 z-[120] bg-slate-900/55 backdrop-blur-sm flex items-center justify-center p-3';
+    modal.innerHTML = `
+        <div class="w-full max-w-5xl max-h-[92vh] bg-white rounded-[28px] border-2 border-pink-200 shadow-2xl overflow-hidden flex flex-col">
+            <div class="px-4 md:px-5 py-3 bg-gradient-to-r from-pink-50 via-purple-50 to-pink-50 border-b border-pink-100 flex items-center justify-between gap-3">
+                <div>
+                    <div class="flex items-center gap-2 text-purple-700 font-black text-base md:text-lg"><span>👥</span><span>Quản lý tài khoản</span></div>
+                    <div class="text-[11px] text-gray-500 font-bold mt-0.5">Duyệt học sinh, khóa/mở tài khoản và chuyển Regular ↔ VIP.</div>
+                </div>
+                <button onclick="closeAccountManager()" class="w-9 h-9 shrink-0 rounded-xl bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="account-manager-body" class="p-3 md:p-4 overflow-y-auto flex-1">
+                <div class="py-10 text-center text-purple-500 font-black"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Đang tải danh sách tài khoản...</div>
+            </div>
+            <div class="px-4 py-3 bg-pink-50/50 border-t border-pink-100 flex items-center justify-between gap-2">
+                <span id="account-manager-status" class="text-[11px] font-bold text-gray-500"></span>
+                <button onclick="loadAccountManager()" class="px-4 py-2 rounded-xl bg-white border border-purple-200 text-purple-700 font-black text-xs pastel-btn"><i class="fa-solid fa-rotate mr-1"></i>Làm mới</button>
+            </div>
+        </div>`;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+async function refreshAdminPendingBadge() {
+    const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
+    if (role !== 'admin') return;
+    const badge = document.getElementById('admin-pending-badge');
+    try {
+        const result = await callAppsScript('listAccounts', getAdminAuthPayload());
+        if (!result.ok) return;
+        const count = Number(result.pendingCount || 0);
+        if (badge) {
+            badge.textContent = count;
+            badge.classList.toggle('hidden', count <= 0);
+            badge.classList.toggle('flex', count > 0);
+        }
+    } catch (e) {}
+}
+
+function openAccountManager() {
+    const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
+    if (role !== 'admin') return;
+    const modal = ensureAccountManagerModal();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    loadAccountManager();
+}
+
+function closeAccountManager() {
+    const modal = document.getElementById('modal-account-manager');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+function formatAccountDate(value) {
+    if (!value) return '—';
+    if (value instanceof Date) return value.toLocaleDateString('vi-VN');
+    const s = String(value).trim();
+    const m = s.match(/^(\d{1,2})[-\/]([0-9]{1,2})[-\/](\d{2,4})$/);
+    if (m) return `${m[1].padStart(2,'0')}/${m[2].padStart(2,'0')}/${m[3]}`;
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? s : d.toLocaleDateString('vi-VN');
+}
+
+async function loadAccountManager() {
+    const body = document.getElementById('account-manager-body');
+    const status = document.getElementById('account-manager-status');
+    if (!body) return;
+    body.innerHTML = '<div class="py-10 text-center text-purple-500 font-black"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Đang tải danh sách tài khoản...</div>';
+    if (status) status.textContent = '';
+    try {
+        const result = await callAppsScript('listAccounts', getAdminAuthPayload());
+        if (!result.ok) throw new Error(result.error || 'Không tải được danh sách tài khoản.');
+        renderAccountManagerTable(result.accounts || []);
+        const pendingCount = Number(result.pendingCount || 0);
+        if (status) status.textContent = pendingCount > 0 ? `Có ${pendingCount} tài khoản đang chờ duyệt.` : 'Không có tài khoản nào đang chờ duyệt.';
+        refreshAdminPendingBadge();
+    } catch (err) {
+        body.innerHTML = `<div class="py-10 text-center text-rose-500 font-black">😿 ${escapeHtml(err.message || 'Không tải được danh sách tài khoản.')}</div>`;
+    }
+}
+
+function renderAccountManagerTable(accounts) {
+    const body = document.getElementById('account-manager-body');
+    if (!body) return;
+    if (!accounts.length) {
+        body.innerHTML = '<div class="py-10 text-center text-gray-400 font-bold">Chưa có tài khoản học sinh nào.</div>';
+        return;
+    }
+    const rows = accounts.map(acc => {
+        const id = escapeHtml(acc.maHS || '');
+        const name = escapeHtml(acc.hoTen || '');
+        const lop = escapeHtml(acc.lop || '—');
+        const status = String(acc.trangThai || 'Pending');
+        const type = String(acc.loaiTaiKhoan || 'regular').toLowerCase();
+        const isPending = status.toLowerCase() === 'pending';
+        const trial = formatAccountDate(acc.hanDungThu);
+        return `
+            <tr class="border-b border-pink-50 ${isPending ? 'bg-amber-50/55' : 'bg-white'}">
+                <td class="px-3 py-2.5 font-black text-slate-700 whitespace-nowrap">${id}</td>
+                <td class="px-3 py-2.5 font-bold text-slate-700">${name}</td>
+                <td class="px-3 py-2.5 font-bold text-slate-500 text-center">${lop}</td>
+                <td class="px-3 py-2.5 text-center">
+                    <select onchange="adminChangeAccountStatus('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border border-pink-200 bg-white font-black text-xs text-slate-700 focus:outline-none">
+                        <option value="Pending" ${status.toLowerCase()==='pending'?'selected':''}>Pending</option>
+                        <option value="Active" ${status.toLowerCase()==='active'?'selected':''}>Active</option>
+                        <option value="Block" ${status.toLowerCase()==='block'?'selected':''}>Block</option>
+                    </select>
+                </td>
+                <td class="px-3 py-2.5 text-center">
+                    <select onchange="adminChangeAccountType('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border border-purple-200 bg-white font-black text-xs ${type==='vip'?'text-purple-700':'text-slate-700'} focus:outline-none">
+                        <option value="regular" ${type==='regular'?'selected':''}>Regular</option>
+                        <option value="vip" ${type==='vip'?'selected':''}>VIP</option>
+                    </select>
+                </td>
+                <td class="px-3 py-2.5 text-center font-bold text-xs text-slate-500 whitespace-nowrap">${escapeHtml(trial)}</td>
+            </tr>`;
+    }).join('');
+    body.innerHTML = `
+        <div class="overflow-x-auto rounded-2xl border border-pink-100">
+            <table class="w-full min-w-[760px] text-xs">
+                <thead class="bg-gradient-to-r from-pink-50 to-purple-50 text-purple-700 font-black">
+                    <tr>
+                        <th class="px-3 py-2.5 text-left">Mã HS</th>
+                        <th class="px-3 py-2.5 text-left">Họ tên</th>
+                        <th class="px-3 py-2.5 text-center">Lớp</th>
+                        <th class="px-3 py-2.5 text-center">Trạng thái</th>
+                        <th class="px-3 py-2.5 text-center">Loại tài khoản</th>
+                        <th class="px-3 py-2.5 text-center">Hạn dùng thử</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>`;
+}
+
+async function adminChangeAccountStatus(targetMaHS, statusValue) {
+    const statusEl = document.getElementById('account-manager-status');
+    if (statusEl) statusEl.textContent = `Đang cập nhật ${targetMaHS}...`;
+    try {
+        const result = await callAppsScript('updateAccountStatus', getAdminAuthPayload({ targetMaHS, status: statusValue }));
+        if (!result.ok) throw new Error(result.error || 'Không cập nhật được trạng thái.');
+        if (statusEl) statusEl.textContent = `${targetMaHS}: đã chuyển sang ${result.trangThai || result.status || statusValue}.`;
+        await loadAccountManager();
+    } catch (err) {
+        if (statusEl) statusEl.textContent = 'Lỗi: ' + (err.message || err);
+        alert(err.message || String(err));
+        await loadAccountManager();
+    }
+}
+
+async function adminChangeAccountType(targetMaHS, typeValue) {
+    const statusEl = document.getElementById('account-manager-status');
+    if (statusEl) statusEl.textContent = `Đang cập nhật ${targetMaHS}...`;
+    try {
+        const result = await callAppsScript('updateAccountType', getAdminAuthPayload({ targetMaHS, accountType: typeValue }));
+        if (!result.ok) throw new Error(result.error || 'Không cập nhật được loại tài khoản.');
+        if (statusEl) statusEl.textContent = `${targetMaHS}: đã chuyển sang ${String(result.loaiTaiKhoan || typeValue).toUpperCase()}.`;
+        await loadAccountManager();
+    } catch (err) {
+        if (statusEl) statusEl.textContent = 'Lỗi: ' + (err.message || err);
+        alert(err.message || String(err));
+        await loadAccountManager();
     }
 }
 
