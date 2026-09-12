@@ -1670,12 +1670,6 @@ function renderAccountManagerTable(accounts) {
                 <td class="px-3 py-2.5 font-bold text-slate-700">${name}</td>
                 <td class="px-3 py-2.5 font-bold text-slate-500 text-center">${lop}</td>
                 <td class="px-3 py-2.5 text-center">
-                    <select onchange="paintAccountSelect(this, 'status'); adminChangeAccountStatus('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border font-black text-xs focus:outline-none ${getAccountStatusSelectClass(status)}">
-                        <option value="Pending" ${status.toLowerCase()==='pending'?'selected':''}>Pending</option>
-                        <option value="Active" ${status.toLowerCase()==='active'?'selected':''}>Active</option>
-                    </select>
-                </td>
-                <td class="px-3 py-2.5 text-center">
                     <select onchange="paintAccountSelect(this, 'type'); adminChangeAccountType('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border font-black text-xs focus:outline-none ${getAccountTypeSelectClass(type)}">
                         <option value="regular" ${type==='regular'?'selected':''}>Regular</option>
                         <option value="trial" ${type==='trial'?'selected':''}>Trial</option>
