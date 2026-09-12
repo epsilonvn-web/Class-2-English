@@ -1224,12 +1224,26 @@ function getPremiumAccessState() {
     if (!user || user.isGuest) return { allowed: false, reason: 'guest' };
     const role = normalizeAccountValue(getUserField(user, ['vaiTro', 'VaiTro', 'role'], 'student'));
     const status = normalizeAccountValue(getUserField(user, ['trangThai', 'TrangThai', 'status'], ''));
-    const accountType = normalizeAccountValue(getUserField(user, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
+    let accountType = normalizeAccountValue(getUserField(user, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
     if (role === 'admin') return { allowed: true, reason: 'admin' };
     if (status === 'pending') return { allowed: false, reason: 'pending' };
-    if (status === 'block' || status === 'blocked') return { allowed: false, reason: 'block' };
     if (status !== 'active') return { allowed: false, reason: 'inactive' };
-    if (accountType === 'vip') return { allowed: true, reason: 'vip' };
+
+    // VIP chỉ có hiệu lực 1 năm. Hết hạn thì coi ngay như regular ở phía client;
+    // Apps Script cũng tự ghi LoaiTaiKhoan về regular khi login/listAccounts.
+    if (accountType === 'vip') {
+        const vipRaw = getUserField(user, ['hanVIP', 'HanVIP', 'vipExpiry', 'vipEnd'], '');
+        const vipExpiry = parseTrialExpiryDate(vipRaw);
+        if (vipExpiry && Date.now() <= vipExpiry.getTime()) {
+            return { allowed: true, reason: 'vip', expiry: vipExpiry };
+        }
+        accountType = 'regular';
+        user.loaiTaiKhoan = 'regular';
+        user.LoaiTaiKhoan = 'regular';
+        user.accountType = 'regular';
+    }
+
+    // Regular: quyền premium chỉ còn trong 1 tháng dùng thử tính từ lúc được Active.
     const expiryRaw = getUserField(user, ['hanDungThu', 'HanDungThu', 'trialExpiry', 'trialEnd'], '');
     const expiry = parseTrialExpiryDate(expiryRaw);
     if (expiry && Date.now() <= expiry.getTime()) return { allowed: true, reason: 'trial', expiry };
@@ -1570,7 +1584,10 @@ function ensureAccountManagerModal() {
         <div class="w-full max-w-5xl max-h-[92vh] bg-white rounded-[28px] border-2 border-pink-200 shadow-2xl overflow-hidden flex flex-col">
             <div class="px-4 md:px-5 py-3 bg-gradient-to-r from-pink-50 via-purple-50 to-pink-50 border-b border-pink-100 flex items-center justify-between gap-3">
                 <div>
-                    <div class="flex items-center gap-2 text-purple-700 font-black text-base md:text-lg"><span>👥</span><span>Quản lý tài khoản</span></div>
+                    <div class="flex flex-wrap items-center gap-2 text-purple-700 font-black text-base md:text-lg">
+                        <span>👥</span><span>Quản lý tài khoản</span>
+                        <span id="account-manager-total" class="px-2.5 py-1 rounded-full bg-white border border-purple-200 text-purple-600 text-[10px] md:text-[11px] font-black shadow-sm">0 tài khoản</span>
+                    </div>
                     <div class="text-[11px] text-gray-500 font-bold mt-0.5">Duyệt học sinh, khóa/mở tài khoản và chuyển Regular ↔ VIP.</div>
                 </div>
                 <button onclick="closeAccountManager()" class="w-9 h-9 shrink-0 rounded-xl bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 shadow-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -1638,13 +1655,45 @@ async function loadAccountManager() {
     try {
         const result = await callAppsScript('listAccounts', getAdminAuthPayload());
         if (!result.ok) throw new Error(result.error || 'Không tải được danh sách tài khoản.');
-        renderAccountManagerTable(result.accounts || []);
+        const accounts = result.accounts || [];
+        renderAccountManagerTable(accounts);
+        const totalEl = document.getElementById('account-manager-total');
+        if (totalEl) totalEl.textContent = `${accounts.length} tài khoản`;
         const pendingCount = Number(result.pendingCount || 0);
         if (status) status.textContent = pendingCount > 0 ? `Có ${pendingCount} tài khoản đang chờ duyệt.` : 'Không có tài khoản nào đang chờ duyệt.';
         refreshAdminPendingBadge();
     } catch (err) {
         body.innerHTML = `<div class="py-10 text-center text-rose-500 font-black">😿 ${escapeHtml(err.message || 'Không tải được danh sách tài khoản.')}</div>`;
     }
+}
+
+function getAccountStatusSelectClass(statusValue) {
+    const status = String(statusValue || '').trim().toLowerCase();
+    if (status === 'active') return 'border-emerald-300 bg-emerald-50 text-emerald-700';
+    if (status === 'pending') return 'border-amber-300 bg-amber-50 text-amber-700';
+    if (status === 'block' || status === 'blocked') return 'border-rose-300 bg-rose-50 text-rose-700';
+    return 'border-slate-200 bg-white text-slate-700';
+}
+
+function getAccountTypeSelectClass(typeValue) {
+    const type = String(typeValue || '').trim().toLowerCase();
+    if (type === 'vip') return 'border-purple-300 bg-purple-50 text-purple-700';
+    return 'border-sky-300 bg-sky-50 text-sky-700';
+}
+
+function paintAccountSelect(selectEl, kind) {
+    if (!selectEl) return;
+    const removable = [
+        'border-emerald-300','bg-emerald-50','text-emerald-700',
+        'border-amber-300','bg-amber-50','text-amber-700',
+        'border-rose-300','bg-rose-50','text-rose-700',
+        'border-slate-200','bg-white','text-slate-700',
+        'border-purple-300','bg-purple-50','text-purple-700',
+        'border-sky-300','bg-sky-50','text-sky-700'
+    ];
+    selectEl.classList.remove(...removable);
+    const classes = (kind === 'status' ? getAccountStatusSelectClass(selectEl.value) : getAccountTypeSelectClass(selectEl.value)).split(' ');
+    selectEl.classList.add(...classes);
 }
 
 function renderAccountManagerTable(accounts) {
@@ -1662,30 +1711,31 @@ function renderAccountManagerTable(accounts) {
         const type = String(acc.loaiTaiKhoan || 'regular').toLowerCase();
         const isPending = status.toLowerCase() === 'pending';
         const trial = formatAccountDate(acc.hanDungThu);
+        const vipExpiry = formatAccountDate(acc.hanVIP);
         return `
             <tr class="border-b border-pink-50 ${isPending ? 'bg-amber-50/55' : 'bg-white'}">
                 <td class="px-3 py-2.5 font-black text-slate-700 whitespace-nowrap">${id}</td>
                 <td class="px-3 py-2.5 font-bold text-slate-700">${name}</td>
                 <td class="px-3 py-2.5 font-bold text-slate-500 text-center">${lop}</td>
                 <td class="px-3 py-2.5 text-center">
-                    <select onchange="adminChangeAccountStatus('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border border-pink-200 bg-white font-black text-xs text-slate-700 focus:outline-none">
+                    <select onchange="paintAccountSelect(this, 'status'); adminChangeAccountStatus('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border font-black text-xs focus:outline-none ${getAccountStatusSelectClass(status)}">
                         <option value="Pending" ${status.toLowerCase()==='pending'?'selected':''}>Pending</option>
                         <option value="Active" ${status.toLowerCase()==='active'?'selected':''}>Active</option>
-                        <option value="Block" ${status.toLowerCase()==='block'?'selected':''}>Block</option>
                     </select>
                 </td>
                 <td class="px-3 py-2.5 text-center">
-                    <select onchange="adminChangeAccountType('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border border-purple-200 bg-white font-black text-xs ${type==='vip'?'text-purple-700':'text-slate-700'} focus:outline-none">
+                    <select onchange="paintAccountSelect(this, 'type'); adminChangeAccountType('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border font-black text-xs focus:outline-none ${getAccountTypeSelectClass(type)}">
                         <option value="regular" ${type==='regular'?'selected':''}>Regular</option>
                         <option value="vip" ${type==='vip'?'selected':''}>VIP</option>
                     </select>
                 </td>
                 <td class="px-3 py-2.5 text-center font-bold text-xs text-slate-500 whitespace-nowrap">${escapeHtml(trial)}</td>
+                <td class="px-3 py-2.5 text-center font-bold text-xs text-purple-600 whitespace-nowrap">${escapeHtml(vipExpiry)}</td>
             </tr>`;
     }).join('');
     body.innerHTML = `
         <div class="overflow-x-auto rounded-2xl border border-pink-100">
-            <table class="w-full min-w-[760px] text-xs">
+            <table class="w-full min-w-[880px] text-xs">
                 <thead class="bg-gradient-to-r from-pink-50 to-purple-50 text-purple-700 font-black">
                     <tr>
                         <th class="px-3 py-2.5 text-left">Mã HS</th>
@@ -1694,6 +1744,7 @@ function renderAccountManagerTable(accounts) {
                         <th class="px-3 py-2.5 text-center">Trạng thái</th>
                         <th class="px-3 py-2.5 text-center">Loại tài khoản</th>
                         <th class="px-3 py-2.5 text-center">Hạn dùng thử</th>
+                        <th class="px-3 py-2.5 text-center">Hạn VIP</th>
                     </tr>
                 </thead>
                 <tbody>${rows}</tbody>
