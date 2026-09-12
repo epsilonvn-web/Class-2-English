@@ -1268,29 +1268,21 @@ function showPremiumAccessPopup(featureName = 'khu vực này', accessState = ge
     const title = document.getElementById('premium-popup-title');
     const message = document.getElementById('premium-popup-message');
     const actions = document.getElementById('premium-popup-actions');
-    let titleText = 'Khu vực đặc biệt';
-    let messageText = `“${featureName}” là nội dung mở rộng dành cho tài khoản có quyền truy cập.`;
-    if (accessState.reason === 'guest') {
-        titleText = 'Bé muốn khám phá thêm không? ✨';
-        messageText = `“${featureName}” là khu vực mở rộng. Bé có thể đăng nhập hoặc đăng ký tài khoản để học các nội dung miễn phí.`;
-        actions.innerHTML = `
-            <div class="grid grid-cols-2 gap-2">
-                <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
-                <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
-            </div>
-            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
-    } else {
-        titleText = 'Khu vực mở rộng dành cho Trial / VIP ⭐';
-        messageText = `Tài khoản Regular vẫn học toàn bộ nội dung cơ bản miễn phí. “${featureName}” được mở khi Admin cấp Trial hoặc VIP nhé!`;
-        actions.innerHTML = `
-            <button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white font-black text-sm pastel-btn">Con hiểu rồi!</button>
-            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
-    }
-    title.textContent = titleText;
-    message.textContent = messageText;
+
+    title.textContent = featureName;
+    message.innerHTML = `Đây là <strong>${escapeHtml(featureName)}</strong> dành cho tài khoản <strong>Trial hoặc VIP</strong>.<br>
+        Con có thể <strong>Sign in</strong> nếu đã có tài khoản hoặc <strong>Sign up</strong> để đăng ký nhé!<br>
+        Các chuyên đề cơ bản vẫn học miễn phí bình thường.`;
+
+    actions.innerHTML = `
+        <div class="grid grid-cols-2 gap-2">
+            <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
+            <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
+        </div>
+        <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Để sau nhé</button>`;
+
     modal.classList.remove('hidden');
 }
-
 function requirePremiumAccess(featureName) {
     const state = getPremiumAccessState();
     if (state.allowed) return true;
