@@ -1237,6 +1237,192 @@ async function callAppsScript(action, payload) {
     }
 }
 
+let adminAccountsCache = [];
+
+function isAdminUser() {
+    return !!currentUser && !currentUser.isGuest && String(currentUser.role || '').toLowerCase() === 'admin';
+}
+
+function getAdminCredentials() {
+    return {
+        adminMaHS: currentUser?.maHS || localStorage.getItem('tv1_mahs') || '',
+        adminPin: localStorage.getItem('tv1_mapin') || ''
+    };
+}
+
+async function callAdminAction(action, extraPayload = {}) {
+    if (!isAdminUser()) throw new Error('Tài khoản hiện tại không có quyền Admin.');
+    return callAppsScript(action, { ...getAdminCredentials(), ...extraPayload });
+}
+
+function setAdminPendingBadge(count) {
+    const badge = document.getElementById('admin-pending-badge');
+    if (!badge) return;
+    const n = Number(count) || 0;
+    badge.textContent = n;
+    badge.classList.toggle('hidden', n <= 0);
+}
+
+async function refreshAdminPending(announce = false) {
+    if (!isAdminUser()) return;
+    try {
+        const result = await callAdminAction('listAccounts');
+        if (!result.ok) return;
+        adminAccountsCache = Array.isArray(result.accounts) ? result.accounts : [];
+        const pending = adminAccountsCache.filter(a => String(a.trangThai || '').toLowerCase() === 'pending');
+        setAdminPendingBadge(pending.length);
+
+        if (announce && pending.length > 0) {
+            const names = pending.slice(0, 5).map(a => `${a.hoTen || a.maHS} (${a.maHS})`).join(', ');
+            const more = pending.length > 5 ? ` và ${pending.length - 5} tài khoản khác` : '';
+            alert(`Admin có ${pending.length} tài khoản đang chờ duyệt: ${names}${more}. Bấm “Quản lý tài khoản” để duyệt trực tiếp nhé!`);
+        }
+    } catch (err) {
+        console.warn('Không tải được số tài khoản chờ duyệt:', err);
+    }
+}
+
+function formatAdminDate(value) {
+    if (!value) return '--';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    return d.toLocaleDateString('vi-VN');
+}
+
+async function openAdminAccountsModal() {
+    if (!isAdminUser()) return;
+
+    let modal = document.getElementById('modal-admin-accounts');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'modal-admin-accounts';
+        modal.className = 'fixed inset-0 z-[130] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3';
+        modal.innerHTML = `
+            <div class="w-full max-w-5xl max-h-[92vh] bg-white rounded-[28px] border-2 border-purple-200 shadow-2xl flex flex-col overflow-hidden animate-[fadeInUp_0.2s_ease-out]">
+                <div class="px-4 md:px-6 py-4 bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 border-b border-purple-100 flex items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-base md:text-lg font-black text-purple-700">👤 Quản lý tài khoản học sinh</h3>
+                        <p id="admin-accounts-summary" class="text-[11px] md:text-xs font-bold text-gray-500 mt-0.5">Đang tải danh sách...</p>
+                    </div>
+                    <button onclick="closeAdminAccountsModal()" class="w-9 h-9 rounded-xl bg-white border border-purple-200 text-purple-500 hover:bg-purple-100 font-black">✕</button>
+                </div>
+                <div class="p-3 md:p-5 overflow-auto flex-1">
+                    <div id="admin-accounts-loading" class="py-10 text-center text-sm font-bold text-gray-400">⏳ Đang tải tài khoản...</div>
+                    <div id="admin-accounts-table-wrap" class="hidden overflow-x-auto">
+                        <table class="w-full min-w-[760px] text-xs md:text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-purple-50 text-purple-800">
+                                    <th class="p-2.5 border border-purple-100 text-left">Mã ID</th>
+                                    <th class="p-2.5 border border-purple-100 text-left">Họ tên</th>
+                                    <th class="p-2.5 border border-purple-100">Lớp</th>
+                                    <th class="p-2.5 border border-purple-100">Ngày đăng ký</th>
+                                    <th class="p-2.5 border border-purple-100">Trạng thái</th>
+                                    <th class="p-2.5 border border-purple-100">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-accounts-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="px-4 md:px-6 py-3 border-t border-purple-100 bg-slate-50 flex justify-end">
+                    <button onclick="closeAdminAccountsModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 text-white text-xs md:text-sm font-extrabold">Đóng</button>
+                </div>
+            </div>`;
+        document.body.appendChild(modal);
+    } else {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    await loadAdminAccounts();
+}
+
+function closeAdminAccountsModal() {
+    const modal = document.getElementById('modal-admin-accounts');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+async function loadAdminAccounts() {
+    const loading = document.getElementById('admin-accounts-loading');
+    const wrap = document.getElementById('admin-accounts-table-wrap');
+    if (loading) {
+        loading.textContent = '⏳ Đang tải tài khoản...';
+        loading.classList.remove('hidden');
+    }
+    if (wrap) wrap.classList.add('hidden');
+
+    try {
+        const result = await callAdminAction('listAccounts');
+        if (!result.ok) throw new Error(result.error || 'Không tải được danh sách tài khoản.');
+        adminAccountsCache = Array.isArray(result.accounts) ? result.accounts : [];
+        renderAdminAccountsTable();
+        setAdminPendingBadge(result.pendingCount || 0);
+        if (loading) loading.classList.add('hidden');
+        if (wrap) wrap.classList.remove('hidden');
+    } catch (err) {
+        if (loading) loading.textContent = '❌ ' + err.message;
+    }
+}
+
+function renderAdminAccountsTable() {
+    const body = document.getElementById('admin-accounts-body');
+    const summary = document.getElementById('admin-accounts-summary');
+    if (!body) return;
+
+    const pendingCount = adminAccountsCache.filter(a => String(a.trangThai || '').toLowerCase() === 'pending').length;
+    if (summary) summary.textContent = pendingCount > 0
+        ? `Có ${pendingCount} tài khoản đang chờ duyệt / ${adminAccountsCache.length} tài khoản học sinh`
+        : `Không có tài khoản chờ duyệt / ${adminAccountsCache.length} tài khoản học sinh`;
+
+    if (adminAccountsCache.length === 0) {
+        body.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-400 font-bold">Chưa có tài khoản học sinh nào.</td></tr>';
+        return;
+    }
+
+    body.innerHTML = adminAccountsCache.map(acc => {
+        const status = String(acc.trangThai || 'Active');
+        const lower = status.toLowerCase();
+        const isPending = lower === 'pending';
+        const isBlocked = ['block', 'blocked', 'inactive', 'khoa'].includes(lower);
+        const rowClass = isPending ? 'bg-amber-50/70' : '';
+        const badge = isPending
+            ? '<span class="px-2 py-1 rounded-lg bg-amber-100 text-amber-700 font-extrabold">Chờ duyệt</span>'
+            : isBlocked
+                ? '<span class="px-2 py-1 rounded-lg bg-rose-100 text-rose-700 font-extrabold">Đã khóa</span>'
+                : '<span class="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-700 font-extrabold">Hoạt động</span>';
+        const safeId = escapeHtml(acc.maHS);
+        const actionButtons = isPending
+            ? `<button onclick="changeStudentAccountStatus('${safeId}', 'Active')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold mr-1">✓ Duyệt</button>
+               <button onclick="changeStudentAccountStatus('${safeId}', 'Block')" class="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold">Khóa</button>`
+            : isBlocked
+                ? `<button onclick="changeStudentAccountStatus('${safeId}', 'Active')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold">Mở khóa</button>`
+                : `<button onclick="changeStudentAccountStatus('${safeId}', 'Block')" class="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold">Khóa</button>`;
+
+        return `<tr class="${rowClass}">
+            <td class="p-2.5 border border-slate-100 text-left font-black text-purple-700">${safeId}</td>
+            <td class="p-2.5 border border-slate-100 text-left font-bold text-gray-700">${escapeHtml(acc.hoTen || '')}</td>
+            <td class="p-2.5 border border-slate-100 text-center font-bold">${escapeHtml(acc.lop || '--')}</td>
+            <td class="p-2.5 border border-slate-100 text-center text-gray-500">${escapeHtml(formatAdminDate(acc.ngayDangKy))}</td>
+            <td class="p-2.5 border border-slate-100 text-center">${badge}</td>
+            <td class="p-2.5 border border-slate-100 text-center whitespace-nowrap">${actionButtons}</td>
+        </tr>`;
+    }).join('');
+}
+
+async function changeStudentAccountStatus(maHS, status) {
+    if (!isAdminUser()) return;
+    const actionText = status === 'Active' ? 'duyệt/mở khóa' : 'khóa';
+    try {
+        const result = await callAdminAction('updateAccountStatus', { targetMaHS: maHS, status });
+        if (!result.ok) throw new Error(result.error || `Không thể ${actionText} tài khoản.`);
+        await loadAdminAccounts();
+    } catch (err) {
+        alert('Lỗi cập nhật tài khoản: ' + err.message);
+    }
+}
+
 async function doLogin() {
     hideAuthError();
     const maHSInput = document.getElementById('login-mahs');
@@ -1435,6 +1621,7 @@ function enterDashboard(isSilent = false) {
     document.getElementById('screen-login').classList.add('hidden');
     document.getElementById('screen-dashboard').classList.remove('hidden');
     updateUserInfoBox();
+    if (isAdminUser()) refreshAdminPending(!isSilent);
     resetStars();
     renderDashboardGrid();
     renderExamHubGrid();
@@ -1459,12 +1646,22 @@ function updateUserInfoBox() {
     const box = document.getElementById('user-info-box');
     if (!box) return;
     if (currentUser && !currentUser.isGuest) {
+        const adminBtn = isAdminUser() ? `
+            <button onclick="openAdminAccountsModal()" title="Quản lý tài khoản"
+                class="relative h-8 px-2.5 flex items-center gap-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-xl border border-purple-200 text-[10px] md:text-xs font-extrabold transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(147,51,234,0.35)]">
+                <i class="fa-solid fa-users-gear"></i><span class="hidden lg:inline">Quản lý tài khoản</span>
+                <span id="admin-pending-badge" class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-rose-500 text-white text-[10px] leading-[18px] font-black shadow">0</span>
+            </button>` : '';
+        const roleLine = isAdminUser()
+            ? `<div class="text-purple-600 font-semibold text-[10px]">ADMIN | Quản trị viên</div>`
+            : `<div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS)} | Lớp ${escapeHtml(currentUser.lop)}</div>`;
         box.innerHTML = `
             <div class="flex items-center space-x-2">
                 <div class="text-right">
-                    <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen)}</div>
-                    <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS)} | Lớp ${escapeHtml(currentUser.lop)}</div>
+                    <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || currentUser.maHS)}</div>
+                    ${roleLine}
                 </div>
+                ${adminBtn}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
     } else {
