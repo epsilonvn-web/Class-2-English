@@ -1528,7 +1528,7 @@ function updateUserInfoBox() {
                     </div>
                     <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS || '')}${currentUser.lop ? ` | Lớp ${escapeHtml(currentUser.lop)}` : ''}</div>
                 </div>
-                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-[11px] font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý tài khoản</span></button>` : ''}
+                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-[11px] font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý</span></button>` : ''}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
     } else {
