@@ -1650,14 +1650,82 @@ function paintAccountSelect(selectEl, kind) {
     selectEl.classList.add(...classes);
 }
 
+
+let accountManagerSort = { key: 'maHS', direction: 'asc' };
+let accountManagerLastAccounts = [];
+
+function normalizeSortText(value) {
+    return String(value ?? '').trim().toLocaleLowerCase('vi');
+}
+
+function parseAccountSortDate(value) {
+    if (!value) return 0;
+    if (value instanceof Date && !isNaN(value.getTime())) return value.getTime();
+    const s = String(value).trim();
+    const m = s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{2}|\d{4})$/);
+    if (m) {
+        let year = Number(m[3]);
+        if (year < 100) year += 2000;
+        const d = new Date(year, Number(m[2]) - 1, Number(m[1]));
+        return isNaN(d.getTime()) ? 0 : d.getTime();
+    }
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? 0 : d.getTime();
+}
+
+function getAccountSortValue(acc, key) {
+    switch (key) {
+        case 'maHS': return normalizeSortText(acc.maHS);
+        case 'hoTen': return normalizeSortText(acc.hoTen);
+        case 'lop': return normalizeSortText(acc.lop);
+        case 'loaiTaiKhoan': return normalizeSortText(acc.loaiTaiKhoan || 'regular');
+        case 'hanDungThu': return parseAccountSortDate(acc.hanDungThu);
+        case 'hanVIP': return parseAccountSortDate(acc.hanVIP);
+        default: return '';
+    }
+}
+
+function sortAccountManagerAccounts(accounts) {
+    const { key, direction } = accountManagerSort;
+    const factor = direction === 'desc' ? -1 : 1;
+    return [...accounts].sort((a, b) => {
+        const av = getAccountSortValue(a, key);
+        const bv = getAccountSortValue(b, key);
+        if (typeof av === 'number' && typeof bv === 'number') {
+            if (av === bv) return 0;
+            return (av < bv ? -1 : 1) * factor;
+        }
+        return String(av).localeCompare(String(bv), 'vi', { numeric: true, sensitivity: 'base' }) * factor;
+    });
+}
+
+function accountSortIcon(key) {
+    if (accountManagerSort.key !== key) return '<i class="fa-solid fa-sort text-purple-300 ml-1"></i>';
+    return accountManagerSort.direction === 'asc'
+        ? '<i class="fa-solid fa-sort-up text-purple-600 ml-1"></i>'
+        : '<i class="fa-solid fa-sort-down text-purple-600 ml-1"></i>';
+}
+
+function sortAccountManagerBy(key) {
+    if (accountManagerSort.key === key) {
+        accountManagerSort.direction = accountManagerSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        accountManagerSort.key = key;
+        accountManagerSort.direction = 'asc';
+    }
+    renderAccountManagerTable(accountManagerLastAccounts);
+}
+
 function renderAccountManagerTable(accounts) {
     const body = document.getElementById('account-manager-body');
     if (!body) return;
-    if (!accounts.length) {
+    accountManagerLastAccounts = Array.isArray(accounts) ? [...accounts] : [];
+    if (!accountManagerLastAccounts.length) {
         body.innerHTML = '<div class="py-10 text-center text-gray-400 font-bold">Chưa có tài khoản học sinh nào.</div>';
         return;
     }
-    const rows = accounts.map(acc => {
+    const sortedAccounts = sortAccountManagerAccounts(accountManagerLastAccounts);
+    const rows = sortedAccounts.map(acc => {
         const id = escapeHtml(acc.maHS || '');
         const name = escapeHtml(acc.hoTen || '');
         const lop = escapeHtml(acc.lop || '—');
@@ -1685,12 +1753,24 @@ function renderAccountManagerTable(accounts) {
             <table class="w-full min-w-[760px] text-xs">
                 <thead class="bg-gradient-to-r from-pink-50 to-purple-50 text-purple-700 font-black">
                     <tr>
-                        <th class="px-3 py-2.5 text-left">Mã HS</th>
-                        <th class="px-3 py-2.5 text-left">Họ tên</th>
-                        <th class="px-3 py-2.5 text-center">Lớp</th>
-                        <th class="px-3 py-2.5 text-center">Loại tài khoản</th>
-                        <th class="px-3 py-2.5 text-center">Hạn dùng thử</th>
-                        <th class="px-3 py-2.5 text-center">Hạn VIP</th>
+                        <th class="px-3 py-2.5 text-left">
+                            <button onclick="sortAccountManagerBy('maHS')" class="inline-flex items-center font-black hover:text-purple-900">Mã HS ${accountSortIcon('maHS')}</button>
+                        </th>
+                        <th class="px-3 py-2.5 text-left">
+                            <button onclick="sortAccountManagerBy('hoTen')" class="inline-flex items-center font-black hover:text-purple-900">Họ tên ${accountSortIcon('hoTen')}</button>
+                        </th>
+                        <th class="px-3 py-2.5 text-center">
+                            <button onclick="sortAccountManagerBy('lop')" class="inline-flex items-center justify-center font-black hover:text-purple-900">Lớp ${accountSortIcon('lop')}</button>
+                        </th>
+                        <th class="px-3 py-2.5 text-center">
+                            <button onclick="sortAccountManagerBy('loaiTaiKhoan')" class="inline-flex items-center justify-center font-black hover:text-purple-900">Loại tài khoản ${accountSortIcon('loaiTaiKhoan')}</button>
+                        </th>
+                        <th class="px-3 py-2.5 text-center">
+                            <button onclick="sortAccountManagerBy('hanDungThu')" class="inline-flex items-center justify-center font-black hover:text-purple-900">Hạn dùng thử ${accountSortIcon('hanDungThu')}</button>
+                        </th>
+                        <th class="px-3 py-2.5 text-center">
+                            <button onclick="sortAccountManagerBy('hanVIP')" class="inline-flex items-center justify-center font-black hover:text-purple-900">Hạn VIP ${accountSortIcon('hanVIP')}</button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>${rows}</tbody>
