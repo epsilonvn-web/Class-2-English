@@ -774,13 +774,7 @@ function updateExamTimerDisplay() {
 function openExamHub() {
     stopSpeaking();
     inMiniGameFlow = false;
-    // Bắt buộc đăng nhập mới vào được Đấu trường đề thi (giống mục 11 Practice & Play) —
-    // vì kết quả thi cần gắn với đúng tài khoản học sinh để lưu lịch sử/báo cáo, khách vãng lai
-    // làm bài xong không lưu được gì cũng không có ý nghĩa đánh giá thực chất.
-    if (!currentUser || currentUser.isGuest) {
-        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Đấu trường đề thi nhé!');
-        return;
-    }
+    if (!requirePremiumAccess('Đấu trường đề thi')) return;
     inAlphaIpaFlow = false;
     activeExamContext = null;
     activeRoadmapContext = null;
@@ -1194,6 +1188,122 @@ function goHome() {
 }
 
 // ==========================================
+// PHÂN QUYỀN TÀI KHOẢN / PREMIUM
+// ==========================================
+function normalizeAccountValue(value) {
+    return String(value ?? '').trim().toLowerCase();
+}
+
+function getUserField(user, names, fallback = '') {
+    if (!user) return fallback;
+    for (const name of names) {
+        if (user[name] !== undefined && user[name] !== null && user[name] !== '') return user[name];
+    }
+    return fallback;
+}
+
+function parseTrialExpiryDate(value) {
+    if (!value) return null;
+    if (value instanceof Date && !isNaN(value)) return value;
+    const raw = String(value).trim();
+    if (!raw) return null;
+    // Ưu tiên định dạng Việt Nam dd-mm-yy / dd-mm-yyyy để tránh JS hiểu nhầm thành mm-dd-yy.
+    const m = raw.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2}|\d{4})$/);
+    if (m) {
+        let year = Number(m[3]);
+        if (year < 100) year += 2000;
+        const d = new Date(year, Number(m[2]) - 1, Number(m[1]), 23, 59, 59, 999);
+        return isNaN(d) ? null : d;
+    }
+    const direct = new Date(raw);
+    return isNaN(direct) ? null : direct;
+}
+
+function getPremiumAccessState() {
+    const user = currentUser;
+    if (!user || user.isGuest) return { allowed: false, reason: 'guest' };
+    const role = normalizeAccountValue(getUserField(user, ['vaiTro', 'VaiTro', 'role'], 'student'));
+    const status = normalizeAccountValue(getUserField(user, ['trangThai', 'TrangThai', 'status'], ''));
+    const accountType = normalizeAccountValue(getUserField(user, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
+    if (role === 'admin') return { allowed: true, reason: 'admin' };
+    if (status === 'pending') return { allowed: false, reason: 'pending' };
+    if (status === 'block' || status === 'blocked') return { allowed: false, reason: 'block' };
+    if (status !== 'active') return { allowed: false, reason: 'inactive' };
+    if (accountType === 'vip') return { allowed: true, reason: 'vip' };
+    const expiryRaw = getUserField(user, ['hanDungThu', 'HanDungThu', 'trialExpiry', 'trialEnd'], '');
+    const expiry = parseTrialExpiryDate(expiryRaw);
+    if (expiry && Date.now() <= expiry.getTime()) return { allowed: true, reason: 'trial', expiry };
+    return { allowed: false, reason: 'trial_expired', expiry };
+}
+
+function ensurePremiumAccessModal() {
+    let modal = document.getElementById('modal-premium-access');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'modal-premium-access';
+    modal.className = 'hidden fixed inset-0 z-[120] bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4';
+    modal.innerHTML = `
+        <div class="w-full max-w-sm bg-white rounded-[30px] border-4 border-pink-200 shadow-2xl overflow-hidden animate-[fadeInUp_0.2s_ease-out]">
+            <div class="bg-gradient-to-br from-pink-50 via-fuchsia-50 to-purple-50 px-5 pt-5 pb-4 text-center">
+                <div class="text-6xl mb-1 swaying">🐰</div>
+                <h3 id="premium-popup-title" class="text-lg font-black text-purple-700">Khu vực đặc biệt</h3>
+                <p id="premium-popup-message" class="mt-2 text-sm font-bold text-gray-600 leading-relaxed"></p>
+                <div class="mt-3 rounded-2xl bg-white/80 border border-pink-200 px-3 py-2 text-[11px] font-extrabold text-pink-600">🌸 Các chuyên đề cơ bản vẫn học miễn phí bình thường nhé!</div>
+            </div>
+            <div id="premium-popup-actions" class="p-4 flex flex-col gap-2"></div>
+        </div>`;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+function closePremiumAccessPopup() {
+    document.getElementById('modal-premium-access')?.classList.add('hidden');
+}
+
+function showPremiumAccessPopup(featureName = 'khu vực này', accessState = getPremiumAccessState()) {
+    const modal = ensurePremiumAccessModal();
+    const title = document.getElementById('premium-popup-title');
+    const message = document.getElementById('premium-popup-message');
+    const actions = document.getElementById('premium-popup-actions');
+    let titleText = 'Khu vực đặc biệt';
+    let messageText = `“${featureName}” là nội dung mở rộng dành cho tài khoản có quyền truy cập.`;
+    if (accessState.reason === 'guest') {
+        titleText = 'Bé muốn khám phá thêm không? ✨';
+        messageText = `“${featureName}” là khu vực mở rộng. Bé có thể đăng nhập hoặc đăng ký tài khoản để bắt đầu dùng thử.`;
+        actions.innerHTML = `
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
+                <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
+            </div>
+            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
+    } else if (accessState.reason === 'pending') {
+        titleText = 'Tài khoản đang chờ duyệt 🌷';
+        messageText = `Admin chưa duyệt tài khoản của bé nên “${featureName}” tạm thời đang khóa. Bé vẫn học toàn bộ nội dung cơ bản bình thường nhé!`;
+        actions.innerHTML = `<button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-sm pastel-btn">Con hiểu rồi!</button>`;
+    } else if (accessState.reason === 'block') {
+        titleText = 'Khu vực mở rộng đang tạm khóa 🌸';
+        messageText = `Tài khoản hiện chưa có quyền vào “${featureName}”. Bé vẫn có thể học các chuyên đề cơ bản miễn phí như bình thường.`;
+        actions.innerHTML = `<button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-sm pastel-btn">Quay lại học miễn phí</button>`;
+    } else {
+        titleText = 'Thời gian dùng thử đã kết thúc ⭐';
+        messageText = `30 ngày trải nghiệm “${featureName}” của bé đã hết. Hãy nâng cấp tài khoản VIP để tiếp tục sử dụng các khu vực mở rộng nhé!`;
+        actions.innerHTML = `
+            <button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white font-black text-sm pastel-btn">Tìm hiểu nâng cấp VIP</button>
+            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
+    }
+    title.textContent = titleText;
+    message.textContent = messageText;
+    modal.classList.remove('hidden');
+}
+
+function requirePremiumAccess(featureName) {
+    const state = getPremiumAccessState();
+    if (state.allowed) return true;
+    showPremiumAccessPopup(featureName, state);
+    return false;
+}
+
+// ==========================================
 // HỆ THỐNG XÁC THỰC TÀI KHOẢN & LỜI CHÀO ĐÓN
 // ==========================================
 function switchAuthTab(tab) {
@@ -1234,192 +1344,6 @@ async function callAppsScript(action, payload) {
         return JSON.parse(rawText);
     } catch (e) {
         throw new Error('Google Apps Script trả về dữ liệu không hợp lệ (không phải JSON) — thường do link Apps Script chưa được Deploy đúng cách (cần đặt quyền truy cập là "Anyone"/"Bất kỳ ai") hoặc đã hết hạn uỷ quyền. Anh vui lòng kiểm tra lại bước Deploy > Manage deployments trên Apps Script nhé.');
-    }
-}
-
-let adminAccountsCache = [];
-
-function isAdminUser() {
-    return !!currentUser && !currentUser.isGuest && String(currentUser.role || '').toLowerCase() === 'admin';
-}
-
-function getAdminCredentials() {
-    return {
-        adminMaHS: currentUser?.maHS || localStorage.getItem('tv1_mahs') || '',
-        adminPin: localStorage.getItem('tv1_mapin') || ''
-    };
-}
-
-async function callAdminAction(action, extraPayload = {}) {
-    if (!isAdminUser()) throw new Error('Tài khoản hiện tại không có quyền Admin.');
-    return callAppsScript(action, { ...getAdminCredentials(), ...extraPayload });
-}
-
-function setAdminPendingBadge(count) {
-    const badge = document.getElementById('admin-pending-badge');
-    if (!badge) return;
-    const n = Number(count) || 0;
-    badge.textContent = n;
-    badge.classList.toggle('hidden', n <= 0);
-}
-
-async function refreshAdminPending(announce = false) {
-    if (!isAdminUser()) return;
-    try {
-        const result = await callAdminAction('listAccounts');
-        if (!result.ok) return;
-        adminAccountsCache = Array.isArray(result.accounts) ? result.accounts : [];
-        const pending = adminAccountsCache.filter(a => String(a.trangThai || '').toLowerCase() === 'pending');
-        setAdminPendingBadge(pending.length);
-
-        if (announce && pending.length > 0) {
-            const names = pending.slice(0, 5).map(a => `${a.hoTen || a.maHS} (${a.maHS})`).join(', ');
-            const more = pending.length > 5 ? ` và ${pending.length - 5} tài khoản khác` : '';
-            alert(`Admin có ${pending.length} tài khoản đang chờ duyệt: ${names}${more}. Bấm “Quản lý tài khoản” để duyệt trực tiếp nhé!`);
-        }
-    } catch (err) {
-        console.warn('Không tải được số tài khoản chờ duyệt:', err);
-    }
-}
-
-function formatAdminDate(value) {
-    if (!value) return '--';
-    const d = new Date(value);
-    if (Number.isNaN(d.getTime())) return String(value);
-    return d.toLocaleDateString('vi-VN');
-}
-
-async function openAdminAccountsModal() {
-    if (!isAdminUser()) return;
-
-    let modal = document.getElementById('modal-admin-accounts');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'modal-admin-accounts';
-        modal.className = 'fixed inset-0 z-[130] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3';
-        modal.innerHTML = `
-            <div class="w-full max-w-5xl max-h-[92vh] bg-white rounded-[28px] border-2 border-purple-200 shadow-2xl flex flex-col overflow-hidden animate-[fadeInUp_0.2s_ease-out]">
-                <div class="px-4 md:px-6 py-4 bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 border-b border-purple-100 flex items-center justify-between gap-3">
-                    <div>
-                        <h3 class="text-base md:text-lg font-black text-purple-700">👤 Quản lý tài khoản học sinh</h3>
-                        <p id="admin-accounts-summary" class="text-[11px] md:text-xs font-bold text-gray-500 mt-0.5">Đang tải danh sách...</p>
-                    </div>
-                    <button onclick="closeAdminAccountsModal()" class="w-9 h-9 rounded-xl bg-white border border-purple-200 text-purple-500 hover:bg-purple-100 font-black">✕</button>
-                </div>
-                <div class="p-3 md:p-5 overflow-auto flex-1">
-                    <div id="admin-accounts-loading" class="py-10 text-center text-sm font-bold text-gray-400">⏳ Đang tải tài khoản...</div>
-                    <div id="admin-accounts-table-wrap" class="hidden overflow-x-auto">
-                        <table class="w-full min-w-[760px] text-xs md:text-sm border-collapse">
-                            <thead>
-                                <tr class="bg-purple-50 text-purple-800">
-                                    <th class="p-2.5 border border-purple-100 text-left">Mã ID</th>
-                                    <th class="p-2.5 border border-purple-100 text-left">Họ tên</th>
-                                    <th class="p-2.5 border border-purple-100">Lớp</th>
-                                    <th class="p-2.5 border border-purple-100">Ngày đăng ký</th>
-                                    <th class="p-2.5 border border-purple-100">Trạng thái</th>
-                                    <th class="p-2.5 border border-purple-100">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-accounts-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="px-4 md:px-6 py-3 border-t border-purple-100 bg-slate-50 flex justify-end">
-                    <button onclick="closeAdminAccountsModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 text-white text-xs md:text-sm font-extrabold">Đóng</button>
-                </div>
-            </div>`;
-        document.body.appendChild(modal);
-    } else {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-    }
-
-    await loadAdminAccounts();
-}
-
-function closeAdminAccountsModal() {
-    const modal = document.getElementById('modal-admin-accounts');
-    if (!modal) return;
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-}
-
-async function loadAdminAccounts() {
-    const loading = document.getElementById('admin-accounts-loading');
-    const wrap = document.getElementById('admin-accounts-table-wrap');
-    if (loading) {
-        loading.textContent = '⏳ Đang tải tài khoản...';
-        loading.classList.remove('hidden');
-    }
-    if (wrap) wrap.classList.add('hidden');
-
-    try {
-        const result = await callAdminAction('listAccounts');
-        if (!result.ok) throw new Error(result.error || 'Không tải được danh sách tài khoản.');
-        adminAccountsCache = Array.isArray(result.accounts) ? result.accounts : [];
-        renderAdminAccountsTable();
-        setAdminPendingBadge(result.pendingCount || 0);
-        if (loading) loading.classList.add('hidden');
-        if (wrap) wrap.classList.remove('hidden');
-    } catch (err) {
-        if (loading) loading.textContent = '❌ ' + err.message;
-    }
-}
-
-function renderAdminAccountsTable() {
-    const body = document.getElementById('admin-accounts-body');
-    const summary = document.getElementById('admin-accounts-summary');
-    if (!body) return;
-
-    const pendingCount = adminAccountsCache.filter(a => String(a.trangThai || '').toLowerCase() === 'pending').length;
-    if (summary) summary.textContent = pendingCount > 0
-        ? `Có ${pendingCount} tài khoản đang chờ duyệt / ${adminAccountsCache.length} tài khoản học sinh`
-        : `Không có tài khoản chờ duyệt / ${adminAccountsCache.length} tài khoản học sinh`;
-
-    if (adminAccountsCache.length === 0) {
-        body.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-gray-400 font-bold">Chưa có tài khoản học sinh nào.</td></tr>';
-        return;
-    }
-
-    body.innerHTML = adminAccountsCache.map(acc => {
-        const status = String(acc.trangThai || 'Active');
-        const lower = status.toLowerCase();
-        const isPending = lower === 'pending';
-        const isBlocked = ['block', 'blocked', 'inactive', 'khoa'].includes(lower);
-        const rowClass = isPending ? 'bg-amber-50/70' : '';
-        const badge = isPending
-            ? '<span class="px-2 py-1 rounded-lg bg-amber-100 text-amber-700 font-extrabold">Chờ duyệt</span>'
-            : isBlocked
-                ? '<span class="px-2 py-1 rounded-lg bg-rose-100 text-rose-700 font-extrabold">Đã khóa</span>'
-                : '<span class="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-700 font-extrabold">Hoạt động</span>';
-        const safeId = escapeHtml(acc.maHS);
-        const actionButtons = isPending
-            ? `<button onclick="changeStudentAccountStatus('${safeId}', 'Active')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold mr-1">✓ Duyệt</button>
-               <button onclick="changeStudentAccountStatus('${safeId}', 'Block')" class="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold">Khóa</button>`
-            : isBlocked
-                ? `<button onclick="changeStudentAccountStatus('${safeId}', 'Active')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold">Mở khóa</button>`
-                : `<button onclick="changeStudentAccountStatus('${safeId}', 'Block')" class="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold">Khóa</button>`;
-
-        return `<tr class="${rowClass}">
-            <td class="p-2.5 border border-slate-100 text-left font-black text-purple-700">${safeId}</td>
-            <td class="p-2.5 border border-slate-100 text-left font-bold text-gray-700">${escapeHtml(acc.hoTen || '')}</td>
-            <td class="p-2.5 border border-slate-100 text-center font-bold">${escapeHtml(acc.lop || '--')}</td>
-            <td class="p-2.5 border border-slate-100 text-center text-gray-500">${escapeHtml(formatAdminDate(acc.ngayDangKy))}</td>
-            <td class="p-2.5 border border-slate-100 text-center">${badge}</td>
-            <td class="p-2.5 border border-slate-100 text-center whitespace-nowrap">${actionButtons}</td>
-        </tr>`;
-    }).join('');
-}
-
-async function changeStudentAccountStatus(maHS, status) {
-    if (!isAdminUser()) return;
-    const actionText = status === 'Active' ? 'duyệt/mở khóa' : 'khóa';
-    try {
-        const result = await callAdminAction('updateAccountStatus', { targetMaHS: maHS, status });
-        if (!result.ok) throw new Error(result.error || `Không thể ${actionText} tài khoản.`);
-        await loadAdminAccounts();
-    } catch (err) {
-        alert('Lỗi cập nhật tài khoản: ' + err.message);
     }
 }
 
@@ -1497,8 +1421,9 @@ async function doRegister() {
             alert(result.error);
             return;
         }
+        alert(`Đã gửi đăng ký thành công, vui lòng chờ Admin duyệt! Mã ID của bé là: ${result.student.maHS}`);
         document.getElementById('login-mahs').value = result.student.maHS;
-        showRegistrationSuccessModal(result.student.maHS);
+        switchAuthTab('login');
     } catch (err) {
         const connErr = 'Lỗi kết nối: ' + err.message;
         showAuthError(connErr);
@@ -1509,134 +1434,83 @@ async function doRegister() {
     }
 }
 
-function showRegistrationSuccessModal(maHS) {
-    const existing = document.getElementById('modal-register-success');
-    if (existing) existing.remove();
+function createGuestUser() {
+    return { name: 'Khách (Guest)', isGuest: true, tuanHienTai: 1, hoTen: 'Bé Khách', lop: '', maHS: 'KHACH', vaiTro: 'student', loaiTaiKhoan: 'regular', trangThai: 'Guest', hanDungThu: '' };
+}
 
-    const modal = document.createElement('div');
-    modal.id = 'modal-register-success';
-    modal.className = 'fixed inset-0 z-[120] bg-slate-900/55 backdrop-blur-sm flex items-center justify-center p-4';
-    modal.innerHTML = `
-        <div class="w-full max-w-sm bg-white rounded-[28px] border-2 border-pink-200 shadow-2xl p-5 md:p-6 text-center animate-[fadeInUp_0.2s_ease-out]">
-            <div class="text-5xl mb-2">🎉</div>
-            <h3 class="text-xl font-black text-pink-600 mb-1">Đăng ký thành công!</h3>
-            <p class="text-xs md:text-sm font-bold text-gray-500 mb-4">
-                Tài khoản đang chờ Admin duyệt. Hãy lưu lại mã ID này để đăng nhập lần sau nhé!
-            </p>
+function openAuthScreen(tab = 'login') {
+    stopSpeaking();
+    document.getElementById('screen-dashboard')?.classList.add('hidden');
+    document.getElementById('screen-login')?.classList.remove('hidden');
+    switchAuthTab(tab);
+}
 
-            <div class="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-2xl px-4 py-4 mb-4">
-                <div class="text-[11px] font-extrabold text-gray-500 uppercase tracking-wide mb-1">Mã ID của bé</div>
-                <div id="register-success-id" class="text-2xl md:text-3xl font-black text-purple-700 tracking-wider select-text">${maHS}</div>
-            </div>
-
-            <button id="btn-copy-register-id" type="button"
-                class="w-full py-3 mb-2.5 bg-white text-purple-700 border-2 border-purple-200 font-extrabold rounded-2xl text-sm pastel-btn">
-                <i class="fa-solid fa-copy mr-1"></i> Sao chép mã ID
-            </button>
-
-            <button id="btn-register-go-login" type="button"
-                class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black rounded-2xl text-sm pastel-btn shadow-md">
-                <i class="fa-solid fa-right-to-bracket mr-1"></i> Đi tới đăng nhập
-            </button>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    const copyBtn = modal.querySelector('#btn-copy-register-id');
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(maHS);
-            copyBtn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Đã sao chép!';
-            copyBtn.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
-        } catch (err) {
-            const temp = document.createElement('textarea');
-            temp.value = maHS;
-            temp.style.position = 'fixed';
-            temp.style.opacity = '0';
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand('copy');
-            temp.remove();
-            copyBtn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Đã sao chép!';
-        }
-    });
-
-    modal.querySelector('#btn-register-go-login').addEventListener('click', () => {
-        modal.remove();
-        switchAuthTab('login');
-        const loginInput = document.getElementById('login-mahs');
-        if (loginInput) {
-            loginInput.value = maHS;
-            loginInput.focus();
-        }
-    });
+function closeAuthScreen() {
+    if (!currentUser) currentUser = createGuestUser();
+    document.getElementById('screen-login')?.classList.add('hidden');
+    document.getElementById('screen-dashboard')?.classList.remove('hidden');
+    updateUserInfoBox();
+    goHome();
 }
 
 async function tryAutoLogin() {
     const maHS = localStorage.getItem('tv1_mahs');
     const maPin = localStorage.getItem('tv1_mapin');
+    currentUser = createGuestUser();
+    enterDashboard(true);
     if (!maHS || !maPin) return;
-
-    // Ẩn ngay màn hình đăng nhập và hiện loading, tránh hiện "chớp" màn hình đăng nhập
-    // rồi mới chuyển sang trang chủ khi đã có sẵn thông tin đăng nhập.
-    const loginScreen = document.getElementById('screen-login');
-    if (loginScreen) loginScreen.classList.add('hidden');
-    showLoadingOverlay('Đang đăng nhập lại cho bé...');
-
+    showLoadingOverlay('Đang nhận lại tài khoản của bé...');
     try {
         const res = await callAppsScript('login', { maHS: maHS.toUpperCase(), maPin });
-        if (res.ok) {
+        if (res.ok && res.student) {
             currentUser = { ...res.student, isGuest: false };
             enterDashboard(true);
         } else {
-            if (loginScreen) loginScreen.classList.remove('hidden');
+            localStorage.removeItem('tv1_mahs');
+            localStorage.removeItem('tv1_mapin');
+            currentUser = createGuestUser();
+            enterDashboard(true);
         }
     } catch (e) {
-        if (loginScreen) loginScreen.classList.remove('hidden');
+        currentUser = createGuestUser();
+        enterDashboard(true);
     } finally {
         hideLoadingOverlay();
     }
 }
 
 function logout() {
-    currentUser = null;
+    currentUser = createGuestUser();
     localStorage.removeItem('tv1_mahs');
     localStorage.removeItem('tv1_mapin');
-    document.getElementById('screen-dashboard').classList.add('hidden');
-    document.getElementById('screen-login').classList.remove('hidden');
     const mahsInput = document.getElementById('login-mahs');
     const mapinInput = document.getElementById('login-mapin');
     if (mahsInput) mahsInput.value = '';
     if (mapinInput) mapinInput.value = '';
     hideAuthError();
+    enterDashboard(true);
 }
 
 function handleGuestMode() {
-    currentUser = { name: "Khách (Guest)", isGuest: true, tuanHienTai: 1, hoTen: "Bé Khách", lop: "1A", maHS: "KHACH" };
+    currentUser = createGuestUser();
     enterDashboard();
 }
 
 function enterDashboard(isSilent = false) {
-    document.getElementById('screen-login').classList.add('hidden');
-    document.getElementById('screen-dashboard').classList.remove('hidden');
+    document.getElementById('screen-login')?.classList.add('hidden');
+    document.getElementById('screen-dashboard')?.classList.remove('hidden');
     updateUserInfoBox();
-    if (isAdminUser()) refreshAdminPending(!isSilent);
     resetStars();
     renderDashboardGrid();
     renderExamHubGrid();
     goHome();
-
-    // Phát ngẫu nhiên lời chào sư phạm (Không nhạc)
     if (!isSilent) {
         setTimeout(() => {
             if (currentUser && !currentUser.isGuest) {
                 const template = GREETINGS_STUDENT[Math.floor(Math.random() * GREETINGS_STUDENT.length)];
-                const msg = template.replace('{name}', currentUser.hoTen);
-                speakVietnamese(msg, 0.96);
+                speakVietnamese(template.replace('{name}', currentUser.hoTen || 'Bé'), 0.96);
             } else {
-                const msg = GREETINGS_GUEST[Math.floor(Math.random() * GREETINGS_GUEST.length)];
-                speakVietnamese(msg, 0.96);
+                speakVietnamese(GREETINGS_GUEST[Math.floor(Math.random() * GREETINGS_GUEST.length)], 0.96);
             }
         }, 450);
     }
@@ -1646,26 +1520,29 @@ function updateUserInfoBox() {
     const box = document.getElementById('user-info-box');
     if (!box) return;
     if (currentUser && !currentUser.isGuest) {
-        const adminBtn = isAdminUser() ? `
-            <button onclick="openAdminAccountsModal()" title="Quản lý tài khoản"
-                class="relative h-8 px-2.5 flex items-center gap-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-xl border border-purple-200 text-[10px] md:text-xs font-extrabold transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(147,51,234,0.35)]">
-                <i class="fa-solid fa-users-gear"></i><span class="hidden lg:inline">Quản lý tài khoản</span>
-                <span id="admin-pending-badge" class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-rose-500 text-white text-[10px] leading-[18px] font-black shadow">0</span>
-            </button>` : '';
-        const roleLine = isAdminUser()
-            ? `<div class="text-purple-600 font-semibold text-[10px]">ADMIN | Quản trị viên</div>`
-            : `<div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS)} | Lớp ${escapeHtml(currentUser.lop)}</div>`;
+        const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
+        const type = normalizeAccountValue(getUserField(currentUser, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
+        const status = normalizeAccountValue(getUserField(currentUser, ['trangThai', 'TrangThai', 'status'], ''));
+        const badge = role === 'admin' ? 'ADMIN' : (type === 'vip' ? 'VIP' : (status === 'pending' ? 'PENDING' : 'REGULAR'));
+        const badgeClass = role === 'admin' ? 'bg-amber-100 text-amber-700 border-amber-200' : (type === 'vip' ? 'bg-purple-100 text-purple-700 border-purple-200' : 'bg-pink-50 text-pink-600 border-pink-200');
         box.innerHTML = `
             <div class="flex items-center space-x-2">
                 <div class="text-right">
-                    <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || currentUser.maHS)}</div>
-                    ${roleLine}
+                    <div class="flex items-center justify-end gap-1.5">
+                        <span class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || '')}</span>
+                        <span class="px-1.5 py-0.5 rounded-md border text-[8px] font-black ${badgeClass}">${badge}</span>
+                    </div>
+                    <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS || '')}${currentUser.lop ? ` | Lớp ${escapeHtml(currentUser.lop)}` : ''}</div>
                 </div>
-                ${adminBtn}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
     } else {
-        box.innerHTML = `<span class="text-amber-600 font-extrabold text-xs">Khách (Guest)</span><br><span class="text-gray-400 font-semibold text-[10px]">Chưa đăng nhập</span>`;
+        box.innerHTML = `
+            <div class="flex items-center gap-1.5">
+                <span class="text-amber-600 font-extrabold text-[11px] mr-0.5">Khách</span>
+                <button onclick="openAuthScreen('login')" class="h-9 px-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[11px] font-black shadow-sm pastel-btn">Sign in</button>
+                <button onclick="openAuthScreen('register')" class="h-9 px-3 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 text-[11px] font-black shadow-sm pastel-btn">Sign up</button>
+            </div>`;
     }
 }
 
@@ -1678,7 +1555,6 @@ function resetStars() {
 }
 
 function clickProgressOrExam(type) {
-    if (!currentUser || currentUser.isGuest) return alert('Bé vui lòng đăng nhập để sử dụng tính năng này nhé!');
     if (type === 'progress') openRoadmap();
     else if (type === 'exam') openExamHub();
 }
@@ -1689,12 +1565,8 @@ function clickProgressOrExam(type) {
 function openTopic(topicNum, topicName, icon) {
     stopSpeaking();
     inMiniGameFlow = false;
-    // Riêng mục 11 (Practice & Play - Ôn tập theo học kỳ) bắt buộc phải đăng nhập mới vào được,
-    // vì đây là ôn tập tổng hợp gắn với tiến trình học tập thật của học sinh, không dành cho khách.
-    if (Number(topicNum) === 11 && (!currentUser || currentUser.isGuest)) {
-        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được mục "Practice & Play" này nhé!');
-        return;
-    }
+    // Chỉ mục 11 là nội dung Premium; các mục 1-10 luôn mở cho mọi trạng thái tài khoản.
+    if (Number(topicNum) === 11 && !requirePremiumAccess('Practice & Play')) return;
     inAlphaIpaFlow = false;
     activeTopicId = topicNum; activeExamContext = null; activeRoadmapContext = null;
     updateNavTabs(topicName, icon || '🐰', null);
@@ -1856,13 +1728,7 @@ function handleNextExamFromReport() {
 function openRoadmap() {
     stopSpeaking();
     inMiniGameFlow = false;
-    // Bắt buộc đăng nhập mới vào được Tiến trình tuần (giống mục 11 Practice & Play và
-    // Đấu trường đề thi) — vì tiến trình 24 tuần cần gắn với đúng tài khoản để lưu lại tuần
-    // đang mở khoá (TuanHienTai), khách vãng lai làm xong không lưu được gì cả.
-    if (!currentUser || currentUser.isGuest) {
-        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Bản đồ tiến trình tuần nhé!');
-        return;
-    }
+    if (!requirePremiumAccess('Bản đồ tuần / Tiến trình tuần')) return;
     inAlphaIpaFlow = false;
     updateNavTabs("Bản đồ tiến trình tuần", "🗺️", null);
     renderRoadmapSVG();
@@ -3551,11 +3417,7 @@ const MINIGAME_LIST = [
 
 function openMiniGameHub() {
     stopSpeaking();
-    // Bắt buộc đăng nhập mới vào được Mini Game (giống mục 11, Đấu trường đề thi, Tiến trình tuần)
-    if (!currentUser || currentUser.isGuest) {
-        alert('Con cần đăng nhập bằng tài khoản học sinh mới vào được Mini Game nhé!');
-        return;
-    }
+    if (!requirePremiumAccess('Mini Game')) return;
     inAlphaIpaFlow = false;
     inMiniGameFlow = true;
     activeExamContext = null; activeRoadmapContext = null; activeTopicId = null; pendingTopicQuiz = null;
