@@ -1223,31 +1223,20 @@ function getPremiumAccessState() {
     const user = currentUser;
     if (!user || user.isGuest) return { allowed: false, reason: 'guest' };
     const role = normalizeAccountValue(getUserField(user, ['vaiTro', 'VaiTro', 'role'], 'student'));
-    const status = normalizeAccountValue(getUserField(user, ['trangThai', 'TrangThai', 'status'], ''));
     let accountType = normalizeAccountValue(getUserField(user, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
     if (role === 'admin') return { allowed: true, reason: 'admin' };
-    if (status === 'pending') return { allowed: false, reason: 'pending' };
-    if (status !== 'active') return { allowed: false, reason: 'inactive' };
 
-    // VIP chỉ có hiệu lực 1 năm. Hết hạn thì coi ngay như regular ở phía client;
-    // Apps Script cũng tự ghi LoaiTaiKhoan về regular khi login/listAccounts.
+    // Chỉ LoaiTaiKhoan quyết định quyền Premium: regular / trial / vip.
     if (accountType === 'vip') {
-        const vipRaw = getUserField(user, ['hanVIP', 'HanVIP', 'vipExpiry', 'vipEnd'], '');
-        const vipExpiry = parseTrialExpiryDate(vipRaw);
-        if (vipExpiry && Date.now() <= vipExpiry.getTime()) {
-            return { allowed: true, reason: 'vip', expiry: vipExpiry };
-        }
-        accountType = 'regular';
-        user.loaiTaiKhoan = 'regular';
-        user.LoaiTaiKhoan = 'regular';
-        user.accountType = 'regular';
+        const expiry = parseTrialExpiryDate(getUserField(user, ['hanVIP', 'HanVIP', 'vipExpiry', 'vipEnd'], ''));
+        if (expiry && Date.now() <= expiry.getTime()) return { allowed: true, reason: 'vip', expiry };
     }
-
-    // Regular: quyền premium chỉ còn trong 1 tháng dùng thử tính từ lúc được Active.
-    const expiryRaw = getUserField(user, ['hanDungThu', 'HanDungThu', 'trialExpiry', 'trialEnd'], '');
-    const expiry = parseTrialExpiryDate(expiryRaw);
-    if (expiry && Date.now() <= expiry.getTime()) return { allowed: true, reason: 'trial', expiry };
-    return { allowed: false, reason: 'trial_expired', expiry };
+    if (accountType === 'trial') {
+        const expiry = parseTrialExpiryDate(getUserField(user, ['hanDungThu', 'HanDungThu', 'trialExpiry', 'trialEnd'], ''));
+        if (expiry && Date.now() <= expiry.getTime()) return { allowed: true, reason: 'trial', expiry };
+    }
+    // Backend sẽ tự hạ trial/vip hết hạn về regular khi login/listAccounts.
+    return { allowed: false, reason: 'regular' };
 }
 
 function ensurePremiumAccessModal() {
@@ -1283,26 +1272,18 @@ function showPremiumAccessPopup(featureName = 'khu vực này', accessState = ge
     let messageText = `“${featureName}” là nội dung mở rộng dành cho tài khoản có quyền truy cập.`;
     if (accessState.reason === 'guest') {
         titleText = 'Bé muốn khám phá thêm không? ✨';
-        messageText = `“${featureName}” là khu vực mở rộng. Bé có thể đăng nhập hoặc đăng ký tài khoản để bắt đầu dùng thử.`;
+        messageText = `“${featureName}” là khu vực mở rộng. Bé có thể đăng nhập hoặc đăng ký tài khoản để học các nội dung miễn phí.`;
         actions.innerHTML = `
             <div class="grid grid-cols-2 gap-2">
                 <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
                 <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
             </div>
             <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
-    } else if (accessState.reason === 'pending') {
-        titleText = 'Tài khoản đang chờ duyệt 🌷';
-        messageText = `Admin chưa duyệt tài khoản của bé nên “${featureName}” tạm thời đang khóa. Bé vẫn học toàn bộ nội dung cơ bản bình thường nhé!`;
-        actions.innerHTML = `<button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-sm pastel-btn">Con hiểu rồi!</button>`;
-    } else if (accessState.reason === 'block') {
-        titleText = 'Khu vực mở rộng đang tạm khóa 🌸';
-        messageText = `Tài khoản hiện chưa có quyền vào “${featureName}”. Bé vẫn có thể học các chuyên đề cơ bản miễn phí như bình thường.`;
-        actions.innerHTML = `<button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-sm pastel-btn">Quay lại học miễn phí</button>`;
     } else {
-        titleText = 'Thời gian dùng thử đã kết thúc ⭐';
-        messageText = `30 ngày trải nghiệm “${featureName}” của bé đã hết. Hãy nâng cấp tài khoản VIP để tiếp tục sử dụng các khu vực mở rộng nhé!`;
+        titleText = 'Khu vực mở rộng dành cho Trial / VIP ⭐';
+        messageText = `Tài khoản Regular vẫn học toàn bộ nội dung cơ bản miễn phí. “${featureName}” được mở khi Admin cấp Trial hoặc VIP nhé!`;
         actions.innerHTML = `
-            <button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white font-black text-sm pastel-btn">Tìm hiểu nâng cấp VIP</button>
+            <button onclick="closePremiumAccessPopup()" class="py-2.5 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white font-black text-sm pastel-btn">Con hiểu rồi!</button>
             <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Tiếp tục học miễn phí</button>`;
     }
     title.textContent = titleText;
@@ -1435,7 +1416,7 @@ async function doRegister() {
             alert(result.error);
             return;
         }
-        alert(`Đã gửi đăng ký thành công, vui lòng chờ Admin duyệt! Mã ID của bé là: ${result.student.maHS}`);
+        alert(`Đăng ký thành công! Mã ID của bé là: ${result.student.maHS}. Tài khoản Regular có thể học ngay các nội dung miễn phí nhé!`);
         document.getElementById('login-mahs').value = result.student.maHS;
         switchAuthTab('login');
     } catch (err) {
@@ -1536,9 +1517,8 @@ function updateUserInfoBox() {
     if (currentUser && !currentUser.isGuest) {
         const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
         const type = normalizeAccountValue(getUserField(currentUser, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
-        const status = normalizeAccountValue(getUserField(currentUser, ['trangThai', 'TrangThai', 'status'], ''));
-        const badge = role === 'admin' ? 'ADMIN' : (type === 'vip' ? 'VIP' : (status === 'pending' ? 'PENDING' : 'REGULAR'));
-        const badgeClass = role === 'admin' ? 'bg-amber-100 text-amber-700 border-amber-200' : (type === 'vip' ? 'bg-purple-100 text-purple-700 border-purple-200' : 'bg-pink-50 text-pink-600 border-pink-200');
+        const badge = role === 'admin' ? 'ADMIN' : type.toUpperCase();
+        const badgeClass = role === 'admin' ? 'bg-amber-100 text-amber-700 border-amber-200' : (type === 'vip' ? 'bg-purple-100 text-purple-700 border-purple-200' : (type === 'trial' ? 'bg-amber-100 text-amber-700 border-amber-200' : 'bg-sky-50 text-sky-600 border-sky-200'));
         box.innerHTML = `
             <div class="flex items-center space-x-2">
                 <div class="text-right">
@@ -1548,10 +1528,9 @@ function updateUserInfoBox() {
                     </div>
                     <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS || '')}${currentUser.lop ? ` | Lớp ${escapeHtml(currentUser.lop)}` : ''}</div>
                 </div>
-                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-[11px] font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý tài khoản</span><span id="admin-pending-badge" class="hidden absolute -top-2 -right-2 min-w-[20px] h-5 px-1 items-center justify-center rounded-full bg-rose-500 text-white text-[10px] font-black border-2 border-white">0</span></button>` : ''}
+                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-[11px] font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý tài khoản</span></button>` : ''}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
-        if (role === 'admin') setTimeout(refreshAdminPendingBadge, 100);
     } else {
         box.innerHTML = `
             <div class="flex items-center gap-1.5">
@@ -1588,7 +1567,7 @@ function ensureAccountManagerModal() {
                         <span>👥</span><span>Quản lý tài khoản</span>
                         <span id="account-manager-total" class="px-2.5 py-1 rounded-full bg-white border border-purple-200 text-purple-600 text-[10px] md:text-[11px] font-black shadow-sm">0 tài khoản</span>
                     </div>
-                    <div class="text-[11px] text-gray-500 font-bold mt-0.5">Duyệt học sinh, khóa/mở tài khoản và chuyển Regular ↔ VIP.</div>
+                    <div class="text-[11px] text-gray-500 font-bold mt-0.5">Chuyển hạng tài khoản Regular / Trial / VIP. Trial có hạn 1 tháng, VIP có hạn 1 năm.</div>
                 </div>
                 <button onclick="closeAccountManager()" class="w-9 h-9 shrink-0 rounded-xl bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 shadow-sm"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -1602,22 +1581,6 @@ function ensureAccountManagerModal() {
         </div>`;
     document.body.appendChild(modal);
     return modal;
-}
-
-async function refreshAdminPendingBadge() {
-    const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
-    if (role !== 'admin') return;
-    const badge = document.getElementById('admin-pending-badge');
-    try {
-        const result = await callAppsScript('listAccounts', getAdminAuthPayload());
-        if (!result.ok) return;
-        const count = Number(result.pendingCount || 0);
-        if (badge) {
-            badge.textContent = count;
-            badge.classList.toggle('hidden', count <= 0);
-            badge.classList.toggle('flex', count > 0);
-        }
-    } catch (e) {}
 }
 
 function openAccountManager() {
@@ -1659,25 +1622,16 @@ async function loadAccountManager() {
         renderAccountManagerTable(accounts);
         const totalEl = document.getElementById('account-manager-total');
         if (totalEl) totalEl.textContent = `${accounts.length} tài khoản`;
-        const pendingCount = Number(result.pendingCount || 0);
-        if (status) status.textContent = pendingCount > 0 ? `Có ${pendingCount} tài khoản đang chờ duyệt.` : 'Không có tài khoản nào đang chờ duyệt.';
-        refreshAdminPendingBadge();
+        if (status) status.textContent = 'Regular: miễn phí • Trial: Premium 1 tháng • VIP: Premium 1 năm.';
     } catch (err) {
         body.innerHTML = `<div class="py-10 text-center text-rose-500 font-black">😿 ${escapeHtml(err.message || 'Không tải được danh sách tài khoản.')}</div>`;
     }
 }
 
-function getAccountStatusSelectClass(statusValue) {
-    const status = String(statusValue || '').trim().toLowerCase();
-    if (status === 'active') return 'border-emerald-300 bg-emerald-50 text-emerald-700';
-    if (status === 'pending') return 'border-amber-300 bg-amber-50 text-amber-700';
-    if (status === 'block' || status === 'blocked') return 'border-rose-300 bg-rose-50 text-rose-700';
-    return 'border-slate-200 bg-white text-slate-700';
-}
-
 function getAccountTypeSelectClass(typeValue) {
     const type = String(typeValue || '').trim().toLowerCase();
     if (type === 'vip') return 'border-purple-300 bg-purple-50 text-purple-700';
+    if (type === 'trial') return 'border-amber-300 bg-amber-50 text-amber-700';
     return 'border-sky-300 bg-sky-50 text-sky-700';
 }
 
@@ -1692,7 +1646,7 @@ function paintAccountSelect(selectEl, kind) {
         'border-sky-300','bg-sky-50','text-sky-700'
     ];
     selectEl.classList.remove(...removable);
-    const classes = (kind === 'status' ? getAccountStatusSelectClass(selectEl.value) : getAccountTypeSelectClass(selectEl.value)).split(' ');
+    const classes = getAccountTypeSelectClass(selectEl.value).split(' ');
     selectEl.classList.add(...classes);
 }
 
@@ -1707,13 +1661,11 @@ function renderAccountManagerTable(accounts) {
         const id = escapeHtml(acc.maHS || '');
         const name = escapeHtml(acc.hoTen || '');
         const lop = escapeHtml(acc.lop || '—');
-        const status = String(acc.trangThai || 'Pending');
         const type = String(acc.loaiTaiKhoan || 'regular').toLowerCase();
-        const isPending = status.toLowerCase() === 'pending';
         const trial = formatAccountDate(acc.hanDungThu);
         const vipExpiry = formatAccountDate(acc.hanVIP);
         return `
-            <tr class="border-b border-pink-50 ${isPending ? 'bg-amber-50/55' : 'bg-white'}">
+            <tr class="border-b border-pink-50 bg-white">
                 <td class="px-3 py-2.5 font-black text-slate-700 whitespace-nowrap">${id}</td>
                 <td class="px-3 py-2.5 font-bold text-slate-700">${name}</td>
                 <td class="px-3 py-2.5 font-bold text-slate-500 text-center">${lop}</td>
@@ -1726,6 +1678,7 @@ function renderAccountManagerTable(accounts) {
                 <td class="px-3 py-2.5 text-center">
                     <select onchange="paintAccountSelect(this, 'type'); adminChangeAccountType('${id.replace(/'/g,"\\'")}', this.value)" class="px-2 py-1.5 rounded-xl border font-black text-xs focus:outline-none ${getAccountTypeSelectClass(type)}">
                         <option value="regular" ${type==='regular'?'selected':''}>Regular</option>
+                        <option value="trial" ${type==='trial'?'selected':''}>Trial</option>
                         <option value="vip" ${type==='vip'?'selected':''}>VIP</option>
                     </select>
                 </td>
@@ -1735,13 +1688,12 @@ function renderAccountManagerTable(accounts) {
     }).join('');
     body.innerHTML = `
         <div class="overflow-x-auto rounded-2xl border border-pink-100">
-            <table class="w-full min-w-[880px] text-xs">
+            <table class="w-full min-w-[760px] text-xs">
                 <thead class="bg-gradient-to-r from-pink-50 to-purple-50 text-purple-700 font-black">
                     <tr>
                         <th class="px-3 py-2.5 text-left">Mã HS</th>
                         <th class="px-3 py-2.5 text-left">Họ tên</th>
                         <th class="px-3 py-2.5 text-center">Lớp</th>
-                        <th class="px-3 py-2.5 text-center">Trạng thái</th>
                         <th class="px-3 py-2.5 text-center">Loại tài khoản</th>
                         <th class="px-3 py-2.5 text-center">Hạn dùng thử</th>
                         <th class="px-3 py-2.5 text-center">Hạn VIP</th>
@@ -1750,21 +1702,6 @@ function renderAccountManagerTable(accounts) {
                 <tbody>${rows}</tbody>
             </table>
         </div>`;
-}
-
-async function adminChangeAccountStatus(targetMaHS, statusValue) {
-    const statusEl = document.getElementById('account-manager-status');
-    if (statusEl) statusEl.textContent = `Đang cập nhật ${targetMaHS}...`;
-    try {
-        const result = await callAppsScript('updateAccountStatus', getAdminAuthPayload({ targetMaHS, status: statusValue }));
-        if (!result.ok) throw new Error(result.error || 'Không cập nhật được trạng thái.');
-        if (statusEl) statusEl.textContent = `${targetMaHS}: đã chuyển sang ${result.trangThai || result.status || statusValue}.`;
-        await loadAccountManager();
-    } catch (err) {
-        if (statusEl) statusEl.textContent = 'Lỗi: ' + (err.message || err);
-        alert(err.message || String(err));
-        await loadAccountManager();
-    }
 }
 
 async function adminChangeAccountType(targetMaHS, typeValue) {
