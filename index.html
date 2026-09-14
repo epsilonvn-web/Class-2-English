@@ -86,15 +86,32 @@
         ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
 
 
-        /* Mobile header: logo + loa + sao Đúng/Sai cùng hàng trên; các nút còn lại xuống hàng dưới */
+        /* Logo thương hiệu mới: chỉ phát sáng khi hover, không phóng to */
+        .brand-logo-home {
+            transition: box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+        }
+        .brand-logo-home img {
+            transition: filter 0.22s ease;
+        }
+        .brand-logo-home:hover {
+            border-color: #f472b6;
+            box-shadow: 0 0 18px rgba(236, 72, 153, 0.62), 0 0 30px rgba(168, 85, 247, 0.22);
+        }
+        .brand-logo-home:hover img {
+            filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.58));
+        }
+
+        /* Mobile header theo bố cục Toán 3:
+           Hàng 1 = Logo/Home + breadcrumb/chuyên mục + Tuần + Game
+           Hàng 2 = Loa + sao Đúng/Sai + thông tin tài khoản/đăng xuất */
         @media (max-width: 767px) {
             #dashboard-header {
                 display: grid !important;
                 grid-template-columns: minmax(0, 1fr) auto auto;
                 grid-template-rows: auto auto;
                 align-items: center;
-                column-gap: 6px;
-                row-gap: 6px;
+                column-gap: 7px;
+                row-gap: 8px;
                 padding: 8px 10px;
             }
             #header-nav-group {
@@ -103,38 +120,83 @@
                 width: 100%;
                 min-width: 0;
                 overflow-x: auto;
+                overflow-y: hidden;
                 justify-content: flex-start !important;
+                gap: 6px;
+                padding-bottom: 0 !important;
+                scrollbar-width: none;
             }
-            #header-actions-group {
-                display: contents !important;
+            #header-nav-group::-webkit-scrollbar { display: none; }
+
+            #header-actions-group { display: contents !important; }
+
+            #btn-header-home {
+                width: 60px !important;
+                height: 60px !important;
+                max-width: 60px !important;
+                min-width: 60px !important;
+                border-radius: 15px !important;
             }
-            #btn-toggle-autospeech {
+            #btn-header-home img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+            }
+
+            #header-level2-tab > button,
+            #header-level3-btn,
+            #header-level4-tab > div {
+                height: 48px !important;
+            }
+            #header-level2-tab > button { max-width: 150px !important; }
+            #header-level3-btn { max-width: 120px !important; }
+            #header-level4-tab > div { max-width: 130px !important; }
+
+            #header-actions-group > button:nth-of-type(2) {
                 grid-column: 2;
                 grid-row: 1;
-                width: 36px !important;
-                height: 36px !important;
+                height: 48px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                font-size: 13px !important;
+                white-space: nowrap;
             }
-            #header-score-box {
+            #header-actions-group > button:nth-of-type(3) {
                 grid-column: 3;
                 grid-row: 1;
+                height: 48px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                font-size: 13px !important;
+                white-space: nowrap;
+            }
+
+            #btn-toggle-autospeech {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: start;
+                width: 44px !important;
+                height: 44px !important;
+            }
+            #header-score-box {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: start;
+                margin-left: 50px;
                 padding: 3px 7px !important;
                 min-width: 72px;
             }
             #user-info-box {
-                grid-column: 1;
+                grid-column: 2 / 4;
                 grid-row: 2;
                 width: 100%;
                 min-width: 0;
-                text-align: center !important;
+                justify-self: end;
+                text-align: right !important;
             }
-            #header-actions-group > button:not(#btn-toggle-autospeech) {
-                grid-row: 2;
-            }
-            #header-actions-group > button:nth-of-type(2) { grid-column: 2; }
-            #header-actions-group > button:nth-of-type(3) { grid-column: 3; }
-            #btn-header-home {
-                height: 44px !important;
-                max-width: 100%;
+            #user-info-box > div {
+                justify-content: flex-end !important;
+                width: 100%;
             }
         }
 
@@ -161,12 +223,9 @@
     <div class="w-full flex justify-center items-center mt-4 md:mt-6">
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
         <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
-            <div class="mb-2">
-                <span class="text-7xl md:text-8xl swaying select-none">🐰</span>
+            <div class="mb-4 flex justify-center">
+                <img src="assets/images/icon-512.png" alt="Tiếng Anh 2" class="w-36 h-36 md:w-40 md:h-40 object-contain rounded-full select-none" draggable="false">
             </div>
-
-            <h1 class="text-2xl md:text-3xl font-extrabold text-pink-600 tracking-wide mb-1">Tiếng Anh 2</h1>
-            <p class="text-sm font-bold text-purple-600 mb-5">Cô giáo Thỏ Ngọc</p>
 
             <div class="w-full grid grid-cols-2 bg-pink-50 rounded-2xl p-1 mb-5 border border-pink-200">
                 <button id="tab-btn-login" onclick="switchAuthTab('login')" class="py-2.5 rounded-xl font-extrabold text-sm pastel-btn bg-white text-pink-600 shadow-sm">Đăng nhập</button>
@@ -235,12 +294,8 @@
             
             <header id="dashboard-header" class="w-full bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col md:flex-row justify-between items-center gap-2">
                 <div id="header-nav-group" class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-start overflow-x-auto pb-0.5">
-                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="h-12 flex items-center gap-1.5 bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 pl-2 pr-3 rounded-2xl border-2 border-pink-300 shadow-sm shrink-0 transition-all duration-200 hover:border-pink-400 hover:shadow-[0_0_18px_rgba(244,114,182,0.65)]">
-                        <span class="w-8 h-8 flex items-center justify-center bg-white rounded-full text-lg shadow-inner border border-pink-200 shrink-0">🐰</span>
-                        <span class="flex flex-col items-start leading-none">
-                            <span class="text-sm font-black bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-transparent tracking-wide whitespace-nowrap">Tiếng Anh 2</span>
-                            <span class="text-[10px] font-bold text-purple-500 mt-0.5 whitespace-nowrap">Cô giáo Thỏ Ngọc</span>
-                        </span>
+                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="brand-logo-home w-14 h-14 flex items-center justify-center bg-white rounded-2xl border-2 border-pink-300 shadow-sm shrink-0 p-0.5 overflow-hidden">
+                        <img src="assets/images/icon-192.png" alt="Tiếng Anh 2" class="w-full h-full object-contain rounded-xl" draggable="false">
                     </button>
 
                     <div id="header-level2-tab" class="hidden items-center">
@@ -284,10 +339,10 @@
                     <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right"></div>
 
                     <button onclick="clickProgressOrExam('progress')" class="h-10 px-2.5 md:px-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-purple-600 hover:to-indigo-600 flex items-center space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
-                        <i class="fa-solid fa-map-location-dot"></i><span class="hidden sm:inline">Bản đồ tuần</span><i class="fa-solid fa-lock text-[9px] opacity-80" title="Khu vực Premium"></i>
+                        <i class="fa-solid fa-map-location-dot"></i><span class="sm:hidden">Tuần</span><span class="hidden sm:inline">Bản đồ tuần</span><i class="fa-solid fa-lock text-[9px] opacity-80 hidden sm:inline" title="Khu vực Premium"></i>
                     </button>
                     <button onclick="openMiniGameHub()" class="h-10 px-2.5 md:px-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-teal-600 hover:to-emerald-600 flex items-center space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(20,184,166,0.65)]">
-                        <i class="fa-solid fa-gamepad"></i><span class="hidden sm:inline">Mini Game</span><i class="fa-solid fa-lock text-[9px] opacity-80" title="Khu vực Premium"></i>
+                        <i class="fa-solid fa-gamepad"></i><span class="sm:hidden">Game</span><span class="hidden sm:inline">Mini Game</span><i class="fa-solid fa-lock text-[9px] opacity-80 hidden sm:inline" title="Khu vực Premium"></i>
                     </button>
                 </div>
             </header>
