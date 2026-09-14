@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Hỗ trợ cài app ra màn hình chính (PWA) -->
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png?v=20260914c">
     <meta name="theme-color" content="#ec4899">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -88,21 +88,27 @@
 
         /* Logo thương hiệu mới: chỉ phát sáng khi hover, không phóng to */
         .brand-logo-home {
-            width: 64px;
-            height: 64px;
-            margin-top: -4px;
-            margin-bottom: -4px;
-            transition: box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+            width: 72px;
+            height: 72px;
+            margin-top: -8px;
+            margin-bottom: -8px;
+            margin-left: -7px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+            transition: filter 0.22s ease;
         }
         .brand-logo-home img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 18px;
             transition: filter 0.22s ease;
         }
         .brand-logo-home:hover {
-            border-color: #f472b6;
-            box-shadow: 0 0 18px rgba(236, 72, 153, 0.62), 0 0 30px rgba(168, 85, 247, 0.22);
-        }
-        .brand-logo-home:hover img {
-            filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.58));
+            filter: drop-shadow(0 0 11px rgba(236, 72, 153, 0.72)) drop-shadow(0 0 18px rgba(168, 85, 247, 0.26));
         }
 
         /* Mobile header theo bố cục Toán 3:
@@ -135,13 +141,18 @@
             #header-actions-group { display: contents !important; }
 
             #btn-header-home {
-                width: 64px !important;
-                height: 64px !important;
-                max-width: 64px !important;
-                min-width: 64px !important;
-                margin-top: -2px !important;
-                margin-bottom: -2px !important;
-                border-radius: 15px !important;
+                width: 72px !important;
+                height: 72px !important;
+                max-width: 72px !important;
+                min-width: 72px !important;
+                margin-top: -6px !important;
+                margin-bottom: -6px !important;
+                margin-left: -7px !important;
+                border: 0 !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                overflow: visible !important;
             }
             #btn-header-home img {
                 width: 100% !important;
@@ -230,7 +241,7 @@
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
         <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
             <div class="mb-2 flex justify-center">
-                <img src="assets/images/icon-512.png" alt="Tiếng Anh 2" class="w-36 h-36 md:w-40 md:h-40 object-contain rounded-full select-none" draggable="false">
+                <img src="assets/images/icon-512.png?v=20260914c" alt="Tiếng Anh 2" class="w-36 h-36 md:w-40 md:h-40 object-contain rounded-full select-none" draggable="false">
             </div>
             <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô giáo Thỏ Ngọc</p>
 
@@ -301,8 +312,8 @@
             
             <header id="dashboard-header" class="w-full bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col md:flex-row justify-between items-center gap-2">
                 <div id="header-nav-group" class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-start overflow-x-auto pb-0.5">
-                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="brand-logo-home w-14 h-14 flex items-center justify-center bg-white rounded-2xl border-2 border-pink-300 shadow-sm shrink-0 p-0.5 overflow-hidden">
-                        <img src="assets/images/icon-192.png" alt="Tiếng Anh 2" class="w-full h-full object-contain rounded-xl" draggable="false">
+                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="brand-logo-home flex items-center justify-center shrink-0">
+                        <img src="assets/images/icon-192.png?v=20260914c" alt="Tiếng Anh 2" class="w-full h-full object-contain rounded-xl" draggable="false">
                     </button>
 
                     <div id="header-level2-tab" class="hidden items-center">
