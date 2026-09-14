@@ -88,6 +88,10 @@
 
         /* Logo thương hiệu mới: chỉ phát sáng khi hover, không phóng to */
         .brand-logo-home {
+            width: 64px;
+            height: 64px;
+            margin-top: -4px;
+            margin-bottom: -4px;
             transition: box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
         }
         .brand-logo-home img {
@@ -131,10 +135,12 @@
             #header-actions-group { display: contents !important; }
 
             #btn-header-home {
-                width: 60px !important;
-                height: 60px !important;
-                max-width: 60px !important;
-                min-width: 60px !important;
+                width: 64px !important;
+                height: 64px !important;
+                max-width: 64px !important;
+                min-width: 64px !important;
+                margin-top: -2px !important;
+                margin-bottom: -2px !important;
                 border-radius: 15px !important;
             }
             #btn-header-home img {
@@ -223,9 +229,10 @@
     <div class="w-full flex justify-center items-center mt-4 md:mt-6">
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
         <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
-            <div class="mb-4 flex justify-center">
+            <div class="mb-2 flex justify-center">
                 <img src="assets/images/icon-512.png" alt="Tiếng Anh 2" class="w-36 h-36 md:w-40 md:h-40 object-contain rounded-full select-none" draggable="false">
             </div>
+            <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô giáo Thỏ Ngọc</p>
 
             <div class="w-full grid grid-cols-2 bg-pink-50 rounded-2xl p-1 mb-5 border border-pink-200">
                 <button id="tab-btn-login" onclick="switchAuthTab('login')" class="py-2.5 rounded-xl font-extrabold text-sm pastel-btn bg-white text-pink-600 shadow-sm">Đăng nhập</button>
