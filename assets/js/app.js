@@ -1518,11 +1518,8 @@ function updateUserInfoBox() {
                     <div class="text-pink-600 font-extrabold text-sm md:text-base leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
                     <div class="text-purple-500 font-bold text-[10px]">ADMIN | Quản trị viên</div>
                     ` : `
-                    <div class="flex items-center justify-end gap-1.5">
-                        <span class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || '')}</span>
-                        <span class="px-1.5 py-0.5 rounded-md border text-[8px] font-black ${badgeClass}">${badge}</span>
-                    </div>
-                    <div class="text-gray-500 font-semibold text-[10px]">ID: ${escapeHtml(currentUser.maHS || '')}${currentUser.lop ? ` | Lớp ${escapeHtml(currentUser.lop)}` : ''}</div>
+                    <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
+                    <div class="text-gray-500 font-bold text-[10px] leading-tight mt-0.5">${badge} · ID: ${escapeHtml(currentUser.maHS || '')}</div>
                     `}
                 </div>
                 ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-xs font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý</span></button>` : ''}
