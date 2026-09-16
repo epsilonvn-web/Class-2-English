@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>Tiếng Anh 2 - Cô giáo Thỏ Ngọc</title>
+    <title>Tiếng Anh 2 - Cô Thỏ Ngọc</title>
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=2">
     <!-- Hỗ trợ cài app ra màn hình chính (PWA) -->
     <link rel="manifest" href="manifest.json">
@@ -90,7 +90,7 @@
         @media (max-width: 767px) {
             #dashboard-header {
                 display: grid !important;
-                grid-template-columns: 62px auto minmax(0, 1fr) auto auto;
+                grid-template-columns: auto minmax(0, 1fr) auto auto;
                 grid-template-rows: auto auto;
                 gap: 0.35rem 0 !important;
                 align-items: center;
@@ -123,9 +123,6 @@
             #header-learning-tabs {
                 grid-row: 1;
                 grid-column: 2;
-                justify-self: start;
-                width: max-content;
-                max-width: 100%;
                 min-width: 0;
                 overflow-x: auto;
                 overflow-y: hidden;
@@ -143,7 +140,7 @@
 
             #btn-progress-week {
                 grid-row: 1;
-                grid-column: 5;
+                grid-column: 3;
                 justify-self: end;
             }
             #btn-mini-game {
@@ -166,7 +163,7 @@
             }
             #user-info-box {
                 grid-row: 2;
-                grid-column: 2 / 6;
+                grid-column: 2 / 5;
                 justify-self: end;
                 width: auto;
                 min-width: 0;
@@ -249,10 +246,10 @@
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
         <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
             <div class="mb-2 flex flex-col items-center">
-                <img src="icon-512.png" alt="Tiếng Anh 2" class="w-28 h-28 md:w-32 md:h-32 object-contain rounded-[28%] shadow-md select-none">
+                <img src="icon-512.png" alt="Tiếng Anh 2" class="w-[150px] h-[150px] md:w-[160px] md:h-[160px] object-contain shadow-md select-none">
             </div>
 
-            <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô giáo Thỏ Ngọc</p>
+            <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô Thỏ Ngọc</p>
 
             <div class="w-full grid grid-cols-2 bg-pink-50 rounded-2xl p-1 mb-5 border border-pink-200">
                 <button id="tab-btn-login" onclick="switchAuthTab('login')" class="py-2.5 rounded-xl font-extrabold text-sm pastel-btn bg-white text-pink-600 shadow-sm">Đăng nhập</button>
@@ -771,7 +768,7 @@
 
     <!-- CHÂN TRANG BẢN QUYỀN CHUẨN ĐỊNH DẠNG -->
     <footer class="w-full mt-2 md:mt-3 pb-2 text-center text-sm font-normal text-pink-500 tracking-wider select-text" style="user-select: text; -webkit-user-select: text;">
-        <div>Tiếng Anh 2 - Cô giáo Thỏ Ngọc</div>
+        <div>Tiếng Anh 2 - Cô Thỏ Ngọc</div>
         <div>Zalo 0865.749.402</div>
     </footer>
 
