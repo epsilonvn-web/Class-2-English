@@ -160,6 +160,8 @@ let autoSpeechEnabled = localStorage.getItem('autoSpeechEnabled') !== 'false';
 const examsCache = {};
 
 let currentUser = null;
+const SESSION_TOKEN_STORAGE_KEY = 'ta2_session_token';
+const LEGACY_SESSION_TOKEN_KEYS = ['tv1_token'];
 let starGreenCount = 0;
 let starRedCount = 0;
 let activeTopicId = null;
@@ -1221,6 +1223,7 @@ function parseTrialExpiryDate(value) {
 
 function getPremiumAccessState() {
     const user = currentUser;
+    if (user && user.sessionPending) return { allowed: false, reason: 'session_pending' };
     if (!user || user.isGuest) return { allowed: false, reason: 'guest' };
     const role = normalizeAccountValue(getUserField(user, ['vaiTro', 'VaiTro', 'role'], 'student'));
     let accountType = normalizeAccountValue(getUserField(user, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
@@ -1270,16 +1273,23 @@ function showPremiumAccessPopup(featureName = 'khu vực này', accessState = ge
     const actions = document.getElementById('premium-popup-actions');
 
     title.textContent = featureName;
-    message.innerHTML = `Đây là <strong>${escapeHtml(featureName)}</strong> dành cho tài khoản <strong>Trial hoặc VIP</strong>.<br>
-        Con có thể <strong>Sign in</strong> nếu đã có tài khoản hoặc <strong>Sign up</strong> để đăng ký nhé!<br>
-        Các chuyên đề cơ bản vẫn học miễn phí bình thường.`;
-
-    actions.innerHTML = `
-        <div class="grid grid-cols-2 gap-2">
-            <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
-            <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
-        </div>
-        <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Để sau nhé</button>`;
+    if (accessState.reason === 'session_pending') {
+        message.innerHTML = `Phiên đăng nhập của con vẫn được giữ trên thiết bị, nhưng hiện chưa xác thực lại được với máy chủ.<br>
+            Hãy kiểm tra kết nối mạng rồi thử lại. Ứng dụng <strong>không tự đăng xuất</strong> và cũng <strong>không hạ về tài khoản Khách</strong>.`;
+        actions.innerHTML = `
+            <button onclick="closePremiumAccessPopup(); tryAutoLogin()" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-sm pastel-btn">Thử kết nối lại</button>
+            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Để sau nhé</button>`;
+    } else {
+        message.innerHTML = `Đây là <strong>${escapeHtml(featureName)}</strong> dành cho tài khoản <strong>Trial hoặc VIP</strong>.<br>
+            Con có thể <strong>Sign in</strong> nếu đã có tài khoản hoặc <strong>Sign up</strong> để đăng ký nhé!<br>
+            Các chuyên đề cơ bản vẫn học miễn phí bình thường.`;
+        actions.innerHTML = `
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
+                <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
+            </div>
+            <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Để sau nhé</button>`;
+    }
 
     modal.classList.remove('hidden');
 }
@@ -1360,9 +1370,9 @@ async function doLogin() {
             alert(errMsg);
             return;
         }
-        currentUser = { ...result.student, isGuest: false, token: result.token };
-        localStorage.setItem('tv1_mahs', maHS);
-        localStorage.setItem('tv1_token', result.token);
+        currentUser = { ...result.student, isGuest: false, sessionPending: false, token: result.token };
+        localStorage.setItem(SESSION_TOKEN_STORAGE_KEY, result.token);
+        LEGACY_SESSION_TOKEN_KEYS.forEach(key => localStorage.removeItem(key));
         enterDashboard();
     } catch (err) {
         const connErr = 'Lỗi kết nối máy chủ: ' + err.message;
@@ -1422,7 +1432,38 @@ async function doRegister() {
 }
 
 function createGuestUser() {
-    return { name: 'Khách (Guest)', isGuest: true, tuanHienTai: 1, hoTen: 'Bé Khách', lop: '', maHS: 'KHACH', vaiTro: 'student', loaiTaiKhoan: 'regular', trangThai: 'Guest', hanDungThu: '' };
+    return { name: 'Khách (Guest)', isGuest: true, sessionPending: false, tuanHienTai: 1, hoTen: 'Bé Khách', lop: '', maHS: 'KHACH', vaiTro: 'student', loaiTaiKhoan: 'regular', trangThai: 'Guest', hanDungThu: '' };
+}
+
+function getStoredSessionToken() {
+    // Dọn dữ liệu định danh cũ: auth storage từ phiên bản này chỉ còn session token.
+    localStorage.removeItem('tv1_mahs');
+    const current = localStorage.getItem(SESSION_TOKEN_STORAGE_KEY);
+    if (current) return current;
+    for (const key of LEGACY_SESSION_TOKEN_KEYS) {
+        const legacy = localStorage.getItem(key);
+        if (legacy) {
+            localStorage.setItem(SESSION_TOKEN_STORAGE_KEY, legacy);
+            localStorage.removeItem(key);
+            return legacy;
+        }
+    }
+    return '';
+}
+
+function createPendingSessionUser(token) {
+    return {
+        isGuest: false,
+        sessionPending: true,
+        token: token || '',
+        hoTen: 'Đang khôi phục phiên...',
+        maHS: '',
+        lop: '',
+        vaiTro: 'student',
+        role: 'student',
+        loaiTaiKhoan: 'regular',
+        tuanHienTai: 1
+    };
 }
 
 function openAuthScreen(tab = 'login') {
@@ -1441,27 +1482,37 @@ function closeAuthScreen() {
 }
 
 async function tryAutoLogin() {
-    const maHS = localStorage.getItem('tv1_mahs');
-    const token = localStorage.getItem('tv1_token');
-    currentUser = createGuestUser();
-    enterDashboard(true);
-    if (!maHS || !token) return;
-    showLoadingOverlay('Đang nhận lại tài khoản của bé...');
-    try {
-        // whoAmI: xác thực lại bằng TOKEN (không phải PIN gốc) - server tự tra lại thông tin học sinh
-        // mới nhất (VD tuần hiện tại, loại tài khoản có thể đã đổi từ lúc đăng nhập).
-        const res = await callAppsScript('whoAmI', { token });
-        if (res.ok && res.student) {
-            currentUser = { ...res.student, isGuest: false, token };
-            enterDashboard(true);
-        } else {
-            localStorage.removeItem('tv1_mahs');
-            localStorage.removeItem('tv1_token');
-            currentUser = createGuestUser();
-            enterDashboard(true);
-        }
-    } catch (e) {
+    const token = getStoredSessionToken();
+
+    // Không có token thì đây mới thật sự là khách.
+    if (!token) {
         currentUser = createGuestUser();
+        enterDashboard(true);
+        return;
+    }
+
+    // Có token: tuyệt đối không hạ về Guest chỉ vì app vừa reload hoặc mạng đang lỗi.
+    // Trong lúc chờ backend xác thực, quyền Admin/Premium đều bị khóa an toàn.
+    currentUser = createPendingSessionUser(token);
+    enterDashboard(true);
+    showLoadingOverlay('Đang khôi phục phiên đăng nhập...');
+
+    try {
+        const res = await callAppsScript('restoreSession', { token });
+        if (res.ok && res.student) {
+            currentUser = { ...res.student, isGuest: false, sessionPending: false, token };
+            enterDashboard(true);
+            return;
+        }
+
+        // Backend đã trả lời được nhưng token không còn hợp lệ. Không xóa token tự động:
+        // chỉ người dùng bấm Đăng xuất hoặc đăng nhập lại mới thay đổi phiên trên client.
+        currentUser = createPendingSessionUser(token);
+        currentUser.sessionInvalid = true;
+        enterDashboard(true);
+    } catch (e) {
+        // Lỗi mạng/tạm thời: giữ nguyên token và trạng thái phiên chờ xác thực.
+        currentUser = createPendingSessionUser(token);
         enterDashboard(true);
     } finally {
         hideLoadingOverlay();
@@ -1471,22 +1522,27 @@ async function tryAutoLogin() {
 function logout() {
     const tokenToRevoke = currentUser && currentUser.token;
     currentUser = createGuestUser();
-    localStorage.removeItem('tv1_mahs');
-    localStorage.removeItem('tv1_token');
+    localStorage.removeItem(SESSION_TOKEN_STORAGE_KEY);
+    LEGACY_SESSION_TOKEN_KEYS.forEach(key => localStorage.removeItem(key));
     const mahsInput = document.getElementById('login-mahs');
     const mapinInput = document.getElementById('login-mapin');
     if (mahsInput) mahsInput.value = '';
     if (mapinInput) mapinInput.value = '';
     hideAuthError();
     enterDashboard(true);
-    // Hủy token thật trên server (best-effort) - tránh trường hợp ai đó lỡ có được token này vẫn dùng
-    // tiếp được cho tới khi tự hết hạn dù bé đã bấm đăng xuất.
+    // Hủy token thật trên server (best-effort). Token persistent chỉ bị thu hồi khi người dùng chủ động đăng xuất.
     if (tokenToRevoke) {
         callAppsScript('logout', { token: tokenToRevoke }).catch(() => {});
     }
 }
 
 function handleGuestMode() {
+    // Nếu thiết bị đã có persistent session thì không tự hạ phiên đó về Guest.
+    // Muốn rời tài khoản thật sự phải bấm Đăng xuất.
+    if (getStoredSessionToken()) {
+        tryAutoLogin();
+        return;
+    }
     currentUser = createGuestUser();
     enterDashboard();
 }
@@ -1514,6 +1570,18 @@ function enterDashboard(isSilent = false) {
 function updateUserInfoBox() {
     const box = document.getElementById('user-info-box');
     if (!box) return;
+    if (currentUser && currentUser.sessionPending) {
+        box.innerHTML = `
+            <div class="flex items-center space-x-2">
+                <div class="text-right">
+                    <div class="text-purple-600 font-extrabold text-xs md:text-sm leading-tight">Phiên đăng nhập đang được giữ</div>
+                    <div class="text-gray-400 font-bold text-[10px] leading-tight mt-0.5">Chờ xác thực lại với máy chủ</div>
+                </div>
+                <button onclick="tryAutoLogin()" title="Thử khôi phục phiên" class="w-8 h-8 flex items-center justify-center bg-purple-50 hover:bg-purple-100 text-purple-500 rounded-xl border border-purple-200 text-xs"><i class="fa-solid fa-rotate"></i></button>
+                <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>`;
+        return;
+    }
     if (currentUser && !currentUser.isGuest) {
         const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
         const type = normalizeAccountValue(getUserField(currentUser, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
@@ -1551,7 +1619,7 @@ function updateUserInfoBox() {
 // token đã có sẵn khi đăng nhập, server tự tra lại quyền admin từ token (xem requireAdmin bên Code.gs).
 function getAdminAuthPayload(extra = {}) {
     return {
-        token: (currentUser && currentUser.token) || localStorage.getItem('tv1_token') || '',
+        token: (currentUser && currentUser.token) || getStoredSessionToken() || '',
         ...extra
     };
 }
