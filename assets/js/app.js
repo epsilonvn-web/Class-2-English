@@ -5488,9 +5488,6 @@ function applyResponsiveWidthTuning_() {
     const style = document.createElement('style');
     style.id = 'ta2-responsive-width-tuning';
     style.textContent = `
-        @media (min-width: 768px) {
-            #screen-dashboard { max-width: 72rem !important; }
-        }
         #view-lecture.ta2-compact-vocab-hub {
             padding-top: 0.65rem !important;
         }
