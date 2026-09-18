@@ -3110,7 +3110,7 @@ function renderReadingPair_(q) {
             const cls=correct?'border-emerald-400 bg-emerald-50 text-emerald-700':(chosen&&!state.correct[qi]?'border-rose-400 bg-rose-50 text-rose-700':'border-pink-200 bg-white hover:bg-pink-50 text-slate-800');
             return `<button onclick="answerReadingQuestion_(${qi},${oi})" class="w-full text-left px-3 py-2.5 rounded-xl border-2 ${cls} font-extrabold text-sm transition-all"><span class="text-pink-500 mr-2">${String.fromCharCode(65+oi)}.</span>${escapeHtml(opt)}</button>`;
         }).join('');
-        return `<section class="rounded-2xl border border-pink-100 bg-white p-3 shadow-sm"><div class="flex gap-2 items-start mb-2"><span class="w-7 h-7 rounded-full bg-pink-500 text-white flex items-center justify-center font-black text-xs shrink-0">${qi+1}</span><h3 class="font-black text-slate-900 text-sm md:text-base leading-snug">${escapeHtml(item.question)}</h3></div><div class="space-y-2">${opts}</div>${state.correct[qi]?'<div class="mt-2 text-xs font-black text-emerald-600">✓ Correct / Chính xác</div>':''}</section>`;
+        return `<section class="rounded-2xl border border-pink-100 bg-white p-3 shadow-sm"><div class="flex gap-2 items-start mb-2"><span class="w-7 h-7 rounded-full bg-pink-500 text-white flex items-center justify-center font-black text-xs shrink-0">${qi+1}</span><h3 class="font-black text-slate-900 text-sm md:text-base leading-snug">${escapeHtml(item.question)}</h3></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-2">${opts}</div>${state.correct[qi]?'<div class="mt-2 text-xs font-black text-emerald-600">✓ Correct / Chính xác</div>':''}</section>`;
     }).join('');
     const allDone=state.correct.every(Boolean);
     document.getElementById('question-box').innerHTML=`<div class="w-full max-w-6xl mx-auto"><div class="flex items-center justify-between gap-2 mb-3"><div class="text-xs md:text-sm font-black text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-3 py-1">Passage ${currentQIndex+1} / ${activeQuestionsList.length} · Unit ${q.unit}</div><button onclick="speakReadingPassage_()" class="px-3 py-2 rounded-full bg-violet-50 border border-violet-200 text-violet-700 font-black text-xs md:text-sm pastel-btn"><i class="fa-solid fa-volume-high mr-1"></i>Listen Passage</button></div><div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-3 items-start"><section class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50 to-violet-50 p-4 text-left"><div class="text-xs font-black text-fuchsia-500 uppercase tracking-wide mb-1">${escapeHtml(q.unit_title||'')}</div><h2 class="text-lg md:text-xl font-black text-pink-700 mb-3">${escapeHtml(q.title||'')}</h2>${passage}</section><div class="grid grid-cols-1 gap-3">${questionsHtml}</div></div>${allDone?'<div class="mt-3 text-center text-sm font-black text-emerald-600">🌟 Great job! Cả 2 câu đều đúng.</div>':''}</div>`;
@@ -3586,7 +3586,10 @@ function renderSentenceBuilderTap_(q) {
     const html = `
         <div class="w-full max-w-4xl mx-auto px-2">
             <div class="relative mb-3 min-h-[42px] flex items-center justify-center">
-                <div class="text-center text-base md:text-xl font-black text-slate-800">Tap words in correct order to make a sentence.</div>
+                <div class="text-center">
+                    <div class="text-base md:text-xl font-black text-slate-800">Tap words in correct order to make a sentence.</div>
+                    <div class="text-sm md:text-base font-bold text-fuchsia-500 mt-1">Chạm các từ theo đúng thứ tự để tạo thành câu.</div>
+                </div>
                 ${completed ? `<button onclick="speakEnglish(${JSON.stringify(String(q.answer || ''))})" class="absolute right-0 top-1/2 -translate-y-1/2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white font-black text-xs md:text-sm shadow-md hover:brightness-105"><i class="fa-solid fa-volume-high mr-1.5"></i>Listen</button>` : ''}
             </div>
 
@@ -3595,7 +3598,7 @@ function renderSentenceBuilderTap_(q) {
                     ${chosenHtml}
                 </div>
                 <div id="sentence-builder-feedback" class="text-center min-h-[26px] mt-2 text-sm font-extrabold ${completed?'text-emerald-600':'text-fuchsia-500'}">${completed?'✓ Excellent! The sentence is correct.':''}</div>
-                ${completed && meaning ? `<div class="mt-2 rounded-2xl bg-white border-2 border-violet-200 px-4 py-3 text-center"><span class="font-black text-violet-700">Meaning: </span><span class="font-extrabold text-slate-700">${escapeHtml(meaning)}</span></div>` : ''}
+                ${completed && meaning ? `<div class="mt-2 rounded-2xl bg-white border-2 border-violet-200 px-4 py-3 text-center text-base md:text-lg"><span class="font-black text-violet-700">Meaning: </span><span class="font-extrabold text-slate-700">${escapeHtml(meaning)}</span></div>` : ''}
             </div>
 
             ${!completed ? `<div class="mt-4 flex flex-wrap items-stretch justify-center gap-2.5 md:gap-3">${wordHtml}</div>` : ''}
@@ -3671,7 +3674,7 @@ function renderFillSentenceInteractive_(q) {
         <div class="w-full max-w-4xl mx-auto px-2">
             <div class="text-center mb-3">
                 <div class="text-base md:text-xl font-black text-slate-900">${escapeHtml(instructionEn)}</div>
-                <div class="text-xs md:text-sm font-bold text-fuchsia-500 mt-1">${escapeHtml(instructionVi)}</div>
+                <div class="text-sm md:text-base font-bold text-fuchsia-500 mt-1">${escapeHtml(instructionVi)}</div>
             </div>
 
             <div class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5 shadow-sm">
@@ -3681,7 +3684,7 @@ function renderFillSentenceInteractive_(q) {
                         <i class="fa-solid fa-volume-high"></i><span>Listen</span>
                     </button>
                 </div>
-                ${sentenceVi ? `<div class="mt-2 text-center text-sm md:text-base font-extrabold text-violet-700">${escapeHtml(sentenceVi)}</div>` : ''}
+                ${sentenceVi ? `<div class="mt-2 text-center text-base md:text-lg font-extrabold text-violet-700">${escapeHtml(sentenceVi)}</div>` : ''}
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mt-4">${optionsHtml}</div>
