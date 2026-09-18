@@ -1,6 +1,6 @@
 {
-  "schema_version": "TA2_BH_BT_SHARED_VISUAL_V1",
-  "data_version": "2026-09-18",
+  "schema_version": "TA2_BH_BT_V3_BILINGUAL_TTS",
+  "data_version": "V3_BILINGUAL_TTS_2026-09-18",
   "subject": "Tiếng Anh",
   "grade": 2,
   "curriculum": "Global Success",
@@ -20,8 +20,7 @@
     "unlock": "Exercise 1 is open. Score 80% or more to unlock the next exercise. All lessons stay open.",
     "assessment": "Keep ENG_PHO, ENG_VOC, ENG_LIS, ENG_GRA, ENG_SYN and ENG_READ. A competency with no valid sample is Not enough data / Chưa đủ dữ liệu.",
     "images": "Ảnh JPG 1:1 trong assets/images/bai-hoc/ theo danh sách hình ảnh dùng chung TA2.",
-    "tts": "English: en-US. Standalone 100% Vietnamese: vi-VN. Vietnamese translation/support below English: silent. Mixed English-Vietnamese strings: never read as one string.",
-    "shared_visuals": "Giữ ảnh scene riêng của Bài học; khi cần minh họa từ, đồ vật, hành động, cảm xúc, thời tiết hoặc ngữ pháp thì ưu tiên tham chiếu assets/images/vocabulary/ qua image_id + target_tag."
+    "tts": "English: en-US. Standalone 100% Vietnamese: vi-VN. Vietnamese translation/support below English: silent. Mixed English-Vietnamese strings: never read as one string."
   },
   "bai_hoc": [
     {
@@ -51,15 +50,42 @@
           "vocabulary": [
             {
               "word": "pasta",
-              "meaning": "mì Ý"
+              "meaning": "mì Ý",
+              "ipa": "ˈpæstə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_194",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "pasta",
+                "focus_hint": "pasta",
+                "fallback_emoji": "🍝"
+              }
             },
             {
               "word": "popcorn",
-              "meaning": "bỏng ngô"
+              "meaning": "bỏng ngô",
+              "ipa": "ˈpɒpkɔːn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_199",
+                "image_id": "family-birthday-party",
+                "image_url": "assets/images/vocabulary/family-birthday-party.jpg",
+                "target_tag": "popcorn",
+                "focus_hint": "popcorn",
+                "fallback_emoji": "🍿"
+              }
             },
             {
               "word": "pizza",
-              "meaning": "bánh pizza"
+              "meaning": "bánh pizza",
+              "ipa": "ˈpiːtsə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_198",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "pizza",
+                "focus_hint": "pizza",
+                "fallback_emoji": "🍕"
+              }
             }
           ],
           "sentence_pattern": "The popcorn is yummy.",
@@ -289,35 +315,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_194",
-          "word": "pasta",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "pasta",
-          "fallback_emoji": "🍝"
-        },
-        {
-          "vocab_id": "TA2_VOC_199",
-          "word": "popcorn",
-          "visual_mode": "shared_scene",
-          "image_id": "family-birthday-party",
-          "image_url": "assets/images/vocabulary/family-birthday-party.jpg",
-          "target_tag": "popcorn",
-          "fallback_emoji": "🍿"
-        },
-        {
-          "vocab_id": "TA2_VOC_198",
-          "word": "pizza",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "pizza",
-          "fallback_emoji": "🍕"
-        }
       ]
     },
     {
@@ -347,15 +344,42 @@
           "vocabulary": [
             {
               "word": "kite",
-              "meaning": "con diều"
+              "meaning": "con diều",
+              "ipa": "kaɪt",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_079",
+                "image_id": "home-garden-backyard",
+                "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
+                "target_tag": "kite",
+                "focus_hint": "kite",
+                "fallback_emoji": "🪁"
+              }
             },
             {
               "word": "bike",
-              "meaning": "xe đạp"
+              "meaning": "xe đạp",
+              "ipa": "baɪk",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_059",
+                "image_id": "home-garden-backyard",
+                "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
+                "target_tag": "bike",
+                "focus_hint": "bike",
+                "fallback_emoji": "🚲"
+              }
             },
             {
               "word": "kitten",
-              "meaning": "mèo con"
+              "meaning": "mèo con",
+              "ipa": "ˈkɪtn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_135",
+                "image_id": "home-garden-backyard",
+                "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
+                "target_tag": "kitten",
+                "focus_hint": "kitten",
+                "fallback_emoji": "🐱"
+              }
             }
           ],
           "sentence_pattern": "Is she flying a kite? — Yes, she is. / No, she isn’t.",
@@ -587,35 +611,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_079",
-          "word": "kite",
-          "visual_mode": "shared_scene",
-          "image_id": "home-garden-backyard",
-          "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
-          "target_tag": "kite",
-          "fallback_emoji": "🪁"
-        },
-        {
-          "vocab_id": "TA2_VOC_059",
-          "word": "bike",
-          "visual_mode": "shared_scene",
-          "image_id": "home-garden-backyard",
-          "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
-          "target_tag": "bike",
-          "fallback_emoji": "🚲"
-        },
-        {
-          "vocab_id": "TA2_VOC_135",
-          "word": "kitten",
-          "visual_mode": "shared_scene",
-          "image_id": "home-garden-backyard",
-          "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
-          "target_tag": "kitten",
-          "fallback_emoji": "🐱"
-        }
       ]
     },
     {
@@ -645,15 +640,42 @@
           "vocabulary": [
             {
               "word": "sail",
-              "meaning": "cánh buồm"
+              "meaning": "cánh buồm",
+              "ipa": "sail",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_286",
+                "image_id": "harbour-boat",
+                "image_url": "assets/images/vocabulary/harbour-boat.jpg",
+                "target_tag": "sail",
+                "focus_hint": "sail",
+                "fallback_emoji": "⛵"
+              }
             },
             {
               "word": "sand",
-              "meaning": "cát"
+              "meaning": "cát",
+              "ipa": "sænd",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_287",
+                "image_id": "seaside-sunny",
+                "image_url": "assets/images/vocabulary/seaside-sunny.jpg",
+                "target_tag": "sand",
+                "focus_hint": "sand",
+                "fallback_emoji": "🏖️"
+              }
             },
             {
               "word": "sea",
-              "meaning": "biển"
+              "meaning": "biển",
+              "ipa": "siː",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_288",
+                "image_id": "harbour-boat",
+                "image_url": "assets/images/vocabulary/harbour-boat.jpg",
+                "target_tag": "sea",
+                "focus_hint": "sea",
+                "fallback_emoji": "🌊"
+              }
             }
           ],
           "sentence_pattern": "Let’s look at the sea!",
@@ -883,35 +905,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_286",
-          "word": "sail",
-          "visual_mode": "shared_scene",
-          "image_id": "harbour-boat",
-          "image_url": "assets/images/vocabulary/harbour-boat.jpg",
-          "target_tag": "sail",
-          "fallback_emoji": "⛵"
-        },
-        {
-          "vocab_id": "TA2_VOC_287",
-          "word": "sand",
-          "visual_mode": "shared_scene",
-          "image_id": "seaside-sunny",
-          "image_url": "assets/images/vocabulary/seaside-sunny.jpg",
-          "target_tag": "sand",
-          "fallback_emoji": "🏖️"
-        },
-        {
-          "vocab_id": "TA2_VOC_288",
-          "word": "sea",
-          "visual_mode": "shared_scene",
-          "image_id": "harbour-boat",
-          "image_url": "assets/images/vocabulary/harbour-boat.jpg",
-          "target_tag": "sea",
-          "fallback_emoji": "🌊"
-        }
       ]
     },
     {
@@ -941,15 +934,42 @@
           "vocabulary": [
             {
               "word": "rainbow",
-              "meaning": "cầu vồng"
+              "meaning": "cầu vồng",
+              "ipa": "ˈreɪnbəʊ",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_281",
+                "image_id": "rainbow-countryside",
+                "image_url": "assets/images/vocabulary/rainbow-countryside.jpg",
+                "target_tag": "rainbow",
+                "focus_hint": "rainbow",
+                "fallback_emoji": "🌈"
+              }
             },
             {
               "word": "river",
-              "meaning": "dòng sông"
+              "meaning": "dòng sông",
+              "ipa": "ˈrɪvə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_284",
+                "image_id": "harbour-boat",
+                "image_url": "assets/images/vocabulary/harbour-boat.jpg",
+                "target_tag": "river",
+                "focus_hint": "river",
+                "fallback_emoji": "🏞️"
+              }
             },
             {
               "word": "road",
-              "meaning": "con đường"
+              "meaning": "con đường",
+              "ipa": "rəʊd",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_285",
+                "image_id": "bus-stop-morning",
+                "image_url": "assets/images/vocabulary/bus-stop-morning.jpg",
+                "target_tag": "road",
+                "focus_hint": "road",
+                "fallback_emoji": "🛣️"
+              }
             }
           ],
           "sentence_pattern": "There’s a rainbow.",
@@ -1179,35 +1199,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_281",
-          "word": "rainbow",
-          "visual_mode": "shared_scene",
-          "image_id": "rainbow-countryside",
-          "image_url": "assets/images/vocabulary/rainbow-countryside.jpg",
-          "target_tag": "rainbow",
-          "fallback_emoji": "🌈"
-        },
-        {
-          "vocab_id": "TA2_VOC_284",
-          "word": "river",
-          "visual_mode": "shared_scene",
-          "image_id": "harbour-boat",
-          "image_url": "assets/images/vocabulary/harbour-boat.jpg",
-          "target_tag": "river",
-          "fallback_emoji": "🏞️"
-        },
-        {
-          "vocab_id": "TA2_VOC_285",
-          "word": "road",
-          "visual_mode": "shared_scene",
-          "image_id": "bus-stop-morning",
-          "image_url": "assets/images/vocabulary/bus-stop-morning.jpg",
-          "target_tag": "road",
-          "fallback_emoji": "🛣️"
-        }
       ]
     },
     {
@@ -1237,15 +1228,42 @@
           "vocabulary": [
             {
               "word": "question",
-              "meaning": "câu hỏi"
+              "meaning": "câu hỏi",
+              "ipa": "question",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_090",
+                "image_id": "classroom-quiz-question",
+                "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
+                "target_tag": "question",
+                "focus_hint": "question",
+                "fallback_emoji": "❓"
+              }
             },
             {
               "word": "square",
-              "meaning": "hình vuông"
+              "meaning": "hình vuông",
+              "ipa": "skweə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_295",
+                "image_id": null,
+                "image_url": null,
+                "target_tag": null,
+                "focus_hint": null,
+                "fallback_emoji": "🟥"
+              }
             },
             {
               "word": "quiz",
-              "meaning": "bài đố vui"
+              "meaning": "bài đố vui",
+              "ipa": "quiz",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_091",
+                "image_id": "classroom-quiz-question",
+                "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
+                "target_tag": "quiz",
+                "focus_hint": "quiz",
+                "fallback_emoji": "📝"
+              }
             }
           ],
           "sentence_pattern": "What’s he doing? — He’s doing a quiz.",
@@ -1475,35 +1493,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_090",
-          "word": "question",
-          "visual_mode": "shared_scene",
-          "image_id": "classroom-quiz-question",
-          "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
-          "target_tag": "question",
-          "fallback_emoji": "❓"
-        },
-        {
-          "vocab_id": "TA2_VOC_295",
-          "word": "square",
-          "visual_mode": "emoji",
-          "image_id": null,
-          "image_url": null,
-          "target_tag": null,
-          "fallback_emoji": "🟥"
-        },
-        {
-          "vocab_id": "TA2_VOC_091",
-          "word": "quiz",
-          "visual_mode": "shared_scene",
-          "image_id": "classroom-quiz-question",
-          "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
-          "target_tag": "quiz",
-          "fallback_emoji": "📝"
-        }
       ]
     },
     {
@@ -1533,15 +1522,42 @@
           "vocabulary": [
             {
               "word": "box",
-              "meaning": "cái hộp"
+              "meaning": "cái hộp",
+              "ipa": "bɒks",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_063",
+                "image_id": "home-cleaning-together",
+                "image_url": "assets/images/vocabulary/home-cleaning-together.jpg",
+                "target_tag": "box",
+                "focus_hint": "box",
+                "fallback_emoji": "📦"
+              }
             },
             {
               "word": "fox",
-              "meaning": "con cáo"
+              "meaning": "con cáo",
+              "ipa": "fɒks",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_127",
+                "image_id": "farm-fox-box",
+                "image_url": "assets/images/vocabulary/farm-fox-box.jpg",
+                "target_tag": "fox",
+                "focus_hint": "fox",
+                "fallback_emoji": "🦊"
+              }
             },
             {
               "word": "ox",
-              "meaning": "con bò đực"
+              "meaning": "con bò đực",
+              "ipa": "ox",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_142",
+                "image_id": "farm-animals",
+                "image_url": "assets/images/vocabulary/farm-animals.jpg",
+                "target_tag": "ox",
+                "focus_hint": "ox",
+                "fallback_emoji": "🐂"
+              }
             }
           ],
           "sentence_pattern": "Is there an ox? — Yes, there is. / No, there isn’t.",
@@ -1771,35 +1787,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_063",
-          "word": "box",
-          "visual_mode": "shared_scene",
-          "image_id": "home-cleaning-together",
-          "image_url": "assets/images/vocabulary/home-cleaning-together.jpg",
-          "target_tag": "box",
-          "fallback_emoji": "📦"
-        },
-        {
-          "vocab_id": "TA2_VOC_127",
-          "word": "fox",
-          "visual_mode": "shared_scene",
-          "image_id": "farm-fox-box",
-          "image_url": "assets/images/vocabulary/farm-fox-box.jpg",
-          "target_tag": "fox",
-          "fallback_emoji": "🦊"
-        },
-        {
-          "vocab_id": "TA2_VOC_142",
-          "word": "ox",
-          "visual_mode": "shared_scene",
-          "image_id": "farm-animals",
-          "image_url": "assets/images/vocabulary/farm-animals.jpg",
-          "target_tag": "ox",
-          "fallback_emoji": "🐂"
-        }
       ]
     },
     {
@@ -1829,15 +1816,42 @@
           "vocabulary": [
             {
               "word": "jelly",
-              "meaning": "thạch"
+              "meaning": "thạch",
+              "ipa": "ˈdʒeli",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_183",
+                "image_id": "home-kitchen-family",
+                "image_url": "assets/images/vocabulary/home-kitchen-family.jpg",
+                "target_tag": "jelly",
+                "focus_hint": "jelly",
+                "fallback_emoji": "🍮"
+              }
             },
             {
               "word": "juice",
-              "meaning": "nước ép"
+              "meaning": "nước ép",
+              "ipa": "dʒuːs",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_184",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "juice",
+                "focus_hint": "juice",
+                "fallback_emoji": "🥤"
+              }
             },
             {
               "word": "jam",
-              "meaning": "mứt"
+              "meaning": "mứt",
+              "ipa": "dʒæm",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_182",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "jam",
+                "focus_hint": "jam",
+                "fallback_emoji": "🍯"
+              }
             }
           ],
           "sentence_pattern": "Pass me the jam, please. — Here you are.",
@@ -2067,35 +2081,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_183",
-          "word": "jelly",
-          "visual_mode": "shared_scene",
-          "image_id": "home-kitchen-family",
-          "image_url": "assets/images/vocabulary/home-kitchen-family.jpg",
-          "target_tag": "jelly",
-          "fallback_emoji": "🍮"
-        },
-        {
-          "vocab_id": "TA2_VOC_184",
-          "word": "juice",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "juice",
-          "fallback_emoji": "🥤"
-        },
-        {
-          "vocab_id": "TA2_VOC_182",
-          "word": "jam",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "jam",
-          "fallback_emoji": "🍯"
-        }
       ]
     },
     {
@@ -2125,15 +2110,42 @@
           "vocabulary": [
             {
               "word": "village",
-              "meaning": "làng"
+              "meaning": "làng",
+              "ipa": "ˈvɪlɪdʒ",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_256",
+                "image_id": "village-road-river",
+                "image_url": "assets/images/vocabulary/village-road-river.jpg",
+                "target_tag": "village",
+                "focus_hint": "village",
+                "fallback_emoji": "🏡"
+              }
             },
             {
               "word": "van",
-              "meaning": "xe tải nhỏ"
+              "meaning": "xe tải nhỏ",
+              "ipa": "væn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_255",
+                "image_id": "kids-drawing-van",
+                "image_url": "assets/images/vocabulary/kids-drawing-van.jpg",
+                "target_tag": "van",
+                "focus_hint": "van",
+                "fallback_emoji": "🚐"
+              }
             },
             {
               "word": "volleyball",
-              "meaning": "bóng chuyền"
+              "meaning": "bóng chuyền",
+              "ipa": "ˈvɒlibɔːl",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_257",
+                "image_id": "village-road-river",
+                "image_url": "assets/images/vocabulary/village-road-river.jpg",
+                "target_tag": "volleyball",
+                "focus_hint": "volleyball",
+                "fallback_emoji": "🏐"
+              }
             }
           ],
           "sentence_pattern": "Can you draw a van? — Yes, I can. / No, I can’t.",
@@ -2363,35 +2375,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_256",
-          "word": "village",
-          "visual_mode": "shared_scene",
-          "image_id": "village-road-river",
-          "image_url": "assets/images/vocabulary/village-road-river.jpg",
-          "target_tag": "village",
-          "fallback_emoji": "🏡"
-        },
-        {
-          "vocab_id": "TA2_VOC_255",
-          "word": "van",
-          "visual_mode": "shared_scene",
-          "image_id": "kids-drawing-van",
-          "image_url": "assets/images/vocabulary/kids-drawing-van.jpg",
-          "target_tag": "van",
-          "fallback_emoji": "🚐"
-        },
-        {
-          "vocab_id": "TA2_VOC_257",
-          "word": "volleyball",
-          "visual_mode": "shared_scene",
-          "image_id": "village-road-river",
-          "image_url": "assets/images/vocabulary/village-road-river.jpg",
-          "target_tag": "volleyball",
-          "fallback_emoji": "🏐"
-        }
       ]
     },
     {
@@ -2421,15 +2404,42 @@
           "vocabulary": [
             {
               "word": "yogurt",
-              "meaning": "sữa chua"
+              "meaning": "sữa chua",
+              "ipa": "yogurt",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_212",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "yogurt",
+                "focus_hint": "yogurt",
+                "fallback_emoji": "🥛"
+              }
             },
             {
               "word": "yams",
-              "meaning": "khoai mỡ"
+              "meaning": "khoai mỡ",
+              "ipa": "yams",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_211",
+                "image_id": "grocery-store-shopping",
+                "image_url": "assets/images/vocabulary/grocery-store-shopping.jpg",
+                "target_tag": "yams",
+                "focus_hint": "yams",
+                "fallback_emoji": "🥔"
+              }
             },
             {
               "word": "yo-yos",
-              "meaning": "con quay yo-yo"
+              "meaning": "con quay yo-yo",
+              "ipa": "yo-yos",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_108",
+                "image_id": "toy-room-play",
+                "image_url": "assets/images/vocabulary/toy-room-play.jpg",
+                "target_tag": "yo-yos",
+                "focus_hint": "yo-yos",
+                "fallback_emoji": "🪀"
+              }
             }
           ],
           "sentence_pattern": "What do you want? — I want some yams.",
@@ -2659,35 +2669,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_212",
-          "word": "yogurt",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "yogurt",
-          "fallback_emoji": "🥛"
-        },
-        {
-          "vocab_id": "TA2_VOC_211",
-          "word": "yams",
-          "visual_mode": "shared_scene",
-          "image_id": "grocery-store-shopping",
-          "image_url": "assets/images/vocabulary/grocery-store-shopping.jpg",
-          "target_tag": "yams",
-          "fallback_emoji": "🥔"
-        },
-        {
-          "vocab_id": "TA2_VOC_108",
-          "word": "yo-yos",
-          "visual_mode": "shared_scene",
-          "image_id": "toy-room-play",
-          "image_url": "assets/images/vocabulary/toy-room-play.jpg",
-          "target_tag": "yo-yos",
-          "fallback_emoji": "🪀"
-        }
       ]
     },
     {
@@ -2717,15 +2698,42 @@
           "vocabulary": [
             {
               "word": "zoo",
-              "meaning": "sở thú"
+              "meaning": "sở thú",
+              "ipa": "zuː",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_258",
+                "image_id": "zoo-africa-animals",
+                "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
+                "target_tag": "zoo",
+                "focus_hint": "zoo",
+                "fallback_emoji": "🦁"
+              }
             },
             {
               "word": "zebu",
-              "meaning": "bò u"
+              "meaning": "bò u",
+              "ipa": "zebu",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_160",
+                "image_id": "zoo-africa-animals",
+                "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
+                "target_tag": "zebu",
+                "focus_hint": "zebu",
+                "fallback_emoji": "🐂"
+              }
             },
             {
               "word": "zebra",
-              "meaning": "ngựa vằn"
+              "meaning": "ngựa vằn",
+              "ipa": "ˈzeɪbrə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_159",
+                "image_id": "animal-world-multi",
+                "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
+                "target_tag": "zebra",
+                "focus_hint": "zebra",
+                "fallback_emoji": "🦓"
+              }
             }
           ],
           "sentence_pattern": "Do you like the zebra? — Yes, I do. / No, I don’t.",
@@ -2955,35 +2963,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_258",
-          "word": "zoo",
-          "visual_mode": "shared_scene",
-          "image_id": "zoo-africa-animals",
-          "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
-          "target_tag": "zoo",
-          "fallback_emoji": "🦁"
-        },
-        {
-          "vocab_id": "TA2_VOC_160",
-          "word": "zebu",
-          "visual_mode": "shared_scene",
-          "image_id": "zoo-africa-animals",
-          "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
-          "target_tag": "zebu",
-          "fallback_emoji": "🐂"
-        },
-        {
-          "vocab_id": "TA2_VOC_159",
-          "word": "zebra",
-          "visual_mode": "shared_scene",
-          "image_id": "animal-world-multi",
-          "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
-          "target_tag": "zebra",
-          "fallback_emoji": "🦓"
-        }
       ]
     },
     {
@@ -3013,15 +2992,42 @@
           "vocabulary": [
             {
               "word": "sliding",
-              "meaning": "đang trượt"
+              "meaning": "đang trượt",
+              "ipa": "sliding",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_100",
+                "image_id": "school-playground-break",
+                "image_url": "assets/images/vocabulary/school-playground-break.jpg",
+                "target_tag": "sliding",
+                "focus_hint": "sliding",
+                "fallback_emoji": "🛝"
+              }
             },
             {
               "word": "riding",
-              "meaning": "đang đi/cưỡi"
+              "meaning": "đang đi/cưỡi",
+              "ipa": "riding",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_092",
+                "image_id": "school-playground-break",
+                "image_url": "assets/images/vocabulary/school-playground-break.jpg",
+                "target_tag": "riding",
+                "focus_hint": "riding",
+                "fallback_emoji": "🚴"
+              }
             },
             {
               "word": "driving",
-              "meaning": "đang lái xe"
+              "meaning": "đang lái xe",
+              "ipa": "driving",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_229",
+                "image_id": "playground-sliding-riding",
+                "image_url": "assets/images/vocabulary/playground-sliding-riding.jpg",
+                "target_tag": "driving",
+                "focus_hint": "driving",
+                "fallback_emoji": "🚗"
+              }
             }
           ],
           "sentence_pattern": "They’re riding bikes.",
@@ -3251,35 +3257,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_100",
-          "word": "sliding",
-          "visual_mode": "shared_scene",
-          "image_id": "school-playground-break",
-          "image_url": "assets/images/vocabulary/school-playground-break.jpg",
-          "target_tag": "sliding",
-          "fallback_emoji": "🛝"
-        },
-        {
-          "vocab_id": "TA2_VOC_092",
-          "word": "riding",
-          "visual_mode": "shared_scene",
-          "image_id": "school-playground-break",
-          "image_url": "assets/images/vocabulary/school-playground-break.jpg",
-          "target_tag": "riding",
-          "fallback_emoji": "🚴"
-        },
-        {
-          "vocab_id": "TA2_VOC_229",
-          "word": "driving",
-          "visual_mode": "shared_scene",
-          "image_id": "playground-sliding-riding",
-          "image_url": "assets/images/vocabulary/playground-sliding-riding.jpg",
-          "target_tag": "driving",
-          "fallback_emoji": "🚗"
-        }
       ]
     },
     {
@@ -3309,15 +3286,42 @@
           "vocabulary": [
             {
               "word": "grapes",
-              "meaning": "nho"
+              "meaning": "nho",
+              "ipa": "ɡreɪps",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_179",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "grapes",
+                "focus_hint": "grapes",
+                "fallback_emoji": "🍇"
+              }
             },
             {
               "word": "cake",
-              "meaning": "bánh ngọt"
+              "meaning": "bánh ngọt",
+              "ipa": "keɪk",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_166",
+                "image_id": "food-table-multi",
+                "image_url": "assets/images/vocabulary/food-table-multi.jpg",
+                "target_tag": "cake",
+                "focus_hint": "cake",
+                "fallback_emoji": "🍰"
+              }
             },
             {
               "word": "table",
-              "meaning": "cái bàn"
+              "meaning": "cái bàn",
+              "ipa": "ˈteɪbl",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_044",
+                "image_id": "home-family-evening",
+                "image_url": "assets/images/vocabulary/home-family-evening.jpg",
+                "target_tag": "table",
+                "focus_hint": "table",
+                "fallback_emoji": "🪵"
+              }
             }
           ],
           "sentence_pattern": "The cake is on the table.",
@@ -3547,35 +3551,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_179",
-          "word": "grapes",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "grapes",
-          "fallback_emoji": "🍇"
-        },
-        {
-          "vocab_id": "TA2_VOC_166",
-          "word": "cake",
-          "visual_mode": "shared_scene",
-          "image_id": "food-table-multi",
-          "image_url": "assets/images/vocabulary/food-table-multi.jpg",
-          "target_tag": "cake",
-          "fallback_emoji": "🍰"
-        },
-        {
-          "vocab_id": "TA2_VOC_044",
-          "word": "table",
-          "visual_mode": "shared_scene",
-          "image_id": "home-family-evening",
-          "image_url": "assets/images/vocabulary/home-family-evening.jpg",
-          "target_tag": "table",
-          "fallback_emoji": "🪵"
-        }
       ]
     },
     {
@@ -3606,19 +3581,55 @@
           "vocabulary": [
             {
               "word": "eleven",
-              "meaning": "mười một"
+              "meaning": "mười một",
+              "ipa": "ɪˈlevn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_265",
+                "image_id": null,
+                "image_url": null,
+                "target_tag": null,
+                "focus_hint": null,
+                "fallback_emoji": "1️⃣1️⃣"
+              }
             },
             {
               "word": "thirteen",
-              "meaning": "mười ba"
+              "meaning": "mười ba",
+              "ipa": "ˌθɜːˈtiːn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_301",
+                "image_id": null,
+                "image_url": null,
+                "target_tag": null,
+                "focus_hint": null,
+                "fallback_emoji": "1️⃣3️⃣"
+              }
             },
             {
               "word": "fourteen",
-              "meaning": "mười bốn"
+              "meaning": "mười bốn",
+              "ipa": "ˌfɔːˈtiːn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_270",
+                "image_id": null,
+                "image_url": null,
+                "target_tag": null,
+                "focus_hint": null,
+                "fallback_emoji": "1️⃣4️⃣"
+              }
             },
             {
               "word": "fifteen",
-              "meaning": "mười lăm"
+              "meaning": "mười lăm",
+              "ipa": "ˌfɪfˈtiːn",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_266",
+                "image_id": null,
+                "image_url": null,
+                "target_tag": null,
+                "focus_hint": null,
+                "fallback_emoji": "1️⃣5️⃣"
+              }
             }
           ],
           "sentence_pattern": "What number is it? — It’s eleven.",
@@ -3848,44 +3859,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_265",
-          "word": "eleven",
-          "visual_mode": "emoji",
-          "image_id": null,
-          "image_url": null,
-          "target_tag": null,
-          "fallback_emoji": "1️⃣1️⃣"
-        },
-        {
-          "vocab_id": "TA2_VOC_301",
-          "word": "thirteen",
-          "visual_mode": "emoji",
-          "image_id": null,
-          "image_url": null,
-          "target_tag": null,
-          "fallback_emoji": "1️⃣3️⃣"
-        },
-        {
-          "vocab_id": "TA2_VOC_270",
-          "word": "fourteen",
-          "visual_mode": "emoji",
-          "image_id": null,
-          "image_url": null,
-          "target_tag": null,
-          "fallback_emoji": "1️⃣4️⃣"
-        },
-        {
-          "vocab_id": "TA2_VOC_266",
-          "word": "fifteen",
-          "visual_mode": "emoji",
-          "image_id": null,
-          "image_url": null,
-          "target_tag": null,
-          "fallback_emoji": "1️⃣5️⃣"
-        }
       ]
     },
     {
@@ -3915,15 +3888,42 @@
           "vocabulary": [
             {
               "word": "brother",
-              "meaning": "anh/em trai"
+              "meaning": "anh/em trai",
+              "ipa": "ˈbrʌðə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_010",
+                "image_id": "home-family-evening",
+                "image_url": "assets/images/vocabulary/home-family-evening.jpg",
+                "target_tag": "brother",
+                "focus_hint": "brother",
+                "fallback_emoji": "👦"
+              }
             },
             {
               "word": "sister",
-              "meaning": "chị/em gái"
+              "meaning": "chị/em gái",
+              "ipa": "ˈsɪstə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_041",
+                "image_id": "home-family-evening",
+                "image_url": "assets/images/vocabulary/home-family-evening.jpg",
+                "target_tag": "sister",
+                "focus_hint": "sister",
+                "fallback_emoji": "👧"
+              }
             },
             {
               "word": "grandmother",
-              "meaning": "bà"
+              "meaning": "bà",
+              "ipa": "ˈɡrændmʌðə",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_023",
+                "image_id": "family-grandparents-visit",
+                "image_url": "assets/images/vocabulary/family-grandparents-visit.jpg",
+                "target_tag": "grandmother",
+                "focus_hint": "grandmother",
+                "fallback_emoji": "👵"
+              }
             }
           ],
           "sentence_pattern": "How old is your brother? — He’s nineteen.",
@@ -4153,35 +4153,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_010",
-          "word": "brother",
-          "visual_mode": "shared_scene",
-          "image_id": "home-family-evening",
-          "image_url": "assets/images/vocabulary/home-family-evening.jpg",
-          "target_tag": "brother",
-          "fallback_emoji": "👦"
-        },
-        {
-          "vocab_id": "TA2_VOC_041",
-          "word": "sister",
-          "visual_mode": "shared_scene",
-          "image_id": "home-family-evening",
-          "image_url": "assets/images/vocabulary/home-family-evening.jpg",
-          "target_tag": "sister",
-          "fallback_emoji": "👧"
-        },
-        {
-          "vocab_id": "TA2_VOC_023",
-          "word": "grandmother",
-          "visual_mode": "shared_scene",
-          "image_id": "family-grandparents-visit",
-          "image_url": "assets/images/vocabulary/family-grandparents-visit.jpg",
-          "target_tag": "grandmother",
-          "fallback_emoji": "👵"
-        }
       ]
     },
     {
@@ -4211,15 +4182,42 @@
           "vocabulary": [
             {
               "word": "shirts",
-              "meaning": "áo sơ mi"
+              "meaning": "áo sơ mi",
+              "ipa": "shirts",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_038",
+                "image_id": "clothes-multi-rack",
+                "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
+                "target_tag": "shirt",
+                "focus_hint": "shirt",
+                "fallback_emoji": "👔"
+              }
             },
             {
               "word": "shoes",
-              "meaning": "giày"
+              "meaning": "giày",
+              "ipa": "ʃuːz",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_039",
+                "image_id": "clothes-multi-rack",
+                "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
+                "target_tag": "shoes",
+                "focus_hint": "shoes",
+                "fallback_emoji": "👟"
+              }
             },
             {
               "word": "shorts",
-              "meaning": "quần soóc"
+              "meaning": "quần soóc",
+              "ipa": "ʃɔːts",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_040",
+                "image_id": "clothes-multi-rack",
+                "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
+                "target_tag": "shorts",
+                "focus_hint": "shorts",
+                "fallback_emoji": "🩳"
+              }
             }
           ],
           "sentence_pattern": "Where are the shoes? — Over there.",
@@ -4449,35 +4447,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_038",
-          "word": "shirts",
-          "visual_mode": "shared_scene",
-          "image_id": "clothes-multi-rack",
-          "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
-          "target_tag": "shirt",
-          "fallback_emoji": "👔"
-        },
-        {
-          "vocab_id": "TA2_VOC_039",
-          "word": "shoes",
-          "visual_mode": "shared_scene",
-          "image_id": "clothes-multi-rack",
-          "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
-          "target_tag": "shoes",
-          "fallback_emoji": "👟"
-        },
-        {
-          "vocab_id": "TA2_VOC_040",
-          "word": "shorts",
-          "visual_mode": "shared_scene",
-          "image_id": "clothes-multi-rack",
-          "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
-          "target_tag": "shorts",
-          "fallback_emoji": "🩳"
-        }
       ]
     },
     {
@@ -4507,15 +4476,42 @@
           "vocabulary": [
             {
               "word": "tent",
-              "meaning": "lều"
+              "meaning": "lều",
+              "ipa": "tent",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_046",
+                "image_id": "family-campsite",
+                "image_url": "assets/images/vocabulary/family-campsite.jpg",
+                "target_tag": "tent",
+                "focus_hint": "tent",
+                "fallback_emoji": "⛺"
+              }
             },
             {
               "word": "teapot",
-              "meaning": "ấm trà"
+              "meaning": "ấm trà",
+              "ipa": "ˈtiːpɒt",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_045",
+                "image_id": "family-campsite",
+                "image_url": "assets/images/vocabulary/family-campsite.jpg",
+                "target_tag": "teapot",
+                "focus_hint": "teapot",
+                "fallback_emoji": "🫖"
+              }
             },
             {
               "word": "blanket",
-              "meaning": "chăn"
+              "meaning": "chăn",
+              "ipa": "ˈblæŋkɪt",
+              "shared_visual_ref": {
+                "vocab_id": "TA2_VOC_008",
+                "image_id": "home-bedroom-morning",
+                "image_url": "assets/images/vocabulary/home-bedroom-morning.jpg",
+                "target_tag": "blanket",
+                "focus_hint": "blanket",
+                "fallback_emoji": "🛏️"
+              }
             }
           ],
           "sentence_pattern": "Is the blanket near the tent? — No, it isn’t. It’s in the tent.",
@@ -4745,35 +4741,6 @@
         "Bài học",
         "Luyện tập",
         "Tổng kết"
-      ],
-      "shared_visual_refs": [
-        {
-          "vocab_id": "TA2_VOC_046",
-          "word": "tent",
-          "visual_mode": "shared_scene",
-          "image_id": "family-campsite",
-          "image_url": "assets/images/vocabulary/family-campsite.jpg",
-          "target_tag": "tent",
-          "fallback_emoji": "⛺"
-        },
-        {
-          "vocab_id": "TA2_VOC_045",
-          "word": "teapot",
-          "visual_mode": "shared_scene",
-          "image_id": "family-campsite",
-          "image_url": "assets/images/vocabulary/family-campsite.jpg",
-          "target_tag": "teapot",
-          "fallback_emoji": "🫖"
-        },
-        {
-          "vocab_id": "TA2_VOC_008",
-          "word": "blanket",
-          "visual_mode": "shared_scene",
-          "image_id": "home-bedroom-morning",
-          "image_url": "assets/images/vocabulary/home-bedroom-morning.jpg",
-          "target_tag": "blanket",
-          "fallback_emoji": "🛏️"
-        }
       ]
     }
   ],
@@ -5543,10 +5510,15 @@
     "sgk_exception": "Textbook-aligned Unit titles, phonics targets, key vocabulary and sentence patterns may keep textbook wording/spelling when pedagogically necessary."
   },
   "insufficient_data_label_vi": "Chưa đủ dữ liệu",
-  "shared_data_sources": {
-    "vocabulary": "assets/data/vocabulary_english_2.json",
-    "image_map": "assets/data/image_map_english_2.json",
-    "lesson_scene_base_path": "assets/images/bai-hoc/",
-    "shared_image_base_path": "assets/images/vocabulary/"
+  "content_audit": {
+    "version": "content_clean_2026-09-18",
+    "rules": [
+      "answer/options validation",
+      "IPA aligned to vocabulary master where available",
+      "phonics audio aligned to canonical IPA where available",
+      "high-risk copied hints normalized",
+      "shared visual_ref added without removing legacy image_url",
+      "TTS policy preserved"
+    ]
   }
 }

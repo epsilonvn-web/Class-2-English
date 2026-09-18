@@ -42,13 +42,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_194",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "pasta",
-          "target_term": "pasta",
-          "reuse": true
-        }
+          "focus_hint": "pasta",
+          "fallback_emoji": "🍝"
+        },
+        "options_ipa": [
+          "ˈpæstə",
+          "question",
+          "ˈɡrændmʌðə",
+          "væn"
+        ]
       },
       {
         "question_id": "s1.3_2",
@@ -89,13 +95,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_199",
           "image_id": "family-birthday-party",
           "image_url": "assets/images/vocabulary/family-birthday-party.jpg",
           "target_tag": "popcorn",
-          "target_term": "popcorn",
-          "reuse": true
-        }
+          "focus_hint": "popcorn",
+          "fallback_emoji": "🍿"
+        },
+        "options_ipa": [
+          "ˈvɒlibɔːl",
+          "yams",
+          "ˈpɒpkɔːn",
+          "shirts"
+        ]
       },
       {
         "question_id": "s1.3_3",
@@ -261,13 +273,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_198",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "pizza",
-          "target_term": "pizza",
-          "reuse": true
-        }
+          "focus_hint": "pizza",
+          "fallback_emoji": "🍕"
+        },
+        "options_ipa": [
+          "ˈpiːtsə",
+          "rəʊd",
+          "ˈkɪtn",
+          "ɪˈlevn"
+        ]
       },
       {
         "question_id": "s1.3_7",
@@ -308,13 +326,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_079",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "kite",
-          "target_term": "kite",
-          "reuse": true
-        }
+          "focus_hint": "kite",
+          "fallback_emoji": "🪁"
+        },
+        "options_ipa": [
+          "kaɪt",
+          "skweə",
+          "ˈsɪstə",
+          "ʃuːz"
+        ]
       },
       {
         "question_id": "s1.3_8",
@@ -355,13 +379,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_059",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bike",
-          "reuse": true
-        }
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
+        },
+        "options_ipa": [
+          "dʒuːs",
+          "ˈzeɪbrə",
+          "baɪk",
+          "sail"
+        ]
       },
       {
         "question_id": "s1.3_9",
@@ -527,13 +557,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_059",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bike",
-          "reuse": true
-        }
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
+        },
+        "options_ipa": [
+          "tent",
+          "ˈpiːtsə",
+          "baɪk",
+          "ˈzeɪbrə"
+        ]
       },
       {
         "question_id": "s1.3_13",
@@ -574,13 +610,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_286",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "sail",
-          "target_term": "sail",
-          "reuse": true
-        }
+          "focus_hint": "sail",
+          "fallback_emoji": "⛵"
+        },
+        "options_ipa": [
+          "ˈpiːtsə",
+          "zebu",
+          "sail",
+          "shirts"
+        ]
       },
       {
         "question_id": "s1.3_14",
@@ -621,13 +663,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_287",
           "image_id": "seaside-sunny",
           "image_url": "assets/images/vocabulary/seaside-sunny.jpg",
           "target_tag": "sand",
-          "target_term": "sand",
-          "reuse": true
-        }
+          "focus_hint": "sand",
+          "fallback_emoji": "🏖️"
+        },
+        "options_ipa": [
+          "ˈpæstə",
+          "sænd",
+          "ˈzeɪbrə",
+          "yo-yos"
+        ]
       },
       {
         "question_id": "s1.3_15",
@@ -793,13 +841,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_287",
           "image_id": "seaside-sunny",
           "image_url": "assets/images/vocabulary/seaside-sunny.jpg",
           "target_tag": "sand",
-          "target_term": "sand",
-          "reuse": true
-        }
+          "focus_hint": "sand",
+          "fallback_emoji": "🏖️"
+        },
+        "options_ipa": [
+          "ˌθɜːˈtiːn",
+          "sænd",
+          "ʃɔːts",
+          "tent"
+        ]
       },
       {
         "question_id": "s1.3_19",
@@ -840,13 +894,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_281",
           "image_id": "rainbow-countryside",
           "image_url": "assets/images/vocabulary/rainbow-countryside.jpg",
           "target_tag": "rainbow",
-          "target_term": "rainbow",
-          "reuse": true
-        }
+          "focus_hint": "rainbow",
+          "fallback_emoji": "🌈"
+        },
+        "options_ipa": [
+          "yo-yos",
+          "ˈreɪnbəʊ",
+          "ˈvɒlibɔːl",
+          "yams"
+        ]
       },
       {
         "question_id": "s1.3_20",
@@ -887,13 +947,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_284",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "river",
-          "target_term": "river",
-          "reuse": true
-        }
+          "focus_hint": "river",
+          "fallback_emoji": "🏞️"
+        },
+        "options_ipa": [
+          "ˈblæŋkɪt",
+          "ˈrɪvə",
+          "keɪk",
+          "dʒæm"
+        ]
       },
       {
         "question_id": "s1.3_21",
@@ -1059,13 +1125,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_285",
           "image_id": "bus-stop-morning",
           "image_url": "assets/images/vocabulary/bus-stop-morning.jpg",
           "target_tag": "road",
-          "target_term": "road",
-          "reuse": true
-        }
+          "focus_hint": "road",
+          "fallback_emoji": "🛣️"
+        },
+        "options_ipa": [
+          "fɒks",
+          "ˈreɪnbəʊ",
+          "rəʊd",
+          "ɪˈlevn"
+        ]
       },
       {
         "question_id": "s1.3_25",
@@ -1106,13 +1178,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_090",
           "image_id": "classroom-quiz-question",
           "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
           "target_tag": "question",
-          "target_term": "question",
-          "reuse": true
-        }
+          "focus_hint": "question",
+          "fallback_emoji": "❓"
+        },
+        "options_ipa": [
+          "dʒæm",
+          "question",
+          "ˈvɒlibɔːl",
+          "ˈvɪlɪdʒ"
+        ]
       },
       {
         "question_id": "s1.3_26",
@@ -1159,7 +1237,13 @@
           "target_tag": "yo-yos",
           "target_term": "yo-yos",
           "reuse": true
-        }
+        },
+        "options_ipa": [
+          "skweə",
+          "yo-yos",
+          "ˈsɪstə",
+          "ˈvɒlibɔːl"
+        ]
       },
       {
         "question_id": "s1.3_27",
@@ -1325,13 +1409,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_091",
           "image_id": "classroom-quiz-question",
           "image_url": "assets/images/vocabulary/classroom-quiz-question.jpg",
           "target_tag": "quiz",
-          "target_term": "quiz",
-          "reuse": true
-        }
+          "focus_hint": "quiz",
+          "fallback_emoji": "📝"
+        },
+        "options_ipa": [
+          "quiz",
+          "kaɪt",
+          "ˈsɪstə",
+          "fɒks"
+        ]
       },
       {
         "question_id": "s1.3_31",
@@ -1372,13 +1462,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_063",
           "image_id": "home-cleaning-together",
           "image_url": "assets/images/vocabulary/home-cleaning-together.jpg",
           "target_tag": "box",
-          "target_term": "box",
-          "reuse": true
-        }
+          "focus_hint": "box",
+          "fallback_emoji": "📦"
+        },
+        "options_ipa": [
+          "bɒks",
+          "dʒæm",
+          "ʃuːz",
+          "ˈpɒpkɔːn"
+        ]
       },
       {
         "question_id": "s1.3_32",
@@ -1419,13 +1515,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_127",
           "image_id": "farm-fox-box",
           "image_url": "assets/images/vocabulary/farm-fox-box.jpg",
           "target_tag": "fox",
-          "target_term": "fox",
-          "reuse": true
-        }
+          "focus_hint": "fox",
+          "fallback_emoji": "🦊"
+        },
+        "options_ipa": [
+          "dʒæm",
+          "ˈreɪnbəʊ",
+          "fɒks",
+          "ˈpæstə"
+        ]
       },
       {
         "question_id": "s1.3_33",
@@ -1591,13 +1693,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_127",
           "image_id": "farm-fox-box",
           "image_url": "assets/images/vocabulary/farm-fox-box.jpg",
           "target_tag": "fox",
-          "target_term": "fox",
-          "reuse": true
-        }
+          "focus_hint": "fox",
+          "fallback_emoji": "🦊"
+        },
+        "options_ipa": [
+          "question",
+          "bɒks",
+          "ɡreɪps",
+          "fɒks"
+        ]
       },
       {
         "question_id": "s1.3_37",
@@ -1638,13 +1746,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_183",
           "image_id": "home-kitchen-family",
           "image_url": "assets/images/vocabulary/home-kitchen-family.jpg",
           "target_tag": "jelly",
-          "target_term": "jelly",
-          "reuse": true
-        }
+          "focus_hint": "jelly",
+          "fallback_emoji": "🍮"
+        },
+        "options_ipa": [
+          "ˈrɪvə",
+          "ˈdʒeli",
+          "zuː",
+          "ˈɡrændmʌðə"
+        ]
       },
       {
         "question_id": "s1.3_38",
@@ -1685,13 +1799,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_184",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "juice",
-          "target_term": "juice",
-          "reuse": true
-        }
+          "focus_hint": "juice",
+          "fallback_emoji": "🥤"
+        },
+        "options_ipa": [
+          "ox",
+          "ʃuːz",
+          "zebu",
+          "dʒuːs"
+        ]
       },
       {
         "question_id": "s1.3_39",
@@ -1857,13 +1977,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_184",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "juice",
-          "target_term": "juice",
-          "reuse": true
-        }
+          "focus_hint": "juice",
+          "fallback_emoji": "🥤"
+        },
+        "options_ipa": [
+          "dʒuːs",
+          "sænd",
+          "ʃuːz",
+          "ˈpæstə"
+        ]
       },
       {
         "question_id": "s1.3_43",
@@ -1904,13 +2030,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_256",
           "image_id": "village-road-river",
           "image_url": "assets/images/vocabulary/village-road-river.jpg",
           "target_tag": "village",
-          "target_term": "village",
-          "reuse": true
-        }
+          "focus_hint": "village",
+          "fallback_emoji": "🏡"
+        },
+        "options_ipa": [
+          "keɪk",
+          "ˈvɪlɪdʒ",
+          "ˈblæŋkɪt",
+          "ˈbrʌðə"
+        ]
       },
       {
         "question_id": "s1.3_44",
@@ -1951,13 +2083,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_255",
           "image_id": "kids-drawing-van",
           "image_url": "assets/images/vocabulary/kids-drawing-van.jpg",
           "target_tag": "van",
-          "target_term": "van",
-          "reuse": true
-        }
+          "focus_hint": "van",
+          "fallback_emoji": "🚐"
+        },
+        "options_ipa": [
+          "driving",
+          "væn",
+          "baɪk",
+          "zuː"
+        ]
       },
       {
         "question_id": "s1.3_45",
@@ -2123,13 +2261,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_255",
           "image_id": "kids-drawing-van",
           "image_url": "assets/images/vocabulary/kids-drawing-van.jpg",
           "target_tag": "van",
-          "target_term": "van",
-          "reuse": true
-        }
+          "focus_hint": "van",
+          "fallback_emoji": "🚐"
+        },
+        "options_ipa": [
+          "væn",
+          "sænd",
+          "ˈblæŋkɪt",
+          "zebu"
+        ]
       },
       {
         "question_id": "s1.3_49",
@@ -2170,13 +2314,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_212",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "yogurt",
-          "target_term": "yogurt",
-          "reuse": true
-        }
+          "focus_hint": "yogurt",
+          "fallback_emoji": "🥛"
+        },
+        "options_ipa": [
+          "ˈsɪstə",
+          "ˌfɔːˈtiːn",
+          "tent",
+          "yogurt"
+        ]
       },
       {
         "question_id": "s1.3_50",
@@ -2217,13 +2367,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_211",
           "image_id": "grocery-store-shopping",
           "image_url": "assets/images/vocabulary/grocery-store-shopping.jpg",
           "target_tag": "yams",
-          "target_term": "yams",
-          "reuse": true
-        }
+          "focus_hint": "yams",
+          "fallback_emoji": "🥔"
+        },
+        "options_ipa": [
+          "ˈkɪtn",
+          "yams",
+          "skweə",
+          "quiz"
+        ]
       },
       {
         "question_id": "s1.3_51",
@@ -2389,13 +2545,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_211",
           "image_id": "grocery-store-shopping",
           "image_url": "assets/images/vocabulary/grocery-store-shopping.jpg",
           "target_tag": "yams",
-          "target_term": "yams",
-          "reuse": true
-        }
+          "focus_hint": "yams",
+          "fallback_emoji": "🥔"
+        },
+        "options_ipa": [
+          "sail",
+          "ˈkɪtn",
+          "yams",
+          "ˈbrʌðə"
+        ]
       },
       {
         "question_id": "s1.3_55",
@@ -2436,13 +2598,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_258",
           "image_id": "zoo-africa-animals",
           "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
           "target_tag": "zoo",
-          "target_term": "zoo",
-          "reuse": true
-        }
+          "focus_hint": "zoo",
+          "fallback_emoji": "🦁"
+        },
+        "options_ipa": [
+          "sliding",
+          "zuː",
+          "ˈvɒlibɔːl",
+          "bɒks"
+        ]
       },
       {
         "question_id": "s1.3_56",
@@ -2483,13 +2651,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_160",
           "image_id": "zoo-africa-animals",
           "image_url": "assets/images/vocabulary/zoo-africa-animals.jpg",
           "target_tag": "zebu",
-          "target_term": "zebu",
-          "reuse": true
-        }
+          "focus_hint": "zebu",
+          "fallback_emoji": "🐂"
+        },
+        "options_ipa": [
+          "baɪk",
+          "ˌθɜːˈtiːn",
+          "zebu",
+          "ˈrɪvə"
+        ]
       },
       {
         "question_id": "s1.3_57",
@@ -2655,13 +2829,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_159",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "zebra",
-          "target_term": "zebra",
-          "reuse": true
-        }
+          "focus_hint": "zebra",
+          "fallback_emoji": "🦓"
+        },
+        "options_ipa": [
+          "ˈzeɪbrə",
+          "zuː",
+          "baɪk",
+          "ʃɔːts"
+        ]
       },
       {
         "question_id": "s1.3_61",
@@ -2702,13 +2882,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_100",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "sliding",
-          "target_term": "sliding",
-          "reuse": true
-        }
+          "focus_hint": "sliding",
+          "fallback_emoji": "🛝"
+        },
+        "options_ipa": [
+          "sliding",
+          "ˈrɪvə",
+          "dʒæm",
+          "ˈbrʌðə"
+        ]
       },
       {
         "question_id": "s1.3_62",
@@ -2749,13 +2935,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_092",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "riding",
-          "target_term": "riding",
-          "reuse": true
-        }
+          "focus_hint": "riding",
+          "fallback_emoji": "🚴"
+        },
+        "options_ipa": [
+          "zebu",
+          "question",
+          "riding",
+          "ˈɡrændmʌðə"
+        ]
       },
       {
         "question_id": "s1.3_63",
@@ -2921,13 +3113,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_100",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "sliding",
-          "target_term": "sliding",
-          "reuse": true
-        }
+          "focus_hint": "sliding",
+          "fallback_emoji": "🛝"
+        },
+        "options_ipa": [
+          "sliding",
+          "fɒks",
+          "ˈbrʌðə",
+          "ɡreɪps"
+        ]
       },
       {
         "question_id": "s1.3_67",
@@ -2968,13 +3166,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_179",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "grapes",
-          "target_term": "grapes",
-          "reuse": true
-        }
+          "focus_hint": "grapes",
+          "fallback_emoji": "🍇"
+        },
+        "options_ipa": [
+          "ˈsɪstə",
+          "ɡreɪps",
+          "ˈkɪtn",
+          "ˈzeɪbrə"
+        ]
       },
       {
         "question_id": "s1.3_68",
@@ -3015,13 +3219,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_166",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "cake",
-          "target_term": "cake",
-          "reuse": true
-        }
+          "focus_hint": "cake",
+          "fallback_emoji": "🍰"
+        },
+        "options_ipa": [
+          "yogurt",
+          "shirts",
+          "keɪk",
+          "væn"
+        ]
       },
       {
         "question_id": "s1.3_69",
@@ -3187,13 +3397,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_179",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "grapes",
-          "target_term": "grapes",
-          "reuse": true
-        }
+          "focus_hint": "grapes",
+          "fallback_emoji": "🍇"
+        },
+        "options_ipa": [
+          "ˌθɜːˈtiːn",
+          "ɡreɪps",
+          "zuː",
+          "ˈpæstə"
+        ]
       },
       {
         "question_id": "s1.3_73",
@@ -3240,7 +3456,13 @@
           "target_tag": "yams",
           "target_term": "yams",
           "reuse": true
-        }
+        },
+        "options_ipa": [
+          "yams",
+          "ɪˈlevn",
+          "ˈrɪvə",
+          "quiz"
+        ]
       },
       {
         "question_id": "s1.3_74",
@@ -3287,7 +3509,13 @@
           "target_tag": "cake",
           "target_term": "cake",
           "reuse": true
-        }
+        },
+        "options_ipa": [
+          "keɪk",
+          "ˌθɜːˈtiːn",
+          "zebu",
+          "quiz"
+        ]
       },
       {
         "question_id": "s1.3_75",
@@ -3451,7 +3679,13 @@
           "target_tag": "zoo",
           "target_term": "zoo",
           "reuse": true
-        }
+        },
+        "options_ipa": [
+          "zuː",
+          "sliding",
+          "yogurt",
+          "ˌθɜːˈtiːn"
+        ]
       },
       {
         "question_id": "s1.3_79",
@@ -3492,13 +3726,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_010",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "brother",
-          "target_term": "brother",
-          "reuse": true
-        }
+          "focus_hint": "brother",
+          "fallback_emoji": "👦"
+        },
+        "options_ipa": [
+          "kaɪt",
+          "ˈreɪnbəʊ",
+          "skweə",
+          "ˈbrʌðə"
+        ]
       },
       {
         "question_id": "s1.3_80",
@@ -3539,13 +3779,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_041",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "sister",
-          "target_term": "sister",
-          "reuse": true
-        }
+          "focus_hint": "sister",
+          "fallback_emoji": "👧"
+        },
+        "options_ipa": [
+          "ˈpæstə",
+          "tent",
+          "ɪˈlevn",
+          "ˈsɪstə"
+        ]
       },
       {
         "question_id": "s1.3_81",
@@ -3711,13 +3957,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_010",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "brother",
-          "target_term": "brother",
-          "reuse": true
-        }
+          "focus_hint": "brother",
+          "fallback_emoji": "👦"
+        },
+        "options_ipa": [
+          "ˈblæŋkɪt",
+          "ˈreɪnbəʊ",
+          "ˈbrʌðə",
+          "yo-yos"
+        ]
       },
       {
         "question_id": "s1.3_85",
@@ -3758,13 +4010,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_038",
           "image_id": "clothes-multi-rack",
           "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
           "target_tag": "shirt",
-          "target_term": "shirts",
-          "reuse": true
-        }
+          "focus_hint": "shirt",
+          "fallback_emoji": "👔"
+        },
+        "options_ipa": [
+          "yogurt",
+          "shirts",
+          "dʒæm",
+          "sænd"
+        ]
       },
       {
         "question_id": "s1.3_86",
@@ -3805,13 +4063,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_039",
           "image_id": "clothes-multi-rack",
           "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
           "target_tag": "shoes",
-          "target_term": "shoes",
-          "reuse": true
-        }
+          "focus_hint": "shoes",
+          "fallback_emoji": "👟"
+        },
+        "options_ipa": [
+          "ʃuːz",
+          "ˈblæŋkɪt",
+          "ˈpɒpkɔːn",
+          "yo-yos"
+        ]
       },
       {
         "question_id": "s1.3_87",
@@ -3977,13 +4241,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_040",
           "image_id": "clothes-multi-rack",
           "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
           "target_tag": "shorts",
-          "target_term": "shorts",
-          "reuse": true
-        }
+          "focus_hint": "shorts",
+          "fallback_emoji": "🩳"
+        },
+        "options_ipa": [
+          "keɪk",
+          "ʃɔːts",
+          "ˈdʒeli",
+          "ɪˈlevn"
+        ]
       },
       {
         "question_id": "s1.3_91",
@@ -4024,13 +4294,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_046",
           "image_id": "family-campsite",
           "image_url": "assets/images/vocabulary/family-campsite.jpg",
           "target_tag": "tent",
-          "target_term": "tent",
-          "reuse": true
-        }
+          "focus_hint": "tent",
+          "fallback_emoji": "⛺"
+        },
+        "options_ipa": [
+          "yo-yos",
+          "ˈzeɪbrə",
+          "tent",
+          "question"
+        ]
       },
       {
         "question_id": "s1.3_92",
@@ -4071,13 +4347,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_045",
           "image_id": "family-campsite",
           "image_url": "assets/images/vocabulary/family-campsite.jpg",
           "target_tag": "teapot",
-          "target_term": "teapot",
-          "reuse": true
-        }
+          "focus_hint": "teapot",
+          "fallback_emoji": "🫖"
+        },
+        "options_ipa": [
+          "ˈdʒeli",
+          "quiz",
+          "yogurt",
+          "ˈtiːpɒt"
+        ]
       },
       {
         "question_id": "s1.3_93",
@@ -4243,13 +4525,19 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_008",
           "image_id": "home-bedroom-morning",
           "image_url": "assets/images/vocabulary/home-bedroom-morning.jpg",
           "target_tag": "blanket",
-          "target_term": "blanket",
-          "reuse": true
-        }
+          "focus_hint": "blanket",
+          "fallback_emoji": "🛏️"
+        },
+        "options_ipa": [
+          "ˌθɜːˈtiːn",
+          "ˈsɪstə",
+          "ˈblæŋkɪt",
+          "ˌfɪfˈtiːn"
+        ]
       }
     ],
     "section_2.1": {
@@ -16004,12 +16292,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_107",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "yo-yo",
-          "target_term": "yo-yo",
-          "reuse": true
+          "focus_hint": "yo-yo",
+          "fallback_emoji": "🪀"
         }
       },
       {
@@ -16058,12 +16346,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_125",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "elephant",
-          "target_term": "elephant",
-          "reuse": true
+          "focus_hint": "elephant",
+          "fallback_emoji": "🐘"
         }
       },
       {
@@ -16166,12 +16454,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_163",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "bread",
-          "target_term": "bread",
-          "reuse": true
+          "focus_hint": "bread",
+          "fallback_emoji": "🍞"
         }
       },
       {
@@ -16220,12 +16508,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_105",
           "image_id": "station-train",
           "image_url": "assets/images/vocabulary/station-train.jpg",
           "target_tag": "train",
-          "target_term": "train",
-          "reuse": true
+          "focus_hint": "train",
+          "fallback_emoji": "🚂"
         }
       },
       {
@@ -16274,12 +16562,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_240",
           "image_id": "park-kids-sports",
           "image_url": "assets/images/vocabulary/park-kids-sports.jpg",
           "target_tag": "park",
-          "target_term": "park",
-          "reuse": true
+          "focus_hint": "park",
+          "fallback_emoji": "🌳"
         }
       },
       {
@@ -16328,12 +16616,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_074",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "eraser",
-          "target_term": "eraser",
-          "reuse": true
+          "focus_hint": "eraser",
+          "fallback_emoji": "🧽"
         }
       },
       {
@@ -16382,12 +16670,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_027",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "hot",
-          "target_term": "hot",
-          "reuse": true
+          "focus_hint": "hot",
+          "fallback_emoji": "🥵"
         }
       },
       {
@@ -16436,12 +16724,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_005",
           "image_id": "home-bathroom-routine",
           "image_url": "assets/images/vocabulary/home-bathroom-routine.jpg",
           "target_tag": "bathroom",
-          "target_term": "bathroom",
-          "reuse": true
+          "focus_hint": "bathroom",
+          "fallback_emoji": "🚿"
         }
       },
       {
@@ -16652,12 +16940,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_040",
           "image_id": "clothes-multi-rack",
           "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
           "target_tag": "shorts",
-          "target_term": "shorts",
-          "reuse": true
+          "focus_hint": "shorts",
+          "fallback_emoji": "🩳"
         }
       },
       {
@@ -16706,12 +16994,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_182",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "jam",
-          "target_term": "jam",
-          "reuse": true
+          "focus_hint": "jam",
+          "fallback_emoji": "🍯"
         }
       },
       {
@@ -16814,12 +17102,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_284",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "river",
-          "target_term": "river",
-          "reuse": true
+          "focus_hint": "river",
+          "fallback_emoji": "🏞️"
         }
       },
       {
@@ -16868,12 +17156,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_084",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "pencil",
-          "target_term": "pencil",
-          "reuse": true
+          "focus_hint": "pencil",
+          "fallback_emoji": "✏️"
         }
       },
       {
@@ -16922,12 +17210,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_047",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "thirsty",
-          "target_term": "thirsty",
-          "reuse": true
+          "focus_hint": "thirsty",
+          "fallback_emoji": "🥤"
         }
       },
       {
@@ -17084,12 +17372,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_056",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "ball",
-          "target_term": "ball",
-          "reuse": true
+          "focus_hint": "ball",
+          "fallback_emoji": "⚽"
         }
       },
       {
@@ -17138,12 +17426,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_130",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "goat",
-          "target_term": "goat",
-          "reuse": true
+          "focus_hint": "goat",
+          "fallback_emoji": "🐐"
         }
       },
       {
@@ -17300,12 +17588,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_254",
           "image_id": "builder-worksite",
           "image_url": "assets/images/vocabulary/builder-worksite.jpg",
           "target_tag": "truck",
-          "target_term": "truck",
-          "reuse": true
+          "focus_hint": "truck",
+          "fallback_emoji": "🚚"
         }
       },
       {
@@ -17354,12 +17642,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_247",
           "image_id": "town-street",
           "image_url": "assets/images/vocabulary/town-street.jpg",
           "target_tag": "shop",
-          "target_term": "shop",
-          "reuse": true
+          "focus_hint": "shop",
+          "fallback_emoji": "🛍️"
         }
       },
       {
@@ -17408,12 +17696,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_062",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "book",
-          "target_term": "book",
-          "reuse": true
+          "focus_hint": "book",
+          "fallback_emoji": "📖"
         }
       },
       {
@@ -17462,12 +17750,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_048",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "tired",
-          "target_term": "tired",
-          "reuse": true
+          "focus_hint": "tired",
+          "fallback_emoji": "😴"
         }
       },
       {
@@ -17516,12 +17804,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_041",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "sister",
-          "target_term": "sister",
-          "reuse": true
+          "focus_hint": "sister",
+          "fallback_emoji": "👧"
         }
       },
       {
@@ -17624,12 +17912,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_079",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "kite",
-          "target_term": "kite",
-          "reuse": true
+          "focus_hint": "kite",
+          "fallback_emoji": "🪁"
         }
       },
       {
@@ -17678,12 +17966,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_130",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "goat",
-          "target_term": "goat",
-          "reuse": true
+          "focus_hint": "goat",
+          "fallback_emoji": "🐐"
         }
       },
       {
@@ -17786,12 +18074,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_189",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "milk",
-          "target_term": "milk",
-          "reuse": true
+          "focus_hint": "milk",
+          "fallback_emoji": "🥛"
         }
       },
       {
@@ -17840,12 +18128,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_238",
           "image_id": "transport-road",
           "image_url": "assets/images/vocabulary/transport-road.jpg",
           "target_tag": "motorbike",
-          "target_term": "motorbike",
-          "reuse": true
+          "focus_hint": "motorbike",
+          "fallback_emoji": "🏍️"
         }
       },
       {
@@ -17948,12 +18236,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_071",
           "image_id": "classroom-learning",
           "image_url": "assets/images/vocabulary/classroom-learning.jpg",
           "target_tag": "desk",
-          "target_term": "desk",
-          "reuse": true
+          "focus_hint": "desk",
+          "fallback_emoji": "📝"
         }
       },
       {
@@ -18002,12 +18290,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_029",
           "image_id": "tired-sleepy-hungry",
           "image_url": "assets/images/vocabulary/tired-sleepy-hungry.jpg",
           "target_tag": "hungry",
-          "target_term": "hungry",
-          "reuse": true
+          "focus_hint": "hungry",
+          "fallback_emoji": "😋"
         }
       },
       {
@@ -18164,12 +18452,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_059",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bike",
-          "reuse": true
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
         }
       },
       {
@@ -18272,12 +18560,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_039",
           "image_id": "clothes-multi-rack",
           "image_url": "assets/images/vocabulary/clothes-multi-rack.jpg",
           "target_tag": "shoes",
-          "target_term": "shoes",
-          "reuse": true
+          "focus_hint": "shoes",
+          "fallback_emoji": "👟"
         }
       },
       {
@@ -18326,12 +18614,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_189",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "milk",
-          "target_term": "milk",
-          "reuse": true
+          "focus_hint": "milk",
+          "fallback_emoji": "🥛"
         }
       },
       {
@@ -18380,12 +18668,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_254",
           "image_id": "builder-worksite",
           "image_url": "assets/images/vocabulary/builder-worksite.jpg",
           "target_tag": "truck",
-          "target_term": "truck",
-          "reuse": true
+          "focus_hint": "truck",
+          "fallback_emoji": "🚚"
         }
       },
       {
@@ -18434,12 +18722,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_242",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "playground",
-          "target_term": "playground",
-          "reuse": true
+          "focus_hint": "playground",
+          "fallback_emoji": "🛝"
         }
       },
       {
@@ -18488,12 +18776,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_074",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "eraser",
-          "target_term": "eraser",
-          "reuse": true
+          "focus_hint": "eraser",
+          "fallback_emoji": "🧽"
         }
       },
       {
@@ -18542,12 +18830,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_027",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "hot",
-          "target_term": "hot",
-          "reuse": true
+          "focus_hint": "hot",
+          "fallback_emoji": "🥵"
         }
       }
     ],
@@ -18652,12 +18940,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_073",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "doll",
-          "target_term": "doll",
-          "reuse": true
+          "focus_hint": "doll",
+          "fallback_emoji": "🧸"
         }
       },
       {
@@ -18706,12 +18994,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_047",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "thirsty",
-          "target_term": "thirsty",
-          "reuse": true
+          "focus_hint": "thirsty",
+          "fallback_emoji": "🥤"
         }
       },
       {
@@ -18922,12 +19210,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_299",
           "image_id": "weather-four-states",
           "image_url": "assets/images/vocabulary/weather-four-states.jpg",
           "target_tag": "sunny",
-          "target_term": "sunny",
-          "reuse": true
+          "focus_hint": "sunny",
+          "fallback_emoji": "☀️"
         }
       },
       {
@@ -18976,12 +19264,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_145",
           "image_id": "farm-animals",
           "image_url": "assets/images/vocabulary/farm-animals.jpg",
           "target_tag": "pig",
-          "target_term": "pig",
-          "reuse": true
+          "focus_hint": "pig",
+          "fallback_emoji": "🐷"
         }
       },
       {
@@ -19084,12 +19372,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_094",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "ruler",
-          "target_term": "ruler",
-          "reuse": true
+          "focus_hint": "ruler",
+          "fallback_emoji": "📏"
         }
       },
       {
@@ -19138,12 +19426,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_042",
           "image_id": "tired-sleepy-hungry",
           "image_url": "assets/images/vocabulary/tired-sleepy-hungry.jpg",
           "target_tag": "sleepy",
-          "target_term": "sleepy",
-          "reuse": true
+          "focus_hint": "sleepy",
+          "fallback_emoji": "🥱"
         }
       },
       {
@@ -19192,12 +19480,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_219",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "boat",
-          "target_term": "boat",
-          "reuse": true
+          "focus_hint": "boat",
+          "fallback_emoji": "⛵"
         }
       },
       {
@@ -19246,12 +19534,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_036",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "sad",
-          "target_term": "sad",
-          "reuse": true
+          "focus_hint": "sad",
+          "fallback_emoji": "😢"
         }
       },
       {
@@ -19300,12 +19588,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_238",
           "image_id": "transport-road",
           "image_url": "assets/images/vocabulary/transport-road.jpg",
           "target_tag": "motorbike",
-          "target_term": "motorbike",
-          "reuse": true
+          "focus_hint": "motorbike",
+          "fallback_emoji": "🏍️"
         }
       },
       {
@@ -19354,12 +19642,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_048",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "tired",
-          "target_term": "tired",
-          "reuse": true
+          "focus_hint": "tired",
+          "fallback_emoji": "😴"
         }
       },
       {
@@ -19408,12 +19696,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_218",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bicycle",
-          "reuse": true
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
         }
       },
       {
@@ -19462,12 +19750,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_025",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "happy",
-          "target_term": "happy",
-          "reuse": true
+          "focus_hint": "happy",
+          "fallback_emoji": "😊"
         }
       },
       {
@@ -19481,7 +19769,7 @@
         ],
         "options_ipa": [
           "hɔːs",
-          "ˈstɔːmi",
+          "ˈstɔːrmi",
           "ɡreɪt",
           "ˈæŋɡri"
         ],
@@ -19570,12 +19858,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_001",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "angry",
-          "target_term": "angry",
-          "reuse": true
+          "focus_hint": "angry",
+          "fallback_emoji": "😡"
         }
       },
       {
@@ -19590,7 +19878,7 @@
         "options_ipa": [
           "ɡreɪt",
           "ˈpleɪɡraʊnd",
-          "ˈstɔːmi",
+          "ˈstɔːrmi",
           "wet"
         ],
         "answer": "playground",
@@ -19624,12 +19912,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_242",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "playground",
-          "target_term": "playground",
-          "reuse": true
+          "focus_hint": "playground",
+          "fallback_emoji": "🛝"
         }
       },
       {
@@ -19732,12 +20020,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_124",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "duck",
-          "target_term": "duck",
-          "reuse": true
+          "focus_hint": "duck",
+          "fallback_emoji": "🦆"
         }
       },
       {
@@ -19786,12 +20074,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_018",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "excited",
-          "target_term": "excited",
-          "reuse": true
+          "focus_hint": "excited",
+          "fallback_emoji": "🤪"
         }
       },
       {
@@ -19894,12 +20182,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_001",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "angry",
-          "target_term": "angry",
-          "reuse": true
+          "focus_hint": "angry",
+          "fallback_emoji": "😡"
         }
       },
       {
@@ -19948,12 +20236,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_032",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "living room",
-          "target_term": "living room",
-          "reuse": true
+          "focus_hint": "living room",
+          "fallback_emoji": "🛋️"
         }
       },
       {
@@ -20056,12 +20344,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_189",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "milk",
-          "target_term": "milk",
-          "reuse": true
+          "focus_hint": "milk",
+          "fallback_emoji": "🥛"
         }
       },
       {
@@ -20272,12 +20560,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_056",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "ball",
-          "target_term": "ball",
-          "reuse": true
+          "focus_hint": "ball",
+          "fallback_emoji": "⚽"
         }
       },
       {
@@ -20326,12 +20614,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_035",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "proud",
-          "target_term": "proud",
-          "reuse": true
+          "focus_hint": "proud",
+          "fallback_emoji": "🦁"
         }
       },
       {
@@ -20380,12 +20668,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_161",
           "image_id": "market-fruit-vegetables",
           "image_url": "assets/images/vocabulary/market-fruit-vegetables.jpg",
           "target_tag": "apple",
-          "target_term": "apple",
-          "reuse": true
+          "focus_hint": "apple",
+          "fallback_emoji": "🍎"
         }
       },
       {
@@ -20434,12 +20722,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_001",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "angry",
-          "target_term": "angry",
-          "reuse": true
+          "focus_hint": "angry",
+          "fallback_emoji": "😡"
         }
       },
       {
@@ -20488,12 +20776,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_094",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "ruler",
-          "target_term": "ruler",
-          "reuse": true
+          "focus_hint": "ruler",
+          "fallback_emoji": "📏"
         }
       },
       {
@@ -20542,12 +20830,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_035",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "proud",
-          "target_term": "proud",
-          "reuse": true
+          "focus_hint": "proud",
+          "fallback_emoji": "🦁"
         }
       },
       {
@@ -20562,7 +20850,7 @@
         "options_ipa": [
           "kəʊld",
           "hɒt",
-          "ˈstɔːmi",
+          "ˈstɔːrmi",
           "bʌs"
         ],
         "answer": "bus",
@@ -20596,12 +20884,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_221",
           "image_id": "bus-stop-morning",
           "image_url": "assets/images/vocabulary/bus-stop-morning.jpg",
           "target_tag": "bus",
-          "target_term": "bus",
-          "reuse": true
+          "focus_hint": "bus",
+          "fallback_emoji": "🚌"
         }
       },
       {
@@ -20650,12 +20938,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_001",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "angry",
-          "target_term": "angry",
-          "reuse": true
+          "focus_hint": "angry",
+          "fallback_emoji": "😡"
         }
       },
       {
@@ -20704,12 +20992,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_218",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bicycle",
-          "reuse": true
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
         }
       },
       {
@@ -20758,12 +21046,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_013",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "cold",
-          "target_term": "cold",
-          "reuse": true
+          "focus_hint": "cold",
+          "fallback_emoji": "🥶"
         }
       },
       {
@@ -20866,12 +21154,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_001",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "angry",
-          "target_term": "angry",
-          "reuse": true
+          "focus_hint": "angry",
+          "fallback_emoji": "😡"
         }
       },
       {
@@ -20974,12 +21262,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_299",
           "image_id": "weather-four-states",
           "image_url": "assets/images/vocabulary/weather-four-states.jpg",
           "target_tag": "sunny",
-          "target_term": "sunny",
-          "reuse": true
+          "focus_hint": "sunny",
+          "fallback_emoji": "☀️"
         }
       },
       {
@@ -21028,12 +21316,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_238",
           "image_id": "transport-road",
           "image_url": "assets/images/vocabulary/transport-road.jpg",
           "target_tag": "motorbike",
-          "target_term": "motorbike",
-          "reuse": true
+          "focus_hint": "motorbike",
+          "fallback_emoji": "🏍️"
         }
       },
       {
@@ -21082,12 +21370,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_018",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "excited",
-          "target_term": "excited",
-          "reuse": true
+          "focus_hint": "excited",
+          "fallback_emoji": "🤪"
         }
       },
       {
@@ -21136,12 +21424,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_242",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "playground",
-          "target_term": "playground",
-          "reuse": true
+          "focus_hint": "playground",
+          "fallback_emoji": "🛝"
         }
       },
       {
@@ -21244,12 +21532,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_116",
           "image_id": "farm-animals",
           "image_url": "assets/images/vocabulary/farm-animals.jpg",
           "target_tag": "chicken",
-          "target_term": "chicken",
-          "reuse": true
+          "focus_hint": "chicken",
+          "fallback_emoji": "🐔"
         }
       }
     ],
@@ -21300,12 +21588,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_219",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "boat",
-          "target_term": "boat",
-          "reuse": true
+          "focus_hint": "boat",
+          "fallback_emoji": "⛵"
         }
       },
       {
@@ -21354,12 +21642,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_247",
           "image_id": "town-street",
           "image_url": "assets/images/vocabulary/town-street.jpg",
           "target_tag": "shop",
-          "target_term": "shop",
-          "reuse": true
+          "focus_hint": "shop",
+          "fallback_emoji": "🛍️"
         }
       },
       {
@@ -21372,7 +21660,7 @@
           "shoes"
         ],
         "options_ipa": [
-          "ˈstɔːmi",
+          "ˈstɔːrmi",
           "kaʊ",
           "skeəd",
           "ʃuːz"
@@ -21408,12 +21696,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_117",
           "image_id": "farm-animals",
           "image_url": "assets/images/vocabulary/farm-animals.jpg",
           "target_tag": "cow",
-          "target_term": "cow",
-          "reuse": true
+          "focus_hint": "cow",
+          "fallback_emoji": "🐮"
         }
       },
       {
@@ -21462,12 +21750,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_138",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "monkey",
-          "target_term": "monkey",
-          "reuse": true
+          "focus_hint": "monkey",
+          "fallback_emoji": "🐵"
         }
       },
       {
@@ -21516,12 +21804,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_156",
           "image_id": "zoo-monkeys-tiger",
           "image_url": "assets/images/vocabulary/zoo-monkeys-tiger.jpg",
           "target_tag": "tiger",
-          "target_term": "tiger",
-          "reuse": true
+          "focus_hint": "tiger",
+          "fallback_emoji": "🐯"
         }
       },
       {
@@ -21570,12 +21858,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_121",
           "image_id": "pets-at-home",
           "image_url": "assets/images/vocabulary/pets-at-home.jpg",
           "target_tag": "dog",
-          "target_term": "dog",
-          "reuse": true
+          "focus_hint": "dog",
+          "fallback_emoji": "🐶"
         }
       },
       {
@@ -21624,12 +21912,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_194",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "pasta",
-          "target_term": "pasta",
-          "reuse": true
+          "focus_hint": "pasta",
+          "fallback_emoji": "🍝"
         }
       },
       {
@@ -21732,12 +22020,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_247",
           "image_id": "town-street",
           "image_url": "assets/images/vocabulary/town-street.jpg",
           "target_tag": "shop",
-          "target_term": "shop",
-          "reuse": true
+          "focus_hint": "shop",
+          "fallback_emoji": "🛍️"
         }
       },
       {
@@ -21786,12 +22074,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_011",
           "image_id": "classroom-learning",
           "image_url": "assets/images/vocabulary/classroom-learning.jpg",
           "target_tag": "chair",
-          "target_term": "chair",
-          "reuse": true
+          "focus_hint": "chair",
+          "fallback_emoji": "🪑"
         }
       },
       {
@@ -21840,12 +22128,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_238",
           "image_id": "transport-road",
           "image_url": "assets/images/vocabulary/transport-road.jpg",
           "target_tag": "motorbike",
-          "target_term": "motorbike",
-          "reuse": true
+          "focus_hint": "motorbike",
+          "fallback_emoji": "🏍️"
         }
       },
       {
@@ -21894,12 +22182,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_254",
           "image_id": "builder-worksite",
           "image_url": "assets/images/vocabulary/builder-worksite.jpg",
           "target_tag": "truck",
-          "target_term": "truck",
-          "reuse": true
+          "focus_hint": "truck",
+          "fallback_emoji": "🚚"
         }
       },
       {
@@ -21948,12 +22236,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_073",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "doll",
-          "target_term": "doll",
-          "reuse": true
+          "focus_hint": "doll",
+          "fallback_emoji": "🧸"
         }
       },
       {
@@ -22002,12 +22290,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_087",
           "image_id": "airport-travel",
           "image_url": "assets/images/vocabulary/airport-travel.jpg",
           "target_tag": "plane",
-          "target_term": "plane",
-          "reuse": true
+          "focus_hint": "plane",
+          "fallback_emoji": "✈️"
         }
       },
       {
@@ -22056,12 +22344,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_062",
           "image_id": "school-object-table",
           "image_url": "assets/images/vocabulary/school-object-table.jpg",
           "target_tag": "book",
-          "target_term": "book",
-          "reuse": true
+          "focus_hint": "book",
+          "fallback_emoji": "📖"
         }
       },
       {
@@ -22164,12 +22452,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_115",
           "image_id": "pets-at-home",
           "image_url": "assets/images/vocabulary/pets-at-home.jpg",
           "target_tag": "cat",
-          "target_term": "cat",
-          "reuse": true
+          "focus_hint": "cat",
+          "fallback_emoji": "🐱"
         }
       },
       {
@@ -22218,12 +22506,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_238",
           "image_id": "transport-road",
           "image_url": "assets/images/vocabulary/transport-road.jpg",
           "target_tag": "motorbike",
-          "target_term": "motorbike",
-          "reuse": true
+          "focus_hint": "motorbike",
+          "fallback_emoji": "🏍️"
         }
       },
       {
@@ -22326,12 +22614,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_124",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "duck",
-          "target_term": "duck",
-          "reuse": true
+          "focus_hint": "duck",
+          "fallback_emoji": "🦆"
         }
       },
       {
@@ -22380,12 +22668,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_087",
           "image_id": "airport-travel",
           "image_url": "assets/images/vocabulary/airport-travel.jpg",
           "target_tag": "plane",
-          "target_term": "plane",
-          "reuse": true
+          "focus_hint": "plane",
+          "fallback_emoji": "✈️"
         }
       },
       {
@@ -22434,12 +22722,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_219",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "boat",
-          "target_term": "boat",
-          "reuse": true
+          "focus_hint": "boat",
+          "fallback_emoji": "⛵"
         }
       },
       {
@@ -22488,12 +22776,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_247",
           "image_id": "town-street",
           "image_url": "assets/images/vocabulary/town-street.jpg",
           "target_tag": "shop",
-          "target_term": "shop",
-          "reuse": true
+          "focus_hint": "shop",
+          "fallback_emoji": "🛍️"
         }
       },
       {
@@ -22596,12 +22884,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_138",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "monkey",
-          "target_term": "monkey",
-          "reuse": true
+          "focus_hint": "monkey",
+          "fallback_emoji": "🐵"
         }
       },
       {
@@ -22650,12 +22938,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_105",
           "image_id": "station-train",
           "image_url": "assets/images/vocabulary/station-train.jpg",
           "target_tag": "train",
-          "target_term": "train",
-          "reuse": true
+          "focus_hint": "train",
+          "fallback_emoji": "🚂"
         }
       },
       {
@@ -22758,12 +23046,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_242",
           "image_id": "school-playground-break",
           "image_url": "assets/images/vocabulary/school-playground-break.jpg",
           "target_tag": "playground",
-          "target_term": "playground",
-          "reuse": true
+          "focus_hint": "playground",
+          "fallback_emoji": "🛝"
         }
       },
       {
@@ -22812,12 +23100,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_163",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "bread",
-          "target_term": "bread",
-          "reuse": true
+          "focus_hint": "bread",
+          "fallback_emoji": "🍞"
         }
       },
       {
@@ -22866,12 +23154,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_042",
           "image_id": "tired-sleepy-hungry",
           "image_url": "assets/images/vocabulary/tired-sleepy-hungry.jpg",
           "target_tag": "sleepy",
-          "target_term": "sleepy",
-          "reuse": true
+          "focus_hint": "sleepy",
+          "fallback_emoji": "🥱"
         }
       },
       {
@@ -22885,7 +23173,7 @@
         ],
         "options_ipa": [
           "ʃɔːts",
-          "ˈstɔːmi",
+          "ˈstɔːrmi",
           "klaʊd",
           "ʃɒp"
         ],
@@ -22920,12 +23208,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_260",
           "image_id": "weather-four-states",
           "image_url": "assets/images/vocabulary/weather-four-states.jpg",
           "target_tag": "cloud",
-          "target_term": "cloud",
-          "reuse": true
+          "focus_hint": "cloud",
+          "fallback_emoji": "☁️"
         }
       },
       {
@@ -23028,12 +23316,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_156",
           "image_id": "zoo-monkeys-tiger",
           "image_url": "assets/images/vocabulary/zoo-monkeys-tiger.jpg",
           "target_tag": "tiger",
-          "target_term": "tiger",
-          "reuse": true
+          "focus_hint": "tiger",
+          "fallback_emoji": "🐯"
         }
       },
       {
@@ -23082,12 +23370,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_073",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "doll",
-          "target_term": "doll",
-          "reuse": true
+          "focus_hint": "doll",
+          "fallback_emoji": "🧸"
         }
       },
       {
@@ -23136,12 +23424,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_035",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "proud",
-          "target_term": "proud",
-          "reuse": true
+          "focus_hint": "proud",
+          "fallback_emoji": "🦁"
         }
       },
       {
@@ -23190,12 +23478,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_059",
           "image_id": "home-garden-backyard",
           "image_url": "assets/images/vocabulary/home-garden-backyard.jpg",
           "target_tag": "bike",
-          "target_term": "bike",
-          "reuse": true
+          "focus_hint": "bike",
+          "fallback_emoji": "🚲"
         }
       },
       {
@@ -23244,12 +23532,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_299",
           "image_id": "weather-four-states",
           "image_url": "assets/images/vocabulary/weather-four-states.jpg",
           "target_tag": "sunny",
-          "target_term": "sunny",
-          "reuse": true
+          "focus_hint": "sunny",
+          "fallback_emoji": "☀️"
         }
       },
       {
@@ -23298,12 +23586,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_116",
           "image_id": "farm-animals",
           "image_url": "assets/images/vocabulary/farm-animals.jpg",
           "target_tag": "chicken",
-          "target_term": "chicken",
-          "reuse": true
+          "focus_hint": "chicken",
+          "fallback_emoji": "🐔"
         }
       },
       {
@@ -23352,12 +23640,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_033",
           "image_id": "home-family-evening",
           "image_url": "assets/images/vocabulary/home-family-evening.jpg",
           "target_tag": "mother",
-          "target_term": "mom",
-          "reuse": true
+          "focus_hint": "mother",
+          "fallback_emoji": "👩"
         }
       },
       {
@@ -23406,12 +23694,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_105",
           "image_id": "station-train",
           "image_url": "assets/images/vocabulary/station-train.jpg",
           "target_tag": "train",
-          "target_term": "train",
-          "reuse": true
+          "focus_hint": "train",
+          "fallback_emoji": "🚂"
         }
       },
       {
@@ -23460,12 +23748,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_124",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "duck",
-          "target_term": "duck",
-          "reuse": true
+          "focus_hint": "duck",
+          "fallback_emoji": "🦆"
         }
       },
       {
@@ -23514,12 +23802,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_194",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "pasta",
-          "target_term": "pasta",
-          "reuse": true
+          "focus_hint": "pasta",
+          "fallback_emoji": "🍝"
         }
       },
       {
@@ -23730,12 +24018,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_138",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "monkey",
-          "target_term": "monkey",
-          "reuse": true
+          "focus_hint": "monkey",
+          "fallback_emoji": "🐵"
         }
       },
       {
@@ -23946,12 +24234,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_057",
           "image_id": "family-birthday-party",
           "image_url": "assets/images/vocabulary/family-birthday-party.jpg",
           "target_tag": "balloon",
-          "target_term": "balloon",
-          "reuse": true
+          "focus_hint": "balloon",
+          "fallback_emoji": "🎈"
         }
       }
     ],
@@ -24004,12 +24292,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_018",
           "image_id": "feelings-multi-class",
           "image_url": "assets/images/vocabulary/feelings-multi-class.jpg",
           "target_tag": "excited",
-          "target_term": "excited",
-          "reuse": true
+          "focus_hint": "excited",
+          "fallback_emoji": "🤪"
         }
       },
       {
@@ -24340,12 +24628,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_022",
           "image_id": "family-grandparents-visit",
           "image_url": "assets/images/vocabulary/family-grandparents-visit.jpg",
           "target_tag": "grandfather",
-          "target_term": "grandfather",
-          "reuse": true
+          "focus_hint": "grandfather",
+          "fallback_emoji": "👴"
         }
       },
       {
@@ -24474,7 +24762,7 @@
         "options_ipa": [
           "bluː",
           "pɪŋk",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red"
         ],
         "answer": "yellow",
@@ -24676,12 +24964,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_093",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "robot",
-          "target_term": "robot",
-          "reuse": true
+          "focus_hint": "robot",
+          "fallback_emoji": "🤖"
         }
       },
       {
@@ -24696,7 +24984,7 @@
           "red"
         ],
         "options_ipa": [
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "bluː",
           "ɡriːn",
           "red"
@@ -24844,12 +25132,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_121",
           "image_id": "pets-at-home",
           "image_url": "assets/images/vocabulary/pets-at-home.jpg",
           "target_tag": "dog",
-          "target_term": "dog",
-          "reuse": true
+          "focus_hint": "dog",
+          "fallback_emoji": "🐶"
         }
       },
       {
@@ -25090,7 +25378,7 @@
         "options_ipa": [
           "bluː",
           "pɪŋk",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red"
         ],
         "answer": "pink",
@@ -25348,12 +25636,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_029",
           "image_id": "tired-sleepy-hungry",
           "image_url": "assets/images/vocabulary/tired-sleepy-hungry.jpg",
           "target_tag": "hungry",
-          "target_term": "hungry",
-          "reuse": true
+          "focus_hint": "hungry",
+          "fallback_emoji": "😋"
         }
       },
       {
@@ -25404,12 +25692,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_198",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "pizza",
-          "target_term": "pizza",
-          "reuse": true
+          "focus_hint": "pizza",
+          "fallback_emoji": "🍕"
         }
       },
       {
@@ -25537,7 +25825,7 @@
         ],
         "options_ipa": [
           "ɡriːn",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "bluː",
           "red"
         ],
@@ -25704,7 +25992,7 @@
           "red"
         ],
         "options_ipa": [
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "bluː",
           "blæk",
           "red"
@@ -26154,7 +26442,7 @@
         "options_ipa": [
           "bluː",
           "ɡriːn",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red"
         ],
         "answer": "yellow",
@@ -26524,12 +26812,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_282",
           "image_id": "weather-four-states",
           "image_url": "assets/images/vocabulary/weather-four-states.jpg",
           "target_tag": "rainy",
-          "target_term": "rainy",
-          "reuse": true
+          "focus_hint": "rainy",
+          "fallback_emoji": "🌧️"
         }
       },
       {
@@ -26658,7 +26946,7 @@
         "options_ipa": [
           "braʊn",
           "waɪt",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "blæk"
         ],
         "answer": "black",
@@ -27142,12 +27430,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_022",
           "image_id": "family-grandparents-visit",
           "image_url": "assets/images/vocabulary/family-grandparents-visit.jpg",
           "target_tag": "grandfather",
-          "target_term": "grandfather",
-          "reuse": true
+          "focus_hint": "grandfather",
+          "fallback_emoji": "👴"
         }
       },
       {
@@ -27422,12 +27710,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_150",
           "image_id": "animal-world-multi",
           "image_url": "assets/images/vocabulary/animal-world-multi.jpg",
           "target_tag": "sheep",
-          "target_term": "sheep",
-          "reuse": true
+          "focus_hint": "sheep",
+          "fallback_emoji": "🐑"
         }
       },
       {
@@ -27500,7 +27788,7 @@
         "options_ipa": [
           "bluː",
           "ɡriːn",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red"
         ],
         "answer": "blue",
@@ -27590,12 +27878,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_107",
           "image_id": "toy-room-play",
           "image_url": "assets/images/vocabulary/toy-room-play.jpg",
           "target_tag": "yo-yo",
-          "target_term": "yo-yo",
-          "reuse": true
+          "focus_hint": "yo-yo",
+          "fallback_emoji": "🪀"
         }
       },
       {
@@ -27667,7 +27955,7 @@
         ],
         "options_ipa": [
           "blæk",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "waɪt",
           "pɪŋk"
         ],
@@ -27870,12 +28158,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_162",
           "image_id": "market-fruit-vegetables",
           "image_url": "assets/images/vocabulary/market-fruit-vegetables.jpg",
           "target_tag": "bananas",
-          "target_term": "bananas",
-          "reuse": true
+          "focus_hint": "bananas",
+          "fallback_emoji": "🍌"
         }
       },
       {
@@ -28058,7 +28346,7 @@
           "blue"
         ],
         "options_ipa": [
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red",
           "ɡriːn",
           "bluː"
@@ -28206,12 +28494,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_189",
           "image_id": "food-table-multi",
           "image_url": "assets/images/vocabulary/food-table-multi.jpg",
           "target_tag": "milk",
-          "target_term": "milk",
-          "reuse": true
+          "focus_hint": "milk",
+          "fallback_emoji": "🥛"
         }
       },
       {
@@ -28318,12 +28606,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_199",
           "image_id": "family-birthday-party",
           "image_url": "assets/images/vocabulary/family-birthday-party.jpg",
           "target_tag": "popcorn",
-          "target_term": "popcorn",
-          "reuse": true
+          "focus_hint": "popcorn",
+          "fallback_emoji": "🍿"
         }
       },
       {
@@ -28788,7 +29076,7 @@
         "options_ipa": [
           "red",
           "bluː",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "pɪŋk"
         ],
         "answer": "blue",
@@ -29382,12 +29670,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_027",
           "image_id": "hot-cold-thirsty",
           "image_url": "assets/images/vocabulary/hot-cold-thirsty.jpg",
           "target_tag": "hot",
-          "target_term": "hot",
-          "reuse": true
+          "focus_hint": "hot",
+          "fallback_emoji": "🥵"
         }
       },
       {
@@ -30246,7 +30534,7 @@
         "options_ipa": [
           "ɡriːn",
           "red",
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "bluː"
         ],
         "answer": "yellow",
@@ -30412,7 +30700,7 @@
           "red"
         ],
         "options_ipa": [
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "pɪŋk",
           "bluː",
           "red"
@@ -31288,12 +31576,12 @@
         "answer_tts_enabled": true,
         "standalone_vi_tts_allowed": true,
         "visual_ref": {
-          "source": "shared_vocabulary_image_map",
+          "vocab_id": "TA2_VOC_219",
           "image_id": "harbour-boat",
           "image_url": "assets/images/vocabulary/harbour-boat.jpg",
           "target_tag": "boat",
-          "target_term": "boat",
-          "reuse": true
+          "focus_hint": "boat",
+          "fallback_emoji": "⛵"
         }
       },
       {
@@ -31588,7 +31876,7 @@
           "pink"
         ],
         "options_ipa": [
-          "ˈjeləʊ",
+          "ˈjeloʊ",
           "red",
           "bluː",
           "pɪŋk"
@@ -58532,5 +58820,16 @@
     "total_unique_words": 463,
     "expanded_from_source": "18 chủ đề từ vựng tiếng Anh tiểu học.docx",
     "vocabulary_topic_count": 18
+  },
+  "content_audit": {
+    "version": "content_clean_2026-09-18",
+    "rules": [
+      "answer/options validation",
+      "IPA aligned to vocabulary master where available",
+      "phonics audio aligned to canonical IPA where available",
+      "high-risk copied hints normalized",
+      "shared visual_ref added without removing legacy image_url",
+      "TTS policy preserved"
+    ]
   }
 }
