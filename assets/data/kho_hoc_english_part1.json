@@ -61369,9 +61369,9 @@
         "unit": 1,
         "unit_title": "At my birthday party",
         "title": "Eight Candles",
-        "passage_type": "paragraph",
-        "passage": "Tom is eight today. His cake has eight little candles. Dad brings pasta, and Mum brings popcorn.",
-        "tts_text": "Tom is eight today. His cake has eight little candles. Dad brings pasta, and Mum brings popcorn.",
+        "passage_type": "dialogue",
+        "passage": "A: How old is Tom today?\nB: He is eight. His cake has eight little candles.\nA: Who brings the food?\nB: Dad brings pasta, and Mum brings popcorn.",
+        "tts_text": "How old is Tom today?\nHe is eight. His cake has eight little candles.\nWho brings the food?\nDad brings pasta, and Mum brings popcorn.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -61544,9 +61544,9 @@
         "unit": 2,
         "unit_title": "In the backyard",
         "title": "Two Friends Outside",
-        "passage_type": "paragraph",
-        "passage": "Kim rides her bike around the yard. Leo plays with a kitten near the flowers. They go inside when it gets dark.",
-        "tts_text": "Kim rides her bike around the yard. Leo plays with a kitten near the flowers. They go inside when it gets dark.",
+        "passage_type": "dialogue",
+        "passage": "A: What is Kim doing in the yard?\nB: She is riding her bike.\nA: Where is Leo?\nB: He is near the flowers, playing with a kitten.",
+        "tts_text": "What is Kim doing in the yard?\nShe is riding her bike.\nWhere is Leo?\nHe is near the flowers, playing with a kitten.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -61719,9 +61719,9 @@
         "unit": 3,
         "unit_title": "At the seaside",
         "title": "Morning by the Water",
-        "passage_type": "paragraph",
-        "passage": "The sun is bright. Dad walks on the sand, and Minh plays near the water. Mum sits under an umbrella.",
-        "tts_text": "The sun is bright. Dad walks on the sand, and Minh plays near the water. Mum sits under an umbrella.",
+        "passage_type": "dialogue",
+        "passage": "A: Where is Minh?\nB: He is playing near the water.\nA: And Mum?\nB: She is sitting under an umbrella while Dad walks on the sand.",
+        "tts_text": "Where is Minh?\nHe is playing near the water.\nAnd Mum?\nShe is sitting under an umbrella while Dad walks on the sand.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -61894,9 +61894,9 @@
         "unit": 4,
         "unit_title": "In the countryside",
         "title": "Picnic Near the River",
-        "passage_type": "paragraph",
-        "passage": "Our family has a picnic near the river. We sit under a tree. After lunch, we see a bright rainbow.",
-        "tts_text": "Our family has a picnic near the river. We sit under a tree. After lunch, we see a bright rainbow.",
+        "passage_type": "dialogue",
+        "passage": "A: Where is your family picnic?\nB: It is near the river. We are sitting under a tree.\nA: Do you see anything after lunch?\nB: Yes! We see a bright rainbow.",
+        "tts_text": "Where is your family picnic?\nIt is near the river. We are sitting under a tree.\nDo you see anything after lunch?\nYes! We see a bright rainbow.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62069,9 +62069,9 @@
         "unit": 5,
         "unit_title": "In the classroom",
         "title": "Team Work",
-        "passage_type": "paragraph",
-        "passage": "Lan reads the first question. Nam writes the answer. Their team gets a star from the teacher.",
-        "tts_text": "Lan reads the first question. Nam writes the answer. Their team gets a star from the teacher.",
+        "passage_type": "dialogue",
+        "passage": "A: Who reads the first question?\nB: Lan reads it. Nam writes the answer.\nA: Does the team do well?\nB: Yes. The teacher gives them a star.",
+        "tts_text": "Who reads the first question?\nLan reads it. Nam writes the answer.\nDoes the team do well?\nYes. The teacher gives them a star.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62244,9 +62244,9 @@
         "unit": 6,
         "unit_title": "On the farm",
         "title": "Feeding Time",
-        "passage_type": "paragraph",
-        "passage": "Hoa gives grass to the ox and corn to the ducks. Her brother gives water to the cow.",
-        "tts_text": "Hoa gives grass to the ox and corn to the ducks. Her brother gives water to the cow.",
+        "passage_type": "dialogue",
+        "passage": "A: What do you give the ox, Hoa?\nB: I give it grass, and I give corn to the ducks.\nA: Who gives water to the cow?\nB: My brother does.",
+        "tts_text": "What do you give the ox, Hoa?\nI give it grass, and I give corn to the ducks.\nWho gives water to the cow?\nMy brother does.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62419,9 +62419,9 @@
         "unit": 7,
         "unit_title": "In the kitchen",
         "title": "Kitchen Team",
-        "passage_type": "paragraph",
-        "passage": "Mai opens the cupboard. Nam gets two cups. Their mother makes sandwiches with bread and jam.",
-        "tts_text": "Mai opens the cupboard. Nam gets two cups. Their mother makes sandwiches with bread and jam.",
+        "passage_type": "dialogue",
+        "passage": "A: What are Mai and Nam doing?\nB: Mai is opening the cupboard, and Nam is getting two cups.\nA: What is Mother making?\nB: She is making sandwiches with bread and jam.",
+        "tts_text": "What are Mai and Nam doing?\nMai is opening the cupboard, and Nam is getting two cups.\nWhat is Mother making?\nShe is making sandwiches with bread and jam.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62594,9 +62594,9 @@
         "unit": 8,
         "unit_title": "In the village",
         "title": "The School Van",
-        "passage_type": "paragraph",
-        "passage": "The school van comes at seven. Hoa and her brother get in. Their grandmother waves from the village gate.",
-        "tts_text": "The school van comes at seven. Hoa and her brother get in. Their grandmother waves from the village gate.",
+        "passage_type": "dialogue",
+        "passage": "A: What time does the school van come?\nB: It comes at seven. Hoa and her brother get in.\nA: Who is waving at the gate?\nB: Their grandmother is waving.",
+        "tts_text": "What time does the school van come?\nIt comes at seven. Hoa and her brother get in.\nWho is waving at the gate?\nTheir grandmother is waving.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62769,9 +62769,9 @@
         "unit": 9,
         "unit_title": "In the grocery store",
         "title": "Two Yogurts",
-        "passage_type": "paragraph",
-        "passage": "Mai buys two yogurts and one bag of yams. Her brother carries the basket. They walk home together.",
-        "tts_text": "Mai buys two yogurts and one bag of yams. Her brother carries the basket. They walk home together.",
+        "passage_type": "dialogue",
+        "passage": "A: What does Mai buy?\nB: She buys two yogurts and one bag of yams.\nA: Who carries the basket?\nB: Her brother carries it, and they walk home together.",
+        "tts_text": "What does Mai buy?\nShe buys two yogurts and one bag of yams.\nWho carries the basket?\nHer brother carries it, and they walk home together.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -62944,9 +62944,9 @@
         "unit": 10,
         "unit_title": "At the zoo",
         "title": "My Zoo Map",
-        "passage_type": "paragraph",
-        "passage": "On my zoo map, the zebras are next to the zebu. The monkeys are behind them. The tigers are far away.",
-        "tts_text": "On my zoo map, the zebras are next to the zebu. The monkeys are behind them. The tigers are far away.",
+        "passage_type": "dialogue",
+        "passage": "A: Where are the zebras on your zoo map?\nB: They are next to the zebu.\nA: What animals are behind them?\nB: The monkeys are behind them. The tigers are far away.",
+        "tts_text": "Where are the zebras on your zoo map?\nThey are next to the zebu.\nWhat animals are behind them?\nThe monkeys are behind them. The tigers are far away.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63119,9 +63119,9 @@
         "unit": 11,
         "unit_title": "In the playground",
         "title": "Three Actions",
-        "passage_type": "paragraph",
-        "passage": "Hoa is sliding, Tom is riding, and Ben is driving a toy car. Their teacher watches them from a bench.",
-        "tts_text": "Hoa is sliding, Tom is riding, and Ben is driving a toy car. Their teacher watches them from a bench.",
+        "passage_type": "dialogue",
+        "passage": "A: What are the children doing?\nB: Hoa is sliding, Tom is riding, and Ben is driving a toy car.\nA: Where is the teacher?\nB: The teacher is on a bench, watching them.",
+        "tts_text": "What are the children doing?\nHoa is sliding, Tom is riding, and Ben is driving a toy car.\nWhere is the teacher?\nThe teacher is on a bench, watching them.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63294,9 +63294,9 @@
         "unit": 12,
         "unit_title": "At the cafe",
         "title": "The Waiter Comes",
-        "passage_type": "paragraph",
-        "passage": "The waiter brings two cups of juice and one plate of cake. The children say thank you and put the cups on the table.",
-        "tts_text": "The waiter brings two cups of juice and one plate of cake. The children say thank you and put the cups on the table.",
+        "passage_type": "dialogue",
+        "passage": "A: What does the waiter bring?\nB: Two cups of juice and one plate of cake.\nA: Where do the children put the cups?\nB: They put them on the table and say thank you.",
+        "tts_text": "What does the waiter bring?\nTwo cups of juice and one plate of cake.\nWhere do the children put the cups?\nThey put them on the table and say thank you.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63469,9 +63469,9 @@
         "unit": 13,
         "unit_title": "In the maths class",
         "title": "Circle Team",
-        "passage_type": "paragraph",
-        "passage": "Our team draws fifteen circles. The other team draws thirteen squares. We count everything twice.",
-        "tts_text": "Our team draws fifteen circles. The other team draws thirteen squares. We count everything twice.",
+        "passage_type": "dialogue",
+        "passage": "A: How many circles does your team draw?\nB: We draw fifteen circles.\nA: What does the other team draw?\nB: They draw thirteen squares. We count everything twice.",
+        "tts_text": "How many circles does your team draw?\nWe draw fifteen circles.\nWhat does the other team draw?\nThey draw thirteen squares. We count everything twice.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63644,9 +63644,9 @@
         "unit": 14,
         "unit_title": "At home",
         "title": "Grandmother's Tea",
-        "passage_type": "paragraph",
-        "passage": "Grandmother comes to our home in the afternoon. She drinks tea with Mum. My brother shows her his new book.",
-        "tts_text": "Grandmother comes to our home in the afternoon. She drinks tea with Mum. My brother shows her his new book.",
+        "passage_type": "dialogue",
+        "passage": "A: When does Grandmother come to your home?\nB: She comes in the afternoon and drinks tea with Mum.\nA: What does your brother show her?\nB: He shows her his new book.",
+        "tts_text": "When does Grandmother come to your home?\nShe comes in the afternoon and drinks tea with Mum.\nWhat does your brother show her?\nHe shows her his new book.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63819,9 +63819,9 @@
         "unit": 15,
         "unit_title": "In the clothes shop",
         "title": "Shopping for School",
-        "passage_type": "paragraph",
-        "passage": "Dad buys two white shirts and one pair of black shoes for me. I choose blue shorts for sports.",
-        "tts_text": "Dad buys two white shirts and one pair of black shoes for me. I choose blue shorts for sports.",
+        "passage_type": "dialogue",
+        "passage": "A: What does Dad buy for school?\nB: He buys two white shirts and one pair of black shoes for me.\nA: What do you choose for sports?\nB: I choose blue shorts.",
+        "tts_text": "What does Dad buy for school?\nHe buys two white shirts and one pair of black shoes for me.\nWhat do you choose for sports?\nI choose blue shorts.",
         "tts_locale": "en-US",
         "questions": [
           {
@@ -63994,9 +63994,9 @@
         "unit": 16,
         "unit_title": "At the campsite",
         "title": "Morning in the Tent",
-        "passage_type": "paragraph",
-        "passage": "I wake up early in the tent. My sister is still under the blanket. Outside, Dad is making breakfast.",
-        "tts_text": "I wake up early in the tent. My sister is still under the blanket. Outside, Dad is making breakfast.",
+        "passage_type": "dialogue",
+        "passage": "A: Who is still under the blanket?\nB: My sister is. I wake up early in the tent.\nA: What is Dad doing outside?\nB: He is making breakfast.",
+        "tts_text": "Who is still under the blanket?\nMy sister is. I wake up early in the tent.\nWhat is Dad doing outside?\nHe is making breakfast.",
         "tts_locale": "en-US",
         "questions": [
           {
