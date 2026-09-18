@@ -27,23 +27,23 @@ function closeFriendlyAlert() {
 // Chuyên mục 1 (Alphabet & IPA phần A-Z + 44 IPA tĩnh) và 12 (Exam Arena) có màn hình riêng,
 // nên TOPICS_CONFIG chỉ liệt kê 2-11 + mục 1 dành riêng cho Phonics Matcher (1.3, dạng trắc nghiệm).
 const TOPICS_CONFIG = [
-    { id: 2, title: "2. Vocabulary", desc: "Flashcards, Nghe tranh, Kéo thả chữ", icon: "📚", color: "pink" },
-    { id: 3, title: "3. Remove Letter", desc: "Chạm xoá chữ cái thừa", icon: "✂️", color: "rose" },
-    { id: 4, title: "4. Fill Missing", desc: "Điền chữ cái còn thiếu", icon: "✏️", color: "amber" },
-    { id: 5, title: "5. Odd One Out", desc: "Tìm từ khác nhóm/khác loại", icon: "🧩", color: "fuchsia" },
-    { id: 6, title: "6. Reading Stories", desc: "Đọc truyện ngắn 2 câu hỏi", icon: "📖", color: "emerald" },
-    { id: 7, title: "7. Sentence Builder", desc: "Sắp xếp từ thành câu", icon: "🧱", color: "indigo" },
-    { id: 8, title: "8. Fill Sentence", desc: "Điền câu hoàn chỉnh theo ngữ cảnh", icon: "📝", color: "teal" },
-    { id: 9, title: "9. Q&A Dialogues", desc: "Hội thoại cùng Mascot Thỏ Ngọc", icon: "💬", color: "cyan" },
-    { id: 10, title: "10. Grammar Point", desc: "Mạo từ, giới từ, động từ, tính từ", icon: "🅰️", color: "blue" }
+    { id: 2, title: "2. Vocabulary", titleVi: "Từ vựng", descEn: "Flashcards, picture matching & word play", descVi: "Thẻ từ, nghe tranh, kéo thả chữ", icon: "📚", color: "pink" },
+    { id: 3, title: "3. Remove Letter", titleVi: "Xóa chữ cái thừa", descEn: "Remove the extra letter", descVi: "Chạm xóa chữ cái thừa", icon: "✂️", color: "rose" },
+    { id: 4, title: "4. Fill Missing", titleVi: "Điền chữ còn thiếu", descEn: "Complete the word", descVi: "Điền chữ cái còn thiếu", icon: "✏️", color: "fuchsia" },
+    { id: 5, title: "5. Odd One Out", titleVi: "Tìm từ khác loại", descEn: "Find the odd word", descVi: "Tìm từ khác nhóm/khác loại", icon: "🧩", color: "fuchsia" },
+    { id: 6, title: "6. Reading Comprehension", titleVi: "Đọc hiểu", descEn: "Read and answer", descVi: "Đọc hiểu và trả lời", icon: "📖", color: "violet" },
+    { id: 7, title: "7. Sentence Builder", titleVi: "Sắp xếp câu", descEn: "Put the words in order", descVi: "Sắp xếp từ thành câu", icon: "🧱", color: "purple" },
+    { id: 8, title: "8. Fill Sentence", titleVi: "Điền câu", descEn: "Complete the sentence", descVi: "Điền câu theo ngữ cảnh", icon: "📝", color: "fuchsia" },
+    { id: 9, title: "9. Q&A Dialogues", titleVi: "Hỏi & đáp", descEn: "Ask and answer", descVi: "Hội thoại hỏi và đáp", icon: "💬", color: "rose" },
+    { id: 10, title: "10. Grammar Point", titleVi: "Ngữ pháp", descEn: "Learn simple grammar", descVi: "Mạo từ, giới từ, động từ, tính từ", icon: "🅰️", color: "violet" }
 ];
 
 const SUBTOPIC_PALETTES = [
     { card: "bg-pink-50/80 hover:bg-pink-100 border-pink-300 text-pink-800", num: "text-pink-600", badge: "bg-white text-pink-600 border-pink-200" },
-    { card: "bg-emerald-50/80 hover:bg-emerald-100 border-emerald-300 text-emerald-800", num: "text-emerald-600", badge: "bg-white text-emerald-600 border-emerald-200" },
+    { card: "bg-fuchsia-50/80 hover:bg-fuchsia-100 border-fuchsia-300 text-fuchsia-800", num: "text-fuchsia-600", badge: "bg-white text-fuchsia-600 border-fuchsia-200" },
     { card: "bg-purple-50/80 hover:bg-purple-100 border-purple-300 text-purple-800", num: "text-purple-600", badge: "bg-white text-purple-600 border-purple-200" },
-    { card: "bg-amber-50/80 hover:bg-amber-100 border-amber-300 text-amber-800", num: "text-amber-600", badge: "bg-white text-amber-600 border-amber-200" },
-    { card: "bg-indigo-50/80 hover:bg-indigo-100 border-indigo-300 text-indigo-800", num: "text-indigo-600", badge: "bg-white text-indigo-600 border-indigo-200" },
+    { card: "bg-violet-50/80 hover:bg-violet-100 border-violet-300 text-violet-800", num: "text-violet-600", badge: "bg-white text-violet-600 border-violet-200" },
+    { card: "bg-purple-50/80 hover:bg-purple-100 border-purple-300 text-purple-800", num: "text-purple-600", badge: "bg-white text-purple-600 border-purple-200" },
     { card: "bg-rose-50/80 hover:bg-rose-100 border-rose-300 text-rose-800", num: "text-rose-600", badge: "bg-white text-rose-600 border-rose-200" }
 ];
 
@@ -224,11 +224,17 @@ function normalizeQuestion(q) {
         render_style: q.render_style ?? '',
         word: q.word ?? '',
         vietnamese: q.vietnamese ?? '',
+        meaning_vi: q.meaning_vi ?? '',
         ipa: q.ipa ?? '',
         examples: Array.isArray(q.examples) ? q.examples : [],
         image_id: q.image_id ?? '',
         target_tag: q.target_tag ?? '',
-        focus_hint: q.focus_hint ?? ''
+        focus_hint: q.focus_hint ?? '',
+        completed_sentence: q.completed_sentence ?? '',
+        completed_sentence_vi: q.completed_sentence_vi ?? '',
+        instruction_en: q.instruction_en ?? '',
+        instruction_vi: q.instruction_vi ?? '',
+        answer_vi: q.answer_vi ?? ''
     };
 }
 
@@ -337,6 +343,24 @@ function beautifySubtopicName(name) {
     }
     return s;
 }
+
+const EXPLORE_LEVEL_GROUPS = [
+    { level: 1, name: 'Starter', name_vi: 'Khởi đầu', units: [1,2,3,4], icon: '🌱' },
+    { level: 2, name: 'Growing', name_vi: 'Tiến bộ', units: [5,6,7,8], icon: '🌼' },
+    { level: 3, name: 'Smart', name_vi: 'Tự tin', units: [9,10,11,12], icon: '🌟' },
+    { level: 4, name: 'Super', name_vi: 'Thử thách', units: [13,14,15,16], icon: '🏆' }
+];
+const EXPLORE_LEVEL_BANKS = {
+    7: { bankKey: '7', title: 'Sentence Builder', vi: 'Sắp xếp câu', icon: '🧱' },
+    8: { bankKey: '8', title: 'Fill Sentence', vi: 'Điền câu', icon: '📝' },
+    9: { bankKey: '9', title: 'Q&A Dialogues', vi: 'Hỏi & đáp', icon: '💬' }
+};
+const exploreLevelBankCache_ = {};
+let readingComprehensionCache = null;
+let sharedVisualMapCache_ = null;
+let exploreDataFilesCache_ = null;
+let activeReadingGroup = null;
+let readingPairState = {};
 
 const TOPICS_DATA_FILES = [
     'assets/data/kho_hoc_english_part1.json',
@@ -526,14 +550,20 @@ function extractItemsFromSection(sectionValue) {
     return [];
 }
 
-async function fetchAllQuestionsFlat() {
-    if (allQuestionsFlatCache) return allQuestionsFlatCache;
-
-    const results = await Promise.all(TOPICS_DATA_FILES.map(async (file) => {
+async function loadExploreDataFiles_() {
+    if (exploreDataFilesCache_) return exploreDataFilesCache_;
+    exploreDataFilesCache_ = await Promise.all(TOPICS_DATA_FILES.map(async (file) => {
         const res = await fetch(file);
         if (!res.ok) throw new Error(`Không thể tải file dữ liệu ${file}`);
         return res.json();
     }));
+    return exploreDataFilesCache_;
+}
+
+async function fetchAllQuestionsFlat() {
+    if (allQuestionsFlatCache) return allQuestionsFlatCache;
+
+    const results = await loadExploreDataFiles_();
 
     // Hydrate Vocabulary 2.1/2.2/2.3 từ một vocabulary_library dùng chung trong Part 1.
     // Nhờ vậy 3 hoạt động không duplicate dữ liệu và cũng không cần fetch master JSON riêng.
@@ -763,11 +793,17 @@ async function renderDashboardGrid() {
         <div onclick="openAlphabetIPA()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-violet-400 transition-all group bg-gradient-to-br from-white to-violet-50/50 min-h-[92px]">
             <div class="flex items-center space-x-2.5">
                 <div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-violet-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🔤</div>
-                <h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">1. Alphabet & IPA</h3>
+                <div class="min-w-0">
+                    <h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">1. Alphabet & IPA</h3>
+                    <div class="text-[11px] md:text-xs font-bold text-violet-500 mt-0.5 leading-tight">Bảng chữ cái & phiên âm</div>
+                </div>
             </div>
-            <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">
-                <span>Bảng chữ cái & ngữ âm</span>
-                <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">26 chữ + 44 âm</span>
+            <div class="flex justify-between items-end gap-2 mt-1.5 pt-1 border-t border-violet-100">
+                <div class="min-w-0 leading-tight">
+                    <div class="text-[11px] font-bold text-gray-600">Letters & sounds</div>
+                    <div class="text-[10px] md:text-[11px] font-bold text-gray-400 mt-0.5">Chữ cái & âm</div>
+                </div>
+                <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full text-[11px] font-bold shrink-0">26 chữ + 44 âm</span>
             </div>
         </div>
     `;
@@ -775,7 +811,14 @@ async function renderDashboardGrid() {
     TOPICS_CONFIG.forEach(t => {
         const topicObj = topicsData.find(item => Number(item.topic_id) === Number(t.id));
         const totalCount = topicObj && topicObj.questions ? topicObj.questions.length : 0;
-        const countLabel = totalCount > 0 ? `${totalCount} câu` : 'Đang cập nhật';
+        let countLabel = totalCount > 0 ? `${totalCount} câu` : 'Đang cập nhật';
+        if (Number(t.id) === 6) countLabel = '80 bài';
+        if ([7,8,9].includes(Number(t.id))) countLabel = '80 câu';
+        if ([3,4,5].includes(Number(t.id))) {
+            const vocabObj = topicsData.find(item => Number(item.topic_id) === 2);
+            const vocabCount = new Set((vocabObj?.questions || []).filter(q => q.sub_topic === '2.1').map(q => String(q.word || '').toLowerCase()).filter(Boolean)).size;
+            if (vocabCount) countLabel = `${vocabCount} từ`;
+        }
 
         const iconHtml = t.isCustomTextIcon 
             ? `<div class="w-8 h-8 bg-rose-100 rounded-xl flex items-center justify-center text-[11px] font-black text-rose-600 shadow-inner group-hover:scale-110 transition-transform shrink-0 tracking-tight">S/X</div>`
@@ -786,11 +829,17 @@ async function renderDashboardGrid() {
                 ${Number(t.id) === 11 ? `<span class="absolute top-2 right-2 text-slate-400 text-[9px]" title="Cần đăng nhập"><i class="fa-solid fa-lock"></i></span>` : ''}
                 <div class="flex items-center space-x-2.5">
                     ${iconHtml}
-                    <h3 class="font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
+                    <div class="min-w-0">
+                        <h3 class="font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
+                        <div class="text-[11px] md:text-xs font-bold text-${t.color}-500 mt-0.5 leading-tight">${t.titleVi || ''}</div>
+                    </div>
                 </div>
-                <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-pink-100 text-[11px] font-bold text-gray-500">
-                    <span>${t.desc}</span>
-                    <span class="bg-${t.color}-50 text-${t.color}-600 px-2 py-0.5 rounded-full">${countLabel}</span>
+                <div class="flex justify-between items-end gap-2 mt-1.5 pt-1 border-t border-pink-100">
+                    <div class="min-w-0 leading-tight">
+                        <div class="text-[11px] font-bold text-gray-600">${t.descEn || ''}</div>
+                        <div class="text-[10px] md:text-[11px] font-bold text-gray-400 mt-0.5">${t.descVi || ''}</div>
+                    </div>
+                    <span class="bg-${t.color}-50 text-${t.color}-600 px-2 py-0.5 rounded-full text-[11px] font-bold shrink-0">${countLabel}</span>
                 </div>
             </div>
         `;
@@ -913,7 +962,7 @@ async function renderExamHubGrid() {
                 <span class="inline-block bg-purple-100 text-purple-700 px-3 py-0.5 rounded-full text-xs font-black mb-3">${countHK2} đề thi chuẩn</span>
             </div>
             <div class="w-full space-y-2">
-                <button onclick="startRandomExam('hocky2')" class="w-full py-2.5 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-extrabold rounded-xl text-xs pastel-btn shadow-sm">
+                <button onclick="startRandomExam('hocky2')" class="w-full py-2.5 bg-gradient-to-r from-purple-500 to-violet-500 text-white font-extrabold rounded-xl text-xs pastel-btn shadow-sm">
                     🚀 Vào thi thử
                 </button>
                 <button onclick="openHistoryModal('LichSuBaiThiHK2')" class="w-full py-2 bg-white text-purple-700 border border-purple-300 font-extrabold rounded-xl text-xs pastel-btn hover:bg-purple-50">
@@ -922,18 +971,18 @@ async function renderExamHubGrid() {
             </div>
         </div>
 
-        <div class="bg-amber-50/70 p-5 rounded-3xl border-2 border-amber-200 flex flex-col justify-between items-center text-center group min-h-[250px] pastel-card">
+        <div class="bg-gradient-to-br from-pink-50/70 to-violet-50/70 p-5 rounded-3xl border-2 border-violet-200 flex flex-col justify-between items-center text-center group min-h-[250px] pastel-card">
             <div>
                 <div class="text-4xl mb-1.5 group-hover:scale-110 transition-transform">👑</div>
-                <h3 class="font-extrabold text-amber-600 text-lg mb-1">Học sinh giỏi</h3>
+                <h3 class="font-extrabold text-violet-600 text-lg mb-1">Học sinh giỏi</h3>
                 <p class="text-xs text-gray-500 font-bold mb-2">Thử thách nâng cao</p>
-                <span class="inline-block bg-amber-100 text-amber-700 px-3 py-0.5 rounded-full text-xs font-black mb-3">${countHSG} đề thi tuyển chọn</span>
+                <span class="inline-block bg-violet-100 text-violet-700 px-3 py-0.5 rounded-full text-xs font-black mb-3">${countHSG} đề thi tuyển chọn</span>
             </div>
             <div class="w-full space-y-2">
-                <button onclick="startRandomExam('hsg')" class="w-full py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold rounded-xl text-xs pastel-btn shadow-sm">
+                <button onclick="startRandomExam('hsg')" class="w-full py-2.5 bg-gradient-to-r from-pink-500 to-violet-500 text-white font-extrabold rounded-xl text-xs pastel-btn shadow-sm">
                     🚀 Vào thi thử
                 </button>
-                <button onclick="openHistoryModal('LichSuBaiThiHSG')" class="w-full py-2 bg-white text-amber-700 border border-amber-300 font-extrabold rounded-xl text-xs pastel-btn hover:bg-amber-50">
+                <button onclick="openHistoryModal('LichSuBaiThiHSG')" class="w-full py-2 bg-white text-violet-700 border border-violet-300 font-extrabold rounded-xl text-xs pastel-btn hover:bg-violet-50">
                     📊 Xem lịch sử thi
                 </button>
             </div>
@@ -951,14 +1000,32 @@ let currentIPAIndex = 0;
 let inAlphaIpaFlow = false;
 let inMiniGameFlow = false;
 
+function getSharedVisualMap_(part1) {
+    if (sharedVisualMapCache_) return sharedVisualMapCache_;
+    const map = part1?.shared_visual_map;
+    if (!map || !Array.isArray(map.images)) {
+        sharedVisualMapCache_ = { images: [], rules: {}, base_path: 'assets/images/vocabulary/' };
+        return sharedVisualMapCache_;
+    }
+    sharedVisualMapCache_ = map;
+    return sharedVisualMapCache_;
+}
+
+async function loadSharedVisualMap_() {
+    if (sharedVisualMapCache_) return sharedVisualMapCache_;
+    const [part1] = await loadExploreDataFiles_();
+    return getSharedVisualMap_(part1);
+}
+
 async function loadAlphabetIPAData() {
     if (alphabetIpaLoaded) return;
-    const [alphaRes, ipaRes] = await Promise.all([
-        fetch('assets/data/alphabet_english_2.json').then(r => r.json()),
-        fetch('assets/data/ipa_english_2.json').then(r => r.json())
-    ]);
-    ALPHABET_DATA = alphaRes;
-    IPA_DATA = ipaRes;
+    const [part1] = await loadExploreDataFiles_();
+    const assets = part1?.explore_assets || {};
+    if (!Array.isArray(assets.alphabet) || !Array.isArray(assets.ipa)) {
+        throw new Error('Part 1 chưa có dữ liệu Alphabet/IPA tích hợp.');
+    }
+    ALPHABET_DATA = assets.alphabet;
+    IPA_DATA = assets.ipa;
     alphabetIpaLoaded = true;
 }
 
@@ -1030,13 +1097,13 @@ function openAlphabetMenu(index = 0) {
     }).join('');
 
     const wordCard = (w, idx) => `
-        <div onclick="speakAlphaWord(${index},${idx})" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm">
+        <div onclick="speakAlphaWord(${index},${idx})" class="card-hover bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm">
             <div class="text-3xl mb-1">${w.emoji}</div>
-            <div class="flex items-center gap-1"><span class="text-sm font-black text-emerald-800">${escapeHtml(w.en)}</span><span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">${w.pos || ''}</span></div>
-            <div class="text-emerald-600 text-base mt-0.5">${w.ipa}</div>
+            <div class="flex items-center gap-1"><span class="text-sm font-black text-violet-800">${escapeHtml(w.en)}</span><span class="text-[9px] px-1.5 py-0.2 rounded bg-fuchsia-100 text-fuchsia-700 font-bold">${w.pos || ''}</span></div>
+            <div class="text-fuchsia-600 text-base mt-0.5">${w.ipa}</div>
             <div class="text-xs font-extrabold text-gray-600 my-0.5">${escapeHtml(w.vi)}</div>
             <div class="text-[10px] font-bold text-gray-400 mb-1.5">"${escapeHtml(w.ex || '')}"</div>
-            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2 py-0.5 rounded-lg">🔊 Listen</span>
+            <span class="bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200 text-[9px] font-black px-2 py-0.5 rounded-lg">🔊 Listen</span>
         </div>`;
 
     document.getElementById('alphaipa-content').innerHTML = `
@@ -1063,8 +1130,8 @@ function openAlphabetMenu(index = 0) {
             </div>
             <div class="flex items-center justify-center space-x-3 mt-1">
                 <button onclick="openAlphabetMenu(${index - 1})" class="pastel-btn bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-xs md:text-sm px-4 py-2 rounded-xl shadow-sm flex items-center space-x-1 cursor-pointer ${index <= 0 ? 'opacity-40 pointer-events-none' : ''}"><i class="fa-solid fa-arrow-left"></i><span>Previous</span></button>
-                <button onclick="openPhonicsMatcher()" class="pastel-btn bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer"><span>🎯 Phonics Quiz</span></button>
-                <button onclick="openAlphabetMenu(${index + 1})" class="pastel-btn bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1 cursor-pointer ${index >= ALPHABET_DATA.length - 1 ? 'opacity-40 pointer-events-none' : ''}"><span>Next</span><i class="fa-solid fa-arrow-right"></i></button>
+                <button onclick="openPhonicsMatcher()" class="pastel-btn bg-violet-200 hover:bg-violet-300 text-violet-800 border-2 border-violet-300 font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer"><span>🎯 Phonics Quiz</span></button>
+                <button onclick="openAlphabetMenu(${index + 1})" class="pastel-btn bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white font-black text-xs md:text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1 cursor-pointer ${index >= ALPHABET_DATA.length - 1 ? 'opacity-40 pointer-events-none' : ''}"><span>Next</span><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>`;
     speakAlphabetLetter(index);
@@ -1087,7 +1154,7 @@ function openIPAMenu(index = 0) {
         const isActive = idx === currentIPAIndex;
         let badgeColor = isActive ? 'bg-pink-600 text-white border-pink-700' : 'bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100';
         if (snd.type === 'vowel_di') badgeColor = isActive ? 'bg-purple-600 text-white border-purple-700' : 'bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100';
-        else if (snd.type && snd.type.startsWith('consonant')) badgeColor = isActive ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100';
+        else if (snd.type && snd.type.startsWith('consonant')) badgeColor = isActive ? 'bg-fuchsia-600 text-white border-fuchsia-700' : 'bg-fuchsia-50 text-violet-700 border-fuchsia-200 hover:bg-fuchsia-100';
         return `<button onclick="openIPAMenu(${idx})" class="pastel-btn flex flex-col items-center justify-center rounded-xl p-1 shadow-sm border ${badgeColor} min-w-[50px] min-h-[46px] cursor-pointer ${isActive ? 'scale-105 ring-2 ring-pink-300 font-black' : ''}">
             <span class="text-base md:text-lg font-black">${snd.ipa}</span>
             <span class="text-[8px] font-bold opacity-80 line-clamp-1">${(snd.name || '').split(' ')[0]}</span>
@@ -1095,19 +1162,19 @@ function openIPAMenu(index = 0) {
     }).join('');
 
     const examplesHtml = (item.words || []).map((w, wIdx) => `
-        <div onclick="speakIPAExampleWord(${currentIPAIndex},${wIdx})" class="card-hover bg-white border-2 border-emerald-300 hover:border-emerald-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm text-center">
+        <div onclick="speakIPAExampleWord(${currentIPAIndex},${wIdx})" class="card-hover bg-white border-2 border-fuchsia-300 hover:border-fuchsia-500 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer shadow-sm text-center">
             <div class="text-3xl mb-1">${w.emoji}</div>
-            <div class="flex items-center gap-1"><span class="text-sm md:text-base font-black text-emerald-800">${escapeHtml(w.word)}</span><span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">${w.pos || ''}</span></div>
-            <div class="text-emerald-600 text-sm md:text-base font-bold my-0.5">${w.ipa}</div>
+            <div class="flex items-center gap-1"><span class="text-sm md:text-base font-black text-violet-800">${escapeHtml(w.word)}</span><span class="text-[9px] px-1.5 py-0.2 rounded bg-fuchsia-100 text-fuchsia-700 font-bold">${w.pos || ''}</span></div>
+            <div class="text-fuchsia-600 text-sm md:text-base font-bold my-0.5">${w.ipa}</div>
             <div class="text-xs font-extrabold text-gray-700">${escapeHtml(w.vi)}</div>
             <div class="text-[10px] font-bold text-gray-400 mt-1 italic">"${escapeHtml(w.ex || '')}"</div>
-            <span class="mt-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2.5 py-0.5 rounded-lg">🔊 Listen Word</span>
+            <span class="mt-1.5 bg-fuchsia-50 hover:bg-fuchsia-100 text-fuchsia-700 border border-fuchsia-200 text-[9px] font-black px-2.5 py-0.5 rounded-lg">🔊 Listen Word</span>
         </div>`).join('');
 
     let typeTag = 'Nguyên âm đơn (Monophthong)', typeBg = 'bg-pink-100 text-pink-700 border-pink-300';
     if (item.type === 'vowel_di') { typeTag = 'Nguyên âm đôi (Diphthong)'; typeBg = 'bg-purple-100 text-purple-700 border-purple-300'; }
-    else if (item.type === 'consonant_unvoiced') { typeTag = 'Phụ âm vô thanh (Voiceless)'; typeBg = 'bg-blue-100 text-blue-700 border-blue-300'; }
-    else if (item.type === 'consonant_voiced') { typeTag = 'Phụ âm hữu thanh (Voiced)'; typeBg = 'bg-emerald-100 text-emerald-700 border-emerald-300'; }
+    else if (item.type === 'consonant_unvoiced') { typeTag = 'Phụ âm vô thanh (Voiceless)'; typeBg = 'bg-violet-100 text-violet-700 border-violet-300'; }
+    else if (item.type === 'consonant_voiced') { typeTag = 'Phụ âm hữu thanh (Voiced)'; typeBg = 'bg-fuchsia-100 text-fuchsia-700 border-fuchsia-300'; }
 
     document.getElementById('alphaipa-content').innerHTML = `
         <div class="w-full max-w-5xl flex flex-col items-center">
@@ -1115,11 +1182,11 @@ function openIPAMenu(index = 0) {
                 <div class="flex items-center justify-between flex-wrap gap-1 mb-1">
                     <span class="text-xs font-black bg-pink-100 text-pink-700 px-3 py-1 rounded-xl shadow-sm">Âm ${currentIPAIndex + 1} / ${IPA_DATA.length} IPA</span>
                     <h2 class="text-base md:text-xl font-black text-pink-600 flex items-center justify-center gap-1.5"><span>🗣️</span><span>BẢNG PHIÊN ÂM QUỐC TẾ IPA</span><span>🎙️</span></h2>
-                    <button onclick="openPhonicsMatcher()" class="pastel-btn bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 text-xs font-black px-3.5 py-1 rounded-xl shadow-sm flex items-center gap-1 cursor-pointer"><span>🎯 IPA Quiz</span></button>
+                    <button onclick="openPhonicsMatcher()" class="pastel-btn bg-violet-200 hover:bg-violet-300 text-violet-800 border-2 border-violet-300 text-xs font-black px-3.5 py-1 rounded-xl shadow-sm flex items-center gap-1 cursor-pointer"><span>🎯 IPA Quiz</span></button>
                 </div>
                 <p class="text-xs font-bold text-gray-500">Bấm vào bất kỳ âm IPA nào để nghe phát âm chuẩn và xem hướng dẫn chi tiết:</p>
             </div>
-            <div class="bg-gradient-to-r from-pink-50/80 via-purple-50/80 to-indigo-50/80 border-2 border-dashed border-pink-300 rounded-2xl p-3 md:p-4 w-full mb-3 shadow-sm">
+            <div class="bg-gradient-to-r from-pink-50/80 via-fuchsia-50/80 to-violet-50/80 border-2 border-dashed border-pink-300 rounded-2xl p-3 md:p-4 w-full mb-3 shadow-sm">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
                     <div class="md:col-span-5 bg-white/95 rounded-2xl p-3 border border-pink-200 shadow-sm flex flex-col items-center justify-between text-center">
                         <div>
@@ -1129,8 +1196,8 @@ function openIPAMenu(index = 0) {
                                 <div class="text-xs md:text-sm font-black text-purple-700 mt-1">${escapeHtml(item.name)}</div>
                             </div>
                         </div>
-                        <div class="my-2.5 bg-amber-50/80 border border-amber-200 rounded-xl p-2.5 text-left w-full shadow-inner">
-                            <div class="text-[11px] font-black text-amber-800 uppercase tracking-wide flex items-center gap-1 mb-1"><i class="fa-solid fa-lightbulb text-amber-500"></i><span>Hướng dẫn phát âm chuẩn:</span></div>
+                        <div class="my-2.5 bg-gradient-to-br from-pink-50/80 to-violet-50/80 border border-violet-200 rounded-xl p-2.5 text-left w-full shadow-inner">
+                            <div class="text-[11px] font-black text-violet-700 uppercase tracking-wide flex items-center gap-1 mb-1"><i class="fa-solid fa-lightbulb text-fuchsia-500"></i><span>Hướng dẫn phát âm chuẩn:</span></div>
                             <p class="text-xs font-bold text-gray-700 leading-relaxed">${escapeHtml(item.guide || '')}</p>
                         </div>
                         <div class="flex items-center justify-center gap-2 w-full mt-auto">
@@ -1140,7 +1207,7 @@ function openIPAMenu(index = 0) {
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between">
                         <div class="text-left mb-1.5 flex items-center justify-between">
-                            <span class="text-xs font-black text-emerald-800 uppercase tracking-wider flex items-center gap-1"><i class="fa-solid fa-star text-amber-400"></i><span>3 VÍ DỤ TỪ VỰNG CHUẨN CỦA ÂM ${item.ipa}:</span></span>
+                            <span class="text-xs font-black text-violet-800 uppercase tracking-wider flex items-center gap-1"><i class="fa-solid fa-star text-fuchsia-400"></i><span>3 VÍ DỤ TỪ VỰNG CHUẨN CỦA ÂM ${item.ipa}:</span></span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 flex-1 items-stretch">${examplesHtml}</div>
                         <div class="mt-2 text-center text-[11px] font-bold text-gray-400">👆 Chạm vào từng thẻ để nghe phát âm từ vựng và câu ví dụ sinh động!</div>
@@ -1152,7 +1219,7 @@ function openIPAMenu(index = 0) {
             </div>
             <div class="flex items-center justify-center space-x-3">
                 <button onclick="openIPAMenu(${currentIPAIndex - 1})" class="pastel-btn bg-sky-50 hover:bg-sky-100 text-sky-600 border-2 border-sky-300 font-black text-sm px-5 py-2 rounded-xl shadow-sm flex items-center space-x-1.5 cursor-pointer ${currentIPAIndex <= 0 ? 'opacity-40 pointer-events-none' : ''}"><i class="fa-solid fa-arrow-left"></i><span>Previous Sound</span></button>
-                <button onclick="openIPAMenu(${currentIPAIndex + 1})" class="pastel-btn bg-amber-400 hover:bg-amber-500 text-amber-900 border-2 border-amber-500 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer ${currentIPAIndex >= IPA_DATA.length - 1 ? 'opacity-40 pointer-events-none' : ''}"><span>Next Sound</span><i class="fa-solid fa-arrow-right"></i></button>
+                <button onclick="openIPAMenu(${currentIPAIndex + 1})" class="pastel-btn bg-violet-200 hover:bg-violet-300 text-violet-800 border-2 border-violet-300 font-black text-sm px-6 py-2 rounded-xl shadow-md flex items-center space-x-1.5 cursor-pointer ${currentIPAIndex >= IPA_DATA.length - 1 ? 'opacity-40 pointer-events-none' : ''}"><span>Next Sound</span><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>`;
     speakIPASound(currentIPAIndex);
@@ -1448,7 +1515,7 @@ function showPremiumAccessPopup(featureName = 'khu vực này', accessState = ge
         actions.innerHTML = `
             <div class="grid grid-cols-2 gap-2">
                 <button onclick="closePremiumAccessPopup(); openAuthScreen('login')" class="py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-sm pastel-btn">Sign in</button>
-                <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-black text-sm pastel-btn">Sign up</button>
+                <button onclick="closePremiumAccessPopup(); openAuthScreen('register')" class="py-2.5 rounded-2xl bg-gradient-to-r from-purple-500 to-violet-500 text-white font-black text-sm pastel-btn">Sign up</button>
             </div>
             <button onclick="closePremiumAccessPopup()" class="py-2 text-xs font-extrabold text-gray-400 hover:text-gray-600">Để sau nhé</button>`;
     }
@@ -1871,7 +1938,7 @@ function getAccountTypeSelectClass(typeValue) {
 function paintAccountSelect(selectEl, kind) {
     if (!selectEl) return;
     const removable = [
-        'border-emerald-300','bg-emerald-50','text-emerald-700',
+        'border-emerald-300','bg-emerald-50','text-violet-700',
         'border-amber-300','bg-amber-50','text-amber-700',
         'border-rose-300','bg-rose-50','text-rose-700',
         'border-slate-200','bg-white','text-slate-700',
@@ -2332,7 +2399,7 @@ function highlightVocabularyTarget_(text, word) {
     const esc = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const rx = new RegExp(`(${esc})`, 'ig');
     return raw.split(rx).map(part => part.toLowerCase() === target.toLowerCase()
-        ? `<span class="text-red-500 font-black bg-red-50 px-1 rounded">${escapeHtml(part)}</span>`
+        ? `<span class="text-fuchsia-600 font-black bg-fuchsia-50 px-1 rounded">${escapeHtml(part)}</span>`
         : escapeHtml(part)).join('');
 }
 
@@ -2341,7 +2408,7 @@ function vocabularyPictureExamplesHtml_(q) {
     if (!examples.length) return '';
     const solved = userAnswers[currentQIndex] === q.answer;
     if (!solved) return '<div class="h-full min-h-[150px]"></div>';
-    return `<div class="font-black text-amber-600 text-sm mb-2">⭐ 3 EXAMPLE SENTENCES:</div><div class="space-y-2">${examples.map(ex => `<div class="bg-white rounded-xl px-3 py-2 text-left font-bold text-slate-700">${highlightVocabularyTarget_(ex, q.word)}</div>`).join('')}</div>`;
+    return `<div class="font-black text-fuchsia-600 text-sm mb-2">⭐ 3 EXAMPLE SENTENCES:</div><div class="space-y-2">${examples.map(ex => `<div class="bg-white rounded-xl px-3 py-2 text-left font-bold text-slate-700">${highlightVocabularyTarget_(ex, q.word)}</div>`).join('')}</div>`;
 }
 
 function revealVocabularyPictureExamples_() {
@@ -2422,8 +2489,8 @@ function renderVocabularySharedStudy_(q) {
         const record = getVocabularyRecordByWord_(opt);
         const ipa = record?.ipa ? String(record.ipa).replace(/^\/|\/$/g, '') : getVocabularyIpaForWord_(opt);
         const meaning = String(record?.vietnamese || '').trim();
-        const accentClass = accent === 'cyan' ? 'text-cyan-600' : 'text-pink-600';
-        const borderClass = accent === 'cyan' ? 'border-cyan-200 hover:bg-cyan-50' : 'border-pink-200 hover:bg-pink-50';
+        const accentClass = accent === 'cyan' ? 'text-violet-600' : 'text-pink-600';
+        const borderClass = accent === 'cyan' ? 'border-violet-200 hover:bg-violet-50' : 'border-pink-200 hover:bg-pink-50';
         return `<button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${String(opt).replace(/'/g,"\'")}')" class="option-btn w-full px-3 py-2.5 bg-white ${borderClass} border-2 rounded-2xl font-black text-slate-800 text-left transition-all">
             <span class="opt-text flex items-center gap-2 min-w-0">
                 <strong class="${accentClass} shrink-0">${String.fromCharCode(65+i)}.</strong>
@@ -2442,15 +2509,15 @@ function renderVocabularySharedStudy_(q) {
                 <div class="w-full aspect-[4/3] max-h-[260px] bg-white rounded-3xl overflow-hidden flex items-center justify-center mb-2.5">${imageOrEmoji}</div>
                 <div class="flex justify-center items-center gap-2 flex-wrap">
                     <div class="text-2xl md:text-3xl font-black text-slate-900">${escapeHtml(q.word || '')}</div>
-                    <span class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
+                    <span class="px-2 py-1 rounded-full bg-violet-100 text-violet-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
                     <button onclick="speakVocabularyTarget_()" class="w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
                 ${getVocabularyIpaForWord_(q.word) ? `<div class="mt-1 text-center text-sm md:text-base font-black text-sky-700">/${escapeHtml(getVocabularyIpaForWord_(q.word))}/</div>` : ''}
                 <div class="mt-1 text-center text-base md:text-lg font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
             </section>
-            <section class="rounded-3xl border-2 border-amber-200 bg-amber-50/40 p-3 shadow-sm">
-                <div class="font-black text-amber-600 text-sm md:text-base mb-2">⭐ 3 EXAMPLE SENTENCES:</div>
-                <div class="space-y-2">${examples.map((ex,i)=>`<div class="bg-white rounded-2xl border border-amber-100 px-3 py-2.5"><div class="flex items-center gap-2"><div class="flex-1 text-left font-bold text-slate-700">${escapeHtml(ex)}</div><button onclick="speakFlashcardExample(${i})" class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 shrink-0"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div class="mt-1 text-left text-xs md:text-sm font-semibold text-slate-400">${escapeHtml(getVocabularyExampleVi_(q, ex))}</div></div>`).join('')}</div>
+            <section class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/60 via-white to-violet-50/60 p-3 shadow-sm">
+                <div class="font-black text-fuchsia-600 text-sm md:text-base mb-2">⭐ 3 EXAMPLE SENTENCES:</div>
+                <div class="space-y-2">${examples.map((ex,i)=>`<div class="bg-white rounded-2xl border border-fuchsia-100 px-3 py-2.5"><div class="flex items-center gap-2"><div class="flex-1 text-left font-bold text-slate-700">${escapeHtml(ex)}</div><button onclick="speakFlashcardExample(${i})" class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 shrink-0"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div class="mt-1 text-left text-xs md:text-sm font-semibold text-slate-400">${escapeHtml(getVocabularyExampleVi_(q, ex))}</div></div>`).join('')}</div>
             </section>
         </div>`;
     } else if (activeVocabularyStudyMode === 'picture') {
@@ -2460,7 +2527,7 @@ function renderVocabularySharedStudy_(q) {
         body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div id="vocab-prompt-meaning" class="mt-1 text-xs md:text-sm font-bold text-slate-400 hidden">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
             <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-3"><div class="w-full aspect-[4/3] max-h-[260px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div></section>
-            <section id="vocab-picture-examples" class="rounded-3xl border-2 border-amber-200 bg-amber-50/30 p-3">${vocabularyPictureExamplesHtml_(q)}</section>
+            <section id="vocab-picture-examples" class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/50 via-white to-violet-50/50 p-3">${vocabularyPictureExamplesHtml_(q)}</section>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
     } else {
@@ -2470,12 +2537,12 @@ function renderVocabularySharedStudy_(q) {
         body = `<div class="min-h-[330px] flex flex-col items-center justify-center">
             <div class="text-xl md:text-2xl font-black text-slate-900 mb-1">Listen and choose.</div>
             <div class="text-xs md:text-sm font-bold text-slate-400 mb-4">Nghe và chọn từ đúng</div>
-            <button onclick="speakVocabularyTarget_()" class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white shadow-lg hover:scale-105 transition-transform flex items-center justify-center mb-5"><i class="fa-solid fa-volume-high text-3xl"></i></button>
+            <button onclick="speakVocabularyTarget_()" class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-pink-500 to-violet-500 text-white shadow-lg hover:scale-105 transition-transform flex items-center justify-center mb-5"><i class="fa-solid fa-volume-high text-3xl"></i></button>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full max-w-3xl">${options.map((opt,i)=>optionButtonHtml(opt,i,'cyan')).join('')}</div>
         </div>`;
     }
 
-    document.getElementById('question-box').innerHTML = `<div class="w-full max-w-5xl mx-auto px-1 md:px-2">${tabs}${body}</div>`;
+    document.getElementById('question-box').innerHTML = `<div class="w-full max-w-5xl mx-auto px-1 md:px-2 -mt-3 md:-mt-4">${tabs}${body}</div>`;
     restoreQuestionState(q);
     updateNavButtons();
     if (activeVocabularyStudyMode === 'listen' && autoSpeechEnabled) setTimeout(() => speakVocabularyTarget_(), 120);
@@ -2490,11 +2557,416 @@ function startVocabularyMode18(sectionCode) {
     setVocabularyStudyMode(map[sectionCode] || 'flashcard');
 }
 
+
+// ==========================================
+// CHUYÊN MỤC 3–5 DÙNG CHUNG VOCABULARY MASTER CỦA MỤC 2
+// 3. Remove Letter | 4. Fill Missing | 5. Odd One Out
+// Cùng 18 chủ đề + 1 tab tổng hợp, không duy trì kho từ riêng.
+// ==========================================
+const SHARED_VOCAB_ACTIVITY_CONFIG = {
+    3: { icon: '✂️', title: '3. Remove Letter', vi: 'Xóa chữ cái thừa', color: 'fuchsia' },
+    4: { icon: '✏️', title: '4. Fill Missing', vi: 'Điền chữ còn thiếu', color: 'violet' },
+    5: { icon: '🧩', title: '5. Odd One Out', vi: 'Tìm từ khác loại', color: 'pink' }
+};
+let activeSharedVocabActivity = null;
+let removeLetterSelections_ = {};
+
+async function getSharedVocabularyBasePool_() {
+    const topics = await fetchAllTopicsData();
+    const topicObj = topics.find(t => Number(t.topic_id) === 2);
+    return (topicObj?.questions || []).filter(q => q.sub_topic === '2.1' && q.word);
+}
+
+async function openSharedVocabActivityHub_(activityId) {
+    const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
+    if (!cfg) return;
+    stopSpeaking();
+    inMiniGameFlow = false;
+    inAlphaIpaFlow = false;
+    activeTopicId = activityId;
+    activeExamContext = null;
+    activeRoadmapContext = null;
+    activeVocabularyHubTopic = null;
+    activeSharedVocabActivity = { activityId, topic: null };
+    updateNavTabs(cfg.title, cfg.icon, null);
+    showLoadingOverlay('Loading vocabulary topics...');
+    try {
+        const pool = await getSharedVocabularyBasePool_();
+        if (!pool.length) throw new Error('Vocabulary data is empty.');
+        renderSharedVocab18Topics_(activityId, pool);
+    } catch (err) {
+        alert(`Không thể tải dữ liệu: ${err.message || err}`);
+    } finally {
+        hideLoadingOverlay();
+    }
+}
+
+function renderSharedVocab18Topics_(activityId, pool) {
+    const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
+    const content = document.getElementById('lecture-content');
+    const contentWrap = content?.parentElement;
+    const speakBtn = document.querySelector('#view-lecture button[onclick="speakLecture()"]');
+    const list = document.getElementById('lecture-subtopics-list');
+    const mix = document.getElementById('wrap-mix-all-subtopics');
+    if (!cfg || !list) return;
+    if (contentWrap) contentWrap.classList.add('hidden');
+    if (speakBtn) speakBtn.classList.add('hidden');
+    if (mix) mix.classList.add('hidden');
+
+    const uniqueWords = new Set(pool.map(q => String(q.word || '').trim().toLowerCase()).filter(Boolean));
+    const counts = {};
+    pool.forEach(q => getVocabulary18TopicIds_(q).forEach(id => counts[id] = (counts[id] || 0) + 1));
+    document.getElementById('lecture-title').textContent = '';
+    list.className = 'w-full max-w-6xl';
+    list.innerHTML = `
+        <div class="flex justify-center mb-4">
+            <button onclick="openSharedVocabAll18_(${activityId})" class="min-h-[48px] px-5 md:px-7 rounded-2xl border-2 border-fuchsia-300 bg-gradient-to-r from-pink-50 via-fuchsia-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-fuchsia-700">
+                <span class="text-lg md:text-xl">${cfg.icon}</span>
+                <span class="text-base md:text-xl font-black">ALL 18 TOPICS (${uniqueWords.size} WORDS)</span>
+            </button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 md:gap-3">
+            ${VOCABULARY_18_TOPICS.map((t, i) => {
+                const tone = ['from-pink-50 to-fuchsia-50 border-pink-200 hover:border-pink-300','from-fuchsia-50 to-violet-50 border-fuchsia-200 hover:border-fuchsia-300','from-violet-50 to-purple-50 border-violet-200 hover:border-violet-300'][i % 3];
+                return `<button onclick="openSharedVocabTopic18_(${activityId},${t.id})" class="min-h-[82px] rounded-2xl border-2 bg-gradient-to-br ${tone} hover:brightness-[0.99] transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
+                    <div class="flex items-center justify-center gap-1.5 w-full"><span class="text-xl leading-none">${t.icon}</span><span class="font-black text-violet-700 text-xs md:text-sm leading-tight">${t.id}. ${escapeHtml(t.title)}</span></div>
+                    <div class="text-[10px] md:text-[11px] font-bold text-slate-500 mt-1">${escapeHtml(t.vi)}</div>
+                    <div class="text-[10px] font-black text-fuchsia-500 mt-1">${counts[t.id] || 0} words</div>
+                </button>`;
+            }).join('')}
+        </div>`;
+    updateNavTabs(cfg.title, cfg.icon, null);
+    switchAppView('view-lecture');
+}
+
+async function openSharedVocabAll18_(activityId) {
+    const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
+    const pool = await getSharedVocabularyBasePool_();
+    activeSharedVocabActivity = { activityId, topic: { id: 0, title: 'All Vocabulary', vi: 'Tất cả từ vựng', icon: '📚' } };
+    launchSharedVocabActivity_(activityId, pool, 'All Vocabulary / Tất cả từ vựng');
+}
+
+async function openSharedVocabTopic18_(activityId, topicId) {
+    const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
+    const topic = VOCABULARY_18_TOPICS.find(t => t.id === Number(topicId));
+    if (!cfg || !topic) return;
+    const all = await getSharedVocabularyBasePool_();
+    const pool = all.filter(q => getVocabulary18TopicIds_(q).includes(topic.id));
+    if (!pool.length) return alert(`Chủ đề ${topic.title} đang được bổ sung từ vựng.`);
+    activeSharedVocabActivity = { activityId, topic };
+    launchSharedVocabActivity_(activityId, pool, `${topic.title} / ${topic.vi}`);
+}
+
+function launchSharedVocabActivity_(activityId, vocabPool, label) {
+    const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
+    if (!cfg || !vocabPool?.length) return;
+    let questions = [];
+    if (activityId === 3) questions = vocabPool.map((v, i) => makeRemoveLetterQuestion_(v, i));
+    else if (activityId === 4) questions = vocabPool.map((v, i) => makeFillMissingQuestion_(v, vocabPool, i));
+    else questions = vocabPool.map((v, i) => makeOddOneOutQuestion_(v, vocabPool, i));
+    questions = questions.filter(Boolean);
+    practiceCycleRawPool = [...questions];
+    removeLetterSelections_ = {};
+    updateNavTabs(cfg.title, cfg.icon, label, null, () => {
+        const t = activeSharedVocabActivity?.topic;
+        if (t?.id) openSharedVocabTopic18_(activityId, t.id); else openSharedVocabAll18_(activityId);
+    });
+    startTopicQuiz(activityId, `${cfg.title} - ${label}`, shuffleArray([...questions]), `${activityId}.shared`);
+}
+
+function randomLetterDifferent_(avoid = '') {
+    const letters = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(c => !String(avoid).toLowerCase().includes(c));
+    return letters[Math.floor(Math.random() * letters.length)] || 'x';
+}
+
+function makeRemoveLetterQuestion_(v, idx) {
+    const word = String(v.word || '').trim();
+    if (!word || word.length < 2) return null;
+    const chars = [...word];
+    const extrasCount = Math.min(3, Math.max(1, word.replace(/[^A-Za-z]/g,'').length >= 8 ? 3 : word.length >= 5 ? 2 : 1));
+    const extras = Array.from({length: extrasCount}, () => randomLetterDifferent_(word));
+    const tokens = chars.map((ch, i) => ({ ch, original: true, order: i }));
+    extras.forEach((ch, j) => {
+        const pos = Math.floor(Math.random() * (tokens.length + 1));
+        tokens.splice(pos, 0, { ch, original: false, extraNo: j });
+    });
+    return {
+        id: `shared_remove_${v.id || idx}`,
+        question_id: `shared_remove_${v.id || idx}`,
+        render_style: 'remove_letter_shared',
+        sub_topic: '3.shared',
+        word, vietnamese: v.vietnamese || '', ipa: v.ipa || '', emoji: v.emoji || '🔤', image_url: v.image_url || '',
+        tokens, answer_word: word, extra_count: extrasCount,
+        skill_tag: 'ENG_PHO', question_text: 'Remove the extra letter(s).', question_text_vi: 'Chạm vào chữ cái thừa.'
+    };
+}
+
+function makeFillMissingQuestion_(v, vocabPool, idx) {
+    const word = String(v.word || '').trim();
+    const letters = [...word];
+    const candidates = letters.map((c,i)=>({c,i})).filter(x=>/[A-Za-z]/.test(x.c));
+    if (!candidates.length) return null;
+    const pick = candidates[Math.floor(Math.random()*candidates.length)];
+    const shown = letters.map((c,i)=>i===pick.i?'_':c).join('');
+    const correct = pick.c.toLowerCase();
+    const distractors = [];
+    let guard = 0;
+    while (distractors.length < 3 && guard++ < 100) {
+        const c = randomLetterDifferent_(word).toLowerCase();
+        if (c !== correct && !distractors.includes(c)) distractors.push(c);
+    }
+    const fallbackLetters = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(c => c !== correct && !word.toLowerCase().includes(c));
+    for (const c of fallbackLetters) {
+        if (distractors.length >= 3) break;
+        if (!distractors.includes(c)) distractors.push(c);
+    }
+    const options = shuffleArray([correct, ...distractors.slice(0,3)]);
+    return {
+        id:`shared_fill_${v.id||idx}`, sub_topic:'4.shared', skill_tag:'ENG_PHO',
+        render_style:'fill_missing_shared',
+        question_text:'Choose 1 correct letter to fill the blank:', question_text_vi:'Điền chữ cái còn thiếu.',
+        options, answer:pick.c.toLowerCase(), emoji:v.emoji||'✏️', image_url:v.image_url||'', word, vietnamese:v.vietnamese||'', ipa:v.ipa||'',
+        missing_index: pick.i,
+        masked_word: shown
+    };
+}
+
+
+
+function speakFillMissingWord_() {
+    const q = activeQuestionsList[currentQIndex];
+    if (q?.word) speakEnglish(q.word, 0.92);
+}
+
+function renderFillMissingShared_(q) {
+    const chars = [...String(q.word || '')];
+    const missingIndex = Number.isInteger(q.missing_index) ? q.missing_index : -1;
+    const imageOrEmoji = q.image_url
+        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word || '')}" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.classList.remove('hidden');"><div class="hidden text-6xl md:text-7xl">${q.emoji || '✏️'}</div>`
+        : `<div class="text-6xl md:text-7xl">${q.emoji || '✏️'}</div>`;
+
+    const letterHtml = chars.map((ch, i) => {
+        if (i === missingIndex) {
+            const solved = userAnswers[currentQIndex] === q.answer;
+            return `<span id="fill-missing-slot" class="inline-flex min-w-[34px] md:min-w-[40px] h-[42px] md:h-[46px] items-center justify-center rounded-lg ${solved ? 'bg-rose-50 text-rose-600 border-2 border-rose-300' : 'text-violet-700 border-b-[4px] border-fuchsia-500'} font-black text-xl md:text-2xl leading-none">${solved ? escapeHtml(String(q.answer || '').toUpperCase()) : '＿'}</span>`;
+        }
+        if (ch === ' ') return `<span class="inline-block w-3 md:w-4"></span>`;
+        return `<span class="inline-flex min-w-[30px] md:min-w-[34px] h-[42px] md:h-[46px] items-center justify-center text-violet-700 font-black text-xl md:text-2xl leading-none">${escapeHtml(ch.toUpperCase())}</span>`;
+    }).join('');
+
+    const optionsHtml = (q.options || []).map((opt, idx) => {
+        const letter = String(opt || '').toUpperCase();
+        return `<button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${String(opt).replace(/'/g, "\\'")}')" class="option-btn w-full min-h-[54px] md:min-h-[58px] rounded-2xl border-2 border-fuchsia-200 bg-gradient-to-br from-white to-pink-50 hover:from-pink-50 hover:to-violet-50 hover:border-fuchsia-300 shadow-sm font-black text-xl md:text-2xl text-violet-700 leading-none transition-all pastel-btn"><span class="opt-text">${escapeHtml(letter)}</span><span class="option-icon ml-1"></span></button>`;
+    }).join('');
+
+    document.getElementById('question-box').innerHTML = `
+        <div class="w-full max-w-4xl mx-auto px-2">
+            <div class="flex items-center justify-center gap-2 mb-2 text-center flex-wrap">
+                <div class="font-black text-base md:text-lg text-slate-900">Choose 1 correct letter to fill the blank:</div>
+                <button onclick="speakFillMissingWord_()" class="px-3 py-1.5 rounded-full border border-fuchsia-200 bg-gradient-to-r from-pink-50 to-violet-50 text-violet-700 font-black text-xs md:text-sm hover:from-pink-100 hover:to-violet-100 shadow-sm"><i class="fa-solid fa-volume-high mr-1"></i>Listen</button>
+            </div>
+
+            <div class="rounded-3xl border-2 border-dashed border-fuchsia-200 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5">
+                <div class="w-24 h-24 md:w-28 md:h-28 mx-auto flex items-center justify-center mb-1">${imageOrEmoji}</div>
+                <div class="text-center font-black text-slate-700 text-base md:text-lg">Meaning: <span class="text-fuchsia-600">${escapeHtml(q.vietnamese || '')}</span></div>
+                ${q.ipa ? `<div class="text-center mt-2"><span class="inline-block rounded-xl border border-fuchsia-200 bg-gradient-to-r from-pink-50 to-violet-50 px-3 py-1 text-base md:text-lg font-bold text-violet-700">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</span></div>` : ''}
+                <div class="mt-3 flex flex-wrap items-center justify-center gap-0.5 md:gap-1 rounded-2xl border-2 border-fuchsia-200 bg-white/90 px-4 py-2 shadow-sm w-fit max-w-full mx-auto text-violet-700">${letterHtml}</div>
+                <div class="mt-3 text-center text-[10px] md:text-xs font-bold text-slate-400"><i class="fa-solid fa-lightbulb text-fuchsia-400 mr-1"></i>Tap Listen anytime to hear the word.</div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2.5 md:gap-3 mt-3">${optionsHtml}</div>
+        </div>`;
+
+    restoreQuestionState(q);
+    updateNavButtons();
+    updateQuizPalletUI();
+}
+
+function makeOddOneOutQuestion_(v, vocabPool, idx) {
+    const ids = getVocabulary18TopicIds_(v);
+    const mainTopic = ids[0] || 0;
+    if (!mainTopic) return null;
+    const same = shuffleArray(vocabPool.filter(x => x.word && x.word !== v.word && getVocabulary18TopicIds_(x).includes(mainTopic))).slice(0,3);
+    const other = shuffleArray(vocabPool.filter(x => x.word && !getVocabulary18TopicIds_(x).includes(mainTopic)))[0];
+    if (same.length < 3 || !other) return null;
+    const picked = [same[0], same[1], same[2], other];
+    const options = shuffleArray(picked.map(x => x.word));
+    const option_meta = {};
+    picked.forEach(x => { option_meta[String(x.word)] = { ipa: x.ipa || '', vietnamese: x.vietnamese || '' }; });
+    return {
+        id:`shared_odd_${v.id||idx}`, sub_topic:'5.shared', skill_tag:'ENG_VOC',
+        render_style:'odd_one_out_shared',
+        question_text:'Choose the odd word.', question_text_vi:'Chọn từ khác nhóm.',
+        options, answer:other.word, option_meta, emoji:'🧩', image_url:'', word:v.word, vietnamese:v.vietnamese||''
+    };
+}
+
+function speakOddOneOutOption_(word) {
+    if (word) speakEnglish(String(word), 0.92);
+}
+
+function answerOddOneOut_(word) {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'odd_one_out_shared') return;
+    if (userAnswers[currentQIndex] !== undefined) { speakOddOneOutOption_(word); return; }
+    if (String(word) === String(q.answer)) {
+        userAnswers[currentQIndex] = word;
+        score += (q.diem ?? 0.5);
+        starGreenCount++;
+        const el=document.getElementById('star-green-count'); if(el) el.textContent=starGreenCount;
+        playAudio('correct');
+        confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
+    } else {
+        if (!wrongAttemptsByQ[currentQIndex]) wrongAttemptsByQ[currentQIndex] = [];
+        if (!wrongAttemptsByQ[currentQIndex].includes(word)) {
+            wrongAttemptsByQ[currentQIndex].push(word);
+            starRedCount++;
+            const el=document.getElementById('star-red-count'); if(el) el.textContent=starRedCount;
+        }
+        playAudio('wrong');
+    }
+    renderOddOneOutShared_(q);
+}
+
+function renderOddOneOutShared_(q) {
+    const solved = userAnswers[currentQIndex] !== undefined;
+    const wrong = new Set(wrongAttemptsByQ[currentQIndex] || []);
+    const opts = (q.options || []).map((word, i) => {
+        const meta = q.option_meta?.[word] || {};
+        const isAnswer = String(word) === String(q.answer);
+        const isWrong = wrong.has(word);
+        const cls = solved && isAnswer ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : (isWrong ? 'border-rose-400 bg-rose-50 text-rose-700' : 'border-fuchsia-200 bg-white hover:bg-fuchsia-50 text-violet-700');
+        return `<button onclick="answerOddOneOut_(${JSON.stringify(word).replace(/"/g,'&quot;')})" class="w-full min-h-[82px] rounded-2xl border-2 ${cls} px-3 py-2 shadow-sm text-center transition-all pastel-btn">
+            <div class="font-black text-lg md:text-xl">${escapeHtml(word)}</div>
+            ${meta.ipa ? `<div class="mt-1 text-xs md:text-sm font-bold text-slate-500">/${escapeHtml(String(meta.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+            ${solved ? `<div class="mt-1 text-xs md:text-sm font-extrabold text-fuchsia-600">${escapeHtml(meta.vietnamese || '')}</div>` : ''}
+            <div class="mt-1 text-[10px] font-bold text-slate-400"><i class="fa-solid fa-volume-high mr-1"></i>Tap to listen</div>
+        </button>`;
+    }).join('');
+    document.getElementById('question-box').innerHTML = `<div class="w-full max-w-4xl mx-auto px-2">
+        <div class="text-center mb-4"><div class="font-black text-lg md:text-xl text-slate-900">Choose the odd word.</div><div class="text-xs md:text-sm font-bold text-slate-400">Chọn từ khác nhóm. Nghĩa tiếng Việt sẽ hiện sau khi trả lời đúng.</div></div>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">${opts}</div>
+    </div>`;
+    updateNavButtons();
+}
+
+function oddWordDifficultyScore_(v) {
+    const w = String(v?.word || '').trim();
+    const letters = w.replace(/[^A-Za-z]/g,'').length;
+    const words = w.split(/\s+/).filter(Boolean).length;
+    return letters + Math.max(0, words - 1) * 5 + (w.includes('-') ? 2 : 0);
+}
+
+function splitOddOneOutLevels_(pool) {
+    const buckets = [[],[],[],[]];
+    const byTopic = new Map();
+    pool.forEach(v => {
+        const id = getVocabulary18TopicIds_(v)[0] || 0;
+        if (!id) return;
+        if (!byTopic.has(id)) byTopic.set(id, []);
+        byTopic.get(id).push(v);
+    });
+    byTopic.forEach(arr => {
+        arr.sort((a,b) => oddWordDifficultyScore_(a) - oddWordDifficultyScore_(b) || String(a.word).localeCompare(String(b.word)));
+        const n = arr.length;
+        arr.forEach((v,i) => {
+            const level = Math.min(3, Math.floor((i * 4) / Math.max(1,n)));
+            buckets[level].push(v);
+        });
+    });
+    return buckets;
+}
+
+async function openOddOneOutLevelHub_() {
+    resetLectureChrome_(); stopSpeaking(); inMiniGameFlow=false; inAlphaIpaFlow=false;
+    activeTopicId=5; activeExamContext=null; activeRoadmapContext=null;
+    updateNavTabs('5. Odd One Out','🧩',null);
+    showLoadingOverlay('Đang chia 4 level từ vựng...');
+    try {
+        const pool = await getSharedVocabularyBasePool_();
+        const buckets = splitOddOneOutLevels_(pool);
+        hideLoadingOverlay();
+        document.getElementById('lecture-title').textContent = 'Odd One Out / Tìm từ khác loại';
+        document.getElementById('lecture-content').textContent = 'Chọn level từ dễ đến khó. Mỗi level trộn từ vựng của toàn bộ Vocabulary Master và tự tạo câu phân nhóm.';
+        document.getElementById('view-lecture').dataset.audioText='';
+        const html = EXPLORE_LEVEL_GROUPS.map((g,i) => {
+            const style=SUBTOPIC_PALETTES[i%SUBTOPIC_PALETTES.length];
+            return `<button onclick="openOddOneOutLevel_(${g.level})" class="p-4 ${style.card} border-2 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn min-h-[88px]">
+                <div class="flex items-center justify-between gap-3"><div><div class="text-lg md:text-xl font-black ${style.num}">${g.icon} Level ${g.level} · ${g.name}</div><div class="text-xs md:text-sm text-slate-500 font-extrabold mt-1">${g.name_vi}</div></div><span class="text-xs font-black ${style.badge} px-3 py-1 rounded-full border shrink-0">${buckets[i].length} từ</span></div>
+            </button>`;
+        }).join('');
+        document.getElementById('lecture-subtopics-list').innerHTML=html;
+        setSubtopicGridColumns(4);
+        document.getElementById('wrap-mix-all-subtopics').classList.add('hidden');
+        switchAppView('view-lecture');
+    } catch(e) { hideLoadingOverlay(); alert(`Không thể mở Odd One Out: ${e.message}`); }
+}
+
+async function openOddOneOutLevel_(level) {
+    const pool = await getSharedVocabularyBasePool_();
+    const buckets = splitOddOneOutLevels_(pool);
+    const g = EXPLORE_LEVEL_GROUPS.find(x=>x.level===Number(level));
+    const levelPool = buckets[Number(level)-1] || [];
+    let questions = levelPool.map((v,i)=>makeOddOneOutQuestion_(v,levelPool,i)).filter(Boolean);
+    if (!questions.length) return alert('Level này chưa đủ từ vựng để tạo câu hỏi.');
+    practiceCycleRawPool=[...questions];
+    updateNavTabs('5. Odd One Out','🧩',`Level ${g.level} · ${g.name} / ${g.name_vi}`,null,()=>openOddOneOutLevelHub_());
+    startTopicQuiz(5,`Odd One Out - Level ${g.level}`,shuffleArray(questions),'5.shared');
+}
+
+function renderRemoveLetterShared_(q) {
+    const selected = new Set(removeLetterSelections_[currentQIndex] || []);
+    const imageOrEmoji = q.image_url
+        ? `<img src="${escapeHtml(q.image_url)}" class="max-w-full max-h-full object-contain" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"><div class="hidden text-6xl">${q.emoji || '🔤'}</div>`
+        : `<div class="text-6xl">${q.emoji || '🔤'}</div>`;
+    const top = q.tokens.map((t,i) => selected.has(i) ? '' : `<button onclick="toggleRemoveLetterToken_(${i})" class="w-12 h-12 md:w-14 md:h-14 rounded-2xl border-2 border-fuchsia-300 bg-gradient-to-br from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 text-violet-700 font-black text-xl md:text-2xl shadow-sm">${escapeHtml(t.ch)}</button>`).join('');
+    const bottom = [...selected].sort((a,b)=>a-b).map(i => `<button onclick="toggleRemoveLetterToken_(${i})" class="w-12 h-12 md:w-14 md:h-14 rounded-2xl border-2 border-violet-200 bg-gradient-to-br from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 text-violet-600 font-black text-xl md:text-2xl shadow-sm">${escapeHtml(q.tokens[i].ch)}</button>`).join('');
+    const solved = userAnswers[currentQIndex] === q.answer_word;
+    document.getElementById('question-box').innerHTML = `
+        <div class="w-full max-w-4xl mx-auto px-2">
+            <div class="text-center mb-2"><div class="font-black text-lg md:text-xl text-slate-900">Remove the extra letter(s).</div><div class="text-xs md:text-sm font-bold text-slate-400">Chạm chữ thừa để đưa xuống dưới. Chạm lại để đưa lên.</div></div>
+            <div class="rounded-3xl border-2 border-dashed border-fuchsia-200 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5">
+                <div class="w-24 h-24 md:w-28 md:h-28 mx-auto flex items-center justify-center mb-2">${imageOrEmoji}</div>
+                <div class="text-center font-black text-slate-700 mb-1">Meaning: <span class="text-fuchsia-600">${escapeHtml(q.vietnamese || '')}</span></div>
+                ${q.ipa ? `<div class="text-center font-black text-violet-600 mb-3">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+                <div class="flex flex-wrap justify-center gap-2 min-h-[56px]">${top}</div>
+                <div class="mt-4 pt-3 border-t border-dashed border-fuchsia-200 min-h-[70px]">
+                    <div class="text-[11px] font-black text-slate-400 text-center mb-2">REMOVED LETTERS</div>
+                    <div class="flex flex-wrap justify-center gap-2">${bottom || '<span class="text-xs font-bold text-violet-300">Tap extra letters above</span>'}</div>
+                </div>
+                ${solved ? `<div class="mt-3 text-center font-black text-fuchsia-600">✓ ${escapeHtml(q.answer_word)}</div>` : ''}
+            </div>
+        </div>`;
+    updateNavButtons();
+}
+
+function toggleRemoveLetterToken_(idx) {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'remove_letter_shared' || userAnswers[currentQIndex] !== undefined) return;
+    const arr = removeLetterSelections_[currentQIndex] || [];
+    const p = arr.indexOf(idx);
+    if (p >= 0) arr.splice(p,1); else arr.push(idx);
+    removeLetterSelections_[currentQIndex] = arr;
+    const remaining = q.tokens.filter((_,i)=>!arr.includes(i)).map(t=>t.ch).join('');
+    if (remaining.toLowerCase() === String(q.answer_word).toLowerCase()) {
+        userAnswers[currentQIndex] = q.answer_word;
+        starGreenCount++;
+        const el=document.getElementById('star-green-count'); if(el) el.textContent=starGreenCount;
+        playAudio('correct');
+        confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
+    }
+    renderRemoveLetterShared_(q);
+}
+
 // ==========================================
 // CHỦ ĐỀ 1: BẢNG CHỮ CÁI TƯƠNG TÁC (1.1 ĐẾN 1.4)
 // ==========================================
 function openTopic(topicNum, topicName, icon) {
     if (Number(topicNum) === 2) return openVocabularyHub();
+    if ([3, 4].includes(Number(topicNum))) return openSharedVocabActivityHub_(Number(topicNum));
+    if (Number(topicNum) === 5) return openOddOneOutLevelHub_();
+    if (Number(topicNum) === 6) return openReadingComprehensionHub_();
+    if ([7, 8, 9].includes(Number(topicNum))) return openExploreLevelHub_(Number(topicNum));
     resetLectureChrome_();
     stopSpeaking();
     inMiniGameFlow = false;
@@ -2517,6 +2989,148 @@ function openTopic(topicNum, topicName, icon) {
         updateNavTabs(null, null, null);
         alert(`Không thể tải chủ đề: ${err.message}`);
     });
+}
+
+async function loadExploreLevelBank_(topicId) {
+    const cfg = EXPLORE_LEVEL_BANKS[Number(topicId)];
+    if (!cfg) throw new Error('Không có cấu hình ngân hàng câu hỏi.');
+    if (exploreLevelBankCache_[topicId]) return exploreLevelBankCache_[topicId];
+    const dataFiles = await loadExploreDataFiles_();
+    const part2 = dataFiles[1] || {};
+    const data = part2?.explore_level_banks?.[cfg.bankKey];
+    if (!data || !Array.isArray(data.questions) || data.questions.length !== 80) throw new Error(`${cfg.title} chưa đủ 80 câu trong Part 2`);
+    exploreLevelBankCache_[topicId] = data;
+    return data;
+}
+
+async function openExploreLevelHub_(topicId) {
+    const cfg = EXPLORE_LEVEL_BANKS[Number(topicId)];
+    if (!cfg) return;
+    resetLectureChrome_(); stopSpeaking(); inMiniGameFlow=false; inAlphaIpaFlow=false;
+    activeTopicId=Number(topicId); activeExamContext=null; activeRoadmapContext=null;
+    updateNavTabs(`${topicId}. ${cfg.title}`,cfg.icon,null);
+    showLoadingOverlay(`Đang chuẩn bị 80 câu ${cfg.vi}...`);
+    try {
+        const data=await loadExploreLevelBank_(topicId);
+        hideLoadingOverlay();
+        document.getElementById('lecture-title').textContent=`${cfg.title} / ${cfg.vi}`;
+        document.getElementById('lecture-content').textContent='Chọn level theo tiến trình 16 Unit. Mỗi level gồm 20 câu, tương ứng 4 Unit liên tiếp.';
+        document.getElementById('view-lecture').dataset.audioText='';
+        const html=EXPLORE_LEVEL_GROUPS.map((g,i)=>{
+            const style=SUBTOPIC_PALETTES[i%SUBTOPIC_PALETTES.length];
+            const count=data.questions.filter(q=>Number(q.level)===g.level).length;
+            return `<button onclick="openExploreLevelGroup_(${topicId},${g.level})" class="p-4 ${style.card} border-2 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn min-h-[88px]">
+                <div class="flex items-center justify-between gap-3"><div><div class="text-lg md:text-xl font-black ${style.num}">${g.icon} Level ${g.level} · ${g.name}</div><div class="text-xs md:text-sm text-slate-500 font-extrabold mt-1">${g.name_vi} · Unit ${g.units[0]}–${g.units[g.units.length-1]}</div></div><span class="text-xs font-black ${style.badge} px-3 py-1 rounded-full border shrink-0">${count} câu</span></div>
+            </button>`;
+        }).join('');
+        document.getElementById('lecture-subtopics-list').innerHTML=html;
+        setSubtopicGridColumns(4);
+        document.getElementById('wrap-mix-all-subtopics').classList.add('hidden');
+        switchAppView('view-lecture');
+    } catch(e) { hideLoadingOverlay(); alert(`Không thể mở ${cfg.vi}: ${e.message}`); }
+}
+
+async function openExploreLevelGroup_(topicId, level) {
+    stopSpeaking();
+    const cfg=EXPLORE_LEVEL_BANKS[Number(topicId)];
+    const data=await loadExploreLevelBank_(topicId);
+    const g=EXPLORE_LEVEL_GROUPS.find(x=>x.level===Number(level));
+    const pool=data.questions.filter(q=>Number(q.level)===Number(level)).map(normalizeQuestion).filter(Boolean);
+    if (Number(topicId) === 7) pool.forEach(q => { q.render_style = 'sentence_builder_tap'; });
+    if (Number(topicId) === 8) pool.forEach(q => { q.render_style = 'fill_sentence_interactive'; });
+    if (!g || pool.length!==20) return alert('Level này chưa đủ 20 câu.');
+    updateNavTabs(`${topicId}. ${cfg.title}`,cfg.icon,`Level ${g.level} · ${g.name} / ${g.name_vi}`,null,()=>openExploreLevelHub_(topicId));
+    startTopicQuiz(Number(topicId),`${cfg.title} - Level ${g.level}`,shuffleArray(pool),`${topicId}.level${g.level}`);
+}
+
+async function loadReadingComprehensionData_() {
+    if (readingComprehensionCache) return readingComprehensionCache;
+    const [part1] = await loadExploreDataFiles_();
+    const data = part1?.reading_comprehension;
+    if (!data || !Array.isArray(data.readings) || data.readings.length !== 80) throw new Error('Kho Đọc hiểu trong Part 1 chưa đủ 80 bài');
+    readingComprehensionCache = data;
+    return data;
+}
+
+async function openReadingComprehensionHub_() {
+    resetLectureChrome_(); stopSpeaking(); inMiniGameFlow = false; inAlphaIpaFlow = false;
+    activeTopicId = 6; activeExamContext = null; activeRoadmapContext = null; activeReadingGroup = null;
+    updateNavTabs('Reading Comprehension', '📖', null);
+    showLoadingOverlay('Đang chuẩn bị 80 bài Đọc hiểu...');
+    try {
+        const data = await loadReadingComprehensionData_();
+        hideLoadingOverlay();
+        document.getElementById('lecture-title').textContent = 'Reading Comprehension / Đọc hiểu';
+        document.getElementById('lecture-content').textContent = 'Chọn một nhóm để đọc từ Unit đầu đến Unit sau. Mỗi nhóm có 20 bài, mỗi bài có 2 câu hỏi.';
+        document.getElementById('view-lecture').dataset.audioText = '';
+        const icons = ['🌱','🌼','🌟','🏆'];
+        const html = data.groups.map((g,i) => {
+            const style = SUBTOPIC_PALETTES[i % SUBTOPIC_PALETTES.length];
+            const count = data.readings.filter(r => Number(r.group) === Number(g.group)).length;
+            return `<button onclick="openReadingGroup_(${g.group})" class="p-4 ${style.card} border-2 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn min-h-[88px]">
+                <div class="flex items-center justify-between gap-3"><div><div class="text-lg md:text-xl font-black ${style.num}">${icons[i]} ${escapeHtml(g.name)}</div><div class="text-xs md:text-sm text-slate-500 font-extrabold mt-1">${escapeHtml(g.name_vi)} · Unit ${g.units[0]}–${g.units[g.units.length-1]}</div></div><span class="text-xs font-black ${style.badge} px-3 py-1 rounded-full border shrink-0">${count} bài</span></div>
+            </button>`;
+        }).join('');
+        document.getElementById('lecture-subtopics-list').innerHTML = html;
+        setSubtopicGridColumns(4);
+        document.getElementById('wrap-mix-all-subtopics').classList.add('hidden');
+        switchAppView('view-lecture');
+    } catch (e) { hideLoadingOverlay(); alert(`Không thể mở Đọc hiểu: ${e.message}`); }
+}
+
+async function openReadingGroup_(groupId) {
+    stopSpeaking();
+    const data = await loadReadingComprehensionData_();
+    const g = data.groups.find(x => Number(x.group) === Number(groupId));
+    const pool = data.readings.filter(r => Number(r.group) === Number(groupId)).map(r => ({...r, render_style:'reading_pair'}));
+    if (!g || !pool.length) return;
+    activeReadingGroup = g;
+    readingPairState = {};
+    updateNavTabs('Reading Comprehension', '📖', `${g.name} / ${g.name_vi}`);
+    startTopicQuiz(6, `${g.name} / ${g.name_vi}`, pool, `reading-group-${groupId}`);
+}
+
+function speakReadingPassage_() {
+    const q = activeQuestionsList[currentQIndex];
+    if (q && q.render_style === 'reading_pair') speakEnglish(q.tts_text || q.passage || '', 0.92);
+}
+
+function renderReadingPair_(q) {
+    const key = q.reading_id || String(currentQIndex);
+    if (!readingPairState[key]) readingPairState[key] = {correct:[false,false], chosen:[null,null]};
+    const state = readingPairState[key];
+    const isDialogue = q.passage_type === 'dialogue';
+    const passage = isDialogue ? String(q.passage||'').split('\n').map(line => {
+        const m=line.match(/^([AB]):\s*(.*)$/); if(!m) return `<p class="mb-2">${escapeHtml(line)}</p>`;
+        return `<div class="flex gap-2 mb-2"><span class="w-7 h-7 shrink-0 rounded-full bg-fuchsia-100 text-fuchsia-700 flex items-center justify-center font-black text-xs">${m[1]}</span><div class="flex-1 bg-white border border-pink-100 rounded-2xl px-3 py-2 font-bold">${escapeHtml(m[2])}</div></div>`;
+    }).join('') : `<p class="text-sm md:text-base font-bold text-slate-800 leading-7 whitespace-pre-line">${escapeHtml(q.passage||'')}</p>`;
+    const questionsHtml=(q.questions||[]).map((item,qi)=>{
+        const opts=(item.options||[]).map((opt,oi)=>{
+            const chosen=state.chosen[qi]===oi, correct=state.correct[qi] && opt===item.answer;
+            const cls=correct?'border-emerald-400 bg-emerald-50 text-emerald-700':(chosen&&!state.correct[qi]?'border-rose-400 bg-rose-50 text-rose-700':'border-pink-200 bg-white hover:bg-pink-50 text-slate-800');
+            return `<button onclick="answerReadingQuestion_(${qi},${oi})" class="w-full text-left px-3 py-2.5 rounded-xl border-2 ${cls} font-extrabold text-sm transition-all"><span class="text-pink-500 mr-2">${String.fromCharCode(65+oi)}.</span>${escapeHtml(opt)}</button>`;
+        }).join('');
+        return `<section class="rounded-2xl border border-pink-100 bg-white p-3 shadow-sm"><div class="flex gap-2 items-start mb-2"><span class="w-7 h-7 rounded-full bg-pink-500 text-white flex items-center justify-center font-black text-xs shrink-0">${qi+1}</span><h3 class="font-black text-slate-900 text-sm md:text-base leading-snug">${escapeHtml(item.question)}</h3></div><div class="space-y-2">${opts}</div>${state.correct[qi]?'<div class="mt-2 text-xs font-black text-emerald-600">✓ Correct / Chính xác</div>':''}</section>`;
+    }).join('');
+    const allDone=state.correct.every(Boolean);
+    document.getElementById('question-box').innerHTML=`<div class="w-full max-w-6xl mx-auto"><div class="flex items-center justify-between gap-2 mb-3"><div class="text-xs md:text-sm font-black text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-3 py-1">Passage ${currentQIndex+1} / ${activeQuestionsList.length} · Unit ${q.unit}</div><button onclick="speakReadingPassage_()" class="px-3 py-2 rounded-full bg-violet-50 border border-violet-200 text-violet-700 font-black text-xs md:text-sm pastel-btn"><i class="fa-solid fa-volume-high mr-1"></i>Listen Passage</button></div><div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-3 items-start"><section class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50 to-violet-50 p-4 text-left"><div class="text-xs font-black text-fuchsia-500 uppercase tracking-wide mb-1">${escapeHtml(q.unit_title||'')}</div><h2 class="text-lg md:text-xl font-black text-pink-700 mb-3">${escapeHtml(q.title||'')}</h2>${passage}</section><div class="grid grid-cols-1 gap-3">${questionsHtml}</div></div>${allDone?'<div class="mt-3 text-center text-sm font-black text-emerald-600">🌟 Great job! Cả 2 câu đều đúng.</div>':''}</div>`;
+    const next=document.getElementById('btn-next-q-prac'); if(next){next.onclick=nextReadingPair_; next.disabled=!allDone; next.classList.toggle('opacity-40',!allDone); next.classList.toggle('cursor-not-allowed',!allDone);}
+}
+
+function answerReadingQuestion_(qi, oi) {
+    const q=activeQuestionsList[currentQIndex]; if(!q || q.render_style!=='reading_pair') return;
+    const key=q.reading_id||String(currentQIndex), state=readingPairState[key]||(readingPairState[key]={correct:[false,false],chosen:[null,null]});
+    if(state.correct[qi]) return;
+    const item=q.questions[qi], opt=item.options[oi]; state.chosen[qi]=oi;
+    if(opt===item.answer){state.correct[qi]=true; playSound(true);} else playSound(false);
+    renderReadingPair_(q);
+}
+
+function nextReadingPair_() {
+    const q=activeQuestionsList[currentQIndex], state=q && readingPairState[q.reading_id||String(currentQIndex)];
+    if(!state || !state.correct.every(Boolean)) return;
+    if(currentQIndex < activeQuestionsList.length-1){currentQIndex++; loadQuestion();}
+    else { alert('🎉 Bé đã hoàn thành 20 bài Đọc hiểu trong nhóm này!'); openReadingComprehensionHub_(); }
 }
 
 function setSubtopicGridColumns(count) {
@@ -2908,10 +3522,237 @@ function renderVocabularyFlashcard_(q) {
     document.getElementById('question-box').innerHTML = html;
 }
 
+
+const sentenceBuilderSelections_ = {};
+
+function sentenceBuilderNormalize_(text) {
+    return String(text || '')
+        .replace(/\s+([?.!,])/g, '$1')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+}
+
+function sentenceBuilderTokenIpa_(token) {
+    const clean = String(token || '').replace(/^[^A-Za-z']+|[^A-Za-z']+$/g, '');
+    if (!clean) return '';
+    const common = {
+        'a':'ə','an':'æn','the':'ðə','i':'aɪ','you':'juː','he':'hiː','she':'ʃiː','it':'ɪt','we':'wiː','they':'ðeɪ',
+        'my':'maɪ','your':'jɔː','our':'aʊə','his':'hɪz','her':'hɜː','is':'ɪz','are':'ɑː','am':'æm','can':'kæn',
+        "can't":'kɑːnt','do':'duː','does':'dʌz','have':'hæv','has':'hæz','there':'ðeə','this':'ðɪs','these':'ðiːz',
+        'what':'wɒt','where':'weə','how':'haʊ','yes':'jes','no':'nəʊ','not':'nɒt','in':'ɪn','on':'ɒn','under':'ˈʌndə',
+        'near':'nɪə','at':'æt','to':'tuː','with':'wɪð','and':'ænd','of':'əv','some':'sʌm','here':'hɪə','over':'ˈəʊvə',
+        'together':'təˈɡeðə','please':'pliːz','me':'miː','like':'laɪk','want':'wɒnt','see':'siː','look':'lʊk',
+        "let's":'lets',"he's":'hiːz',"she's":'ʃiːz',"it's":'ɪts',"they're":'ðeə',"what's":'wɒts'
+    };
+    const key=clean.toLowerCase();
+    return common[key] || getVocabularyIpaForWord_(clean) || '';
+}
+
+function sentenceBuilderGetTokens_(q) {
+    if (!q._sentenceBuilderTokens) {
+        q._sentenceBuilderTokens = String(q.answer || '').trim().split(/\s+/).map((text, id) => ({ id, text }));
+        q._sentenceBuilderOrder = shuffleArray(q._sentenceBuilderTokens.map(x => x.id));
+    }
+    return q._sentenceBuilderTokens;
+}
+
+function renderSentenceBuilderTap_(q) {
+    const tokens = sentenceBuilderGetTokens_(q);
+    const selected = sentenceBuilderSelections_[currentQIndex] || [];
+    const completed = userAnswers[currentQIndex] !== undefined;
+    const selectedSet = new Set(selected);
+    const chosen = completed ? tokens.map(x=>x.id) : selected;
+    const chosenText = chosen.map(id => tokens.find(t=>t.id===id)?.text || '').join(' ');
+    const available = (q._sentenceBuilderOrder || tokens.map(x=>x.id)).filter(id => !selectedSet.has(id) && !completed);
+    const meaning = q.meaning_vi || q.question_text_vi || '';
+
+    const chosenHtml = chosen.length
+        ? chosen.map(id => {
+            const t=tokens.find(x=>x.id===id); if(!t) return '';
+            return `<button ${completed?'disabled':''} onclick="sentenceBuilderUnpick_(${id})" class="px-3.5 py-2 rounded-xl border-2 ${completed?'bg-emerald-50 border-emerald-300 text-emerald-700':'bg-white border-fuchsia-300 text-fuchsia-700 hover:bg-fuchsia-50'} font-black text-base md:text-lg transition-all">${escapeHtml(t.text)}</button>`;
+          }).join('')
+        : `<span class="text-slate-400 italic font-bold text-sm md:text-base">Tap the words below to build the sentence...</span>`;
+
+    const wordHtml = available.map(id => {
+        const t=tokens.find(x=>x.id===id); if(!t) return '';
+        const ipa=sentenceBuilderTokenIpa_(t.text);
+        return `<button onclick="sentenceBuilderPick_(${id})" class="min-w-[76px] px-4 py-2.5 rounded-2xl border-2 border-fuchsia-300 bg-gradient-to-b from-white to-pink-50 hover:from-pink-50 hover:to-violet-50 shadow-sm transition-all text-fuchsia-700 font-black">
+            <div class="text-base md:text-lg leading-tight">${escapeHtml(t.text)}</div>
+            ${ipa?`<div class="text-xs md:text-sm text-violet-500 font-extrabold mt-1">/${escapeHtml(ipa.replace(/^\/|\/$/g,''))}/</div>`:''}
+        </button>`;
+    }).join('');
+
+    const html = `
+        <div class="w-full max-w-4xl mx-auto px-2">
+            <div class="relative mb-3 min-h-[42px] flex items-center justify-center">
+                <div class="text-center text-base md:text-xl font-black text-slate-800">Tap words in correct order to make a sentence.</div>
+                ${completed ? `<button onclick="speakEnglish(${JSON.stringify(String(q.answer || ''))})" class="absolute right-0 top-1/2 -translate-y-1/2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white font-black text-xs md:text-sm shadow-md hover:brightness-105"><i class="fa-solid fa-volume-high mr-1.5"></i>Listen</button>` : ''}
+            </div>
+
+            <div class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-fuchsia-50/60 to-violet-50/80 p-4 md:p-6 shadow-sm">
+                <div class="min-h-[76px] rounded-2xl border-2 border-pink-200 bg-white/90 px-4 py-4 flex flex-wrap items-center justify-center gap-2.5">
+                    ${chosenHtml}
+                </div>
+                <div id="sentence-builder-feedback" class="text-center min-h-[26px] mt-2 text-sm font-extrabold ${completed?'text-emerald-600':'text-fuchsia-500'}">${completed?'✓ Excellent! The sentence is correct.':''}</div>
+                ${completed && meaning ? `<div class="mt-2 rounded-2xl bg-white border-2 border-violet-200 px-4 py-3 text-center"><span class="font-black text-violet-700">Meaning: </span><span class="font-extrabold text-slate-700">${escapeHtml(meaning)}</span></div>` : ''}
+            </div>
+
+            ${!completed ? `<div class="mt-4 flex flex-wrap items-stretch justify-center gap-2.5 md:gap-3">${wordHtml}</div>` : ''}
+        </div>`;
+
+    document.getElementById('question-box').innerHTML = html;
+    updateNavButtons();
+    updateQuizPalletUI();
+}
+
+function sentenceBuilderPick_(id) {
+    const q=activeQuestionsList[currentQIndex];
+    if (!q || q.render_style!=='sentence_builder_tap' || userAnswers[currentQIndex]!==undefined) return;
+    const tokens=sentenceBuilderGetTokens_(q);
+    const sel=sentenceBuilderSelections_[currentQIndex] || (sentenceBuilderSelections_[currentQIndex]=[]);
+    if (!sel.includes(Number(id))) sel.push(Number(id));
+    if (sel.length===tokens.length) {
+        const built=sel.map(x=>tokens.find(t=>t.id===x)?.text||'').join(' ');
+        if (sentenceBuilderNormalize_(built)===sentenceBuilderNormalize_(q.answer)) {
+            checkAnswer(q.answer);
+            renderSentenceBuilderTap_(q);
+            setTimeout(()=>speakEnglish(q.answer),180);
+            return;
+        }
+        const fb=document.getElementById('sentence-builder-feedback');
+        if (fb) { fb.textContent='Not quite. Tap a word above to move it back and try again.'; fb.className='text-center min-h-[26px] mt-2 text-sm font-extrabold text-rose-500'; }
+    }
+    renderSentenceBuilderTap_(q);
+    if ((sentenceBuilderSelections_[currentQIndex]||[]).length===tokens.length) {
+        const fb=document.getElementById('sentence-builder-feedback');
+        if (fb) { fb.textContent='Not quite. Tap a word above to move it back and try again.'; fb.className='text-center min-h-[26px] mt-2 text-sm font-extrabold text-rose-500'; }
+    }
+}
+
+function sentenceBuilderUnpick_(id) {
+    const q=activeQuestionsList[currentQIndex];
+    if (!q || q.render_style!=='sentence_builder_tap' || userAnswers[currentQIndex]!==undefined) return;
+    const sel=sentenceBuilderSelections_[currentQIndex] || [];
+    const pos=sel.indexOf(Number(id));
+    if (pos>=0) sel.splice(pos,1);
+    renderSentenceBuilderTap_(q);
+}
+
+function renderFillSentenceInteractive_(q) {
+    const solved = userAnswers[currentQIndex] === q.answer;
+    const wrong = new Set(wrongAttemptsByQ[currentQIndex] || []);
+    const sentence = solved ? (q.completed_sentence || String(q.question_text || '').replace(/_{2,}/g, q.answer)) : (q.question_text || '');
+    const sentenceVi = solved ? (q.completed_sentence_vi || '') : '';
+    const instructionEn = q.instruction_en || 'Choose the correct word to complete the sentence.';
+    const instructionVi = q.instruction_vi || 'Chọn từ đúng để hoàn thành câu.';
+
+    const optionsHtml = (q.options || []).map((opt, idx) => {
+        const ipa = q.options_ipa && q.options_ipa[idx] ? String(q.options_ipa[idx]).replace(/^\/|\/$/g,'') : '';
+        const isCorrect = solved && opt === q.answer;
+        const isWrong = wrong.has(opt);
+        const disabled = isWrong ? 'disabled' : '';
+        const cls = isCorrect
+            ? 'border-emerald-400 bg-emerald-50 text-emerald-800'
+            : (isWrong ? 'border-rose-400 bg-rose-50 text-rose-700 opacity-75' : 'border-pink-200 bg-white hover:bg-pink-50 text-slate-800');
+        return `<button ${disabled} data-opt="${escapeHtml(opt)}" onclick="checkFillSentenceInteractive_(${JSON.stringify(opt)})" class="option-btn w-full min-h-[72px] px-4 py-3 rounded-2xl border-2 ${cls} text-left transition-all shadow-sm pastel-btn">
+            <div class="flex items-start gap-3">
+                <span class="text-pink-600 font-black text-lg shrink-0">${String.fromCharCode(65+idx)}.</span>
+                <div class="min-w-0">
+                    <div class="font-black text-base md:text-lg">${escapeHtml(capitalizeFirstLetter(opt))}</div>
+                    ${ipa ? `<div class="text-xs md:text-sm font-extrabold text-violet-500 mt-0.5">/${escapeHtml(ipa)}/</div>` : ''}
+                    ${isCorrect && q.answer_vi ? `<div class="text-xs md:text-sm font-bold text-fuchsia-600 mt-1">Meaning: ${escapeHtml(q.answer_vi)}</div>` : ''}
+                </div>
+            </div>
+        </button>`;
+    }).join('');
+
+    document.getElementById('question-box').innerHTML = `
+        <div class="w-full max-w-4xl mx-auto px-2">
+            <div class="text-center mb-3">
+                <div class="text-base md:text-xl font-black text-slate-900">${escapeHtml(instructionEn)}</div>
+                <div class="text-xs md:text-sm font-bold text-fuchsia-500 mt-1">${escapeHtml(instructionVi)}</div>
+            </div>
+
+            <div class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5 shadow-sm">
+                <div class="flex items-center justify-center gap-2.5 flex-wrap">
+                    <div class="text-xl md:text-2xl font-black text-slate-900 leading-snug">${escapeHtml(sentence)}</div>
+                    <button onclick="speakFillSentence_()" ${solved ? '' : 'disabled'} class="px-3.5 py-2 rounded-xl font-black text-xs md:text-sm shadow-sm inline-flex items-center gap-1.5 ${solved ? 'bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white hover:brightness-105' : 'bg-slate-100 text-slate-300 cursor-not-allowed'}">
+                        <i class="fa-solid fa-volume-high"></i><span>Listen</span>
+                    </button>
+                </div>
+                ${sentenceVi ? `<div class="mt-2 text-center text-sm md:text-base font-extrabold text-violet-700">${escapeHtml(sentenceVi)}</div>` : ''}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mt-4">${optionsHtml}</div>
+        </div>`;
+    updateNavButtons();
+    updateQuizPalletUI();
+}
+
+function speakFillSentence_() {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'fill_sentence_interactive' || userAnswers[currentQIndex] !== q.answer) return;
+    speakEnglish(q.completed_sentence || q.tts_text || String(q.question_text || '').replace(/_{2,}/g, q.answer), 0.92);
+}
+
+function checkFillSentenceInteractive_(selectedOpt) {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'fill_sentence_interactive') return;
+
+    // Every option can be tapped to hear the English word.
+    speakEnglish(selectedOpt, 0.9);
+
+    // Once solved, taps are for listening only.
+    if (userAnswers[currentQIndex] !== undefined) return;
+
+    if (selectedOpt === q.answer) {
+        userAnswers[currentQIndex] = selectedOpt;
+        score += (q.diem ?? 0.5);
+        starGreenCount++;
+        const green = document.getElementById('star-green-count'); if (green) green.textContent = starGreenCount;
+        playAudio('correct');
+        confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
+        renderFillSentenceInteractive_(q);
+        setTimeout(() => speakFillSentence_(), 220);
+        return;
+    }
+
+    if (!wrongAttemptsByQ[currentQIndex]) wrongAttemptsByQ[currentQIndex] = [];
+    if (!wrongAttemptsByQ[currentQIndex].includes(selectedOpt)) {
+        wrongAttemptsByQ[currentQIndex].push(selectedOpt);
+        starRedCount++;
+        const red = document.getElementById('star-red-count'); if (red) red.textContent = starRedCount;
+    }
+    playAudio('wrong');
+    renderFillSentenceInteractive_(q);
+}
+
 function loadQuestion() {
     stopSpeaking();
     const q = activeQuestionsList[currentQIndex];
     if (!q) return;
+
+    if (q.render_style === 'reading_pair') {
+        const stepEl = document.getElementById('practice-step-text');
+        if (stepEl) stepEl.textContent = `Bài ${currentQIndex + 1} / ${activeQuestionsList.length}`;
+        renderReadingPair_(q);
+        return;
+    }
+
+    if (q.render_style === 'sentence_builder_tap') {
+        const stepEl = document.getElementById('practice-step-text');
+        if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
+        renderSentenceBuilderTap_(q);
+        return;
+    }
+
+    if (q.render_style === 'fill_sentence_interactive') {
+        const stepEl = document.getElementById('practice-step-text');
+        if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
+        renderFillSentenceInteractive_(q);
+        return;
+    }
 
     const isEvaluationMode = !!activeExamContext || !!activeRoadmapContext;
 
@@ -2937,6 +3778,21 @@ function loadQuestion() {
         if (stepEl) stepEl.textContent = (activeVocabularyHubTopic && q.render_style === 'vocab_flashcard')
             ? `${currentQIndex + 1} / ${activeQuestionsList.length}`
             : (q.render_style === 'vocab_flashcard' ? `${currentQIndex + 1} / ${activeQuestionsList.length}` : `Câu ${currentQIndex + 1} / ${activeQuestionsList.length}`);
+    }
+
+    if (!isEvaluationMode && q.render_style === 'remove_letter_shared') {
+        renderRemoveLetterShared_(q);
+        return;
+    }
+
+    if (!isEvaluationMode && q.render_style === 'fill_missing_shared') {
+        renderFillMissingShared_(q);
+        return;
+    }
+
+    if (!isEvaluationMode && q.render_style === 'odd_one_out_shared') {
+        renderOddOneOutShared_(q);
+        return;
     }
 
     if (!isEvaluationMode && activeVocabularyHubTopic && q.render_style === 'vocab_flashcard') {
@@ -3001,7 +3857,7 @@ function loadQuestion() {
         `;
         q.options.forEach(opt => {
             html += `
-                <button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="option-btn min-w-[140px] px-6 py-3 bg-white hover:bg-emerald-50 border-2 border-emerald-400 rounded-full font-black text-emerald-700 text-base md:text-lg transition-all pastel-btn shadow-xs">
+                <button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="option-btn min-w-[140px] px-6 py-3 bg-white hover:bg-emerald-50 border-2 border-emerald-400 rounded-full font-black text-violet-700 text-base md:text-lg transition-all pastel-btn shadow-xs">
                     ${escapeHtml(opt)}
                 </button>`;
         });
@@ -3132,17 +3988,24 @@ function restoreQuestionState(q) {
 function updateNavButtons() {
     const isEvaluationMode = !!activeExamContext || !!activeRoadmapContext;
     const btnPrev = isEvaluationMode ? document.getElementById('btn-prev-q-exam') : document.getElementById('btn-prev-q-prac');
+    const btnNext = isEvaluationMode ? document.getElementById('btn-next-q-exam') : document.getElementById('btn-next-q-prac');
     const nextText = isEvaluationMode ? document.getElementById('btn-next-text-exam') : document.getElementById('btn-next-text-prac');
     const nextIcon = isEvaluationMode ? document.getElementById('btn-next-icon-exam') : document.getElementById('btn-next-icon-prac');
 
-    if (!btnPrev) return;
+    if (!btnPrev || !btnNext) return;
 
-    const inVocabulary = !isEvaluationMode && !!activeVocabularyHubTopic;
-    if (inVocabulary) {
-        btnPrev.innerHTML = '<i class="fa-solid fa-arrow-left"></i><span>Previous</span>';
-        const stepEl = document.getElementById('practice-step-text');
-        if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
-    }
+    // Navigation is English-only and visually consistent across the whole app.
+    btnPrev.innerHTML = '<i class="fa-solid fa-chevron-left mr-1.5"></i><span>Previous</span>';
+    if (nextText) nextText.textContent = 'Next';
+    if (nextIcon) nextIcon.className = 'fa-solid fa-chevron-right ml-1.5';
+
+    [btnPrev, btnNext].forEach(btn => {
+        btn.classList.remove('px-4','px-5','px-6','rounded-xl');
+        btn.classList.add('w-[124px]','md:w-[132px]','h-[44px]','px-4','py-2','rounded-2xl','inline-flex','items-center','justify-center');
+    });
+
+    const stepEl = document.getElementById('practice-step-text');
+    if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
 
     if (currentQIndex === 0) {
         btnPrev.disabled = true;
@@ -3150,25 +4013,6 @@ function updateNavButtons() {
     } else {
         btnPrev.disabled = false;
         btnPrev.classList.remove('opacity-40', 'cursor-not-allowed');
-    }
-
-    if (inVocabulary) {
-        if (nextText) nextText.textContent = 'Next';
-        if (nextIcon) nextIcon.className = 'fa-solid fa-arrow-right ml-1.5';
-        return;
-    }
-
-    if (currentQIndex === activeQuestionsList.length - 1) {
-        if (isEvaluationMode) {
-            nextText.textContent = "Hoàn thành";
-            nextIcon.className = "fa-solid fa-trophy ml-1.5";
-        } else {
-            nextText.textContent = "Vòng tiếp theo";
-            nextIcon.className = "fa-solid fa-rotate-right ml-1.5";
-        }
-    } else {
-        nextText.textContent = "Câu tiếp theo";
-        nextIcon.className = "fa-solid fa-chevron-right ml-1.5";
     }
 }
 
@@ -3295,6 +4139,14 @@ function checkAnswer(selectedOpt) {
 
         playAudio('correct');
         confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
+        if (q.render_style === 'fill_missing_shared') {
+            const slot = document.getElementById('fill-missing-slot');
+            if (slot) {
+                slot.textContent = String(q.answer || '').toUpperCase();
+                slot.classList.remove('text-fuchsia-500', 'border-fuchsia-500');
+                slot.classList.add('text-rose-600', 'border-rose-500');
+            }
+        }
         revealVocabularyVietnameseAfterCorrect_();
         revealVocabularyPictureExamples_();
         setTimeout(() => speakOptionWithMeaning(q.answer), 180);
@@ -3335,7 +4187,8 @@ function nextQuestion() {
 
     const inVocabularySharedStudy = !isEvaluationMode && !!activeVocabularyHubTopic && activeQuestionsList[currentQIndex]?.render_style === 'vocab_flashcard';
     const vocabularyNeedsAnswer = inVocabularySharedStudy && activeVocabularyStudyMode !== 'flashcard';
-    if (!isEvaluationMode && ((vocabularyNeedsAnswer) || (!inVocabularySharedStudy && activeQuestionsList[currentQIndex]?.render_style !== 'vocab_flashcard')) && userAnswers[currentQIndex] === undefined) {
+    const isSharedRemoveLetter = !isEvaluationMode && activeQuestionsList[currentQIndex]?.render_style === 'remove_letter_shared';
+    if (!isEvaluationMode && !isSharedRemoveLetter && ((vocabularyNeedsAnswer) || (!inVocabularySharedStudy && activeQuestionsList[currentQIndex]?.render_style !== 'vocab_flashcard')) && userAnswers[currentQIndex] === undefined) {
         alert('Bé hãy tìm đáp án đúng để hoàn thành câu này nhé!');
         return;
     }
@@ -3363,6 +4216,8 @@ function nextQuestion() {
             }
             userAnswers = {};
             wrongAttemptsByQ = {};
+            Object.keys(sentenceBuilderSelections_).forEach(k => delete sentenceBuilderSelections_[k]);
+            if (activeSharedVocabActivity?.activityId === 3) removeLetterSelections_ = {};
             loadQuestion();
         }
     }
@@ -3497,9 +4352,9 @@ function renderReportTopicsBreakdown() {
             ? (data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0)
             : (data.maxScore > 0 ? Math.round((data.earnedScore / data.maxScore) * 100) : 0);
         const isPassed = pct >= 50;
-        const badgeClass = isPassed ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-rose-50 text-rose-700 border border-rose-200';
+        const badgeClass = isPassed ? 'bg-violet-100 text-violet-700 border border-amber-200' : 'bg-rose-50 text-rose-700 border border-rose-200';
         const badgeText = isPassed ? 'Đạt yêu cầu' : 'Cần luyện tập thêm';
-        const barColor = isPassed ? 'bg-gradient-to-r from-amber-400 to-orange-400' : 'bg-gradient-to-r from-pink-400 to-rose-400';
+        const barColor = isPassed ? 'bg-gradient-to-r from-fuchsia-400 to-violet-400' : 'bg-gradient-to-r from-pink-400 to-rose-400';
         const scoreLine = isRoadmap
             ? `<span>Số câu đúng: <strong class="text-pink-600">${data.correct}/${data.total} câu</strong></span>`
             : `<span>Điểm đạt: <strong class="text-pink-600">${data.earnedScore.toFixed(1)} / ${data.maxScore.toFixed(1)}đ</strong></span>`;
@@ -3529,7 +4384,7 @@ function openReviewWrongModal() {
     if (!modal || !content) return;
 
     if (!quizWrongAnswers.length) {
-        content.innerHTML = `<div class="text-center py-8 text-emerald-600 font-extrabold text-base"><i class="fa-solid fa-circle-check text-3xl mb-2 block"></i>Tuyệt vời! Bé không làm sai câu nào trong bài thi này!</div>`;
+        content.innerHTML = `<div class="text-center py-8 text-fuchsia-600 font-extrabold text-base"><i class="fa-solid fa-circle-check text-3xl mb-2 block"></i>Tuyệt vời! Bé không làm sai câu nào trong bài thi này!</div>`;
     } else {
         let html = '';
         quizWrongAnswers.forEach((item, idx) => {
@@ -3542,9 +4397,9 @@ function openReviewWrongModal() {
                     <p class="font-extrabold text-slate-800 text-sm">${escapeHtml(item.question_text)}</p>
                     <div class="text-xs space-y-1 font-semibold">
                         <p class="text-rose-600"><i class="fa-solid fa-xmark mr-1"></i> Đáp án con chọn: <strong>${escapeHtml(item.dap_an_chon)}</strong></p>
-                        <p class="text-emerald-700"><i class="fa-solid fa-check mr-1"></i> Đáp án đúng chuẩn: <strong>${escapeHtml(item.dap_an_dung)}</strong></p>
+                        <p class="text-violet-700"><i class="fa-solid fa-check mr-1"></i> Đáp án đúng chuẩn: <strong>${escapeHtml(item.dap_an_dung)}</strong></p>
                     </div>
-                    <div class="p-2.5 bg-amber-50/80 border border-amber-200 rounded-xl text-xs text-amber-900 font-semibold flex items-start gap-2">
+                    <div class="p-2.5 bg-gradient-to-br from-pink-50/80 to-violet-50/80 border border-violet-200 rounded-xl text-xs text-amber-900 font-semibold flex items-start gap-2">
                         <i class="fa-solid fa-lightbulb text-amber-600 mt-0.5"></i>
                         <span><strong>Lời giải sư phạm:</strong> ${escapeHtml(item.explanation)}</span>
                     </div>
@@ -3933,7 +4788,7 @@ function renderPedagogicalEvaluation(rows, skillAverages, touchedSkills) {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
-                <span class="text-emerald-700 font-extrabold block mb-0.5">✅ 2. Khen ngợi & thế mạnh nổi trội:</span>
+                <span class="text-violet-700 font-extrabold block mb-0.5">✅ 2. Khen ngợi & thế mạnh nổi trội:</span>
                 <p class="text-gray-700">${strengthHtml}</p>
             </div>
 
@@ -4433,7 +5288,7 @@ function renderMiniGameTopicMenu({
                 }).join('')}
             </div>
             <div class="mt-3 flex justify-center">
-                <button onclick="${onChoose}('all')" class="mg-mix-btn pastel-btn inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm md:text-base shadow-md border border-purple-300">
+                <button onclick="${onChoose}('all')" class="mg-mix-btn pastel-btn inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-violet-400 hover:from-pink-500 hover:to-violet-500 text-white font-extrabold text-sm md:text-base shadow-md border border-purple-300">
                     <span>🌟 ${escapeHtml(mixLabel)}</span>
                     <span class="text-xs md:text-sm font-black bg-white/20 px-2 py-0.5 rounded-full">${total} từ</span>
                 </button>
@@ -4494,7 +5349,7 @@ function openMiniGameHub() {
         const style = getMiniGamePaletteOrder('hub')[idx % MINIGAME_TOPIC_PALETTES.length];
         return `
         <div onclick="openGamePlay('${g.id}')" class="p-3.5 md:p-4 flex flex-col items-center text-center cursor-pointer transition-all group ${style.card} border-2 rounded-[26px] min-h-[132px] justify-between relative shadow-sm pastel-btn">
-            ${!g.ready ? `<span class="absolute top-2 right-2 bg-amber-100 text-amber-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-200">Sắp ra mắt</span>` : ''}
+            ${!g.ready ? `<span class="absolute top-2 right-2 bg-violet-100 text-violet-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-violet-200">Sắp ra mắt</span>` : ''}
             <div class="text-4xl group-hover:scale-110 transition-transform mt-1">${g.icon}</div>
             <div class="w-full">
                 <h3 class="font-extrabold ${style.num} text-base leading-tight">${g.title}</h3>
@@ -4787,7 +5642,7 @@ function renderTa2LessonPage_(p){
     const words=(ph.words||[]).map(w=>`<span class="lesson-chip">${escapeHtml(w)}</span>`).join('');
     const vocab=voc.map(v=>`<div class="rounded-xl bg-white border border-pink-100 px-3 py-2 font-black text-slate-700">${escapeHtml(v.word||'')}<div class="text-[10px] font-bold text-slate-400 mt-0.5">${escapeHtml(v.meaning||'')}</div></div>`).join('');
     const dlgVi=p.mini_dialogue_vi||[]; const dlg=dialog.map((x,i)=>`<div class="rounded-xl bg-purple-50 border border-purple-100 px-3 py-2 text-sm font-bold text-slate-700">${escapeHtml(x)}${dlgVi[i]?`<div class="text-[10px] text-slate-400 mt-1">${escapeHtml(dlgVi[i])}</div>`:''}</div>`).join('');
-    return `<div class="space-y-3"><section class="rounded-3xl border-2 border-pink-200 bg-gradient-to-br from-pink-50 via-white to-purple-50 p-4"><div class="flex flex-col md:flex-row gap-4"><div class="md:w-[42%]"><img src="${escapeHtml(p.image||'')}" onerror="this.style.display='none'" class="w-full aspect-square object-cover rounded-2xl border border-pink-100 shadow-sm"></div><div class="md:w-[58%] space-y-3"><div class="flex items-start justify-between gap-2"><p class="text-sm md:text-base font-bold text-slate-600 leading-6">${escapeHtml(p.intro||'')}</p>${p.intro_vi?`<p class="text-[10px] font-bold text-slate-400 mt-1">${escapeHtml(p.intro_vi)}</p>`:''}<button onclick="speakBaiHocTa2_()" class="shrink-0 px-3 py-2 rounded-xl bg-pink-500 text-white text-xs font-black">🔊 Listen<span class="block text-[9px] opacity-80">Nghe</span></button></div><div class="rounded-2xl bg-white border border-violet-100 p-3"><div class="text-xs font-black text-violet-600 mb-2">🔤 PHONICS</div><div class="text-lg font-black text-violet-800">${escapeHtml(ph.letter||'')} · ${escapeHtml(ph.sound||'')}</div><div class="flex flex-wrap gap-2 mt-2">${words}</div></div><div class="rounded-2xl bg-white border border-emerald-100 p-3"><div class="text-xs font-black text-emerald-600 mb-2">📚 VOCABULARY</div><div class="grid grid-cols-3 gap-2">${vocab}</div></div></div></div></section><section class="rounded-2xl bg-amber-50 border border-amber-200 p-4"><div class="text-xs font-black text-amber-700 mb-1">💬 SENTENCE PATTERN<br><span class="text-[10px] text-slate-400">Mẫu câu</span></div><div class="text-lg md:text-xl font-black text-slate-800">${escapeHtml(p.sentence_pattern||'')}</div></section><section class="rounded-2xl bg-white border border-purple-100 p-4"><div class="font-black text-purple-700 mb-2">🐰 SPEAK WITH BUNNY<br><span class="text-[10px] text-slate-400">Cùng Thỏ Ngọc nói thử</span></div><div class="space-y-2">${dlg}</div></section></div>`;
+    return `<div class="space-y-3"><section class="rounded-3xl border-2 border-pink-200 bg-gradient-to-br from-pink-50 via-white to-purple-50 p-4"><div class="flex flex-col md:flex-row gap-4"><div class="md:w-[42%]"><img src="${escapeHtml(p.image||'')}" onerror="this.style.display='none'" class="w-full aspect-square object-cover rounded-2xl border border-pink-100 shadow-sm"></div><div class="md:w-[58%] space-y-3"><div class="flex items-start justify-between gap-2"><p class="text-sm md:text-base font-bold text-slate-600 leading-6">${escapeHtml(p.intro||'')}</p>${p.intro_vi?`<p class="text-[10px] font-bold text-slate-400 mt-1">${escapeHtml(p.intro_vi)}</p>`:''}<button onclick="speakBaiHocTa2_()" class="shrink-0 px-3 py-2 rounded-xl bg-pink-500 text-white text-xs font-black">🔊 Listen<span class="block text-[9px] opacity-80">Nghe</span></button></div><div class="rounded-2xl bg-white border border-violet-100 p-3"><div class="text-xs font-black text-violet-600 mb-2">🔤 PHONICS</div><div class="text-lg font-black text-violet-800">${escapeHtml(ph.letter||'')} · ${escapeHtml(ph.sound||'')}</div><div class="flex flex-wrap gap-2 mt-2">${words}</div></div><div class="rounded-2xl bg-white border border-fuchsia-100 p-3"><div class="text-xs font-black text-fuchsia-600 mb-2">📚 VOCABULARY</div><div class="grid grid-cols-3 gap-2">${vocab}</div></div></div></div></section><section class="rounded-2xl bg-gradient-to-br from-pink-50 to-violet-50 border border-fuchsia-200 p-4"><div class="text-xs font-black text-fuchsia-700 mb-1">💬 SENTENCE PATTERN<br><span class="text-[10px] text-slate-400">Mẫu câu</span></div><div class="text-lg md:text-xl font-black text-slate-800">${escapeHtml(p.sentence_pattern||'')}</div></section><section class="rounded-2xl bg-white border border-purple-100 p-4"><div class="font-black text-purple-700 mb-2">🐰 SPEAK WITH BUNNY<br><span class="text-[10px] text-slate-400">Cùng Thỏ Ngọc nói thử</span></div><div class="space-y-2">${dlg}</div></section></div>`;
 }
 function renderTa2QuestionsPage_(p){
     const items=(p.items||[]).map((it,i)=>{if(it.type==='choice'){const opts=(it.options||[]).map((o,j)=>`<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.disabled=true); this.classList.add(${j===it.answer?"'bg-emerald-100','border-emerald-400'":"'bg-rose-100','border-rose-400'"})" class="text-left rounded-xl border border-pink-200 bg-white px-3 py-2 font-bold text-sm">${String.fromCharCode(65+j)}. ${escapeHtml(o)}</button>`).join('');return `<div class="rounded-2xl bg-pink-50/50 border border-pink-100 p-4"><div class="font-black text-slate-800 mb-2">${i+1}. ${escapeHtml(it.prompt||'')}${it.prompt_vi?`<div class="text-[10px] text-slate-400 mt-1">${escapeHtml(it.prompt_vi)}</div>`:''}</div><div class="grid gap-2">${opts}</div></div>`;}return `<div class="rounded-2xl bg-purple-50/50 border border-purple-100 p-4"><div class="font-black text-purple-700">🎙️ ${escapeHtml(it.prompt||'')}${it.prompt_vi?`<div class="text-[10px] text-slate-400 mt-1">${escapeHtml(it.prompt_vi)}</div>`:''}</div><button onclick="speakEnglish('${escapeJsString_(it.prompt||'')}',0.92)" class="mt-2 px-3 py-1.5 rounded-lg bg-purple-100 text-purple-700 text-xs font-black">🔊 Listen<span class="block text-[9px]">Nghe</span></button></div>`;}).join('');
@@ -4795,7 +5650,7 @@ function renderTa2QuestionsPage_(p){
 }
 function renderTa2SummaryPage_(p,l){
     const pts=(p.key_points||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join(''), lines=(p.practice_lines||[]).map(x=>`<div class="rounded-xl bg-white border border-pink-100 px-3 py-2 font-black text-slate-700">${escapeHtml(x)}</div>`).join('');
-    return `<div class="space-y-3"><section class="rounded-3xl bg-gradient-to-br from-amber-50 via-pink-50 to-purple-50 border-2 border-amber-200 p-4"><div class="text-xs font-black text-amber-600">🌟 TỔNG KẾT</div><ul class="list-disc pl-5 mt-3 space-y-2 text-sm md:text-base text-slate-700 font-semibold leading-7">${pts}</ul></section><section class="rounded-2xl bg-white border border-pink-100 p-4"><div class="font-black text-pink-700 mb-2">🗣️ Con nói lại nhé</div><div class="grid gap-2">${lines}</div></section><section class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4"><div class="font-black text-emerald-700">${escapeHtml(p.finish_prompt||'')}</div></section><button onclick="markBaiHocTa2Complete_(${l.bai})" class="w-full py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black shadow-md">✅ Hoàn thành Bài ${l.bai}</button></div>`;
+    return `<div class="space-y-3"><section class="rounded-3xl bg-gradient-to-br from-pink-50 via-fuchsia-50 to-violet-50 border-2 border-fuchsia-200 p-4"><div class="text-xs font-black text-fuchsia-600">🌟 TỔNG KẾT</div><ul class="list-disc pl-5 mt-3 space-y-2 text-sm md:text-base text-slate-700 font-semibold leading-7">${pts}</ul></section><section class="rounded-2xl bg-white border border-pink-100 p-4"><div class="font-black text-pink-700 mb-2">🗣️ Con nói lại nhé</div><div class="grid gap-2">${lines}</div></section><section class="rounded-2xl bg-violet-50 border border-violet-100 p-4"><div class="font-black text-violet-700">${escapeHtml(p.finish_prompt||'')}</div></section><button onclick="markBaiHocTa2Complete_(${l.bai})" class="w-full py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black shadow-md">✅ Hoàn thành Bài ${l.bai}</button></div>`;
 }
 function renderTa2LessonBottom_(l,pageNo){const prev=pageNo>1?`<button onclick="openBaiHocTa2_(${l.bai},${pageNo-1})" class="px-4 py-2 rounded-xl bg-white border border-purple-200 text-purple-700 font-black text-xs">← Trang trước</button>`:'<span></span>';const next=pageNo<3?`<button onclick="openBaiHocTa2_(${l.bai},${pageNo+1})" class="px-5 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-black text-xs">Trang tiếp →</button>`:`<button onclick="openBaiHocTa2_(${l.bai},1)" class="px-4 py-2 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 font-black text-xs">↺ Xem lại</button>`;return `<div class="flex items-center justify-between gap-3 pt-2">${prev}<div class="text-xs font-black text-slate-400">${pageNo}/3</div>${next}</div>`;}
 function markBaiHocTa2Complete_(bai){const id=activeBaiHocContext?.lessonId;if(!id)return;const s=getBaiHocTa2CompletedSet_();s.add(`${id}_done`);saveBaiHocTa2CompletedSet_(s);alert(`✅ Bé đã hoàn thành Bài ${bai}!`);}
@@ -4828,7 +5683,7 @@ async function openRoadmap(semesterNumber=1){
 function renderBaiTapTa2Grid_(data,semester){
     const host=document.getElementById('roadmap-svg-container'),tabs=document.getElementById('bai-tap-semester-tabs');if(!host)return;const arr=(data.bai_tap||[]).filter(x=>Number(x.semester)===Number(semester)),unlocked=getUnlockedBaiTapTa2_();
     if(tabs)tabs.innerHTML=[1,2].map(s=>`<button onclick="openRoadmap(${s})" class="semester-switch-btn ${Number(s)===Number(semester)?'is-active':'is-inactive'}"><span class="block">Semester ${s}</span><span class="block text-[9px] opacity-75">Học kỳ ${s}</span></button>`).join('');
-    host.innerHTML=`<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">${arr.map((bt,idx)=>{const open=Number(bt.bai)<=unlocked;return `<button onclick="${open?`selectBaiTapTa2_(${bt.bai})`:`showLockedBaiTapTa2_(${bt.bai})`}" class="relative text-left min-h-[105px] rounded-2xl border-2 p-3 ${open?(idx%2?'bg-purple-50 border-purple-200 hover:border-purple-400':'bg-pink-50 border-pink-200 hover:border-pink-400'):'bg-slate-50 border-slate-200 opacity-60'} hover:shadow-md transition-shadow"><div class="flex justify-between"><span class="font-black ${open?'text-purple-700':'text-slate-500'}">Exercise ${bt.bai}<span class="block text-[9px] text-slate-400">Bài tập ${bt.bai}</span></span><span>${open?'':'🔒'}</span></div><div class="text-[12px] md:text-[13px] font-bold text-slate-600 mt-1 line-clamp-2">${escapeHtml(bt.title||'')}</div><div class="text-[10px] mt-2 ${open?'text-emerald-600':'text-slate-400'} font-black">${open?'20 questions · 6 skills<br><span class="text-[9px] text-slate-400">20 câu · 6 năng lực</span>':'Score ≥80% to unlock<br><span class="text-[9px] text-slate-400">Cần ≥80% bài trước</span>'}</div></button>`}).join('')}</div>`;
+    host.innerHTML=`<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">${arr.map((bt,idx)=>{const open=Number(bt.bai)<=unlocked;return `<button onclick="${open?`selectBaiTapTa2_(${bt.bai})`:`showLockedBaiTapTa2_(${bt.bai})`}" class="relative text-left min-h-[105px] rounded-2xl border-2 p-3 ${open?(idx%2?'bg-purple-50 border-purple-200 hover:border-purple-400':'bg-pink-50 border-pink-200 hover:border-pink-400'):'bg-slate-50 border-slate-200 opacity-60'} hover:shadow-md transition-shadow"><div class="flex justify-between"><span class="font-black ${open?'text-purple-700':'text-slate-500'}">Exercise ${bt.bai}<span class="block text-[9px] text-slate-400">Bài tập ${bt.bai}</span></span><span>${open?'':'🔒'}</span></div><div class="text-[12px] md:text-[13px] font-bold text-slate-600 mt-1 line-clamp-2">${escapeHtml(bt.title||'')}</div><div class="text-[10px] mt-2 ${open?'text-fuchsia-600':'text-slate-400'} font-black">${open?'20 questions · 6 skills<br><span class="text-[9px] text-slate-400">20 câu · 6 năng lực</span>':'Score ≥80% to unlock<br><span class="text-[9px] text-slate-400">Cần ≥80% bài trước</span>'}</div></button>`}).join('')}</div>`;
 }
 function showLockedBaiTapTa2_(bai){alert(`🔒 Bài tập ${bai} chưa mở. Bé cần đạt từ 80% ở Bài tập trước để mở khóa nhé!`);}
 async function selectBaiTapTa2_(bai){
@@ -4838,7 +5693,7 @@ async function selectBaiTapTa2_(bai){
 // Báo cáo 6 năng lực: không có dữ liệu không được hiểu là 0%.
 function renderReportTopicsBreakdown(){
     const container=document.getElementById('report-topics-list');if(!container)return;const stats={};SKILL_KEYS.forEach(k=>stats[k]={total:0,correct:0,maxScore:0,earnedScore:0});activeQuestionsList.forEach((q,i)=>{let k=String(q.skill_tag||'ENG_VOC').toUpperCase();if(!SKILL_KEYS.includes(k))k='ENG_VOC';stats[k].total++;stats[k].maxScore+=(q.diem??0.5);if(userAnswers[i]===q.answer){stats[k].correct++;stats[k].earnedScore+=(q.diem??0.5);}});
-    container.innerHTML=SKILL_KEYS.map(k=>{const d=stats[k];if(!d.total)return `<div class="bg-slate-50 border border-slate-200 rounded-2xl p-3"><div class="flex items-center justify-between gap-2"><span class="font-black text-slate-700 text-xs sm:text-sm">${SKILL_TAXONOMY[k].name}</span><span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-extrabold">Chưa đủ dữ liệu</span></div><div class="mt-2 text-xs font-bold text-slate-400">Bài này chưa có câu hỏi thuộc năng lực này.</div></div>`;const pct=Math.round(d.correct/d.total*100),pass=pct>=50;return `<div class="bg-pink-50/40 border border-pink-100 rounded-2xl p-3 space-y-2"><div class="flex items-center justify-between"><span class="font-black text-slate-800 text-xs sm:text-sm">${SKILL_TAXONOMY[k].name}</span><span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${pass?'bg-amber-100 text-amber-800':'bg-rose-50 text-rose-700'}">${pass?'Đạt yêu cầu':'Cần luyện thêm'}</span></div><div class="flex justify-between text-xs font-bold text-slate-600"><span>Số câu đúng: <strong class="text-pink-600">${d.correct}/${d.total}</strong></span><span class="font-black">${pct}%</span></div><div class="w-full bg-pink-100 rounded-full h-2 overflow-hidden"><div class="${pass?'bg-gradient-to-r from-amber-400 to-orange-400':'bg-gradient-to-r from-pink-400 to-rose-400'} h-full rounded-full" style="width:${pct}%"></div></div></div>`;}).join('');
+    container.innerHTML=SKILL_KEYS.map(k=>{const d=stats[k];if(!d.total)return `<div class="bg-slate-50 border border-slate-200 rounded-2xl p-3"><div class="flex items-center justify-between gap-2"><span class="font-black text-slate-700 text-xs sm:text-sm">${SKILL_TAXONOMY[k].name}</span><span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-extrabold">Chưa đủ dữ liệu</span></div><div class="mt-2 text-xs font-bold text-slate-400">Bài này chưa có câu hỏi thuộc năng lực này.</div></div>`;const pct=Math.round(d.correct/d.total*100),pass=pct>=50;return `<div class="bg-pink-50/40 border border-pink-100 rounded-2xl p-3 space-y-2"><div class="flex items-center justify-between"><span class="font-black text-slate-800 text-xs sm:text-sm">${SKILL_TAXONOMY[k].name}</span><span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${pass?'bg-violet-100 text-violet-700':'bg-rose-50 text-rose-700'}">${pass?'Đạt yêu cầu':'Cần luyện thêm'}</span></div><div class="flex justify-between text-xs font-bold text-slate-600"><span>Số câu đúng: <strong class="text-pink-600">${d.correct}/${d.total}</strong></span><span class="font-black">${pct}%</span></div><div class="w-full bg-pink-100 rounded-full h-2 overflow-hidden"><div class="${pass?'bg-gradient-to-r from-fuchsia-400 to-violet-400':'bg-gradient-to-r from-pink-400 to-rose-400'} h-full rounded-full" style="width:${pct}%"></div></div></div>`;}).join('');
 }
 
 async function saveWeeklyProgressToSheet(percent,starCount,scoreVal){
