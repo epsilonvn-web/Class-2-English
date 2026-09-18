@@ -1338,10 +1338,28 @@ function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3
         document.getElementById('header-level3-title').textContent = nested[0].title;
         tab3.classList.remove('hidden');
         tab3.classList.add('flex');
-        // Cấp chuyên mục đầu tiên quay về hub/module hiện tại.
-        headerLevel3ClickHandler = nested[0].source === 'level3' && typeof level3ClickHandler === 'function'
-            ? level3ClickHandler
-            : returnToTopicLecture;
+
+        // Breadcrumb cấp chuyên mục phải có đích quay về CỐ ĐỊNH theo chính tên module.
+        // Không phụ thuộc activeTopicId vì state này có thể bị reset khi đổi view / quiz.
+        const moduleTitle = String(nested[0].title || '').trim();
+        const resolveModuleHub = () => {
+            if (/^1\.\s*Alphabet\s*&\s*IPA/i.test(moduleTitle)) return openAlphabetIPA;
+            if (/^2\.\s*Vocabulary/i.test(moduleTitle)) return openVocabularyHub;
+            if (/^3\.\s*Remove Letter/i.test(moduleTitle)) return () => openSharedVocabActivityHub_(3);
+            if (/^4\.\s*Fill Missing/i.test(moduleTitle)) return () => openSharedVocabActivityHub_(4);
+            if (/^5\.\s*Odd One Out/i.test(moduleTitle)) return openOddOneOutLevelHub_;
+            if (/^(6\.\s*)?Reading Comprehension/i.test(moduleTitle)) return openReadingComprehensionHub_;
+            if (/^7\.\s*Sentence Builder/i.test(moduleTitle)) return () => openExploreLevelHub_(7);
+            if (/^8\.\s*Fill Sentence/i.test(moduleTitle)) return () => openExploreLevelHub_(8);
+            if (/^9\.\s*Q&A Dialogues/i.test(moduleTitle)) return () => openExploreLevelHub_(9);
+            return null;
+        };
+        const explicitModuleHub = nested[0].source === 'level2' ? resolveModuleHub() : null;
+        headerLevel3ClickHandler = explicitModuleHub || (
+            nested[0].source === 'level3' && typeof level3ClickHandler === 'function'
+                ? level3ClickHandler
+                : returnToTopicLecture
+        );
     } else {
         tab3.classList.add('hidden');
         tab3.classList.remove('flex');
@@ -1378,9 +1396,17 @@ function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3
 function returnToTopicLecture() {
     stopSpeaking();
     clearInterval(quizTimerInterval);
-    if (Number(activeTopicId) === 2) {
-        return openVocabularyHub();
-    }
+
+    // Các module Explore có hub riêng phải quay lại đúng hub của chính nó.
+    // Không dùng fallback chung vì các module 2-9 không chia sẻ cùng một lecture state.
+    const topicId = Number(activeTopicId);
+    if (topicId === 1) return openAlphabetIPA();
+    if (topicId === 2) return openVocabularyHub();
+    if (topicId === 3 || topicId === 4) return openSharedVocabActivityHub_(topicId);
+    if (topicId === 5) return openOddOneOutLevelHub_();
+    if (topicId === 6) return openReadingComprehensionHub_();
+    if (topicId === 7 || topicId === 8 || topicId === 9) return openExploreLevelHub_(topicId);
+
     if (activeExamContext) {
         openExamHub();
     } else if (activeRoadmapContext) {
@@ -2175,18 +2201,51 @@ function getVocabulary18TopicId_(q) {
 }
 
 function resetLectureChrome_() {
+    const view = document.getElementById('view-lecture');
     const content = document.getElementById('lecture-content');
     const contentWrap = content?.parentElement;
     const speakBtn = document.querySelector('#view-lecture button[onclick="speakLecture()"]');
+    const lectureInner = document.querySelector('#view-lecture > div:first-child');
+    const list = document.getElementById('lecture-subtopics-list');
+    const listWrap = list?.parentElement;
+    if (view) view.classList.remove('ta2-compact-vocab-hub');
+    if (listWrap) {
+        listWrap.classList.add('pt-2', 'border-t', 'border-pink-100');
+        listWrap.classList.remove('ta2-vocab-list-wrap');
+    }
     if (contentWrap) contentWrap.classList.remove('hidden');
     if (speakBtn) speakBtn.classList.remove('hidden');
+    if (lectureInner) {
+        lectureInner.classList.remove('max-w-6xl');
+        lectureInner.classList.add('max-w-4xl');
+    }
+}
+
+function applyCompactVocabularyHubLayout_() {
+    const view = document.getElementById('view-lecture');
+    const list = document.getElementById('lecture-subtopics-list');
+    const listWrap = list?.parentElement;
+    if (view) view.classList.add('ta2-compact-vocab-hub');
+    if (listWrap) {
+        listWrap.classList.remove('pt-2', 'border-t', 'border-pink-100');
+        listWrap.classList.add('ta2-vocab-list-wrap');
+    }
+}
+
+function setLectureSpeakVisible_(visible) {
+    const speakBtn = document.querySelector('#view-lecture button[onclick="speakLecture()"]');
+    if (!speakBtn) return;
+    speakBtn.classList.toggle('hidden', !visible);
 }
 
 async function openVocabularyHub() {
+    resetLectureChrome_();
     stopSpeaking();
     inMiniGameFlow = false;
     inAlphaIpaFlow = false;
+    setMainTabActive_('discover');
     activeTopicId = 2; activeExamContext = null; activeRoadmapContext = null;
+    pendingTopicQuiz = null;
     updateNavTabs('2. Vocabulary', '📚', null);
     showLoadingOverlay('Loading vocabulary topics...');
     try {
@@ -2211,6 +2270,7 @@ function renderVocabulary18Topics_() {
     const list = document.getElementById('lecture-subtopics-list');
     const mix = document.getElementById('wrap-mix-all-subtopics');
     if (!list) return;
+    applyCompactVocabularyHubLayout_();
     if (contentWrap) contentWrap.classList.add('hidden');
     if (speakBtn) speakBtn.classList.add('hidden');
     if (mix) mix.classList.add('hidden');
@@ -2225,24 +2285,29 @@ function renderVocabulary18Topics_() {
     });
 
     document.getElementById('lecture-title').textContent = '';
+    const lectureInner = document.querySelector('#view-lecture > div:first-child');
+    if (lectureInner) {
+        lectureInner.classList.remove('max-w-4xl');
+        lectureInner.classList.add('max-w-6xl');
+    }
     list.className = 'w-full max-w-6xl';
     list.innerHTML = `
-        <div class="flex justify-center mb-4">
-            <button onclick="openVocabularyAll18()" class="min-h-[48px] px-5 md:px-7 rounded-2xl border-2 border-pink-300 bg-gradient-to-r from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-pink-600">
-                <span class="text-lg md:text-xl">📚</span>
-                <span class="text-lg md:text-2xl font-black">18 VOCABULARY TOPICS (${uniqueWords.size} WORDS)</span>
+        <div class="flex justify-center mb-3">
+            <button onclick="openVocabularyAll18()" class="min-h-[44px] px-4 md:px-6 rounded-2xl border-2 border-pink-300 bg-gradient-to-r from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-pink-600">
+                <span class="text-base md:text-lg">📚</span>
+                <span class="text-base md:text-lg font-black">18 VOCABULARY TOPICS (${uniqueWords.size} WORDS)</span>
             </button>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 md:gap-3">
             ${VOCABULARY_18_TOPICS.map(t => {
                 const count = counts[t.id] || 0;
-                return `<button onclick="openVocabularyTopic18(${t.id})" class="min-h-[86px] md:min-h-[92px] rounded-2xl border-2 border-pink-200 bg-white hover:bg-pink-50 hover:border-pink-400 transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
+                return `<button onclick="openVocabularyTopic18(${t.id})" class="min-h-[88px] md:min-h-[94px] rounded-2xl border-2 border-pink-200 bg-white hover:bg-pink-50 hover:border-pink-400 transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
                     <div class="flex items-center justify-center gap-1.5 md:gap-2 w-full">
                         <span class="text-xl md:text-2xl leading-none shrink-0">${t.icon}</span>
-                        <span class="font-black text-pink-700 text-xs md:text-sm leading-tight">${t.id}. ${escapeHtml(t.title)}</span>
+                        <span class="font-black text-pink-700 text-sm md:text-[15px] leading-tight">${t.id}. ${escapeHtml(t.title)}</span>
                     </div>
-                    <div class="text-[10px] md:text-[11px] font-bold text-slate-400 mt-1 leading-tight">${escapeHtml(t.vi)}</div>
-                    <div class="text-[10px] font-black ${count ? 'text-pink-500' : 'text-slate-300'} mt-1">${count} words</div>
+                    <div class="text-[11px] md:text-xs font-bold text-slate-500 mt-1 leading-tight">${escapeHtml(t.vi)}</div>
+                    <div class="text-[11px] md:text-xs font-black ${count ? 'text-pink-500' : 'text-slate-300'} mt-1">${count} words</div>
                 </button>`;
             }).join('')}
         </div>`;
@@ -2495,8 +2560,8 @@ function renderVocabularySharedStudy_(q) {
             <span class="opt-text flex items-center gap-2 min-w-0">
                 <strong class="${accentClass} shrink-0">${String.fromCharCode(65+i)}.</strong>
                 <span class="font-black leading-tight shrink-0">${escapeHtml(opt)}</span>
-                ${ipa ? `<span class="text-[11px] md:text-xs font-bold text-slate-400 shrink-0">/${escapeHtml(ipa)}/</span>` : ''}
-                ${meaning ? `<span class="vocab-option-meaning hidden text-[11px] md:text-xs font-bold text-violet-500 truncate">(${escapeHtml(meaning)})</span>` : ''}
+                ${ipa ? `<span class="text-sm md:text-base font-bold text-slate-500 shrink-0">/${escapeHtml(ipa)}/</span>` : ''}
+                ${meaning ? `<span class="vocab-option-meaning hidden text-sm md:text-base font-bold text-violet-600 truncate">(${escapeHtml(meaning)})</span>` : ''}
             </span>
         </button>`;
     };
@@ -2507,13 +2572,15 @@ function renderVocabularySharedStudy_(q) {
         body = `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-stretch">
             <section class="rounded-3xl border-2 border-pink-200 bg-pink-50/40 p-3 shadow-sm flex flex-col">
                 <div class="w-full aspect-[4/3] max-h-[260px] bg-white rounded-3xl overflow-hidden flex items-center justify-center mb-2.5">${imageOrEmoji}</div>
-                <div class="flex justify-center items-center gap-2 flex-wrap">
-                    <div class="text-2xl md:text-3xl font-black text-slate-900">${escapeHtml(q.word || '')}</div>
-                    <span class="px-2 py-1 rounded-full bg-violet-100 text-violet-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
-                    <button onclick="speakVocabularyTarget_()" class="w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200"><i class="fa-solid fa-volume-high"></i></button>
+                <div class="relative w-full min-h-[94px] flex flex-col items-center justify-center px-12 text-center">
+                    <div class="flex items-center justify-center gap-2 flex-wrap">
+                        <div class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">${escapeHtml(q.word || '')}</div>
+                        <span class="px-2 py-1 rounded-full bg-violet-100 text-violet-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
+                    </div>
+                    ${getVocabularyIpaForWord_(q.word) ? `<div class="mt-1 text-sm md:text-base font-black text-sky-700">/${escapeHtml(getVocabularyIpaForWord_(q.word))}/</div>` : ''}
+                    <div class="mt-1 text-base md:text-lg font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
+                    <button onclick="speakVocabularyTarget_()" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
-                ${getVocabularyIpaForWord_(q.word) ? `<div class="mt-1 text-center text-sm md:text-base font-black text-sky-700">/${escapeHtml(getVocabularyIpaForWord_(q.word))}/</div>` : ''}
-                <div class="mt-1 text-center text-base md:text-lg font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
             </section>
             <section class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/60 via-white to-violet-50/60 p-3 shadow-sm">
                 <div class="font-black text-fuchsia-600 text-sm md:text-base mb-2">⭐ 3 EXAMPLE SENTENCES:</div>
@@ -2524,9 +2591,12 @@ function renderVocabularySharedStudy_(q) {
         const options = getVocabularyChoiceOptions_(q);
         q.answer = q.word;
         q.options = options;
-        body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div id="vocab-prompt-meaning" class="mt-1 text-xs md:text-sm font-bold text-slate-400 hidden">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div></div>
+        body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-            <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-3"><div class="w-full aspect-[4/3] max-h-[260px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div></section>
+            <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-3 flex flex-col">
+                <div class="w-full aspect-[4/3] max-h-[240px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div>
+                <div id="vocab-prompt-meaning" class="mt-2.5 text-center text-xl md:text-2xl font-black text-violet-700 leading-tight">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div>
+            </section>
             <section id="vocab-picture-examples" class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/50 via-white to-violet-50/50 p-3">${vocabularyPictureExamplesHtml_(q)}</section>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
@@ -2544,6 +2614,10 @@ function renderVocabularySharedStudy_(q) {
 
     document.getElementById('question-box').innerHTML = `<div class="w-full max-w-5xl mx-auto px-1 md:px-2 -mt-3 md:-mt-4">${tabs}${body}</div>`;
     restoreQuestionState(q);
+    if (userAnswers[currentQIndex] === q.answer) {
+        revealVocabularyVietnameseAfterCorrect_();
+        revealVocabularyPictureExamples_();
+    }
     updateNavButtons();
     if (activeVocabularyStudyMode === 'listen' && autoSpeechEnabled) setTimeout(() => speakVocabularyTarget_(), 120);
 }
@@ -2609,6 +2683,7 @@ function renderSharedVocab18Topics_(activityId, pool) {
     const list = document.getElementById('lecture-subtopics-list');
     const mix = document.getElementById('wrap-mix-all-subtopics');
     if (!cfg || !list) return;
+    applyCompactVocabularyHubLayout_();
     if (contentWrap) contentWrap.classList.add('hidden');
     if (speakBtn) speakBtn.classList.add('hidden');
     if (mix) mix.classList.add('hidden');
@@ -2619,19 +2694,19 @@ function renderSharedVocab18Topics_(activityId, pool) {
     document.getElementById('lecture-title').textContent = '';
     list.className = 'w-full max-w-6xl';
     list.innerHTML = `
-        <div class="flex justify-center mb-4">
-            <button onclick="openSharedVocabAll18_(${activityId})" class="min-h-[48px] px-5 md:px-7 rounded-2xl border-2 border-fuchsia-300 bg-gradient-to-r from-pink-50 via-fuchsia-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-fuchsia-700">
-                <span class="text-lg md:text-xl">${cfg.icon}</span>
-                <span class="text-base md:text-xl font-black">ALL 18 TOPICS (${uniqueWords.size} WORDS)</span>
+        <div class="flex justify-center mb-3">
+            <button onclick="openSharedVocabAll18_(${activityId})" class="min-h-[44px] px-4 md:px-6 rounded-2xl border-2 border-fuchsia-300 bg-gradient-to-r from-pink-50 via-fuchsia-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-fuchsia-700">
+                <span class="text-base md:text-lg">${cfg.icon}</span>
+                <span class="text-base md:text-lg font-black">ALL 18 TOPICS (${uniqueWords.size} WORDS)</span>
             </button>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 md:gap-3">
             ${VOCABULARY_18_TOPICS.map((t, i) => {
                 const tone = ['from-pink-50 to-fuchsia-50 border-pink-200 hover:border-pink-300','from-fuchsia-50 to-violet-50 border-fuchsia-200 hover:border-fuchsia-300','from-violet-50 to-purple-50 border-violet-200 hover:border-violet-300'][i % 3];
-                return `<button onclick="openSharedVocabTopic18_(${activityId},${t.id})" class="min-h-[82px] rounded-2xl border-2 bg-gradient-to-br ${tone} hover:brightness-[0.99] transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
-                    <div class="flex items-center justify-center gap-1.5 w-full"><span class="text-xl leading-none">${t.icon}</span><span class="font-black text-violet-700 text-xs md:text-sm leading-tight">${t.id}. ${escapeHtml(t.title)}</span></div>
-                    <div class="text-[10px] md:text-[11px] font-bold text-slate-500 mt-1">${escapeHtml(t.vi)}</div>
-                    <div class="text-[10px] font-black text-fuchsia-500 mt-1">${counts[t.id] || 0} words</div>
+                return `<button onclick="openSharedVocabTopic18_(${activityId},${t.id})" class="min-h-[88px] md:min-h-[94px] rounded-2xl border-2 bg-gradient-to-br ${tone} hover:brightness-[0.99] transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
+                    <div class="flex items-center justify-center gap-1.5 md:gap-2 w-full"><span class="text-xl md:text-2xl leading-none shrink-0">${t.icon}</span><span class="font-black text-violet-700 text-sm md:text-[15px] leading-tight">${t.id}. ${escapeHtml(t.title)}</span></div>
+                    <div class="text-[11px] md:text-xs font-bold text-slate-500 mt-1 leading-tight">${escapeHtml(t.vi)}</div>
+                    <div class="text-[11px] md:text-xs font-black text-fuchsia-500 mt-1">${counts[t.id] || 0} words</div>
                 </button>`;
             }).join('')}
         </div>`;
@@ -2889,6 +2964,7 @@ async function openOddOneOutLevelHub_() {
         document.getElementById('lecture-title').textContent = 'Odd One Out / Tìm từ khác loại';
         document.getElementById('lecture-content').textContent = 'Chọn level từ dễ đến khó. Mỗi level trộn từ vựng của toàn bộ Vocabulary Master và tự tạo câu phân nhóm.';
         document.getElementById('view-lecture').dataset.audioText='';
+        setLectureSpeakVisible_(false);
         const html = EXPLORE_LEVEL_GROUPS.map((g,i) => {
             const style=SUBTOPIC_PALETTES[i%SUBTOPIC_PALETTES.length];
             return `<button onclick="openOddOneOutLevel_(${g.level})" class="p-4 ${style.card} border-2 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn min-h-[88px]">
@@ -2923,18 +2999,18 @@ function renderRemoveLetterShared_(q) {
     const bottom = [...selected].sort((a,b)=>a-b).map(i => `<button onclick="toggleRemoveLetterToken_(${i})" class="w-12 h-12 md:w-14 md:h-14 rounded-2xl border-2 border-violet-200 bg-gradient-to-br from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 text-violet-600 font-black text-xl md:text-2xl shadow-sm">${escapeHtml(q.tokens[i].ch)}</button>`).join('');
     const solved = userAnswers[currentQIndex] === q.answer_word;
     document.getElementById('question-box').innerHTML = `
-        <div class="w-full max-w-4xl mx-auto px-2">
-            <div class="text-center mb-2"><div class="font-black text-lg md:text-xl text-slate-900">Remove the extra letter(s).</div><div class="text-xs md:text-sm font-bold text-slate-400">Chạm chữ thừa để đưa xuống dưới. Chạm lại để đưa lên.</div></div>
-            <div class="rounded-3xl border-2 border-dashed border-fuchsia-200 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5">
-                <div class="w-24 h-24 md:w-28 md:h-28 mx-auto flex items-center justify-center mb-2">${imageOrEmoji}</div>
-                <div class="text-center font-black text-slate-700 mb-1">Meaning: <span class="text-fuchsia-600">${escapeHtml(q.vietnamese || '')}</span></div>
-                ${q.ipa ? `<div class="text-center font-black text-violet-600 mb-3">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
-                <div class="flex flex-wrap justify-center gap-2 min-h-[56px]">${top}</div>
-                <div class="mt-4 pt-3 border-t border-dashed border-fuchsia-200 min-h-[70px]">
-                    <div class="text-[11px] font-black text-slate-400 text-center mb-2">REMOVED LETTERS</div>
-                    <div class="flex flex-wrap justify-center gap-2">${bottom || '<span class="text-xs font-bold text-violet-300">Tap extra letters above</span>'}</div>
+        <div class="w-full max-w-5xl mx-auto px-2">
+            <div class="text-center mb-1"><div class="font-black text-base md:text-lg text-slate-900">Remove the extra letter(s).</div><div class="text-[11px] md:text-xs font-bold text-slate-400">Chạm chữ thừa để đưa xuống dưới. Chạm lại để đưa lên.</div></div>
+            <div class="rounded-3xl border-2 border-dashed border-fuchsia-200 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-3 md:p-3.5">
+                <div class="w-20 h-20 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-1">${imageOrEmoji}</div>
+                <div class="text-center font-black text-slate-700 text-sm md:text-base leading-tight">Meaning: <span class="text-fuchsia-600">${escapeHtml(q.vietnamese || '')}</span></div>
+                ${q.ipa ? `<div class="text-center font-black text-violet-600 text-sm md:text-base mt-0.5 mb-1.5">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+                <div class="flex flex-wrap justify-center gap-1.5 min-h-[48px]">${top}</div>
+                <div class="mt-2 pt-2 border-t border-dashed border-fuchsia-200 min-h-[58px]">
+                    <div class="text-[10px] font-black text-slate-400 text-center mb-1">REMOVED LETTERS</div>
+                    <div class="flex flex-wrap justify-center gap-1.5">${bottom || '<span class="text-[11px] font-bold text-violet-300">Tap extra letters above</span>'}</div>
                 </div>
-                ${solved ? `<div class="mt-3 text-center font-black text-fuchsia-600">✓ ${escapeHtml(q.answer_word)}</div>` : ''}
+                ${solved ? `<div class="mt-1.5 text-center text-sm md:text-base font-black text-fuchsia-600">✓ ${escapeHtml(q.answer_word)}</div>` : ''}
             </div>
         </div>`;
     updateNavButtons();
@@ -3016,6 +3092,7 @@ async function openExploreLevelHub_(topicId) {
         document.getElementById('lecture-title').textContent=`${cfg.title} / ${cfg.vi}`;
         document.getElementById('lecture-content').textContent='Chọn level theo tiến trình 16 Unit. Mỗi level gồm 20 câu, tương ứng 4 Unit liên tiếp.';
         document.getElementById('view-lecture').dataset.audioText='';
+        setLectureSpeakVisible_(false);
         const html=EXPLORE_LEVEL_GROUPS.map((g,i)=>{
             const style=SUBTOPIC_PALETTES[i%SUBTOPIC_PALETTES.length];
             const count=data.questions.filter(q=>Number(q.level)===g.level).length;
@@ -3036,11 +3113,25 @@ async function openExploreLevelGroup_(topicId, level) {
     const data=await loadExploreLevelBank_(topicId);
     const g=EXPLORE_LEVEL_GROUPS.find(x=>x.level===Number(level));
     const pool=data.questions.filter(q=>Number(q.level)===Number(level)).map(normalizeQuestion).filter(Boolean);
-    if (Number(topicId) === 7) pool.forEach(q => { q.render_style = 'sentence_builder_tap'; });
+    if (Number(topicId) === 7) {
+        // Sentence Builder state belongs to this exact level/session, never to a numeric question index.
+        // This prevents a partial sentence from leaking when switching Level 1/2/3/4.
+        Object.keys(sentenceBuilderSelections_).forEach(k => delete sentenceBuilderSelections_[k]);
+        sentenceBuilderSessionKey_ = `topic7-level${Number(level)}-${Date.now()}`;
+        pool.forEach(q => { q.render_style = 'sentence_builder_tap'; });
+    }
     if (Number(topicId) === 8) pool.forEach(q => { q.render_style = 'fill_sentence_interactive'; });
     if (!g || pool.length!==20) return alert('Level này chưa đủ 20 câu.');
     updateNavTabs(`${topicId}. ${cfg.title}`,cfg.icon,`Level ${g.level} · ${g.name} / ${g.name_vi}`,null,()=>openExploreLevelHub_(topicId));
-    startTopicQuiz(Number(topicId),`${cfg.title} - Level ${g.level}`,shuffleArray(pool),`${topicId}.level${g.level}`);
+    let shuffledPool = shuffleArray(pool);
+    const repeatKey = `${Number(topicId)}-level${Number(level)}`;
+    const firstId = q => String(q?.question_id || q?.id || '');
+    if (shuffledPool.length > 1 && lastExploreLevelFirstQuestion_[repeatKey] && firstId(shuffledPool[0]) === lastExploreLevelFirstQuestion_[repeatKey]) {
+        const swapIndex = 1 + Math.floor(Math.random() * (shuffledPool.length - 1));
+        [shuffledPool[0], shuffledPool[swapIndex]] = [shuffledPool[swapIndex], shuffledPool[0]];
+    }
+    lastExploreLevelFirstQuestion_[repeatKey] = firstId(shuffledPool[0]);
+    startTopicQuiz(Number(topicId),`${cfg.title} - Level ${g.level}`,shuffledPool,`${topicId}.level${g.level}`);
 }
 
 async function loadReadingComprehensionData_() {
@@ -3055,7 +3146,7 @@ async function loadReadingComprehensionData_() {
 async function openReadingComprehensionHub_() {
     resetLectureChrome_(); stopSpeaking(); inMiniGameFlow = false; inAlphaIpaFlow = false;
     activeTopicId = 6; activeExamContext = null; activeRoadmapContext = null; activeReadingGroup = null;
-    updateNavTabs('Reading Comprehension', '📖', null);
+    updateNavTabs('6. Reading Comprehension', '📖', null);
     showLoadingOverlay('Đang chuẩn bị 80 bài Đọc hiểu...');
     try {
         const data = await loadReadingComprehensionData_();
@@ -3063,6 +3154,7 @@ async function openReadingComprehensionHub_() {
         document.getElementById('lecture-title').textContent = 'Reading Comprehension / Đọc hiểu';
         document.getElementById('lecture-content').textContent = 'Chọn một nhóm để đọc từ Unit đầu đến Unit sau. Mỗi nhóm có 20 bài, mỗi bài có 2 câu hỏi.';
         document.getElementById('view-lecture').dataset.audioText = '';
+        setLectureSpeakVisible_(false);
         const icons = ['🌱','🌼','🌟','🏆'];
         const html = data.groups.map((g,i) => {
             const style = SUBTOPIC_PALETTES[i % SUBTOPIC_PALETTES.length];
@@ -3086,7 +3178,7 @@ async function openReadingGroup_(groupId) {
     if (!g || !pool.length) return;
     activeReadingGroup = g;
     readingPairState = {};
-    updateNavTabs('Reading Comprehension', '📖', `${g.name} / ${g.name_vi}`);
+    updateNavTabs('6. Reading Comprehension', '📖', `${g.name} / ${g.name_vi}`);
     startTopicQuiz(6, `${g.name} / ${g.name_vi}`, pool, `reading-group-${groupId}`);
 }
 
@@ -3152,6 +3244,7 @@ function showLectureAndSubtopics(topicNum, topicName, topicObj) {
     document.getElementById('lecture-title').textContent = topicObj.lecture_title || topicName;
     document.getElementById('lecture-content').textContent = topicObj.lecture_content || topicObj.description || 'Chào mừng bé yêu! Hãy chọn một mục nhỏ bên dưới để bắt đầu luyện tập nhé.';
     document.getElementById('view-lecture').dataset.audioText = topicObj.lecture_audio_text || topicObj.lecture_content || topicObj.description || '';
+    setLectureSpeakVisible_(![5,6,7,8,9,10].includes(Number(topicNum)));
 
     const groups = [], groupMap = {}, groupLabels = {};
     topicObj.questions.forEach(q => {
@@ -3401,6 +3494,10 @@ function startTopicQuiz(topicNum, topicName, questions, subLabel) {
     quizWrongAnswers = []; 
     quizAnsweredLog = []; 
     quizStartTime = Date.now();
+    if (Number(topicNum) === 7) {
+        Object.keys(sentenceBuilderSelections_).forEach(k => delete sentenceBuilderSelections_[k]);
+        if (!sentenceBuilderSessionKey_) sentenceBuilderSessionKey_ = `topic7-${Date.now()}`;
+    }
 
     const topBar = document.getElementById('quiz-top-bar');
     const cardHeader = document.getElementById('quiz-card-header');
@@ -3524,6 +3621,13 @@ function renderVocabularyFlashcard_(q) {
 
 
 const sentenceBuilderSelections_ = {};
+let sentenceBuilderSessionKey_ = '';
+let lastExploreLevelFirstQuestion_ = {};
+
+function sentenceBuilderStateKey_(q) {
+    const qid = String(q?.question_id || q?.id || currentQIndex);
+    return `${sentenceBuilderSessionKey_}::${qid}`;
+}
 
 function sentenceBuilderNormalize_(text) {
     return String(text || '')
@@ -3559,7 +3663,8 @@ function sentenceBuilderGetTokens_(q) {
 
 function renderSentenceBuilderTap_(q) {
     const tokens = sentenceBuilderGetTokens_(q);
-    const selected = sentenceBuilderSelections_[currentQIndex] || [];
+    const stateKey = sentenceBuilderStateKey_(q);
+    const selected = sentenceBuilderSelections_[stateKey] || [];
     const completed = userAnswers[currentQIndex] !== undefined;
     const selectedSet = new Set(selected);
     const chosen = completed ? tokens.map(x=>x.id) : selected;
@@ -3584,24 +3689,24 @@ function renderSentenceBuilderTap_(q) {
     }).join('');
 
     const html = `
-        <div class="w-full max-w-4xl mx-auto px-2">
-            <div class="relative mb-3 min-h-[42px] flex items-center justify-center">
-                <div class="text-center">
+        <div class="w-full max-w-4xl mx-auto px-2 -mt-4 md:-mt-6">
+            <div class="relative mb-1.5 min-h-[32px] flex items-center justify-center">
+                <div class="text-center leading-tight">
                     <div class="text-base md:text-xl font-black text-slate-800">Tap words in correct order to make a sentence.</div>
-                    <div class="text-sm md:text-base font-bold text-fuchsia-500 mt-1">Chạm các từ theo đúng thứ tự để tạo thành câu.</div>
+                    <div class="text-sm md:text-base font-bold text-fuchsia-500 mt-0.5">Chạm các từ theo đúng thứ tự để tạo thành câu.</div>
                 </div>
-                ${completed ? `<button onclick="speakEnglish(${JSON.stringify(String(q.answer || ''))})" class="absolute right-0 top-1/2 -translate-y-1/2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white font-black text-xs md:text-sm shadow-md hover:brightness-105"><i class="fa-solid fa-volume-high mr-1.5"></i>Listen</button>` : ''}
+                ${completed ? `<button onclick="speakEnglish(decodeURIComponent('${encodeURIComponent(String(q.answer || ''))}'))" class="absolute right-0 top-1/2 -translate-y-1/2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white font-black text-xs md:text-sm shadow-md hover:brightness-105"><i class="fa-solid fa-volume-high mr-1.5"></i>Listen</button>` : ''}
             </div>
 
-            <div class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-fuchsia-50/60 to-violet-50/80 p-4 md:p-6 shadow-sm">
-                <div class="min-h-[76px] rounded-2xl border-2 border-pink-200 bg-white/90 px-4 py-4 flex flex-wrap items-center justify-center gap-2.5">
+            <div class="bg-transparent px-0 py-0">
+                <div class="min-h-[52px] rounded-2xl border-2 border-pink-200 bg-white/90 px-3 py-2.5 flex flex-wrap items-center justify-center gap-2 shadow-sm">
                     ${chosenHtml}
                 </div>
-                <div id="sentence-builder-feedback" class="text-center min-h-[26px] mt-2 text-sm font-extrabold ${completed?'text-emerald-600':'text-fuchsia-500'}">${completed?'✓ Excellent! The sentence is correct.':''}</div>
-                ${completed && meaning ? `<div class="mt-2 rounded-2xl bg-white border-2 border-violet-200 px-4 py-3 text-center text-base md:text-lg"><span class="font-black text-violet-700">Meaning: </span><span class="font-extrabold text-slate-700">${escapeHtml(meaning)}</span></div>` : ''}
+                <div id="sentence-builder-feedback" class="text-center min-h-[18px] mt-1 text-sm font-extrabold ${completed?'text-emerald-600':'text-fuchsia-500'}">${completed?'✓ Excellent! The sentence is correct.':''}</div>
+                ${completed && meaning ? `<div class="mt-1.5 rounded-2xl bg-white border-2 border-violet-200 px-4 py-2.5 text-center text-base md:text-lg"><span class="font-black text-violet-700">Meaning: </span><span class="font-extrabold text-slate-700">${escapeHtml(meaning)}</span></div>` : ''}
             </div>
 
-            ${!completed ? `<div class="mt-4 flex flex-wrap items-stretch justify-center gap-2.5 md:gap-3">${wordHtml}</div>` : ''}
+            ${!completed ? `<div class="mt-1 flex flex-wrap items-stretch justify-center gap-2 md:gap-2.5">${wordHtml}</div>` : ''}
         </div>`;
 
     document.getElementById('question-box').innerHTML = html;
@@ -3613,30 +3718,38 @@ function sentenceBuilderPick_(id) {
     const q=activeQuestionsList[currentQIndex];
     if (!q || q.render_style!=='sentence_builder_tap' || userAnswers[currentQIndex]!==undefined) return;
     const tokens=sentenceBuilderGetTokens_(q);
-    const sel=sentenceBuilderSelections_[currentQIndex] || (sentenceBuilderSelections_[currentQIndex]=[]);
-    if (!sel.includes(Number(id))) sel.push(Number(id));
-    if (sel.length===tokens.length) {
-        const built=sel.map(x=>tokens.find(t=>t.id===x)?.text||'').join(' ');
-        if (sentenceBuilderNormalize_(built)===sentenceBuilderNormalize_(q.answer)) {
-            checkAnswer(q.answer);
-            renderSentenceBuilderTap_(q);
-            setTimeout(()=>speakEnglish(q.answer),180);
-            return;
-        }
+    const stateKey=sentenceBuilderStateKey_(q);
+    const sel=sentenceBuilderSelections_[stateKey] || (sentenceBuilderSelections_[stateKey]=[]);
+    const pickedId=Number(id);
+
+    // The upper sentence area must always contain the correct sentence prefix.
+    // Only accept the next token in the answer order; a wrong tap stays below.
+    const expectedId=sel.length;
+    if (pickedId !== expectedId) {
+        renderSentenceBuilderTap_(q);
         const fb=document.getElementById('sentence-builder-feedback');
-        if (fb) { fb.textContent='Not quite. Tap a word above to move it back and try again.'; fb.className='text-center min-h-[26px] mt-2 text-sm font-extrabold text-rose-500'; }
+        if (fb) {
+            fb.textContent='Try another word.';
+            fb.className='text-center min-h-[20px] mt-1.5 text-sm font-extrabold text-rose-500';
+        }
+        return;
+    }
+
+    if (!sel.includes(pickedId)) sel.push(pickedId);
+    if (sel.length===tokens.length) {
+        checkAnswer(q.answer);
+        renderSentenceBuilderTap_(q);
+        setTimeout(()=>speakEnglish(q.answer),180);
+        return;
     }
     renderSentenceBuilderTap_(q);
-    if ((sentenceBuilderSelections_[currentQIndex]||[]).length===tokens.length) {
-        const fb=document.getElementById('sentence-builder-feedback');
-        if (fb) { fb.textContent='Not quite. Tap a word above to move it back and try again.'; fb.className='text-center min-h-[26px] mt-2 text-sm font-extrabold text-rose-500'; }
-    }
 }
 
 function sentenceBuilderUnpick_(id) {
     const q=activeQuestionsList[currentQIndex];
     if (!q || q.render_style!=='sentence_builder_tap' || userAnswers[currentQIndex]!==undefined) return;
-    const sel=sentenceBuilderSelections_[currentQIndex] || [];
+    const stateKey=sentenceBuilderStateKey_(q);
+    const sel=sentenceBuilderSelections_[stateKey] || [];
     const pos=sel.indexOf(Number(id));
     if (pos>=0) sel.splice(pos,1);
     renderSentenceBuilderTap_(q);
@@ -3647,6 +3760,17 @@ function renderFillSentenceInteractive_(q) {
     const wrong = new Set(wrongAttemptsByQ[currentQIndex] || []);
     const sentence = solved ? (q.completed_sentence || String(q.question_text || '').replace(/_{2,}/g, q.answer)) : (q.question_text || '');
     const sentenceVi = solved ? (q.completed_sentence_vi || '') : '';
+    let sentenceHtml = escapeHtml(sentence);
+    if (solved && q.answer) {
+        const rawSentence = String(sentence);
+        const rawAnswer = String(q.answer);
+        const pos = rawSentence.toLocaleLowerCase().indexOf(rawAnswer.toLocaleLowerCase());
+        if (pos >= 0) {
+            sentenceHtml = escapeHtml(rawSentence.slice(0, pos))
+                + `<span class="text-rose-500 font-black">${escapeHtml(rawSentence.slice(pos, pos + rawAnswer.length))}</span>`
+                + escapeHtml(rawSentence.slice(pos + rawAnswer.length));
+        }
+    }
     const instructionEn = q.instruction_en || 'Choose the correct word to complete the sentence.';
     const instructionVi = q.instruction_vi || 'Chọn từ đúng để hoàn thành câu.';
 
@@ -3658,7 +3782,7 @@ function renderFillSentenceInteractive_(q) {
         const cls = isCorrect
             ? 'border-emerald-400 bg-emerald-50 text-emerald-800'
             : (isWrong ? 'border-rose-400 bg-rose-50 text-rose-700 opacity-75' : 'border-pink-200 bg-white hover:bg-pink-50 text-slate-800');
-        return `<button ${disabled} data-opt="${escapeHtml(opt)}" onclick="checkFillSentenceInteractive_(${JSON.stringify(opt)})" class="option-btn w-full min-h-[72px] px-4 py-3 rounded-2xl border-2 ${cls} text-left transition-all shadow-sm pastel-btn">
+        return `<button ${disabled} data-opt="${escapeHtml(opt)}" onclick="checkFillSentenceInteractive_(decodeURIComponent('${encodeURIComponent(String(opt))}'))" class="option-btn w-full min-h-[72px] px-4 py-3 rounded-2xl border-2 ${cls} text-left transition-all shadow-sm pastel-btn">
             <div class="flex items-start gap-3">
                 <span class="text-pink-600 font-black text-lg shrink-0">${String.fromCharCode(65+idx)}.</span>
                 <div class="min-w-0">
@@ -3677,14 +3801,14 @@ function renderFillSentenceInteractive_(q) {
                 <div class="text-sm md:text-base font-bold text-fuchsia-500 mt-1">${escapeHtml(instructionVi)}</div>
             </div>
 
-            <div class="rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5 shadow-sm">
-                <div class="flex items-center justify-center gap-2.5 flex-wrap">
-                    <div class="text-xl md:text-2xl font-black text-slate-900 leading-snug">${escapeHtml(sentence)}</div>
-                    <button onclick="speakFillSentence_()" ${solved ? '' : 'disabled'} class="px-3.5 py-2 rounded-xl font-black text-xs md:text-sm shadow-sm inline-flex items-center gap-1.5 ${solved ? 'bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white hover:brightness-105' : 'bg-slate-100 text-slate-300 cursor-not-allowed'}">
-                        <i class="fa-solid fa-volume-high"></i><span>Listen</span>
-                    </button>
+            <div class="relative rounded-3xl border-2 border-dashed border-pink-300 bg-gradient-to-br from-pink-50/80 via-white to-violet-50/80 p-4 md:p-5 shadow-sm">
+                <button onclick="speakFillSentence_()" ${solved ? '' : 'disabled'} class="absolute right-3 md:right-4 top-3 md:top-4 px-3.5 py-2 rounded-xl font-black text-xs md:text-sm shadow-sm inline-flex items-center gap-1.5 ${solved ? 'bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 text-white hover:brightness-105' : 'bg-slate-100 text-slate-300 cursor-not-allowed'}">
+                    <i class="fa-solid fa-volume-high"></i><span>Listen</span>
+                </button>
+                <div class="text-center px-16 md:px-20">
+                    <div class="text-xl md:text-2xl font-black text-slate-900 leading-snug">${sentenceHtml}</div>
+                    ${sentenceVi ? `<div class="mt-2 text-base md:text-lg font-extrabold text-violet-700">${escapeHtml(sentenceVi)}</div>` : ''}
                 </div>
-                ${sentenceVi ? `<div class="mt-2 text-center text-base md:text-lg font-extrabold text-violet-700">${escapeHtml(sentenceVi)}</div>` : ''}
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mt-4">${optionsHtml}</div>
@@ -3731,6 +3855,66 @@ function checkFillSentenceInteractive_(selectedOpt) {
     renderFillSentenceInteractive_(q);
 }
 
+function getGrammarQuestionParts_(q) {
+    if (!q) return { instruction: '', sentence: '' };
+    const raw = String(q.question_text || '').trim();
+    let instruction = '';
+    let sentence = raw;
+
+    const firstDot = raw.indexOf('.');
+    if (firstDot >= 0) {
+        const firstPart = raw.slice(0, firstDot + 1).trim();
+        const rest = raw.slice(firstDot + 1).trim();
+        if (/^choose\b/i.test(firstPart) && rest) {
+            instruction = firstPart;
+            sentence = rest;
+        }
+    }
+
+    const quoted = [...sentence.matchAll(/[\"'“”‘’]([^\"'“”‘’]*[A-Za-z][^\"'“”‘’]*)[\"'“”‘’]/g)];
+    if (quoted.length) sentence = String(quoted[quoted.length - 1][1] || '').trim();
+    sentence = sentence.replace(/^[\"'“”‘’]+|[\"'“”‘’]+$/g, '').trim();
+    return { instruction, sentence };
+}
+
+function getGrammarEnglishSentence_(q, completed = false) {
+    const parts = getGrammarQuestionParts_(q);
+    let sentence = parts.sentence;
+    if (completed && q && q.answer) sentence = sentence.replace(/_{2,}/g, String(q.answer));
+    return sentence;
+}
+
+function getGrammarSentenceHtml_(q) {
+    const sentence = getGrammarEnglishSentence_(q, false);
+    const solved = !!q && userAnswers[currentQIndex] === q.answer;
+    if (!solved || !q.answer) return escapeHtml(sentence);
+
+    const marker = /_{2,}/;
+    if (!marker.test(sentence)) return escapeHtml(getGrammarEnglishSentence_(q, true));
+    const pieces = sentence.split(marker);
+    return `${escapeHtml(pieces[0])}<span class="text-rose-500 font-black">${escapeHtml(String(q.answer))}</span>${escapeHtml(pieces.slice(1).join(''))}`;
+}
+
+function speakGrammarCompletedSentence_() {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || Number(activeTopicId) !== 10) return;
+    if (userAnswers[currentQIndex] !== q.answer) return;
+    const sentence = getGrammarEnglishSentence_(q, true);
+    if (sentence) speakEnglish(sentence, 0.92);
+}
+
+function updateGrammarListenButton_() {
+    if (Number(activeTopicId) !== 10) return;
+    const q = activeQuestionsList[currentQIndex];
+    const btn = document.getElementById('grammar-listen-btn');
+    if (!q || !btn) return;
+    const solved = userAnswers[currentQIndex] === q.answer;
+    btn.disabled = !solved;
+    btn.className = solved
+        ? 'px-4 py-1.5 bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white border border-pink-300 rounded-2xl text-xs md:text-sm font-extrabold flex items-center space-x-1.5 pastel-btn shadow-sm transition-all'
+        : 'px-4 py-1.5 bg-pink-50 text-pink-300 border border-pink-100 rounded-2xl text-xs md:text-sm font-extrabold flex items-center space-x-1.5 opacity-45 cursor-not-allowed shadow-none transition-all';
+}
+
 function loadQuestion() {
     stopSpeaking();
     const q = activeQuestionsList[currentQIndex];
@@ -3758,6 +3942,7 @@ function loadQuestion() {
     }
 
     const isEvaluationMode = !!activeExamContext || !!activeRoadmapContext;
+    const isGrammarPoint = !isEvaluationMode && Number(activeTopicId) === 10;
 
     if (isEvaluationMode) {
         document.getElementById('q-badge-index').textContent = `CÂU ${currentQIndex + 1} / ${activeQuestionsList.length}`;
@@ -3810,7 +3995,7 @@ function loadQuestion() {
     }
 
     let mediaHtml = '';
-    if ((q.image_url || q.emoji) && !activeExamContext) {
+    if ((q.image_url || q.emoji) && !activeExamContext && !(isGrammarPoint && String(q.sub_topic) === '10.1')) {
         // Khung cố định kích thước bọc NGOÀI ảnh — dù ảnh tải lỗi hay thành công, chiều cao
         // khu vực này không đổi (tránh đáp án bên dưới bị đẩy giật lên như lỗi trước đây).
         // Ưu tiên hiển thị ảnh thật nếu có; lỗi tải thì tự động ẩn ảnh và hiện Emoji dự phòng.
@@ -3833,12 +4018,29 @@ function loadQuestion() {
             <p class="text-gray-800 text-sm md:text-base font-bold whitespace-pre-line leading-relaxed ${useTwoColumns ? 'md:columns-2 md:gap-6' : ''}">${escapeHtml(pText)}</p>
         </div>` : '';
 
-    const practiceSpeakerBtnHtml = !isEvaluationMode ? `
+    const practiceSpeakerBtnHtml = !isEvaluationMode ? (isGrammarPoint ? `
+        <div class="flex items-center justify-center mt-1 mb-1">
+            <button id="grammar-listen-btn" onclick="speakGrammarCompletedSentence_()" disabled class="px-4 py-1.5 bg-pink-50 text-pink-300 border border-pink-100 rounded-2xl text-xs md:text-sm font-extrabold flex items-center space-x-1.5 opacity-45 cursor-not-allowed shadow-none transition-all">
+                <i class="fa-solid fa-volume-high"></i>
+                <span>Listen</span>
+            </button>
+        </div>
+    ` : `
         <div class="flex items-center justify-center mt-1 mb-1">
             <button onclick="speakCurrentQuestion()" class="px-4 py-1.5 bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 rounded-2xl text-xs md:text-sm font-extrabold flex items-center space-x-1.5 pastel-btn shadow-xs">
                 <i class="fa-solid fa-volume-high text-pink-600"></i>
-                <span>Nghe câu hỏi</span>
+                <span>Listen</span>
             </button>
+        </div>
+    `) : '';
+
+    const isQaDialogue = !isEvaluationMode && Number(activeTopicId) === 9;
+    const grammarParts = isGrammarPoint ? getGrammarQuestionParts_(q) : null;
+    const qaDefaultInstructionHtml = (isQaDialogue || isGrammarPoint) ? `
+        <div class="w-full self-start text-left mb-2 px-1 md:px-2">
+            <div class="inline-flex items-center rounded-xl bg-gradient-to-r from-pink-50 to-violet-50 border border-pink-200 px-3 py-1.5 text-xs md:text-sm font-black text-fuchsia-700">
+                Choose the correct answer.
+            </div>
         </div>
     ` : '';
 
@@ -3874,13 +4076,15 @@ function loadQuestion() {
         }
     } else {
         html = `
+        ${isGrammarPoint ? qaDefaultInstructionHtml : ''}
         ${mediaHtml}
         ${passageHtml}
+        ${isGrammarPoint ? '' : qaDefaultInstructionHtml}
         <div class="flex flex-col items-center justify-center max-w-3xl text-center px-2 mb-0.5">
-            <h3 class="text-sm md:text-base lg:text-lg font-black text-slate-900 leading-snug">
-                ${escapeHtml(q.question_text)}
+            <h3 ${isGrammarPoint ? 'id="grammar-question-display"' : ''} class="text-sm md:text-base lg:text-lg font-black text-slate-900 leading-snug">
+                ${isGrammarPoint ? getGrammarSentenceHtml_(q) : escapeHtml(q.question_text)}
             </h3>
-            ${q.question_text_vi ? `<div class="text-xs md:text-sm font-bold text-slate-500 mt-1">${escapeHtml(q.question_text_vi)}</div>` : ''}
+            ${(!isQaDialogue && !isGrammarPoint && q.question_text_vi) ? `<div class="text-xs md:text-sm font-bold text-slate-500 mt-1">${escapeHtml(q.question_text_vi)}</div>` : ''}
             ${practiceSpeakerBtnHtml}
         </div>
         
@@ -3918,6 +4122,7 @@ function loadQuestion() {
     document.getElementById('question-box').innerHTML = html;
 
     restoreQuestionState(q);
+    if (isGrammarPoint) updateGrammarListenButton_();
     updateNavButtons();
     updateQuizPalletUI();
 
@@ -4027,6 +4232,9 @@ function updateNavButtons() {
 function speakOptionWithMeaning(optText) {
     speakEnglish(optText);
     const q = activeQuestionsList[currentQIndex];
+    // Vocabulary picture/listen already owns its controlled meaning reveal. Do not append
+    // a second Vietnamese meaning beside the option, otherwise the correct option duplicates it.
+    if (activeVocabularyHubTopic) return;
     if (!q || q.sub_topic !== '2.1') return;
     const meaning = wordMeaningMapCache ? wordMeaningMapCache[String(optText).toLowerCase()] : null;
     if (!meaning) return;
@@ -4121,8 +4329,11 @@ function checkAnswer(selectedOpt) {
     // CHẾ ĐỘ LUYỆN TẬP TỰ DO
     const isCorrect = selectedOpt === q.answer;
     if (userAnswers[currentQIndex] !== undefined) {
-        // Đã tìm ra đáp án đúng rồi -> bấm lại bất kỳ đáp án nào (đúng hoặc sai) chỉ để NGHE LẠI
-        // phát âm, không tính điểm lại (bé cần nghe hết cả 4 từ, không chỉ từ đúng).
+        // Grammar Point: sau khi đúng chỉ nghe lại cả câu tiếng Anh đã hoàn chỉnh.
+        if (Number(activeTopicId) === 10) {
+            speakGrammarCompletedSentence_();
+            return;
+        }
         speakOptionWithMeaning(selectedOpt);
         return;
     }
@@ -4152,7 +4363,14 @@ function checkAnswer(selectedOpt) {
         }
         revealVocabularyVietnameseAfterCorrect_();
         revealVocabularyPictureExamples_();
-        setTimeout(() => speakOptionWithMeaning(q.answer), 180);
+        if (Number(activeTopicId) === 10) {
+            const grammarDisplay = document.getElementById('grammar-question-display');
+            if (grammarDisplay) grammarDisplay.innerHTML = getGrammarSentenceHtml_(q);
+            updateGrammarListenButton_();
+            setTimeout(() => speakGrammarCompletedSentence_(), 180);
+        } else {
+            setTimeout(() => speakOptionWithMeaning(q.answer), 180);
+        }
     } else {
         if (!wrongAttemptsByQ[currentQIndex]) wrongAttemptsByQ[currentQIndex] = [];
         if (!wrongAttemptsByQ[currentQIndex].includes(selectedOpt)) {
@@ -5047,8 +5265,14 @@ function speakCurrentQuestion() {
 
     // Câu nghe / đoạn tiếng Anh -> Google TTS tiếng Anh.
     // Phần hướng dẫn bằng tiếng Việt -> Google TTS chị Ban Mai.
+    if (Number(activeTopicId) === 10) {
+        // Mục 10 không đọc hướng dẫn tiếng Việt; chỉ đọc câu tiếng Anh sau khi trả lời đúng.
+        if (userAnswers[currentQIndex] === q.answer) return speakGrammarCompletedSentence_();
+        return;
+    }
     if (q.audio_text) return speakEnglish(q.audio_text, 0.92);
     if (q.reading_passage) return speakEnglish(q.reading_passage, 0.92);
+    if (Number(activeTopicId) === 9) return speakEnglish(q.question_text, 0.92);
     speakVietnamese(q.question_text, 0.96);
 }
 
@@ -5207,7 +5431,57 @@ function updateAutoSpeechButtonUI() {
     }
 }
 
+function applyResponsiveWidthTuning_() {
+    if (document.getElementById('ta2-responsive-width-tuning')) return;
+    const style = document.createElement('style');
+    style.id = 'ta2-responsive-width-tuning';
+    style.textContent = `
+        @media (min-width: 768px) {
+            #screen-dashboard { max-width: 70.4rem !important; }
+        }
+        #view-lecture.ta2-compact-vocab-hub {
+            padding-top: 0.65rem !important;
+        }
+        #view-lecture.ta2-compact-vocab-hub > div:first-child {
+            gap: 0 !important;
+        }
+        #view-lecture .ta2-vocab-list-wrap {
+            padding-top: 0 !important;
+            border-top: 0 !important;
+        }
+        #view-lecture.ta2-compact-vocab-hub #lecture-subtopics-list > .flex:first-child {
+            margin-bottom: 0.55rem !important;
+        }
+        /* 6 main tabs: keep the label optically centered, with icon close to its left. */
+        #main-module-tabs .main-module-tab {
+            position: relative !important;
+            justify-content: center !important;
+            gap: 0 !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+        #main-module-tabs .main-module-tab > span:first-child {
+            position: absolute !important;
+            left: calc(50% - 3.55rem) !important;
+            margin: 0 !important;
+            line-height: 1 !important;
+        }
+        #main-module-tabs .main-module-tab > .bi-label {
+            width: 100% !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        @media (max-width: 900px) {
+            #main-module-tabs .main-module-tab > span:first-child {
+                left: calc(50% - 3.15rem) !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    applyResponsiveWidthTuning_();
     document.getElementById('login-mapin')?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') doLogin();
     });
