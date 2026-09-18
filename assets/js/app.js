@@ -2266,12 +2266,16 @@ function getVocabularyChoiceOptions_(q) {
 function getVocabularyIpaForWord_(word) {
     const key = String(word || '').trim().toLowerCase();
     if (!key) return '';
-    const pools = [practiceCycleRawPool, activeQuestionsList];
+    const pools = [practiceCycleRawPool, activeQuestionsList, activeVocabularyHubQuestions];
     for (const pool of pools) {
         const item = Array.isArray(pool) ? pool.find(x => String(x?.word || '').trim().toLowerCase() === key) : null;
         if (item?.ipa) return String(item.ipa).replace(/^\/|\/$/g, '');
     }
-    return '';
+    // Fallback to the shared IPA lookup already built from every options/options_ipa pair
+    // in the learning banks. This keeps IPA consistent even when a vocabulary master row
+    // itself does not carry an ipa field.
+    const cached = wordIpaMapCache && wordIpaMapCache[key];
+    return cached ? String(cached).replace(/^\/|\/$/g, '') : '';
 }
 
 function vocabularyTabsHtml_() {
@@ -2411,7 +2415,7 @@ function renderVocabularySharedStudy_(q) {
     const tabs = vocabularyTabsHtml_();
     const topic = activeVocabularyHubTopic;
     const imageOrEmoji = q.image_url
-        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-cover rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.classList.remove('hidden');"><div class="hidden w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`
+        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-contain object-center rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.style.display='flex';"><div style="display:none" class="w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`
         : `<div class="w-full h-full flex items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`;
 
     const optionButtonHtml = (opt, i, accent = 'pink') => {
@@ -2441,7 +2445,7 @@ function renderVocabularySharedStudy_(q) {
                     <span class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
                     <button onclick="speakVocabularyTarget_()" class="w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
-                ${q.ipa ? `<div class="mt-1 text-center text-sm md:text-base font-black text-sky-700">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+                ${getVocabularyIpaForWord_(q.word) ? `<div class="mt-1 text-center text-sm md:text-base font-black text-sky-700">/${escapeHtml(getVocabularyIpaForWord_(q.word))}/</div>` : ''}
                 <div class="mt-1 text-center text-base md:text-lg font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
             </section>
             <section class="rounded-3xl border-2 border-amber-200 bg-amber-50/40 p-3 shadow-sm">
