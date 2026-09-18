@@ -2287,12 +2287,12 @@ function vocabularyTabsHtml_() {
     return `<div class="grid grid-cols-3 gap-2 md:gap-3 mb-3">
         ${tabs.map(t => {
             const active = activeVocabularyStudyMode === t.key;
-            return `<button onclick="setVocabularyStudyMode('${t.key}')" class="h-[62px] md:h-[66px] rounded-2xl border-2 px-2.5 md:px-3 py-1.5 transition-all flex flex-col items-center justify-center ${active ? 'bg-gradient-to-r from-pink-500 to-violet-500 text-white border-pink-300 shadow-md' : 'bg-white text-slate-600 border-pink-200 hover:bg-pink-50'}">
-                <div class="flex items-center justify-center gap-1.5 md:gap-2 min-w-0">
-                    <span class="text-base md:text-lg leading-none shrink-0">${t.icon}</span>
-                    <span class="font-black text-[10px] sm:text-[11px] md:text-sm leading-tight truncate">${t.en}</span>
-                </div>
-                ${t.vi ? `<div class="text-[8px] md:text-[10px] font-bold ${active ? 'text-white/90' : 'text-slate-400'} mt-0.5 leading-tight">${t.vi}</div>` : ''}
+            return `<button onclick="setVocabularyStudyMode('${t.key}')" class="h-[46px] md:h-[50px] rounded-[14px] border-[1.5px] px-2 md:px-3 py-1 transition-all flex items-center justify-center gap-1.5 md:gap-2 ${active ? 'bg-gradient-to-r from-pink-500 to-violet-500 text-white border-pink-300 shadow-md' : 'bg-white text-slate-600 border-pink-200 hover:bg-pink-50'}">
+                <span class="text-[15px] md:text-base leading-none shrink-0">${t.icon}</span>
+                <span class="min-w-0 flex flex-col items-start leading-tight">
+                    <span class="font-black text-[10px] sm:text-[11px] md:text-sm truncate max-w-full">${t.en}</span>
+                    ${t.vi ? `<span class="text-[7px] md:text-[9px] font-bold ${active ? 'text-white/90' : 'text-slate-400'} truncate max-w-full">${t.vi}</span>` : ''}
+                </span>
             </button>`;
         }).join('')}
     </div>`;
