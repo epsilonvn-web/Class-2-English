@@ -86,141 +86,61 @@
         ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
 
 
-        /* Mobile header: giống bố cục Toán 3 — hàng 1 học tập, hàng 2 trạng thái/tài khoản */
+        /* Mobile header gọn: chỉ giữ thành phần hệ thống; module học chuyển xuống 6 tab */
         @media (max-width: 767px) {
             #dashboard-header {
                 display: grid !important;
-                grid-template-columns: auto minmax(0, 1fr) auto auto;
+                grid-template-columns: auto minmax(0, 1fr);
                 grid-template-rows: auto auto;
-                gap: 0.35rem 0 !important;
                 align-items: center;
+                column-gap: 0.35rem !important;
+                row-gap: 0.35rem !important;
                 padding: 0.35rem 0.45rem !important;
             }
-
-            #header-nav-group,
-            #header-actions-group {
-                display: contents !important;
-            }
-
+            #header-nav-group, #header-actions-group { display: contents !important; }
             #btn-header-home {
-                grid-row: 1;
-                grid-column: 1;
-                width: 62px !important;
-                height: 62px !important;
-                min-width: 62px !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                overflow: hidden !important;
-                border-radius: 0.75rem !important;
+                grid-row: 1; grid-column: 1; width: 62px !important; height: 62px !important;
+                min-width: 62px !important; padding: 0 !important; margin: 0 !important;
+                overflow: hidden !important; border-radius: 0.75rem !important;
             }
-            #btn-header-home img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-                display: block !important;
-            }
-
             #header-learning-tabs {
-                grid-row: 1;
-                grid-column: 2;
-                min-width: 0;
-                overflow-x: auto;
-                overflow-y: hidden;
-                scrollbar-width: none;
-                margin-left: 0;
+                grid-row: 1; grid-column: 2; min-width: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
             }
             #header-learning-tabs::-webkit-scrollbar { display: none; }
-
             #header-level2-icon { display: none !important; }
-            #header-level2-tab > button {
-                padding-left: 0.5rem !important;
-                padding-right: 0.5rem !important;
-                column-gap: 0 !important;
-            }
-
-            #btn-progress-week {
-                grid-row: 1;
-                grid-column: 3;
-                justify-self: end;
-            }
-            #btn-mini-game {
-                grid-row: 1;
-                grid-column: 4;
-                justify-self: end;
-            }
-
-            #btn-toggle-autospeech {
-                grid-row: 2;
-                grid-column: 1;
-                justify-self: start;
-                margin: 0;
-            }
+            #header-level2-tab > button { padding-left: 0.5rem !important; padding-right: 0.5rem !important; column-gap: 0 !important; }
+            #btn-toggle-autospeech { grid-row: 2; grid-column: 1; justify-self: start; }
             #header-score-box {
-                grid-row: 2;
-                grid-column: 1;
-                justify-self: start;
-                margin-left: 2.7rem !important;
+                grid-row: 2; grid-column: 1; justify-self: start; margin-left: 2.7rem !important;
+                padding-left: 0.4rem !important; padding-right: 0.4rem !important;
             }
+            #header-score-box .score-label-text { display: none !important; }
+            #header-score-box > div { column-gap: 0.35rem !important; }
+            #header-score-box > div > span:first-child { padding-left: 0.4rem !important; padding-right: 0.4rem !important; min-width: 1.65rem; text-align: center; }
+            #header-score-box > div > span:first-child i { margin-right: 0 !important; }
             #user-info-box {
-                grid-row: 2;
-                grid-column: 2 / 5;
-                justify-self: end;
-                width: auto;
-                min-width: 0;
-                margin-left: auto;
-                text-align: right !important;
+                grid-row: 2; grid-column: 2; justify-self: end; width: auto; min-width: 0; margin-left: auto; text-align: right !important;
             }
-            #user-info-box > div,
-            #user-info-box > span { margin-left: auto; }
+            #user-info-box > div, #user-info-box > span { margin-left: auto; }
             #user-info-box > * { max-width: 100%; }
-
-            /* Mobile compact header */
-            #dashboard-header {
-                column-gap: 0.35rem !important;
-            }
-
-            /* Logo ↔ Chuyên mục dùng cùng khoảng cách với Tuần ↔ Game */
-            #header-learning-tabs {
-                margin-left: 0 !important;
-            }
-
-            /* Chỉ giữ ngôi sao màu, ẩn chữ Đúng/Sai ở mobile */
-            #header-score-box .score-label-text {
-                display: none !important;
-            }
-            #header-score-box {
-                padding-left: 0.4rem !important;
-                padding-right: 0.4rem !important;
-            }
-            #header-score-box > div {
-                column-gap: 0.35rem !important;
-            }
-            #header-score-box > div > span:first-child {
-                padding-left: 0.4rem !important;
-                padding-right: 0.4rem !important;
-                min-width: 1.65rem;
-                text-align: center;
-            }
-            #header-score-box > div > span:first-child i {
-                margin-right: 0 !important;
-            }
-
-            /* Khóa nằm nổi ở góc trên, không chiếm chiều ngang */
-            #btn-progress-week,
-            #btn-mini-game {
-                position: relative !important;
-                padding-right: 0.65rem !important;
-            }
-            #btn-progress-week .premium-lock-icon,
-            #btn-mini-game .premium-lock-icon {
-                position: absolute !important;
-                top: 0.18rem !important;
-                right: 0.22rem !important;
-                margin: 0 !important;
-                font-size: 0.5rem !important;
-                line-height: 1 !important;
-            }
         }
+
+        /* Điều hướng chính 6 tab - chuẩn UI dùng chung */
+        .main-module-tab {
+            position: relative; min-height: 46px; padding: 7px 8px; border-radius: 14px;
+            border: 1.5px solid #f5c5df; background: linear-gradient(180deg,#fff,#fff8fc);
+            color: #7e3bb8; font-weight: 900; font-size: 13px; line-height: 1.05;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            box-shadow: 0 2px 7px rgba(109,40,217,.07);
+            transition: box-shadow .18s,border-color .18s,background .18s,color .18s;
+        }
+        .main-module-tab:hover { border-color:#e879f9; box-shadow:0 0 13px rgba(217,70,239,.22); }
+        .main-module-tab.is-active {
+            color:#fff; border-color:#d946ef;
+            background:linear-gradient(135deg,#ec4899 0%,#a855f7 55%,#7c3aed 100%);
+            box-shadow:0 5px 14px rgba(168,85,247,.28);
+        }
+        @media (min-width:768px) { .main-module-tab { min-height:50px; font-size:14px; } }
 
         @media print {
             body * { visibility: hidden; }
@@ -238,7 +158,21 @@
             .page-break-2 { page-break-before: always; break-before: page; page-break-after: always; break-after: page; }
             .page-break-3 { page-break-before: always; break-before: page; }
         }
-    </style>
+    
+        .semester-switch-btn{min-width:92px;height:42px;padding:0 14px;border-radius:12px;font-weight:900;font-size:12px;line-height:1.05;transition:.18s;border:1.5px solid #e9d5ff;}
+        .semester-switch-btn.is-active{color:#fff;background:linear-gradient(135deg,#ec4899 0%,#a855f7 100%);border-color:#c026d3;box-shadow:0 4px 10px rgba(168,85,247,.22);}
+        .semester-switch-btn.is-inactive{color:#7e22ce;background:linear-gradient(135deg,#fff1f7 0%,#f5f3ff 100%);}
+        .lesson-chip{border:1px solid #fbcfe8;background:#fff7fb;border-radius:12px;padding:6px 10px;font-weight:800;font-size:12px;color:#7e22ce;}
+
+        /* Bài học: tăng độ đọc rõ cho dòng tiếng Việt */
+        #view-bai-hoc-hub .bi-label .vi{font-size:13px;margin-top:5px;opacity:.82;}
+        #view-bai-hoc-hub #bai-hoc-hub-subtitle{font-size:13px;line-height:1.35;}
+        #view-bai-hoc-hub #bai-hoc-hub-subtitle .lesson-hub-vi{font-size:12px;color:#94a3b8;font-weight:800;display:block;margin-top:4px;}
+        #view-bai-hoc-hub .semester-switch-btn .semester-vi{font-size:11px;display:block;margin-top:3px;opacity:.82;}
+
+
+        .bi-label{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.08;text-align:center}.bi-label .en{display:block;font-weight:900}.bi-label .vi{display:block;font-size:11px;font-weight:800;opacity:.78;margin-top:4px;line-height:1.1}.bi-left{align-items:flex-start;text-align:left}.card-title-bi{display:flex;flex-direction:column;align-items:flex-start;min-width:0;line-height:1.12}.card-title-bi .en{display:block;font-weight:900}.card-title-bi .vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}.card-vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}
+</style>
 </head>
 <body class="p-1 md:p-2 w-full">
 
@@ -362,27 +296,75 @@
                         </div>
                     </div>
 
-                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right"></div>
+                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-amber-600 font-extrabold text-xs px-1.5">Khách</span>
+                            <button onclick="openAuthScreen('login')" class="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-extrabold text-xs pastel-btn whitespace-nowrap">Sign in/up</button>
+                        </div>
+                    </div>
 
-                    <button id="btn-progress-week" onclick="clickProgressOrExam('progress')" class="h-10 px-2.5 md:px-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-purple-600 hover:to-indigo-600 flex items-center space-x-1 md:space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <span class="md:hidden">Tuần</span>
-                        <span class="hidden md:inline">Bản đồ tuần</span>
-                        <i class="fa-solid fa-lock premium-lock-icon text-[9px] opacity-80" title="Khu vực Premium"></i>
-                    </button>
-                    <button id="btn-mini-game" onclick="openMiniGameHub()" class="h-10 px-2.5 md:px-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-md hover:from-teal-600 hover:to-emerald-600 flex items-center space-x-1 md:space-x-1.5 shrink-0 transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(20,184,166,0.65)]">
-                        <i class="fa-solid fa-gamepad"></i>
-                        <span class="md:hidden">Game</span>
-                        <span class="hidden md:inline">Mini Game</span>
-                        <i class="fa-solid fa-lock premium-lock-icon text-[9px] opacity-80" title="Khu vực Premium"></i>
-                    </button>
+                    
+                    
                 </div>
             </header>
+
+            <!-- ĐIỀU HƯỚNG CHÍNH 6 TAB -->
+            <nav id="main-module-tabs" class="w-full bg-white/95 border-2 border-pink-200 rounded-2xl p-1.5 shadow-sm" aria-label="Điều hướng chính">
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-1.5">
+                    <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span class="text-lg">🧭</span><span class="bi-label"><span class="en">Explore</span><span class="vi">Khám phá</span></span></button>
+                    <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span class="text-lg">📖</span><span class="bi-label"><span class="en">Lessons</span><span class="vi">Bài học</span></span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span class="text-lg">✏️</span><span class="bi-label"><span class="en">Exercises</span><span class="vi">Bài tập</span></span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span class="text-lg">🧠</span><span class="bi-label"><span class="en">Review</span><span class="vi">Ôn tập</span></span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span class="text-lg">🏆</span><span class="bi-label"><span class="en">Tests</span><span class="vi">Đề thi</span></span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span class="text-lg">🎮</span><span class="bi-label"><span class="en">Mini Games</span><span class="vi">Trò chơi</span></span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                </div>
+            </nav>
 
             <main id="app-viewport" class="w-full">
                 
                 <!-- VIEW 1: TRANG CHỦ 12 CHỦ ĐỀ -->
-                <div id="view-dashboard-grid" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5"></div>
+                <div id="view-dashboard-grid" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                    <!-- Fallback Khám phá: có sẵn trong HTML để trang chủ không bao giờ trắng.
+                         app.js sẽ tự thay nội dung này bằng bản có số lượng câu/đề sau khi nạp dữ liệu. -->
+                    <div onclick="openAlphabetIPA()" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between">
+                        <div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center">🔤</div><h3 class="font-extrabold text-violet-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">1. Alphabet & IPA</span><span class="vi">Bảng chữ cái & phiên âm</span></span></h3></div>
+                        <div class="mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">Bảng chữ cái & ngữ âm</div>
+                    </div>
+                    <div onclick="openTopic(2, '2. Vocabulary', '📚')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-pink-100 rounded-xl flex items-center justify-center">📚</div><h3 class="font-extrabold text-pink-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">2. Vocabulary</span><span class="vi">Từ vựng</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-pink-100 text-[11px] font-bold text-gray-500">Flashcards, Nghe tranh, Kéo thả chữ</div></div>
+                    <div onclick="openTopic(3, '3. Remove Letter', '✂️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-rose-100 rounded-xl flex items-center justify-center">✂️</div><h3 class="font-extrabold text-rose-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">3. Remove Letter</span><span class="vi">Xóa chữ cái thừa</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-rose-100 text-[11px] font-bold text-gray-500">Chạm xoá chữ cái thừa</div></div>
+                    <div onclick="openTopic(4, '4. Fill Missing', '✏️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center">✏️</div><h3 class="font-extrabold text-amber-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">4. Fill Missing</span><span class="vi">Điền chữ còn thiếu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-amber-100 text-[11px] font-bold text-gray-500">Điền chữ cái còn thiếu</div></div>
+                    <div onclick="openTopic(5, '5. Odd One Out', '🧩')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-fuchsia-100 rounded-xl flex items-center justify-center">🧩</div><h3 class="font-extrabold text-fuchsia-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">5. Odd One Out</span><span class="vi">Tìm từ khác loại</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-fuchsia-100 text-[11px] font-bold text-gray-500">Tìm từ khác nhóm/khác loại</div></div>
+                    <div onclick="openTopic(6, '6. Reading Stories', '📖')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">📖</div><h3 class="font-extrabold text-emerald-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">6. Reading Stories</span><span class="vi">Đọc truyện</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-emerald-100 text-[11px] font-bold text-gray-500">Đọc truyện ngắn 2 câu hỏi</div></div>
+                    <div onclick="openTopic(7, '7. Sentence Builder', '🧱')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-indigo-100 rounded-xl flex items-center justify-center">🧱</div><h3 class="font-extrabold text-indigo-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">7. Sentence Builder</span><span class="vi">Sắp xếp câu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-indigo-100 text-[11px] font-bold text-gray-500">Sắp xếp từ thành câu</div></div>
+                    <div onclick="openTopic(8, '8. Fill Sentence', '📝')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-teal-100 rounded-xl flex items-center justify-center">📝</div><h3 class="font-extrabold text-teal-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">8. Fill Sentence</span><span class="vi">Điền câu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-teal-100 text-[11px] font-bold text-gray-500">Điền câu hoàn chỉnh theo ngữ cảnh</div></div>
+                    <div onclick="openTopic(9, '9. Q&A Dialogues', '💬')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-cyan-100 rounded-xl flex items-center justify-center">💬</div><h3 class="font-extrabold text-cyan-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">9. Q&A Dialogues</span><span class="vi">Hỏi & đáp</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-cyan-100 text-[11px] font-bold text-gray-500">Hội thoại cùng Thỏ Ngọc</div></div>
+                    <div onclick="openTopic(10, '10. Grammar Point', '🅰️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-blue-100 rounded-xl flex items-center justify-center">🅰️</div><h3 class="font-extrabold text-blue-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">10. Grammar Point</span><span class="vi">Ngữ pháp</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-blue-100 text-[11px] font-bold text-gray-500">Mạo từ, giới từ, động từ, tính từ</div></div>
+                </div>
+
+                <!-- MODULE BÀI HỌC: 16 UNIT THEO SGK GLOBAL SUCCESS -->
+                <div id="view-bai-hoc-hub" class="w-full hidden pastel-card p-3 md:p-5">
+                    <div class="w-full max-w-5xl mx-auto">
+                        <div class="grid grid-cols-[auto_1fr_auto] items-center gap-3 mb-3">
+                            <div id="bai-hoc-semester-tabs" class="flex items-center gap-2 justify-self-start"></div>
+                            <div class="text-center min-w-0">
+                                <h2 class="text-lg md:text-xl font-black text-purple-700 flex items-center justify-center gap-2"><span>📖</span><span class="bi-label"><span class="en">English 2 Lessons</span><span class="vi">Bài học Tiếng Anh 2</span></span></h2>
+                                <p id="bai-hoc-hub-subtitle" class="text-xs md:text-sm text-slate-500 font-bold mt-0.5">16 Units · Global Success<br><span class="text-[10px] text-slate-400">16 Unit theo SGK Global Success</span></p>
+                            </div>
+                            <div class="w-[170px] hidden md:block" aria-hidden="true"></div>
+                        </div>
+                        <div id="bai-hoc-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2.5"></div>
+                    </div>
+                </div>
+
+                <div id="view-bai-hoc-lesson" class="w-full hidden pastel-card p-3 md:p-5">
+                    <div class="w-full max-w-4xl mx-auto space-y-3">
+                        <div class="flex items-center justify-between gap-2">
+                            <div id="bai-hoc-lesson-meta" class="text-base md:text-lg font-extrabold text-purple-600"></div>
+                            <button id="btn-back-bai-hoc" onclick="openBaiHocHub(activeBaiHocContext.semester || 1)" class="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl text-xs font-extrabold shrink-0">← Lessons<br><span class="text-[9px] opacity-70">Danh sách bài</span></button>
+                        </div>
+                        <div id="bai-hoc-sections" class="space-y-3"></div>
+                    </div>
+                </div>
 
                 <!-- VIEW 2: BÀI GIẢNG -->
                 <div id="view-lecture" class="w-full hidden pastel-card p-4 md:p-6 flex flex-col justify-between items-center min-h-[480px]">
@@ -423,14 +405,14 @@
                                 <i class="fa-solid fa-stopwatch"></i>
                             </div>
                             <div>
-                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Thời gian</span>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Time<br><span class="text-[9px] opacity-70">Thời gian</span></span>
                                 <span id="quiz-timer-display" class="text-base font-black text-rose-500 tracking-wider">40:00</span>
                             </div>
                         </div>
 
                         <button id="btn-submit-quiz" onclick="triggerSubmitQuizPrompt()" class="ml-auto px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-black text-xs md:text-sm flex items-center space-x-1.5 transition-all shadow-sm pastel-btn">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>Nộp bài thi</span>
+                            <span>Submit<br><span class="text-[9px] opacity-70">Nộp bài</span></span>
                         </button>
                     </div>
 
@@ -450,12 +432,12 @@
                             
                             <button id="btn-roadmap-history" onclick="openHistoryModal('LichSuTienTrinhTuan')" class="hidden px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-xl text-sm font-extrabold items-center space-x-1.5 transition-shadow duration-200 hover:shadow-[0_0_10px_rgba(99,102,241,0.5)] shadow-xs">
                                 <i class="fa-solid fa-chart-line"></i>
-                                <span>Lịch sử tiến trình tuần</span>
+                                <span>Lịch sử Bài tập</span>
                             </button>
 
                             <button onclick="speakCurrentQuestion()" class="px-3 py-1.5 bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 rounded-xl text-sm font-extrabold flex items-center space-x-1.5 transition-all pastel-btn shadow-xs">
                                 <i class="fa-solid fa-volume-high text-pink-600"></i>
-                                <span>Nghe câu hỏi</span>
+                                <span>Listen<br><span class="text-[9px] opacity-70">Nghe câu hỏi</span></span>
                             </button>
                         </div>
 
@@ -467,7 +449,7 @@
                             <!-- 1. GIAO DIỆN LUYỆN TẬP -->
                             <div id="nav-group-practice" class="flex items-center justify-center gap-3 w-full">
                                 <button id="btn-prev-q-prac" onclick="prevQuestion()" class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold rounded-2xl text-xs md:text-sm pastel-btn border border-gray-200 flex items-center justify-center space-x-1.5 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-                                    <i class="fa-solid fa-chevron-left"></i><span>Câu trước</span>
+                                    <i class="fa-solid fa-chevron-left"></i><span>Previous<br><span class="text-[9px] opacity-70">Câu trước</span></span>
                                 </button>
 
                                 <div id="practice-step-indicator" class="px-5 py-1.5 bg-pink-50 border border-pink-200 text-pink-700 font-black rounded-full text-xs md:text-sm flex items-center justify-center space-x-1.5 shadow-xs select-none">
@@ -475,7 +457,7 @@
                                 </div>
 
                                 <button id="btn-next-q-prac" onclick="nextQuestion()" class="px-6 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-2xl text-xs md:text-sm pastel-btn shadow-md flex items-center justify-center space-x-1.5 transition-all">
-                                    <span id="btn-next-text-prac">Câu tiếp theo</span>
+                                    <span id="btn-next-text-prac">Next<br><span class="text-[9px] opacity-70">Câu tiếp</span></span>
                                     <i id="btn-next-icon-prac" class="fa-solid fa-chevron-right ml-1"></i>
                                 </button>
                             </div>
@@ -483,13 +465,13 @@
                             <!-- 2. GIAO DIỆN ĐỀ THI -->
                             <div id="nav-group-exam" class="hidden items-center justify-between w-full">
                                 <button id="btn-prev-q-exam" onclick="prevQuestion()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold rounded-xl text-xs md:text-sm pastel-btn border border-gray-200 flex items-center justify-center space-x-1.5 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-                                    <i class="fa-solid fa-chevron-left"></i><span>Câu trước</span>
+                                    <i class="fa-solid fa-chevron-left"></i><span>Previous<br><span class="text-[9px] opacity-70">Câu trước</span></span>
                                 </button>
 
                                 <div id="quiz-pallet-container" class="grid grid-cols-10 gap-1.5 max-w-xl mx-2"></div>
 
                                 <button id="btn-next-q-exam" onclick="nextQuestion()" class="px-5 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-xl text-xs md:text-sm pastel-btn shadow-md flex items-center justify-center space-x-1.5 transition-all">
-                                    <span id="btn-next-text-exam">Câu tiếp theo</span>
+                                    <span id="btn-next-text-exam">Next<br><span class="text-[9px] opacity-70">Câu tiếp</span></span>
                                     <i id="btn-next-icon-exam" class="fa-solid fa-chevron-right ml-1"></i>
                                 </button>
                             </div>
@@ -498,26 +480,20 @@
                     </div>
                 </div>
 
-                <!-- VIEW 4: BẢN ĐỒ LỘ TRÌNH 12 TUẦN SVG CHỮ S -->
+                <!-- VIEW: BÀI TẬP THEO 16 UNIT SGK -->
                 <div id="view-roadmap" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
                     <div class="w-full max-w-5xl flex flex-col items-center">
-                        <div class="flex flex-col sm:flex-row items-center justify-between w-full px-2 mb-2 gap-2">
+                        <div class="flex flex-col sm:flex-row items-center justify-between w-full px-1 mb-3 gap-2">
                             <div>
-                                <h2 class="text-base md:text-lg font-extrabold text-indigo-600 flex items-center space-x-2">
-                                    <span>🗺️</span><span>Bản đồ lộ trình 24 tuần bứt phá</span>
-                                </h2>
-                                <p class="text-[11px] md:text-xs text-gray-500 font-bold">Mỗi tuần 30 câu (tỷ lệ 3:4:3). Đạt từ 80% trở lên để mở khóa tuần kế tiếp!</p>
+                                <h2 class="text-base md:text-lg font-extrabold text-indigo-600 flex items-center space-x-2"><span>✏️</span><span class="bi-label bi-left"><span class="en">Exercises</span><span class="vi">Bài tập</span></span></h2>
+                                <p class="text-[11px] md:text-xs text-gray-500 font-bold">20 questions each · Score 80% to unlock the next exercise · 6-skill assessment<br><span class="text-[10px] text-slate-400">20 câu mỗi bài · đạt 80% để mở bài tiếp theo · đánh giá 6 năng lực</span></p>
                             </div>
-                            
-                            <div class="flex items-center space-x-2 shrink-0">
-                                <button onclick="openHistoryModal('LichSuTienTrinhTuan')" class="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold rounded-xl border border-indigo-200 text-xs pastel-btn flex items-center space-x-1.5 shadow-sm">
-                                    <i class="fa-solid fa-chart-line text-indigo-600"></i>
-                                    <span>📊 Xem lịch sử tiến trình</span>
-                                </button>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <div id="bai-tap-semester-tabs" class="flex items-center gap-2"></div>
+                                <button onclick="openHistoryModal('LichSuTienTrinhTuan')" class="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold rounded-xl border border-indigo-200 text-xs pastel-btn flex items-center space-x-1.5 shadow-sm"><i class="fa-solid fa-chart-line text-indigo-600"></i><span>📊 Exercise History<br><span class="text-[9px] opacity-70">Lịch sử Bài tập</span></span></button>
                             </div>
                         </div>
-
-                        <div id="roadmap-svg-container" class="w-full max-w-3xl mx-auto flex justify-center items-center overflow-hidden bg-gradient-to-b from-pink-50/30 to-purple-50/30 rounded-2xl border-2 border-pink-100 p-1" style="aspect-ratio: 650 / 400;"></div>
+                        <div id="roadmap-svg-container" class="w-full bg-gradient-to-br from-pink-50/70 via-white to-purple-50/70 rounded-3xl border-2 border-pink-200 p-3 shadow-sm"></div>
                     </div>
                 </div>
 
@@ -526,9 +502,9 @@
                     <div class="w-full max-w-5xl">
                         <div class="text-center mb-4">
                             <h2 class="text-base md:text-lg font-extrabold text-teal-600 flex items-center justify-center space-x-2">
-                                <span>🎮</span><span>Trung tâm Mini Game</span>
+                                <span>🎮</span><span class="bi-label"><span class="en">Mini Game Center</span><span class="vi">Trung tâm Mini Game</span></span>
                             </h2>
-                            <p class="text-[11px] md:text-xs text-gray-500 font-bold">Chọn 1 trò chơi để vừa học vừa chơi cùng từ vựng Tiếng Anh nhé!</p>
+                            <p class="text-[11px] md:text-xs text-gray-500 font-bold">Choose a game and learn English while you play!<br><span class="text-[10px] text-slate-400">Chọn một trò chơi để vừa học vừa chơi Tiếng Anh nhé!</span></p>
                         </div>
                         <div id="minigame-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
                     </div>
@@ -552,9 +528,9 @@
                     <div class="w-full max-w-5xl">
                         <div class="text-center mb-5">
                             <h2 class="font-extrabold text-amber-600 text-lg md:text-xl flex items-center justify-center space-x-2">
-                                <span>🏆</span><span>Đấu trường đề thi thử</span>
+                                <span>🏆</span><span class="bi-label"><span class="en">Test Arena</span><span class="vi">Đấu trường đề thi thử</span></span>
                             </h2>
-                            <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">Thử sức các bộ đề thi chuẩn ma trận 13 câu - 6 nhóm năng lực</p>
+                            <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">Try 13-question tests across 6 skills<br><span class="text-[10px] text-slate-400">Luyện đề 13 câu theo 6 nhóm năng lực</span></p>
                         </div>
                         <div id="exam-categories-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
                     </div>
@@ -570,7 +546,7 @@
                                     Kết quả bài thi
                                 </span>
                                 <h2 id="report-student-display" class="text-lg sm:text-xl font-black tracking-tight">Học sinh: --</h2>
-                                <p id="report-meta-display" class="text-xs text-pink-200">Lớp: -- | Mã số: -- | Thời gian: --</p>
+                                <p id="report-meta-display" class="text-xs text-pink-200">Lớp: -- | Mã số: -- | Time<br><span class="text-[9px] opacity-70">Thời gian</span>: --</p>
                             </div>
 
                             <div class="flex items-center gap-3">
@@ -743,7 +719,7 @@
                                     <th class="py-2 px-1 leading-tight">Cú pháp<br><span class="text-[10px] text-pink-700">(Syntax)</span></th>
                                     <th class="py-2 px-1 leading-tight">Đọc hiểu<br><span class="text-[10px] text-pink-700">(Reading)</span></th>
                                     <th class="py-2.5 px-2 whitespace-nowrap">Ngày làm</th>
-                                    <th class="py-2.5 px-2 whitespace-nowrap">Thời gian</th>
+                                    <th class="py-2.5 px-2 whitespace-nowrap">Time<br><span class="text-[9px] opacity-70">Thời gian</span></th>
                                 </tr>
                             </thead>
                             <tbody id="hist-table-body" class="divide-y divide-pink-100 font-bold text-slate-700"></tbody>
@@ -783,7 +759,7 @@
         </div>
     </div>
     <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
-    <script src="assets/js/app.js?v=7.0-account"></script>
+    <script src="assets/js/app.js?v=8.4-bilingual-ui"></script>
 
     <!-- ĐĂNG KÝ SERVICE WORKER (PWA) — đồng bộ cách cập nhật với bản Tiếng Anh 1 đang chạy ổn trên GitHub. -->
     <script>
