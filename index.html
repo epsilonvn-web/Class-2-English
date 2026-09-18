@@ -142,6 +142,11 @@
         }
         @media (min-width:768px) { .main-module-tab { min-height:50px; font-size:14px; } }
 
+        /* Khung chương trình tablet/desktop - chỉnh bề ngang tại đây */
+        @media (min-width: 768px) {
+            #screen-dashboard { max-width: 72rem !important; }
+        }
+
         @media print {
             body * { visibility: hidden; }
             #printable-report-area, #printable-report-area * { visibility: visible; }
