@@ -27,16 +27,15 @@ function closeFriendlyAlert() {
 // Chuyên mục 1 (Alphabet & IPA phần A-Z + 44 IPA tĩnh) và 12 (Exam Arena) có màn hình riêng,
 // nên TOPICS_CONFIG chỉ liệt kê 2-11 + mục 1 dành riêng cho Phonics Matcher (1.3, dạng trắc nghiệm).
 const TOPICS_CONFIG = [
-    { id: 2, title: "2. Vocabulary", titleVi: "Từ vựng", desc: "Flashcards, listen & match, word play", descVi: "Thẻ từ, nghe tranh, kéo thả chữ", icon: "📚", color: "pink" },
-    { id: 3, title: "3. Remove Letter", titleVi: "Xóa chữ cái thừa", desc: "Remove the extra letter", descVi: "Chạm xóa chữ cái thừa", icon: "✂️", color: "rose" },
-    { id: 4, title: "4. Fill Missing", titleVi: "Điền chữ còn thiếu", desc: "Complete the word", descVi: "Điền chữ cái còn thiếu", icon: "✏️", color: "amber" },
-    { id: 5, title: "5. Odd One Out", titleVi: "Tìm từ khác loại", desc: "Find the odd word", descVi: "Tìm từ khác nhóm/khác loại", icon: "🧩", color: "fuchsia" },
-    { id: 6, title: "6. Reading Stories", titleVi: "Đọc truyện", desc: "Read and answer", descVi: "Đọc truyện ngắn và trả lời", icon: "📖", color: "emerald" },
-    { id: 7, title: "7. Sentence Builder", titleVi: "Sắp xếp câu", desc: "Put the words in order", descVi: "Sắp xếp từ thành câu", icon: "🧱", color: "indigo" },
-    { id: 8, title: "8. Fill Sentence", titleVi: "Điền câu", desc: "Complete the sentence", descVi: "Điền câu theo ngữ cảnh", icon: "📝", color: "teal" },
-    { id: 9, title: "9. Q&A Dialogues", titleVi: "Hỏi & đáp", desc: "Ask and answer", descVi: "Hội thoại hỏi và đáp", icon: "💬", color: "cyan" },
-    { id: 10, title: "10. Grammar Point", titleVi: "Ngữ pháp", desc: "Learn simple grammar", descVi: "Mạo từ, giới từ, động từ, tính từ", icon: "🅰️", color: "blue" },
-    { id: 11, title: "11. Practice & Play", titleVi: "Ôn tập & vui học", desc: "Review and play", descVi: "Ôn tập ngắt quãng theo học kỳ", icon: "🎮", color: "purple" }
+    { id: 2, title: "2. Vocabulary", desc: "Flashcards, Nghe tranh, Kéo thả chữ", icon: "📚", color: "pink" },
+    { id: 3, title: "3. Remove Letter", desc: "Chạm xoá chữ cái thừa", icon: "✂️", color: "rose" },
+    { id: 4, title: "4. Fill Missing", desc: "Điền chữ cái còn thiếu", icon: "✏️", color: "amber" },
+    { id: 5, title: "5. Odd One Out", desc: "Tìm từ khác nhóm/khác loại", icon: "🧩", color: "fuchsia" },
+    { id: 6, title: "6. Reading Stories", desc: "Đọc truyện ngắn 2 câu hỏi", icon: "📖", color: "emerald" },
+    { id: 7, title: "7. Sentence Builder", desc: "Sắp xếp từ thành câu", icon: "🧱", color: "indigo" },
+    { id: 8, title: "8. Fill Sentence", desc: "Điền câu hoàn chỉnh theo ngữ cảnh", icon: "📝", color: "teal" },
+    { id: 9, title: "9. Q&A Dialogues", desc: "Hội thoại cùng Mascot Thỏ Ngọc", icon: "💬", color: "cyan" },
+    { id: 10, title: "10. Grammar Point", desc: "Mạo từ, giới từ, động từ, tính từ", icon: "🅰️", color: "blue" }
 ];
 
 const SUBTOPIC_PALETTES = [
@@ -210,10 +209,6 @@ function normalizeQuestion(q) {
         paired_group: q.pg ?? q.paired_group ?? '',
         options_ipa: q.oipa ?? q.options_ipa ?? null,
         question_text: q.q ?? q.question_text ?? '',
-        question_text_vi: q.qvi ?? q.question_text_vi ?? '',
-        hint_vi: q.hvi ?? q.hint_vi ?? '',
-        tts_locale: q.tts_locale ?? '',
-        tts_text: q.tts_text ?? '',
         options: Array.isArray(q.o) ? q.o : (Array.isArray(q.options) ? q.options : []),
         answer: q.a ?? q.answer ?? '',
         hint: q.h ?? q.hint ?? '',
@@ -223,9 +218,17 @@ function normalizeQuestion(q) {
         reading_title: q.r_title ?? q.reading_title ?? '',
         reading_passage: q.r_passage ?? q.reading_passage ?? q.passage_text ?? '',
         skill_tag: q.skill_tag ?? q.tag ?? 'ENG_VOC',
-        source_topic_id: Number(q.source_topic_id ?? q.topic_id ?? 0) || null,
         diem: Number(q.diem ?? q.score ?? 0.5),
-        explanation: q.explanation ?? q.h ?? 'Không có giải thích chi tiết.'
+        explanation: q.explanation ?? q.h ?? 'Không có giải thích chi tiết.',
+        question_text_vi: q.question_text_vi ?? q.q_vi ?? '',
+        render_style: q.render_style ?? '',
+        word: q.word ?? '',
+        vietnamese: q.vietnamese ?? '',
+        ipa: q.ipa ?? '',
+        examples: Array.isArray(q.examples) ? q.examples : [],
+        image_id: q.image_id ?? '',
+        target_tag: q.target_tag ?? '',
+        focus_hint: q.focus_hint ?? ''
     };
 }
 
@@ -362,7 +365,7 @@ function pickDistractorWords(correct, pool, n = 3) {
  * về đúng schema q/o/a/h mà normalizeQuestion() hiểu, đồng thời gắn sub_code "topic_id.part" để
  * bốc đề theo tuần (Mục 5) và gom nhóm trang chủ (fetchAllTopicsData) hoạt động chính xác. */
 const SECTION_LABELS = {
-    "1.3": "Phonics Matcher", "2.1": "Flashcards Library", "2.2": "Listening Master", "2.3": "Word-Picture Puzzle",
+    "1.3": "Phonics Matcher", "2.1": "Flashcards", "2.2": "Word-picture Puzzle", "2.3": "Listen and Choose",
     "3.1": "Spelling Warm-up", "3.2": "Spelling Runner", "3.3": "Spelling Master",
     "4.1": "Starting Sound Fill", "4.2": "Vowel Fill", "4.3": "Word Finisher",
     "5.1": "Semantic Category", "5.2": "Grammar Category", "5.3": "Sound Odd",
@@ -396,7 +399,7 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
     // file dữ liệu, app tự động đổi theo, không cần sửa code. Chỉ dùng bảng SECTION_LABELS tự map
     // làm dự phòng cho những câu CHƯA kịp có field này.
     const label = sectionLabel || it.section_name || SECTION_LABELS[sk] || sk;
-    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, source_topic_id: topicId, img: it.image_url || '', emo: it.emoji || '', aud: it.audio_text || '', pg: it._paired_group || '', oipa: it.options_ipa || null, qvi: it.question_text_vi || '', hvi: it.hint_vi || '', tts_locale: it.tts_locale || '', tts_text: it.tts_text || '' };
+    const base = { id: it.question_id, sub: label, sub_code: sk, w: weekCode, tag: skill, img: it.image_url || '', emo: it.emoji || '', aud: it.audio_text || '', pg: it._paired_group || '', oipa: it.options_ipa || null };
 
     if ('faulty_word' in it) {
         const letter = it.answer;
@@ -404,18 +407,21 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
         return { ...base, q: it.question_text, o: opts, a: letter, h: it.hint || '' };
     }
     if ('word' in it && !('question_text' in it)) {
-        const word = it.word, vi = it.vietnamese || '';
-        const opts = shuffleArray([word, ...pickDistractorWords(word, allWordsPool, 3)]);
-        const qtext = 'Choose the word.';
-        base.qvi = vi ? `Chọn từ có nghĩa: ${vi}.` : 'Chọn từ đúng.';
-        const fullHint = (it.hint || '') + (it.sentence ? ' | Ví dụ: ' + it.sentence : '');
-        // Câu Flashcards Library vốn không có sẵn mảng "options" nên NotebookLM không gắn được
-        // options_ipa trực tiếp — tự tra cứu phiên âm từng từ (kể cả 3 từ nhiễu) qua kho từ vựng chung.
-        const wordIpaMap = wordIpaMapCache || {};
-        const oipa = opts.map(w => wordIpaMap[w.toLowerCase()] || null);
-        const out = { ...base, q: qtext, o: opts, a: word, h: fullHint };
-        if (oipa.some(Boolean)) out.oipa = oipa;
-        return out;
+        // Vocabulary 2.1 là FLASHCARD thật, không phải câu hỏi trắc nghiệm.
+        // Giữ nguyên dữ liệu giàu ngữ nghĩa để renderer riêng hiển thị ảnh + word + IPA + 3 ví dụ
+        // và chỉ mở nghĩa tiếng Việt khi bé bấm nút.
+        return {
+            ...base,
+            render_style: 'vocab_flashcard',
+            word: it.word || '',
+            vietnamese: it.vietnamese || '',
+            ipa: it.ipa || '',
+            examples: Array.isArray(it.examples) ? it.examples.slice(0, 3) : [],
+            image_id: it.image_id || '',
+            target_tag: it.target_tag || '',
+            focus_hint: it.focus_hint || '',
+            q: '', o: [], a: '', h: ''
+        };
     }
     const out = { ...base, q: it.question_text, o: it.options || [], a: it.answer, h: it.hint || '' };
     if ('passage_text' in it) { out.r_title = it.passage_title || ''; out.r_passage = it.passage_text || ''; }
@@ -429,6 +435,84 @@ function rawItemToFlatQuestion(sk, it, allWordsPool, sectionLabel) {
  *  2) Mảng lồng theo 6 Nhóm Kép: "section_2.1": { section_id, section_name, topics: [ { topic_id, topic_name, questions: [...] } ] }
  *     (riêng mục Vocabulary 2.1/2.2/2.3) — cần bóc tách "topics[].questions" thành 1 mảng phẳng duy nhất.
  * Không được giả định cứng 1 trong 2 dạng, phải tự nhận diện để không vỡ khi cấu trúc đổi. */
+function buildVocabularyRuntimeSections_(data) {
+    // TA2 V4: Vocabulary 2.1/2.2/2.3 dùng CHUNG một vocabulary_library nằm ngay trong
+    // kho_hoc_english_part1.json. Không phụ thuộc vocabulary_english_2.json ở runtime.
+    const library = Array.isArray(data?.vocabulary_library) ? data.vocabulary_library : [];
+    if (!library.length || !data?.sections) return;
+
+    const byTopic = new Map();
+    library.forEach(v => {
+        const ids = Array.isArray(v.topic_ids) && v.topic_ids.length ? v.topic_ids : [1];
+        ids.forEach(id => {
+            const n = Number(id) || 1;
+            if (!byTopic.has(n)) byTopic.set(n, []);
+            byTopic.get(n).push(v);
+        });
+    });
+
+    const allWords = library.map(v => String(v.word || '').trim()).filter(Boolean);
+    const makeOpts = (word) => shuffleArray([word, ...pickDistractorWords(word, allWords, 3)]);
+
+    ['section_2.1','section_2.2','section_2.3'].forEach(sectionKey => {
+        const section = data.sections[sectionKey];
+        if (!section || !Array.isArray(section.topics)) return;
+
+        section.topics.forEach(topic => {
+            const topicId = Number(topic.topic_id) || 1;
+            const source = byTopic.get(topicId) || [];
+            topic.questions = source.map((v, idx) => {
+                const word = String(v.word || '').trim();
+                const vi = String(v.vietnamese || '').trim();
+                const visual = v.visual || {};
+                const common = {
+                    question_id: `${sectionKey.replace('section_','s')}_${topicId}_${idx+1}`,
+                    word, vietnamese: vi, ipa: v.ipa || '',
+                    emoji: v.emoji || visual.fallback_emoji || '✨',
+                    topic_id: topicId, skill_tag: 'ENG_VOC',
+                    section_name: section.section_name || '',
+                    image_url: visual.image_url || '',
+                    image_id: visual.image_id || '',
+                    target_tag: visual.target_tag || word.toLowerCase(),
+                    focus_hint: visual.focus_hint || '',
+                    examples: Array.isArray(v.examples) ? v.examples.slice(0,3) : [],
+                    sentence: Array.isArray(v.examples) && v.examples.length ? v.examples[0] : '',
+                    tts_locale: 'en-US'
+                };
+
+                if (sectionKey === 'section_2.1') {
+                    // Giữ object từ vựng giàu dữ liệu. rawItemToFlatQuestion sẽ adapter sang UI hiện tại.
+                    return common;
+                }
+                const options = makeOpts(word);
+                if (sectionKey === 'section_2.2') {
+                    return {
+                        ...common,
+                        render_style: 'vocab_picture_choice',
+                        question_text: 'Look and choose.',
+                        question_text_vi: 'Nhìn tranh và chọn từ đúng.',
+                        options, answer: word,
+                        audio_text: 'Look and choose.',
+                        hint: `Answer: ${word}.`,
+                        hint_vi: `Đáp án: ${word} – ${vi}.`
+                    };
+                }
+                return {
+                    ...common,
+                    image_url: '',
+                    render_style: 'vocab_listen_choice',
+                    question_text: 'Listen and choose.',
+                    question_text_vi: 'Nghe và chọn từ đúng.',
+                    options, answer: word,
+                    audio_text: word, tts_text: word,
+                    hint: `You heard: ${word}.`,
+                    hint_vi: `Em vừa nghe từ: ${word} – ${vi}.`
+                };
+            });
+        });
+    });
+}
+
 function extractItemsFromSection(sectionValue) {
     if (Array.isArray(sectionValue)) return sectionValue;
     if (sectionValue && Array.isArray(sectionValue.topics)) {
@@ -450,6 +534,10 @@ async function fetchAllQuestionsFlat() {
         if (!res.ok) throw new Error(`Không thể tải file dữ liệu ${file}`);
         return res.json();
     }));
+
+    // Hydrate Vocabulary 2.1/2.2/2.3 từ một vocabulary_library dùng chung trong Part 1.
+    // Nhờ vậy 3 hoạt động không duplicate dữ liệu và cũng không cần fetch master JSON riêng.
+    results.forEach(buildVocabularyRuntimeSections_);
 
     // Adapter dữ liệu Mini Game: đọc ĐÚNG Chuyên mục 2.1 (Flashcards Library), không quét
     // các chuyên mục khác. Hiện kho 2.1 chia theo các topic con; mỗi từ vẫn giữ topic_name
@@ -657,57 +745,7 @@ async function loadExamDataFile(file) {
 async function renderDashboardGrid() {
     const container = document.getElementById('view-dashboard-grid');
     if (!container) return;
-
-    // Render khung Khám phá NGAY LẬP TỨC để trang chủ không bị trắng trong lúc
-    // các file JSON học liệu/đề thi đang tải. Sau khi dữ liệu về mới cập nhật số lượng.
-    const buildHtml = (topicsData = [], totalExamsCount = null) => {
-        let html = `
-            <div onclick="openAlphabetIPA()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-violet-400 transition-all group bg-gradient-to-br from-white to-violet-50/50 min-h-[92px]">
-                <div class="flex items-center space-x-2.5">
-                    <div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-violet-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🔤</div>
-                    <div><h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">1. Alphabet & IPA</h3><div class="text-[10px] font-bold text-slate-400 mt-0.5">Bảng chữ cái & phiên âm</div></div>
-                </div>
-                <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">
-                    <span>Letters & sounds<br><span class="text-[10px] text-slate-400">Chữ cái & âm</span></span>
-                    <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">26 chữ + 44 âm</span>
-                </div>
-            </div>
-        `;
-
-        TOPICS_CONFIG.filter(t => Number(t.id) <= 10).forEach(t => {
-            const topicObj = topicsData.find(item => Number(item.topic_id) === Number(t.id));
-            const totalCount = topicObj && topicObj.questions ? topicObj.questions.length : 0;
-            const countLabel = topicObj ? (totalCount > 0 ? `${totalCount} câu` : 'Đang cập nhật') : 'Đang tải...';
-
-            const iconHtml = t.isCustomTextIcon
-                ? `<div class="w-8 h-8 bg-rose-100 rounded-xl flex items-center justify-center text-[11px] font-black text-rose-600 shadow-inner group-hover:scale-110 transition-transform shrink-0 tracking-tight">S/X</div>`
-                : `<div class="w-8 h-8 bg-${t.color}-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-${t.color}-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">${t.icon}</div>`;
-
-            html += `
-                <div onclick="openTopic(${t.id}, '${t.title}', '${t.icon}')" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-${t.color}-400 transition-all group min-h-[92px] relative">
-                    <div class="flex items-center space-x-2.5">
-                        ${iconHtml}
-                        <div class="card-title-bi">
-                            <h3 class="en font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
-                            <div class="vi">${escapeHtml(t.titleVi||'')}</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-pink-100 text-[11px] font-bold text-gray-500">
-                        <span>${escapeHtml(t.desc||'')}<br><span class="text-[11px] font-bold text-slate-400">${escapeHtml(t.descVi||'')}</span></span>
-                        <span class="bg-${t.color}-50 text-${t.color}-600 px-2 py-0.5 rounded-full">${countLabel}</span>
-                    </div>
-                </div>
-            `;
-        });
-
-        const examCountLabel = totalExamsCount == null ? 'Đang tải...' : `${totalExamsCount} đề thi`;
-
-        return html;
-    };
-
-    // Không chờ dữ liệu: Khám phá phải có nội dung ngay khi mở app.
-    container.innerHTML = buildHtml([], null);
-
+    
     let topicsData = [];
     try { topicsData = await fetchAllTopicsData(); } catch (e) {}
 
@@ -720,7 +758,45 @@ async function renderDashboardGrid() {
         }
     } catch (e) {}
 
-    container.innerHTML = buildHtml(topicsData, totalExamsCount);
+    // Thẻ "1. Alphabet & IPA" luôn đứng ĐẦU TIÊN (đúng đúng thứ tự Chuyên Mục 1 trong khung V6)
+    let html = `
+        <div onclick="openAlphabetIPA()" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-violet-400 transition-all group bg-gradient-to-br from-white to-violet-50/50 min-h-[92px]">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-violet-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">🔤</div>
+                <h3 class="font-extrabold text-violet-700 text-sm md:text-base leading-tight">1. Alphabet & IPA</h3>
+            </div>
+            <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">
+                <span>Bảng chữ cái & ngữ âm</span>
+                <span class="bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full">26 chữ + 44 âm</span>
+            </div>
+        </div>
+    `;
+
+    TOPICS_CONFIG.forEach(t => {
+        const topicObj = topicsData.find(item => Number(item.topic_id) === Number(t.id));
+        const totalCount = topicObj && topicObj.questions ? topicObj.questions.length : 0;
+        const countLabel = totalCount > 0 ? `${totalCount} câu` : 'Đang cập nhật';
+
+        const iconHtml = t.isCustomTextIcon 
+            ? `<div class="w-8 h-8 bg-rose-100 rounded-xl flex items-center justify-center text-[11px] font-black text-rose-600 shadow-inner group-hover:scale-110 transition-transform shrink-0 tracking-tight">S/X</div>`
+            : `<div class="w-8 h-8 bg-${t.color}-100 rounded-xl flex items-center justify-center text-sm font-extrabold text-${t.color}-600 shadow-inner group-hover:scale-110 transition-transform shrink-0">${t.icon}</div>`;
+
+        html += `
+            <div onclick="openTopic(${t.id}, '${t.title}', '${t.icon}')" class="pastel-card p-3 flex flex-col justify-between cursor-pointer hover:border-${t.color}-400 transition-all group min-h-[92px] relative">
+                ${Number(t.id) === 11 ? `<span class="absolute top-2 right-2 text-slate-400 text-[9px]" title="Cần đăng nhập"><i class="fa-solid fa-lock"></i></span>` : ''}
+                <div class="flex items-center space-x-2.5">
+                    ${iconHtml}
+                    <h3 class="font-extrabold text-${t.color}-700 text-sm md:text-base leading-tight">${t.title}</h3>
+                </div>
+                <div class="flex justify-between items-center mt-1.5 pt-1 border-t border-pink-100 text-[11px] font-bold text-gray-500">
+                    <span>${t.desc}</span>
+                    <span class="bg-${t.color}-50 text-${t.color}-600 px-2 py-0.5 rounded-full">${countLabel}</span>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
 }
 
 async function startRandomExam(categoryKey) {
@@ -780,6 +856,7 @@ function updateExamTimerDisplay() {
 
 function openExamHub() {
     stopSpeaking();
+    setMainTabActive_('exams');
     inMiniGameFlow = false;
     if (!requirePremiumAccess('Đấu trường đề thi')) return;
     inAlphaIpaFlow = false;
@@ -787,8 +864,7 @@ function openExamHub() {
     activeRoadmapContext = null;
     activeTopicId = null;
     pendingTopicQuiz = null;
-    setMainTabActive_('exams');
-    updateNavTabs("Đề thi", "🏆", null);
+    updateNavTabs("12. Đấu trường đề thi", "🏆", null);
     switchAppView('view-exam-hub');
     showLoadingOverlay("Đang tải kho đề thi...");
     renderExamHubGrid().finally(() => hideLoadingOverlay());
@@ -1104,53 +1180,128 @@ function openPhonicsMatcher() {
 // ==========================================
 // ĐIỀU HƯỚNG VIEW & BREADCRUMB
 // ==========================================
+let currentMainTab = 'discover';
+let headerLevel2ClickHandler = null;
 let headerLevel3ClickHandler = null;
+let headerLevel4ClickHandler = null;
 
-/** Bấm vào tab cấp 3 trên breadcrumb — chỉ có tác dụng khi màn hình hiện tại có gắn sẵn
- * hành động cụ thể (VD trong Word Search, bấm vào để quay lại màn chọn độ khó). Các màn
- * khác nếu chưa gắn hành động thì bấm vào không có gì xảy ra, giữ đúng hành vi cũ. */
+const MAIN_HEADER_PATH_ = {
+    discover:  { title: 'Explore',    icon: '🧭' },
+    lessons:   { title: 'Lessons',    icon: '📖' },
+    exercises: { title: 'Exercises',  icon: '✏️' },
+    review:    { title: 'Review',     icon: '🧠' },
+    exams:     { title: 'Exams',      icon: '🏆' },
+    games:     { title: 'Mini Games', icon: '🎮' }
+};
+
+function onHeaderLevel2Click() {
+    if (typeof headerLevel2ClickHandler === 'function') headerLevel2ClickHandler();
+}
 function onHeaderLevel3Click() {
     if (typeof headerLevel3ClickHandler === 'function') headerLevel3ClickHandler();
 }
+function onHeaderLevel4Click() {
+    if (typeof headerLevel4ClickHandler === 'function') headerLevel4ClickHandler();
+}
 
+function normalizeHeaderLabel_(value) {
+    return String(value || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+function isSameAsMainHeader_(tabName, value) {
+    const n = normalizeHeaderLabel_(value);
+    const aliases = {
+        discover:  ['explore', 'kham pha'],
+        lessons:   ['lessons', 'bai hoc'],
+        exercises: ['exercises', 'bai tap', 'ban do tien trinh tuan', 'tien trinh tuan'],
+        review:    ['review', 'on tap', '11 practice play', 'practice play'],
+        exams:     ['exams', 'tests', 'de thi', '12 dau truong de thi', 'dau truong de thi'],
+        games:     ['mini games', 'mini game', 'tro choi', 'trung tam mini game']
+    };
+    return (aliases[tabName] || []).some(a => n === a || n.endsWith(' ' + a));
+}
+
+/**
+ * Header path chuẩn:
+ * Home -> Main tab -> Module/section -> Item/detail.
+ * Giữ API cũ updateNavTabs(...) để không phải sửa hàng loạt engine hiện tại.
+ */
 function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3ClickHandler) {
     const tab2 = document.getElementById('header-level2-tab');
     const tab3 = document.getElementById('header-level3-tab');
     const tab4 = document.getElementById('header-level4-tab');
     const homeBtn = document.getElementById('btn-header-home');
-    headerLevel3ClickHandler = level3ClickHandler || null;
-    const level3Btn = document.getElementById('header-level3-btn');
-    if (level3Btn) {
-        level3Btn.classList.toggle('cursor-pointer', !!headerLevel3ClickHandler);
-        level3Btn.classList.toggle('hover:bg-purple-100', !!headerLevel3ClickHandler);
-        level3Btn.classList.toggle('cursor-default', !headerLevel3ClickHandler);
+    if (!tab2 || !tab3 || !homeBtn) return;
+
+    const main = MAIN_HEADER_PATH_[currentMainTab] || MAIN_HEADER_PATH_.discover;
+    const nested = [];
+    const originalLevel2Kept = !!level2Title && !isSameAsMainHeader_(currentMainTab, level2Title);
+    if (originalLevel2Kept) nested.push({ title: level2Title, source: 'level2' });
+    if (level3Title) nested.push({ title: level3Title, source: 'level3' });
+    if (level4Title) nested.push({ title: level4Title, source: 'level4' });
+
+    // Tối đa 2 cấp con vì header hiện có 3 ô sau Home.
+    // Nếu engine truyền sâu hơn, gộp phần sâu nhất vào ô cuối để vẫn giữ đúng lưu đồ.
+    if (nested.length > 2) {
+        const tail = nested.slice(1).map(x => x.title).join(' · ');
+        nested.splice(1, nested.length - 1, { title: tail, source: 'combined' });
     }
 
-    if (level2Title) {
-        document.getElementById('header-level2-title').textContent = level2Title;
-        document.getElementById('header-level2-icon').textContent = level2Icon || '🔢';
-        tab2.classList.remove('hidden');
-        tab2.classList.add('flex');
-        homeBtn.classList.add('opacity-80', 'hover:opacity-100');
-    } else {
-        tab2.classList.add('hidden');
-        tab2.classList.remove('flex');
-        homeBtn.classList.remove('opacity-80');
+    document.getElementById('header-level2-title').textContent = main.title;
+    document.getElementById('header-level2-icon').textContent = main.icon;
+    tab2.classList.remove('hidden');
+    tab2.classList.add('flex');
+    homeBtn.classList.add('opacity-80', 'hover:opacity-100');
+
+    const mainBtn = tab2.querySelector('button');
+    headerLevel2ClickHandler = () => openMainTab(currentMainTab);
+    if (mainBtn) {
+        mainBtn.onclick = onHeaderLevel2Click;
+        mainBtn.title = main.title;
     }
 
-    if (level3Title) {
-        document.getElementById('header-level3-title').textContent = level3Title;
+    headerLevel3ClickHandler = null;
+    headerLevel4ClickHandler = null;
+
+    if (nested[0]) {
+        document.getElementById('header-level3-title').textContent = nested[0].title;
         tab3.classList.remove('hidden');
         tab3.classList.add('flex');
+        // Cấp chuyên mục đầu tiên quay về hub/module hiện tại.
+        headerLevel3ClickHandler = nested[0].source === 'level3' && typeof level3ClickHandler === 'function'
+            ? level3ClickHandler
+            : returnToTopicLecture;
     } else {
         tab3.classList.add('hidden');
         tab3.classList.remove('flex');
     }
 
-    if (level4Title && tab4) {
-        document.getElementById('header-level4-title').textContent = level4Title;
+    const level3Btn = document.getElementById('header-level3-btn');
+    if (level3Btn) {
+        const clickable = typeof headerLevel3ClickHandler === 'function';
+        level3Btn.classList.toggle('cursor-pointer', clickable);
+        level3Btn.classList.toggle('hover:bg-purple-100', clickable);
+        level3Btn.classList.toggle('cursor-default', !clickable);
+    }
+
+    if (tab4 && nested[1]) {
+        document.getElementById('header-level4-title').textContent = nested[1].title;
         tab4.classList.remove('hidden');
         tab4.classList.add('flex');
+        // Handler cũ của level3 phải đi theo đúng breadcrumb level3 gốc sau khi đã chèn Main tab.
+        if ((nested[1].source === 'level3' || nested[1].source === 'combined') && typeof level3ClickHandler === 'function') {
+            headerLevel4ClickHandler = level3ClickHandler;
+        }
+        const level4Box = tab4.querySelector('div');
+        if (level4Box) {
+            level4Box.onclick = onHeaderLevel4Click;
+            level4Box.classList.toggle('cursor-pointer', !!headerLevel4ClickHandler);
+            level4Box.classList.toggle('hover:bg-amber-100', !!headerLevel4ClickHandler);
+        }
     } else if (tab4) {
         tab4.classList.add('hidden');
         tab4.classList.remove('flex');
@@ -1160,6 +1311,9 @@ function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3
 function returnToTopicLecture() {
     stopSpeaking();
     clearInterval(quizTimerInterval);
+    if (Number(activeTopicId) === 2) {
+        return openVocabularyHub();
+    }
     if (activeExamContext) {
         openExamHub();
     } else if (activeRoadmapContext) {
@@ -1178,7 +1332,7 @@ function returnToTopicLecture() {
 
 function switchAppView(viewId) {
     stopSpeaking();
-    ['view-dashboard-grid', 'view-bai-hoc-hub', 'view-bai-hoc-lesson', 'view-alphabet', 'view-lecture', 'view-quiz', 'view-roadmap', 'view-minigame-hub', 'view-game-play', 'view-exam-hub', 'view-result'].forEach(id => {
+    ['view-dashboard-grid', 'view-alphabet', 'view-lecture', 'view-quiz', 'view-roadmap', 'view-minigame-hub', 'view-game-play', 'view-exam-hub', 'view-result'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         if (id === viewId) el.classList.remove('hidden');
@@ -1186,77 +1340,15 @@ function switchAppView(viewId) {
     });
 }
 
-let currentMainTab = 'discover';
-
-function setMainTabActive_(tabName) {
-    currentMainTab = tabName || 'discover';
-    document.querySelectorAll('.main-module-tab').forEach(btn => {
-        const active = btn.dataset.tab === currentMainTab;
-        btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-}
-
-function refreshMainTabLocks_() {
-    const locked = !getPremiumAccessState().allowed;
-    ['lessons-lock-icon', 'roadmap-lock-icon', 'review-lock-icon', 'exam-lock-icon', 'minigame-lock-icon'].forEach(id => {
-        document.getElementById(id)?.classList.toggle('hidden', !locked);
-    });
-}
-
-function openLessonsTab() {
-    stopSpeaking();
-    clearInterval(quizTimerInterval);
-    inAlphaIpaFlow = false;
-    inMiniGameFlow = false;
-    activeExamContext = null;
-    activeRoadmapContext = null;
-    activeTopicId = null;
-    pendingTopicQuiz = null;
-    updateNavTabs('Bài học', '📖', null);
-    setMainTabActive_('lessons');
-    switchAppView('view-lessons-empty');
-}
-
-function openReviewTab() {
-    if (!requirePremiumAccess('Ôn tập')) return;
-    setMainTabActive_('review');
-    openTopic(11, 'Ôn tập', '🧠');
-}
-
-function openMainTab(tabName) {
-    stopSpeaking();
-    clearInterval(quizTimerInterval);
-    switch (tabName) {
-        case 'discover': goHome(); break;
-        case 'lessons': openLessonsTab(); break;
-        case 'exercises': openRoadmap(); break;
-        case 'review': openReviewTab(); break;
-        case 'exams': openExamHub(); break;
-        case 'games': openMiniGameHub(); break;
-        default: goHome();
-    }
-}
-
 function goHome() {
     stopSpeaking();
     clearInterval(quizTimerInterval);
     inAlphaIpaFlow = false;
     inMiniGameFlow = false;
-    activeExamContext = null;
-    activeRoadmapContext = null;
-    activeTopicId = null;
-    pendingTopicQuiz = null;
+    activeVocabularyHubTopic = null;
+    activeVocabularyStudyMode = 'flashcard';
     updateNavTabs(null, null, null);
-    setMainTabActive_('discover');
     switchAppView('view-dashboard-grid');
-
-    // Khám phá là Home logic. Nếu vì bất kỳ lý do gì grid chưa được dựng
-    // (cache cũ, restore session, fetch JSON chậm...), dựng lại ngay tại đây.
-    const discoverGrid = document.getElementById('view-dashboard-grid');
-    if (discoverGrid && !discoverGrid.children.length) {
-        renderDashboardGrid();
-    }
 }
 
 // ==========================================
@@ -1640,10 +1732,6 @@ function enterDashboard(isSilent = false) {
 function updateUserInfoBox() {
     const box = document.getElementById('user-info-box');
     if (!box) return;
-    refreshMainTabLocks_();
-
-    // Khi app vừa khởi động nhưng phiên cũ còn đang được backend xác thực,
-    // vẫn hiển thị rõ trạng thái phiên + nút đăng xuất, không để trống header.
     if (currentUser && currentUser.sessionPending) {
         box.innerHTML = `
             <div class="flex items-center space-x-2">
@@ -1656,33 +1744,35 @@ function updateUserInfoBox() {
             </div>`;
         return;
     }
-
-    // Guest: giống TV2, luôn có thông tin trạng thái + nút Sign in/up ở header.
-    if (!currentUser || currentUser.isGuest) {
+    if (currentUser && !currentUser.isGuest) {
+        const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
+        const type = normalizeAccountValue(getUserField(currentUser, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
+        const badge = role === 'admin' ? 'ADMIN' : type.toUpperCase();
+        const badgeClass = role === 'admin' ? 'bg-amber-100 text-amber-700 border-amber-200' : (type === 'vip' ? 'bg-purple-100 text-purple-700 border-purple-200' : (type === 'trial' ? 'bg-amber-100 text-amber-700 border-amber-200' : 'bg-sky-50 text-sky-600 border-sky-200'));
+        box.innerHTML = `
+            <div class="flex items-center space-x-2">
+                <div class="text-right">
+                    ${role === 'admin' ? `
+                    <div class="text-pink-600 font-extrabold text-sm md:text-base leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
+                    <div class="text-purple-500 font-bold text-[10px]">ADMIN | Quản trị viên</div>
+                    ` : `
+                    <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
+                    <div class="text-gray-500 font-bold text-[10px] leading-tight mt-0.5">${badge} · ID: ${escapeHtml(currentUser.maHS || '')}</div>
+                    `}
+                </div>
+                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-xs font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý</span></button>` : ''}
+                <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>`;
+    } else {
         box.innerHTML = `
             <div class="flex items-center gap-1.5">
-                <span class="text-amber-600 font-extrabold text-xs px-1.5">Khách</span>
-                <button onclick="openAuthScreen('login')" class="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-extrabold text-xs pastel-btn whitespace-nowrap">Sign in/up</button>
+                <span class="text-amber-600 font-extrabold text-[11px] mr-0.5">Khách</span>
+                <button onclick="openAuthScreen('login')" class="h-9 px-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[11px] font-black shadow-sm pastel-btn">Sign in</button>
+                <button onclick="openAuthScreen('register')" class="h-9 px-3 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 text-[11px] font-black shadow-sm pastel-btn">Sign up</button>
             </div>`;
-        return;
     }
-
-    const role = normalizeAccountValue(getUserField(currentUser, ['vaiTro', 'VaiTro', 'role'], 'student'));
-    const type = normalizeAccountValue(getUserField(currentUser, ['loaiTaiKhoan', 'LoaiTaiKhoan', 'accountType'], 'regular'));
-    const isAdmin = role === 'admin';
-    const tier = isAdmin ? 'Admin' : (type === 'vip' ? 'VIP' : (type === 'trial' ? 'Trial' : 'Regular'));
-    const tierClass = isAdmin ? 'text-amber-600' : (type === 'vip' ? 'text-amber-600' : (type === 'trial' ? 'text-purple-600' : 'text-slate-500'));
-
-    box.innerHTML = `
-        <div class="flex items-center space-x-2">
-            <div class="text-right">
-                <div class="${isAdmin ? 'text-amber-600' : 'text-pink-600'} font-extrabold text-sm md:text-base leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
-                <div class="${tierClass} font-semibold text-[10px]">${escapeHtml(tier)} · ID ${escapeHtml(currentUser.maHS || '')}</div>
-            </div>
-            ${isAdmin ? '<button onclick="openAccountManager()" title="Quản lý tài khoản" class="h-9 px-3 flex items-center justify-center bg-amber-100 hover:bg-amber-200 text-amber-700 rounded-xl border border-amber-200 text-xs font-extrabold pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear mr-1"></i>Quản lý</button>' : ''}
-            <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
-        </div>`;
 }
+
 
 // ==========================================
 // QUẢN LÝ TÀI KHOẢN — chỉ Admin
@@ -1949,13 +2039,461 @@ function clickProgressOrExam(type) {
     else if (type === 'exam') openExamHub();
 }
 
+
+// ==========================================
+// VOCABULARY HUB 18 CHỦ ĐỀ -> 3 CHẾ ĐỘ HỌC
+// ==========================================
+const VOCABULARY_18_TOPICS = [
+    { id: 1,  icon: '🦁', title: 'Land Animals', vi: 'Động vật trên cạn' },
+    { id: 2,  icon: '🐬', title: 'Water Animals', vi: 'Động vật dưới nước' },
+    { id: 3,  icon: '🐝', title: 'Insects', vi: 'Côn trùng' },
+    { id: 4,  icon: '🎨', title: 'Colors', vi: 'Màu sắc' },
+    { id: 5,  icon: '🎒', title: 'School Objects', vi: 'Đồ vật lớp học' },
+    { id: 6,  icon: '👀', title: 'Body Parts', vi: 'Bộ phận cơ thể' },
+    { id: 7,  icon: '🍎', title: 'Fruits', vi: 'Trái cây' },
+    { id: 8,  icon: '🥕', title: 'Vegetables', vi: 'Rau củ' },
+    { id: 9,  icon: '👨‍👩‍👧‍👦', title: 'Family', vi: 'Gia đình' },
+    { id: 10, icon: '🧑‍🏫', title: 'Occupations', vi: 'Nghề nghiệp' },
+    { id: 11, icon: '🚍', title: 'Transportation', vi: 'Phương tiện giao thông' },
+    { id: 12, icon: '😊', title: 'Emotions', vi: 'Cảm xúc' },
+    { id: 13, icon: '🏃', title: 'Daily Actions', vi: 'Hành động thường ngày' },
+    { id: 14, icon: '☀️', title: 'Weather', vi: 'Thời tiết' },
+    { id: 15, icon: '🏫', title: 'School & Stationery', vi: 'Nhà trường & Đồ dùng' },
+    { id: 16, icon: '🗓️', title: 'Time & Calendar', vi: 'Thời gian & Lịch' },
+    { id: 17, icon: '👗', title: 'Clothes & Accessories', vi: 'Quần áo & Phụ kiện' },
+    { id: 18, icon: '🔢', title: 'Numbers & Measurement', vi: 'Số đếm & Đo lường' }
+];
+
+const VOCAB_18_WORDS = {
+    1: new Set(["cat", "dog", "lion", "elephant", "monkey", "bear", "tiger", "cow", "pig", "chicken", "duck", "horse", "sheep", "rabbit", "fox", "wolf", "giraffe", "zebra", "kangaroo", "panda", "camel", "deer", "donkey", "goat", "hen", "hippo", "kitten", "mouse", "ox", "parrot", "puppy", "rooster", "squirrel", "zebu"]),
+    2: new Set(["fish", "dolphin", "whale", "shark", "octopus", "crab", "shrimp", "jellyfish", "sea turtle", "seahorse", "crocodile", "penguin", "starfish", "turtle"]),
+    3: new Set(["spider", "ant", "bee", "butterfly", "ladybug", "mosquito", "fly", "grasshopper", "worm", "snail"]),
+    4: new Set(["red", "blue", "yellow", "green", "black", "white", "orange", "purple", "pink", "brown", "gray", "gold", "silver", "light blue", "dark green", "grey"]),
+    5: new Set(["book", "pencil", "pen", "eraser", "ruler", "bag", "desk", "chair", "board", "chalk", "crayon", "scissors", "glue", "notebook", "backpack", "globe", "map", "computer", "marker", "sharpener", "ball", "balloon", "bell", "blocks", "box", "camera", "card", "classroom", "desk chair", "doll", "goal", "kite", "phone", "pool", "puzzle", "question", "quiz", "robot", "school", "seesaw", "slide", "swing", "teddy bear", "toy train", "whiteboard", "yo-yo", "yo-yos"]),
+    6: new Set(["head", "hair", "face", "eye", "ear", "nose", "mouth", "tooth", "tongue", "neck", "shoulder", "arm", "hand", "finger", "leg", "foot", "toe", "knee", "elbow", "stomach", "eyes", "ears", "hands", "arms", "legs", "feet", "body", "fingers", "teeth"]),
+    7: new Set(["apple", "banana", "bananas", "orange", "grape", "grapes", "strawberry", "watermelon", "pineapple", "mango", "pear", "cherry", "peach", "kiwi", "lemon", "coconut", "avocado", "plum", "pomegranate", "raspberry", "blueberry", "lime"]),
+    8: new Set(["carrot", "potato", "tomato", "onion", "garlic", "broccoli", "cabbage", "cucumber", "lettuce", "spinach", "corn", "mushroom", "pepper", "pumpkin", "eggplant", "zucchini", "green bean", "radish", "cauliflower", "sweet potato", "vegetables", "yams"]),
+    9: new Set(["mother", "mom", "father", "dad", "sister", "brother", "grandmother", "grandfather", "parents", "grandparents", "uncle", "aunt", "cousin", "son", "daughter", "baby", "family"]),
+    10: new Set(["teacher", "doctor", "nurse", "police officer", "firefighter", "chef", "pilot", "driver", "farmer", "singer", "dancer", "artist", "engineer", "scientist", "student", "baker", "dentist", "vet", "hairdresser", "builder", "astronaut", "postman", "soldier"]),
+    11: new Set(["car", "bus", "bicycle", "motorcycle", "motorbike", "train", "airplane", "plane", "boat", "ship", "truck", "taxi", "subway", "helicopter", "ambulance", "fire truck", "fire engine", "police car", "bike", "tractor", "van"]),
+    12: new Set(["happy", "sad", "angry", "surprised", "scared", "excited", "tired", "hungry", "thirsty", "bored", "confused", "shy", "proud", "worried", "grateful", "fine", "good", "great", "sleepy"]),
+    13: new Set(["eat", "drink", "sleep", "wake up", "go to bed", "play", "read", "write", "draw", "sing", "dance", "run", "walk", "jump", "talk", "listen", "watch", "cook", "clean", "brush", "riding", "sliding", "driving", "sail", "running", "jumping", "walking", "reading", "writing", "singing", "dancing", "playing", "eating", "drinking", "swim", "swimming", "fly", "flying", "ride", "drive"]),
+    14: new Set(["sunny", "rainy", "cloudy", "windy", "snowy", "hot", "cold", "warm", "cool", "stormy", "foggy", "thunder", "lightning", "rainbow", "breeze", "cloud", "cold weather", "hot weather", "rain", "sky", "sun"]),
+    15: new Set(["school", "classroom", "teacher", "student", "desk", "chair", "blackboard", "chalk", "notebook", "pencil", "eraser", "ruler", "pen", "crayon", "book", "backpack", "calculator", "glue", "scissors", "map", "paper", "pencil case", "sharpener"]),
+    16: new Set(["today", "tomorrow", "yesterday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "clock", "day", "week", "month", "year", "morning", "afternoon", "evening", "night"]),
+    17: new Set(["shirt", "shirts", "pants", "dress", "skirt", "jacket", "coat", "sweater", "t-shirt", "shorts", "shoes", "socks", "hat", "scarf", "gloves", "belt", "tie", "sunglasses", "watch", "bag", "jewelry", "boots", "trousers"]),
+    18: new Set(["one", "two", "three", "four", "five", "six", "seven", "seven number", "eight", "nine", "ten", "dozen", "hundred", "thousand", "meter", "centimeter", "kilometer", "gram", "kilogram", "liter", "circle", "eighteen", "eleven", "fifteen", "fourteen", "heart", "nineteen", "oval", "rectangle", "seventeen", "sixteen", "square", "star", "thirteen", "triangle", "twelve", "twenty"]),
+};
+
+let activeVocabularyHubTopic = null;
+let activeVocabularyHubQuestions = [];
+let activeVocabularyStudyMode = 'flashcard';
+let vocabularyModeState = {
+    flashcard: { answers: {}, wrongs: {} },
+    picture: { answers: {}, wrongs: {} },
+    listen: { answers: {}, wrongs: {} }
+};
+
+function getVocabulary18TopicIds_(q) {
+    const word = String(q?.word || q?.answer || '').trim().toLowerCase();
+    if (!word) return [];
+    const ids = [];
+    for (const topic of VOCABULARY_18_TOPICS) {
+        if (VOCAB_18_WORDS[topic.id]?.has(word)) ids.push(topic.id);
+    }
+    return ids;
+}
+function getVocabulary18TopicId_(q) {
+    return getVocabulary18TopicIds_(q)[0] || 0;
+}
+
+function resetLectureChrome_() {
+    const content = document.getElementById('lecture-content');
+    const contentWrap = content?.parentElement;
+    const speakBtn = document.querySelector('#view-lecture button[onclick="speakLecture()"]');
+    if (contentWrap) contentWrap.classList.remove('hidden');
+    if (speakBtn) speakBtn.classList.remove('hidden');
+}
+
+async function openVocabularyHub() {
+    stopSpeaking();
+    inMiniGameFlow = false;
+    inAlphaIpaFlow = false;
+    activeTopicId = 2; activeExamContext = null; activeRoadmapContext = null;
+    updateNavTabs('2. Vocabulary', '📚', null);
+    showLoadingOverlay('Loading vocabulary topics...');
+    try {
+        const topics = await fetchAllTopicsData();
+        const topicObj = topics.find(t => Number(t.topic_id) === 2);
+        if (!topicObj?.questions?.length) throw new Error('Vocabulary data is empty.');
+        activeVocabularyHubQuestions = topicObj.questions;
+        renderVocabulary18Topics_();
+    } catch (err) {
+        alert(`Không thể tải Vocabulary: ${err.message || err}`);
+    } finally {
+        hideLoadingOverlay();
+    }
+}
+
+function renderVocabulary18Topics_() {
+    activeVocabularyHubTopic = null;
+    activeVocabularyStudyMode = 'flashcard';
+    const content = document.getElementById('lecture-content');
+    const contentWrap = content?.parentElement;
+    const speakBtn = document.querySelector('#view-lecture button[onclick="speakLecture()"]');
+    const list = document.getElementById('lecture-subtopics-list');
+    const mix = document.getElementById('wrap-mix-all-subtopics');
+    if (!list) return;
+    if (contentWrap) contentWrap.classList.add('hidden');
+    if (speakBtn) speakBtn.classList.add('hidden');
+    if (mix) mix.classList.add('hidden');
+
+    const flashcards = activeVocabularyHubQuestions.filter(q => q.sub_topic === '2.1');
+    const uniqueWords = new Set(flashcards.map(q => String(q.word || '').trim().toLowerCase()).filter(Boolean));
+    const counts = {};
+    flashcards.forEach(q => {
+        getVocabulary18TopicIds_(q).forEach(id => {
+            counts[id] = (counts[id] || 0) + 1;
+        });
+    });
+
+    document.getElementById('lecture-title').textContent = '';
+    list.className = 'w-full max-w-6xl';
+    list.innerHTML = `
+        <div class="flex justify-center mb-4">
+            <button onclick="openVocabularyAll18()" class="min-h-[48px] px-5 md:px-7 rounded-2xl border-2 border-pink-300 bg-gradient-to-r from-pink-50 to-violet-50 hover:from-pink-100 hover:to-violet-100 shadow-sm transition-all flex items-center justify-center gap-2 text-pink-600">
+                <span class="text-lg md:text-xl">📚</span>
+                <span class="text-lg md:text-2xl font-black">18 VOCABULARY TOPICS (${uniqueWords.size} WORDS)</span>
+            </button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 md:gap-3">
+            ${VOCABULARY_18_TOPICS.map(t => {
+                const count = counts[t.id] || 0;
+                return `<button onclick="openVocabularyTopic18(${t.id})" class="min-h-[86px] md:min-h-[92px] rounded-2xl border-2 border-pink-200 bg-white hover:bg-pink-50 hover:border-pink-400 transition-all shadow-sm px-2.5 py-2.5 flex flex-col items-center justify-center text-center">
+                    <div class="flex items-center justify-center gap-1.5 md:gap-2 w-full">
+                        <span class="text-xl md:text-2xl leading-none shrink-0">${t.icon}</span>
+                        <span class="font-black text-pink-700 text-xs md:text-sm leading-tight">${t.id}. ${escapeHtml(t.title)}</span>
+                    </div>
+                    <div class="text-[10px] md:text-[11px] font-bold text-slate-400 mt-1 leading-tight">${escapeHtml(t.vi)}</div>
+                    <div class="text-[10px] font-black ${count ? 'text-pink-500' : 'text-slate-300'} mt-1">${count} words</div>
+                </button>`;
+            }).join('')}
+        </div>`;
+
+    updateNavTabs('2. Vocabulary', '📚', null);
+    switchAppView('view-lecture');
+}
+
+function openVocabularyAll18() {
+    const pool = activeVocabularyHubQuestions.filter(q => q.sub_topic === '2.1');
+    if (!pool.length) {
+        showFriendlyAlert?.('Kho từ vựng tổng hợp đang được cập nhật.', '📚');
+        return;
+    }
+    activeVocabularyHubTopic = { id: 0, title: 'All Vocabulary', vi: 'Tất cả từ vựng', icon: '📚' };
+    activeVocabularyStudyMode = 'flashcard';
+    vocabularyModeState = {
+        flashcard: { answers: {}, wrongs: {} },
+        picture: { answers: {}, wrongs: {} },
+        listen: { answers: {}, wrongs: {} }
+    };
+    practiceCycleRawPool = [...pool];
+    updateNavTabs('2. Vocabulary', '📚', 'All Vocabulary / Tất cả từ vựng', null, () => openVocabularyAll18());
+    startTopicQuiz(2, 'All Vocabulary', shuffleArray([...pool]), '2.1');
+}
+
+function openVocabularyTopic18(topicId) {
+    const topic = VOCABULARY_18_TOPICS.find(t => t.id === Number(topicId));
+    if (!topic) return;
+    activeVocabularyHubTopic = topic;
+
+    // Một pool từ duy nhất cho cả 3 cách học. Giữ nguyên thứ tự ngẫu nhiên của vòng hiện tại;
+    // đổi tab chỉ đổi cách hỏi, KHÔNG đổi từ đang học.
+    const pool = activeVocabularyHubQuestions.filter(q => q.sub_topic === '2.1' && getVocabulary18TopicIds_(q).includes(topic.id));
+    if (!pool.length) {
+        showFriendlyAlert?.(`Chủ đề ${topic.title} đang được bổ sung từ vựng.`, '📚');
+        return;
+    }
+
+    activeVocabularyStudyMode = 'flashcard';
+    vocabularyModeState = {
+        flashcard: { answers: {}, wrongs: {} },
+        picture: { answers: {}, wrongs: {} },
+        listen: { answers: {}, wrongs: {} }
+    };
+    practiceCycleRawPool = [...pool];
+    updateNavTabs('2. Vocabulary', '📚', `${topic.title} / ${topic.vi}`, null, () => openVocabularyTopic18(topic.id));
+    startTopicQuiz(2, `${topic.title} - Vocabulary`, shuffleArray([...pool]), '2.1');
+}
+
+function getVocabularyModeKey_(mode = activeVocabularyStudyMode) {
+    if (mode === 'picture') return 'picture';
+    if (mode === 'listen') return 'listen';
+    return 'flashcard';
+}
+
+function saveVocabularyModeState_() {
+    const key = getVocabularyModeKey_();
+    vocabularyModeState[key] = {
+        answers: { ...userAnswers },
+        wrongs: Object.fromEntries(Object.entries(wrongAttemptsByQ).map(([k,v]) => [k, Array.isArray(v) ? [...v] : v]))
+    };
+}
+
+function restoreVocabularyModeState_() {
+    const key = getVocabularyModeKey_();
+    const state = vocabularyModeState[key] || { answers: {}, wrongs: {} };
+    userAnswers = { ...state.answers };
+    wrongAttemptsByQ = Object.fromEntries(Object.entries(state.wrongs || {}).map(([k,v]) => [k, Array.isArray(v) ? [...v] : v]));
+}
+
+function setVocabularyStudyMode(mode) {
+    if (!activeVocabularyHubTopic || !['flashcard','picture','listen'].includes(mode)) return;
+    saveVocabularyModeState_();
+    activeVocabularyStudyMode = mode;
+    restoreVocabularyModeState_();
+    loadQuestion();
+}
+
+function getVocabularyChoiceOptions_(q) {
+    if (!q) return [];
+    if (Array.isArray(q._vocabChoiceOptions) && q._vocabChoiceOptions.length === 4) return q._vocabChoiceOptions;
+    const words = practiceCycleRawPool.map(x => String(x.word || '').trim()).filter(Boolean);
+    q._vocabChoiceOptions = shuffleArray([q.word, ...pickDistractorWords(q.word, words, 3)]);
+    return q._vocabChoiceOptions;
+}
+
+function getVocabularyIpaForWord_(word) {
+    const key = String(word || '').trim().toLowerCase();
+    if (!key) return '';
+    const pools = [practiceCycleRawPool, activeQuestionsList];
+    for (const pool of pools) {
+        const item = Array.isArray(pool) ? pool.find(x => String(x?.word || '').trim().toLowerCase() === key) : null;
+        if (item?.ipa) return String(item.ipa).replace(/^\/|\/$/g, '');
+    }
+    return '';
+}
+
+function vocabularyTabsHtml_() {
+    const tabs = [
+        { key:'flashcard', icon:'🃏', en:'Flashcards', vi:'' },
+        { key:'picture', icon:'🖼️', en:'Word-picture Puzzle', vi:'Nhìn tranh chọn từ' },
+        { key:'listen', icon:'🎧', en:'Listen and Choose', vi:'Nghe và chọn từ' }
+    ];
+    return `<div class="grid grid-cols-3 gap-2 md:gap-3 mb-3">
+        ${tabs.map(t => {
+            const active = activeVocabularyStudyMode === t.key;
+            return `<button onclick="setVocabularyStudyMode('${t.key}')" class="h-[62px] md:h-[66px] rounded-2xl border-2 px-2.5 md:px-3 py-1.5 transition-all flex flex-col items-center justify-center ${active ? 'bg-gradient-to-r from-pink-500 to-violet-500 text-white border-pink-300 shadow-md' : 'bg-white text-slate-600 border-pink-200 hover:bg-pink-50'}">
+                <div class="flex items-center justify-center gap-1.5 md:gap-2 min-w-0">
+                    <span class="text-base md:text-lg leading-none shrink-0">${t.icon}</span>
+                    <span class="font-black text-[10px] sm:text-[11px] md:text-sm leading-tight truncate">${t.en}</span>
+                </div>
+                ${t.vi ? `<div class="text-[8px] md:text-[10px] font-bold ${active ? 'text-white/90' : 'text-slate-400'} mt-0.5 leading-tight">${t.vi}</div>` : ''}
+            </button>`;
+        }).join('')}
+    </div>`;
+}
+
+function speakVocabularyPrompt_() {
+    if (activeVocabularyStudyMode === 'listen') return speakVocabularyTarget_();
+    speakEnglish('Choose the correct English word.', 0.92);
+}
+
+function speakVocabularyTarget_() {
+    const q = activeQuestionsList[currentQIndex];
+    if (q?.word) speakEnglish(q.word, 0.9);
+}
+
+function maskedVocabularyExamples_(q) {
+    const word = String(q.word || '').trim();
+    const rx = word ? new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig') : null;
+    return (Array.isArray(q.examples) ? q.examples : []).slice(0,3).map(ex => rx ? String(ex).replace(rx, '_____') : String(ex));
+}
+
+function getVocabularyRecordByWord_(word) {
+    const key = String(word || '').trim().toLowerCase();
+    if (!key) return null;
+    const pools = [practiceCycleRawPool, activeQuestionsList, activeVocabularyHubQuestions];
+    for (const pool of pools) {
+        const item = Array.isArray(pool) ? pool.find(x => String(x?.word || '').trim().toLowerCase() === key) : null;
+        if (item) return item;
+    }
+    return null;
+}
+
+function highlightVocabularyTarget_(text, word) {
+    const raw = String(text || '');
+    const target = String(word || '').trim();
+    if (!target) return escapeHtml(raw);
+    const esc = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const rx = new RegExp(`(${esc})`, 'ig');
+    return raw.split(rx).map(part => part.toLowerCase() === target.toLowerCase()
+        ? `<span class="text-red-500 font-black bg-red-50 px-1 rounded">${escapeHtml(part)}</span>`
+        : escapeHtml(part)).join('');
+}
+
+function vocabularyPictureExamplesHtml_(q) {
+    const examples = (Array.isArray(q?.examples) ? q.examples : []).slice(0,3);
+    if (!examples.length) return '';
+    const solved = userAnswers[currentQIndex] === q.answer;
+    if (!solved) return '<div class="h-full min-h-[150px]"></div>';
+    return `<div class="font-black text-amber-600 text-sm mb-2">⭐ 3 EXAMPLE SENTENCES:</div><div class="space-y-2">${examples.map(ex => `<div class="bg-white rounded-xl px-3 py-2 text-left font-bold text-slate-700">${highlightVocabularyTarget_(ex, q.word)}</div>`).join('')}</div>`;
+}
+
+function revealVocabularyPictureExamples_() {
+    if (activeVocabularyStudyMode !== 'picture') return;
+    const q = activeQuestionsList[currentQIndex];
+    const box = document.getElementById('vocab-picture-examples');
+    if (q && box) box.innerHTML = vocabularyPictureExamplesHtml_(q);
+}
+
+function revealVocabularyVietnameseAfterCorrect_() {
+    if (!['picture','listen'].includes(activeVocabularyStudyMode)) return;
+    document.getElementById('vocab-prompt-meaning')?.classList.remove('hidden');
+    document.querySelectorAll('.vocab-option-meaning').forEach(el => el.classList.remove('hidden'));
+}
+
+function getVocabularyExampleVi_(q, ex) {
+    const vi = String(q?.vietnamese || '').trim();
+    const word = String(q?.word || '').trim();
+    const text = String(ex || '').trim();
+    const custom = Array.isArray(q?.examples_vi) ? q.examples_vi : [];
+    const idx = Array.isArray(q?.examples) ? q.examples.indexOf(ex) : -1;
+    if (idx >= 0 && custom[idx]) return custom[idx];
+    if (!text) return '';
+
+    const esc = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const rx = esc ? new RegExp(esc, 'i') : null;
+    const pairs = [
+        [new RegExp(`^Look at the ${esc}\\.$`, 'i'), `Hãy nhìn ${vi}.`],
+        [new RegExp(`^I can see the ${esc}\\.$`, 'i'), `Em có thể nhìn thấy ${vi}.`],
+        [new RegExp(`^I can see a ${esc}\\.$`, 'i'), `Em có thể nhìn thấy một ${vi}.`],
+        [new RegExp(`^This is a ${esc}\\.$`, 'i'), `Đây là một ${vi}.`],
+        [new RegExp(`^This is my ${esc}\\.$`, 'i'), `Đây là ${vi} của em.`],
+        [new RegExp(`^I have a ${esc}\\.$`, 'i'), `Em có một ${vi}.`],
+        [new RegExp(`^I like ${esc}\\.$`, 'i'), `Em thích ${vi}.`],
+        [new RegExp(`^I feel ${esc}\\.$`, 'i'), `Em cảm thấy ${vi}.`],
+        [new RegExp(`^The ${esc} lives in the sea\\.$`, 'i'), `${vi} sống ở biển.`],
+        [new RegExp(`^The ${esc} is swimming\\.$`, 'i'), `${vi} đang bơi.`],
+        [new RegExp(`^The ${esc} is running fast\\.$`, 'i'), `${vi} đang chạy nhanh.`],
+        [new RegExp(`^The ${esc} is small\\.$`, 'i'), `${vi} nhỏ.`],
+        [new RegExp(`^The ${esc} is fast\\.$`, 'i'), `${vi} rất nhanh.`],
+        [new RegExp(`^The ${esc} is slow\\.$`, 'i'), `${vi} rất chậm.`],
+        [new RegExp(`^The ${esc} is red\\.$`, 'i'), `${vi} màu đỏ.`],
+        [new RegExp(`^The ${esc} is yellow\\.$`, 'i'), `${vi} màu vàng.`],
+        [new RegExp(`^The ${esc} is grey\\.$`, 'i'), `${vi} màu xám.`],
+        [new RegExp(`^The ${esc} is sweet\\.$`, 'i'), `${vi} có vị ngọt.`],
+        [new RegExp(`^The ${esc} is sour\\.$`, 'i'), `${vi} có vị chua.`],
+        [new RegExp(`^The ${esc} helps people\\.$`, 'i'), `${vi} giúp đỡ mọi người.`],
+        [new RegExp(`^The ${esc} is working\\.$`, 'i'), `${vi} đang làm việc.`],
+        [new RegExp(`^The ${esc} is on the desk\\.$`, 'i'), `${vi} ở trên bàn học.`],
+        [new RegExp(`^The ${esc} is nice\\.$`, 'i'), `${vi} rất đẹp.`],
+        [new RegExp(`^The ${esc} is here\\.$`, 'i'), `${vi} ở đây.`],
+        [new RegExp(`^My ${esc} is here\\.$`, 'i'), `${vi} của em ở đây.`],
+        [new RegExp(`^The weather is ${esc}\\.$`, 'i'), `Thời tiết ${vi}.`],
+        [new RegExp(`^I can ${esc}\\.$`, 'i'), `Em có thể ${vi}.`],
+        [new RegExp(`^Let's ${esc}\\.$`, 'i'), `Chúng ta hãy ${vi}.`],
+        [new RegExp(`^Let’s ${esc}\\.$`, 'i'), `Chúng ta hãy ${vi}.`],
+        [new RegExp(`^We ${esc} every day\\.$`, 'i'), `Chúng ta ${vi} mỗi ngày.`],
+        [new RegExp(`^I love my ${esc}\\.$`, 'i'), `Em yêu ${vi} của em.`],
+        [new RegExp(`^My ${esc} is kind\\.$`, 'i'), `${vi} của em rất tốt bụng.`],
+        [new RegExp(`^She looks ${esc}\\.$`, 'i'), `Bạn ấy trông ${vi}.`],
+        [new RegExp(`^I am ${esc}\\.$`, 'i'), `Em ${vi}.`],
+        [new RegExp(`^He is ${esc}\\.$`, 'i'), `Bạn ấy ${vi}.`]
+    ];
+    for (const [r, t] of pairs) if (r.test(text)) return t;
+    if (rx && rx.test(text)) return text.replace(rx, vi);
+    return `Nghĩa gợi ý: ${vi}.`;
+}
+
+function renderVocabularySharedStudy_(q) {
+    if (!q || !activeVocabularyHubTopic) return;
+    const tabs = vocabularyTabsHtml_();
+    const topic = activeVocabularyHubTopic;
+    const imageOrEmoji = q.image_url
+        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-cover rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.classList.remove('hidden');"><div class="hidden w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`
+        : `<div class="w-full h-full flex items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`;
+
+    const optionButtonHtml = (opt, i, accent = 'pink') => {
+        const record = getVocabularyRecordByWord_(opt);
+        const ipa = record?.ipa ? String(record.ipa).replace(/^\/|\/$/g, '') : getVocabularyIpaForWord_(opt);
+        const meaning = String(record?.vietnamese || '').trim();
+        const accentClass = accent === 'cyan' ? 'text-cyan-600' : 'text-pink-600';
+        const borderClass = accent === 'cyan' ? 'border-cyan-200 hover:bg-cyan-50' : 'border-pink-200 hover:bg-pink-50';
+        return `<button data-opt="${escapeHtml(opt)}" onclick="checkAnswer('${String(opt).replace(/'/g,"\'")}')" class="option-btn w-full px-3 py-2.5 bg-white ${borderClass} border-2 rounded-2xl font-black text-slate-800 text-left transition-all">
+            <span class="opt-text flex items-center gap-2 min-w-0">
+                <strong class="${accentClass} shrink-0">${String.fromCharCode(65+i)}.</strong>
+                <span class="font-black leading-tight shrink-0">${escapeHtml(opt)}</span>
+                ${ipa ? `<span class="text-[11px] md:text-xs font-bold text-slate-400 shrink-0">/${escapeHtml(ipa)}/</span>` : ''}
+                ${meaning ? `<span class="vocab-option-meaning hidden text-[11px] md:text-xs font-bold text-violet-500 truncate">(${escapeHtml(meaning)})</span>` : ''}
+            </span>
+        </button>`;
+    };
+
+    let body = '';
+    if (activeVocabularyStudyMode === 'flashcard') {
+        const examples = (Array.isArray(q.examples) ? q.examples : []).slice(0,3);
+        body = `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-stretch">
+            <section class="rounded-3xl border-2 border-pink-200 bg-pink-50/40 p-3 shadow-sm flex flex-col">
+                <div class="w-full aspect-[4/3] max-h-[260px] bg-white rounded-3xl overflow-hidden flex items-center justify-center mb-2.5">${imageOrEmoji}</div>
+                <div class="flex justify-center items-center gap-2 flex-wrap">
+                    <div class="text-2xl md:text-3xl font-black text-slate-900">${escapeHtml(q.word || '')}</div>
+                    <span class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black">${escapeHtml((q.part_of_speech || '').toUpperCase())}</span>
+                    <button onclick="speakVocabularyTarget_()" class="w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                ${q.ipa ? `<div class="mt-1 text-center text-sm md:text-base font-black text-sky-700">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+                <div class="mt-1 text-center text-base md:text-lg font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
+            </section>
+            <section class="rounded-3xl border-2 border-amber-200 bg-amber-50/40 p-3 shadow-sm">
+                <div class="font-black text-amber-600 text-sm md:text-base mb-2">⭐ 3 EXAMPLE SENTENCES:</div>
+                <div class="space-y-2">${examples.map((ex,i)=>`<div class="bg-white rounded-2xl border border-amber-100 px-3 py-2.5"><div class="flex items-center gap-2"><div class="flex-1 text-left font-bold text-slate-700">${escapeHtml(ex)}</div><button onclick="speakFlashcardExample(${i})" class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 shrink-0"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div class="mt-1 text-left text-xs md:text-sm font-semibold text-slate-400">${escapeHtml(getVocabularyExampleVi_(q, ex))}</div></div>`).join('')}</div>
+            </section>
+        </div>`;
+    } else if (activeVocabularyStudyMode === 'picture') {
+        const options = getVocabularyChoiceOptions_(q);
+        q.answer = q.word;
+        q.options = options;
+        body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div><div id="vocab-prompt-meaning" class="mt-1 text-xs md:text-sm font-bold text-slate-400 hidden">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+            <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-3"><div class="w-full aspect-[4/3] max-h-[260px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div></section>
+            <section id="vocab-picture-examples" class="rounded-3xl border-2 border-amber-200 bg-amber-50/30 p-3">${vocabularyPictureExamplesHtml_(q)}</section>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
+    } else {
+        const options = getVocabularyChoiceOptions_(q);
+        q.answer = q.word;
+        q.options = options;
+        body = `<div class="min-h-[330px] flex flex-col items-center justify-center">
+            <div class="text-xl md:text-2xl font-black text-slate-900 mb-1">Listen and choose.</div>
+            <div class="text-xs md:text-sm font-bold text-slate-400 mb-4">Nghe và chọn từ đúng</div>
+            <button onclick="speakVocabularyTarget_()" class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white shadow-lg hover:scale-105 transition-transform flex items-center justify-center mb-5"><i class="fa-solid fa-volume-high text-3xl"></i></button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full max-w-3xl">${options.map((opt,i)=>optionButtonHtml(opt,i,'cyan')).join('')}</div>
+        </div>`;
+    }
+
+    document.getElementById('question-box').innerHTML = `<div class="w-full max-w-5xl mx-auto px-1 md:px-2">${tabs}${body}</div>`;
+    restoreQuestionState(q);
+    updateNavButtons();
+    if (activeVocabularyStudyMode === 'listen' && autoSpeechEnabled) setTimeout(() => speakVocabularyTarget_(), 120);
+}
+
+// Giữ tên hàm cũ để không phá các nơi đang gọi, nhưng màn chọn 3 card cũ không còn dùng.
+function renderVocabularyModeTabs_() {
+    if (activeVocabularyHubTopic) openVocabularyTopic18(activeVocabularyHubTopic.id);
+}
+function startVocabularyMode18(sectionCode) {
+    const map = { '2.1':'flashcard', '2.2':'picture', '2.3':'listen' };
+    setVocabularyStudyMode(map[sectionCode] || 'flashcard');
+}
+
 // ==========================================
 // CHỦ ĐỀ 1: BẢNG CHỮ CÁI TƯƠNG TÁC (1.1 ĐẾN 1.4)
 // ==========================================
 function openTopic(topicNum, topicName, icon) {
+    if (Number(topicNum) === 2) return openVocabularyHub();
+    resetLectureChrome_();
     stopSpeaking();
     inMiniGameFlow = false;
-    if (Number(topicNum) === 11 && currentMainTab === 'review') setMainTabActive_('review');
     // Chỉ mục 11 là nội dung Premium; các mục 1-10 luôn mở cho mọi trạng thái tài khoản.
     if (Number(topicNum) === 11 && !requirePremiumAccess('Practice & Play')) return;
     inAlphaIpaFlow = false;
@@ -1988,6 +2526,7 @@ function setSubtopicGridColumns(count) {
 }
 
 function showLectureAndSubtopics(topicNum, topicName, topicObj) {
+    resetLectureChrome_();
     document.getElementById('wrap-mix-all-subtopics').classList.remove('hidden');
     document.getElementById('btn-mix-all-subtopics').setAttribute('onclick', 'selectSubtopic(null)');
     pendingTopicQuiz = { topicNum, topicName, questions: topicObj.questions };
@@ -2021,7 +2560,7 @@ function showLectureAndSubtopics(topicNum, topicName, topicObj) {
     setSubtopicGridColumns(groups.length);
     document.getElementById('lecture-subtopics-list').innerHTML = subHtml;
 
-    updateNavTabs(topicName, TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢', null);
+    updateNavTabs(topicName, topicNum === 11 ? '🧠' : (TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢'), null);
     switchAppView('view-lecture');
 }
 
@@ -2078,7 +2617,7 @@ function showPairedGroupMenu(topicNum, topicName, subLabel, displayLabel, pool, 
     document.getElementById('wrap-mix-all-subtopics').classList.remove('hidden');
     document.getElementById('btn-mix-all-subtopics').setAttribute('onclick', 'selectPairedGroup(null)');
 
-    updateNavTabs(topicName, TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢', displayLabel);
+    updateNavTabs(topicName, topicNum === 11 ? '🧠' : (TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢'), displayLabel);
     switchAppView('view-lecture');
 }
 
@@ -2096,12 +2635,12 @@ function launchSubtopicQuiz(topicNum, topicName, pool, subLabel, displayLabel) {
     practiceCycleRawPool = [...pool];
     const firstCycleQuestions = shuffleArray([...pool]);
 
-    updateNavTabs(topicName, TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢', displayLabel || 'Tất cả các mục');
+    updateNavTabs(topicName, topicNum === 11 ? '🧠' : (TOPICS_CONFIG.find(t => t.id === topicNum)?.icon || '🔢'), displayLabel || 'Tất cả các mục');
     startTopicQuiz(topicNum, finalTitle, firstCycleQuestions, subLabel);
 }
 
 // ==========================================
-// BÀI TẬP: giữ engine lộ trình tuần hiện tại
+// TIẾN TRÌNH TUẦN: BẢN ĐỒ SVG
 // ==========================================
 function handleNextExamFromReport() {
     stopSpeaking();
@@ -2119,10 +2658,9 @@ function handleNextExamFromReport() {
 function openRoadmap() {
     stopSpeaking();
     inMiniGameFlow = false;
-    if (!requirePremiumAccess('Bài tập')) return;
+    if (!requirePremiumAccess('Bản đồ tuần / Tiến trình tuần')) return;
     inAlphaIpaFlow = false;
-    setMainTabActive_('exercises');
-    updateNavTabs("Bài tập", "✏️", null);
+    updateNavTabs("Bản đồ tiến trình tuần", "🗺️", null);
     renderRoadmapSVG();
     switchAppView('view-roadmap');
 }
@@ -2213,8 +2751,7 @@ async function selectRoadmapWeek(weekNum) {
     activeRoadmapContext = { week: weekNum, topicId: config.subIds[0] || '1.1', chuDe: config.name, isReview15: !!(config.isGrandReview || config.isReview15) };
     pendingTopicQuiz = null; activeExamContext = null;
     const topicLabel = config.name.replace(/^Tuần\s*\d+:\s*/i, '');
-    setMainTabActive_('exercises');
-    updateNavTabs("Bài tập", "✏️", `Tuần ${weekNum}`, topicLabel);
+    updateNavTabs("Tiến trình tuần", "📅", `Tuần ${weekNum}`, topicLabel);
 
     const isReviewMode = !!(config.isGrandReview || config.isReview15);
     showLoadingOverlay(isReviewMode ? `Đang chuẩn bị đề ôn tổng hợp 15 câu Tuần ${weekNum}...` : `Đang bốc 30 câu hỏi Tuần ${weekNum} (tỷ lệ 3:4:3)...`);
@@ -2291,6 +2828,82 @@ function startTopicQuiz(topicNum, topicName, questions, subLabel) {
     loadQuestion();
 }
 
+function toggleFlashcardVietnamese() {
+    const btn = document.getElementById('flashcard-vi-btn');
+    const items = Array.from(document.querySelectorAll('.flashcard-vi-text'));
+    if (!btn || !items.length) return;
+    const willShow = items.some(el => el.classList.contains('hidden'));
+    items.forEach(el => el.classList.toggle('hidden', !willShow));
+    btn.innerHTML = willShow
+        ? '<i class="fa-solid fa-eye-slash mr-1.5"></i>Hide Vietnamese / Ẩn nghĩa'
+        : '<i class="fa-solid fa-language mr-1.5"></i>Vietnamese Meaning / Nghĩa Tiếng Việt';
+}
+
+function speakFlashcardWord() {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'vocab_flashcard') return;
+    speakEnglish(q.word || '', 0.9);
+}
+
+function speakFlashcardExample(i) {
+    const q = activeQuestionsList[currentQIndex];
+    if (!q || q.render_style !== 'vocab_flashcard') return;
+    const text = Array.isArray(q.examples) ? q.examples[i] : '';
+    if (text) speakEnglish(text, 0.92);
+}
+
+function renderVocabularyFlashcard_(q) {
+    const imageOrEmoji = q.image_url
+        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-cover rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.classList.remove('hidden');">
+           <div class="hidden w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`
+        : `<div class="w-full h-full flex items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`;
+
+    const examples = (Array.isArray(q.examples) ? q.examples : []).slice(0,3);
+    const exHtml = examples.map((ex, i) => `
+        <div class="flex items-start gap-2 bg-white/80 border border-violet-100 rounded-2xl px-3 py-2">
+            <button onclick="speakFlashcardExample(${i})" class="w-8 h-8 shrink-0 rounded-full bg-violet-100 text-violet-700 hover:bg-violet-200" title="Listen">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+            <div class="text-left"><span class="font-black text-violet-600 mr-1">${i+1}.</span><span class="font-bold text-slate-700">${escapeHtml(ex)}</span></div>
+        </div>`).join('');
+
+    const html = `
+        <div class="w-full max-w-5xl mx-auto px-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
+                <section class="rounded-3xl border-2 border-pink-200 bg-gradient-to-br from-white to-pink-50 p-4 md:p-5 shadow-sm">
+                    <div class="w-full aspect-square max-h-[300px] md:max-h-[330px] bg-white border border-pink-100 rounded-3xl overflow-hidden flex items-center justify-center mx-auto mb-4">
+                        ${imageOrEmoji}
+                    </div>
+                    <div class="flex items-center justify-center gap-2 flex-wrap">
+                        <h2 class="text-3xl md:text-4xl font-black text-pink-600">${escapeHtml(q.word || '')}</h2>
+                        <button onclick="speakFlashcardWord()" class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 hover:bg-pink-200" title="Listen"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    ${q.ipa ? `<div class="text-base md:text-lg font-bold text-slate-500 text-center mt-1">/${escapeHtml(String(q.ipa).replace(/^\/|\/$/g,''))}/</div>` : ''}
+                    <div class="mt-4 space-y-2">${exHtml}</div>
+                </section>
+
+                <section class="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-white to-violet-50 p-4 md:p-5 shadow-sm flex flex-col">
+                    <div class="text-center md:text-left">
+                        <div class="text-xs font-black uppercase tracking-wider text-violet-500">Vietnamese support</div>
+                        <h3 class="text-xl md:text-2xl font-black text-violet-700 mt-1">Nghĩa Tiếng Việt</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mt-1">Bấm nút bên dưới khi con cần xem nghĩa.</p>
+                    </div>
+                    <button id="flashcard-vi-btn" onclick="toggleFlashcardVietnamese()" class="mt-5 w-full px-4 py-3 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-black shadow-sm">
+                        <i class="fa-solid fa-language mr-1.5"></i>Vietnamese Meaning / Nghĩa Tiếng Việt
+                    </button>
+                    <div id="flashcard-vi-panel" class="hidden mt-4 flex-1 rounded-3xl bg-white border-2 border-dashed border-violet-200 p-5 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-slate-400 mb-1">${escapeHtml(q.word || '')}</div>
+                            <div class="text-2xl md:text-3xl font-black text-violet-700">${escapeHtml(q.vietnamese || '')}</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>`;
+
+    document.getElementById('question-box').innerHTML = html;
+}
+
 function loadQuestion() {
     stopSpeaking();
     const q = activeQuestionsList[currentQIndex];
@@ -2317,7 +2930,20 @@ function loadQuestion() {
         }
     } else {
         const stepEl = document.getElementById('practice-step-text');
-        if (stepEl) stepEl.textContent = `Câu ${currentQIndex + 1} / ${activeQuestionsList.length}`;
+        if (stepEl) stepEl.textContent = (activeVocabularyHubTopic && q.render_style === 'vocab_flashcard')
+            ? `${currentQIndex + 1} / ${activeQuestionsList.length}`
+            : (q.render_style === 'vocab_flashcard' ? `${currentQIndex + 1} / ${activeQuestionsList.length}` : `Câu ${currentQIndex + 1} / ${activeQuestionsList.length}`);
+    }
+
+    if (!isEvaluationMode && activeVocabularyHubTopic && q.render_style === 'vocab_flashcard') {
+        renderVocabularySharedStudy_(q);
+        return;
+    }
+
+    if (!isEvaluationMode && q.render_style === 'vocab_flashcard') {
+        renderVocabularyFlashcard_(q);
+        updateNavButtons();
+        return;
     }
 
     let mediaHtml = '';
@@ -2364,7 +2990,6 @@ function loadQuestion() {
                     <span>🎧</span><span>👂</span><span>🔢</span>
                 </div>
                 <p class="text-sm md:text-base lg:text-lg font-black text-rose-600 leading-snug">${escapeHtml(q.question_text)}</p>
-                ${q.question_text_vi ? `<p class="mt-1 text-xs md:text-sm font-bold text-slate-400">${escapeHtml(q.question_text_vi)}</p>` : ''}
                 ${practiceSpeakerBtnHtml}
             </div>
 
@@ -2392,7 +3017,7 @@ function loadQuestion() {
             <h3 class="text-sm md:text-base lg:text-lg font-black text-slate-900 leading-snug">
                 ${escapeHtml(q.question_text)}
             </h3>
-            ${q.question_text_vi ? `<p class="mt-1 text-xs md:text-sm font-bold text-slate-400">${escapeHtml(q.question_text_vi)}</p>` : ''}
+            ${q.question_text_vi ? `<div class="text-xs md:text-sm font-bold text-slate-500 mt-1">${escapeHtml(q.question_text_vi)}</div>` : ''}
             ${practiceSpeakerBtnHtml}
         </div>
         
@@ -2508,12 +3133,25 @@ function updateNavButtons() {
 
     if (!btnPrev) return;
 
+    const inVocabulary = !isEvaluationMode && !!activeVocabularyHubTopic;
+    if (inVocabulary) {
+        btnPrev.innerHTML = '<i class="fa-solid fa-arrow-left"></i><span>Previous</span>';
+        const stepEl = document.getElementById('practice-step-text');
+        if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
+    }
+
     if (currentQIndex === 0) {
         btnPrev.disabled = true;
         btnPrev.classList.add('opacity-40', 'cursor-not-allowed');
     } else {
         btnPrev.disabled = false;
         btnPrev.classList.remove('opacity-40', 'cursor-not-allowed');
+    }
+
+    if (inVocabulary) {
+        if (nextText) nextText.textContent = 'Next';
+        if (nextIcon) nextIcon.className = 'fa-solid fa-arrow-right ml-1.5';
+        return;
     }
 
     if (currentQIndex === activeQuestionsList.length - 1) {
@@ -2653,6 +3291,8 @@ function checkAnswer(selectedOpt) {
 
         playAudio('correct');
         confetti({ particleCount: 30, spread: 55, origin: { y: 0.7 } });
+        revealVocabularyVietnameseAfterCorrect_();
+        revealVocabularyPictureExamples_();
         setTimeout(() => speakOptionWithMeaning(q.answer), 180);
     } else {
         if (!wrongAttemptsByQ[currentQIndex]) wrongAttemptsByQ[currentQIndex] = [];
@@ -2677,6 +3317,7 @@ function checkAnswer(selectedOpt) {
 
 function prevQuestion() {
     stopSpeaking();
+    if (activeVocabularyHubTopic) saveVocabularyModeState_();
     if (currentQIndex > 0) {
         currentQIndex--;
         loadQuestion();
@@ -2685,9 +3326,12 @@ function prevQuestion() {
 
 function nextQuestion() {
     stopSpeaking();
+    if (activeVocabularyHubTopic) saveVocabularyModeState_();
     const isEvaluationMode = !!activeExamContext || !!activeRoadmapContext;
 
-    if (!isEvaluationMode && userAnswers[currentQIndex] === undefined) {
+    const inVocabularySharedStudy = !isEvaluationMode && !!activeVocabularyHubTopic && activeQuestionsList[currentQIndex]?.render_style === 'vocab_flashcard';
+    const vocabularyNeedsAnswer = inVocabularySharedStudy && activeVocabularyStudyMode !== 'flashcard';
+    if (!isEvaluationMode && ((vocabularyNeedsAnswer) || (!inVocabularySharedStudy && activeQuestionsList[currentQIndex]?.render_style !== 'vocab_flashcard')) && userAnswers[currentQIndex] === undefined) {
         alert('Bé hãy tìm đáp án đúng để hoàn thành câu này nhé!');
         return;
     }
@@ -2706,6 +3350,13 @@ function nextQuestion() {
             const basePool = practiceCycleRawPool.length ? practiceCycleRawPool : activeQuestionsList;
             activeQuestionsList = shuffleArray([...basePool]);
             currentQIndex = 0;
+            if (activeVocabularyHubTopic) {
+                vocabularyModeState = {
+                    flashcard: { answers: {}, wrongs: {} },
+                    picture: { answers: {}, wrongs: {} },
+                    listen: { answers: {}, wrongs: {} }
+                };
+            }
             userAnswers = {};
             wrongAttemptsByQ = {};
             loadQuestion();
@@ -2782,7 +3433,7 @@ function showResultScreen() {
 
     const nextActionLabel = document.getElementById('report-next-action-label');
     if (nextActionLabel) {
-        nextActionLabel.textContent = activeRoadmapContext ? '🔙 Quay lại Bài tập' : '🚀 Làm đề thi tiếp theo';
+        nextActionLabel.textContent = activeRoadmapContext ? '🔙 Quay lại tiến trình tuần' : '🚀 Làm đề thi tiếp theo';
     }
 
     const historyBtn = document.getElementById('report-history-btn');
@@ -2992,7 +3643,7 @@ async function saveWeeklyProgressToSheet(percent, starCount, scoreVal) {
 
 async function openHistoryModal(sheetName = 'LichSuTienTrinhTuan') {
     if (!currentUser || currentUser.isGuest) {
-        return alert('Bé vui lòng đăng nhập để xem lịch sử Bài tập nhé!');
+        return alert('Bé vui lòng đăng nhập để xem lịch sử tiến trình nhé!');
     }
 
     const modal = document.getElementById('modal-history-progress');
@@ -3005,12 +3656,12 @@ async function openHistoryModal(sheetName = 'LichSuTienTrinhTuan') {
     document.getElementById('hist-report-date').textContent = new Date().toLocaleDateString('vi-VN');
 
     const titleMap = {
-        LichSuTienTrinhTuan: "Báo cáo Bài tập",
+        LichSuTienTrinhTuan: "Báo cáo tiến trình 24 tuần học tập",
         LichSuBaiThiHK1: "Báo cáo kết quả đấu trường — Học kỳ 1",
         LichSuBaiThiHK2: "Báo cáo kết quả đấu trường — Học kỳ 2",
         LichSuBaiThiHSG: "Báo cáo kết quả đấu trường — Học sinh giỏi"
     };
-    document.getElementById('hist-modal-title').textContent = titleMap[sheetName] || "Kết quả Bài tập";
+    document.getElementById('hist-modal-title').textContent = titleMap[sheetName] || "Kết quả tiến trình học tập";
 
     showLoadingOverlay('Đang trích xuất dữ liệu và vẽ biểu đồ năng lực...');
     try {
@@ -3504,7 +4155,7 @@ function speakEnglish(text, rate = 0.92) {
 
         if (cleanText.length <= 180) {
             const encoded = encodeURIComponent(cleanText);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encoded}`;
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             const playPromise = banMaiAudio.play();
             if (playPromise !== undefined) playPromise.catch(() => {});
@@ -3518,7 +4169,7 @@ function speakEnglish(text, rate = 0.92) {
             const sentence = sentences[sIdx++].trim();
             if (!sentence) { playSentence(); return; }
             const encoded = encodeURIComponent(sentence);
-            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encoded}`;
+            banMaiAudio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encoded}`;
             banMaiAudio.playbackRate = rate;
             banMaiAudio.onended = playSentence;
             const playPromise = banMaiAudio.play();
@@ -3536,9 +4187,7 @@ function speakCurrentQuestion() {
     // Phần hướng dẫn bằng tiếng Việt -> Google TTS chị Ban Mai.
     if (q.audio_text) return speakEnglish(q.audio_text, 0.92);
     if (q.reading_passage) return speakEnglish(q.reading_passage, 0.92);
-    if (q.tts_text) return (String(q.tts_locale).toLowerCase().startsWith('vi') ? speakVietnamese(q.tts_text, 0.96) : speakEnglish(q.tts_text, 0.92));
-    // JSON mới: question_text là English-first; question_text_vi chỉ là nghĩa hỗ trợ và không đọc.
-    if (q.question_text) return speakEnglish(q.question_text, 0.92);
+    speakVietnamese(q.question_text, 0.96);
 }
 
 function playAudio(type) {
@@ -3711,13 +4360,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
 
     updateAutoSpeechButtonUI();
-    updateUserInfoBox();
 
-    // Bảo đảm nội dung Khám phá luôn có ngay cả khi app vào dashboard qua
-    // một luồng khởi tạo khác hoặc restore session đang chờ backend.
-    setMainTabActive_('discover');
-    const discoverGrid = document.getElementById('view-dashboard-grid');
-    if (discoverGrid && !discoverGrid.children.length) renderDashboardGrid();
+    // Kiến trúc 6 tab mới: Đề thi dùng nhãn English là Exams.
+    const examsTab = document.getElementById('main-tab-exams');
+    const examsEn = examsTab?.querySelector('.bi-label .en');
+    if (examsEn) examsEn.textContent = 'Exams';
 });
 
 // ==========================================
@@ -3830,12 +4477,12 @@ const MINIGAME_LIST = [
 
 function openMiniGameHub() {
     stopSpeaking();
+    setMainTabActive_('games');
     if (!requirePremiumAccess('Mini Game')) return;
     inAlphaIpaFlow = false;
     inMiniGameFlow = true;
     activeExamContext = null; activeRoadmapContext = null; activeTopicId = null; pendingTopicQuiz = null;
-    setMainTabActive_('games');
-    updateNavTabs("Mini games", "🎮", null);
+    updateNavTabs("Mini Game", "🎮", null);
 
     ensureMiniGameThemeStyles();
     const grid = document.getElementById('minigame-grid');
@@ -3933,6 +4580,121 @@ function getWordSearchVocabPool(topicId = 'all') {
 }
 
 tryAutoLogin();
+
+// ===== RESTORED FROM CURRENT TA2 6-TAB / LESSON-EXERCISE BRANCH =====
+function switchAppView(viewId) {
+    stopSpeaking();
+    ['view-dashboard-grid', 'view-bai-hoc-hub', 'view-bai-hoc-lesson', 'view-alphabet', 'view-lecture', 'view-quiz', 'view-roadmap', 'view-minigame-hub', 'view-game-play', 'view-exam-hub', 'view-result'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (id === viewId) el.classList.remove('hidden');
+        else el.classList.add('hidden');
+    });
+}
+
+function setMainTabActive_(tabName) {
+    currentMainTab = tabName || 'discover';
+    document.querySelectorAll('.main-module-tab').forEach(btn => {
+        const active = btn.dataset.tab === currentMainTab;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+}
+
+function refreshMainTabLocks_() {
+    const locked = !getPremiumAccessState().allowed;
+    ['lessons-lock-icon', 'roadmap-lock-icon', 'review-lock-icon', 'exam-lock-icon', 'minigame-lock-icon'].forEach(id => {
+        document.getElementById(id)?.classList.toggle('hidden', !locked);
+    });
+}
+
+function openLessonsTab() {
+    stopSpeaking();
+    clearInterval(quizTimerInterval);
+    inAlphaIpaFlow = false;
+    inMiniGameFlow = false;
+    activeExamContext = null;
+    activeRoadmapContext = null;
+    activeTopicId = null;
+    pendingTopicQuiz = null;
+    updateNavTabs('Bài học', '📖', null);
+    setMainTabActive_('lessons');
+    switchAppView('view-lessons-empty');
+}
+
+async function openReviewTab() {
+    if (!requirePremiumAccess('Review / Ôn tập')) return;
+    stopSpeaking();
+    clearInterval(quizTimerInterval);
+    inAlphaIpaFlow = false;
+    inMiniGameFlow = false;
+    activeExamContext = null;
+    activeRoadmapContext = null;
+    activeTopicId = 11;
+    pendingTopicQuiz = null;
+    setMainTabActive_('review');
+    updateNavTabs('Review / Ôn tập', '🧠', null);
+
+    showLoadingOverlay('Đang tải nội dung ôn tập...');
+    try {
+        const flat = await fetchAllQuestionsFlat();
+        const reviewQuestions = flat.filter(q => q.sub_topic === '11.1' || q.sub_topic === '11.2');
+        if (!reviewQuestions.length) throw new Error('Không tìm thấy dữ liệu ôn tập Học kỳ I / Học kỳ II');
+
+        const topicObj = {
+            topic_id: 11,
+            topic_name: 'Review / Ôn tập',
+            description: 'Choose a semester to review. / Chọn học kỳ để ôn tập.',
+            lecture_title: 'Review',
+            lecture_content: 'Choose Semester 1 or Semester 2 to start reviewing.',
+            lecture_audio_text: 'Choose Semester 1 or Semester 2 to start reviewing.',
+            questions: reviewQuestions
+        };
+        hideLoadingOverlay();
+        showLectureAndSubtopics(11, 'Review / Ôn tập', topicObj);
+    } catch (err) {
+        hideLoadingOverlay();
+        activeTopicId = null;
+        updateNavTabs('Review / Ôn tập', '🧠', null);
+        alert(`Không thể tải nội dung ôn tập: ${err.message}`);
+    }
+}
+
+function openMainTab(tabName) {
+    stopSpeaking();
+    clearInterval(quizTimerInterval);
+    switch (tabName) {
+        case 'discover': goHome(); break;
+        case 'lessons': openLessonsTab(); break;
+        case 'exercises': openRoadmap(); break;
+        case 'review': openReviewTab(); break;
+        case 'exams': openExamHub(); break;
+        case 'games': openMiniGameHub(); break;
+        default: goHome();
+    }
+}
+
+function goHome() {
+    stopSpeaking();
+    clearInterval(quizTimerInterval);
+    inAlphaIpaFlow = false;
+    inMiniGameFlow = false;
+    activeExamContext = null;
+    activeRoadmapContext = null;
+    activeTopicId = null;
+    pendingTopicQuiz = null;
+    setMainTabActive_('discover');
+    updateNavTabs(null, null, null);
+    switchAppView('view-dashboard-grid');
+
+    // Khám phá là Home logic. Nếu vì bất kỳ lý do gì grid chưa được dựng
+    // (cache cũ, restore session, fetch JSON chậm...), dựng lại ngay tại đây.
+    const discoverGrid = document.getElementById('view-dashboard-grid');
+    if (discoverGrid && !discoverGrid.children.length) {
+        renderDashboardGrid();
+    }
+}
+
 
 // ==========================================
 // V10 - BÀI HỌC <-> BÀI TẬP THEO 16 UNIT SGK GLOBAL SUCCESS
