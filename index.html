@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
+    <title>Tiếng Anh 2 - Cô Thỏ Ngọc</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=2">
+    <!-- Hỗ trợ cài app ra màn hình chính (PWA) -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
     <meta name="theme-color" content="#ec4899">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <title>Tiếng Việt 1 - Cô Thỏ Hồng</title>
-<!-- Tailwind CSS CDN -->
+    <meta name="apple-mobile-web-app-title" content="TA 2">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,6 +58,10 @@
             50% { transform: translateY(-6px); }
         }
         .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
         @keyframes sway {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-5px) rotate(-7deg); }
@@ -80,108 +86,65 @@
         ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
 
 
+        /* Mobile header gọn: chỉ giữ thành phần hệ thống; module học chuyển xuống 6 tab */
         @media (max-width: 767px) {
-            #screen-login img[src="icon-512.png"] {
-                border: none !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                background: transparent !important;
-            }
-
-            .app-main-header {
+            #dashboard-header {
                 display: grid !important;
-                grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+                grid-template-columns: auto minmax(0, 1fr);
                 grid-template-rows: auto auto;
-                gap: 0.35rem 0.35rem !important;
                 align-items: center;
+                column-gap: 0.35rem !important;
+                row-gap: 0.35rem !important;
                 padding: 0.35rem 0.45rem !important;
             }
-
-            #header-nav-zone,
-            #header-info-zone {
-                display: contents !important;
-            }
-
+            #header-nav-group, #header-actions-group { display: contents !important; }
             #btn-header-home {
-                grid-row: 1;
-                grid-column: 1;
+                grid-row: 1; grid-column: 1; width: 93px !important; height: 62px !important;
+                min-width: 93px !important; padding: 0 !important; margin: 0 !important;
+                overflow: hidden !important; border-radius: 0.75rem !important;
             }
-
             #header-learning-tabs {
-                grid-row: 1;
-                grid-column: 2;
-                min-width: 0;
-                overflow-x: auto;
-                overflow-y: hidden;
-                scrollbar-width: none;
-                margin-left: 0;
+                grid-row: 1; grid-column: 2; min-width: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
             }
             #header-learning-tabs::-webkit-scrollbar { display: none; }
-
             #header-level2-icon { display: none !important; }
-            #header-level2-tab > button {
-                padding-left: 0.5rem !important;
-                padding-right: 0.5rem !important;
-                column-gap: 0 !important;
+            #header-level2-tab > button { padding-left: 0.5rem !important; padding-right: 0.5rem !important; column-gap: 0 !important; }
+            #btn-toggle-autospeech { grid-row: 2; grid-column: 1; justify-self: start; }
+            #header-score-box {
+                grid-row: 2; grid-column: 1; justify-self: start; margin-left: 2.7rem !important;
+                padding-left: 0.4rem !important; padding-right: 0.4rem !important;
             }
-
-            #btn-bai-hoc-header {
-                grid-row: 1;
-                grid-column: 3;
-                justify-self: end;
-            }
-
-            #btn-progress-header {
-                grid-row: 1;
-                grid-column: 4;
-                justify-self: end;
-            }
-
-            #btn-minigame-header {
-                grid-row: 1;
-                grid-column: 5;
-                justify-self: end;
-            }
-
-            #btn-bai-hoc-header,
-            #btn-progress-header,
-            #btn-minigame-header {
-                width: 2.5rem !important;
-                min-width: 2.5rem !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                justify-content: center !important;
-            }
-
-            #btn-toggle-autospeech {
-                grid-row: 2;
-                grid-column: 1;
-                justify-self: start;
-                margin: 0;
-            }
-
-            #header-star-box {
-                grid-row: 2;
-                grid-column: 1;
-                justify-self: start;
-                margin-left: 0 !important;
-                transform: translateX(2.7rem);
-            }
-
+            #header-score-box .score-label-text { display: none !important; }
+            #header-score-box > div { column-gap: 0.35rem !important; }
+            #header-score-box > div > span:first-child { padding-left: 0.4rem !important; padding-right: 0.4rem !important; min-width: 1.65rem; text-align: center; }
+            #header-score-box > div > span:first-child i { margin-right: 0 !important; }
             #user-info-box {
-                grid-row: 2;
-                grid-column: 2 / 6;
-                justify-self: end;
-                width: auto;
-                min-width: 0;
-                margin-left: auto;
-                text-align: right;
+                grid-row: 2; grid-column: 2; justify-self: end; width: auto; min-width: 0; margin-left: auto; text-align: right !important;
             }
-
-            #user-info-box > div,
-            #user-info-box > span { margin-left: auto; }
-
+            #user-info-box > div, #user-info-box > span { margin-left: auto; }
             #user-info-box > * { max-width: 100%; }
+        }
+
+        /* Điều hướng chính 6 tab - chuẩn UI dùng chung */
+        .main-module-tab {
+            position: relative; min-height: 46px; padding: 7px 8px; border-radius: 14px;
+            border: 1.5px solid #f5c5df; background: linear-gradient(180deg,#fff,#fff8fc);
+            color: #7e3bb8; font-weight: 900; font-size: 13px; line-height: 1.05;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            box-shadow: 0 2px 7px rgba(109,40,217,.07);
+            transition: box-shadow .18s,border-color .18s,background .18s,color .18s;
+        }
+        .main-module-tab:hover { border-color:#e879f9; box-shadow:0 0 13px rgba(217,70,239,.22); }
+        .main-module-tab.is-active {
+            color:#fff; border-color:#d946ef;
+            background:linear-gradient(135deg,#ec4899 0%,#a855f7 55%,#7c3aed 100%);
+            box-shadow:0 5px 14px rgba(168,85,247,.28);
+        }
+        @media (min-width:768px) { .main-module-tab { min-height:50px; font-size:14px; } }
+
+        /* Khung chương trình tablet/desktop - chỉnh bề ngang tại đây */
+        @media (min-width: 768px) {
+            #screen-dashboard { max-width: 72rem !important; }
         }
 
         @media print {
@@ -201,222 +164,31 @@
             .page-break-3 { page-break-before: always; break-before: page; }
         }
     
-        /* TV1: tang be rong khung chuong trinh */
-        #screen-dashboard {
-            max-width: 72rem !important;
-        }
+        .semester-switch-btn{min-width:92px;height:42px;padding:0 14px;border-radius:12px;font-weight:900;font-size:12px;line-height:1.05;transition:.18s;border:1.5px solid #e9d5ff;}
+        .semester-switch-btn.is-active{color:#fff;background:linear-gradient(135deg,#ec4899 0%,#a855f7 100%);border-color:#c026d3;box-shadow:0 4px 10px rgba(168,85,247,.22);}
+        .semester-switch-btn.is-inactive{color:#7e22ce;background:linear-gradient(135deg,#fff1f7 0%,#f5f3ff 100%);}
+        .lesson-chip{border:1px solid #fbcfe8;background:#fff7fb;border-radius:12px;padding:6px 10px;font-weight:800;font-size:12px;color:#7e22ce;}
+
+        /* Bài học: tăng độ đọc rõ cho dòng tiếng Việt */
+        #view-bai-hoc-hub .bi-label .vi{font-size:13px;margin-top:5px;opacity:.82;}
+        #view-bai-hoc-hub #bai-hoc-hub-subtitle{font-size:13px;line-height:1.35;}
+        #view-bai-hoc-hub #bai-hoc-hub-subtitle .lesson-hub-vi{font-size:12px;color:#94a3b8;font-weight:800;display:block;margin-top:4px;}
+        #view-bai-hoc-hub .semester-switch-btn .semester-vi{font-size:11px;display:block;margin-top:3px;opacity:.82;}
 
 
-        /* TV1 UI V11 - 6 tab co dinh nhu TV2 */
-        .main-module-tab{
-            position:relative; min-height:46px; padding:7px 8px; border-radius:14px;
-            border:1.5px solid #f5c5df; background:linear-gradient(180deg,#fff,#fff8fc);
-            color:#7e3bb8; font-weight:900; font-size:13px; line-height:1.05;
-            display:flex; align-items:center; justify-content:center; gap:6px;
-            box-shadow:0 2px 7px rgba(109,40,217,.07);
-            transition:box-shadow .18s,border-color .18s,background .18s,color .18s;
-        }
-        .main-module-tab:hover{border-color:#e879f9;box-shadow:0 0 13px rgba(217,70,239,.22);}
-        .main-module-tab.is-active{
-            color:#fff; border-color:#d946ef;
-            background:linear-gradient(135deg,#ec4899 0%,#a855f7 55%,#7c3aed 100%);
-            box-shadow:0 5px 14px rgba(168,85,247,.28);
-        }
-        @media (min-width:768px){.main-module-tab{min-height:50px;font-size:14px;}}
-
-        .semester-switch-btn{
-            min-width:88px; height:34px; padding:0 14px; border-radius:12px;
-            font-weight:900; font-size:12px; transform:none !important;
-            transition:background .18s,color .18s,border-color .18s,box-shadow .18s,filter .18s !important;
-        }
-        .semester-switch-btn:hover{transform:none !important;filter:brightness(1.04);}
-        .semester-switch-btn.is-active{
-            color:#fff !important; background:linear-gradient(135deg,#ec4899 0%,#a855f7 100%) !important;
-            border:2px solid #c026d3 !important; box-shadow:0 5px 12px rgba(168,85,247,.28) !important;
-        }
-        .semester-switch-btn.is-inactive{
-            color:#7e22ce !important; background:linear-gradient(135deg,#fff1f7 0%,#f5f3ff 100%) !important;
-            border:1.5px solid #e9d5ff !important; box-shadow:0 2px 6px rgba(126,34,206,.08) !important;
-        }
-
-        @media (max-width:767px){
-            .app-main-header{display:flex !important;flex-direction:column !important;align-items:stretch !important;gap:.35rem !important;padding:.35rem .45rem !important;}
-            #header-nav-zone{display:flex !important;width:100% !important;min-width:0;justify-content:flex-start !important;overflow:hidden !important;}
-            #btn-header-home{width:72px !important;height:48px !important;min-width:72px !important;}
-            #header-learning-tabs{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;}
-            #header-learning-tabs::-webkit-scrollbar{display:none;}
-            #header-info-zone{display:flex !important;width:100% !important;justify-content:flex-end !important;gap:.35rem !important;min-width:0;}
-            #btn-toggle-autospeech{width:38px !important;height:38px !important;min-width:38px !important;}
-            #header-star-box{transform:none !important;margin-left:0 !important;}
-            #user-info-box{margin-left:auto !important;min-width:0;text-align:right;}
-            .semester-switch-btn{min-width:76px;height:32px;padding:0 9px;font-size:11px;}
-        }
-
-
-
-        /* THÔNG BÁO TRONG APP - thay alert/confirm mặc định của trình duyệt */
-        .app-dialog-backdrop {
-            position: fixed; inset: 0; z-index: 120;
-            display: flex; align-items: center; justify-content: center;
-            padding: 16px; background: rgba(30, 41, 59, .48);
-            backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-        }
-        .app-dialog-backdrop.hidden { display: none !important; }
-        .app-dialog-card {
-            width: min(92vw, 390px); overflow: hidden;
-            background: #fff; border: 2px solid #fbcfe8; border-radius: 28px;
-            box-shadow: 0 24px 70px rgba(76, 29, 149, .24), 0 8px 24px rgba(236, 72, 153, .14);
-            animation: appDialogPop .18s ease-out;
-        }
-        .app-dialog-body { padding: 24px 24px 18px; text-align: center; }
-        .app-dialog-icon-wrap {
-            width: 60px; height: 60px; margin: 0 auto 12px;
-            display: flex; align-items: center; justify-content: center;
-            border: 2px solid #fbcfe8; border-radius: 20px;
-            font-size: 30px; background: #fdf2f8;
-        }
-        .app-dialog-title { font-size: 20px; line-height: 1.2; font-weight: 900; color: #ec4899; }
-        .app-dialog-message {
-            margin-top: 10px; color: #475569; font-size: 14px; line-height: 1.7;
-            font-weight: 700; white-space: pre-line; user-select: text; -webkit-user-select: text;
-        }
-        .app-dialog-actions {
-            display: flex; gap: 10px; padding: 12px 16px 16px;
-            border-top: 1px solid #fce7f3; background: linear-gradient(180deg,#fff,#fff7fb);
-        }
-        .app-dialog-btn {
-            flex: 1; min-height: 44px; border-radius: 14px; font-size: 13px; font-weight: 900;
-            transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
-        }
-        .app-dialog-btn:active { transform: translateY(1px); }
-        .app-dialog-btn-cancel { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
-        .app-dialog-btn-ok { color: #fff; border: 0; box-shadow: 0 5px 14px rgba(168,85,247,.24); }
-        .app-dialog-btn.hidden { display: none !important; }
-        .app-toast-container {
-            position: fixed; z-index: 130; left: 50%; bottom: max(22px, env(safe-area-inset-bottom));
-            transform: translateX(-50%); width: min(92vw, 440px);
-            display: flex; flex-direction: column; gap: 8px; pointer-events: none;
-        }
-        .app-toast-item {
-            display: flex; align-items: center; gap: 10px; padding: 11px 14px;
-            border: 1.5px solid #fbcfe8; border-radius: 16px;
-            box-shadow: 0 10px 28px rgba(15,23,42,.16); color: #334155;
-            opacity: 0; transform: translateY(12px) scale(.98);
-            transition: opacity .2s ease, transform .2s ease;
-        }
-        .app-toast-item.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-        .app-toast-icon { font-size: 20px; flex: 0 0 auto; }
-        .app-toast-text { font-size: 13px; line-height: 1.45; font-weight: 900; }
-        @keyframes appDialogPop { from { opacity:0; transform:translateY(10px) scale(.96); } to { opacity:1; transform:none; } }
-
-
-
-        /* TV1 - bầu trời thiên nhiên dùng chung trên TOÀN BỘ các màn học tập */
-        .topic4-reading-stage,
-        .nature-ambient-host { position:relative; isolation:isolate; }
-        .nature-ambient-host > :not(.nature-ambient-layer) { position:relative; z-index:1; }
-        .nature-ambient-layer {
-            position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0;
-            border-radius:inherit; opacity:.72;
-        }
-        #view-dashboard-grid.nature-ambient-host { overflow:hidden; border-radius:28px; }
-        #view-dashboard-grid.nature-ambient-host > .nature-ambient-layer { opacity:.58; }
-        #view-quiz.nature-ambient-host > .nature-ambient-layer,
-        #view-result.nature-ambient-host > .nature-ambient-layer { opacity:.62; }
-        #view-game-play.nature-ambient-host > .nature-ambient-layer { opacity:.68; }
-
-        /* Mây trôi */
-        .nature-cloud {
-            position:absolute; opacity:.30;
-            filter:drop-shadow(0 3px 3px rgba(100,116,139,.10));
-            animation:natureCloudDrift linear infinite; will-change:transform;
-        }
-        .nature-cloud-1 { top:6%; left:-14%; font-size:3.5rem; animation-duration:28s; }
-        .nature-cloud-2 { top:17%; left:-20%; font-size:2.55rem; animation-duration:37s; animation-delay:-14s; opacity:.23; }
-        .nature-cloud-3 { top:48%; left:-18%; font-size:2rem; animation-duration:42s; animation-delay:-24s; opacity:.16; }
-
-        /* Chim bay */
-        .nature-bird { position:absolute; left:-8%; opacity:.55; animation:natureBirdFly linear infinite; will-change:transform; }
-        .nature-bird-1 { top:21%; font-size:1.35rem; animation-duration:19s; }
-        .nature-bird-2 { top:36%; font-size:1rem; animation-duration:25s; animation-delay:-10s; opacity:.43; }
-        .nature-bird-3 { top:58%; font-size:.9rem; animation-duration:29s; animation-delay:-18s; opacity:.32; }
-
-        /* Lá thu đỏ - vàng. Gió làm lá lượn sang hai bên thay vì rơi thẳng. */
-        .nature-leaf { position:absolute; top:-14%; opacity:.70; animation:natureLeafFall linear infinite; will-change:transform; }
-        .nature-leaf-red { filter:saturate(1.28) drop-shadow(0 2px 2px rgba(190,24,93,.12)); }
-        .nature-leaf-yellow { filter:saturate(1.18) brightness(1.08) drop-shadow(0 2px 2px rgba(217,119,6,.12)); }
-        .nature-leaf-1 { left:8%;  font-size:1.10rem; animation-duration:11s; animation-delay:-1s; }
-        .nature-leaf-2 { left:24%; font-size:.92rem; animation-duration:14s; animation-delay:-6s; }
-        .nature-leaf-3 { left:41%; font-size:1.15rem; animation-duration:12s; animation-delay:-9s; }
-        .nature-leaf-4 { left:58%; font-size:.95rem; animation-duration:15s; animation-delay:-3s; }
-        .nature-leaf-5 { left:73%; font-size:1.05rem; animation-duration:13s; animation-delay:-10s; }
-        .nature-leaf-6 { left:87%; font-size:.88rem; animation-duration:16s; animation-delay:-7s; }
-        .nature-leaf-7 { left:49%; font-size:.82rem; animation-duration:17s; animation-delay:-13s; opacity:.55; }
-        .nature-leaf-8 { left:94%; font-size:.78rem; animation-duration:18s; animation-delay:-4s; opacity:.50; }
-
-        /* Luồng gió mảnh, xanh nhạt, lướt ngang màn hình */
-        .nature-wind {
-            position:absolute; left:-220px; width:145px; height:30px; opacity:.34;
-            border-top:3px solid rgba(125,211,252,.55); border-radius:60% 70% 0 0;
-            animation:natureWindGust linear infinite; will-change:transform;
-        }
-        .nature-wind::before,
-        .nature-wind::after {
-            content:''; position:absolute; left:22px; border-top:2px solid rgba(167,243,208,.52); border-radius:60%;
-        }
-        .nature-wind::before { top:9px; width:105px; height:20px; }
-        .nature-wind::after { top:18px; left:54px; width:72px; height:14px; border-top-color:rgba(196,181,253,.46); }
-        .nature-wind-1 { top:31%; animation-duration:13s; animation-delay:-2s; }
-        .nature-wind-2 { top:54%; width:180px; animation-duration:17s; animation-delay:-10s; opacity:.27; }
-        .nature-wind-3 { top:76%; width:120px; animation-duration:15s; animation-delay:-7s; opacity:.24; }
-
-        @keyframes natureCloudDrift {
-            from { transform:translateX(0); }
-            to { transform:translateX(1550px); }
-        }
-        @keyframes natureBirdFly {
-            0% { transform:translateX(0) translateY(0) rotate(-4deg); }
-            35% { transform:translateX(470px) translateY(-18px) rotate(2deg); }
-            68% { transform:translateX(920px) translateY(10px) rotate(-1deg); }
-            100% { transform:translateX(1480px) translateY(-8px) rotate(2deg); }
-        }
-        @keyframes natureLeafFall {
-            0%   { transform:translate3d(0,-30px,0) rotate(0deg); }
-            20%  { transform:translate3d(34px,145px,0) rotate(95deg); }
-            43%  { transform:translate3d(-20px,300px,0) rotate(205deg); }
-            66%  { transform:translate3d(44px,455px,0) rotate(315deg); }
-            82%  { transform:translate3d(8px,565px,0) rotate(390deg); }
-            100% { transform:translate3d(62px,760px,0) rotate(520deg); }
-        }
-        @keyframes natureWindGust {
-            0%   { transform:translate3d(0,0,0) scaleX(.85); opacity:0; }
-            8%   { opacity:.34; }
-            48%  { transform:translate3d(760px,-8px,0) scaleX(1.08); opacity:.36; }
-            92%  { opacity:.20; }
-            100% { transform:translate3d(1650px,5px,0) scaleX(.95); opacity:0; }
-        }
-        @media (max-width:640px) {
-            .nature-cloud-3,.nature-bird-3,.nature-leaf-7,.nature-leaf-8,.nature-wind-3 { display:none; }
-            .nature-ambient-layer { opacity:.60; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .nature-cloud,.nature-bird,.nature-leaf,.nature-wind { animation:none !important; opacity:.12 !important; }
-        }
-        @media print { .nature-ambient-layer { display:none !important; } }
+        .bi-label{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.08;text-align:center}.bi-label .en{display:block;font-weight:900}.bi-label .vi{display:block;font-size:11px;font-weight:800;opacity:.78;margin-top:4px;line-height:1.1}.bi-left{align-items:flex-start;text-align:left}.card-title-bi{display:flex;flex-direction:column;align-items:flex-start;min-width:0;line-height:1.12}.card-title-bi .en{display:block;font-weight:900}.card-title-bi .vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}.card-vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}
 </style>
 </head>
-<body class="p-1 md:p-2 w-full" style="padding-top:max(0.25rem,env(safe-area-inset-top));padding-bottom:max(0.25rem,env(safe-area-inset-bottom));padding-left:max(0.25rem,env(safe-area-inset-left));padding-right:max(0.25rem,env(safe-area-inset-right));">
+<body class="p-1 md:p-2 w-full">
 
     <div class="w-full flex justify-center items-center mt-4 md:mt-6">
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
-        <div id="screen-login" class="hidden fixed inset-0 z-[100] bg-slate-900/55 backdrop-blur-sm flex items-center justify-center p-3">
-            <div class="relative w-full max-w-md pastel-card p-6 md:p-8 flex flex-col items-center text-center max-h-[94vh] overflow-y-auto">
-                <button type="button" onclick="closeAuthScreen()" title="Đóng" class="absolute right-4 top-4 w-9 h-9 rounded-full bg-pink-50 border border-pink-200 text-pink-500 hover:bg-pink-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+        <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
             <div class="mb-2 flex flex-col items-center">
-                <img src="icon-512.png" alt="Tiếng Việt 1" class="w-[150px] h-[150px] md:w-[160px] md:h-[160px] object-contain shadow-md select-none">
+                <img src="icon-512.png" alt="Tiếng Anh 2" class="w-[150px] h-[150px] md:w-[160px] md:h-[160px] object-contain select-none">
             </div>
 
-            <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô Thỏ Hồng</p>
+            <p class="text-base md:text-lg font-extrabold text-pink-600 mb-5">Cô Thỏ Ngọc</p>
 
             <div class="w-full grid grid-cols-2 bg-pink-50 rounded-2xl p-1 mb-5 border border-pink-200">
                 <button id="tab-btn-login" onclick="switchAuthTab('login')" class="py-2.5 rounded-xl font-extrabold text-sm pastel-btn bg-white text-pink-600 shadow-sm">Đăng nhập</button>
@@ -473,106 +245,127 @@
 
             <div class="w-full mt-4 pt-4 border-t border-pink-100">
                 <button onclick="handleGuestMode()" class="w-full py-3 bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 font-extrabold rounded-2xl text-xs md:text-sm pastel-btn hover:from-pink-200 hover:to-purple-200 border border-purple-200 flex items-center justify-center space-x-1.5">
-                    <i class="fa-solid fa-compass"></i><span>Để sau nhé</span>
+                    <i class="fa-solid fa-compass"></i><span>Vào học thử - không cần tài khoản (khách)</span>
                 </button>
             </div>
             <p id="auth-error-msg" class="text-xs font-bold text-rose-500 mt-3 hidden"></p>
-            </div>
+            <button onclick="closeAuthScreen()" class="mt-3 text-xs font-extrabold text-purple-500 hover:text-purple-700">← Quay lại trang chủ</button>
         </div>
 
         <!-- 2. KHUNG CHÍNH CHUẨN TỶ LỆ 16:9 / 16:10 -->
         <div id="screen-dashboard" class="w-full max-w-5xl flex flex-col space-y-1.5 md:space-y-2 p-1 md:p-2">
             
-            <header class="app-main-header w-full bg-white/95 backdrop-blur-md px-2 py-1 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col md:flex-row justify-between items-center gap-2">
-                <div id="header-nav-zone" class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-start overflow-x-auto">
-                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="w-[84px] h-[56px] flex items-center justify-center bg-white rounded-xl border border-pink-300 shadow-sm shrink-0 overflow-hidden p-0 transition-shadow duration-200 hover:border-pink-400 hover:shadow-[0_0_18px_rgba(244,114,182,0.65)]">
-                        <img src="Logo - Tho hong - TV1 - Chu nhat - Co vien.png" alt="Trang chủ Tiếng Việt 1" class="w-full h-full object-cover">
+            <header id="dashboard-header" class="w-full bg-white/95 backdrop-blur-md px-2 py-1 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col md:flex-row justify-between items-center gap-2">
+                <div id="header-nav-group" class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-start overflow-x-auto">
+                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="w-[93px] h-[62px] flex items-center justify-center bg-white rounded-xl border border-pink-300 shadow-sm shrink-0 overflow-hidden p-0 transition-shadow duration-200 hover:border-pink-400 hover:shadow-[0_0_18px_rgba(244,114,182,0.75)]">
+                        <img src="logo-home.png" alt="Trang chủ Tiếng Anh 2" class="w-full h-full object-cover">
                     </button>
 
                     <div id="header-learning-tabs" class="flex items-center space-x-1 min-w-0">
-                        <div id="header-level2-tab" class="hidden items-center">
-                            <button onclick="returnToTopicLecture()" class="h-10 px-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-extrabold rounded-xl text-xs md:text-sm flex items-center space-x-1.5 shadow-sm border border-pink-300 shrink-0 max-w-[200px] md:max-w-[260px] transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
-                                <span id="header-level2-icon">🌸</span>
-                                <span id="header-level2-title" class="truncate">Chủ đề học</span>
-                            </button>
-                        </div>
+                    <div id="header-level2-tab" class="hidden items-center">
+                        <button onclick="returnToTopicLecture()" class="h-10 px-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-extrabold rounded-xl text-xs md:text-sm flex items-center space-x-1.5 shadow-sm border border-pink-300 shrink-0 max-w-[200px] md:max-w-[260px] transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
+                            <span id="header-level2-icon">🔢</span>
+                            <span id="header-level2-title" class="truncate">Chủ đề học</span>
+                        </button>
+                    </div>
 
-                        <div id="header-level3-tab" class="hidden items-center space-x-1">
-                            <span class="text-pink-300 font-bold text-xs">/</span>
-                            <div class="h-10 px-2.5 bg-purple-50 border border-purple-200 text-purple-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[170px] md:max-w-[210px] truncate shadow-inner flex items-center">
-                                <span id="header-level3-title" class="truncate">Mục nhỏ</span>
-                            </div>
-                        </div>
+                    <div id="header-level3-tab" class="hidden items-center space-x-1">
+                        <span class="text-pink-300 font-bold text-xs">/</span>
+                        <button id="header-level3-btn" onclick="onHeaderLevel3Click()" class="h-10 px-2.5 bg-purple-50 border border-purple-200 text-purple-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[170px] md:max-w-[210px] truncate shadow-inner flex items-center transition-shadow duration-200">
+                            <span id="header-level3-title" class="truncate">Mục nhỏ</span>
+                        </button>
+                    </div>
 
-                        <div id="header-level4-tab" class="hidden items-center space-x-1">
-                            <span class="text-pink-300 font-bold text-xs">/</span>
-                            <div class="h-10 px-2.5 bg-amber-50 border border-amber-200 text-amber-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[200px] md:max-w-[260px] truncate shadow-inner flex items-center">
-                                <span id="header-level4-title" class="truncate">Chủ đề tuần</span>
-                            </div>
+                    <div id="header-level4-tab" class="hidden items-center space-x-1">
+                        <span class="text-pink-300 font-bold text-xs">/</span>
+                        <div class="h-10 px-2.5 bg-amber-50 border border-amber-200 text-amber-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[200px] md:max-w-[260px] truncate shadow-inner flex items-center">
+                            <span id="header-level4-title" class="truncate">Chủ đề tuần</span>
                         </div>
+                    </div>
                     </div>
                 </div>
 
-                <div id="header-info-zone" class="flex items-center space-x-1.5 md:space-x-2 w-full md:w-auto justify-between md:justify-end ml-auto shrink-0">
+                <div id="header-actions-group" class="flex items-center space-x-1.5 md:space-x-2 w-full md:w-auto justify-between md:justify-end ml-auto shrink-0">
                     <button id="btn-toggle-autospeech" onclick="toggleAutoSpeech()" title="Bật/tắt tự động đọc câu hỏi" class="h-10 w-10 shrink-0 flex items-center justify-center bg-pink-50 text-pink-600 border border-pink-200 rounded-xl shadow-inner transition-colors">
                         <i class="fa-solid fa-volume-high"></i>
                     </button>
 
-                    <div id="header-star-box" class="flex flex-col space-y-0.5 bg-pink-50/90 px-1.5 md:px-2.5 py-1 rounded-xl border border-pink-200 shadow-inner">
+                    <div id="header-score-box" class="flex flex-col space-y-0.5 bg-pink-50/90 px-2.5 py-1 rounded-xl border border-pink-200 shadow-inner">
                         <div class="flex items-center justify-between space-x-2 font-extrabold">
-                            <span class="px-1.5 py-0.5 bg-emerald-500 text-white rounded text-[10px] shadow-sm flex items-center justify-center"><i class="fa-solid fa-star md:mr-0.5"></i><span class="hidden md:inline"> Đúng</span></span>
+                            <span class="px-1.5 py-0.2 bg-emerald-500 text-white rounded text-[10px] shadow-sm"><i class="fa-solid fa-star mr-0.5"></i><span class="score-label-text"> Đúng</span></span>
                             <span class="text-emerald-600 font-extrabold text-xs" id="star-green-count">0</span>
                         </div>
                         <div class="flex items-center justify-between space-x-2 font-extrabold">
-                            <span class="px-1.5 py-0.5 bg-rose-500 text-white rounded text-[10px] shadow-sm flex items-center justify-center"><i class="fa-solid fa-star md:mr-0.5"></i><span class="hidden md:inline"> Sai</span></span>
+                            <span class="px-1.5 py-0.2 bg-rose-500 text-white rounded text-[10px] shadow-sm"><i class="fa-solid fa-star mr-0.5"></i><span class="score-label-text"> Sai</span></span>
                             <span class="text-rose-600 font-extrabold text-xs" id="star-red-count">0</span>
                         </div>
                     </div>
 
-                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right"></div>
+                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-amber-600 font-extrabold text-xs px-1.5">Khách</span>
+                            <button onclick="openAuthScreen('login')" class="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-extrabold text-xs pastel-btn whitespace-nowrap">Sign in/up</button>
+                        </div>
+                    </div>
+
+                    
+                    
                 </div>
             </header>
 
-            <!-- DIEU HUONG CHINH 6 TAB - CHUAN DUNG CHUNG -->
+            <!-- ĐIỀU HƯỚNG CHÍNH 6 TAB -->
             <nav id="main-module-tabs" class="w-full bg-white/95 border-2 border-pink-200 rounded-2xl p-1.5 shadow-sm" aria-label="Điều hướng chính">
                 <div class="grid grid-cols-3 md:grid-cols-6 gap-1.5">
-                    <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab" data-tab="discover"><span class="text-lg">🧭</span><span>Khám phá</span></button>
-                    <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span class="text-lg">📖</span><span>Bài học</span><span id="bai-hoc-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span class="text-lg">✏️</span><span>Bài tập</span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span class="text-lg">🧠</span><span>Ôn tập</span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span class="text-lg">🏆</span><span>Đề thi</span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span class="text-lg">🎮</span><span>Mini games</span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span class="text-lg">🧭</span><span class="bi-label"><span class="en">Explore</span><span class="vi">Khám phá</span></span></button>
+                    <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span class="text-lg">📖</span><span class="bi-label"><span class="en">Lessons</span><span class="vi">Bài học</span></span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span class="text-lg">✏️</span><span class="bi-label"><span class="en">Exercises</span><span class="vi">Bài tập</span></span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span class="text-lg">🧠</span><span class="bi-label"><span class="en">Review</span><span class="vi">Ôn tập</span></span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span class="text-lg">🏆</span><span class="bi-label"><span class="en">Tests</span><span class="vi">Đề thi</span></span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                    <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span class="text-lg">🎮</span><span class="bi-label"><span class="en">Mini Games</span><span class="vi">Trò chơi</span></span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
                 </div>
             </nav>
 
             <main id="app-viewport" class="w-full">
                 
                 <!-- VIEW 1: TRANG CHỦ 12 CHỦ ĐỀ -->
-                <div id="view-dashboard-grid" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5"></div>
+                <div id="view-dashboard-grid" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                    <!-- Fallback Khám phá: có sẵn trong HTML để trang chủ không bao giờ trắng.
+                         app.js sẽ tự thay nội dung này bằng bản có số lượng câu/đề sau khi nạp dữ liệu. -->
+                    <div onclick="openAlphabetIPA()" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between">
+                        <div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-violet-100 rounded-xl flex items-center justify-center">🔤</div><h3 class="font-extrabold text-violet-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">1. Alphabet & IPA</span><span class="vi">Bảng chữ cái & phiên âm</span></span></h3></div>
+                        <div class="mt-1.5 pt-1 border-t border-violet-100 text-[11px] font-bold text-gray-500">Bảng chữ cái & ngữ âm</div>
+                    </div>
+                    <div onclick="openTopic(2, '2. Vocabulary', '📚')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-pink-100 rounded-xl flex items-center justify-center">📚</div><h3 class="font-extrabold text-pink-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">2. Vocabulary</span><span class="vi">Từ vựng</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-pink-100 text-[11px] font-bold text-gray-500">Flashcards, Nghe tranh, Kéo thả chữ</div></div>
+                    <div onclick="openTopic(3, '3. Remove Letter', '✂️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-rose-100 rounded-xl flex items-center justify-center">✂️</div><h3 class="font-extrabold text-rose-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">3. Remove Letter</span><span class="vi">Xóa chữ cái thừa</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-rose-100 text-[11px] font-bold text-gray-500">Chạm xoá chữ cái thừa</div></div>
+                    <div onclick="openTopic(4, '4. Fill Missing', '✏️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center">✏️</div><h3 class="font-extrabold text-amber-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">4. Fill Missing</span><span class="vi">Điền chữ còn thiếu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-amber-100 text-[11px] font-bold text-gray-500">Điền chữ cái còn thiếu</div></div>
+                    <div onclick="openTopic(5, '5. Odd One Out', '🧩')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-fuchsia-100 rounded-xl flex items-center justify-center">🧩</div><h3 class="font-extrabold text-fuchsia-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">5. Odd One Out</span><span class="vi">Tìm từ khác loại</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-fuchsia-100 text-[11px] font-bold text-gray-500">Tìm từ khác nhóm/khác loại</div></div>
+                    <div onclick="openTopic(6, '6. Reading Stories', '📖')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">📖</div><h3 class="font-extrabold text-emerald-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">6. Reading Stories</span><span class="vi">Đọc truyện</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-emerald-100 text-[11px] font-bold text-gray-500">Đọc truyện ngắn 2 câu hỏi</div></div>
+                    <div onclick="openTopic(7, '7. Sentence Builder', '🧱')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-indigo-100 rounded-xl flex items-center justify-center">🧱</div><h3 class="font-extrabold text-indigo-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">7. Sentence Builder</span><span class="vi">Sắp xếp câu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-indigo-100 text-[11px] font-bold text-gray-500">Sắp xếp từ thành câu</div></div>
+                    <div onclick="openTopic(8, '8. Fill Sentence', '📝')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-teal-100 rounded-xl flex items-center justify-center">📝</div><h3 class="font-extrabold text-teal-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">8. Fill Sentence</span><span class="vi">Điền câu</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-teal-100 text-[11px] font-bold text-gray-500">Điền câu hoàn chỉnh theo ngữ cảnh</div></div>
+                    <div onclick="openTopic(9, '9. Q&A Dialogues', '💬')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-cyan-100 rounded-xl flex items-center justify-center">💬</div><h3 class="font-extrabold text-cyan-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">9. Q&A Dialogues</span><span class="vi">Hỏi & đáp</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-cyan-100 text-[11px] font-bold text-gray-500">Hội thoại cùng Thỏ Ngọc</div></div>
+                    <div onclick="openTopic(10, '10. Grammar Point', '🅰️')" class="pastel-card p-3 cursor-pointer min-h-[92px] flex flex-col justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 bg-blue-100 rounded-xl flex items-center justify-center">🅰️</div><h3 class="font-extrabold text-blue-700 text-sm md:text-base"><span class="card-title-bi"><span class="en">10. Grammar Point</span><span class="vi">Ngữ pháp</span></span></h3></div><div class="mt-1.5 pt-1 border-t border-blue-100 text-[11px] font-bold text-gray-500">Mạo từ, giới từ, động từ, tính từ</div></div>
+                </div>
 
-                <!-- MODULE BAI HOC: HIEN THI TRUC TIEP DANH SACH BAI -->
+                <!-- MODULE BÀI HỌC: 16 UNIT THEO SGK GLOBAL SUCCESS -->
                 <div id="view-bai-hoc-hub" class="w-full hidden pastel-card p-3 md:p-5">
-                    <div class="w-full max-w-6xl mx-auto">
+                    <div class="w-full max-w-5xl mx-auto">
                         <div class="grid grid-cols-[auto_1fr_auto] items-center gap-3 mb-3">
                             <div id="bai-hoc-semester-tabs" class="flex items-center gap-2 justify-self-start"></div>
                             <div class="text-center min-w-0">
-                                <h2 class="text-lg md:text-xl font-black text-purple-700 flex items-center justify-center gap-2"><span>📖</span><span>Bài học Tiếng Việt 1</span></h2>
-                                <p id="bai-hoc-hub-subtitle" class="text-xs md:text-sm text-slate-500 font-bold mt-0.5">Chọn bài và học ngay</p>
+                                <h2 class="text-lg md:text-xl font-black text-purple-700 flex items-center justify-center gap-2"><span>📖</span><span class="bi-label"><span class="en">English 2 Lessons</span><span class="vi">Bài học Tiếng Anh 2</span></span></h2>
+                                <p id="bai-hoc-hub-subtitle" class="text-xs md:text-sm text-slate-500 font-bold mt-0.5">16 Units · Global Success<br><span class="text-[10px] text-slate-400">16 Unit theo SGK Global Success</span></p>
                             </div>
-                            <div class="w-[180px] hidden md:block" aria-hidden="true"></div>
+                            <div class="w-[170px] hidden md:block" aria-hidden="true"></div>
                         </div>
-                        <div id="bai-hoc-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2"></div>
+                        <div id="bai-hoc-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2.5"></div>
                     </div>
                 </div>
 
                 <div id="view-bai-hoc-lesson" class="w-full hidden pastel-card p-3 md:p-5">
                     <div class="w-full max-w-4xl mx-auto space-y-3">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="min-w-0">
-                                <div id="bai-hoc-lesson-meta" class="text-sm md:text-base font-extrabold text-purple-600 mb-1">📖 Bài học</div>
-                                <h2 id="bai-hoc-lesson-title" class="text-lg md:text-xl font-black text-slate-800"></h2>
-                            </div>
-                            <button id="btn-back-bai-hoc-list" onclick="openBaiHocHub(activeBaiHocContext?.semester || 1)" class="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl text-xs md:text-sm font-extrabold shrink-0">← Danh sách bài</button>
+                        <div class="flex items-center justify-between gap-2">
+                            <div id="bai-hoc-lesson-meta" class="text-base md:text-lg font-extrabold text-purple-600"></div>
+                            <button id="btn-back-bai-hoc" onclick="openBaiHocHub(activeBaiHocContext.semester || 1)" class="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl text-xs font-extrabold shrink-0">← Lessons<br><span class="text-[9px] opacity-70">Danh sách bài</span></button>
                         </div>
                         <div id="bai-hoc-sections" class="space-y-3"></div>
                     </div>
@@ -595,11 +388,16 @@
                         </div>
                     </div>
 
-                    <div class="w-full flex justify-center mt-2.5 pt-1">
-                        <button onclick="selectSubtopic(null)" class="w-full max-w-xs py-2 bg-gradient-to-r from-purple-400 to-indigo-400 text-white font-extrabold rounded-xl text-xs md:text-sm pastel-btn shadow-md">
+                    <div class="w-full flex justify-center mt-2.5 pt-1" id="wrap-mix-all-subtopics">
+                        <button id="btn-mix-all-subtopics" onclick="selectSubtopic(null)" class="w-full max-w-xs py-2 bg-gradient-to-r from-purple-400 to-indigo-400 text-white font-extrabold rounded-xl text-xs md:text-sm pastel-btn shadow-md">
                             🌟 Học trộn tất cả các mục
                         </button>
                     </div>
+                </div>
+
+                <!-- VIEW ALPHABET & IPA (CHUYÊN MỤC 1 — bê nguyên nội dung cũ) -->
+                <div id="view-alphabet" class="w-full hidden pastel-card p-4 md:p-6 flex flex-col items-center min-h-[480px]">
+                    <div id="alphaipa-content" class="w-full flex flex-col items-center"></div>
                 </div>
 
                 <!-- VIEW 3: PHÒNG LÀM BÀI / THI CHUẨN 16:9 -->
@@ -612,19 +410,19 @@
                                 <i class="fa-solid fa-stopwatch"></i>
                             </div>
                             <div>
-                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Thời gian</span>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Time<br><span class="text-[9px] opacity-70">Thời gian</span></span>
                                 <span id="quiz-timer-display" class="text-base font-black text-rose-500 tracking-wider">40:00</span>
                             </div>
                         </div>
 
                         <button id="btn-submit-quiz" onclick="triggerSubmitQuizPrompt()" class="ml-auto px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-black text-xs md:text-sm flex items-center space-x-1.5 transition-all shadow-sm pastel-btn">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>Nộp bài thi</span>
+                            <span>Submit<br><span class="text-[9px] opacity-70">Nộp bài</span></span>
                         </button>
                     </div>
 
                     <!-- THẺ CARD LÀM BÀI CHÍNH -->
-                    <div class="w-full pastel-card p-3.5 md:p-5 flex flex-col justify-between min-h-[480px]">
+                    <div class="w-full pastel-card p-3.5 md:p-5 flex flex-col justify-between min-h-[380px]">
                         
                         <!-- HEADER TRONG CARD (CHỈ HIỆN KHI THI) -->
                         <div id="quiz-card-header" class="hidden items-center justify-between flex-wrap gap-2 border-b border-pink-100 pb-2">
@@ -639,12 +437,12 @@
                             
                             <button id="btn-roadmap-history" onclick="openHistoryModal('LichSuTienTrinhTuan')" class="hidden px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-xl text-sm font-extrabold items-center space-x-1.5 transition-shadow duration-200 hover:shadow-[0_0_10px_rgba(99,102,241,0.5)] shadow-xs">
                                 <i class="fa-solid fa-chart-line"></i>
-                                <span>Lịch sử tiến trình tuần</span>
+                                <span>Lịch sử Bài tập</span>
                             </button>
 
                             <button onclick="speakCurrentQuestion()" class="px-3 py-1.5 bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 rounded-xl text-sm font-extrabold flex items-center space-x-1.5 transition-all pastel-btn shadow-xs">
                                 <i class="fa-solid fa-volume-high text-pink-600"></i>
-                                <span>Nghe câu hỏi</span>
+                                <span>Listen<br><span class="text-[9px] opacity-70">Nghe câu hỏi</span></span>
                             </button>
                         </div>
 
@@ -656,7 +454,7 @@
                             <!-- 1. GIAO DIỆN LUYỆN TẬP -->
                             <div id="nav-group-practice" class="flex items-center justify-center gap-3 w-full">
                                 <button id="btn-prev-q-prac" onclick="prevQuestion()" class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold rounded-2xl text-xs md:text-sm pastel-btn border border-gray-200 flex items-center justify-center space-x-1.5 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-                                    <i class="fa-solid fa-chevron-left"></i><span>Câu trước</span>
+                                    <i class="fa-solid fa-chevron-left"></i><span>Previous<br><span class="text-[9px] opacity-70">Câu trước</span></span>
                                 </button>
 
                                 <div id="practice-step-indicator" class="px-5 py-1.5 bg-pink-50 border border-pink-200 text-pink-700 font-black rounded-full text-xs md:text-sm flex items-center justify-center space-x-1.5 shadow-xs select-none">
@@ -664,7 +462,7 @@
                                 </div>
 
                                 <button id="btn-next-q-prac" onclick="nextQuestion()" class="px-6 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-2xl text-xs md:text-sm pastel-btn shadow-md flex items-center justify-center space-x-1.5 transition-all">
-                                    <span id="btn-next-text-prac">Câu tiếp theo</span>
+                                    <span id="btn-next-text-prac">Next<br><span class="text-[9px] opacity-70">Câu tiếp</span></span>
                                     <i id="btn-next-icon-prac" class="fa-solid fa-chevron-right ml-1"></i>
                                 </button>
                             </div>
@@ -672,13 +470,13 @@
                             <!-- 2. GIAO DIỆN ĐỀ THI -->
                             <div id="nav-group-exam" class="hidden items-center justify-between w-full">
                                 <button id="btn-prev-q-exam" onclick="prevQuestion()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-extrabold rounded-xl text-xs md:text-sm pastel-btn border border-gray-200 flex items-center justify-center space-x-1.5 shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-                                    <i class="fa-solid fa-chevron-left"></i><span>Câu trước</span>
+                                    <i class="fa-solid fa-chevron-left"></i><span>Previous<br><span class="text-[9px] opacity-70">Câu trước</span></span>
                                 </button>
 
                                 <div id="quiz-pallet-container" class="grid grid-cols-10 gap-1.5 max-w-xl mx-2"></div>
 
                                 <button id="btn-next-q-exam" onclick="nextQuestion()" class="px-5 py-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-xl text-xs md:text-sm pastel-btn shadow-md flex items-center justify-center space-x-1.5 transition-all">
-                                    <span id="btn-next-text-exam">Câu tiếp theo</span>
+                                    <span id="btn-next-text-exam">Next<br><span class="text-[9px] opacity-70">Câu tiếp</span></span>
                                     <i id="btn-next-icon-exam" class="fa-solid fa-chevron-right ml-1"></i>
                                 </button>
                             </div>
@@ -687,45 +485,34 @@
                     </div>
                 </div>
 
-                <!-- VIEW 4: BÀI TẬP (tạm dùng engine tiến trình tuần hiện tại) -->
-                <div id="view-roadmap" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col justify-start items-center">
-                    <div class="w-full max-w-6xl flex flex-col items-center">
-                        <div class="flex flex-col sm:flex-row items-center justify-between w-full px-2 mb-2 gap-2">
+                <!-- VIEW: BÀI TẬP THEO 16 UNIT SGK -->
+                <div id="view-roadmap" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
+                    <div class="w-full max-w-5xl flex flex-col items-center">
+                        <div class="flex flex-col sm:flex-row items-center justify-between w-full px-1 mb-3 gap-2">
                             <div>
-                                <h2 class="text-base md:text-lg font-extrabold text-indigo-600 flex items-center space-x-2">
-                                    <span>✏️</span><span>Bài tập</span>
-                                </h2>
-                                <p class="text-[11px] md:text-xs text-gray-500 font-bold">20 câu mỗi bài · đạt từ 80% để mở Bài tập tiếp theo.</p>
+                                <h2 class="text-base md:text-lg font-extrabold text-indigo-600 flex items-center space-x-2"><span>✏️</span><span class="bi-label bi-left"><span class="en">Exercises</span><span class="vi">Bài tập</span></span></h2>
+                                <p class="text-[11px] md:text-xs text-gray-500 font-bold">20 questions each · Score 80% to unlock the next exercise · 6-skill assessment<br><span class="text-[10px] text-slate-400">20 câu mỗi bài · đạt 80% để mở bài tiếp theo · đánh giá 6 năng lực</span></p>
                             </div>
-                            <div class="flex items-center gap-3 shrink-0">
-                                <div id="roadmap-semester-tabs" class="flex items-center gap-2"></div>
-                                <button onclick="openHistoryModal('LichSuTienTrinhTuan')" class="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold rounded-xl border border-indigo-200 text-xs pastel-btn flex items-center space-x-1.5 shadow-sm">
-                                    <i class="fa-solid fa-chart-line text-indigo-600"></i>
-                                    <span>📊 Lịch sử Bài tập</span>
-                                </button>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <div id="bai-tap-semester-tabs" class="flex items-center gap-2"></div>
+                                <button onclick="openHistoryModal('LichSuTienTrinhTuan')" class="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-extrabold rounded-xl border border-indigo-200 text-xs pastel-btn flex items-center space-x-1.5 shadow-sm"><i class="fa-solid fa-chart-line text-indigo-600"></i><span>📊 Exercise History<br><span class="text-[9px] opacity-70">Lịch sử Bài tập</span></span></button>
                             </div>
                         </div>
-                        <div id="roadmap-svg-container" class="w-full flex justify-center items-center overflow-hidden bg-gradient-to-b from-pink-50/30 to-purple-50/30 rounded-2xl border-2 border-pink-100 p-1"></div>
+                        <div id="roadmap-svg-container" class="w-full bg-gradient-to-br from-pink-50/70 via-white to-purple-50/70 rounded-3xl border-2 border-pink-200 p-3 shadow-sm"></div>
                     </div>
                 </div>
 
                 <!-- VIEW: TRUNG TÂM MINI GAME (12 GAME, LƯỚI 3x4) -->
                 <div id="view-minigame-hub" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
                     <div class="w-full max-w-5xl">
-                        <div class="text-center mb-4">
-                            <h2 class="text-base md:text-lg font-extrabold text-teal-600 flex items-center justify-center space-x-2">
-                                <span>🎮</span><span>Trung tâm Mini Game</span>
-                            </h2>
-                            <p class="text-[11px] md:text-xs text-gray-500 font-bold">Học mà chơi - chơi mà nhớ cùng Tiếng Việt 1 nhé!</p>
-                        </div>
                         <div id="minigame-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
                     </div>
                 </div>
 
-                <!-- VIEW: MÀN CHƠI GAME -->
+                <!-- VIEW: MÀN CHƠI GAME (dùng chung khung cho mọi mini game) -->
                 <div id="view-game-play" class="w-full hidden pastel-card p-3 md:p-5 flex flex-col items-center">
-                    <div class="w-full max-w-4xl">
-                        <div class="flex items-center justify-between mb-3 gap-2">
+                    <div class="w-full max-w-2xl">
+                        <div class="flex items-center justify-between mb-3">
                             <h2 id="game-play-title" class="text-base md:text-lg font-extrabold text-teal-600 flex items-center gap-2"></h2>
                             <button onclick="openMiniGameHub()" class="px-3 py-1.5 bg-gradient-to-r from-fuchsia-500 to-pink-500 hover:from-fuchsia-600 hover:to-pink-600 text-white font-extrabold rounded-xl text-xs md:text-sm shadow-sm pastel-btn shrink-0">
                                 <i class="fa-solid fa-arrow-left"></i> Chọn game khác
@@ -740,9 +527,9 @@
                     <div class="w-full max-w-5xl">
                         <div class="text-center mb-5">
                             <h2 class="font-extrabold text-amber-600 text-lg md:text-xl flex items-center justify-center space-x-2">
-                                <span>🏆</span><span>Đấu trường đề thi thử</span>
+                                <span>🏆</span><span class="bi-label"><span class="en">Test Arena</span><span class="vi">Đấu trường đề thi thử</span></span>
                             </h2>
-                            <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">Thử sức các bộ đề thi chuẩn ma trận 13 câu - 6 nhóm năng lực</p>
+                            <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">Try 13-question tests across 6 skills<br><span class="text-[10px] text-slate-400">Luyện đề 13 câu theo 6 nhóm năng lực</span></p>
                         </div>
                         <div id="exam-categories-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
                     </div>
@@ -758,7 +545,7 @@
                                     Kết quả bài thi
                                 </span>
                                 <h2 id="report-student-display" class="text-lg sm:text-xl font-black tracking-tight">Học sinh: --</h2>
-                                <p id="report-meta-display" class="text-xs text-pink-200">Lớp: -- | Mã số: -- | Thời gian: --</p>
+                                <p id="report-meta-display" class="text-xs text-pink-200">Lớp: -- | Mã số: -- | Time<br><span class="text-[9px] opacity-70">Thời gian</span>: --</p>
                             </div>
 
                             <div class="flex items-center gap-3">
@@ -857,9 +644,9 @@
                         </div>
 
                         <div class="flex items-center space-x-2 shrink-0">
-                            <div class="text-xs font-bold text-slate-700 bg-white/95 px-3 py-2 rounded-xl border border-pink-200 text-center shadow-xs leading-tight">
-                                <div>Ngày báo cáo</div>
-                                <div id="hist-report-date" class="font-bold text-rose-600 mt-0.5">03/09/2026</div>
+                            <div class="text-xs font-bold text-slate-700 bg-white/95 px-3 py-2 rounded-xl border border-pink-200 text-center shadow-xs flex flex-col items-center leading-tight">
+                                <span>Ngày báo cáo</span>
+                                <span id="hist-report-date" class="font-black text-rose-600 text-sm mt-0.5">03/09/2026</span>
                             </div>
                             <button onclick="closeHistoryModal()" class="w-8 h-8 rounded-full bg-white border border-pink-200 flex items-center justify-center text-pink-400 hover:text-rose-600 transition-all shadow-xs no-print">
                                 <i class="fa-solid fa-xmark"></i>
@@ -893,17 +680,18 @@
                 <!-- TRANG 2: NHẬN XÉT SƯ PHẠM CHI TIẾT -->
                 <div class="space-y-4 page-break-2">
                     <div class="bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-rose-50/50 border border-amber-200/80 rounded-2xl p-4 space-y-3 shadow-xs">
-                        <div class="flex items-center space-x-2.5 border-b border-amber-200/60 pb-1.5">
-                            <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shadow-xs shrink-0">
-                                <i class="fa-solid fa-award"></i>
+                        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-amber-200/60 pb-1.5">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shadow-xs shrink-0">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-black text-amber-950 leading-tight">Nhận xét sư phạm & kế hoạch bồi dưỡng của giáo viên</h4>
+                                    <p class="text-xs font-bold text-amber-700">Đánh giá năng lực tư duy 6 chủ đề & lời khuyên phụ huynh đồng hành</p>
+                                </div>
                             </div>
-                            <div class="flex-1">
-                                <h4 class="text-base font-black text-amber-950 leading-tight">Nhận xét sư phạm & kế hoạch bồi dưỡng của giáo viên</h4>
-                                <p class="text-xs font-bold text-amber-700">Đánh giá năng lực tư duy 6 chủ đề & lời khuyên phụ huynh đồng hành</p>
-                            </div>
-                            <button onclick="speakPedagogicalEvaluation()" class="no-print shrink-0 px-3 py-1.5 bg-white hover:bg-amber-100 text-amber-700 border border-amber-300 rounded-2xl text-xs font-extrabold flex items-center space-x-1.5 pastel-btn shadow-xs">
-                                <i class="fa-solid fa-volume-high text-amber-600"></i>
-                                <span>Nghe cô giáo đọc</span>
+                            <button onclick="speakPedagogicalEvaluation()" class="no-print shrink-0 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-xl text-xs flex items-center gap-1.5 shadow-sm pastel-btn">
+                                <i class="fa-solid fa-volume-high"></i><span>Nghe cô giáo đọc</span>
                             </button>
                         </div>
                         <div id="pedagogical-evaluation-box" class="space-y-2.5 text-xs sm:text-sm text-slate-800 leading-normal font-semibold"></div>
@@ -923,14 +711,14 @@
                                     <th class="py-2.5 px-2 whitespace-nowrap">Lần thi</th>
                                     <th class="py-2.5 px-2 whitespace-nowrap">Đề / Tuần</th>
                                     <th class="py-2.5 px-2 whitespace-nowrap text-rose-600">Tổng điểm</th>
-                                    <th class="py-2 px-1 leading-tight">C1: Ngữ âm<br><span class="text-[10px] text-pink-700">(Nhận biết)</span></th>
-                                    <th class="py-2 px-1 leading-tight">C2: Chính tả<br><span class="text-[10px] text-pink-700">(Quy tắc)</span></th>
-                                    <th class="py-2 px-1 leading-tight">C3: Vốn từ<br><span class="text-[10px] text-pink-700">(Mở rộng)</span></th>
-                                    <th class="py-2 px-1 leading-tight">C4: Cú pháp<br><span class="text-[10px] text-pink-700">(Sắp câu)</span></th>
-                                    <th class="py-2 px-1 leading-tight">C5: Đọc hiểu<br><span class="text-[10px] text-pink-700">(Cảm thụ)</span></th>
-                                    <th class="py-2 px-1 leading-tight">C6: Tư duy IQ<br><span class="text-[10px] text-pink-700">(Nâng cao)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Ngữ âm<br><span class="text-[10px] text-pink-700">(Spelling)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Từ vựng<br><span class="text-[10px] text-pink-700">(Vocabulary)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Nghe hiểu<br><span class="text-[10px] text-pink-700">(Listening)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Ngữ pháp<br><span class="text-[10px] text-pink-700">(Grammar)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Cú pháp<br><span class="text-[10px] text-pink-700">(Syntax)</span></th>
+                                    <th class="py-2 px-1 leading-tight">Đọc hiểu<br><span class="text-[10px] text-pink-700">(Reading)</span></th>
                                     <th class="py-2.5 px-2 whitespace-nowrap">Ngày làm</th>
-                                    <th class="py-2.5 px-2 whitespace-nowrap">Thời gian</th>
+                                    <th class="py-2.5 px-2 whitespace-nowrap">Time<br><span class="text-[9px] opacity-70">Thời gian</span></th>
                                 </tr>
                             </thead>
                             <tbody id="hist-table-body" class="divide-y divide-pink-100 font-bold text-slate-700"></tbody>
@@ -953,45 +741,50 @@
         </div>
     </div>
 
-
-    <!-- THÔNG BÁO / XÁC NHẬN CHUNG - thay alert/confirm của trình duyệt -->
-    <div id="app-dialog-modal" class="hidden app-dialog-backdrop">
-        <div class="app-dialog-card" role="dialog" aria-modal="true" aria-labelledby="app-dialog-title">
-            <div class="app-dialog-body">
-                <div id="app-dialog-icon-wrap" class="app-dialog-icon-wrap"><span id="app-dialog-icon">🐰</span></div>
-                <h3 id="app-dialog-title" class="app-dialog-title">Thông báo</h3>
-                <p id="app-dialog-message" class="app-dialog-message"></p>
-            </div>
-            <div class="app-dialog-actions">
-                <button id="app-dialog-cancel" type="button" class="app-dialog-btn app-dialog-btn-cancel hidden">Đóng</button>
-                <button id="app-dialog-ok" type="button" class="app-dialog-btn app-dialog-btn-ok">OK</button>
-            </div>
-        </div>
-    </div>
-    <div id="app-toast-container" class="app-toast-container" aria-live="polite" aria-atomic="true"></div>
-
     <!-- CHÂN TRANG BẢN QUYỀN CHUẨN ĐỊNH DẠNG -->
-    <footer class="w-full mt-2 md:mt-3 pb-2 text-center text-sm font-normal text-pink-500 tracking-wider leading-relaxed select-text cursor-text" style="user-select:text;-webkit-user-select:text;">
-        <div>Tiếng Việt 1 - Cô Thỏ Hồng</div>
+    <footer class="w-full mt-2 md:mt-3 pb-2 text-center text-sm font-normal text-pink-500 tracking-wider select-text" style="user-select: text; -webkit-user-select: text;">
+        <div>Tiếng Anh 2 - Cô Thỏ Ngọc</div>
         <div>Zalo 0865.749.402</div>
     </footer>
 
+    <!-- KHUNG THÔNG BÁO ĐẸP (thay cho alert() mặc định xấu của trình duyệt) -->
+    <div id="modal-friendly-alert" class="hidden fixed inset-0 bg-black/40 z-[100] flex items-center justify-center p-4">
+        <div class="pastel-card bg-white max-w-sm w-full p-5 md:p-6 flex flex-col items-center text-center shadow-2xl animate-[fadeInUp_0.2s_ease-out]">
+            <div id="friendly-alert-icon" class="text-5xl mb-2">🐰</div>
+            <p id="friendly-alert-message" class="text-sm md:text-base font-bold text-gray-700 leading-relaxed mb-4"></p>
+            <button onclick="closeFriendlyAlert()" class="w-full max-w-[160px] py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black rounded-2xl text-sm pastel-btn shadow-md">
+                Con hiểu rồi!
+            </button>
+        </div>
+    </div>
     <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
-    <script src="assets/js/app.js?v=10.2-tv1-nature-all"></script>
+    <script src="assets/js/app.js?v=8.4-bilingual-ui"></script>
+
+    <!-- ĐĂNG KÝ SERVICE WORKER (PWA) — đồng bộ cách cập nhật với bản Tiếng Anh 1 đang chạy ổn trên GitHub. -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./service-worker.js').then((reg) => {
-            if (reg.waiting) reg.waiting.postMessage('SKIP_WAITING');
-            reg.addEventListener('updatefound', () => {
-              const worker = reg.installing;
-              if (worker) worker.addEventListener('statechange', () => {
-                if (worker.state === 'installed' && navigator.serviceWorker.controller) worker.postMessage('SKIP_WAITING');
-              });
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+                    reg.update().catch(function () {});
+                    reg.addEventListener('updatefound', function () {
+                        var sw = reg.installing;
+                        if (!sw) return;
+                        sw.addEventListener('statechange', function () {
+                            if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                                sw.postMessage('SKIP_WAITING');
+                            }
+                        });
+                    });
+                }).catch(function (err) { console.warn('Service Worker chưa đăng ký được:', err); });
+
+                var refreshed = false;
+                navigator.serviceWorker.addEventListener('controllerchange', function () {
+                    if (refreshed) return;
+                    refreshed = true;
+                    window.location.reload();
+                });
             });
-          }).catch(() => {});
-        });
-      }
+        }
     </script>
 </body>
 </html>
