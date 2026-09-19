@@ -1,6 +1,6 @@
 {
   "schema_version": "TA2_BH_BT_V3_BILINGUAL_TTS",
-  "data_version": "V3_BILINGUAL_TTS_2026-09-18",
+  "data_version": "V4_PEDAGOGY_2026-09-19",
   "subject": "Tiếng Anh",
   "grade": 2,
   "curriculum": "Global Success",
@@ -122,7 +122,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -251,7 +253,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -293,7 +297,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Say it with a new food: The pizza is yummy.",
+          "transfer_challenge_vi": "Đổi sang một món khác và nói lại mẫu câu.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -418,7 +426,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -547,7 +557,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -589,7 +601,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Look at the picture and answer: Is she flying a kite?",
+          "transfer_challenge_vi": "Nhìn tranh và tự trả lời Yes/No.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -712,7 +728,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -841,7 +859,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -883,7 +903,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Point to the picture and say: Let's look at the sea!",
+          "transfer_challenge_vi": "Chỉ vào tranh và nói lời rủ bạn cùng xem.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -1006,7 +1030,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -1135,7 +1161,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -1177,7 +1205,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Use another word: There's a river.",
+          "transfer_challenge_vi": "Đổi từ rainbow sang một từ khác trong bài.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -1300,7 +1332,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -1429,7 +1463,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -1471,7 +1507,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Ask and answer once: What's he doing? — He's doing a quiz.",
+          "transfer_challenge_vi": "Tự đóng hai vai hỏi và trả lời một lần.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -1594,7 +1634,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -1723,7 +1765,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -1765,7 +1809,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Change the animal and ask: Is there a fox?",
+          "transfer_challenge_vi": "Đổi con vật rồi tự hỏi và trả lời Yes/No.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -1888,7 +1936,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -2017,7 +2067,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -2059,7 +2111,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Make a polite request: Pass me the juice, please.",
+          "transfer_challenge_vi": "Đổi món và nói một lời nhờ lịch sự.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -2182,7 +2238,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -2311,7 +2369,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -2353,7 +2413,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Change the object and ask: Can you draw a van?",
+          "transfer_challenge_vi": "Đổi đồ vật rồi tự hỏi và trả lời.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -2476,7 +2540,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -2605,7 +2671,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -2647,7 +2715,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Choose one thing you want and say: I want some yogurt.",
+          "transfer_challenge_vi": "Chọn một món trong bài và nói điều con muốn.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -2770,7 +2842,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -2899,7 +2973,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -2941,7 +3017,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Choose an animal and ask: Do you like the zebra?",
+          "transfer_challenge_vi": "Đổi con vật rồi tự hỏi và trả lời Yes/No.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -3064,7 +3144,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -3193,7 +3275,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -3235,7 +3319,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Change the action and say a new sentence about the picture.",
+          "transfer_challenge_vi": "Đổi hoạt động rồi nói một câu mới theo tranh.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -3358,7 +3446,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -3487,7 +3577,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -3529,7 +3621,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Move one object in your mind and say where it is.",
+          "transfer_challenge_vi": "Tưởng tượng đổi vị trí một đồ vật rồi nói vị trí của nó.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -3666,7 +3762,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -3795,7 +3893,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -3837,7 +3937,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Pick a different number and ask: What number is it?",
+          "transfer_challenge_vi": "Chọn một số khác rồi tự hỏi và trả lời.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -3960,7 +4064,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -4089,7 +4195,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -4131,7 +4239,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Ask about another family member's age.",
+          "transfer_challenge_vi": "Đổi sang một người thân khác và hỏi tuổi.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -4254,7 +4366,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -4383,7 +4497,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -4425,7 +4541,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Choose another item and ask: Where are the shirts?",
+          "transfer_challenge_vi": "Đổi sang một món đồ khác rồi hỏi vị trí.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
@@ -4548,7 +4668,9 @@
           },
           "title_vi_tts": false,
           "intro_vi_tts": false,
-          "mini_dialogue_vi_tts": false
+          "mini_dialogue_vi_tts": false,
+          "learning_goal": "Listen, notice, and say the key sound, words, and sentence pattern.",
+          "learning_goal_vi": "Nghe, nhận biết và nói được âm, từ và mẫu câu trọng tâm."
         },
         {
           "page_no": 2,
@@ -4677,7 +4799,9 @@
             "mixed_language_text": "do_not_read_as_one_string"
           },
           "title_vi_tts": false,
-          "recall_vi_tts": false
+          "recall_vi_tts": false,
+          "practice_goal": "Recognize first, then speak from the model.",
+          "practice_goal_vi": "Nhận biết trước, sau đó nghe mẫu và nói lại."
         },
         {
           "page_no": 3,
@@ -4719,7 +4843,11 @@
           },
           "title_vi_tts": false,
           "key_points_vi_tts": false,
-          "finish_prompt_vi_tts": false
+          "finish_prompt_vi_tts": false,
+          "transfer_challenge": "Change the place and say where the blanket is.",
+          "transfer_challenge_vi": "Đổi vị trí rồi nói chăn đang ở đâu.",
+          "review_strategy": "Recall → Use → Transfer",
+          "review_strategy_vi": "Nhớ lại → Nói lại → Biến đổi và vận dụng"
         }
       ],
       "skill_links": [
