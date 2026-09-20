@@ -1042,6 +1042,7 @@ async function loadAlphabetIPAData() {
 }
 
 async function openAlphabetIPA() {
+    setAppShellRootMode_(false);
     stopSpeaking();
     activeTopicId = null; activeExamContext = null; activeRoadmapContext = null; pendingTopicQuiz = null;
     inAlphaIpaFlow = true;
@@ -2269,6 +2270,7 @@ function setLectureSpeakVisible_(visible) {
 }
 
 async function openVocabularyHub() {
+    setAppShellRootMode_(false);
     resetLectureChrome_();
     stopSpeaking();
     inMiniGameFlow = false;
@@ -2702,6 +2704,7 @@ async function getSharedVocabularyBasePool_() {
 }
 
 async function openSharedVocabActivityHub_(activityId) {
+    setAppShellRootMode_(false);
     const cfg = SHARED_VOCAB_ACTIVITY_CONFIG[activityId];
     if (!cfg) return;
     stopSpeaking();
@@ -3005,6 +3008,7 @@ function splitOddOneOutLevels_(pool) {
 }
 
 async function openOddOneOutLevelHub_() {
+    setAppShellRootMode_(false);
     resetLectureChrome_(); stopSpeaking(); inMiniGameFlow=false; inAlphaIpaFlow=false;
     activeTopicId=5; activeExamContext=null; activeRoadmapContext=null;
     updateNavTabs('5. Odd One Out','🧩',null);
@@ -3132,6 +3136,7 @@ async function loadExploreLevelBank_(topicId) {
 }
 
 async function openExploreLevelHub_(topicId) {
+    setAppShellRootMode_(false);
     const cfg = EXPLORE_LEVEL_BANKS[Number(topicId)];
     if (!cfg) return;
     resetLectureChrome_(); stopSpeaking(); inMiniGameFlow=false; inAlphaIpaFlow=false;
@@ -3196,6 +3201,7 @@ async function loadReadingComprehensionData_() {
 }
 
 async function openReadingComprehensionHub_() {
+    setAppShellRootMode_(false);
     resetLectureChrome_(); stopSpeaking(); inMiniGameFlow = false; inAlphaIpaFlow = false;
     activeTopicId = 6; activeExamContext = null; activeRoadmapContext = null; activeReadingGroup = null;
     updateNavTabs('6. Reading Comprehension', '📖', null);
