@@ -69,17 +69,17 @@
           "options": [
             "living room",
             "triangle",
-            "brother",
+            "bedroom",
             "garden"
           ],
           "options_ipa": [
             "ˈlɪvɪŋ ruːm",
             "ˈtraɪæŋɡl",
-            "ˈbrʌðə",
-            "ˈɡɑːdn"
+            "ˈbedruːm",
+            "ˈɡɑrdn"
           ],
           "answer": "triangle",
-          "hint": "Gợi ý: Từ 'triangle' chỉ 'hình tam giác' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'living room', 'bedroom' và 'garden' đều là nơi chốn trong/ quanh ngôi nhà; 'triangle' là hình tam giác.",
           "emoji": "🔺",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -273,8 +273,8 @@
             "on Wednesday"
           ],
           "options_ipa": [
-            "ɒn ˈmʌndeɪ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
             "ɒn ˈfraɪdeɪ",
             "ɒn ˈwenzdeɪ"
           ],
@@ -396,21 +396,21 @@
         },
         {
           "question_id": "sem1_exam2_q5",
-          "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'thịt cá':",
+          "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'cá':",
           "options": [
             "meat",
             "peach",
             "cookies",
-            "fish meat"
+            "fish"
           ],
           "options_ipa": [
             "miːt",
             "piːtʃ",
             "ˈkʊkiz",
-            "fɪʃ miːt"
+            "fɪʃ"
           ],
-          "answer": "fish meat",
-          "hint": "Từ vựng tương ứng với hình vẽ thịt cá là 'fish meat' con nhé.",
+          "answer": "fish",
+          "hint": "Từ phù hợp với hình là 'fish' (cá).",
           "image_url": "assets/images/fish_meat.png",
           "emoji": "🐟",
           "skill_tag": "ENG_VOC",
@@ -678,18 +678,18 @@
           "question_text": "Hãy chọn từ khác nhóm nghĩa so với các phương án còn lại (Odd-one-out):",
           "options": [
             "rectangle",
-            "eighteen",
+            "circle",
             "square",
             "kite"
           ],
           "options_ipa": [
             "ˈrektæŋɡl",
-            "ˌeɪˈtiːn",
-            "skweə",
+            "ˈsɝkəl",
+            "skwɛr",
             "kaɪt"
           ],
           "answer": "kite",
-          "hint": "Gợi ý: Từ 'kite' chỉ 'con diều' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'rectangle', 'circle' và 'square' đều là hình dạng; 'kite' là đồ chơi.",
           "emoji": "🪁",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -1484,7 +1484,7 @@
         },
         {
           "question_id": "sem1_exam5_q11",
-          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'My sister is ______.'",
+          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh': 'My sister is ______.'",
           "options": [
             "tired",
             "cold",
@@ -1493,12 +1493,12 @@
           ],
           "options_ipa": [
             "ˈtaɪəd",
-            "kəʊld",
+            "koʊld",
             "hɒt",
             "ˈθɜːsti"
           ],
           "answer": "cold",
-          "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
+          "hint": "Gợi ý: Trạng thái 'lạnh' trong tiếng Anh viết là 'cold'.",
           "emoji": "🥶",
           "skill_tag": "ENG_GRA",
           "topic_id": 1,
@@ -2044,21 +2044,21 @@
         {
           "question_id": "sem1_exam7_q7",
           "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
-          "audio_text": "chicken meat",
+          "audio_text": "chicken",
           "options": [
             "jam",
-            "chicken meat",
+            "chicken",
             "watermelon",
             "salt"
           ],
           "options_ipa": [
             "dʒæm",
-            "ˈtʃɪkɪn miːt",
+            "ˈtʃɪkɪn",
             "ˈwɔːtəmelən",
             "sɔːlt"
           ],
-          "answer": "chicken meat",
-          "hint": "Từ phát âm từ loa là 'chicken meat' nghĩa là 'thịt gà' đó con.",
+          "answer": "chicken",
+          "hint": "Từ phát âm từ loa là 'chicken', nghĩa là 'thịt gà/con gà' tùy ngữ cảnh.",
           "image_url": "assets/images/chicken_meat.png",
           "emoji": "🍗",
           "skill_tag": "ENG_LIS",
@@ -2134,7 +2134,7 @@
         },
         {
           "question_id": "sem1_exam7_q11",
-          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'Vinh is ______.'",
+          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh': 'Vinh is ______.'",
           "options": [
             "cold",
             "fine",
@@ -2142,13 +2142,13 @@
             "bored"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "faɪn",
             "ˈhæpi",
             "bɔːd"
           ],
           "answer": "cold",
-          "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
+          "hint": "Gợi ý: Trạng thái 'lạnh' trong tiếng Anh viết là 'cold'.",
           "emoji": "🥶",
           "skill_tag": "ENG_GRA",
           "topic_id": 1,
@@ -2278,18 +2278,18 @@
           "question_text": "Hãy chọn từ khác nhóm nghĩa so với các phương án còn lại (Odd-one-out):",
           "options": [
             "rectangle",
-            "eighteen",
+            "circle",
             "square",
             "kite"
           ],
           "options_ipa": [
             "ˈrektæŋɡl",
-            "ˌeɪˈtiːn",
-            "skweə",
+            "ˈsɝkəl",
+            "skwɛr",
             "kaɪt"
           ],
           "answer": "kite",
-          "hint": "Gợi ý: Từ 'kite' chỉ 'con diều' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'rectangle', 'circle' và 'square' đều là hình dạng; 'kite' là đồ chơi.",
           "emoji": "🪁",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -2308,13 +2308,13 @@
           "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'cái bảng':",
           "options": [
             "notebook",
-            "backpack green",
+            "green backpack",
             "board",
             "teddy bear"
           ],
           "options_ipa": [
             "ˈnəʊtbʊk",
-            "ˈbækpæk ɡriːn",
+            "ɡriːn ˈbækpæk",
             "bɔːd",
             "ˈtedi beə"
           ],
@@ -2486,7 +2486,7 @@
             "bɔːd",
             "ɡreɪt",
             "faɪn",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "bored",
           "hint": "Gợi ý: Trạng thái 'chán nản' trong tiếng Anh viết là 'bored'.",
@@ -2540,7 +2540,7 @@
           ],
           "options_ipa": [
             "ɒn ˈmʌndeɪ ˈmɔːnɪŋ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
             "ɒn ˈsætədeɪ",
             "ɒn ˈfraɪdeɪ ˈiːvnɪŋ"
           ],
@@ -2619,18 +2619,18 @@
           "question_text": "Hãy chọn từ khác nhóm nghĩa so với các phương án còn lại (Odd-one-out):",
           "options": [
             "elephant",
-            "behind",
+            "robot",
             "puzzle",
             "doll"
           ],
           "options_ipa": [
-            "ˈelɪfənt",
-            "bɪˈhaɪnd",
-            "ˈpʌzl",
-            "dɒl"
+            "ˈɛləfənt",
+            "ˈroʊbɑt",
+            "ˈpʌzəl",
+            "dɑl"
           ],
           "answer": "elephant",
-          "hint": "Gợi ý: Từ 'elephant' chỉ 'con voi' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'robot', 'puzzle' và 'doll' đều là đồ chơi; 'elephant' là con vật.",
           "emoji": "🐘",
           "skill_tag": "ENG_VOC",
           "topic_id": 5,
@@ -3385,7 +3385,7 @@
           ],
           "options_ipa": [
             "ɡreɪt",
-            "kəʊld",
+            "koʊld",
             "ˈɡrændmʌðə",
             "ˈbedruːm"
           ],
@@ -3627,16 +3627,16 @@
             "twelve",
             "next to",
             "sixteen",
-            "rectangle"
+            "fourteen"
           ],
           "options_ipa": [
-            "twelv",
-            "nekst tuː",
-            "ˌsɪksˈtiːn",
-            "ˈrektæŋɡl"
+            "twɛlv",
+            "nɛkst tu",
+            "ˌsɪkˈstin",
+            "ˌfɔrˈtin"
           ],
           "answer": "next to",
-          "hint": "Gợi ý: Từ 'next to' chỉ 'bên cạnh' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'twelve', 'sixteen' và 'fourteen' đều là số; 'next to' là cụm từ chỉ vị trí.",
           "emoji": "➡️",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -4028,14 +4028,14 @@
           "audio_text": "twelve",
           "options": [
             "twelve",
-            "cold weather",
-            "seven number",
+            "cold",
+            "seven",
             "rainy"
           ],
           "options_ipa": [
             "twelv",
-            "kəʊld ˈweðə",
-            "ˈsevn ˈnʌmbə",
+            "koʊld",
+            "ˈsɛvən",
             "ˈreɪni"
           ],
           "answer": "twelve",
@@ -4082,7 +4082,7 @@
             "faɪn",
             "dʌk",
             "ˈpensl",
-            "ˈsevn"
+            "ˈsɛvən"
           ],
           "answer": "fine",
           "hint": "Gợi ý: Chọn từ/cụm từ hoàn chỉnh câu đối đáp. Đáp án đúng là 'fine'.",
@@ -4125,7 +4125,7 @@
           "options_ipa": [
             "ɡreɪt",
             "hɒt",
-            "kəʊld",
+            "koʊld",
             "ˈθɜːsti"
           ],
           "answer": "great",
@@ -4287,7 +4287,7 @@
           ],
           "options_ipa": [
             "mɒm",
-            "kəʊld",
+            "koʊld",
             "faɪn",
             "ˈθɜːsti"
           ],
@@ -5195,16 +5195,16 @@
             "twelve",
             "next to",
             "sixteen",
-            "rectangle"
+            "fourteen"
           ],
           "options_ipa": [
-            "twelv",
-            "nekst tuː",
-            "ˌsɪksˈtiːn",
-            "ˈrektæŋɡl"
+            "twɛlv",
+            "nɛkst tu",
+            "ˌsɪkˈstin",
+            "ˌfɔrˈtin"
           ],
           "answer": "next to",
-          "hint": "Gợi ý: Từ 'next to' chỉ 'bên cạnh' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'twelve', 'sixteen' và 'fourteen' đều là số; 'next to' là cụm từ chỉ vị trí.",
           "emoji": "➡️",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -5715,7 +5715,7 @@
         },
         {
           "question_id": "sem1_exam18_q11",
-          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The baby is ______.'",
+          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh': 'The baby is ______.'",
           "options": [
             "thirsty",
             "cold",
@@ -5724,12 +5724,12 @@
           ],
           "options_ipa": [
             "ˈθɜːsti",
-            "kəʊld",
+            "koʊld",
             "skeəd",
             "faɪn"
           ],
           "answer": "cold",
-          "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
+          "hint": "Gợi ý: Trạng thái 'lạnh' trong tiếng Anh viết là 'cold'.",
           "emoji": "🥶",
           "skill_tag": "ENG_GRA",
           "topic_id": 1,
@@ -5860,17 +5860,17 @@
           "options": [
             "grandmother",
             "dad",
-            "garden",
+            "sister",
             "twenty"
           ],
           "options_ipa": [
-            "ˈɡrændmʌðə",
+            "ˈɡrændˌmʌðɚ",
             "dæd",
-            "ˈɡɑːdn",
-            "ˈtwenti"
+            "ˈsɪstɚ",
+            "ˈtwɛnti"
           ],
           "answer": "twenty",
-          "hint": "Gợi ý: Từ 'twenty' chỉ 'số hai mươi' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'grandmother', 'dad' và 'sister' đều là người trong gia đình; 'twenty' là số.",
           "emoji": "2️⃣0️⃣",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -7264,7 +7264,7 @@
           ],
           "options_ipa": [
             "bʌs",
-            "ˈsevn",
+            "ˈsɛvən",
             "ɡriːn",
             "faɪn thank juː"
           ],
@@ -7356,8 +7356,8 @@
           ],
           "options_ipa": [
             "ɒn ˈfraɪdeɪ",
-            "ɒn ˈmʌndeɪ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
+            "ɑn ˈmʌndeɪ",
             "ɒn ˈtjuːzdeɪ"
           ],
           "answer": "on Sunday",
@@ -7459,16 +7459,16 @@
             "thirteen",
             "mountain",
             "nineteen",
-            "seven number"
+            "seven"
           ],
           "options_ipa": [
             "ˌθɜːˈtiːn",
             "ˈmaʊntɪn",
             "ˌnaɪnˈtiːn",
-            "ˈsevn ˈnʌmbə"
+            "ˈsɛvən"
           ],
-          "answer": "seven number",
-          "hint": "Từ vựng tương ứng với hình vẽ số 7 là 'seven number' con nhé.",
+          "answer": "seven",
+          "hint": "Từ vựng tương ứng với hình vẽ số 7 là 'seven' con nhé.",
           "image_url": "assets/images/seven_number.png",
           "emoji": "7️⃣",
           "skill_tag": "ENG_VOC",
@@ -7933,7 +7933,7 @@
             "happy"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "ˈtaɪəd",
             "faɪn",
             "ˈhæpi"
@@ -8062,17 +8062,17 @@
           "options": [
             "grandmother",
             "dad",
-            "garden",
+            "sister",
             "twenty"
           ],
           "options_ipa": [
-            "ˈɡrændmʌðə",
+            "ˈɡrændˌmʌðɚ",
             "dæd",
-            "ˈɡɑːdn",
-            "ˈtwenti"
+            "ˈsɪstɚ",
+            "ˈtwɛnti"
           ],
           "answer": "twenty",
-          "hint": "Gợi ý: Từ 'twenty' chỉ 'số hai mươi' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'grandmother', 'dad' và 'sister' đều là người trong gia đình; 'twenty' là số.",
           "emoji": "2️⃣0️⃣",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -8379,17 +8379,17 @@
           "options": [
             "living room",
             "triangle",
-            "brother",
+            "bedroom",
             "garden"
           ],
           "options_ipa": [
             "ˈlɪvɪŋ ruːm",
             "ˈtraɪæŋɡl",
-            "ˈbrʌðə",
-            "ˈɡɑːdn"
+            "ˈbedruːm",
+            "ˈɡɑrdn"
           ],
           "answer": "triangle",
-          "hint": "Gợi ý: Từ 'triangle' chỉ 'hình tam giác' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'living room', 'bedroom' và 'garden' đều là nơi chốn trong/ quanh ngôi nhà; 'triangle' là hình tam giác.",
           "emoji": "🔺",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -8681,16 +8681,16 @@
             "twelve",
             "next to",
             "sixteen",
-            "rectangle"
+            "fourteen"
           ],
           "options_ipa": [
-            "twelv",
-            "nekst tuː",
-            "ˌsɪksˈtiːn",
-            "ˈrektæŋɡl"
+            "twɛlv",
+            "nɛkst tu",
+            "ˌsɪkˈstin",
+            "ˌfɔrˈtin"
           ],
           "answer": "next to",
-          "hint": "Gợi ý: Từ 'next to' chỉ 'bên cạnh' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'twelve', 'sixteen' và 'fourteen' đều là số; 'next to' là cụm từ chỉ vị trí.",
           "emoji": "➡️",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -8862,7 +8862,7 @@
           "options_ipa": [
             "ɡreɪt",
             "ˈhæŋɡri",
-            "kəʊld",
+            "koʊld",
             "ˈθɜːsti"
           ],
           "answer": "thirsty",
@@ -8997,17 +8997,17 @@
           "options": [
             "grandmother",
             "dad",
-            "garden",
+            "sister",
             "twenty"
           ],
           "options_ipa": [
-            "ˈɡrændmʌðə",
+            "ˈɡrændˌmʌðɚ",
             "dæd",
-            "ˈɡɑːdn",
-            "ˈtwenti"
+            "ˈsɪstɚ",
+            "ˈtwɛnti"
           ],
           "answer": "twenty",
-          "hint": "Gợi ý: Từ 'twenty' chỉ 'số hai mươi' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'grandmother', 'dad' và 'sister' đều là người trong gia đình; 'twenty' là số.",
           "emoji": "2️⃣0️⃣",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -9050,7 +9050,7 @@
             "praʊd",
             "klaʊd",
             "ʃɔːts",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "cold",
           "hint": "Gợi ý: Từ 'cold' bắt đầu bằng âm /k/.",
@@ -9187,7 +9187,7 @@
             "ˈtaɪəd",
             "hɒt",
             "ˈhæpi",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "hot",
           "hint": "Gợi ý: Trạng thái 'nóng nực' trong tiếng Anh viết là 'hot'.",
@@ -9321,17 +9321,17 @@
           "options": [
             "grandmother",
             "dad",
-            "garden",
+            "sister",
             "twenty"
           ],
           "options_ipa": [
-            "ˈɡrændmʌðə",
+            "ˈɡrændˌmʌðɚ",
             "dæd",
-            "ˈɡɑːdn",
-            "ˈtwenti"
+            "ˈsɪstɚ",
+            "ˈtwɛnti"
           ],
           "answer": "twenty",
-          "hint": "Gợi ý: Từ 'twenty' chỉ 'số hai mươi' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'grandmother', 'dad' và 'sister' đều là người trong gia đình; 'twenty' là số.",
           "emoji": "2️⃣0️⃣",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -11682,7 +11682,7 @@
             "ˌθɜːˈtiːn",
             "ˈbedruːm",
             "bɔːl",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "thirteen",
           "hint": "Gợi ý: Từ 'thirteen' bắt đầu bằng âm /θ/.",
@@ -11849,7 +11849,7 @@
             "on Saturday"
           ],
           "options_ipa": [
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈmʌndeɪ",
             "ɒn ˈfraɪdeɪ",
             "ɒn ˈwenzdeɪ",
             "ɒn ˈsætədeɪ"
@@ -12126,7 +12126,7 @@
             "thirsty"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "sæd",
             "ˈtaɪəd",
             "ˈθɜːsti"
@@ -12941,18 +12941,18 @@
           "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'quả anh đào':",
           "options": [
             "cherry",
-            "fish meat",
+            "fish",
             "ice cream",
             "cucumber"
           ],
           "options_ipa": [
             "ˈtʃeri",
-            "fɪʃ miːt",
+            "fɪʃ",
             "aɪs kriːm",
             "ˈkjuːkʌmbə"
           ],
           "answer": "cherry",
-          "hint": "Từ vựng tương ứng với hình vẽ quả anh đào là 'cherry' con nhé.",
+          "hint": "Từ phù hợp với hình là 'fish' (cá).",
           "image_url": "assets/images/cherry.png",
           "emoji": "🍒",
           "skill_tag": "ENG_VOC",
@@ -14432,7 +14432,7 @@
           ],
           "options_ipa": [
             "ɒn ˈwenzdeɪ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
             "ɒn ˈmʌndeɪ ˈmɔːnɪŋ",
             "ɒn ˈfraɪdeɪ ˌɑːftəˈnuːn"
           ],
@@ -14867,16 +14867,16 @@
             "sixteen",
             "cloud",
             "road",
-            "cold weather"
+            "cold"
           ],
           "options_ipa": [
             "ˌsɪksˈtiːn",
             "klaʊd",
             "rəʊd",
-            "kəʊld ˈweðə"
+            "koʊld"
           ],
-          "answer": "cold weather",
-          "hint": "Từ vựng tương ứng với hình vẽ thời tiết lạnh là 'cold weather' con nhé.",
+          "answer": "cold",
+          "hint": "Từ vựng tương ứng với hình vẽ thời tiết lạnh là 'cold' con nhé.",
           "image_url": "assets/images/cold_weather.png",
           "emoji": "🥶",
           "skill_tag": "ENG_VOC",
@@ -16372,7 +16372,7 @@
           "options_ipa": [
             "ˈtjuːzdeɪ",
             "ˈwenzdeɪ",
-            "ˈmʌndeɪ",
+            "ˈsʌndeɪ",
             "ˈmʌndeɪ"
           ],
           "answer": "Wednesday",
@@ -17170,7 +17170,7 @@
             "praʊd",
             "klaʊd",
             "ʃɔːts",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "cold",
           "hint": "Gợi ý: Từ 'cold' bắt đầu bằng âm /k/.",
@@ -17191,21 +17191,21 @@
         {
           "question_id": "sem2_exam24_q7",
           "question_text": "Lắng nghe từ vựng phát âm từ loa và chọn bức tranh tương ứng:",
-          "audio_text": "backpack green",
+          "audio_text": "green backpack",
           "options": [
             "map",
-            "backpack green",
+            "green backpack",
             "pencil case",
             "eraser"
           ],
           "options_ipa": [
             "mæp",
-            "ˈbækpæk ɡriːn",
+            "ɡriːn ˈbækpæk",
             "ˈpensl keɪs",
             "ɪˈreɪzə"
           ],
-          "answer": "backpack green",
-          "hint": "Từ phát âm từ loa là 'backpack green' nghĩa là 'ba lô màu xanh' đó con.",
+          "answer": "green backpack",
+          "hint": "Từ phát âm từ loa là 'green backpack' nghĩa là 'ba lô màu xanh' đó con.",
           "image_url": "assets/images/backpack_green.png",
           "emoji": "🎒",
           "skill_tag": "ENG_LIS",
@@ -17297,7 +17297,7 @@
             "hungry"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "faɪn",
             "sæd",
             "ˈhæŋɡri"
@@ -17923,7 +17923,7 @@
         },
         {
           "question_id": "sem2_exam26_q11",
-          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh lẽo': 'The cat is ______.'",
+          "question_text": "Chọn tính từ chỉ trạng thái 'lạnh': 'The cat is ______.'",
           "options": [
             "cold",
             "fine",
@@ -17931,13 +17931,13 @@
             "happy"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "faɪn",
             "ˈhæŋɡri",
             "ˈhæpi"
           ],
           "answer": "cold",
-          "hint": "Gợi ý: Trạng thái 'lạnh lẽo' trong tiếng Anh viết là 'cold'.",
+          "hint": "Gợi ý: Trạng thái 'lạnh' trong tiếng Anh viết là 'cold'.",
           "emoji": "🥶",
           "skill_tag": "ENG_GRA",
           "topic_id": 1,
@@ -19487,13 +19487,13 @@
           "audio_text": "rainbow",
           "options": [
             "rainbow",
-            "seven number",
+            "seven",
             "sun",
             "fifteen"
           ],
           "options_ipa": [
             "ˈreɪnbəʊ",
-            "ˈsevn ˈnʌmbə",
+            "ˈsɛvən",
             "sʌn",
             "ˌfɪfˈtiːn"
           ],
@@ -19907,7 +19907,7 @@
             "scared"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "ɡreɪt",
             "hɒt",
             "skeəd"
@@ -20248,7 +20248,7 @@
             "fine"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "bɔːd",
             "ˈθɜːsti",
             "faɪn"
@@ -20732,13 +20732,13 @@
           "options": [
             "rectangle",
             "seventeen",
-            "seven number",
+            "seven",
             "mountain"
           ],
           "options_ipa": [
             "ˈrektæŋɡl",
             "ˌsevnˈtiːn",
-            "ˈsevn ˈnʌmbə",
+            "ˈsɛvən",
             "ˈmaʊntɪn"
           ],
           "answer": "mountain",
@@ -20900,7 +20900,7 @@
             "ˈhæpi",
             "ˈθɜːsti",
             "ɡreɪt",
-            "kəʊld"
+            "koʊld"
           ],
           "answer": "happy",
           "hint": "Gợi ý: Trạng thái 'vui vẻ' trong tiếng Anh viết là 'happy'.",
@@ -21255,7 +21255,7 @@
           ],
           "options_ipa": [
             "ɒn ˈwenzdeɪ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
             "ɒn ˈmʌndeɪ ˈmɔːnɪŋ",
             "ɒn ˈfraɪdeɪ ˌɑːftəˈnuːn"
           ],
@@ -21580,7 +21580,7 @@
           ],
           "options_ipa": [
             "ɒn ˈwenzdeɪ",
-            "ɒn ˈmʌndeɪ",
+            "ɑn ˈsʌndeɪ",
             "ɒn ˈmʌndeɪ ˈmɔːnɪŋ",
             "ɒn ˈfraɪdeɪ ˌɑːftəˈnuːn"
           ],
@@ -21660,17 +21660,17 @@
           "options": [
             "living room",
             "triangle",
-            "brother",
+            "bedroom",
             "garden"
           ],
           "options_ipa": [
             "ˈlɪvɪŋ ruːm",
             "ˈtraɪæŋɡl",
-            "ˈbrʌðə",
-            "ˈɡɑːdn"
+            "ˈbedruːm",
+            "ˈɡɑrdn"
           ],
           "answer": "triangle",
-          "hint": "Gợi ý: Từ 'triangle' chỉ 'hình tam giác' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'living room', 'bedroom' và 'garden' đều là nơi chốn trong/ quanh ngôi nhà; 'triangle' là hình tam giác.",
           "emoji": "🔺",
           "skill_tag": "ENG_VOC",
           "topic_id": 3,
@@ -21780,7 +21780,7 @@
             "scared"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "breɪv",
             "ˈtaɪəd",
             "skeəd"
@@ -22452,7 +22452,7 @@
           "options_ipa": [
             "hɒt",
             "ˈθɜːsti",
-            "kəʊld",
+            "koʊld",
             "skeəd"
           ],
           "answer": "scared",
@@ -24083,7 +24083,7 @@
             "fine"
           ],
           "options_ipa": [
-            "kəʊld",
+            "koʊld",
             "ˈhæpi",
             "sæd",
             "faɪn"
@@ -24250,13 +24250,13 @@
           "options": [
             "rectangle",
             "windy",
-            "cold weather",
+            "cold",
             "square"
           ],
           "options_ipa": [
             "ˈrektæŋɡl",
             "ˈwɪndi",
-            "kəʊld ˈweðə",
+            "koʊld",
             "skweə"
           ],
           "answer": "rectangle",
@@ -25178,18 +25178,18 @@
           "question_text": "Hãy chọn từ khác nhóm nghĩa so với các phương án còn lại (Odd-one-out):",
           "options": [
             "rectangle",
-            "eighteen",
+            "circle",
             "square",
             "kite"
           ],
           "options_ipa": [
             "ˈrektæŋɡl",
-            "ˌeɪˈtiːn",
-            "skweə",
+            "ˈsɝkəl",
+            "skwɛr",
             "kaɪt"
           ],
           "answer": "kite",
-          "hint": "Gợi ý: Từ 'kite' chỉ 'con diều' thuộc nhóm khác biệt so với các từ còn lại.",
+          "hint": "Gợi ý: 'rectangle', 'circle' và 'square' đều là hình dạng; 'kite' là đồ chơi.",
           "emoji": "🪁",
           "skill_tag": "ENG_VOC",
           "topic_id": 4,
@@ -25207,13 +25207,13 @@
           "question_id": "hsg_exam19_q5",
           "question_text": "Kéo thả từ vựng tiếng Anh thích hợp ghép vào tranh vẽ chỉ 'chuông báo':",
           "options": [
-            "backpack green",
+            "green backpack",
             "box",
             "phone",
             "bell"
           ],
           "options_ipa": [
-            "ˈbækpæk ɡriːn",
+            "ɡriːn ˈbækpæk",
             "bɒks",
             "fəʊn",
             "bel"
@@ -25376,7 +25376,7 @@
           ],
           "options_ipa": [
             "faɪn",
-            "kəʊld",
+            "koʊld",
             "bɔːd",
             "sæd"
           ],
@@ -25400,7 +25400,7 @@
           ],
           "options_ipa": [
             "ˈmʌndeɪ",
-            "ˈmʌndeɪ",
+            "ˈsʌndeɪ",
             "ˈwenzdeɪ",
             "ˈsætədeɪ"
           ],
@@ -25788,13 +25788,15 @@
     }
   ],
   "content_audit": {
-    "version": "content_clean_2026-09-18",
+    "version": "content_clean_2026-09-20",
     "rules": [
       "answer/options validation",
-      "IPA aligned to vocabulary master where available",
-      "phonics audio aligned to canonical IPA where available",
-      "high-risk copied hints normalized",
-      "shared visual_ref added without removing legacy image_url",
+      "80 exams x 13 questions preserved",
+      "points, skill_tag, topic_id and question_id preserved",
+      "ambiguous Odd-One-Out templates corrected",
+      "machine-like English phrases normalized",
+      "known copied weekday IPA errors corrected",
+      "legacy image_url and shared visual_ref preserved",
       "TTS policy preserved"
     ]
   }
