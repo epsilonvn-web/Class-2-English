@@ -177,6 +177,99 @@
 
 
         .bi-label{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.08;text-align:center}.bi-label .en{display:block;font-weight:900}.bi-label .vi{display:block;font-size:11px;font-weight:800;opacity:.78;margin-top:4px;line-height:1.1}.bi-left{align-items:flex-start;text-align:left}.card-title-bi{display:flex;flex-direction:column;align-items:flex-start;min-width:0;line-height:1.12}.card-title-bi .en{display:block;font-weight:900}.card-title-bi .vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}.card-vi{display:block;font-size:12px;font-weight:800;color:#94a3b8;margin-top:4px;line-height:1.15}
+
+
+/* =========================================================
+   TA2 UI 2026-09-20 - APP SHELL THEO TV1
+   Presentation only: giu nguyen engine, data, permission, TTS.
+   ========================================================= */
+body{background:#fff !important;}
+#screen-dashboard{max-width:72rem !important;background:transparent !important;}
+#dashboard-header{display:grid !important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:7px 0 !important;background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;backdrop-filter:none !important;}
+#header-nav-group{display:contents !important;}
+#header-actions-group{width:auto !important;min-width:0;margin-left:0 !important;justify-content:flex-end !important;gap:7px !important;}
+#btn-header-home{width:101px !important;min-width:101px !important;height:67px !important;border-radius:16px !important;}
+#btn-toggle-autospeech{display:none !important;}
+#header-score-box{background:#fff7fb !important;}
+
+#main-module-tabs{width:100%;min-width:0;background:transparent !important;border:0 !important;border-radius:0 !important;padding:0 !important;box-shadow:none !important;}
+#main-module-tabs>div{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;}
+.main-module-tab{min-width:0;min-height:62px;padding:7px 5px;border-radius:16px;flex-direction:column;gap:3px;font-size:13px;line-height:1.05;border-width:1.5px;box-shadow:0 3px 9px rgba(76,29,149,.08);position:relative;overflow:visible;}
+.main-module-tab>span:first-child{font-size:21px !important;line-height:1;}
+.main-module-tab::after{content:'';position:absolute;left:34%;right:34%;bottom:-5px;height:3px;border-radius:99px;opacity:0;transform:scaleX(.45);transition:all .18s ease;background:currentColor;}
+.main-module-tab.is-active::after{opacity:.95;transform:scaleX(1);}
+.main-module-tab[data-tab="discover"]{background:#f3e8ff;color:#7c3aed;border-color:#ddd6fe;}
+.main-module-tab[data-tab="lessons"]{background:#fce7f3;color:#db2777;border-color:#fbcfe8;}
+.main-module-tab[data-tab="exercises"]{background:#e0f2fe;color:#0369a1;border-color:#bae6fd;}
+.main-module-tab[data-tab="review"]{background:#fef3c7;color:#b45309;border-color:#fde68a;}
+.main-module-tab[data-tab="exams"]{background:#dcfce7;color:#15803d;border-color:#bbf7d0;}
+.main-module-tab[data-tab="games"]{background:#ede9fe;color:#6d28d9;border-color:#ddd6fe;}
+.main-module-tab[data-tab="discover"].is-active{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;border-color:#8b5cf6;box-shadow:0 7px 17px rgba(124,58,237,.27);}
+.main-module-tab[data-tab="lessons"].is-active{background:linear-gradient(135deg,#f472b6,#ec4899);color:#fff;border-color:#ec4899;box-shadow:0 7px 17px rgba(236,72,153,.25);}
+.main-module-tab[data-tab="exercises"].is-active{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff;border-color:#0ea5e9;box-shadow:0 7px 17px rgba(14,165,233,.25);}
+.main-module-tab[data-tab="review"].is-active{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;border-color:#f59e0b;box-shadow:0 7px 17px rgba(245,158,11,.25);}
+.main-module-tab[data-tab="exams"].is-active{background:linear-gradient(135deg,#4ade80,#16a34a);color:#fff;border-color:#22c55e;box-shadow:0 7px 17px rgba(34,197,94,.24);}
+.main-module-tab[data-tab="games"].is-active{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border-color:#7c3aed;box-shadow:0 7px 17px rgba(109,40,217,.25);}
+
+#app-banner-slot{width:100%;position:relative;}
+#app-main-banner{position:relative;width:100%;aspect-ratio:6/1;overflow:hidden;border-radius:0;background:#fff;}
+#app-main-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+.app-main-banner-copy{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:36%;text-align:center;pointer-events:none;text-shadow:0 2px 0 rgba(255,255,255,.9),0 3px 12px rgba(126,34,206,.12);}
+.app-main-banner-title{font-size:clamp(21px,2.35vw,34px);line-height:1;font-weight:900;color:#ec4899;letter-spacing:-.02em;}
+.app-main-banner-teacher{margin-top:5px;font-size:clamp(12px,1.15vw,17px);font-weight:900;color:#7e22ce;}
+#app-main-banner.hidden,#app-context-banner.hidden{display:none !important;}
+#app-context-banner{position:relative;min-height:58px;overflow:hidden;border:0 !important;background:none !important;box-shadow:none !important;display:flex;align-items:center;padding:7px 10px;}
+#app-context-banner::before{content:'';position:absolute;inset:0;background:url('footer-bg.jpg') center/cover no-repeat;transform:rotate(180deg);transform-origin:center;opacity:1;filter:none;pointer-events:none;z-index:0;}
+#header-learning-tabs{width:100% !important;max-width:none !important;flex:1 1 auto !important;min-width:0 !important;overflow-x:auto !important;overflow-y:hidden !important;scrollbar-width:none;gap:5px;position:relative;z-index:2;}
+#header-learning-tabs::-webkit-scrollbar{display:none;}
+#header-level2-tab,#header-level3-tab,#header-level4-tab,#header-level5-tab{width:auto !important;min-width:0 !important;max-width:none !important;flex:0 0 auto !important;overflow:visible !important;}
+#header-level2-tab>button,#header-level3-tab>button,#header-level3-tab>div,#header-level4-tab>div,#header-level5-tab>div{height:38px !important;max-width:220px !important;min-width:0 !important;padding:0 12px !important;border-radius:13px !important;background:rgba(255,255,255,.88) !important;backdrop-filter:blur(4px);box-shadow:0 2px 7px rgba(76,29,149,.08) !important;}
+#header-level2-tab>button{color:#be185d !important;border:1.5px solid #f9a8d4 !important;}
+#header-level3-tab>button,#header-level3-tab>div{color:#7e22ce !important;border:1.5px solid #d8b4fe !important;}
+#header-level4-tab>div{color:#b45309 !important;border:1.5px solid #fde68a !important;}
+#header-level5-tab>div{color:#0369a1 !important;border:1.5px solid #bae6fd !important;}
+#header-level2-title,#header-level3-title,#header-level4-title,#header-level5-title{font-size:12px !important;font-weight:900 !important;}
+#header-level3-tab>span,#header-level4-tab>span,#header-level5-tab>span{color:#c084fc !important;font-size:13px !important;}
+
+#app-footer{width:100%;max-width:72rem;min-height:76px;margin:10px auto 0;padding:0 14px;background:url('footer-bg.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#9d174d;border:0;box-shadow:none;}
+#app-footer .footer-title{font-size:14px;font-weight:900;line-height:1.35;text-shadow:0 1px 0 #fff;}
+#app-footer .footer-sub{font-size:11px;font-weight:800;line-height:1.35;color:#7e22ce;text-shadow:0 1px 0 #fff;}
+
+#view-bai-hoc-hub,#view-roadmap,#view-minigame-hub,#view-exam-hub{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;padding-left:0 !important;padding-right:0 !important;min-height:0 !important;}
+#roadmap-svg-container{background:transparent !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important;}
+body:has(#main-tab-review.is-active) #view-lecture{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;padding-left:0 !important;padding-right:0 !important;}
+#view-lecture,#view-bai-hoc-lesson,#view-game-play,#view-alphabet{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;min-height:0 !important;padding:8px 0 !important;}
+#view-quiz>.pastel-card{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;min-height:0 !important;padding:8px 0 !important;}
+#view-lecture{justify-content:flex-start !important;gap:8px !important;}
+#view-quiz{gap:8px !important;}
+#view-quiz #question-box{margin-top:4px !important;margin-bottom:4px !important;}
+#view-quiz #quiz-bottom-nav{padding-top:6px !important;}
+#view-dashboard-grid .pastel-card{border-width:1.5px !important;border-radius:18px !important;box-shadow:0 3px 10px rgba(76,29,149,.07) !important;}
+#view-dashboard-grid .pastel-card h3{font-size:1.12rem !important;}
+
+@media(max-width:767px){
+ #dashboard-header{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;gap:7px !important;padding:7px 0 !important;}
+ #btn-header-home{grid-column:1;grid-row:1;width:86px !important;min-width:86px !important;height:58px !important;justify-self:start;}
+ #header-actions-group{grid-column:2;grid-row:1;justify-self:end !important;width:auto !important;gap:5px !important;}
+ #main-module-tabs{grid-column:1/3;grid-row:2;width:100% !important;}
+ #main-module-tabs>div{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+ .main-module-tab{min-height:52px;flex-direction:row;gap:6px;font-size:12px;padding:6px 8px;border-radius:15px;}
+ .main-module-tab>span:first-child{font-size:18px !important;}
+ .main-module-tab .bi-label .vi{display:none !important;}
+ #header-score-box{transform:none !important;margin-left:0 !important;padding:3px 5px !important;}
+ #user-info-box{margin-left:0 !important;min-width:0;text-align:right;}
+ #user-info-box .admin-manage-label{display:none !important;}
+ #user-info-box button[title="Quản lý tài khoản"]{width:34px !important;padding-left:0 !important;padding-right:0 !important;justify-content:center !important;}
+ #app-main-banner{aspect-ratio:6/1;}
+ .app-main-banner-copy{width:39%;left:51%;top:49%;}
+ .app-main-banner-title{font-size:clamp(13px,4.2vw,20px);}
+ .app-main-banner-teacher{font-size:clamp(9px,2.8vw,13px);margin-top:2px;}
+ #app-context-banner{min-height:52px;padding:6px 8px;}
+ #header-level2-tab>button,#header-level3-tab>button,#header-level3-tab>div,#header-level4-tab>div,#header-level5-tab>div{height:34px !important;max-width:150px !important;padding:0 9px !important;border-radius:11px !important;}
+ #app-footer{min-height:64px;margin-top:8px;}
+ #view-lecture,#view-bai-hoc-lesson,#view-game-play,#view-alphabet,#view-quiz>.pastel-card{padding-top:6px !important;padding-bottom:6px !important;}
+}
+
 </style>
 </head>
 <body class="p-1 md:p-2 w-full">
@@ -255,75 +348,46 @@
         <!-- 2. KHUNG CHÍNH CHUẨN TỶ LỆ 16:9 / 16:10 -->
         <div id="screen-dashboard" class="w-full max-w-5xl flex flex-col space-y-1.5 md:space-y-2 p-1 md:p-2">
             
-            <header id="dashboard-header" class="w-full bg-white/95 backdrop-blur-md px-2 py-1 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col md:flex-row justify-between items-center gap-2">
-                <div id="header-nav-group" class="flex items-center space-x-2 w-full md:w-auto justify-between md:justify-start overflow-x-auto">
-                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="w-[93px] h-[62px] flex items-center justify-center bg-white rounded-xl border border-pink-300 shadow-sm shrink-0 overflow-hidden p-0 transition-shadow duration-200 hover:border-pink-400 hover:shadow-[0_0_18px_rgba(244,114,182,0.75)]">
+            <header id="dashboard-header" class="w-full">
+                <div id="header-nav-group" class="contents">
+                    <button id="btn-header-home" onclick="goHome()" title="Về trang chủ" class="flex items-center justify-center bg-white border border-pink-300 shadow-sm shrink-0 overflow-hidden p-0 transition-shadow duration-200 hover:border-pink-400">
                         <img src="logo-home.png" alt="Trang chủ Tiếng Anh 2" class="w-full h-full object-cover">
                     </button>
-
-                    <div id="header-learning-tabs" class="flex items-center space-x-1 min-w-0">
-                    <div id="header-level2-tab" class="hidden items-center">
-                        <button onclick="returnToTopicLecture()" class="h-10 px-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-extrabold rounded-xl text-xs md:text-sm flex items-center space-x-1.5 shadow-sm border border-pink-300 shrink-0 max-w-[200px] md:max-w-[260px] transition-shadow duration-200 hover:shadow-[0_0_14px_rgba(244,63,94,0.65)]">
-                            <span id="header-level2-icon">🔢</span>
-                            <span id="header-level2-title" class="truncate">Chủ đề học</span>
-                        </button>
-                    </div>
-
-                    <div id="header-level3-tab" class="hidden items-center space-x-1">
-                        <span class="text-pink-300 font-bold text-xs">/</span>
-                        <button id="header-level3-btn" onclick="onHeaderLevel3Click()" class="h-10 px-2.5 bg-purple-50 border border-purple-200 text-purple-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[170px] md:max-w-[210px] truncate shadow-inner flex items-center transition-shadow duration-200">
-                            <span id="header-level3-title" class="truncate">Mục nhỏ</span>
-                        </button>
-                    </div>
-
-                    <div id="header-level4-tab" class="hidden items-center space-x-1">
-                        <span class="text-pink-300 font-bold text-xs">/</span>
-                        <div class="h-10 px-2.5 bg-amber-50 border border-amber-200 text-amber-700 font-extrabold rounded-xl text-xs md:text-sm max-w-[200px] md:max-w-[260px] truncate shadow-inner flex items-center">
-                            <span id="header-level4-title" class="truncate">Chủ đề tuần</span>
-                        </div>
-                    </div>
-                    </div>
                 </div>
 
-                <div id="header-actions-group" class="flex items-center space-x-1.5 md:space-x-2 w-full md:w-auto justify-between md:justify-end ml-auto shrink-0">
-                    <button id="btn-toggle-autospeech" onclick="toggleAutoSpeech()" title="Bật/tắt tự động đọc câu hỏi" class="h-10 w-10 shrink-0 flex items-center justify-center bg-pink-50 text-pink-600 border border-pink-200 rounded-xl shadow-inner transition-colors">
-                        <i class="fa-solid fa-volume-high"></i>
-                    </button>
-
-                    <div id="header-score-box" class="flex flex-col space-y-0.5 bg-pink-50/90 px-2.5 py-1 rounded-xl border border-pink-200 shadow-inner">
-                        <div class="flex items-center justify-between space-x-2 font-extrabold">
-                            <span class="px-1.5 py-0.2 bg-emerald-500 text-white rounded text-[10px] shadow-sm"><i class="fa-solid fa-star mr-0.5"></i><span class="score-label-text"> Đúng</span></span>
-                            <span class="text-emerald-600 font-extrabold text-xs" id="star-green-count">0</span>
-                        </div>
-                        <div class="flex items-center justify-between space-x-2 font-extrabold">
-                            <span class="px-1.5 py-0.2 bg-rose-500 text-white rounded text-[10px] shadow-sm"><i class="fa-solid fa-star mr-0.5"></i><span class="score-label-text"> Sai</span></span>
-                            <span class="text-rose-600 font-extrabold text-xs" id="star-red-count">0</span>
-                        </div>
+                <nav id="main-module-tabs" aria-label="Điều hướng chính">
+                    <div>
+                        <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span>🧭</span><span class="bi-label"><span class="en">Explore</span><span class="vi">Khám phá</span></span></button>
+                        <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span>📖</span><span class="bi-label"><span class="en">Lessons</span><span class="vi">Bài học</span></span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span>✏️</span><span class="bi-label"><span class="en">Exercises</span><span class="vi">Bài tập</span></span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span>🧠</span><span class="bi-label"><span class="en">Review</span><span class="vi">Ôn tập</span></span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span>🏆</span><span class="bi-label"><span class="en">Tests</span><span class="vi">Đề thi</span></span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span>🎮</span><span class="bi-label"><span class="en">Mini Games</span><span class="vi">Trò chơi</span></span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
                     </div>
+                </nav>
 
-                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-amber-600 font-extrabold text-xs px-1.5">Khách</span>
-                            <button onclick="openAuthScreen('login')" class="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-extrabold text-xs pastel-btn whitespace-nowrap">Sign in/up</button>
-                        </div>
+                <div id="header-actions-group" class="flex items-center">
+                    <div id="header-score-box" class="flex flex-col space-y-0.5 px-1.5 md:px-2.5 py-1 rounded-xl border border-pink-200 shadow-inner">
+                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-emerald-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> Đúng</span></span><span class="text-emerald-600 text-xs" id="star-green-count">0</span></div>
+                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-rose-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> Sai</span></span><span class="text-rose-600 text-xs" id="star-red-count">0</span></div>
                     </div>
-
-                    
-                    
+                    <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right"></div>
                 </div>
             </header>
 
-            <!-- ĐIỀU HƯỚNG CHÍNH 6 TAB -->
-            <nav id="main-module-tabs" class="w-full bg-white/95 border-2 border-pink-200 rounded-2xl p-1.5 shadow-sm" aria-label="Điều hướng chính">
-                <div class="grid grid-cols-3 md:grid-cols-6 gap-1.5">
-                    <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span class="text-lg">🧭</span><span class="bi-label"><span class="en">Explore</span><span class="vi">Khám phá</span></span></button>
-                    <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span class="text-lg">📖</span><span class="bi-label"><span class="en">Lessons</span><span class="vi">Bài học</span></span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span class="text-lg">✏️</span><span class="bi-label"><span class="en">Exercises</span><span class="vi">Bài tập</span></span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span class="text-lg">🧠</span><span class="bi-label"><span class="en">Review</span><span class="vi">Ôn tập</span></span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span class="text-lg">🏆</span><span class="bi-label"><span class="en">Tests</span><span class="vi">Đề thi</span></span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                    <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span class="text-lg">🎮</span><span class="bi-label"><span class="en">Mini Games</span><span class="vi">Trò chơi</span></span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+            <section id="app-banner-slot" aria-label="Không gian nhận diện và điều hướng">
+                <div id="app-main-banner">
+                    <img src="banner-main.jpg" alt="Khu vườn học tập Tiếng Anh 2">
+                    <div class="app-main-banner-copy"><div class="app-main-banner-title">Tiếng Anh 2</div><div class="app-main-banner-teacher">Cô Thỏ Ngọc</div></div>
                 </div>
-            </nav>
+                <div id="app-context-banner" class="hidden">
+                    <div id="header-learning-tabs" class="flex items-center min-w-0">
+                        <div id="header-level2-tab" class="hidden items-center"><button onclick="returnToTopicLecture()" class="flex items-center space-x-1.5 shrink-0"><span id="header-level2-icon">🔢</span><span id="header-level2-title" class="truncate">Chủ đề học</span></button></div>
+                        <div id="header-level3-tab" class="hidden items-center space-x-1"><span class="font-bold">›</span><button id="header-level3-btn" onclick="onHeaderLevel3Click()" class="truncate flex items-center"><span id="header-level3-title" class="truncate">Mục nhỏ</span></button></div>
+                        <div id="header-level4-tab" class="hidden items-center space-x-1"><span class="font-bold">›</span><div class="truncate flex items-center"><span id="header-level4-title" class="truncate">Mục sâu</span></div></div>
+                    </div>
+                </div>
+            </section>
 
             <main id="app-viewport" class="w-full">
                 
@@ -758,6 +822,10 @@
         </div>
     </div>
     <!-- NẠP ENGINE JAVASCRIPT ĐỒNG BỘ -->
+    <footer id="app-footer" class="select-text cursor-text" style="user-select:text;-webkit-user-select:text;">
+        <div><div class="footer-title">Tiếng Anh 2 · Cô Thỏ Ngọc</div><div class="footer-sub">Zalo 0865.749.402</div></div>
+    </footer>
+
     <script src="assets/js/app.js?v=8.4-bilingual-ui"></script>
 
     <!-- ĐĂNG KÝ SERVICE WORKER (PWA) — đồng bộ cách cập nhật với bản Tiếng Anh 1 đang chạy ổn trên GitHub. -->
