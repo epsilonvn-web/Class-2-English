@@ -5767,8 +5767,20 @@ function getWordSearchVocabPool(topicId = 'all') {
 tryAutoLogin();
 
 // ===== RESTORED FROM CURRENT TA2 6-TAB / LESSON-EXERCISE BRANCH =====
+let appShellRootMode_ = true;
+function setAppShellRootMode_(isRoot) {
+    appShellRootMode_ = !!isRoot;
+    const mainBanner = document.getElementById('app-main-banner');
+    const contextBanner = document.getElementById('app-context-banner');
+    if (mainBanner) mainBanner.classList.toggle('hidden', !appShellRootMode_);
+    if (contextBanner) contextBanner.classList.toggle('hidden', appShellRootMode_);
+}
+
 function switchAppView(viewId) {
     stopSpeaking();
+    const rootViews = new Set(['view-dashboard-grid','view-bai-hoc-hub','view-roadmap','view-minigame-hub','view-exam-hub']);
+    const isReviewRoot = viewId === 'view-lecture' && currentMainTab === 'review' && !activeExamContext && !activeRoadmapContext;
+    setAppShellRootMode_(rootViews.has(viewId) || isReviewRoot);
     ['view-dashboard-grid', 'view-bai-hoc-hub', 'view-bai-hoc-lesson', 'view-alphabet', 'view-lecture', 'view-quiz', 'view-roadmap', 'view-minigame-hub', 'view-game-play', 'view-exam-hub', 'view-result'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
