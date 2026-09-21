@@ -1331,10 +1331,13 @@ function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3
         nested.splice(1, nested.length - 1, { title: tail, source: 'combined' });
     }
 
+    // Main tab đã được thể hiện bằng tab active trên header. Riêng Explore không lặp lại
+    // trên banner phụ; breadcrumb bắt đầu trực tiếp từ chuyên mục con.
+    const showMainBreadcrumb = currentMainTab !== 'discover';
     document.getElementById('header-level2-title').textContent = main.title;
     document.getElementById('header-level2-icon').textContent = main.icon;
-    tab2.classList.remove('hidden');
-    tab2.classList.add('flex');
+    tab2.classList.toggle('hidden', !showMainBreadcrumb);
+    tab2.classList.toggle('flex', showMainBreadcrumb);
     homeBtn.classList.add('opacity-80', 'hover:opacity-100');
 
     const mainBtn = tab2.querySelector('button');
@@ -1343,6 +1346,8 @@ function updateNavTabs(level2Title, level2Icon, level3Title, level4Title, level3
         mainBtn.onclick = onHeaderLevel2Click;
         mainBtn.title = main.title;
     }
+    const level3Separator = tab3.querySelector(':scope > span');
+    if (level3Separator) level3Separator.classList.toggle('hidden', !showMainBreadcrumb);
 
     headerLevel3ClickHandler = null;
     headerLevel4ClickHandler = null;
@@ -1860,13 +1865,13 @@ function updateUserInfoBox() {
                 <div class="text-right">
                     ${role === 'admin' ? `
                     <div class="text-pink-600 font-extrabold text-sm md:text-base leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
-                    <div class="text-purple-500 font-bold text-[10px]">ADMIN | Quản trị viên</div>
+                    <div class="text-purple-500 font-bold text-[10px]">ADMIN</div>
                     ` : `
                     <div class="text-pink-600 font-extrabold text-xs md:text-sm leading-tight">${escapeHtml(currentUser.hoTen || '')}</div>
                     <div class="text-gray-500 font-bold text-[10px] leading-tight mt-0.5">${badge} · ID: ${escapeHtml(currentUser.maHS || '')}</div>
                     `}
                 </div>
-                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-xs font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span>Quản lý</span></button>` : ''}
+                ${role === 'admin' ? `<button onclick="openAccountManager()" title="Quản lý tài khoản" class="relative h-9 px-3 flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-xl border border-purple-200 text-xs font-black shadow-sm pastel-btn whitespace-nowrap"><i class="fa-solid fa-users-gear"></i><span class="hidden lg:inline">Quản lý</span></button>` : ''}
                 <button onclick="logout()" title="Đăng xuất" class="w-8 h-8 flex items-center justify-center bg-rose-100 hover:bg-rose-200 text-rose-500 rounded-xl border border-rose-200 text-xs transition-shadow duration-200 hover:shadow-[0_0_12px_rgba(244,63,94,0.55)]"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>`;
     } else {
@@ -5506,30 +5511,6 @@ function applyResponsiveWidthTuning_() {
         }
         #view-lecture.ta2-compact-vocab-hub #lecture-subtopics-list > .flex:first-child {
             margin-bottom: 0.55rem !important;
-        }
-        /* 6 main tabs: keep the label optically centered, with icon close to its left. */
-        #main-module-tabs .main-module-tab {
-            position: relative !important;
-            justify-content: center !important;
-            gap: 0 !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-        }
-        #main-module-tabs .main-module-tab > span:first-child {
-            position: absolute !important;
-            left: calc(50% - 3.55rem) !important;
-            margin: 0 !important;
-            line-height: 1 !important;
-        }
-        #main-module-tabs .main-module-tab > .bi-label {
-            width: 100% !important;
-            align-items: center !important;
-            text-align: center !important;
-        }
-        @media (max-width: 900px) {
-            #main-module-tabs .main-module-tab > span:first-child {
-                left: calc(50% - 3.15rem) !important;
-            }
         }
     `;
     document.head.appendChild(style);
