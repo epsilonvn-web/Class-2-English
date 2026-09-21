@@ -278,7 +278,7 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
 </head>
 <body class="p-1 md:p-2 w-full" style="padding-top:0;padding-bottom:max(0.25rem,env(safe-area-inset-bottom));padding-left:max(0.25rem,env(safe-area-inset-left));padding-right:max(0.25rem,env(safe-area-inset-right));">
 
-    <div class="w-full flex justify-center items-center mt-4 md:mt-6">
+    <div class="w-full flex justify-center items-center mt-1.5 md:mt-2">
         <!-- 1. MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
         <div id="screen-login" class="w-full max-w-md hidden pastel-card p-6 md:p-8 flex flex-col items-center text-center my-auto">
             <div class="mb-2 flex flex-col items-center">
@@ -361,12 +361,12 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
 
                 <nav id="main-module-tabs" aria-label="Điều hướng chính">
                     <div>
-                        <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span>🧭</span><span class="bi-label"><span class="en">Explore</span><span class="vi">Khám phá</span></span></button>
-                        <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span>📖</span><span class="bi-label"><span class="en">Lessons</span><span class="vi">Bài học</span></span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                        <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span>✏️</span><span class="bi-label"><span class="en">Exercises</span><span class="vi">Bài tập</span></span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                        <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span>🧠</span><span class="bi-label"><span class="en">Review</span><span class="vi">Ôn tập</span></span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                        <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span>🏆</span><span class="bi-label"><span class="en">Tests</span><span class="vi">Đề thi</span></span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
-                        <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span>🎮</span><span class="bi-label"><span class="en">Mini Games</span><span class="vi">Trò chơi</span></span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-discover" onclick="openMainTab('discover')" class="main-module-tab is-active" data-tab="discover"><span>🧭</span><span>Explore</span></button>
+                        <button id="main-tab-lessons" onclick="openMainTab('lessons')" class="main-module-tab" data-tab="lessons"><span>📖</span><span>Lessons</span><span id="lessons-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-exercises" onclick="openMainTab('exercises')" class="main-module-tab" data-tab="exercises"><span>✏️</span><span>Exercises</span><span id="roadmap-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-review" onclick="openMainTab('review')" class="main-module-tab" data-tab="review"><span>🧠</span><span>Review</span><span id="review-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-exams" onclick="openMainTab('exams')" class="main-module-tab" data-tab="exams"><span>🏆</span><span>Exams</span><span id="exam-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
+                        <button id="main-tab-games" onclick="openMainTab('games')" class="main-module-tab" data-tab="games"><span>🎮</span><span>Mini Games</span><span id="minigame-lock-icon" class="hidden absolute -top-1 -right-1 text-[10px]">🔒</span></button>
                     </div>
                 </nav>
 
@@ -826,7 +826,7 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
         <div><div class="footer-title">Tiếng Anh 2 · Cô Thỏ Ngọc</div><div class="footer-sub">Zalo 0865.749.402</div></div>
     </footer>
 
-    <script src="assets/js/app.js?v=8.5-banner-context-fix"></script>
+    <script src="assets/js/app.js?v=10.8-ta2-ui-ta1-tabs"></script>
 
     <!-- ĐĂNG KÝ SERVICE WORKER (PWA) — đồng bộ cách cập nhật với bản Tiếng Anh 1 đang chạy ổn trên GitHub. -->
     <script>
