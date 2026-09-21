@@ -259,7 +259,8 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
  #header-score-box{transform:none !important;margin-left:0 !important;padding:3px 5px !important;}
  #user-info-box{margin-left:0 !important;min-width:0;text-align:right;}
  #user-info-box .admin-manage-label{display:none !important;}
- #user-info-box button[title="Quản lý tài khoản"]{width:34px !important;padding-left:0 !important;padding-right:0 !important;justify-content:center !important;}
+ #user-info-box button[title="Quản lý tài khoản"]{width:34px !important;min-width:34px !important;padding-left:0 !important;padding-right:0 !important;justify-content:center !important;gap:0 !important;}
+ #user-info-box button[title="Quản lý tài khoản"] > span:not(#admin-new-registration-badge){display:none !important;}
  #user-info-box>div{display:flex !important;align-items:center !important;gap:5px !important;white-space:nowrap;}
  #user-info-box button{flex:0 0 auto;}
  #user-info-box button[onclick*="openAuthScreen"]{height:34px !important;padding-left:8px !important;padding-right:8px !important;font-size:10px !important;}
