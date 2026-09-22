@@ -2467,6 +2467,9 @@ function getVocabularyIpaForWord_(word) {
 }
 
 function vocabularyTabsHtml_() {
+    // Advanced Vocabulary trong Review chỉ dùng một chế độ Word-picture Puzzle,
+    // không hiển thị 3 tab Flashcards / Picture / Listen như Vocabulary ở Khám phá.
+    if (activeVocabularyHubTopic?.advancedReviewOnly) return '';
     const tabs = [
         { key:'flashcard', icon:'🃏', en:'Flashcards', vi:'' },
         { key:'picture', icon:'🖼️', en:'Word-picture Puzzle', vi:'Nhìn tranh chọn từ' },
@@ -2529,7 +2532,14 @@ function vocabularyPictureExamplesHtml_(q) {
     if (!examples.length) return '';
     const solved = userAnswers[currentQIndex] === q.answer;
     if (!solved) return '<div class="h-full min-h-[150px]"></div>';
-    return `<div class="font-black text-fuchsia-600 text-sm mb-2">⭐ 3 EXAMPLE SENTENCES:</div><div class="space-y-2">${examples.map(ex => `<div class="bg-white rounded-xl px-3 py-2 text-left font-bold text-slate-700">${highlightVocabularyTarget_(ex, q.word)}</div>`).join('')}</div>`;
+    return `<div class="font-black text-fuchsia-600 text-sm mb-2">⭐ 3 EXAMPLE SENTENCES:</div><div class="space-y-2">${examples.map((ex, i) => `<div class="bg-white rounded-xl px-3 py-2 text-left font-bold text-slate-700 flex items-center gap-2"><div class="flex-1 min-w-0">${highlightVocabularyTarget_(ex, q.word)}</div><button onclick="speakVocabularyPictureExample_(${i})" class="w-8 h-8 shrink-0 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200" title="Listen example"><i class="fa-solid fa-volume-high text-xs"></i></button></div>`).join('')}</div>`;
+}
+
+function speakVocabularyPictureExample_(i) {
+    if (activeVocabularyStudyMode !== 'picture') return;
+    const q = activeQuestionsList[currentQIndex];
+    const text = Array.isArray(q?.examples) ? q.examples[i] : '';
+    if (text) speakEnglish(text, 0.92);
 }
 
 function revealVocabularyPictureExamples_() {
@@ -2602,9 +2612,12 @@ function renderVocabularySharedStudy_(q) {
     if (!q || !activeVocabularyHubTopic) return;
     const tabs = vocabularyTabsHtml_();
     const topic = activeVocabularyHubTopic;
+    const isAdvancedReviewPicture = !!activeVocabularyHubTopic?.advancedReviewOnly;
     const imageOrEmoji = q.image_url
-        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-contain object-center rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.style.display='flex';"><div style="display:none" class="w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`
-        : `<div class="w-full h-full flex items-center justify-center text-7xl md:text-8xl">${q.emoji || '✨'}</div>`;
+        ? `<img src="${escapeHtml(q.image_url)}" alt="${escapeHtml(q.word)}" class="w-full h-full object-contain object-center rounded-3xl" onerror="this.style.display='none'; const f=this.nextElementSibling; if(f) f.style.display='flex';"><div style="display:none" class="w-full h-full items-center justify-center text-7xl md:text-8xl">${q.emoji ? escapeHtml(q.emoji) : ''}</div>`
+        : (q.emoji
+            ? `<div class="w-full h-full flex items-center justify-center text-7xl md:text-8xl">${escapeHtml(q.emoji)}</div>`
+            : `<div class="w-full h-full flex items-center justify-center"></div>`);
 
     const optionButtonHtml = (opt, i, accent = 'pink') => {
         const record = getVocabularyRecordByWord_(opt);
@@ -2647,15 +2660,25 @@ function renderVocabularySharedStudy_(q) {
         const options = getVocabularyChoiceOptions_(q);
         q.answer = q.word;
         q.options = options;
-        body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
-            <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-2.5 flex flex-col">
-                <div class="w-full aspect-[4/3] max-h-[188px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div>
-                <div id="vocab-prompt-meaning" class="mt-1.5 text-center text-xl md:text-2xl font-black text-violet-700 leading-tight">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div>
+        if (isAdvancedReviewPicture) {
+            const hasVisual = !!(q.image_url || q.emoji);
+            body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">📚 ${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div></div>
+            <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-3 mb-2 flex flex-col items-center justify-center ${hasVisual ? 'min-h-[230px]' : 'min-h-[150px]'}">
+                ${hasVisual ? `<div class="w-full max-w-md h-[150px] md:h-[170px] flex items-center justify-center overflow-hidden rounded-2xl bg-white mb-2">${imageOrEmoji}</div>` : ''}
+                <div id="vocab-prompt-meaning" class="text-center text-2xl md:text-3xl font-black text-violet-700 leading-tight">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div>
             </section>
-            <section id="vocab-picture-examples" class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/50 via-white to-violet-50/50 p-2.5">${vocabularyPictureExamplesHtml_(q)}</section>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
+        } else {
+            body = `<div class="text-center mb-2"><div class="flex items-center justify-center gap-2 flex-wrap"><span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-200 text-pink-700 font-black text-xs">${topic.icon} ${topic.id ? `${topic.id}. ` : ''}${escapeHtml(topic.title)}</span><span class="text-lg md:text-xl font-black text-slate-900">Choose the correct English word:</span><button onclick="speakVocabularyPrompt_()" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600"><i class="fa-solid fa-volume-high text-xs"></i></button></div></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
+                <section class="rounded-3xl border-2 border-dashed border-pink-300 bg-pink-50/30 p-2.5 flex flex-col">
+                    <div class="w-full aspect-[4/3] max-h-[188px] flex items-center justify-center overflow-hidden rounded-2xl bg-white">${imageOrEmoji}</div>
+                    <div id="vocab-prompt-meaning" class="mt-1.5 text-center text-xl md:text-2xl font-black text-violet-700 leading-tight">Nghĩa: ${escapeHtml(q.vietnamese || '')}</div>
+                </section>
+                <section id="vocab-picture-examples" class="rounded-3xl border-2 border-fuchsia-200 bg-gradient-to-br from-pink-50/50 via-white to-violet-50/50 p-2.5">${vocabularyPictureExamplesHtml_(q)}</section>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">${options.map((opt,i)=>optionButtonHtml(opt,i,'pink')).join('')}</div>`;
+        }
     } else {
         const options = getVocabularyChoiceOptions_(q);
         q.answer = q.word;
@@ -3608,10 +3631,10 @@ function startTopicQuiz(topicNum, topicName, questions, subLabel) {
 
 function toggleFlashcardVietnamese() {
     const btn = document.getElementById('flashcard-vi-btn');
-    const items = Array.from(document.querySelectorAll('.flashcard-vi-text'));
-    if (!btn || !items.length) return;
-    const willShow = items.some(el => el.classList.contains('hidden'));
-    items.forEach(el => el.classList.toggle('hidden', !willShow));
+    const panel = document.getElementById('flashcard-vi-panel');
+    if (!btn || !panel) return;
+    const willShow = panel.classList.contains('hidden');
+    panel.classList.toggle('hidden', !willShow);
     btn.innerHTML = willShow
         ? '<i class="fa-solid fa-eye-slash mr-1.5"></i>Hide Vietnamese / Ẩn nghĩa'
         : '<i class="fa-solid fa-language mr-1.5"></i>Vietnamese Meaning / Nghĩa Tiếng Việt';
@@ -5816,6 +5839,159 @@ function openLessonsTab() {
     switchAppView('view-lessons-empty');
 }
 
+function hideReviewIntro_() {
+    const content = document.getElementById('lecture-content');
+    const contentWrap = content?.parentElement;
+    if (contentWrap) contentWrap.classList.add('hidden');
+    if (content) content.textContent = '';
+    document.getElementById('view-lecture').dataset.audioText = '';
+    setLectureSpeakVisible_(false);
+}
+
+function buildReviewSemesterPools_(reviewQuestions) {
+    const bySub = {};
+    reviewQuestions.forEach(q => {
+        const key = String(q.sub_topic || '').trim();
+        if (!bySub[key]) bySub[key] = [];
+        bySub[key].push(q);
+    });
+    return bySub;
+}
+
+function openSemesterReview_(subCode) {
+    if (!pendingTopicQuiz?.reviewSemesterPools) return;
+    const pool = pendingTopicQuiz.reviewSemesterPools[subCode] || [];
+    if (!pool.length) return alert('Không tìm thấy dữ liệu ôn tập cho học kỳ này.');
+    const label = subCode === '11.1' ? 'Semester 1 Review' : 'Semester 2 Review';
+    practiceCycleRawPool = [...pool];
+    updateNavTabs(label, '🧠', null);
+    startTopicQuiz(11, label, shuffleArray([...pool]), subCode);
+}
+
+async function getAdvancedVocabularyReviewData_() {
+    const [part1] = await loadExploreDataFiles_();
+    const data = part1?.advanced_vocabulary_review;
+    if (!data || !Array.isArray(data.groups) || data.groups.length !== 9) {
+        throw new Error('Kho Từ vựng tổng hợp nâng cao chưa có đủ 9 nhóm.');
+    }
+    return data;
+}
+
+async function openAdvancedVocabularyHub_() {
+    if (!requirePremiumAccess('Advanced Vocabulary / Từ vựng nâng cao')) return;
+    stopSpeaking();
+    resetLectureChrome_();
+    setMainTabActive_('review');
+    activeTopicId = 11;
+    activeExamContext = null;
+    activeRoadmapContext = null;
+    pendingTopicQuiz = null;
+    updateNavTabs('Advanced Vocabulary / Từ vựng nâng cao', '📚', null);
+    showLoadingOverlay('Đang tải kho từ vựng nâng cao...');
+    try {
+        const data = await getAdvancedVocabularyReviewData_();
+        hideLoadingOverlay();
+        hideReviewIntro_();
+        const list = document.getElementById('lecture-subtopics-list');
+        const lectureInner = document.querySelector('#view-lecture > div:first-child');
+        if (lectureInner) {
+            lectureInner.classList.remove('max-w-4xl');
+            lectureInner.classList.add('max-w-6xl');
+        }
+        list.innerHTML = data.groups.map((g, i) => {
+            const style = SUBTOPIC_PALETTES[i % SUBTOPIC_PALETTES.length];
+            const sourceNames = (g.source_topics || []).map(t => t.name_vi || t.name).join(' · ');
+            return `<button onclick="openAdvancedVocabularyGroup_(${Number(g.id)})" class="p-3 md:p-3.5 ${style.card} border-2 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn min-h-[82px]">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                        <div class="text-base md:text-lg font-black ${style.num} leading-tight">${escapeHtml(g.icon || '📚')} ${escapeHtml(g.name || '')}</div>
+                        <div class="text-sm md:text-[15px] text-slate-700 font-extrabold mt-1 leading-snug">${escapeHtml(g.name_vi || '')}</div>
+                        <div class="text-[13px] md:text-sm text-slate-500 font-bold mt-1.5 leading-snug">${escapeHtml(sourceNames)}</div>
+                    </div>
+                    <span class="text-xs font-black ${style.badge} px-3 py-1 rounded-full border shrink-0">${Number(g.word_count || (g.words || []).length)} từ</span>
+                </div>
+            </button>`;
+        }).join('');
+        // setSubtopicGridColumns() mặc định ép max-w-4xl; Advanced Vocabulary cần tràn hết
+        // bề ngang khung chương trình để 3 cột rộng hơn và card thấp hơn.
+        list.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2.5 w-full max-w-none px-0';
+        const mixWrap = document.getElementById('wrap-mix-all-subtopics');
+        const mixBtn = document.getElementById('btn-mix-all-subtopics');
+        mixWrap.classList.remove('hidden');
+        mixBtn.textContent = `🌟 Học trộn cả 9 nhóm · ${Number(data.total_unique_entries || 0)} từ`;
+        mixBtn.setAttribute('onclick', 'openAdvancedVocabularyGroup_(0)');
+        switchAppView('view-lecture');
+    } catch (err) {
+        hideLoadingOverlay();
+        alert(`Không thể tải Từ vựng nâng cao: ${err.message}`);
+    }
+}
+
+async function openAdvancedVocabularyGroup_(groupId) {
+    stopSpeaking();
+    const [data, exploreFiles] = await Promise.all([
+        getAdvancedVocabularyReviewData_(),
+        loadExploreDataFiles_()
+    ]);
+    const selected = Number(groupId) === 0 ? data.groups : data.groups.filter(g => Number(g.id) === Number(groupId));
+    if (!selected.length) return;
+
+    // Chỉ dùng hình/emoji khi tìm thấy ĐÚNG từ trong vocabulary_library chuẩn của chương trình.
+    // Không suy đoán hình theo nhóm; từ không có visual chuẩn sẽ để trống và chỉ hiện nghĩa tiếng Việt.
+    const part1 = exploreFiles?.[0] || {};
+    const visualByWord = new Map();
+    (Array.isArray(part1.vocabulary_library) ? part1.vocabulary_library : []).forEach(v => {
+        const key = String(v?.word || '').trim().toLowerCase();
+        if (!key || visualByWord.has(key)) return;
+        const visual = v.visual || {};
+        visualByWord.set(key, {
+            image_url: visual.image_url || v.image_url || '',
+            emoji: v.emoji || visual.fallback_emoji || '',
+            ipa: v.ipa || '',
+            examples: Array.isArray(v.examples) ? v.examples.slice(0, 3) : []
+        });
+    });
+
+    const words = selected.flatMap(g => (g.words || []).map((w, i) => {
+        const visual = visualByWord.get(String(w.word || '').trim().toLowerCase()) || {};
+        return {
+            question_id: `adv_vocab_${g.id}_${i + 1}`,
+            render_style: 'vocab_flashcard',
+            word: w.word || '',
+            vietnamese: w.vietnamese || '',
+            ipa: w.ipa || visual.ipa || '',
+            examples: visual.examples || [],
+            image_url: visual.image_url || '',
+            // Chỉ dùng emoji của chính từ nếu vocabulary_library có; tuyệt đối không dùng icon nhóm.
+            emoji: visual.emoji || '',
+            sub_topic: `adv.${g.id}`,
+            sub_topic_label: `${g.name} / ${g.name_vi}`,
+            skill_tag: 'ENG_VOC'
+        };
+    }));
+    const label = Number(groupId) === 0
+        ? 'All 9 Groups / Trộn 9 nhóm'
+        : `${selected[0].name} / ${selected[0].name_vi}`;
+
+    // Dùng lại engine Vocabulary đã ổn định, nhưng khóa cứng ở Word-picture Puzzle.
+    activeVocabularyHubTopic = {
+        id: Number(groupId),
+        title: Number(groupId) === 0 ? 'Advanced Vocabulary' : selected[0].name,
+        vi: Number(groupId) === 0 ? 'Từ vựng tổng hợp nâng cao' : selected[0].name_vi,
+        icon: '📚',
+        advancedReviewOnly: true
+    };
+    activeVocabularyStudyMode = 'picture';
+    vocabularyModeState = {
+        flashcard: { answers: {}, wrongs: {} },
+        picture: { answers: {}, wrongs: {} },
+        listen: { answers: {}, wrongs: {} }
+    };
+    practiceCycleRawPool = [...words];
+    updateNavTabs('Advanced Vocabulary / Từ vựng nâng cao', '📚', label, null, openAdvancedVocabularyHub_);
+    startTopicQuiz(11, label, shuffleArray([...words]), `advanced-vocab-${groupId}`);
+}
+
 async function openReviewTab() {
     if (!requirePremiumAccess('Review / Ôn tập')) return;
     stopSpeaking();
@@ -5831,21 +6007,41 @@ async function openReviewTab() {
 
     showLoadingOverlay('Đang tải nội dung ôn tập...');
     try {
-        const flat = await fetchAllQuestionsFlat();
+        const [flat, advancedData] = await Promise.all([
+            fetchAllQuestionsFlat(),
+            getAdvancedVocabularyReviewData_()
+        ]);
         const reviewQuestions = flat.filter(q => q.sub_topic === '11.1' || q.sub_topic === '11.2');
         if (!reviewQuestions.length) throw new Error('Không tìm thấy dữ liệu ôn tập Học kỳ I / Học kỳ II');
+        const semesterPools = buildReviewSemesterPools_(reviewQuestions);
+        pendingTopicQuiz = { topicNum: 11, topicName: 'Review / Ôn tập', questions: reviewQuestions, reviewSemesterPools: semesterPools };
 
-        const topicObj = {
-            topic_id: 11,
-            topic_name: 'Review / Ôn tập',
-            description: 'Choose a semester to review. / Chọn học kỳ để ôn tập.',
-            lecture_title: 'Review',
-            lecture_content: 'Choose Semester 1 or Semester 2 to start reviewing.',
-            lecture_audio_text: 'Choose Semester 1 or Semester 2 to start reviewing.',
-            questions: reviewQuestions
-        };
+        resetLectureChrome_();
+        hideReviewIntro_();
+        const sem1Count = semesterPools['11.1']?.length || 0;
+        const sem2Count = semesterPools['11.2']?.length || 0;
+        const totalVocab = Number(advancedData.total_unique_entries || 0);
+        const lectureInner = document.querySelector('#view-lecture > div:first-child');
+        if (lectureInner) {
+            lectureInner.classList.remove('max-w-4xl');
+            lectureInner.classList.add('max-w-6xl');
+        }
+        const reviewList = document.getElementById('lecture-subtopics-list');
+        reviewList.className = 'grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-5xl px-1 md:px-2';
+        reviewList.innerHTML = `
+            <button onclick="openAdvancedVocabularyHub_()" class="p-4 bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border-2 border-amber-300 rounded-2xl font-bold text-left transition-all shadow-sm pastel-btn sm:col-span-2">
+                <div class="flex items-center justify-between gap-3"><div><div class="text-base md:text-lg font-black text-amber-700">📚 Advanced Vocabulary</div><div class="text-xs md:text-sm font-extrabold text-amber-600 mt-1">Từ vựng tổng hợp nâng cao · 9 nhóm chủ đề</div></div><span class="text-xs font-black bg-white text-amber-700 px-3 py-1 rounded-full border border-amber-200 shrink-0">${totalVocab} từ</span></div>
+            </button>
+            <button onclick="openSemesterReview_('11.1')" class="p-3 bg-pink-50/80 hover:bg-pink-100 border-2 border-pink-300 text-pink-800 rounded-xl font-bold text-left transition-all flex items-center justify-between shadow-sm pastel-btn">
+                <span class="leading-snug"><span class="block text-sm md:text-base font-black"><strong class="text-pink-600 mr-1.5">1.</strong> Semester 1 Review</span><span class="block text-sm md:text-base font-extrabold text-slate-600 mt-1 ml-5">Ôn tập Học kỳ 1</span></span><span class="text-xs font-extrabold bg-white text-pink-600 border-pink-200 px-2.5 py-0.5 rounded-full border shrink-0 ml-1.5 shadow-inner">${sem1Count} câu</span>
+            </button>
+            <button onclick="openSemesterReview_('11.2')" class="p-3 bg-fuchsia-50/80 hover:bg-fuchsia-100 border-2 border-fuchsia-300 text-fuchsia-800 rounded-xl font-bold text-left transition-all flex items-center justify-between shadow-sm pastel-btn">
+                <span class="leading-snug"><span class="block text-sm md:text-base font-black"><strong class="text-fuchsia-600 mr-1.5">2.</strong> Semester 2 Review</span><span class="block text-sm md:text-base font-extrabold text-slate-600 mt-1 ml-5">Ôn tập Học kỳ 2</span></span><span class="text-xs font-extrabold bg-white text-fuchsia-600 border-fuchsia-200 px-2.5 py-0.5 rounded-full border shrink-0 ml-1.5 shadow-inner">${sem2Count} câu</span>
+            </button>`;
+        setSubtopicGridColumns(3);
+        document.getElementById('wrap-mix-all-subtopics').classList.add('hidden');
         hideLoadingOverlay();
-        showLectureAndSubtopics(11, 'Review / Ôn tập', topicObj);
+        switchAppView('view-lecture');
     } catch (err) {
         hideLoadingOverlay();
         activeTopicId = null;
