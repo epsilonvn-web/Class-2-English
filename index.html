@@ -230,7 +230,7 @@ body{background:#fff !important;}
 #header-level2-title,#header-level3-title,#header-level4-title,#header-level5-title{font-size:12px !important;font-weight:900 !important;}
 #header-level3-tab>span,#header-level4-tab>span,#header-level5-tab>span{color:#c084fc !important;font-size:13px !important;}
 
-#app-footer{width:100%;max-width:72rem;aspect-ratio:8/1;height:auto;min-height:0;max-height:none;flex:0 0 auto;margin:10px auto 0;padding:0 14px;border-radius:0;background-image:url('footer-bg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#1827f2;border:0;box-shadow:none;overflow:hidden;}
+#app-footer{width:calc(100% - 1rem);max-width:72rem;aspect-ratio:8/1;height:auto;min-height:0;max-height:none;flex:0 0 auto;margin:10px auto 0;padding:0 14px;border-radius:0;background-image:url('footer-bg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#1827f2;border:0;box-shadow:none;overflow:hidden;}
 #app-footer .footer-title{font-size:17px;font-weight:900;line-height:1.35;text-shadow:0 1px 0 #fff;}
 #app-footer .footer-sub{font-size:13px;font-weight:800;line-height:1.35;color:#1827f2;text-shadow:0 1px 0 #fff;}
 
@@ -294,6 +294,20 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
  #view-lecture,#view-bai-hoc-lesson,#view-game-play,#view-alphabet,#view-quiz>.pastel-card{padding-top:6px !important;padding-bottom:6px !important;}
 }
 
+
+        /* TA2 - Footer bang dung be rong banner ben trong #screen-dashboard */
+        @media (min-width: 768px) {
+            #app-footer {
+                width: calc(100% - 1rem) !important;
+                max-width: calc(72rem - 1rem) !important;
+            }
+        }
+        @media (max-width: 767px) {
+            #app-footer {
+                width: calc(100% - 0.5rem) !important;
+                max-width: calc(72rem - 0.5rem) !important;
+            }
+        }
 </style>
 </head>
 <body class="p-1 md:p-2 w-full" style="padding-top:0;padding-bottom:max(0.25rem,env(safe-area-inset-bottom));padding-left:max(0.25rem,env(safe-area-inset-left));padding-right:max(0.25rem,env(safe-area-inset-right));">
