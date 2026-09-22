@@ -50018,5 +50018,2313 @@
         "reuse_notes_vi": "Grammar Point 10, Fill Sentence, Q&A, Tests, lessons."
       }
     ]
+  },
+  "advanced_vocabulary_review": {
+    "title": "Advanced Vocabulary Review",
+    "title_vi": "Từ vựng tổng hợp nâng cao",
+    "description": "Kho từ vựng tổng hợp nâng cao được tổ chức thành 9 nhóm chủ đề cân đối để học theo lưới 3 x 3.",
+    "source_note": "Tổng hợp từ 18 chủ đề trong tài liệu người dùng cung cấp; 18 chủ đề được ghép lại thành 6 nhóm lớn. Từ trùng trong cùng một nhóm ghép được gộp một lần.",
+    "source_topic_count": 18,
+    "group_count": 9,
+    "total_unique_entries": 301,
+    "groups": [
+      {
+        "id": 1,
+        "name": "Animal World",
+        "name_vi": "Thế giới động vật",
+        "icon": "🐾",
+        "source_topics": [
+          {
+            "id": 1,
+            "name": "Land Animals",
+            "name_vi": "Động vật trên cạn"
+          },
+          {
+            "id": 2,
+            "name": "Water Animals",
+            "name_vi": "Động vật dưới nước"
+          },
+          {
+            "id": 3,
+            "name": "Insects",
+            "name_vi": "Côn trùng"
+          }
+        ],
+        "word_count": 40,
+        "words": [
+          {
+            "word": "Cat",
+            "vietnamese": "Con mèo",
+            "ipa": "/kæt/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Dog",
+            "vietnamese": "Con chó",
+            "ipa": "/dɔɡ/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Lion",
+            "vietnamese": "Con sư tử",
+            "ipa": "/laɪən/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Elephant",
+            "vietnamese": "Con voi",
+            "ipa": "/ɛləfənt/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Monkey",
+            "vietnamese": "Con khỉ",
+            "ipa": "/mʌŋki/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Bear",
+            "vietnamese": "Con gấu",
+            "ipa": "/bɛr/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Tiger",
+            "vietnamese": "Con hổ",
+            "ipa": "/taɪɡɚ/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Cow",
+            "vietnamese": "Con bò",
+            "ipa": "/kaʊ/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Pig",
+            "vietnamese": "Con lợn",
+            "ipa": "/pɪɡ/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Chicken",
+            "vietnamese": "Con gà",
+            "ipa": "/tʃɪkən/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Duck",
+            "vietnamese": "Con vịt",
+            "ipa": "/dʌk/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Horse",
+            "vietnamese": "Con ngựa",
+            "ipa": "/hɔrs/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Sheep",
+            "vietnamese": "Con cừu",
+            "ipa": "/ʃip/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Rabbit",
+            "vietnamese": "Con thỏ",
+            "ipa": "/ræbət/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Fox",
+            "vietnamese": "Con cáo",
+            "ipa": "/fɑks/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Wolf",
+            "vietnamese": "Con sói",
+            "ipa": "/wʊlf/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Giraffe",
+            "vietnamese": "Con hươu cao cổ",
+            "ipa": "/dʒɚæf/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Zebra",
+            "vietnamese": "Ngựa vằn",
+            "ipa": "/zibrə/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Kangaroo",
+            "vietnamese": "Chuột túi",
+            "ipa": "/kæŋɡɚu/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Panda",
+            "vietnamese": "Gấu trúc",
+            "ipa": "/pændə/",
+            "source_topic_id": 1,
+            "source_topic": "Land Animals"
+          },
+          {
+            "word": "Fish",
+            "vietnamese": "Con cá",
+            "ipa": "/fɪʃ/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Dolphin",
+            "vietnamese": "Cá heo",
+            "ipa": "/dɑlfən/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Whale",
+            "vietnamese": "Cá voi",
+            "ipa": "/weɪl/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Shark",
+            "vietnamese": "Cá mập",
+            "ipa": "/ʃɑrk/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Octopus",
+            "vietnamese": "Bạch tuộc",
+            "ipa": "/ɑktəpʊs/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Crab",
+            "vietnamese": "Con cua",
+            "ipa": "/kræb/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Shrimp",
+            "vietnamese": "Con tôm",
+            "ipa": "/ʃrɪmp/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Jellyfish",
+            "vietnamese": "Con sứa",
+            "ipa": "/dʒɛlifɪʃ/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Sea turtle",
+            "vietnamese": "Rùa biển",
+            "ipa": "/si tɝtəl/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Seahorse",
+            "vietnamese": "Cá ngựa",
+            "ipa": "/ˈsiːhɔːrs/",
+            "source_topic_id": 2,
+            "source_topic": "Water Animals"
+          },
+          {
+            "word": "Spider",
+            "vietnamese": "Con nhện",
+            "ipa": "/spaɪdɚ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Ant",
+            "vietnamese": "Con kiến",
+            "ipa": "/ænt/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Bee",
+            "vietnamese": "Con ong",
+            "ipa": "/bi/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Butterfly",
+            "vietnamese": "Con bướm",
+            "ipa": "/bʌtɚflaɪ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Ladybug",
+            "vietnamese": "Bọ rùa",
+            "ipa": "/leɪdibʌɡ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Mosquito",
+            "vietnamese": "Con muỗi",
+            "ipa": "/məskitoʊ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Fly",
+            "vietnamese": "Con ruồi",
+            "ipa": "/flaɪ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Grasshopper",
+            "vietnamese": "Con châu chấu",
+            "ipa": "/ɡræshɑpɚ/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Worm",
+            "vietnamese": "Con giun",
+            "ipa": "/wɝm/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          },
+          {
+            "word": "Snail",
+            "vietnamese": "Con ốc sên",
+            "ipa": "/sneɪl/",
+            "source_topic_id": 3,
+            "source_topic": "Insects"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "School & Classroom",
+        "name_vi": "Trường học & lớp học",
+        "icon": "🎒",
+        "source_topics": [
+          {
+            "id": 5,
+            "name": "School Objects",
+            "name_vi": "Đồ vật trong lớp học"
+          },
+          {
+            "id": 15,
+            "name": "School & Stationery",
+            "name_vi": "Nhà trường & đồ dùng học tập"
+          }
+        ],
+        "word_count": 26,
+        "words": [
+          {
+            "word": "Book",
+            "vietnamese": "Sách",
+            "ipa": "/bʊk/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Pencil",
+            "vietnamese": "Bút chì",
+            "ipa": "/ˈpɛnsəl/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Pen",
+            "vietnamese": "Bút mực",
+            "ipa": "/pɛn/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Eraser",
+            "vietnamese": "Cục tẩy",
+            "ipa": "/ɪˈreɪsər/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Ruler",
+            "vietnamese": "Thước kẻ",
+            "ipa": "/ˈruːlər/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Bag",
+            "vietnamese": "Cặp sách / túi",
+            "ipa": "/bæɡ/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Desk",
+            "vietnamese": "Bàn học",
+            "ipa": "/dɛsk/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Chair",
+            "vietnamese": "Ghế",
+            "ipa": "/tʃɛr/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Board",
+            "vietnamese": "Bảng",
+            "ipa": "/bɔrd/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Chalk",
+            "vietnamese": "Phấn",
+            "ipa": "/tʃɔːk/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Crayon",
+            "vietnamese": "Bút màu sáp",
+            "ipa": "/ˈkreɪˌɑːn/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Scissors",
+            "vietnamese": "Kéo",
+            "ipa": "/ˈsɪzərz/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Glue",
+            "vietnamese": "Hồ dán",
+            "ipa": "/ɡluː/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Notebook",
+            "vietnamese": "Vở",
+            "ipa": "/ˈnoʊtˌbʊk/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Backpack",
+            "vietnamese": "Ba lô",
+            "ipa": "/ˈbækˌpæk/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Globe",
+            "vietnamese": "Quả địa cầu",
+            "ipa": "/ɡloʊb/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Map",
+            "vietnamese": "Bản đồ",
+            "ipa": "/mæp/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Computer",
+            "vietnamese": "Máy tính",
+            "ipa": "/kəmpjutɚ/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Marker",
+            "vietnamese": "Bút dạ",
+            "ipa": "/mɑrkɚ/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "Sharpener",
+            "vietnamese": "Đồ gọt bút chì",
+            "ipa": "/ˈʃɑːrpənər/",
+            "source_topic_id": 5,
+            "source_topic": "School Objects"
+          },
+          {
+            "word": "School",
+            "vietnamese": "Trường học",
+            "ipa": "/skuːl/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          },
+          {
+            "word": "Classroom",
+            "vietnamese": "Lớp học",
+            "ipa": "/ˈklæsˌruːm/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          },
+          {
+            "word": "Teacher",
+            "vietnamese": "Giáo viên",
+            "ipa": "/ˈtiːtʃər/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          },
+          {
+            "word": "Student",
+            "vietnamese": "Học sinh",
+            "ipa": "/ˈstuːdənt/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          },
+          {
+            "word": "Blackboard",
+            "vietnamese": "Bảng đen",
+            "ipa": "/ˈblækˌbɔːrd/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          },
+          {
+            "word": "Calculator",
+            "vietnamese": "Máy tính",
+            "ipa": "/ˈkælkjəˌleɪtər/",
+            "source_topic_id": 15,
+            "source_topic": "School & Stationery"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Body & Feelings",
+        "name_vi": "Cơ thể & cảm xúc",
+        "icon": "🧒",
+        "source_topics": [
+          {
+            "id": 6,
+            "name": "Body Parts",
+            "name_vi": "Bộ phận cơ thể"
+          },
+          {
+            "id": 12,
+            "name": "Emotions",
+            "name_vi": "Cảm xúc"
+          }
+        ],
+        "word_count": 35,
+        "words": [
+          {
+            "word": "Head",
+            "vietnamese": "Đầu",
+            "ipa": "/hɛd/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Hair",
+            "vietnamese": "Tóc",
+            "ipa": "/hɛr/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Face",
+            "vietnamese": "Mặt",
+            "ipa": "/feɪs/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Eye",
+            "vietnamese": "Mắt",
+            "ipa": "/aɪ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Ear",
+            "vietnamese": "Tai",
+            "ipa": "/ir/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Nose",
+            "vietnamese": "Mũi",
+            "ipa": "/noʊz/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Mouth",
+            "vietnamese": "Miệng",
+            "ipa": "/maʊθ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Tooth",
+            "vietnamese": "Răng",
+            "ipa": "/tuθ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Tongue",
+            "vietnamese": "Lưỡi",
+            "ipa": "/tʌŋ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Neck",
+            "vietnamese": "Cổ",
+            "ipa": "/nɛk/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Shoulder",
+            "vietnamese": "Vai",
+            "ipa": "/ʃoʊldɚ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Arm",
+            "vietnamese": "Cánh tay",
+            "ipa": "/ɑrm/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Hand",
+            "vietnamese": "Bàn tay",
+            "ipa": "/hænd/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Finger",
+            "vietnamese": "Ngón tay",
+            "ipa": "/fɪŋɡɚ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Leg",
+            "vietnamese": "Chân",
+            "ipa": "/lɛɡ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Foot",
+            "vietnamese": "Bàn chân",
+            "ipa": "/fʊt/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Toe",
+            "vietnamese": "Ngón chân",
+            "ipa": "/toʊ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Knee",
+            "vietnamese": "Đầu gối",
+            "ipa": "/ni/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Elbow",
+            "vietnamese": "Khuỷu tay",
+            "ipa": "/ɛlboʊ/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Stomach",
+            "vietnamese": "Bụng",
+            "ipa": "/stʌmək/",
+            "source_topic_id": 6,
+            "source_topic": "Body Parts"
+          },
+          {
+            "word": "Happy",
+            "vietnamese": "Vui vẻ",
+            "ipa": "/hæpi/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Sad",
+            "vietnamese": "Buồn",
+            "ipa": "/sæd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Angry",
+            "vietnamese": "Tức giận",
+            "ipa": "/æŋɡri/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Surprised",
+            "vietnamese": "Ngạc nhiên",
+            "ipa": "/sɚpraɪzd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Scared",
+            "vietnamese": "Sợ hãi",
+            "ipa": "/skɛrd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Excited",
+            "vietnamese": "Hào hứng",
+            "ipa": "/ɪksaɪtəd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Tired",
+            "vietnamese": "Mệt mỏi",
+            "ipa": "/taɪɚd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Hungry",
+            "vietnamese": "Đói",
+            "ipa": "/hʌŋɡri/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Thirsty",
+            "vietnamese": "Khát",
+            "ipa": "/θɝsti/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Bored",
+            "vietnamese": "Chán",
+            "ipa": "/bɔrd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Confused",
+            "vietnamese": "Bối rối",
+            "ipa": "/kənfjuzd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Shy",
+            "vietnamese": "Nhút nhát / ngại ngùng",
+            "ipa": "/ʃaɪ/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Proud",
+            "vietnamese": "Tự hào",
+            "ipa": "/praʊd/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Worried",
+            "vietnamese": "Lo lắng",
+            "ipa": "/wɝid/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          },
+          {
+            "word": "Grateful",
+            "vietnamese": "Biết ơn",
+            "ipa": "/ɡreɪtfəl/",
+            "source_topic_id": 12,
+            "source_topic": "Emotions"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Food, Fruits & Vegetables",
+        "name_vi": "Thực phẩm, trái cây & rau củ",
+        "icon": "🍎",
+        "source_topics": [
+          {
+            "id": 7,
+            "name": "Fruits",
+            "name_vi": "Trái cây"
+          },
+          {
+            "id": 8,
+            "name": "Vegetables",
+            "name_vi": "Rau củ"
+          }
+        ],
+        "word_count": 39,
+        "words": [
+          {
+            "word": "Apple",
+            "vietnamese": "Quả táo",
+            "ipa": "/æpəl/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Banana",
+            "vietnamese": "Quả chuối",
+            "ipa": "/bənænə/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Grape",
+            "vietnamese": "Quả nho",
+            "ipa": "/ɡreɪp/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Strawberry",
+            "vietnamese": "Quả dâu tây",
+            "ipa": "/strɔbɛri/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Watermelon",
+            "vietnamese": "Quả dưa hấu",
+            "ipa": "/wɔtɚmɛlən/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Pineapple",
+            "vietnamese": "Quả dứa",
+            "ipa": "/paɪnæpəl/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Mango",
+            "vietnamese": "Quả xoài",
+            "ipa": "/mæŋɡoʊ/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Pear",
+            "vietnamese": "Quả lê",
+            "ipa": "/pɛr/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Cherry",
+            "vietnamese": "Quả anh đào",
+            "ipa": "/tʃɛri/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Peach",
+            "vietnamese": "Quả đào",
+            "ipa": "/pitʃ/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Kiwi",
+            "vietnamese": "Quả kiwi",
+            "ipa": "/kiwi/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Lemon",
+            "vietnamese": "Quả chanh",
+            "ipa": "/lɛmən/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Coconut",
+            "vietnamese": "Quả dừa",
+            "ipa": "/koʊkənʌt/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Avocado",
+            "vietnamese": "Quả bơ",
+            "ipa": "/ævəkɑdoʊ/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Plum",
+            "vietnamese": "Quả mận",
+            "ipa": "/plʌm/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Pomegranate",
+            "vietnamese": "Quả lựu",
+            "ipa": "/pɑməɡrænət/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Raspberry",
+            "vietnamese": "Quả mâm xôi",
+            "ipa": "/ræzbɛri/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Blueberry",
+            "vietnamese": "Quả việt quất",
+            "ipa": "/blubɛri/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Lime",
+            "vietnamese": "Quả chanh xanh",
+            "ipa": "/laɪm/",
+            "source_topic_id": 7,
+            "source_topic": "Fruits"
+          },
+          {
+            "word": "Carrot",
+            "vietnamese": "Cà rốt",
+            "ipa": "/kærət/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Potato",
+            "vietnamese": "Khoai tây",
+            "ipa": "/pəteɪtoʊ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Tomato",
+            "vietnamese": "Cà chua",
+            "ipa": "/təmeɪtoʊ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Onion",
+            "vietnamese": "Hành tây",
+            "ipa": "/ʌnjən/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Garlic",
+            "vietnamese": "Tỏi",
+            "ipa": "/ɡɑrlɪk/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Broccoli",
+            "vietnamese": "Bông cải xanh",
+            "ipa": "/brɑkəli/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Cabbage",
+            "vietnamese": "Bắp cải",
+            "ipa": "/kæbədʒ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Cucumber",
+            "vietnamese": "Dưa chuột",
+            "ipa": "/kjukəmbɚ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Lettuce",
+            "vietnamese": "Xà lách",
+            "ipa": "/lɛtəs/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Spinach",
+            "vietnamese": "Rau bina / cải bó xôi",
+            "ipa": "/spɪnətʃ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Corn",
+            "vietnamese": "Ngô / bắp",
+            "ipa": "/kɔrn/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Mushroom",
+            "vietnamese": "Nấm",
+            "ipa": "/mʌʃrum/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Pepper",
+            "vietnamese": "Ớt chuông",
+            "ipa": "/pɛpɚ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Pumpkin",
+            "vietnamese": "Bí đỏ",
+            "ipa": "/pʌmpkɪn/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Eggplant",
+            "vietnamese": "Cà tím",
+            "ipa": "/ɛɡplænt/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Zucchini",
+            "vietnamese": "Bí ngòi",
+            "ipa": "/zukini/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Green bean",
+            "vietnamese": "Đậu que",
+            "ipa": "/ɡrin bin/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Radish",
+            "vietnamese": "Củ cải đỏ",
+            "ipa": "/rædɪʃ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Cauliflower",
+            "vietnamese": "Súp lơ trắng",
+            "ipa": "/kɑləflaʊɚ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          },
+          {
+            "word": "Sweet potato",
+            "vietnamese": "Khoai lang",
+            "ipa": "/swit pəteɪtoʊ/",
+            "source_topic_id": 8,
+            "source_topic": "Vegetables"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Colors & Weather",
+        "name_vi": "Màu sắc & thời tiết",
+        "icon": "🌈",
+        "source_topics": [
+          {
+            "id": 4,
+            "name": "Colors",
+            "name_vi": "Màu sắc"
+          },
+          {
+            "id": 14,
+            "name": "Weather",
+            "name_vi": "Thời tiết"
+          }
+        ],
+        "word_count": 30,
+        "words": [
+          {
+            "word": "Red",
+            "vietnamese": "Màu đỏ",
+            "ipa": "/rɛd/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Blue",
+            "vietnamese": "Màu xanh dương",
+            "ipa": "/blu/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Yellow",
+            "vietnamese": "Màu vàng",
+            "ipa": "/jɛloʊ/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Green",
+            "vietnamese": "Màu xanh lá",
+            "ipa": "/ɡrin/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Black",
+            "vietnamese": "Màu đen",
+            "ipa": "/blæk/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "White",
+            "vietnamese": "Màu trắng",
+            "ipa": "/waɪt/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Orange",
+            "vietnamese": "Màu cam",
+            "ipa": "/ɔrəndʒ/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Purple",
+            "vietnamese": "Màu tím",
+            "ipa": "/pɝpəl/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Pink",
+            "vietnamese": "Màu hồng",
+            "ipa": "/pɪŋk/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Brown",
+            "vietnamese": "Màu nâu",
+            "ipa": "/braʊn/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Gray",
+            "vietnamese": "Màu xám",
+            "ipa": "/ɡreɪ/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Gold",
+            "vietnamese": "Màu vàng kim",
+            "ipa": "/ɡoʊld/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Silver",
+            "vietnamese": "Màu bạc",
+            "ipa": "/sɪlvɚ/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Light blue",
+            "vietnamese": "Màu xanh da trời nhạt",
+            "ipa": "/laɪt blu/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Dark green",
+            "vietnamese": "Màu xanh lá đậm",
+            "ipa": "/dɑrk ɡrin/",
+            "source_topic_id": 4,
+            "source_topic": "Colors"
+          },
+          {
+            "word": "Sunny",
+            "vietnamese": "Có nắng",
+            "ipa": "/sʌni/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Rainy",
+            "vietnamese": "Có mưa",
+            "ipa": "/reɪni/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Cloudy",
+            "vietnamese": "Nhiều mây",
+            "ipa": "/klaʊdi/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Windy",
+            "vietnamese": "Có gió",
+            "ipa": "/wɪndi/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Snowy",
+            "vietnamese": "Có tuyết",
+            "ipa": "/snoʊi/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Hot",
+            "vietnamese": "Nóng",
+            "ipa": "/hɑt/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Cold",
+            "vietnamese": "Lạnh",
+            "ipa": "/koʊld/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Warm",
+            "vietnamese": "Ấm áp",
+            "ipa": "/wɔrm/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Cool",
+            "vietnamese": "Mát mẻ",
+            "ipa": "/kul/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Stormy",
+            "vietnamese": "Có bão",
+            "ipa": "/stɔrmi/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Foggy",
+            "vietnamese": "Có sương mù",
+            "ipa": "/fɑɡi/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Thunder",
+            "vietnamese": "Sấm",
+            "ipa": "/θʌndɚ/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Lightning",
+            "vietnamese": "Tia chớp / sét",
+            "ipa": "/laɪtnɪŋ/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Rainbow",
+            "vietnamese": "Cầu vồng",
+            "ipa": "/reɪnboʊ/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          },
+          {
+            "word": "Breeze",
+            "vietnamese": "Gió nhẹ",
+            "ipa": "/briz/",
+            "source_topic_id": 14,
+            "source_topic": "Weather"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Family & Jobs",
+        "name_vi": "Gia đình & nghề nghiệp",
+        "icon": "👨‍👩‍👧‍👦",
+        "source_topics": [
+          {
+            "id": 9,
+            "name": "Family",
+            "name_vi": "Gia đình"
+          },
+          {
+            "id": 10,
+            "name": "Occupations",
+            "name_vi": "Nghề nghiệp"
+          }
+        ],
+        "word_count": 35,
+        "words": [
+          {
+            "word": "Mother",
+            "vietnamese": "Mẹ",
+            "ipa": "/mʌðɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Father",
+            "vietnamese": "Bố",
+            "ipa": "/fɑðɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Sister",
+            "vietnamese": "Chị / em gái",
+            "ipa": "/sɪstɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Brother",
+            "vietnamese": "Anh / em trai",
+            "ipa": "/brʌðɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Grandmother",
+            "vietnamese": "Bà",
+            "ipa": "/ɡrændmʌðɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Grandfather",
+            "vietnamese": "Ông",
+            "ipa": "/ɡrændfɑðɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Parents",
+            "vietnamese": "Bố mẹ",
+            "ipa": "/pɛrənts/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Grandparents",
+            "vietnamese": "Ông bà",
+            "ipa": "/ɡrændpɛrənts/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Uncle",
+            "vietnamese": "Chú / bác trai",
+            "ipa": "/ʌŋkəl/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Aunt",
+            "vietnamese": "Cô / dì / bác gái / thím",
+            "ipa": "/ænt/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Cousin",
+            "vietnamese": "Anh / chị / em họ",
+            "ipa": "/kʌzən/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Son",
+            "vietnamese": "Con trai",
+            "ipa": "/sʌn/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Daughter",
+            "vietnamese": "Con gái",
+            "ipa": "/dɔtɚ/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Baby",
+            "vietnamese": "Em bé",
+            "ipa": "/beɪbi/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Family",
+            "vietnamese": "Gia đình",
+            "ipa": "/fæməli/",
+            "source_topic_id": 9,
+            "source_topic": "Family"
+          },
+          {
+            "word": "Teacher",
+            "vietnamese": "Giáo viên",
+            "ipa": "/titʃɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Doctor",
+            "vietnamese": "Bác sĩ",
+            "ipa": "/dɑktɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Nurse",
+            "vietnamese": "Y tá",
+            "ipa": "/nɝs/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Police officer",
+            "vietnamese": "Cảnh sát",
+            "ipa": "/pəlis ɔfəsɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Firefighter",
+            "vietnamese": "Lính cứu hỏa",
+            "ipa": "/faɪrfaɪtɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Chef",
+            "vietnamese": "Đầu bếp",
+            "ipa": "/ʃɛf/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Pilot",
+            "vietnamese": "Phi công",
+            "ipa": "/paɪlət/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Driver",
+            "vietnamese": "Tài xế",
+            "ipa": "/draɪvɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Farmer",
+            "vietnamese": "Nông dân",
+            "ipa": "/fɑrmɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Singer",
+            "vietnamese": "Ca sĩ",
+            "ipa": "/sɪŋɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Dancer",
+            "vietnamese": "Vũ công",
+            "ipa": "/dænsɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Artist",
+            "vietnamese": "Họa sĩ",
+            "ipa": "/ɑrtəst/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Engineer",
+            "vietnamese": "Kỹ sư",
+            "ipa": "/ɛndʒənɪr/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Scientist",
+            "vietnamese": "Nhà khoa học",
+            "ipa": "/saɪəntɪst/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Student",
+            "vietnamese": "Học sinh",
+            "ipa": "/studənt/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Baker",
+            "vietnamese": "Thợ làm bánh",
+            "ipa": "/beɪkɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Dentist",
+            "vietnamese": "Nha sĩ",
+            "ipa": "/dɛntəst/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Vet",
+            "vietnamese": "Bác sĩ thú y",
+            "ipa": "/vɛt/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Hairdresser",
+            "vietnamese": "Thợ làm tóc",
+            "ipa": "/hɛrdrɛsɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          },
+          {
+            "word": "Builder",
+            "vietnamese": "Thợ xây",
+            "ipa": "/bɪldɚ/",
+            "source_topic_id": 10,
+            "source_topic": "Occupations"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Daily Actions & Time",
+        "name_vi": "Hoạt động hằng ngày & thời gian",
+        "icon": "⏰",
+        "source_topics": [
+          {
+            "id": 13,
+            "name": "Daily Actions",
+            "name_vi": "Hành động thường ngày"
+          },
+          {
+            "id": 16,
+            "name": "Time & Calendar",
+            "name_vi": "Thời gian & lịch"
+          }
+        ],
+        "word_count": 42,
+        "words": [
+          {
+            "word": "Eat",
+            "vietnamese": "Ăn",
+            "ipa": "/it/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Drink",
+            "vietnamese": "Uống",
+            "ipa": "/drɪŋk/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Sleep",
+            "vietnamese": "Ngủ",
+            "ipa": "/slip/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Wake up",
+            "vietnamese": "Thức dậy",
+            "ipa": "/weɪk ʌp/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Go to bed",
+            "vietnamese": "Đi ngủ",
+            "ipa": "/ɡoʊ tu bɛd/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Play",
+            "vietnamese": "Chơi",
+            "ipa": "/pleɪ/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Read",
+            "vietnamese": "Đọc",
+            "ipa": "/rɛd/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Write",
+            "vietnamese": "Viết",
+            "ipa": "/raɪt/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Draw",
+            "vietnamese": "Vẽ",
+            "ipa": "/drɔ/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Sing",
+            "vietnamese": "Hát",
+            "ipa": "/sɪŋ/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Dance",
+            "vietnamese": "Nhảy",
+            "ipa": "/dæns/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Run",
+            "vietnamese": "Chạy",
+            "ipa": "/rʌn/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Walk",
+            "vietnamese": "Đi bộ",
+            "ipa": "/wɔk/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Jump",
+            "vietnamese": "Nhảy",
+            "ipa": "/dʒʌmp/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Talk",
+            "vietnamese": "Nói chuyện",
+            "ipa": "/tɔk/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Listen",
+            "vietnamese": "Nghe",
+            "ipa": "/lɪsən/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Watch",
+            "vietnamese": "Đồng hồ đeo tay",
+            "ipa": "/wɑtʃ/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Cook",
+            "vietnamese": "Nấu ăn",
+            "ipa": "/kʊk/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Clean",
+            "vietnamese": "Dọn dẹp",
+            "ipa": "/klin/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Brush",
+            "vietnamese": "Chải / đánh răng",
+            "ipa": "/brʌʃ/",
+            "source_topic_id": 13,
+            "source_topic": "Daily Actions"
+          },
+          {
+            "word": "Today",
+            "vietnamese": "Hôm nay",
+            "ipa": "/təˈdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Tomorrow",
+            "vietnamese": "Ngày mai",
+            "ipa": "/təˈmɒroʊ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Yesterday",
+            "vietnamese": "Hôm qua",
+            "ipa": "/ˌjɛs.təˈdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Monday",
+            "vietnamese": "Thứ hai",
+            "ipa": "/ˈmʌndeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Tuesday",
+            "vietnamese": "Thứ ba",
+            "ipa": "/ˈtjuːzdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Wednesday",
+            "vietnamese": "Thứ tư",
+            "ipa": "/ˈwɛnzdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Thursday",
+            "vietnamese": "Thứ năm",
+            "ipa": "/ˈθɜːrzdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Friday",
+            "vietnamese": "Thứ sáu",
+            "ipa": "/ˈfraɪdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Saturday",
+            "vietnamese": "Thứ bảy",
+            "ipa": "/ˈsætərdeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "Sunday",
+            "vietnamese": "Chủ nhật",
+            "ipa": "/ˈsʌndeɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "January",
+            "vietnamese": "Tháng một",
+            "ipa": "/ˈdʒæn.juː.er.i/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "February",
+            "vietnamese": "Tháng hai",
+            "ipa": "/ˈfebruːˌɛri/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "March",
+            "vietnamese": "Tháng ba",
+            "ipa": "/mɑːrtʃ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "April",
+            "vietnamese": "Tháng tư",
+            "ipa": "/ˈeɪprəl/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "May",
+            "vietnamese": "Tháng năm",
+            "ipa": "/meɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "June",
+            "vietnamese": "Tháng sáu",
+            "ipa": "/dʒuːn/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "July",
+            "vietnamese": "Tháng bảy",
+            "ipa": "/dʒʊˈlaɪ/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "August",
+            "vietnamese": "Tháng tám",
+            "ipa": "/ɔːˈɡʌst/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "September",
+            "vietnamese": "Tháng chín",
+            "ipa": "/sɛpˈtɛmbər/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "October",
+            "vietnamese": "Tháng mười",
+            "ipa": "/ɒkˈtoʊbər/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "November",
+            "vietnamese": "Tháng mười một",
+            "ipa": "/noʊˈvɛmbər/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          },
+          {
+            "word": "December",
+            "vietnamese": "Tháng mười hai",
+            "ipa": "/dɪˈsɛmbər/",
+            "source_topic_id": 16,
+            "source_topic": "Time & Calendar"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Transport, Numbers & Measurement",
+        "name_vi": "Giao thông, số đếm & đo lường",
+        "icon": "🚌",
+        "source_topics": [
+          {
+            "id": 11,
+            "name": "Transportation",
+            "name_vi": "Phương tiện giao thông"
+          },
+          {
+            "id": 18,
+            "name": "Numbers & Measurement",
+            "name_vi": "Số đếm & đo lường"
+          }
+        ],
+        "word_count": 34,
+        "words": [
+          {
+            "word": "Car",
+            "vietnamese": "Xe ô tô",
+            "ipa": "/kɑr/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Bus",
+            "vietnamese": "Xe buýt",
+            "ipa": "/bʌs/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Bicycle",
+            "vietnamese": "Xe đạp",
+            "ipa": "/baɪsɪkəl/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Motorcycle",
+            "vietnamese": "Xe máy",
+            "ipa": "/moʊtɚsaɪkəl/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Train",
+            "vietnamese": "Tàu hỏa",
+            "ipa": "/treɪn/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Airplane",
+            "vietnamese": "Máy bay",
+            "ipa": "/ɛrpleɪn/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Boat",
+            "vietnamese": "Thuyền",
+            "ipa": "/boʊt/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Ship",
+            "vietnamese": "Tàu thủy",
+            "ipa": "/ʃɪp/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Truck",
+            "vietnamese": "Xe tải",
+            "ipa": "/trʌk/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Taxi",
+            "vietnamese": "Xe taxi",
+            "ipa": "/tæksi/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Subway",
+            "vietnamese": "Tàu điện ngầm",
+            "ipa": "/sʌbweɪ/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Helicopter",
+            "vietnamese": "Máy bay trực thăng",
+            "ipa": "/hɛlɪkɑptɚ/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Ambulance",
+            "vietnamese": "Xe cứu thương",
+            "ipa": "/æmbjələns/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Fire truck",
+            "vietnamese": "Xe cứu hỏa",
+            "ipa": "/faɪɚ trʌk/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "Police car",
+            "vietnamese": "Xe cảnh sát",
+            "ipa": "/pəlis kɑr/",
+            "source_topic_id": 11,
+            "source_topic": "Transportation"
+          },
+          {
+            "word": "One",
+            "vietnamese": "Một",
+            "ipa": "/wʌn/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Two",
+            "vietnamese": "Hai",
+            "ipa": "/tuː/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Three",
+            "vietnamese": "Ba",
+            "ipa": "/θriː/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Four",
+            "vietnamese": "Bốn",
+            "ipa": "/fɔːr/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Five",
+            "vietnamese": "Năm",
+            "ipa": "/faɪv/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Six",
+            "vietnamese": "Sáu",
+            "ipa": "/sɪks/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Seven",
+            "vietnamese": "Bảy",
+            "ipa": "/ˈsɛvən/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Eight",
+            "vietnamese": "Tám",
+            "ipa": "/eɪt/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Nine",
+            "vietnamese": "Chín",
+            "ipa": "/naɪn/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Ten",
+            "vietnamese": "Mười",
+            "ipa": "/tɛn/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Dozen",
+            "vietnamese": "Một tá (12)",
+            "ipa": "/ˈdʌzən/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Hundred",
+            "vietnamese": "Trăm",
+            "ipa": "/ˈhʌndrəd/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Thousand",
+            "vietnamese": "Nghìn",
+            "ipa": "/ˈθaʊzənd/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Meter",
+            "vietnamese": "Mét",
+            "ipa": "/ˈmiːtər/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Centimeter",
+            "vietnamese": "Xăng-ti-mét",
+            "ipa": "/ˈsɛn.tɪˌmiːtər/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Kilometer",
+            "vietnamese": "Ki-lô-mét",
+            "ipa": "/kɪˈlɒmɪtə(r)/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Gram",
+            "vietnamese": "Gram",
+            "ipa": "/ɡræm/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Kilogram",
+            "vietnamese": "Ki-lô-gam",
+            "ipa": "/ˈkɪlɒɡræm/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          },
+          {
+            "word": "Liter",
+            "vietnamese": "Lít",
+            "ipa": "/ˈliːtər/",
+            "source_topic_id": 18,
+            "source_topic": "Numbers & Measurement"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Clothes & Accessories",
+        "name_vi": "Quần áo & phụ kiện",
+        "icon": "👕",
+        "source_topics": [
+          {
+            "id": 17,
+            "name": "Clothes & Accessories",
+            "name_vi": "Quần áo & phụ kiện"
+          }
+        ],
+        "word_count": 20,
+        "words": [
+          {
+            "word": "Shirt",
+            "vietnamese": "Áo sơ mi",
+            "ipa": "/ʃɜːrt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Pants",
+            "vietnamese": "Quần dài",
+            "ipa": "/pænts/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Dress",
+            "vietnamese": "Váy liền / đầm",
+            "ipa": "/drɛs/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Skirt",
+            "vietnamese": "Chân váy",
+            "ipa": "/skɜːrt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Jacket",
+            "vietnamese": "Áo khoác",
+            "ipa": "/ˈdʒækɪt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Coat",
+            "vietnamese": "Áo choàng",
+            "ipa": "/koʊt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Sweater",
+            "vietnamese": "Áo len",
+            "ipa": "/ˈswɛtər/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "T-shirt",
+            "vietnamese": "Áo thun",
+            "ipa": "/ˈtiː ʃɜːrt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Shorts",
+            "vietnamese": "Quần sooc",
+            "ipa": "/ʃɔːrts/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Shoes",
+            "vietnamese": "Giày",
+            "ipa": "/ʃuːz/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Socks",
+            "vietnamese": "Tất",
+            "ipa": "/sɒks/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Hat",
+            "vietnamese": "Mũ",
+            "ipa": "/hæt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Scarf",
+            "vietnamese": "Khăn quàng cổ",
+            "ipa": "/skɑːrf/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Gloves",
+            "vietnamese": "Găng tay",
+            "ipa": "/ɡlʌvz/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Belt",
+            "vietnamese": "Thắt lưng",
+            "ipa": "/bɛlt/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Tie",
+            "vietnamese": "Cà vạt",
+            "ipa": "/taɪ/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Sunglasses",
+            "vietnamese": "Kính râm",
+            "ipa": "/ˈsʌnˌɡlæsɪz/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Watch",
+            "vietnamese": "Đồng hồ đeo tay",
+            "ipa": "/wɒtʃ/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Bag",
+            "vietnamese": "Cặp sách / túi",
+            "ipa": "/bæɡ/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          },
+          {
+            "word": "Jewelry",
+            "vietnamese": "Trang sức",
+            "ipa": "/ˈdʒuːəlri/",
+            "source_topic_id": 17,
+            "source_topic": "Clothes & Accessories"
+          }
+        ]
+      }
+    ],
+    "content_audit_note": "Rà soát 2026-09-22: bổ sung IPA còn thiếu, sửa định dạng IPA thiếu dấu / và chuẩn hóa một số nghĩa tiếng Việt cho tự nhiên, chính xác hơn."
   }
 }
