@@ -260,6 +260,11 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
  #header-level2-tab>button,#header-level3-tab>button,#header-level3-tab>div,#header-level4-tab>div,#header-level5-tab>div{width:auto !important;min-width:0 !important;max-width:440px !important;padding-left:18px !important;padding-right:18px !important;}
  #header-level2-title,#header-level3-title,#header-level4-title,#header-level5-title{font-size:14px !important;max-width:400px !important;overflow:hidden !important;text-overflow:ellipsis !important;white-space:nowrap !important;}
  .main-module-tab{font-size:16px !important;}
+ #header-score-box{height:62px !important;min-height:62px !important;max-height:62px !important;padding:6px 9px !important;justify-content:center !important;gap:4px !important;}
+ #header-score-box>div{min-height:21px !important;column-gap:8px !important;}
+ #header-score-box>div>span:first-child{font-size:12px !important;line-height:1.15 !important;padding:3px 7px !important;min-width:58px !important;}
+ #header-score-box>div>span:first-child i{font-size:13px !important;}
+ #star-green-count,#star-red-count{font-size:14px !important;line-height:1 !important;min-width:14px !important;text-align:right;}
 }
 
 @media(max-width:767px){
@@ -387,8 +392,8 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
 
                 <div id="header-actions-group" class="flex items-center">
                     <div id="header-score-box" class="flex flex-col space-y-0.5 px-1.5 md:px-2.5 py-1 rounded-xl border border-pink-200 shadow-inner">
-                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-emerald-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> Đúng</span></span><span class="text-emerald-600 text-xs" id="star-green-count">0</span></div>
-                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-rose-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> Sai</span></span><span class="text-rose-600 text-xs" id="star-red-count">0</span></div>
+                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-emerald-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> True</span></span><span class="text-emerald-600 text-xs" id="star-green-count">0</span></div>
+                        <div class="flex items-center justify-between space-x-2 font-extrabold"><span class="px-1.5 py-0.5 bg-rose-500 text-white rounded text-[10px]"><i class="fa-solid fa-star md:mr-0.5"></i><span class="score-label-text hidden md:inline"> False</span></span><span class="text-rose-600 text-xs" id="star-red-count">0</span></div>
                     </div>
                     <div id="user-info-box" class="text-xs font-bold text-gray-600 text-right"></div>
                 </div>
