@@ -3277,7 +3277,7 @@ function answerReadingQuestion_(qi, oi) {
     const key=q.reading_id||String(currentQIndex), state=readingPairState[key]||(readingPairState[key]={correct:[false,false],chosen:[null,null]});
     if(state.correct[qi]) return;
     const item=q.questions[qi], opt=item.options[oi]; state.chosen[qi]=oi;
-    if(opt===item.answer){state.correct[qi]=true; playSound(true);} else playSound(false);
+    if(opt===item.answer){state.correct[qi]=true; playAudio('correct');} else playAudio('wrong');
     renderReadingPair_(q);
 }
 
@@ -4274,6 +4274,16 @@ function updateNavButtons() {
         btn.classList.remove('px-4','px-5','px-6','rounded-xl');
         btn.classList.add('w-[124px]','md:w-[132px]','h-[44px]','px-4','py-2','rounded-2xl','inline-flex','items-center','justify-center');
     });
+
+    // Reading Comprehension temporarily owns the practice Next button. Always restore the
+    // normal quiz navigation when any non-reading question is rendered, otherwise the
+    // disabled state / nextReadingPair_ handler leaks into Sentence Builder, Fill Sentence,
+    // Q&A Dialogues and Grammar Point after leaving Reading.
+    if (!isEvaluationMode && activeQuestionsList[currentQIndex]?.render_style !== 'reading_pair') {
+        btnNext.onclick = nextQuestion;
+        btnNext.disabled = false;
+        btnNext.classList.remove('opacity-40', 'cursor-not-allowed');
+    }
 
     const stepEl = document.getElementById('practice-step-text');
     if (stepEl) stepEl.textContent = `${currentQIndex + 1} / ${activeQuestionsList.length}`;
