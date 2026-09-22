@@ -143,7 +143,7 @@
       },
       {
         "question_id": "s7.1_4",
-        "question_text": "Put the words in order. Let",
+        "question_text": "Put the words in order. Let's / play / soccer / together / .",
         "options": [
           "play together Let's soccer.",
           "Let's play soccer together.",
@@ -162,12 +162,12 @@
         "skill_tag": "ENG_SYN",
         "topic_id": 11,
         "section_name": "Simple Sentence Builder",
-        "question_text_vi": "Sắp xếp từ thành câu. Let",
+        "question_text_vi": "Sắp xếp từ thành câu. Let's / play / soccer / together / .",
         "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Let's / play / soccer / together / .'",
         "legacy_hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'Let's play soccer together.'.",
         "hint_vi": "Đáp án: Let's play soccer together.",
         "tts_locale": "en-US",
-        "tts_text": "Put the words in order. Let",
+        "tts_text": "Put the words in order. Let's / play / soccer / together / .",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -189,31 +189,31 @@
       },
       {
         "question_id": "s7.1_5",
-        "question_text": "Put the words in order. The / ball / is / under / the / cat / .",
+        "question_text": "Put the words in order. The / ball / is / under / the / chair / .",
         "options": [
-          "cat ball the The under is.",
-          "ball under The the cat is.",
-          "The ball is under the cat.",
-          "ball The the is under cat."
+          "chair ball the The under is.",
+          "ball under The the chair is.",
+          "The ball is under the chair.",
+          "ball The the is under chair."
         ],
         "options_ipa": [
-          "kæt bɔːl ðə ðə ˈʌndə ɪz",
-          "bɔːl ˈʌndə ðə ðə kæt ɪz",
-          "ðə bɔːl ɪz ˈʌndə ðə kæt",
-          "bɔːl ðə ðə ɪz ˈʌndə kæt"
+          "tʃeə bɔːl ðə ðə ˈʌndə ɪz",
+          "bɔːl ˈʌndə ðə ðə tʃeə ɪz",
+          "ðə bɔːl ɪz ˈʌndə ðə tʃeə",
+          "bɔːl ðə ðə ɪz ˈʌndə tʃeə"
         ],
-        "answer": "The ball is under the cat.",
-        "hint": "Answer: The ball is under the cat.",
+        "answer": "The ball is under the chair.",
+        "hint": "Answer: The ball is under the chair.",
         "emoji": "🐱",
         "skill_tag": "ENG_SYN",
         "topic_id": 4,
         "section_name": "Simple Sentence Builder",
-        "question_text_vi": "Sắp xếp từ thành câu. The / ball / is / under / the / cat / .",
-        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / ball / is / under / the / cat / .'",
-        "legacy_hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'The ball is under the cat.'.",
-        "hint_vi": "Đáp án: The ball is under the cat.",
+        "question_text_vi": "Sắp xếp từ thành câu. The / ball / is / under / the / chair / .",
+        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả vị trí đúng: 'The / ball / is / under / the / chair / .'",
+        "legacy_hint": "Gợi ý: Câu đúng là: 'The ball is under the chair.'",
+        "hint_vi": "Đáp án: The ball is under the chair.",
         "tts_locale": "en-US",
-        "tts_text": "Put the words in order. The / ball / is / under / the / cat / .",
+        "tts_text": "Put the words in order. The / ball / is / under / the / chair / .",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -1477,31 +1477,31 @@
       },
       {
         "question_id": "s7.1_33",
-        "question_text": "Put the words in order. The / big / elephant / is / very / big / .",
+        "question_text": "Put the words in order. The / elephant / is / very / big / .",
         "options": [
-          "big elephant very The is big.",
-          "big is The very big elephant.",
-          "elephant is very big The big.",
-          "The big elephant is very big."
+          "elephant very The is big.",
+          "big is The very elephant.",
+          "elephant is big The very.",
+          "The elephant is very big."
         ],
         "options_ipa": [
-          "bɪɡ ˈelɪfənt ˈveri ðə ɪz bɪɡ",
-          "bɪɡ ɪz ðə ˈveri bɪɡ ˈelɪfənt",
-          "ˈelɪfənt ɪz ˈveri bɪɡ ðə bɪɡ",
-          "ðə bɪɡ ˈelɪfənt ɪz ˈveri bɪɡ"
+          "ˈelɪfənt ˈveri ðə ɪz bɪɡ",
+          "bɪɡ ɪz ðə ˈveri ˈelɪfənt",
+          "ˈelɪfənt ɪz bɪɡ ðə ˈveri",
+          "ðə ˈelɪfənt ɪz ˈveri bɪɡ"
         ],
-        "answer": "The big elephant is very big.",
-        "hint": "Answer: The big elephant is very big.",
+        "answer": "The elephant is very big.",
+        "hint": "Answer: The elephant is very big.",
         "emoji": "🐘",
         "skill_tag": "ENG_SYN",
         "topic_id": 5,
         "section_name": "Simple Sentence Builder",
-        "question_text_vi": "Sắp xếp từ thành câu. The / big / elephant / is / very / big / .",
-        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / big / elephant / is / very / big / .'",
-        "legacy_hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'The big elephant is very big.'.",
-        "hint_vi": "Đáp án: The big elephant is very big.",
+        "question_text_vi": "Sắp xếp từ thành câu. The / elephant / is / very / big / .",
+        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / elephant / is / very / big / .'",
+        "legacy_hint": "Gợi ý: Câu đúng là: 'The elephant is very big.'",
+        "hint_vi": "Đáp án: The elephant is very big.",
         "tts_locale": "en-US",
-        "tts_text": "Put the words in order. The / big / elephant / is / very / big / .",
+        "tts_text": "Put the words in order. The / elephant / is / very / big / .",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -1707,31 +1707,31 @@
       },
       {
         "question_id": "s7.1_38",
-        "question_text": "Put the words in order. The / boat / is / running / .",
+        "question_text": "Put the words in order. The / boat / is / sailing / .",
         "options": [
-          "The boat is running.",
-          "running is boat The.",
-          "is The running boat.",
-          "is running The boat."
+          "The boat is sailing.",
+          "sailing is boat The.",
+          "is The sailing boat.",
+          "is sailing The boat."
         ],
         "options_ipa": [
-          "ðə bəʊt ɪz running",
-          "running ɪz bəʊt ðə",
-          "ɪz ðə running bəʊt",
-          "ɪz running ðə bəʊt"
+          "ðə bəʊt ɪz ˈseɪlɪŋ",
+          "ˈseɪlɪŋ ɪz bəʊt ðə",
+          "ɪz ðə ˈseɪlɪŋ bəʊt",
+          "ɪz ˈseɪlɪŋ ðə bəʊt"
         ],
-        "answer": "The boat is running.",
-        "hint": "Answer: The boat is running.",
+        "answer": "The boat is sailing.",
+        "hint": "Answer: The boat is sailing.",
         "emoji": "⛵",
         "skill_tag": "ENG_SYN",
         "topic_id": 8,
         "section_name": "Simple Sentence Builder",
-        "question_text_vi": "Sắp xếp từ thành câu. The / boat / is / running / .",
-        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / boat / is / running / .'",
-        "legacy_hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'The boat is running.'.",
-        "hint_vi": "Đáp án: The boat is running.",
+        "question_text_vi": "Sắp xếp từ thành câu. The / boat / is / sailing / .",
+        "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'The / boat / is / sailing / .'",
+        "legacy_hint": "Gợi ý: Câu đúng là: 'The boat is sailing.'",
+        "hint_vi": "Đáp án: The boat is sailing.",
         "tts_locale": "en-US",
-        "tts_text": "Put the words in order. The / boat / is / running / .",
+        "tts_text": "Put the words in order. The / boat / is / sailing / .",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -1899,10 +1899,10 @@
           "Mary has twelve crayons."
         ],
         "options_ipa": [
-          "has twelve mary crayons",
-          "mary crayons has twelve",
-          "mary has twelve crayons",
-          "mary has twelve crayons"
+          "ˈmeri ˈkreɪənz hæz twelv",
+          "hæz twelv ˈmeri ˈkreɪənz",
+          "twelv ˈmeri ˈkreɪənz hæz",
+          "ˈmeri hæz twelv ˈkreɪənz"
         ],
         "answer": "Mary has twelve crayons.",
         "hint": "Answer: Mary has twelve crayons.",
@@ -2121,7 +2121,7 @@
       },
       {
         "question_id": "s7.1_47",
-        "question_text": "Put the words in order. Let",
+        "question_text": "Put the words in order. Let's / count / the / shapes / .",
         "options": [
           "Let's count the shapes.",
           "count shapes the Let's.",
@@ -2140,12 +2140,12 @@
         "skill_tag": "ENG_SYN",
         "topic_id": 3,
         "section_name": "Simple Sentence Builder",
-        "question_text_vi": "Sắp xếp từ thành câu. Let",
+        "question_text_vi": "Sắp xếp từ thành câu. Let's / count / the / shapes / .",
         "legacy_question_text": "Sắp xếp các từ bị xáo trộn sau đây thành câu trần thuật mô tả đúng: 'Let's / count / the / shapes / .'",
         "legacy_hint": "Gợi ý: Câu đúng bắt đầu bằng chủ ngữ để tạo ý nghĩa trọn vẹn: 'Let's count the shapes.'.",
         "hint_vi": "Đáp án: Let's count the shapes.",
         "tts_locale": "en-US",
-        "tts_text": "Put the words in order. Let",
+        "tts_text": "Put the words in order. Let's / count / the / shapes / .",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -2221,10 +2221,10 @@
           "swim Penguins fast can."
         ],
         "options_ipa": [
-          "swim penguins fast can",
-          "penguins swim fast can",
-          "penguins swim can fast",
-          "penguins can swim fast"
+          "ˈpeŋɡwɪnz kæn swɪm fɑːst",
+          "ˈpeŋɡwɪnz swɪm fɑːst kæn",
+          "ˈpeŋɡwɪnz swɪm kæn fɑːst",
+          "swɪm ˈpeŋɡwɪnz fɑːst kæn"
         ],
         "answer": "Penguins can swim fast.",
         "hint": "Answer: Penguins can swim fast.",
@@ -4755,10 +4755,10 @@
           "Carefully your listen."
         ],
         "options_ipa": [
-          "ˈlɪsən jɔː carefully",
-          "listen carefully",
-          "listen jɔː carefully",
-          "carefully jɔː ˈlɪsən"
+          "ˈlɪsən your ˈkeəfəli",
+          "ˈlɪsən ˈkeəfəli",
+          "ˈkeəfəli ˈlɪsən",
+          "ˈkeəfəli your ˈlɪsən"
         ],
         "answer": "Listen carefully.",
         "hint": "Answer: Listen carefully.",
@@ -4893,10 +4893,10 @@
           "Sit down, please."
         ],
         "options_ipa": [
-          "sit down please",
-          "sit please down",
-          "please down sit",
-          "please you sit down"
+          "sɪt pliːz daʊn",
+          "pliːz daʊn sɪt",
+          "pliːz juː sɪt daʊn",
+          "sɪt daʊn pliːz"
         ],
         "answer": "Sit down, please.",
         "hint": "Answer: Sit down, please.",
@@ -4936,13 +4936,13 @@
           "Up please stand.",
           "Stand up, please.",
           "Up stand please.",
-          "Stand up please."
+          "Please stand up."
         ],
         "options_ipa": [
-          "stand up please",
-          "up stand please",
-          "stand up please",
-          "up please stand"
+          "ʌp pliːz stænd",
+          "stænd ʌp pliːz",
+          "ʌp stænd pliːz",
+          "pliːz stænd ʌp"
         ],
         "answer": "Stand up, please.",
         "hint": "Answer: Stand up, please.",
@@ -5445,10 +5445,10 @@
           "Stand now up."
         ],
         "options_ipa": [
-          "stand up now",
-          "up now stand",
-          "please stand up now",
-          "stand now up"
+          "pliːz stænd ʌp naʊ",
+          "stænd ʌp naʊ",
+          "ʌp naʊ stænd",
+          "stænd naʊ ʌp"
         ],
         "answer": "Stand up now.",
         "hint": "Answer: Stand up now.",
@@ -6089,10 +6089,10 @@
           "Up please stand!"
         ],
         "options_ipa": [
-          "up stand please",
-          "please up stand",
-          "up please stand",
-          "stand up please"
+          "ʌp stænd pliːz",
+          "pliːz ʌp stænd",
+          "stænd ʌp pliːz",
+          "ʌp pliːz stænd"
         ],
         "answer": "Stand up, please!",
         "hint": "Answer: Stand up, please!",
@@ -6129,16 +6129,16 @@
         "question_id": "s7.3_34",
         "question_text": "Put the words in order. Sit / down / please / .",
         "options": [
-          "Sit down please!",
+          "Down sit please!",
           "Down please sit!",
           "Sit down, please!",
-          "Please sit down, please!"
+          "Please down sit!"
         ],
         "options_ipa": [
-          "down please sit",
-          "please sit down please",
-          "sit down please",
-          "sit down please"
+          "daʊn sɪt pliːz",
+          "daʊn pliːz sɪt",
+          "sɪt daʊn pliːz",
+          "pliːz daʊn sɪt"
         ],
         "answer": "Sit down, please!",
         "hint": "Answer: Sit down, please!",
@@ -6636,15 +6636,15 @@
         "question_text": "Put the words in order. Speak / English / please / .",
         "options": [
           "Speak English, please.",
-          "Please speak english.",
-          "Please english speak.",
-          "Speak english please."
+          "English speak, please.",
+          "Please English speak.",
+          "Speak please English."
         ],
         "options_ipa": [
-          "speak english please",
-          "please english speak",
-          "please speak english",
-          "speak english please"
+          "spiːk ˈɪŋɡlɪʃ pliːz",
+          "ˈɪŋɡlɪʃ spiːk pliːz",
+          "pliːz ˈɪŋɡlɪʃ spiːk",
+          "spiːk pliːz ˈɪŋɡlɪʃ"
         ],
         "answer": "Speak English, please.",
         "hint": "Answer: Speak English, please.",
@@ -7030,7 +7030,7 @@
           "kaɪt",
           "dɒl",
           "ˈrəʊbɒt",
-          "yo-yo"
+          "ˈjəʊjəʊ"
         ],
         "answer": "robot",
         "hint": "Answer: robot",
@@ -7861,7 +7861,7 @@
         "options_ipa": [
           "sɒks",
           "skɜːt",
-          "T-shirt",
+          "ˈtiː ʃɜːt",
           "ʃuːz"
         ],
         "answer": "T-shirt",
@@ -8314,9 +8314,9 @@
         ],
         "options_ipa": [
           "haʊs",
-          "yo-yo",
+          "ˈjəʊjəʊ",
           "ˈruːlə",
-          "T-shirt"
+          "ˈtiː ʃɜːt"
         ],
         "answer": "house",
         "hint": "Answer: house",
@@ -8605,7 +8605,7 @@
       },
       {
         "question_id": "s8.1_34",
-        "question_text": "Complete the sentence. Let",
+        "question_text": "Complete the sentence. Let's go to the ______ to see tigers!",
         "options": [
           "playground",
           "park",
@@ -8624,12 +8624,12 @@
         "skill_tag": "ENG_SYN",
         "topic_id": 9,
         "section_name": "Picture Sentence Completion",
-        "question_text_vi": "Hoàn thành câu. Let",
+        "question_text_vi": "Hoàn thành câu. Let's go to the ______ to see tigers!",
         "legacy_question_text": "Nhìn tranh chỉ 'to the zoo' và chọn từ điền vào chỗ trống thích hợp: 'Let's go to the ______ to see tigers!'",
         "legacy_hint": "Gợi ý: Từ vựng thích hợp nhất mô tả hình ảnh 'to the zoo' là 'zoo'.",
         "hint_vi": "Đáp án: zoo",
         "tts_locale": "en-US",
-        "tts_text": "Complete the sentence. Let",
+        "tts_text": "Complete the sentence. Let's go to the ______ to see tigers!",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -10351,7 +10351,7 @@
       },
       {
         "question_id": "s8.2_20",
-        "question_text": "Choose the correct word. Let",
+        "question_text": "Choose the correct word. Let's ______ soccer! - Great idea!",
         "options": [
           "draw",
           "sing",
@@ -10370,12 +10370,12 @@
         "skill_tag": "ENG_GRA",
         "topic_id": 11,
         "section_name": "Grammar Choice",
-        "question_text_vi": "Chọn từ đúng. Let",
+        "question_text_vi": "Chọn từ đúng. Let's ______ soccer! - Great idea!",
         "legacy_question_text": "Chọn từ ngữ pháp thích hợp điền vào chỗ trống: 'Let's ______ soccer! - Great idea!'",
         "legacy_hint": "Gợi ý: Quy chuẩn ngữ pháp đòi hỏi từ loại phù hợp điền vào chỗ trống là 'play'.",
         "hint_vi": "Đáp án: play",
         "tts_locale": "en-US",
-        "tts_text": "Choose the correct word. Let",
+        "tts_text": "Choose the correct word. Let's ______ soccer! - Great idea!",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -12731,7 +12731,7 @@
       },
       {
         "question_id": "s8.3_21",
-        "question_text": "Complete the dialogue. Let",
+        "question_text": "Complete the dialogue. Let's play soccer! - Great ______!",
         "options": [
           "play",
           "sing",
@@ -12750,12 +12750,12 @@
         "skill_tag": "ENG_SYN",
         "topic_id": 11,
         "section_name": "Conversation Finish",
-        "question_text_vi": "Hoàn thành hội thoại. Let",
+        "question_text_vi": "Hoàn thành hội thoại. Let's play soccer! - Great ______!",
         "legacy_question_text": "Hoàn thành câu đối đáp hội thoại: 'Let's play soccer! - Great ______!'",
         "legacy_hint": "Gợi ý: Lựa chọn câu đối đáp phù hợp với ngữ cảnh hội thoại: 'idea'.",
         "hint_vi": "Đáp án: idea",
         "tts_locale": "en-US",
-        "tts_text": "Complete the dialogue. Let",
+        "tts_text": "Complete the dialogue. Let's play soccer! - Great ______!",
         "tts_read_vietnamese": false,
         "tts_policy": {
           "english_locale": "en-US",
@@ -15913,7 +15913,7 @@
           "ɡreɪt",
           "bluː",
           "bʌs",
-          "yo-yo"
+          "ˈjəʊjəʊ"
         ],
         "answer": "great",
         "hint": "Answer: great",
@@ -16775,7 +16775,7 @@
         ],
         "options_ipa": [
           "skɜːt",
-          "T-shirt",
+          "ˈtiː ʃɜːt",
           "ʃuːz",
           "sɒks"
         ],
@@ -17855,7 +17855,7 @@
           "dress"
         ],
         "options_ipa": [
-          "T-shirt",
+          "ˈtiː ʃɜːt",
           "pænts",
           "skɜːt",
           "dres"
@@ -17949,10 +17949,10 @@
           "yo-yo"
         ],
         "options_ipa": [
-          "T-shirt",
+          "ˈtiː ʃɜːt",
           "ˈbɜːθdeɪ",
           "ˈruːlə",
-          "yo-yo"
+          "ˈjəʊjəʊ"
         ],
         "answer": "birthday",
         "hint": "Answer: birthday",
@@ -25894,7 +25894,7 @@
           "ˈsliːpi",
           "ˈreɪnbəʊ",
           "ˈelɪfənt",
-          "yo-yo"
+          "ˈjəʊjəʊ"
         ],
         "answer": "sleepy",
         "hint": "Answer: sleepy",
@@ -26741,7 +26741,7 @@
         "options_ipa": [
           "ˈɡɑːdn",
           "keɪk",
-          "yo-yo",
+          "ˈjəʊjəʊ",
           "ˈtʃɪkɪn"
         ],
         "answer": "garden",
@@ -27868,7 +27868,7 @@
           "grass"
         ],
         "options_ipa": [
-          "yo-yo",
+          "ˈjəʊjəʊ",
           "dɒl",
           "bɔːl",
           "ɡrɑːs"
@@ -27981,7 +27981,7 @@
           "ˈrəʊbɒt",
           "ɡreɪt",
           "ˈhelɪkɒptə",
-          "yo-yo"
+          "ˈjəʊjəʊ"
         ],
         "answer": "yo-yo",
         "hint": "Answer: yo-yo",
@@ -28539,7 +28539,7 @@
         "options_ipa": [
           "ˈklaʊdi",
           "pleɪn",
-          "shirt",
+          "ʃɜːt",
           "ˈzeɪbrə"
         ],
         "answer": "shirt",
@@ -29624,7 +29624,7 @@
           "bred",
           "ˈelɪfənt",
           "ˈwɪndi",
-          "shirt"
+          "ʃɜːt"
         ],
         "answer": "windy",
         "hint": "Answer: windy",
@@ -30148,7 +30148,7 @@
         ],
         "options_ipa": [
           "ˈzeɪbrə",
-          "shirt",
+          "ʃɜːt",
           "zuː",
           "ˈhɪpəʊ"
         ],
@@ -30351,7 +30351,7 @@
           "sunny"
         ],
         "options_ipa": [
-          "shirt",
+          "ʃɜːt",
           "zuː",
           "dʒuːs",
           "ˈsʌni"
@@ -33410,7 +33410,7 @@
             "ˈpæstə",
             "væn",
             "ˈreɪnbəʊ",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "mì Ý"
         },
@@ -33501,7 +33501,7 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "baɪk",
-            "sail",
+            "seɪl",
             "ʃɜːt",
             "bɒks"
           ],
@@ -33595,8 +33595,8 @@
           "options_ipa": [
             "ˈkɪtn",
             "ˈrɪvə",
-            "question",
-            "yams"
+            "ˈkwestʃən",
+            "jæmz"
           ],
           "answer_vi": "mèo con"
         },
@@ -33625,7 +33625,7 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "siː",
-            "quiz",
+            "kwɪz",
             "dʒæm",
             "ʃɜːt"
           ],
@@ -33655,8 +33655,8 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "sail",
-            "yogurt",
+            "seɪl",
+            "ˈjəʊɡət",
             "fɒks",
             "keɪk"
           ],
@@ -33782,7 +33782,7 @@
             "ˈreɪnbəʊ",
             "dʒæm",
             "ʃɜːt",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "cầu vồng"
         },
@@ -33905,7 +33905,7 @@
           "options_ipa": [
             "ˈrɪvə",
             "ʃɜːt",
-            "quiz",
+            "kwɪz",
             "dʒæm"
           ],
           "answer_vi": "dòng sông"
@@ -33934,10 +33934,10 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "quiz",
+            "kwɪz",
             "kaɪt",
             "dʒæm",
-            "sail"
+            "seɪl"
           ],
           "answer_vi": "trò chơi câu đố"
         },
@@ -33965,7 +33965,7 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "question",
+            "ˈkwestʃən",
             "keɪk",
             "ˈrɪvə",
             "ʃɜːt"
@@ -34092,7 +34092,7 @@
             "fɒks",
             "keɪk",
             "ʃɜːt",
-            "sail"
+            "seɪl"
           ],
           "answer_vi": "con cáo"
         },
@@ -34152,7 +34152,7 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "ɡəʊt",
-            "quiz",
+            "kwɪz",
             "ˈteɪbl",
             "kaɪt"
           ],
@@ -34247,7 +34247,7 @@
             "dʒæm",
             "rəʊd",
             "ʃɜːt",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "mứt ngọt"
         },
@@ -34369,7 +34369,7 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "dʒæm",
-            "sail",
+            "seɪl",
             "baɪk",
             "ʃɜːt"
           ],
@@ -34463,8 +34463,8 @@
           "options_ipa": [
             "væn",
             "dʒæm",
-            "quiz",
-            "sail"
+            "kwɪz",
+            "seɪl"
           ],
           "answer_vi": "xe tải nhỏ"
         },
@@ -34554,7 +34554,7 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "yams",
+            "jæmz",
             "kaɪt",
             "ˈrɪvə",
             "ʃɜːt"
@@ -34585,9 +34585,9 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "yogurt",
-            "sail",
-            "quiz",
+            "ˈjəʊɡət",
+            "seɪl",
+            "kwɪz",
             "ˈblæŋkɪt"
           ],
           "answer_vi": "sữa chua"
@@ -34681,7 +34681,7 @@
             "fuːd",
             "ˈreɪnbəʊ",
             "ˈkɪtn",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "đồ ăn"
         },
@@ -34774,7 +34774,7 @@
             "triː",
             "keɪk",
             "dʒæm",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "cây xanh"
         },
@@ -34802,7 +34802,7 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "zebu",
+            "ˈziːbuː",
             "ʃɜːt",
             "ˈrɪvə",
             "ˈteɪbl"
@@ -34866,7 +34866,7 @@
           "options_ipa": [
             "kɑːz",
             "keɪks",
-            "shirts",
+            "ʃɜːts",
             "ˈrɪvəz"
           ],
           "answer_vi": "xe ô tô"
@@ -34895,7 +34895,7 @@
           "instruction_en": "Choose the correct word to complete the sentence.",
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
-            "sliding",
+            "ˈslaɪdɪŋ",
             "ˈiːtɪŋ",
             "ˈweərɪŋ",
             "ˈkaʊntɪŋ"
@@ -35114,7 +35114,7 @@
           "options_ipa": [
             "dʒuːs",
             "ˈreɪnbəʊ",
-            "quiz",
+            "kwɪz",
             "ˈblæŋkɪt"
           ],
           "answer_vi": "nước ép trái cây"
@@ -35146,7 +35146,7 @@
             "keɪks",
             "baɪks",
             "ˈrɪvəz",
-            "shirts"
+            "ʃɜːts"
           ],
           "answer_vi": "những chiếc bánh ngọt"
         },
@@ -35237,7 +35237,7 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "stɑːz",
-            "shirts",
+            "ʃɜːts",
             "ˈrɪvəz",
             "dʒæmz"
           ],
@@ -35393,7 +35393,7 @@
           "options_ipa": [
             "ˈsɪstə",
             "ˈrɪvə",
-            "quiz",
+            "kwɪz",
             "keɪk"
           ],
           "answer_vi": "chị, em gái"
@@ -35423,8 +35423,8 @@
           "instruction_vi": "Chọn từ đúng để hoàn thành câu.",
           "options_ipa": [
             "ˈlɪvɪŋ",
-            "driving",
-            "sliding",
+            "ˈdraɪvɪŋ",
+            "ˈslaɪdɪŋ",
             "ˈkaʊntɪŋ"
           ],
           "answer_vi": "phòng khách (trong “living room”)"
@@ -35455,7 +35455,7 @@
           "options_ipa": [
             "ˈfæməli",
             "ˈrɪvə",
-            "quiz",
+            "kwɪz",
             "ʃɜːt"
           ],
           "answer_vi": "gia đình"
@@ -35548,7 +35548,7 @@
           "options_ipa": [
             "tʃeə",
             "ˈrɪvə",
-            "quiz",
+            "kwɪz",
             "keɪk"
           ],
           "answer_vi": "ghế tựa"
@@ -35611,7 +35611,7 @@
             "drɛs",
             "rəʊd",
             "dʒæm",
-            "quiz"
+            "kwɪz"
           ],
           "answer_vi": "đầm/váy"
         },
