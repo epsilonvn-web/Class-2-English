@@ -308,6 +308,35 @@ body:has(#main-tab-review.is-active) #view-lecture{background:transparent !impor
                 max-width: calc(72rem - 0.5rem) !important;
             }
         }
+
+
+        /* TA2 2026-09-23 - Tăng cỡ chữ mô tả chuyên mục + tên 6 tab trên mobile */
+        #view-dashboard-grid .pastel-card > .flex.justify-between.items-end > div:first-child > div:first-child {
+            font-size: 13px !important;
+            line-height: 1.28 !important;
+        }
+        #view-dashboard-grid .pastel-card > .flex.justify-between.items-end > div:first-child > div:nth-child(2) {
+            font-size: 12px !important;
+            line-height: 1.25 !important;
+        }
+        /* Fallback HTML trước khi app.js render xong */
+        #view-dashboard-grid .pastel-card > div:last-child:not(.flex) {
+            font-size: 13px !important;
+            line-height: 1.28 !important;
+        }
+        @media (max-width: 767px) {
+            .main-module-tab {
+                font-size: 15px !important;
+                font-weight: 800 !important;
+            }
+            #view-dashboard-grid .pastel-card > .flex.justify-between.items-end > div:first-child > div:first-child,
+            #view-dashboard-grid .pastel-card > div:last-child:not(.flex) {
+                font-size: 13px !important;
+            }
+            #view-dashboard-grid .pastel-card > .flex.justify-between.items-end > div:first-child > div:nth-child(2) {
+                font-size: 12px !important;
+            }
+        }
 </style>
 </head>
 <body class="p-1 md:p-2 w-full" style="padding-top:0;padding-bottom:max(0.25rem,env(safe-area-inset-bottom));padding-left:max(0.25rem,env(safe-area-inset-left));padding-right:max(0.25rem,env(safe-area-inset-right));">
