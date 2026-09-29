@@ -764,7 +764,7 @@ async function loadExamDataFile(file) {
         if (Array.isArray(data[key])) {
             data[key] = data[key].map(ex => ({
                 ...ex,
-                exam_title: ex.exam_name,
+                exam_title: ex.exam_name || ex.exam_title || '',
                 questions: (ex.questions || []).map(q => {
                     // Câu "Remove Letter" trong đề thi chỉ có faulty_word+answer, không có sẵn "options" —
                     // phải tự sinh 4 lựa chọn giống hệt cách xử lý ở kho học liệu, nếu không câu này
@@ -4665,9 +4665,30 @@ function renderReportTopicsBreakdown() {
     let html = '';
     skillKeys.forEach(k => {
         const data = skillStats[k];
+        const hasEvidence = isRoadmap ? data.total > 0 : data.maxScore > 0;
+
+        // Không có câu hỏi đo năng lực này trong đề => không được quy thành 0%.
+        // Hiển thị trung tính "Chưa đánh giá" đúng nguyên tắc: không có dữ liệu ≠ học sinh yếu.
+        if (!hasEvidence) {
+            html += `
+                <div class="bg-slate-50/70 border border-slate-200 rounded-2xl p-3 flex flex-col justify-between space-y-2">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="font-black text-slate-700 text-xs sm:text-sm">${SKILL_TAXONOMY[k].name}</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-slate-100 text-slate-600 border border-slate-200">Chưa đánh giá</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+                        <span>Đề này chưa có đủ câu hỏi phù hợp để đo năng lực này.</span>
+                        <span class="font-math font-black">—</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"></div>
+                </div>
+            `;
+            return;
+        }
+
         const pct = isRoadmap
-            ? (data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0)
-            : (data.maxScore > 0 ? Math.round((data.earnedScore / data.maxScore) * 100) : 0);
+            ? Math.round((data.correct / data.total) * 100)
+            : Math.round((data.earnedScore / data.maxScore) * 100);
         const isPassed = pct >= 50;
         const badgeClass = isPassed ? 'bg-violet-100 text-violet-700 border border-amber-200' : 'bg-rose-50 text-rose-700 border border-rose-200';
         const badgeText = isPassed ? 'Đạt yêu cầu' : 'Cần luyện tập thêm';
@@ -4739,10 +4760,13 @@ async function saveExamResultToSheet() {
     const { categoryKey, examIndex } = activeExamContext;
     const thoiGianLamBai = quizStartTime ? formatDuration(Date.now() - quizStartTime) : '';
 
-    const skillScores = {}; SKILL_KEYS.forEach(k => skillScores[k] = 0);
+    const skillScores = {};
+    const skillTotals = {};
+    SKILL_KEYS.forEach(k => { skillScores[k] = 0; skillTotals[k] = 0; });
     quizAnsweredLog.forEach(item => {
         let tag = String(item.skill_tag || 'ENG_VOC').toUpperCase();
         if (!SKILL_KEYS.includes(tag)) tag = 'ENG_VOC';
+        skillTotals[tag]++;
         if (item.isCorrect) skillScores[tag] += (item.diem || 0.5);
     });
 
@@ -4762,7 +4786,11 @@ async function saveExamResultToSheet() {
     };
     // Ghi điểm từng nhóm năng lực vào ĐÚNG tên cột "diem" + mã kỹ năng (diemENG_PHO, diemENG_VOC...)
     // — không hard-code tên cột, tránh lệch dữ liệu nếu sau này đổi lại taxonomy.
-    SKILL_KEYS.forEach(k => { payload['diem' + k] = skillScores[k].toFixed(1); });
+    // Chỉ gửi cột điểm của năng lực thực sự có câu hỏi đo trong đề.
+    // Năng lực không được đo bị bỏ qua hoàn toàn, tránh ghi 0 và bị hiểu nhầm là học sinh yếu.
+    SKILL_KEYS.forEach(k => {
+        if (skillTotals[k] > 0) payload['diem' + k] = skillScores[k].toFixed(1);
+    });
     try { await callAppsScript('saveExamResult', payload); } catch (e) {}
 }
 
